@@ -1,0 +1,22 @@
+# Install PyTorch for your CUDA first: https://pytorch.org
+accelerate>=0.28.0
+datasets>=2.18.0
+transformers>=4.40.0
+peft>=0.10.0
+trl>=0.8.0
+
+numpy>=1.24
+tqdm>=4.66
+packaging>=23.2
+safetensors>=0.4.2
+sentencepiece>=0.1.99
+protobuf>=4.25.0
+
+# Eval utilities
+human-eval>=1.0.3
+
+# Optional (only needed for --use_qlora; Linux + NVIDIA recommended)
+# bitsandbytes>=0.43.0
+
+# Optional (faster inference in eval scripts)
+# vllm>=0.4.0
