@@ -19,7 +19,7 @@ def build_arg_parser() -> argparse.ArgumentParser:
     p.add_argument(
         "--base_models",
         type=str,
-        default="meta-llama/Llama-2-7b-hf,mistralai/Mistral-7B-v0.1",
+        default="meta-llama/Llama-3.1-8B,mistralai/Mistral-7B-v0.3",
         help="Comma-separated HF model ids.",
     )
     p.add_argument("--tasks", type=str, default="metamath,magicoder,alpaca,csqa")
@@ -33,8 +33,8 @@ def build_arg_parser() -> argparse.ArgumentParser:
     )
 
     # Shared training args (written to each config).
-    p.add_argument("--max_steps", type=int, default=200)
-    p.add_argument("--num_train_epochs", type=float, default=None)
+    p.add_argument("--max_steps", type=int, default=None)
+    p.add_argument("--num_train_epochs", type=float, default=3.0)
     p.add_argument("--per_device_train_batch_size", type=int, default=1)
     p.add_argument("--gradient_accumulation_steps", type=int, default=8)
     p.add_argument("--lr", type=float, default=2e-4)
@@ -67,12 +67,8 @@ def build_arg_parser() -> argparse.ArgumentParser:
     p.add_argument("--pissa_init_mode", type=str, default="pissa")
 
     # AdaLoRA
-    p.add_argument("--init_r", type=int, default=12)
-    p.add_argument("--target_r", type=int, default=8)
-    p.add_argument("--adalora_total_steps", type=int, default=1500)
-    p.add_argument("--adalora_init_warmup_steps", type=int, default=500)
-    p.add_argument("--adalora_final_warmup_steps", type=int, default=500)
-    p.add_argument("--adalora_deltaT", type=int, default=None)
+    p.add_argument("--init_r", type=int, default=32)
+    p.add_argument("--target_r", type=int, default=16)
 
     # LoRA+
     p.add_argument("--loraplus_lr_ratio", type=float, default=20.0)
@@ -97,6 +93,37 @@ def main() -> None:
 
     out_path = Path(args.output)
     out_path.parent.mkdir(parents=True, exist_ok=True)
+
+    task_settings = {
+        "magicoder": {
+            "max_seq_len": 4096,
+            "per_device_train_batch_size": 1,
+            "gradient_accumulation_steps": 24,
+            "global_train_batch_size": 192,
+            "lr": 2e-4,
+        },
+        "metamath": {
+            "max_seq_len": 1024,
+            "per_device_train_batch_size": 2,
+            "gradient_accumulation_steps": 48,
+            "global_train_batch_size": 768,
+            "lr": 1e-4,
+        },
+        "alpaca": {
+            "max_seq_len": 2048,
+            "per_device_train_batch_size": 2,
+            "gradient_accumulation_steps": 16,
+            "global_train_batch_size": 256,
+            "lr": 2e-4,
+        },
+        "csqa": {
+            "max_seq_len": 2048,
+            "per_device_train_batch_size": 2,
+            "gradient_accumulation_steps": 16,
+            "global_train_batch_size": 256,
+            "lr": 2e-4,
+        },
+    }
 
     shared = {
         "max_steps": args.max_steps,
@@ -126,10 +153,6 @@ def main() -> None:
         "pissa_init_mode": args.pissa_init_mode,
         "init_r": args.init_r,
         "target_r": args.target_r,
-        "adalora_total_steps": args.adalora_total_steps,
-        "adalora_init_warmup_steps": args.adalora_init_warmup_steps,
-        "adalora_final_warmup_steps": args.adalora_final_warmup_steps,
-        "adalora_deltaT": args.adalora_deltaT,
         "loraplus_lr_ratio": args.loraplus_lr_ratio,
         "loraplus_lr_embedding": args.loraplus_lr_embedding,
     }
@@ -141,6 +164,7 @@ def main() -> None:
                 profile_name = profile.name if profile else "none"
                 profile_slug = _slug(profile_name)
                 overrides = profile_overrides(profile) if profile else {}
+                task_overrides = task_settings.get(task, {})
                 for peft_method in peft_methods:
                     for seed in seeds:
                         model_slug = _slug(base_model)
@@ -170,9 +194,8 @@ def main() -> None:
                             **shared,
                             "max_train_samples": max_train_samples,
                             **overrides,
+                            **task_overrides,
                         }
-                        if peft_method == "adalora":
-                            cfg["max_steps"] = args.adalora_total_steps
                         f.write(json.dumps(cfg, ensure_ascii=False) + "\n")
 
 

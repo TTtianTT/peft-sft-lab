@@ -36,7 +36,7 @@ accelerate launch --num_processes 2 -m finetune.train_sft_peft \
 
 ```bash
 accelerate launch --num_processes 4 -m finetune.train_sft_peft \
-  --base_model mistralai/Mistral-7B-v0.1 \
+  --base_model mistralai/Mistral-7B-v0.3 \
   --task csqa \
   --peft_method adalora \
   --output_dir runs/mistral-csqa-adalora \
@@ -96,7 +96,7 @@ All evaluators save `metrics.json` and (when applicable) generations under the g
 
 ```bash
 python -m finetune.eval.eval_gsm8k \
-  --base_model mistralai/Mistral-7B-v0.1 \
+  --base_model mistralai/Mistral-7B-v0.3 \
   --adapter_dir runs/mistral-math-lora \
   --output_dir eval/gsm8k-mistral-math-lora
 ```
@@ -105,7 +105,7 @@ python -m finetune.eval.eval_gsm8k \
 
 ```bash
 python -m finetune.eval.eval_humaneval \
-  --base_model mistralai/Mistral-7B-v0.1 \
+  --base_model mistralai/Mistral-7B-v0.3 \
   --adapter_dir runs/mistral-code-lora \
   --output_dir eval/humaneval-mistral-code-lora
 ```
@@ -116,7 +116,7 @@ Note: this evaluator executes generated code in a subprocess with a timeout.
 
 ```bash
 python -m finetune.eval.eval_ifeval \
-  --base_model mistralai/Mistral-7B-v0.1 \
+  --base_model mistralai/Mistral-7B-v0.3 \
   --adapter_dir runs/mistral-alpaca-lora \
   --output_dir eval/ifeval-mistral-alpaca-lora
 ```
@@ -125,7 +125,7 @@ python -m finetune.eval.eval_ifeval \
 
 ```bash
 python -m finetune.eval.eval_csqa \
-  --base_model mistralai/Mistral-7B-v0.1 \
+  --base_model mistralai/Mistral-7B-v0.3 \
   --adapter_dir runs/mistral-csqa-lora \
   --output_dir eval/csqa-mistral-csqa-lora
 ```
@@ -141,7 +141,7 @@ Each training run writes:
 
 ## Common errors
 
-- **Gated model / auth required** (e.g. Llama-2): run `huggingface-cli login` and accept the model terms on Hugging Face.
+- **Gated model / auth required** (e.g. Llama-3.1): run `huggingface-cli login` and accept the model terms on Hugging Face.
 - **Dataset not found / missing fields**: check the dataset card; this repo prints the expected columns for each task.
 - **PiSSA not supported**: upgrade PEFT (`pip install -U 'peft>=0.11.0'`).
 - **OOM**:

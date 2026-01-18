@@ -68,7 +68,7 @@ def _defaults_from_parser() -> dict[str, Any]:
 def _adalora_schedule(max_steps: int) -> dict[str, int]:
     total_step = max_steps
     tinit = max(1, int(0.10 * total_step))
-    tfinal = max(1, int(0.20 * total_step))
+    tfinal = max(1, int(0.80 * total_step))
     delta_t = max(1, int(0.01 * total_step))
     return {
         "total_step": total_step,

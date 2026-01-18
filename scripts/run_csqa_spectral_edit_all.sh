@@ -1,8 +1,8 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
-RUN_ROOT="${RUN_ROOT:-/home/zailongtian/workspace/peft-sft-lab/runs/mistralai-Mistral-7B-v0.1/csqa}"
-BASE_MODEL="${BASE_MODEL:-mistralai/Mistral-7B-v0.1}"
+RUN_ROOT="${RUN_ROOT:-/home/zailongtian/workspace/peft-sft-lab/runs/mistralai-Mistral-7B-v0.3/csqa}"
+BASE_MODEL="${BASE_MODEL:-mistralai/Mistral-7B-v0.3}"
 
 # 输出目录（你也可以改到 _runs/ 下面）
 OUT_ROOT="${OUT_ROOT:-${RUN_ROOT}/_lora_spectral_edit_csqa}"
@@ -157,4 +157,3 @@ for variant in adalora lora loraplus pissa; do
 done
 
 echo "ALL DONE. Results under: ${OUT_ROOT}"
-

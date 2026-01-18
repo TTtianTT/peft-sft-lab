@@ -15,8 +15,8 @@ def build_arg_parser() -> argparse.ArgumentParser:
     parser.add_argument(
         "--base_model",
         type=str,
-        default="mistralai/Mistral-7B-v0.1",
-        help="HF model id (e.g. meta-llama/Llama-2-7b-hf, mistralai/Mistral-7B-v0.1).",
+        default="meta-llama/Llama-3.1-8B",
+        help="HF model id (e.g. meta-llama/Llama-3.1-8B, mistralai/Mistral-7B-v0.3).",
     )
     parser.add_argument("--task", type=str, required=True, help="Task plugin name (e.g. math, code, alpaca, csqa).")
     parser.add_argument(
@@ -33,9 +33,14 @@ def build_arg_parser() -> argparse.ArgumentParser:
         default=None,
         help="Recipe profile (e.g. paper_code_ift, paper_math_ift, paper_default_ift, or auto).",
     )
+    parser.add_argument(
+        "--force_max_steps",
+        action="store_true",
+        help="Allow max_steps to override num_train_epochs when both are provided.",
+    )
 
     # Training budget
-    parser.add_argument("--max_steps", type=int, default=200)
+    parser.add_argument("--max_steps", type=int, default=None)
     parser.add_argument("--num_train_epochs", type=float, default=None)
     parser.add_argument("--per_device_train_batch_size", type=int, default=1)
     parser.add_argument("--gradient_accumulation_steps", type=int, default=8)
@@ -99,12 +104,8 @@ def build_arg_parser() -> argparse.ArgumentParser:
     )
 
     # AdaLoRA
-    parser.add_argument("--init_r", type=int, default=12)
-    parser.add_argument("--target_r", type=int, default=8)
-    parser.add_argument("--adalora_total_steps", type=int, default=1500)
-    parser.add_argument("--adalora_init_warmup_steps", type=int, default=500)
-    parser.add_argument("--adalora_final_warmup_steps", type=int, default=500)
-    parser.add_argument("--adalora_deltaT", type=int, default=None)
+    parser.add_argument("--init_r", type=int, default=32)
+    parser.add_argument("--target_r", type=int, default=16)
 
     # LoRA+
     parser.add_argument("--loraplus_lr_ratio", type=float, default=20.0)
@@ -212,32 +213,27 @@ def _estimate_steps_per_epoch(
     return max(1, math.ceil(dataset_size / effective_gbs))
 
 
-def _resolve_adalora_schedule(
-    *,
-    total_steps: int,
-    init_warmup_steps: int,
-    final_warmup_steps: int,
-    delta_t: int | None,
-) -> dict[str, int]:
+def _resolve_adalora_schedule(total_steps: int) -> dict[str, int]:
     if total_steps <= 0:
-        raise ValueError("--adalora_total_steps must be > 0.")
-    if init_warmup_steps < 0 or final_warmup_steps < 0:
-        raise ValueError("--adalora_init_warmup_steps and --adalora_final_warmup_steps must be >= 0.")
-    if init_warmup_steps + final_warmup_steps > total_steps:
-        raise ValueError("AdaLoRA warmup steps exceed total_steps; pruning window would be negative.")
+        raise ValueError("AdaLoRA total_steps must be > 0.")
 
-    tinit = init_warmup_steps
-    tfinal = final_warmup_steps
+    tinit = max(1, int(total_steps * 0.1))
+    tfinal = max(1, int(total_steps * 0.5))
+    delta_t = max(1, int(total_steps * 0.01))
+
     budget_steps = total_steps - tinit - tfinal
     if budget_steps <= 0:
-        raise ValueError("AdaLoRA warmup steps leave no budgeting window; decrease warmups or increase total_steps.")
-    resolved_delta = delta_t if delta_t is not None else max(1, int(0.01 * total_steps))
-    resolved_delta = min(resolved_delta, budget_steps)
+        tfinal = max(1, total_steps - tinit - 1)
+        budget_steps = total_steps - tinit - tfinal
+        if budget_steps <= 0:
+            raise ValueError("AdaLoRA schedule leaves no budgeting window; increase total_steps.")
+    delta_t = min(delta_t, budget_steps)
+
     return {
         "total_step": total_steps,
         "tinit": tinit,
         "tfinal": tfinal,
-        "deltaT": resolved_delta,
+        "deltaT": delta_t,
     }
 
 
@@ -280,6 +276,20 @@ def main() -> None:
     logger.info("Starting run: base_model=%s task=%s peft_method=%s", args.base_model, args.task, args.peft_method)
     if profile:
         logger.info("Applied train_profile=%s", profile.name)
+
+    if args.num_train_epochs is None and args.max_steps is None:
+        raise RuntimeError("Training requires --num_train_epochs or --max_steps.")
+    if args.num_train_epochs is not None and args.max_steps is not None:
+        if args.force_max_steps:
+            logger.warning(
+                "Both num_train_epochs and max_steps provided; using max_steps because --force_max_steps is set."
+            )
+            args.num_train_epochs = None
+        else:
+            logger.warning(
+                "Both num_train_epochs and max_steps provided; ignoring max_steps in favor of epochs."
+            )
+            args.max_steps = None
 
     seed_everything(args.seed)
 
@@ -405,37 +415,6 @@ def main() -> None:
                     before_count,
                 )
 
-    adalora_schedule = None
-    if args.peft_method == "adalora":
-        adalora_schedule = _resolve_adalora_schedule(
-            total_steps=args.adalora_total_steps,
-            init_warmup_steps=args.adalora_init_warmup_steps,
-            final_warmup_steps=args.adalora_final_warmup_steps,
-            delta_t=args.adalora_deltaT,
-        )
-        if args.max_steps != adalora_schedule["total_step"]:
-            logger.info(
-                "Overriding max_steps from %s to %s for AdaLoRA schedule.",
-                args.max_steps,
-                adalora_schedule["total_step"],
-            )
-            args.max_steps = adalora_schedule["total_step"]
-
-        world_size = _get_world_size()
-        denom = max(1, args.per_device_train_batch_size * world_size)
-        target_epochs = args.num_train_epochs if args.num_train_epochs is not None else 3.0
-        desired_effective_gbs = (len(train_ds) * target_epochs) / args.max_steps
-        grad_accum = max(1, math.ceil(desired_effective_gbs / denom))
-        if grad_accum != args.gradient_accumulation_steps:
-            logger.info(
-                "Adjusting gradient_accumulation_steps from %s to %s for AdaLoRA %s-step schedule.",
-                args.gradient_accumulation_steps,
-                grad_accum,
-                args.max_steps,
-            )
-            args.gradient_accumulation_steps = grad_accum
-        args.global_train_batch_size = None
-
     world_size = _get_world_size()
     effective_gbs = _effective_global_batch_size(
         args.per_device_train_batch_size,
@@ -448,34 +427,41 @@ def main() -> None:
         args.gradient_accumulation_steps,
         world_size,
     )
+
+    resolved_total_steps = None
+    if args.num_train_epochs is not None:
+        resolved_total_steps = max(1, math.ceil(steps_per_epoch * args.num_train_epochs))
+
+    adalora_schedule = None
     if args.peft_method == "adalora":
-        effective_epochs = (args.max_steps * effective_gbs) / len(train_ds)
+        total_steps = resolved_total_steps if resolved_total_steps is not None else args.max_steps
+        if total_steps is None:
+            raise RuntimeError("AdaLoRA requires num_train_epochs or max_steps to determine total_step.")
+        adalora_schedule = _resolve_adalora_schedule(total_steps)
         logger.info(
-            "Dataset size=%d | effective_global_batch_size=%d | steps_per_epoch=%d | max_steps=%d | "
-            "approx_epochs=%.3f",
+            "Dataset size=%d | effective_global_batch_size=%d | steps_per_epoch=%d | total_steps=%d | "
+            "num_train_epochs=%s",
             len(train_ds),
             effective_gbs,
             steps_per_epoch,
-            args.max_steps,
-            effective_epochs,
+            adalora_schedule["total_step"],
+            args.num_train_epochs,
         )
-        if adalora_schedule:
-            budget_steps = (
-                adalora_schedule["total_step"]
-                - adalora_schedule["tinit"]
-                - adalora_schedule["tfinal"]
-            )
-            logger.info(
-                "AdaLoRA schedule: total_step=%d, tinit=%d, tfinal=%d, deltaT=%d, budget_steps=%d.",
-                adalora_schedule["total_step"],
-                adalora_schedule["tinit"],
-                adalora_schedule["tfinal"],
-                adalora_schedule["deltaT"],
-                budget_steps,
-            )
+        budget_steps = (
+            adalora_schedule["total_step"]
+            - adalora_schedule["tinit"]
+            - adalora_schedule["tfinal"]
+        )
+        logger.info(
+            "AdaLoRA schedule: total_step=%d, tinit=%d, tfinal=%d, deltaT=%d, budget_steps=%d.",
+            adalora_schedule["total_step"],
+            adalora_schedule["tinit"],
+            adalora_schedule["tfinal"],
+            adalora_schedule["deltaT"],
+            budget_steps,
+        )
     else:
         if args.num_train_epochs is not None:
-            estimated_total_steps = max(1, math.ceil(steps_per_epoch * args.num_train_epochs))
             logger.info(
                 "Dataset size=%d | effective_global_batch_size=%d | steps_per_epoch=%d | "
                 "num_train_epochs=%.3f | est_total_steps=%d",
@@ -483,7 +469,7 @@ def main() -> None:
                 effective_gbs,
                 steps_per_epoch,
                 args.num_train_epochs,
-                estimated_total_steps,
+                resolved_total_steps,
             )
         else:
             logger.info(
@@ -495,7 +481,35 @@ def main() -> None:
             )
 
     if is_rank0():
+        resolved_total_steps = resolved_total_steps or args.max_steps
+        run_config = {
+            "base_model": args.base_model,
+            "task": args.task,
+            "peft_method": args.peft_method,
+            "train_profile": args.train_profile,
+            "num_train_epochs": args.num_train_epochs,
+            "max_steps": args.max_steps,
+            "training_budget": "epochs" if args.num_train_epochs is not None else "max_steps",
+            "per_device_train_batch_size": args.per_device_train_batch_size,
+            "gradient_accumulation_steps": args.gradient_accumulation_steps,
+            "global_train_batch_size": args.global_train_batch_size,
+            "world_size": world_size,
+            "effective_global_batch_size": effective_gbs,
+            "steps_per_epoch": steps_per_epoch,
+            "total_steps": resolved_total_steps,
+            "lr": args.lr,
+            "warmup_ratio": args.warmup_ratio,
+            "weight_decay": args.weight_decay,
+            "lr_scheduler_type": args.lr_scheduler_type,
+            "min_lr_ratio": args.min_lr_ratio,
+            "max_seq_len": args.max_seq_len,
+            "dataset_size": len(train_ds),
+            "max_train_samples": args.max_train_samples,
+            "dataset_seed": args.dataset_seed,
+            "adalora_schedule": adalora_schedule,
+        }
         save_json(Path(output_dir) / "run_args.json", vars(args))
+        save_json(Path(output_dir) / "run_config.json", run_config)
         best_effort_pip_freeze(output_dir)
 
     # Map to a single text field for SFTTrainer.
@@ -608,8 +622,10 @@ def main() -> None:
 
     from transformers import TrainingArguments, get_scheduler
 
-    use_max_steps = args.peft_method == "adalora" or args.num_train_epochs is None
+    use_max_steps = args.num_train_epochs is None or args.force_max_steps
     if use_max_steps:
+        if args.max_steps is None:
+            raise RuntimeError("max_steps must be set when num_train_epochs is not provided.")
         total_steps_for_logging = max(1, args.max_steps)
     else:
         total_steps_for_logging = max(1, math.ceil(steps_per_epoch * args.num_train_epochs))
@@ -705,13 +721,13 @@ def main() -> None:
             grouping.param_groups,
             betas=(args.adam_beta1, args.adam_beta2),
         )
-        warmup_steps = int(args.warmup_ratio * args.max_steps)
+        warmup_steps = max(0, int(args.warmup_ratio * total_steps_for_logging))
         scheduler_specific_kwargs = dict(min_lr_kwargs) if min_lr_kwargs else None
         lr_scheduler = get_scheduler(
             args.lr_scheduler_type,
             optimizer=optimizer,
             num_warmup_steps=warmup_steps,
-            num_training_steps=args.max_steps,
+            num_training_steps=total_steps_for_logging,
             scheduler_specific_kwargs=scheduler_specific_kwargs,
         )
         optimizers = (optimizer, lr_scheduler)

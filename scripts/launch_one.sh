@@ -3,7 +3,7 @@ set -euo pipefail
 
 # Configurable via env vars (or edit defaults below).
 NUM_PROCESSES="${NUM_PROCESSES:-${1:-1}}"
-BASE_MODEL="${BASE_MODEL:-mistralai/Mistral-7B-v0.1}"
+BASE_MODEL="${BASE_MODEL:-meta-llama/Llama-3.1-8B}"
 TASK="${TASK:-alpaca}"
 PEFT_METHOD="${PEFT_METHOD:-lora}"
 
@@ -39,4 +39,3 @@ accelerate launch --num_processes "${NUM_PROCESSES}" -m finetune.train_sft_peft 
   --max_seq_len "${MAX_SEQ_LEN}" \
   --seed "${SEED}" \
   "${EXTRA_FLAGS[@]}"
-

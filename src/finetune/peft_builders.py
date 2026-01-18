@@ -31,7 +31,7 @@ def build_peft_config(
     pissa_init_mode: str,
     init_r: int,
     target_r: int,
-    max_steps: int,
+    max_steps: int | None,
     adalora_total_steps: int | None = None,
     adalora_tinit: int | None = None,
     adalora_tfinal: int | None = None,
@@ -79,9 +79,9 @@ def build_peft_config(
     if peft_method == "adalora":
         total_step = adalora_total_steps or max_steps
         if total_step is None or total_step <= 0:
-            raise ValueError("--adalora_total_steps (or --max_steps) must be > 0 for AdaLoRA.")
+            raise ValueError("AdaLoRA total_step must be > 0.")
         tinit = adalora_tinit if adalora_tinit is not None else max(1, int(0.10 * total_step))
-        tfinal = adalora_tfinal if adalora_tfinal is not None else max(1, int(0.20 * total_step))
+        tfinal = adalora_tfinal if adalora_tfinal is not None else max(1, int(0.50 * total_step))
         if tinit + tfinal >= total_step:
             raise ValueError("AdaLoRA warmup steps must leave room for a budgeting phase.")
         budget_steps = total_step - tinit - tfinal
