@@ -227,11 +227,12 @@ def _resolve_adalora_schedule(
         raise ValueError("AdaLoRA warmup steps exceed total_steps; pruning window would be negative.")
 
     tinit = init_warmup_steps
-    tfinal = total_steps - final_warmup_steps
-    if tinit >= tfinal:
-        raise ValueError("AdaLoRA tinit must be < tfinal for a non-empty pruning window.")
+    tfinal = final_warmup_steps
+    budget_steps = total_steps - tinit - tfinal
+    if budget_steps <= 0:
+        raise ValueError("AdaLoRA warmup steps leave no budgeting window; decrease warmups or increase total_steps.")
     resolved_delta = delta_t if delta_t is not None else max(1, int(0.01 * total_steps))
-    resolved_delta = min(resolved_delta, max(1, tfinal - tinit))
+    resolved_delta = min(resolved_delta, budget_steps)
     return {
         "total_step": total_steps,
         "tinit": tinit,
@@ -459,12 +460,18 @@ def main() -> None:
             effective_epochs,
         )
         if adalora_schedule:
+            budget_steps = (
+                adalora_schedule["total_step"]
+                - adalora_schedule["tinit"]
+                - adalora_schedule["tfinal"]
+            )
             logger.info(
-                "AdaLoRA schedule: total_step=%d, tinit=%d, tfinal=%d, deltaT=%d.",
+                "AdaLoRA schedule: total_step=%d, tinit=%d, tfinal=%d, deltaT=%d, budget_steps=%d.",
                 adalora_schedule["total_step"],
                 adalora_schedule["tinit"],
                 adalora_schedule["tfinal"],
                 adalora_schedule["deltaT"],
+                budget_steps,
             )
     else:
         if args.num_train_epochs is not None:

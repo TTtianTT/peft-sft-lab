@@ -81,11 +81,12 @@ def build_peft_config(
         if total_step is None or total_step <= 0:
             raise ValueError("--adalora_total_steps (or --max_steps) must be > 0 for AdaLoRA.")
         tinit = adalora_tinit if adalora_tinit is not None else max(1, int(0.10 * total_step))
-        tfinal = adalora_tfinal if adalora_tfinal is not None else max(tinit + 1, int(0.80 * total_step))
-        if tinit >= tfinal:
-            raise ValueError("AdaLoRA tinit must be < tfinal for a non-empty pruning window.")
+        tfinal = adalora_tfinal if adalora_tfinal is not None else max(1, int(0.20 * total_step))
+        if tinit + tfinal >= total_step:
+            raise ValueError("AdaLoRA warmup steps must leave room for a budgeting phase.")
+        budget_steps = total_step - tinit - tfinal
         delta_t = adalora_deltaT if adalora_deltaT is not None else max(1, int(0.01 * total_step))
-        delta_t = min(delta_t, max(1, tfinal - tinit))
+        delta_t = min(delta_t, budget_steps)
 
         # AdaLoRA config uses step counts (not ratios).
         return AdaLoraConfig(
