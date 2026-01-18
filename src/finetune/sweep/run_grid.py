@@ -40,6 +40,7 @@ def _config_to_train_args(cfg: dict[str, Any]) -> list[str]:
 
     for key in [
         "max_steps",
+        "num_train_epochs",
         "per_device_train_batch_size",
         "gradient_accumulation_steps",
         "lr",
@@ -53,6 +54,8 @@ def _config_to_train_args(cfg: dict[str, Any]) -> list[str]:
         "adam_beta2",
         "lr_scheduler_type",
         "seed",
+        "max_train_samples",
+        "dataset_seed",
         "target_modules",
         "r",
         "lora_alpha",
@@ -60,6 +63,10 @@ def _config_to_train_args(cfg: dict[str, Any]) -> list[str]:
         "pissa_init_mode",
         "init_r",
         "target_r",
+        "adalora_total_steps",
+        "adalora_init_warmup_steps",
+        "adalora_final_warmup_steps",
+        "adalora_deltaT",
         "loraplus_lr_ratio",
         "loraplus_lr_embedding",
         "train_profile",

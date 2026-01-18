@@ -34,6 +34,7 @@ def build_arg_parser() -> argparse.ArgumentParser:
 
     # Shared training args (written to each config).
     p.add_argument("--max_steps", type=int, default=200)
+    p.add_argument("--num_train_epochs", type=float, default=None)
     p.add_argument("--per_device_train_batch_size", type=int, default=1)
     p.add_argument("--gradient_accumulation_steps", type=int, default=8)
     p.add_argument("--lr", type=float, default=2e-4)
@@ -50,6 +51,8 @@ def build_arg_parser() -> argparse.ArgumentParser:
     p.add_argument("--fp16", action="store_true", help="Include --fp16 in configs.")
     p.add_argument("--gradient_checkpointing", action="store_true")
     p.add_argument("--use_qlora", action="store_true")
+    p.add_argument("--max_train_samples", type=int, default=None)
+    p.add_argument("--dataset_seed", type=int, default=42)
 
     p.add_argument(
         "--target_modules",
@@ -66,6 +69,10 @@ def build_arg_parser() -> argparse.ArgumentParser:
     # AdaLoRA
     p.add_argument("--init_r", type=int, default=12)
     p.add_argument("--target_r", type=int, default=8)
+    p.add_argument("--adalora_total_steps", type=int, default=1500)
+    p.add_argument("--adalora_init_warmup_steps", type=int, default=500)
+    p.add_argument("--adalora_final_warmup_steps", type=int, default=500)
+    p.add_argument("--adalora_deltaT", type=int, default=None)
 
     # LoRA+
     p.add_argument("--loraplus_lr_ratio", type=float, default=20.0)
@@ -93,6 +100,7 @@ def main() -> None:
 
     shared = {
         "max_steps": args.max_steps,
+        "num_train_epochs": args.num_train_epochs,
         "per_device_train_batch_size": args.per_device_train_batch_size,
         "gradient_accumulation_steps": args.gradient_accumulation_steps,
         "lr": args.lr,
@@ -109,6 +117,8 @@ def main() -> None:
         "fp16": bool(args.fp16),
         "gradient_checkpointing": bool(args.gradient_checkpointing),
         "use_qlora": bool(args.use_qlora),
+        "max_train_samples": args.max_train_samples,
+        "dataset_seed": args.dataset_seed,
         "target_modules": args.target_modules,
         "r": args.r,
         "lora_alpha": args.lora_alpha,
@@ -116,6 +126,10 @@ def main() -> None:
         "pissa_init_mode": args.pissa_init_mode,
         "init_r": args.init_r,
         "target_r": args.target_r,
+        "adalora_total_steps": args.adalora_total_steps,
+        "adalora_init_warmup_steps": args.adalora_init_warmup_steps,
+        "adalora_final_warmup_steps": args.adalora_final_warmup_steps,
+        "adalora_deltaT": args.adalora_deltaT,
         "loraplus_lr_ratio": args.loraplus_lr_ratio,
         "loraplus_lr_embedding": args.loraplus_lr_embedding,
     }
@@ -143,6 +157,9 @@ def main() -> None:
                             / f"rank-{rank_slug}"
                             / f"seed{seed}"
                         )
+                        max_train_samples = args.max_train_samples
+                        if task in {"metamath", "magicoder"}:
+                            max_train_samples = 50000
                         cfg = {
                             "base_model": base_model,
                             "task": task,
@@ -151,8 +168,11 @@ def main() -> None:
                             "output_dir": out_dir,
                             "train_profile": profile_name,
                             **shared,
+                            "max_train_samples": max_train_samples,
                             **overrides,
                         }
+                        if peft_method == "adalora":
+                            cfg["max_steps"] = args.adalora_total_steps
                         f.write(json.dumps(cfg, ensure_ascii=False) + "\n")
 
 

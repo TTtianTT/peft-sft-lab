@@ -32,6 +32,10 @@ def build_peft_config(
     init_r: int,
     target_r: int,
     max_steps: int,
+    adalora_total_steps: int | None = None,
+    adalora_tinit: int | None = None,
+    adalora_tfinal: int | None = None,
+    adalora_deltaT: int | None = None,
 ) -> Any:
     peft_method = peft_method.lower()
     if peft_method not in {"lora", "pissa", "adalora", "loraplus"}:
@@ -73,12 +77,15 @@ def build_peft_config(
         )
 
     if peft_method == "adalora":
-        if max_steps <= 0:
-            raise ValueError("--max_steps must be > 0 for AdaLoRA.")
-        total_step = max_steps
-        tinit = max(1, int(0.10 * total_step))
-        tfinal = max(tinit + 1, int(0.80 * total_step))
-        delta_t = max(1, int(0.01 * total_step))
+        total_step = adalora_total_steps or max_steps
+        if total_step is None or total_step <= 0:
+            raise ValueError("--adalora_total_steps (or --max_steps) must be > 0 for AdaLoRA.")
+        tinit = adalora_tinit if adalora_tinit is not None else max(1, int(0.10 * total_step))
+        tfinal = adalora_tfinal if adalora_tfinal is not None else max(tinit + 1, int(0.80 * total_step))
+        if tinit >= tfinal:
+            raise ValueError("AdaLoRA tinit must be < tfinal for a non-empty pruning window.")
+        delta_t = adalora_deltaT if adalora_deltaT is not None else max(1, int(0.01 * total_step))
+        delta_t = min(delta_t, max(1, tfinal - tinit))
 
         # AdaLoRA config uses step counts (not ratios).
         return AdaLoraConfig(
@@ -185,4 +192,3 @@ def check_peft_method_support(peft_method: str) -> None:
             f"PiSSA is not supported in peft=={peft_ver}.",
             "pip install -U 'peft>=0.11.0'",
         )
-

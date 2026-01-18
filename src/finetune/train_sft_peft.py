@@ -36,6 +36,7 @@ def build_arg_parser() -> argparse.ArgumentParser:
 
     # Training budget
     parser.add_argument("--max_steps", type=int, default=200)
+    parser.add_argument("--num_train_epochs", type=float, default=None)
     parser.add_argument("--per_device_train_batch_size", type=int, default=1)
     parser.add_argument("--gradient_accumulation_steps", type=int, default=8)
     parser.add_argument(
@@ -58,6 +59,18 @@ def build_arg_parser() -> argparse.ArgumentParser:
     # Sequence / reproducibility
     parser.add_argument("--max_seq_len", type=int, default=2048)
     parser.add_argument("--seed", type=int, default=42)
+    parser.add_argument(
+        "--max_train_samples",
+        type=int,
+        default=None,
+        help="If set, downsample the training set after a deterministic shuffle.",
+    )
+    parser.add_argument(
+        "--dataset_seed",
+        type=int,
+        default=42,
+        help="Seed for deterministic dataset shuffling before downsampling.",
+    )
 
     # Precision / memory
     mp = parser.add_mutually_exclusive_group()
@@ -88,6 +101,10 @@ def build_arg_parser() -> argparse.ArgumentParser:
     # AdaLoRA
     parser.add_argument("--init_r", type=int, default=12)
     parser.add_argument("--target_r", type=int, default=8)
+    parser.add_argument("--adalora_total_steps", type=int, default=1500)
+    parser.add_argument("--adalora_init_warmup_steps", type=int, default=500)
+    parser.add_argument("--adalora_final_warmup_steps", type=int, default=500)
+    parser.add_argument("--adalora_deltaT", type=int, default=None)
 
     # LoRA+
     parser.add_argument("--loraplus_lr_ratio", type=float, default=20.0)
@@ -175,6 +192,54 @@ def _resolve_min_lr_kwargs(
     return {}
 
 
+def _effective_global_batch_size(
+    per_device_train_batch_size: int,
+    gradient_accumulation_steps: int,
+    world_size: int,
+) -> int:
+    return max(1, per_device_train_batch_size) * max(1, gradient_accumulation_steps) * max(1, world_size)
+
+
+def _estimate_steps_per_epoch(
+    dataset_size: int,
+    per_device_train_batch_size: int,
+    gradient_accumulation_steps: int,
+    world_size: int,
+) -> int:
+    effective_gbs = _effective_global_batch_size(
+        per_device_train_batch_size, gradient_accumulation_steps, world_size
+    )
+    return max(1, math.ceil(dataset_size / effective_gbs))
+
+
+def _resolve_adalora_schedule(
+    *,
+    total_steps: int,
+    init_warmup_steps: int,
+    final_warmup_steps: int,
+    delta_t: int | None,
+) -> dict[str, int]:
+    if total_steps <= 0:
+        raise ValueError("--adalora_total_steps must be > 0.")
+    if init_warmup_steps < 0 or final_warmup_steps < 0:
+        raise ValueError("--adalora_init_warmup_steps and --adalora_final_warmup_steps must be >= 0.")
+    if init_warmup_steps + final_warmup_steps > total_steps:
+        raise ValueError("AdaLoRA warmup steps exceed total_steps; pruning window would be negative.")
+
+    tinit = init_warmup_steps
+    tfinal = total_steps - final_warmup_steps
+    if tinit >= tfinal:
+        raise ValueError("AdaLoRA tinit must be < tfinal for a non-empty pruning window.")
+    resolved_delta = delta_t if delta_t is not None else max(1, int(0.01 * total_steps))
+    resolved_delta = min(resolved_delta, max(1, tfinal - tinit))
+    return {
+        "total_step": total_steps,
+        "tinit": tinit,
+        "tfinal": tfinal,
+        "deltaT": resolved_delta,
+    }
+
+
 def main() -> None:
     args = build_arg_parser().parse_args()
 
@@ -242,10 +307,6 @@ def main() -> None:
                 target,
                 effective,
             )
-
-    if is_rank0():
-        save_json(Path(output_dir) / "run_args.json", vars(args))
-        best_effort_pip_freeze(output_dir)
 
     check_peft_method_support(args.peft_method)
 
@@ -319,6 +380,116 @@ def main() -> None:
                 logger.info("No invalid metamath examples filtered (kept %d).", after_count)
         if after_count == 0:
             raise RuntimeError("All metamath examples were filtered out; check dataset fields.")
+
+    if args.max_train_samples is not None:
+        if args.max_train_samples <= 0:
+            raise ValueError("--max_train_samples must be > 0.")
+        before_count = len(train_ds)
+        if before_count > args.max_train_samples:
+            train_ds = train_ds.shuffle(seed=args.dataset_seed)
+            train_ds = train_ds.select(range(args.max_train_samples))
+            after_count = len(train_ds)
+            if is_rank0():
+                logger.info(
+                    "Downsampled train dataset from %d to %d using seed=%d.",
+                    before_count,
+                    after_count,
+                    args.dataset_seed,
+                )
+        else:
+            if is_rank0():
+                logger.info(
+                    "max_train_samples=%d >= dataset size (%d); no downsampling applied.",
+                    args.max_train_samples,
+                    before_count,
+                )
+
+    adalora_schedule = None
+    if args.peft_method == "adalora":
+        adalora_schedule = _resolve_adalora_schedule(
+            total_steps=args.adalora_total_steps,
+            init_warmup_steps=args.adalora_init_warmup_steps,
+            final_warmup_steps=args.adalora_final_warmup_steps,
+            delta_t=args.adalora_deltaT,
+        )
+        if args.max_steps != adalora_schedule["total_step"]:
+            logger.info(
+                "Overriding max_steps from %s to %s for AdaLoRA schedule.",
+                args.max_steps,
+                adalora_schedule["total_step"],
+            )
+            args.max_steps = adalora_schedule["total_step"]
+
+        world_size = _get_world_size()
+        denom = max(1, args.per_device_train_batch_size * world_size)
+        target_epochs = args.num_train_epochs if args.num_train_epochs is not None else 3.0
+        desired_effective_gbs = (len(train_ds) * target_epochs) / args.max_steps
+        grad_accum = max(1, math.ceil(desired_effective_gbs / denom))
+        if grad_accum != args.gradient_accumulation_steps:
+            logger.info(
+                "Adjusting gradient_accumulation_steps from %s to %s for AdaLoRA %s-step schedule.",
+                args.gradient_accumulation_steps,
+                grad_accum,
+                args.max_steps,
+            )
+            args.gradient_accumulation_steps = grad_accum
+        args.global_train_batch_size = None
+
+    world_size = _get_world_size()
+    effective_gbs = _effective_global_batch_size(
+        args.per_device_train_batch_size,
+        args.gradient_accumulation_steps,
+        world_size,
+    )
+    steps_per_epoch = _estimate_steps_per_epoch(
+        len(train_ds),
+        args.per_device_train_batch_size,
+        args.gradient_accumulation_steps,
+        world_size,
+    )
+    if args.peft_method == "adalora":
+        effective_epochs = (args.max_steps * effective_gbs) / len(train_ds)
+        logger.info(
+            "Dataset size=%d | effective_global_batch_size=%d | steps_per_epoch=%d | max_steps=%d | "
+            "approx_epochs=%.3f",
+            len(train_ds),
+            effective_gbs,
+            steps_per_epoch,
+            args.max_steps,
+            effective_epochs,
+        )
+        if adalora_schedule:
+            logger.info(
+                "AdaLoRA schedule: total_step=%d, tinit=%d, tfinal=%d, deltaT=%d.",
+                adalora_schedule["total_step"],
+                adalora_schedule["tinit"],
+                adalora_schedule["tfinal"],
+                adalora_schedule["deltaT"],
+            )
+    else:
+        if args.num_train_epochs is not None:
+            estimated_total_steps = max(1, math.ceil(steps_per_epoch * args.num_train_epochs))
+            logger.info(
+                "Dataset size=%d | effective_global_batch_size=%d | steps_per_epoch=%d | "
+                "num_train_epochs=%.3f | est_total_steps=%d",
+                len(train_ds),
+                effective_gbs,
+                steps_per_epoch,
+                args.num_train_epochs,
+                estimated_total_steps,
+            )
+        else:
+            logger.info(
+                "Dataset size=%d | effective_global_batch_size=%d | steps_per_epoch=%d | max_steps=%d",
+                len(train_ds),
+                effective_gbs,
+                steps_per_epoch,
+                args.max_steps,
+            )
+
+    if is_rank0():
+        save_json(Path(output_dir) / "run_args.json", vars(args))
+        best_effort_pip_freeze(output_dir)
 
     # Map to a single text field for SFTTrainer.
     try:
@@ -411,6 +582,10 @@ def main() -> None:
         init_r=args.init_r,
         target_r=args.target_r,
         max_steps=args.max_steps,
+        adalora_total_steps=adalora_schedule["total_step"] if adalora_schedule else None,
+        adalora_tinit=adalora_schedule["tinit"] if adalora_schedule else None,
+        adalora_tfinal=adalora_schedule["tfinal"] if adalora_schedule else None,
+        adalora_deltaT=adalora_schedule["deltaT"] if adalora_schedule else None,
     )
 
     try:
@@ -426,9 +601,14 @@ def main() -> None:
 
     from transformers import TrainingArguments, get_scheduler
 
+    use_max_steps = args.peft_method == "adalora" or args.num_train_epochs is None
+    if use_max_steps:
+        total_steps_for_logging = max(1, args.max_steps)
+    else:
+        total_steps_for_logging = max(1, math.ceil(steps_per_epoch * args.num_train_epochs))
+
     training_kwargs = dict(
         output_dir=output_dir,
-        max_steps=args.max_steps,
         per_device_train_batch_size=args.per_device_train_batch_size,
         gradient_accumulation_steps=args.gradient_accumulation_steps,
         learning_rate=args.lr,
@@ -437,8 +617,9 @@ def main() -> None:
         adam_beta1=args.adam_beta1,
         adam_beta2=args.adam_beta2,
         lr_scheduler_type=args.lr_scheduler_type,
-        logging_steps=max(1, min(50, args.max_steps // 10)),
-        save_strategy="no",
+        logging_steps=max(1, min(50, total_steps_for_logging // 10)),
+        save_strategy="epoch",
+        save_safetensors=True,
         evaluation_strategy="no",
         bf16=args.bf16,
         fp16=args.fp16,
@@ -447,6 +628,10 @@ def main() -> None:
         ddp_find_unused_parameters=False,
         remove_unused_columns=False,
     )
+    if use_max_steps:
+        training_kwargs["max_steps"] = args.max_steps
+    else:
+        training_kwargs["num_train_epochs"] = args.num_train_epochs
     if args.grad_clip is not None:
         training_kwargs["max_grad_norm"] = args.grad_clip
     min_lr_kwargs = _resolve_min_lr_kwargs(
@@ -467,6 +652,8 @@ def main() -> None:
         training_kwargs["eval_strategy"] = training_kwargs.pop("evaluation_strategy")
     training_kwargs = {k: v for k, v in training_kwargs.items() if k in training_sig.parameters}
     training_args = TrainingArguments(**training_kwargs)
+    if is_rank0():
+        save_json(Path(output_dir) / "training_args.json", training_args.to_dict())
 
     try:
         from trl import SFTTrainer
