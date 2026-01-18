@@ -1,0 +1,16 @@
+{
+  "runs_root": "/home/zailongtian/workspace/peft-sft-lab/runs/mistralai-Mistral-7B-v0.1",
+  "out_root": "/home/zailongtian/workspace/peft-sft-lab/svd_batch/mistralai-Mistral-7B-v0.1",
+  "tasks_filter": null,
+  "variants_filter": [
+    "adalora",
+    "lora",
+    "loraplus",
+    "pissa"
+  ],
+  "metric": "subspace",
+  "k_top": 16,
+  "device": "cpu",
+  "num_workers": 4,
+  "num_adapter_runs_found": 17
+}

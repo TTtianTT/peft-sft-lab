@@ -90,5 +90,20 @@
     "loraplus_lr_embedding": null
   },
   "metric": "subspace",
-  "k_top": 16
+  "k_top": 16,
+  "key_suffixes": {
+    "A": [
+      ".lora_A.default.weight",
+      ".lora_A.weight",
+      ".lora_A"
+    ],
+    "B": [
+      ".lora_B.default.weight",
+      ".lora_B.weight",
+      ".lora_B"
+    ],
+    "E": [
+      ".lora_E"
+    ]
+  }
 }

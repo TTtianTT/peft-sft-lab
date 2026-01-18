@@ -3,14 +3,11 @@
   "out_root": "/home/zailongtian/workspace/peft-sft-lab/svd_batch/meta-llama-Llama-2-7b-hf",
   "tasks_filter": null,
   "variants_filter": [
-    "adalora",
-    "lora",
-    "loraplus",
-    "pissa"
+    "adalora"
   ],
   "metric": "subspace",
   "k_top": 16,
   "device": "cpu",
-  "num_workers": 0,
-  "num_adapter_runs_found": 16
+  "num_workers": 4,
+  "num_adapter_runs_found": 4
 }
