@@ -9,6 +9,7 @@ from finetune.data.math_metamathqa import MetaMathQATask
 
 _TASKS: dict[str, type[TaskPlugin]] = {
     "math": MetaMathQATask,
+    "metamath": MetaMathQATask,
     "metamathqa": MetaMathQATask,
     "code": MagicoderTask,
     "magicoder": MagicoderTask,
@@ -25,4 +26,3 @@ def get_task_plugin(name: str) -> TaskPlugin:
         known = ", ".join(sorted(_TASKS))
         raise ValueError(f"Unknown --task {name!r}. Known tasks: {known}")
     return _TASKS[key]()
-

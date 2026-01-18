@@ -9,6 +9,14 @@ class AlpacaTask(TaskPlugin):
     name = "alpaca"
     dataset_id = "tatsu-lab/alpaca"
 
+    @staticmethod
+    def _normalize_text(value: Any) -> str:
+        if value is None:
+            return ""
+        if isinstance(value, str):
+            return value.strip()
+        return str(value).strip()
+
     def load(self, split: str):
         try:
             from datasets import load_dataset
@@ -24,15 +32,19 @@ class AlpacaTask(TaskPlugin):
             ) from exc
 
     def format_example(self, example: dict[str, Any]) -> str:
-        instruction = str(example.get("instruction", "")).strip()
-        input_text = str(example.get("input", "")).strip()
-        output = str(example.get("output", "")).strip()
+        text = example.get("text")
+        if isinstance(text, str):
+            text = text.strip()
+            if text:
+                return text
+        instruction = self._normalize_text(example.get("instruction"))
+        input_text = self._normalize_text(example.get("input"))
+        output = self._normalize_text(example.get("output"))
         if not instruction or not output:
             raise ValueError(
                 f"Alpaca example missing required fields. Keys: {sorted(example.keys())}. "
-                "Expected (instruction, output) with optional (input)."
+                "Expected non-empty text or (instruction, output) with optional (input)."
             )
         if input_text:
             instruction = f"{instruction}\n\nInput:\n{input_text}"
         return format_instruction_response(instruction=instruction, response=output)
-

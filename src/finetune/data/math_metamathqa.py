@@ -25,7 +25,10 @@ class MetaMathQATask(TaskPlugin):
             ) from exc
 
     def format_example(self, example: dict[str, Any]) -> str:
-        instruction = first_present(example, ["query", "question", "instruction", "prompt"])
+        instruction = first_present(
+            example,
+            ["query", "original_question", "question", "instruction", "prompt"],
+        )
         response = first_present(example, ["response", "answer", "output", "solution"])
         if instruction is None or response is None:
             raise ValueError(
@@ -33,4 +36,3 @@ class MetaMathQATask(TaskPlugin):
                 "Expected something like (query,response)."
             )
         return format_instruction_response(instruction=instruction, response=response)
-

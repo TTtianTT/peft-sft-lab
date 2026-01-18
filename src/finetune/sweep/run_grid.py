@@ -46,6 +46,12 @@ def _config_to_train_args(cfg: dict[str, Any]) -> list[str]:
         "warmup_ratio",
         "weight_decay",
         "max_seq_len",
+        "global_train_batch_size",
+        "min_lr_ratio",
+        "grad_clip",
+        "adam_beta1",
+        "adam_beta2",
+        "lr_scheduler_type",
         "seed",
         "target_modules",
         "r",
@@ -56,6 +62,7 @@ def _config_to_train_args(cfg: dict[str, Any]) -> list[str]:
         "target_r",
         "loraplus_lr_ratio",
         "loraplus_lr_embedding",
+        "train_profile",
     ]:
         args += _kv_flag(key, cfg.get(key))
 
@@ -101,4 +108,3 @@ def main() -> None:
 
 if __name__ == "__main__":
     main()
-
