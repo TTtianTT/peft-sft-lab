@@ -107,14 +107,14 @@ def generate_greedy(
     return tokenizer.decode(generated, skip_special_tokens=True).strip()
 
 
-def generate_greedy_vllm(
+def generate_greedy_vllm_batch(
     *,
     base_model: str,
-    prompt: str,
+    prompts: list[str],
     max_new_tokens: int,
     adapter_dir: str | None = None,
     tensor_parallel_size: int = 1,
-) -> str:
+) -> list[str]:
     try:
         from vllm import LLM, SamplingParams
     except Exception as exc:
@@ -130,6 +130,9 @@ def generate_greedy_vllm(
             raise RuntimeError(f"vLLM LoRA support not available: {exc}") from exc
         lora_request = LoRARequest("adapter", 1, adapter_dir)
 
+    if not prompts:
+        return []
+
     llm = LLM(
         model=base_model,
         tensor_parallel_size=tensor_parallel_size,
@@ -137,17 +140,44 @@ def generate_greedy_vllm(
         max_lora_rank=256,
     )
     params = SamplingParams(temperature=0.0, max_tokens=max_new_tokens)
-    outputs = llm.generate([prompt], params, lora_request=lora_request)
+    outputs = llm.generate(prompts, params, lora_request=lora_request)
     if not outputs:
-        return ""
-    req_out = outputs[0]
-    if not getattr(req_out, "outputs", None):
-        return ""
-    return req_out.outputs[0].text.strip()
+        return ["" for _ in prompts]
+
+    texts: list[str] = []
+    for req_out in outputs:
+        if not getattr(req_out, "outputs", None):
+            texts.append("")
+        else:
+            texts.append(req_out.outputs[0].text.strip())
+
+    if len(texts) < len(prompts):
+        texts.extend([""] * (len(prompts) - len(texts)))
+    elif len(texts) > len(prompts):
+        texts = texts[: len(prompts)]
+
+    return texts
+
+
+def generate_greedy_vllm(
+    *,
+    base_model: str,
+    prompt: str,
+    max_new_tokens: int,
+    adapter_dir: str | None = None,
+    tensor_parallel_size: int = 1,
+) -> str:
+    outputs = generate_greedy_vllm_batch(
+        base_model=base_model,
+        prompts=[prompt],
+        max_new_tokens=max_new_tokens,
+        adapter_dir=adapter_dir,
+        tensor_parallel_size=tensor_parallel_size,
+    )
+    return outputs[0] if outputs else ""
 
 
 def save_json(path: str | Path, data: Any) -> None:
     path = Path(path)
     path.parent.mkdir(parents=True, exist_ok=True)
     path.write_text(json.dumps(data, indent=2, ensure_ascii=False), encoding="utf-8")
-

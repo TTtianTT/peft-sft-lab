@@ -8,7 +8,7 @@ from typing import Any
 
 from finetune.eval.generation import (
     generate_greedy,
-    generate_greedy_vllm,
+    generate_greedy_vllm_batch,
     load_transformers_model,
     save_json,
     strip_code_fences,
@@ -93,23 +93,64 @@ def main() -> None:
     passed = 0
     total = 0
     with outputs_path.open("w", encoding="utf-8") as f:
-        for ex in ds:
-            task_id = str(ex.get("task_id", ""))
-            prompt = str(ex.get("prompt", ""))
-            test = str(ex.get("test", ""))
-            entry_point = str(ex.get("entry_point", "")).strip()
-            if not prompt or not test or not entry_point:
-                continue
-
-            if args.use_vllm:
-                completion_raw = generate_greedy_vllm(
-                    base_model=args.base_model,
-                    prompt=prompt,
-                    max_new_tokens=args.max_new_tokens,
-                    adapter_dir=args.adapter_dir,
-                    tensor_parallel_size=args.tensor_parallel_size,
+        if args.use_vllm:
+            prompts: list[str] = []
+            records: list[dict[str, str]] = []
+            for ex in ds:
+                task_id = str(ex.get("task_id", ""))
+                prompt = str(ex.get("prompt", ""))
+                test = str(ex.get("test", ""))
+                entry_point = str(ex.get("entry_point", "")).strip()
+                if not prompt or not test or not entry_point:
+                    continue
+                prompts.append(prompt)
+                records.append(
+                    {
+                        "task_id": task_id,
+                        "prompt": prompt,
+                        "test": test,
+                        "entry_point": entry_point,
+                    }
                 )
-            else:
+
+            completions_raw = generate_greedy_vllm_batch(
+                base_model=args.base_model,
+                prompts=prompts,
+                max_new_tokens=args.max_new_tokens,
+                adapter_dir=args.adapter_dir,
+                tensor_parallel_size=args.tensor_parallel_size,
+            )
+
+            for rec, completion_raw in zip(records, completions_raw):
+                completion = strip_code_fences(completion_raw)
+                program = f"{rec['prompt']}{completion}\n\n{rec['test']}\n\ncheck({rec['entry_point']})\n"
+
+                ok, error = _run_program(program, timeout_s=args.timeout_s)
+                passed += int(ok)
+                total += 1
+
+                f.write(
+                    json.dumps(
+                        {
+                            "task_id": rec["task_id"],
+                            "passed": bool(ok),
+                            "error": error,
+                            "prompt": rec["prompt"],
+                            "completion": completion,
+                        },
+                        ensure_ascii=False,
+                    )
+                    + "\n"
+                )
+        else:
+            for ex in ds:
+                task_id = str(ex.get("task_id", ""))
+                prompt = str(ex.get("prompt", ""))
+                test = str(ex.get("test", ""))
+                entry_point = str(ex.get("entry_point", "")).strip()
+                if not prompt or not test or not entry_point:
+                    continue
+
                 completion_raw = generate_greedy(
                     model=loaded.model,
                     tokenizer=loaded.tokenizer,
@@ -117,26 +158,26 @@ def main() -> None:
                     max_new_tokens=args.max_new_tokens,
                 )
 
-            completion = strip_code_fences(completion_raw)
-            program = f"{prompt}{completion}\n\n{test}\n\ncheck({entry_point})\n"
+                completion = strip_code_fences(completion_raw)
+                program = f"{prompt}{completion}\n\n{test}\n\ncheck({entry_point})\n"
 
-            ok, error = _run_program(program, timeout_s=args.timeout_s)
-            passed += int(ok)
-            total += 1
+                ok, error = _run_program(program, timeout_s=args.timeout_s)
+                passed += int(ok)
+                total += 1
 
-            f.write(
-                json.dumps(
-                    {
-                        "task_id": task_id,
-                        "passed": bool(ok),
-                        "error": error,
-                        "prompt": prompt,
-                        "completion": completion,
-                    },
-                    ensure_ascii=False,
+                f.write(
+                    json.dumps(
+                        {
+                            "task_id": task_id,
+                            "passed": bool(ok),
+                            "error": error,
+                            "prompt": prompt,
+                            "completion": completion,
+                        },
+                        ensure_ascii=False,
+                    )
+                    + "\n"
                 )
-                + "\n"
-            )
 
     metrics = {"pass@1": (passed / total if total else 0.0), "passed": passed, "total": total}
     save_json(out_dir / "metrics.json", metrics)
@@ -144,5 +185,3 @@ def main() -> None:
 
 if __name__ == "__main__":
     main()
-
-

@@ -6,7 +6,7 @@ import re
 from pathlib import Path
 from typing import Any
 
-from finetune.eval.generation import generate_greedy, generate_greedy_vllm, load_transformers_model, save_json
+from finetune.eval.generation import generate_greedy, generate_greedy_vllm_batch, load_transformers_model, save_json
 from finetune.utils import seed_everything
 
 
@@ -90,53 +90,94 @@ def main() -> None:
     correct = 0
     total = 0
     with preds_path.open("w", encoding="utf-8") as f:
-        for ex in ds:
-            q = str(ex.get("question", "")).strip()
-            gold = str(ex.get("answerKey", "")).strip().upper()
-            choices_map = _choices_to_map(ex.get("choices"))
+        if args.use_vllm:
+            examples = list(ds)
+            prompts: list[str] = []
+            records: list[tuple[str, str]] = []
+            for ex in examples:
+                q = str(ex.get("question", "")).strip()
+                gold = str(ex.get("answerKey", "")).strip().upper()
+                choices_map = _choices_to_map(ex.get("choices"))
 
-            options = []
-            for label in ["A", "B", "C", "D", "E"]:
-                if label in choices_map:
-                    options.append(f"{label}. {choices_map[label]}")
+                options = []
+                for label in ["A", "B", "C", "D", "E"]:
+                    if label in choices_map:
+                        options.append(f"{label}. {choices_map[label]}")
 
-            prompt = (
-                f"Question:\n{q}\n\nChoices:\n"
-                + "\n".join(options)
-                + "\n\nAnswer with a single letter (A, B, C, D, or E):\n"
+                prompt = (
+                    f"Question:\n{q}\n\nChoices:\n"
+                    + "\n".join(options)
+                    + "\n\nAnswer with a single letter (A, B, C, D, or E):\n"
+                )
+                prompts.append(prompt)
+                records.append((q, gold))
+
+            generations = generate_greedy_vllm_batch(
+                base_model=args.base_model,
+                prompts=prompts,
+                max_new_tokens=args.max_new_tokens,
+                adapter_dir=args.adapter_dir,
+                tensor_parallel_size=args.tensor_parallel_size,
             )
 
-            if args.use_vllm:
-                gen = generate_greedy_vllm(
-                    base_model=args.base_model,
-                    prompt=prompt,
-                    max_new_tokens=args.max_new_tokens,
-                    adapter_dir=args.adapter_dir,
-                    tensor_parallel_size=args.tensor_parallel_size,
+            for (q, gold), gen in zip(records, generations):
+                pred_letter = _extract_letter(gen)
+                is_correct = int(pred_letter == gold)
+                correct += is_correct
+                total += 1
+
+                f.write(
+                    json.dumps(
+                        {
+                            "question": q,
+                            "gold": gold,
+                            "prediction_text": gen,
+                            "prediction_letter": pred_letter,
+                            "correct": bool(is_correct),
+                        },
+                        ensure_ascii=False,
+                    )
+                    + "\n"
                 )
-            else:
+        else:
+            for ex in ds:
+                q = str(ex.get("question", "")).strip()
+                gold = str(ex.get("answerKey", "")).strip().upper()
+                choices_map = _choices_to_map(ex.get("choices"))
+
+                options = []
+                for label in ["A", "B", "C", "D", "E"]:
+                    if label in choices_map:
+                        options.append(f"{label}. {choices_map[label]}")
+
+                prompt = (
+                    f"Question:\n{q}\n\nChoices:\n"
+                    + "\n".join(options)
+                    + "\n\nAnswer with a single letter (A, B, C, D, or E):\n"
+                )
+
                 gen = generate_greedy(
                     model=loaded.model, tokenizer=loaded.tokenizer, prompt=prompt, max_new_tokens=args.max_new_tokens
                 )
 
-            pred_letter = _extract_letter(gen)
-            is_correct = int(pred_letter == gold)
-            correct += is_correct
-            total += 1
+                pred_letter = _extract_letter(gen)
+                is_correct = int(pred_letter == gold)
+                correct += is_correct
+                total += 1
 
-            f.write(
-                json.dumps(
-                    {
-                        "question": q,
-                        "gold": gold,
-                        "prediction_text": gen,
-                        "prediction_letter": pred_letter,
-                        "correct": bool(is_correct),
-                    },
-                    ensure_ascii=False,
+                f.write(
+                    json.dumps(
+                        {
+                            "question": q,
+                            "gold": gold,
+                            "prediction_text": gen,
+                            "prediction_letter": pred_letter,
+                            "correct": bool(is_correct),
+                        },
+                        ensure_ascii=False,
+                    )
+                    + "\n"
                 )
-                + "\n"
-            )
 
     metrics = {"accuracy": (correct / total if total else 0.0), "correct": correct, "total": total}
     save_json(out_dir / "metrics.json", metrics)
@@ -144,5 +185,3 @@ def main() -> None:
 
 if __name__ == "__main__":
     main()
-
-

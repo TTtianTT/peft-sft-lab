@@ -471,8 +471,9 @@ def main() -> int:
     parser.add_argument("--eval_seed", type=int, default=None, help="Override eval seed.")
     parser.add_argument("--split", type=str, default=None, help="Dataset split override (tasks that support it).")
     parser.add_argument("--timeout_s", type=float, default=None, help="HumanEval timeout override.")
-    parser.add_argument("--use_vllm", action="store_true", help="Use vLLM backend.")
-    parser.add_argument("--tensor_parallel_size", type=int, default=1, help="Tensor parallel size for vLLM.")
+    parser.add_argument("--use_vllm", action="store_true", default=True, help="Use vLLM backend.")
+    parser.add_argument("--no_vllm", action="store_false", dest="use_vllm", help="Disable vLLM backend.")
+    parser.add_argument("--tensor_parallel_size", type=int, default=8, help="Tensor parallel size for vLLM.")
 
     args = parser.parse_args()
 

@@ -6,7 +6,7 @@ import re
 from pathlib import Path
 from typing import Any
 
-from finetune.eval.generation import generate_greedy, generate_greedy_vllm, load_transformers_model, save_json
+from finetune.eval.generation import generate_greedy, generate_greedy_vllm_batch, load_transformers_model, save_json
 from finetune.utils import seed_everything
 
 
@@ -182,52 +182,91 @@ def main() -> None:
     checks_sum = 0
 
     with outputs_path.open("w", encoding="utf-8") as f:
-        for ex in ds:
-            prompt = ""
-            if "prompt" in ex:
-                prompt = str(ex["prompt"])
-            elif "input" in ex:
-                prompt = str(ex["input"])
-            elif "question" in ex:
-                prompt = str(ex["question"])
-            else:
-                prompt = str(ex)
+        if args.use_vllm:
+            prompts: list[str] = []
+            records: list[dict[str, str]] = []
+            for ex in ds:
+                prompt = ""
+                if "prompt" in ex:
+                    prompt = str(ex["prompt"])
+                elif "input" in ex:
+                    prompt = str(ex["input"])
+                elif "question" in ex:
+                    prompt = str(ex["question"])
+                else:
+                    prompt = str(ex)
 
-            instruction_parts = _as_text_list(ex.get("instruction")) + _as_text_list(ex.get("instructions"))
-            instruction_text = "\n".join([p for p in instruction_parts if p.strip()]) or prompt
+                instruction_parts = _as_text_list(ex.get("instruction")) + _as_text_list(ex.get("instructions"))
+                instruction_text = "\n".join([p for p in instruction_parts if p.strip()]) or prompt
+                prompts.append(prompt)
+                records.append({"prompt": prompt, "instruction_text": instruction_text})
 
-            if args.use_vllm:
-                gen = generate_greedy_vllm(
-                    base_model=args.base_model,
-                    prompt=prompt,
-                    max_new_tokens=args.max_new_tokens,
-                    adapter_dir=args.adapter_dir,
-                    tensor_parallel_size=args.tensor_parallel_size,
+            generations = generate_greedy_vllm_batch(
+                base_model=args.base_model,
+                prompts=prompts,
+                max_new_tokens=args.max_new_tokens,
+                adapter_dir=args.adapter_dir,
+                tensor_parallel_size=args.tensor_parallel_size,
+            )
+
+            for rec, gen in zip(records, generations):
+                scored = score_ifeval(instruction_text=rec["instruction_text"], output_text=gen)
+                total += 1
+                strict += int(scored["all_passed"])
+                score_sum += float(scored["score"])
+                checks_sum += int(scored["total"])
+
+                f.write(
+                    json.dumps(
+                        {
+                            "prompt": rec["prompt"],
+                            "output": gen,
+                            "score": scored["score"],
+                            "all_passed": scored["all_passed"],
+                            "checks": scored["checks"],
+                        },
+                        ensure_ascii=False,
+                    )
+                    + "\n"
                 )
-            else:
+        else:
+            for ex in ds:
+                prompt = ""
+                if "prompt" in ex:
+                    prompt = str(ex["prompt"])
+                elif "input" in ex:
+                    prompt = str(ex["input"])
+                elif "question" in ex:
+                    prompt = str(ex["question"])
+                else:
+                    prompt = str(ex)
+
+                instruction_parts = _as_text_list(ex.get("instruction")) + _as_text_list(ex.get("instructions"))
+                instruction_text = "\n".join([p for p in instruction_parts if p.strip()]) or prompt
+
                 gen = generate_greedy(
                     model=loaded.model, tokenizer=loaded.tokenizer, prompt=prompt, max_new_tokens=args.max_new_tokens
                 )
 
-            scored = score_ifeval(instruction_text=instruction_text, output_text=gen)
-            total += 1
-            strict += int(scored["all_passed"])
-            score_sum += float(scored["score"])
-            checks_sum += int(scored["total"])
+                scored = score_ifeval(instruction_text=instruction_text, output_text=gen)
+                total += 1
+                strict += int(scored["all_passed"])
+                score_sum += float(scored["score"])
+                checks_sum += int(scored["total"])
 
-            f.write(
-                json.dumps(
-                    {
-                        "prompt": prompt,
-                        "output": gen,
-                        "score": scored["score"],
-                        "all_passed": scored["all_passed"],
-                        "checks": scored["checks"],
-                    },
-                    ensure_ascii=False,
+                f.write(
+                    json.dumps(
+                        {
+                            "prompt": prompt,
+                            "output": gen,
+                            "score": scored["score"],
+                            "all_passed": scored["all_passed"],
+                            "checks": scored["checks"],
+                        },
+                        ensure_ascii=False,
+                    )
+                    + "\n"
                 )
-                + "\n"
-            )
 
     metrics = {
         "ifeval_strict_accuracy": (strict / total if total else 0.0),
@@ -240,5 +279,3 @@ def main() -> None:
 
 if __name__ == "__main__":
     main()
-
-
