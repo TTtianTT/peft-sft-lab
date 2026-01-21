@@ -39,14 +39,17 @@ def _choices_to_map(choices: Any) -> dict[str, str]:
 
 
 def _extract_letter(text: str) -> str:
-    text = text.strip().upper()
-    m = re.search(r"\b([A-E])\b", text)
+    t = (text or "").strip().upper()
+
+    # 1) 优先抓 "ANSWER: C" 这种
+    m = re.search(r"(?:^|\n)\s*(?:FINAL\s+ANSWER|ANSWER)\s*[:\-]?\s*([A-E])\b", t)
     if m:
         return m.group(1)
-    for ch in text:
-        if ch in {"A", "B", "C", "D", "E"}:
-            return ch
-    return ""
+
+    # 2) 否则抓最后一个 standalone 字母（避免模型复述 "A, B, C, D, E" 时总拿到 A）
+    hits = re.findall(r"\b([A-E])\b", t)
+    return hits[-1] if hits else ""
+
 
 
 def _build_csqa_instruction(example: dict[str, Any]) -> tuple[str, str, str]:
