@@ -4,13 +4,33 @@ from typing import Any
 
 from finetune.data.base import TaskPlugin, format_instruction_response
 
+_LABEL_ORDER = ["A", "B", "C", "D", "E"]
+
 
 def _choices_to_map(choices: Any) -> dict[str, str]:
+    """
+    HF tau/commonsense_qa canonical format:
+      choices = {"label": ["A","B","C","D","E"], "text": ["...", ...]}
+    But keep compatibility with list-of-dict variants.
+    """
+    # Canonical: dict with list fields
     if isinstance(choices, dict):
-        labels = choices.get("label")
-        texts = choices.get("text")
+        labels = choices.get("label", choices.get("labels"))
+        texts = choices.get("text", choices.get("texts"))
+
         if isinstance(labels, list) and isinstance(texts, list) and len(labels) == len(texts):
-            return {str(l): str(t) for l, t in zip(labels, texts)}
+            out: dict[str, str] = {}
+            for l, t in zip(labels, texts):
+                if l is None or t is None:
+                    continue
+                key = str(l).strip().upper()
+                val = str(t).strip()
+                if key:
+                    out[key] = val
+            if out:
+                return out
+
+    # Compatibility: list of {"label": "...", "text": "..."}
     if isinstance(choices, list):
         out: dict[str, str] = {}
         for item in choices:
@@ -20,10 +40,28 @@ def _choices_to_map(choices: Any) -> dict[str, str]:
             text = item.get("text")
             if label is None or text is None:
                 continue
-            out[str(label)] = str(text)
+            key = str(label).strip().upper()
+            val = str(text).strip()
+            if key:
+                out[key] = val
         if out:
             return out
+
     raise ValueError(f"Unrecognized choices format: {type(choices)}")
+
+
+def _get_question_text(q: Any) -> str:
+    """
+    HF field is a string, but keep a safe fallback if upstream changes.
+    """
+    if isinstance(q, str):
+        return q.strip()
+    if isinstance(q, dict):
+        # common alt format: {"stem": "..."}
+        stem = q.get("stem")
+        if isinstance(stem, str):
+            return stem.strip()
+    return str(q or "").strip()
 
 
 class CommonsenseQATask(TaskPlugin):
@@ -45,27 +83,38 @@ class CommonsenseQATask(TaskPlugin):
             ) from exc
 
     def format_example(self, example: dict[str, Any]) -> str:
-        question = str(example.get("question", "")).strip()
-        answer = str(example.get("answerKey", "")).strip().upper()
-        if not question or not answer:
+        ex_id = example.get("id", None)
+        question = _get_question_text(example.get("question", ""))
+        answer = str(example.get("answerKey", "") or "").strip().upper()
+
+        # For SFT we require gold labels (A-E)
+        if not question:
             raise ValueError(
-                f"CSQA example missing required fields. Keys: {sorted(example.keys())}. "
-                "Expected (question, choices, answerKey)."
+                f"CSQA example missing question. id={ex_id!r}. Keys: {sorted(example.keys())}."
             )
-        if answer not in {"A", "B", "C", "D", "E"}:
-            raise ValueError(f"CSQA answerKey must be one of A/B/C/D/E, got {answer!r}.")
+        if answer not in set(_LABEL_ORDER):
+            raise ValueError(
+                f"CSQA example missing/invalid answerKey. id={ex_id!r}, answerKey={answer!r}. "
+                "Expected one of A/B/C/D/E (do not use unlabeled splits for SFT)."
+            )
 
         choices_map = _choices_to_map(example.get("choices"))
-        lines = []
-        for label in ["A", "B", "C", "D", "E"]:
+        lines: list[str] = []
+        for label in _LABEL_ORDER:
             if label in choices_map:
                 lines.append(f"{label}. {choices_map[label]}")
-        if len(lines) < 2:
-            raise ValueError(f"CSQA choices malformed. Keys: {sorted(example.keys())}.")
+        if len(lines) != len(_LABEL_ORDER):
+            # Still allow if some are missing, but keep it strict by default
+            raise ValueError(
+                f"CSQA choices malformed/incomplete. id={ex_id!r}. "
+                f"Have={sorted(choices_map.keys())}, expected={_LABEL_ORDER}."
+            )
+
+        # Include concept only if present (it is provided by the dataset)
+        concept_block = f"Concept:\n{concept}\n\n" if concept else ""
 
         instruction = (
-            f"Question:\n{question}\n\nChoices:\n" + "\n".join(lines) + "\n\n"
-            "Answer with a single letter: A, B, C, D, or E."
+                f"Question:\n{question}\n\nChoices:\n" + "\n".join(lines) + "\n\n"
+                "Answer with a single letter: A, B, C, D, or E."
         )
-        return format_instruction_response(instruction=instruction, response=answer)
-
+        return f"{instruction}\n{answer}"

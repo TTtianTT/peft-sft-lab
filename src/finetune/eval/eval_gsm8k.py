@@ -6,20 +6,44 @@ import re
 from pathlib import Path
 from typing import Any
 
-from finetune.eval.generation import generate_greedy, generate_greedy_vllm_batch, load_transformers_model, save_json
+from finetune.eval.generation import (
+    generate_greedy,
+    generate_greedy_vllm_batch,
+    load_transformers_model,
+    save_json,
+)
 from finetune.utils import seed_everything
 
 
+# MetaMathQA "Model Usage" prompting template
+_METAMATH_PROMPT_TEMPLATE = (
+    "Below is an instruction that describes a task. "
+    "Write a response that appropriately completes the request.\n\n"
+    "### Instruction:\n{instruction}\n\n"
+    "### Response: Let's think step by step."
+)
+
+
 def _extract_answer(text: str) -> str:
+    # Preferred GSM8K-style marker
     if "####" in text:
         tail = text.split("####")[-1].strip()
         if not tail:
             return ""
         lines = tail.splitlines()
         return lines[0].strip() if lines else ""
+
+    # Common alternative markers
+    m = re.search(r"(?:The answer is|Answer is|Final answer)\s*[:：]\s*([^\n\r]+)", text, flags=re.IGNORECASE)
+    if m:
+        return m.group(1).strip()
+
+    # Fallback: last number-ish token
     matches = re.findall(r"-?\d[\d,]*\.?\d*", text)
     if matches:
         return matches[-1].strip()
+
+    # Final fallback: last non-empty line
     return text.strip().splitlines()[-1].strip() if text.strip() else ""
 
 
@@ -27,8 +51,22 @@ def _norm(s: str) -> str:
     return s.strip().replace(",", "")
 
 
+def _build_prompt_gsm8k_metamath_style(question: str) -> str:
+    """
+    Build a GSM8K prompt that *uses* the MetaMathQA Model Usage template, while still
+    instructing the model to output '#### <answer>' for strict-match evaluation.
+    """
+    instruction = (
+        "Solve the following math word problem.\n"
+        "Put your final numeric answer on the last line exactly as:\n"
+        "#### <answer>\n\n"
+        f"{question.strip()}"
+    )
+    return _METAMATH_PROMPT_TEMPLATE.format(instruction=instruction) + "\n"
+
+
 def build_arg_parser() -> argparse.ArgumentParser:
-    p = argparse.ArgumentParser(description="Evaluate GSM8K strict-match accuracy.")
+    p = argparse.ArgumentParser(description="Evaluate GSM8K strict-match accuracy (MetaMath-style prompt).")
     p.add_argument("--base_model", type=str, required=True)
     p.add_argument("--adapter_dir", type=str, default=None)
     p.add_argument("--output_dir", type=str, required=True)
@@ -74,21 +112,19 @@ def main() -> None:
 
     correct = 0
     total = 0
+
     with preds_path.open("w", encoding="utf-8") as f:
         if args.use_vllm:
             examples = list(ds)
             prompts: list[str] = []
             records: list[tuple[str, str]] = []
+
             for ex in examples:
                 q = str(ex.get("question", "")).strip()
                 gold_raw = str(ex.get("answer", "")).strip()
                 gold = _norm(_extract_answer(gold_raw))
 
-                prompt = (
-                    "Solve the following problem. Put your final numeric answer on the last line as:\n"
-                    "#### <answer>\n\n"
-                    f"Problem:\n{q}\n\nAnswer:\n"
-                )
+                prompt = _build_prompt_gsm8k_metamath_style(q)
                 prompts.append(prompt)
                 records.append((q, gold))
 
@@ -109,6 +145,7 @@ def main() -> None:
                 rec: dict[str, Any] = {
                     "question": q,
                     "gold": gold,
+                    "prompt_style": "metamath_model_usage",
                     "prediction_text": gen,
                     "prediction_extracted": pred,
                     "correct": bool(is_correct),
@@ -120,14 +157,13 @@ def main() -> None:
                 gold_raw = str(ex.get("answer", "")).strip()
                 gold = _norm(_extract_answer(gold_raw))
 
-                prompt = (
-                    "Solve the following problem. Put your final numeric answer on the last line as:\n"
-                    "#### <answer>\n\n"
-                    f"Problem:\n{q}\n\nAnswer:\n"
-                )
+                prompt = _build_prompt_gsm8k_metamath_style(q)
 
                 gen = generate_greedy(
-                    model=loaded.model, tokenizer=loaded.tokenizer, prompt=prompt, max_new_tokens=args.max_new_tokens
+                    model=loaded.model,
+                    tokenizer=loaded.tokenizer,
+                    prompt=prompt,
+                    max_new_tokens=args.max_new_tokens,
                 )
 
                 pred = _norm(_extract_answer(gen))
@@ -138,13 +174,19 @@ def main() -> None:
                 rec: dict[str, Any] = {
                     "question": q,
                     "gold": gold,
+                    "prompt_style": "metamath_model_usage",
                     "prediction_text": gen,
                     "prediction_extracted": pred,
                     "correct": bool(is_correct),
                 }
                 f.write(json.dumps(rec, ensure_ascii=False) + "\n")
 
-    metrics = {"accuracy_strict": (correct / total if total else 0.0), "correct": correct, "total": total}
+    metrics = {
+        "accuracy_strict": (correct / total if total else 0.0),
+        "correct": correct,
+        "total": total,
+        "prompt_style": "metamath_model_usage",
+    }
     save_json(out_dir / "metrics.json", metrics)
 
 
