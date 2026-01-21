@@ -6,16 +6,23 @@ import re
 from pathlib import Path
 from typing import Any
 
-from finetune.eval.generation import generate_greedy, generate_greedy_vllm_batch, load_transformers_model, save_json
+from finetune.data.base import format_instruction_response
+from finetune.eval.generation import (
+    generate_greedy,
+    generate_greedy_vllm_batch,
+    load_transformers_model,
+    save_json,
+)
 from finetune.utils import seed_everything
 
 
 def _choices_to_map(choices: Any) -> dict[str, str]:
+    # Keep identical behavior to finetune task plugin (strict + no forced upper)
     if isinstance(choices, dict):
         labels = choices.get("label")
         texts = choices.get("text")
         if isinstance(labels, list) and isinstance(texts, list) and len(labels) == len(texts):
-            return {str(l).upper(): str(t) for l, t in zip(labels, texts)}
+            return {str(l): str(t) for l, t in zip(labels, texts)}
     if isinstance(choices, list):
         out: dict[str, str] = {}
         for item in choices:
@@ -25,10 +32,10 @@ def _choices_to_map(choices: Any) -> dict[str, str]:
             text = item.get("text")
             if label is None or text is None:
                 continue
-            out[str(label).upper()] = str(text)
+            out[str(label)] = str(text)
         if out:
             return out
-    return {}
+    raise ValueError(f"Unrecognized choices format: {type(choices)}")
 
 
 def _extract_letter(text: str) -> str:
@@ -40,6 +47,40 @@ def _extract_letter(text: str) -> str:
         if ch in {"A", "B", "C", "D", "E"}:
             return ch
     return ""
+
+
+def _build_csqa_instruction(example: dict[str, Any]) -> tuple[str, str, str]:
+    """
+    Build (question, gold_letter, instruction) using the *same* formatting as finetune format_example().
+    """
+    question = str(example.get("question", "")).strip()
+    gold = str(example.get("answerKey", "")).strip().upper()
+    if not question or not gold:
+        raise ValueError(
+            f"CSQA example missing required fields. Keys: {sorted(example.keys())}. "
+            "Expected (question, choices, answerKey)."
+        )
+    if gold not in {"A", "B", "C", "D", "E"}:
+        raise ValueError(f"CSQA answerKey must be one of A/B/C/D/E, got {gold!r}.")
+
+    choices_map = _choices_to_map(example.get("choices"))
+    lines: list[str] = []
+    for label in ["A", "B", "C", "D", "E"]:
+        if label in choices_map:
+            lines.append(f"{label}. {choices_map[label]}")
+    if len(lines) < 2:
+        raise ValueError(f"CSQA choices malformed. Keys: {sorted(example.keys())}.")
+
+    instruction = (
+        f"Question:\n{question}\n\nChoices:\n" + "\n".join(lines) + "\n\n"
+        "Answer with a single letter: A, B, C, D, or E."
+    )
+    return question, gold, instruction
+
+
+def _build_csqa_prompt(instruction: str) -> str:
+    # Align evaluation prompt with training template: same wrapper, empty response as generation slot.
+    return format_instruction_response(instruction=instruction, response="")
 
 
 def build_arg_parser() -> argparse.ArgumentParser:
@@ -89,28 +130,19 @@ def main() -> None:
 
     correct = 0
     total = 0
+
     with preds_path.open("w", encoding="utf-8") as f:
         if args.use_vllm:
             examples = list(ds)
+
             prompts: list[str] = []
-            records: list[tuple[str, str]] = []
+            records: list[dict[str, Any]] = []
             for ex in examples:
-                q = str(ex.get("question", "")).strip()
-                gold = str(ex.get("answerKey", "")).strip().upper()
-                choices_map = _choices_to_map(ex.get("choices"))
+                q, gold, instruction = _build_csqa_instruction(ex)
+                prompt = _build_csqa_prompt(instruction)
 
-                options = []
-                for label in ["A", "B", "C", "D", "E"]:
-                    if label in choices_map:
-                        options.append(f"{label}. {choices_map[label]}")
-
-                prompt = (
-                    f"Question:\n{q}\n\nChoices:\n"
-                    + "\n".join(options)
-                    + "\n\nAnswer with a single letter (A, B, C, D, or E):\n"
-                )
                 prompts.append(prompt)
-                records.append((q, gold))
+                records.append({"question": q, "gold": gold, "instruction": instruction})
 
             generations = generate_greedy_vllm_batch(
                 base_model=args.base_model,
@@ -120,17 +152,18 @@ def main() -> None:
                 tensor_parallel_size=args.tensor_parallel_size,
             )
 
-            for (q, gold), gen in zip(records, generations):
+            for rec, gen in zip(records, generations):
                 pred_letter = _extract_letter(gen)
-                is_correct = int(pred_letter == gold)
+                is_correct = int(pred_letter == rec["gold"])
                 correct += is_correct
                 total += 1
 
                 f.write(
                     json.dumps(
                         {
-                            "question": q,
-                            "gold": gold,
+                            "question": rec["question"],
+                            "gold": rec["gold"],
+                            "instruction": rec["instruction"],
                             "prediction_text": gen,
                             "prediction_letter": pred_letter,
                             "correct": bool(is_correct),
@@ -139,25 +172,18 @@ def main() -> None:
                     )
                     + "\n"
                 )
+
         else:
+            assert loaded is not None
             for ex in ds:
-                q = str(ex.get("question", "")).strip()
-                gold = str(ex.get("answerKey", "")).strip().upper()
-                choices_map = _choices_to_map(ex.get("choices"))
-
-                options = []
-                for label in ["A", "B", "C", "D", "E"]:
-                    if label in choices_map:
-                        options.append(f"{label}. {choices_map[label]}")
-
-                prompt = (
-                    f"Question:\n{q}\n\nChoices:\n"
-                    + "\n".join(options)
-                    + "\n\nAnswer with a single letter (A, B, C, D, or E):\n"
-                )
+                q, gold, instruction = _build_csqa_instruction(ex)
+                prompt = _build_csqa_prompt(instruction)
 
                 gen = generate_greedy(
-                    model=loaded.model, tokenizer=loaded.tokenizer, prompt=prompt, max_new_tokens=args.max_new_tokens
+                    model=loaded.model,
+                    tokenizer=loaded.tokenizer,
+                    prompt=prompt,
+                    max_new_tokens=args.max_new_tokens,
                 )
 
                 pred_letter = _extract_letter(gen)
@@ -170,6 +196,7 @@ def main() -> None:
                         {
                             "question": q,
                             "gold": gold,
+                            "instruction": instruction,
                             "prediction_text": gen,
                             "prediction_letter": pred_letter,
                             "correct": bool(is_correct),
