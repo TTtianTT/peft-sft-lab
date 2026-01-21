@@ -13,7 +13,10 @@ from finetune.utils import seed_everything
 def _extract_answer(text: str) -> str:
     if "####" in text:
         tail = text.split("####")[-1].strip()
-        return tail.splitlines()[0].strip()
+        if not tail:
+            return ""
+        lines = tail.splitlines()
+        return lines[0].strip() if lines else ""
     matches = re.findall(r"-?\d[\d,]*\.?\d*", text)
     if matches:
         return matches[-1].strip()
