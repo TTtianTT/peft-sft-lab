@@ -31,5 +31,5 @@ class MagicoderTask(TaskPlugin):
                 f"Magicoder example missing required fields. Keys: {sorted(example.keys())}. "
                 "Expected something like (instruction,response) or (prompt,output)."
             )
-        return format_instruction_response(instruction=instruction, response=response)
+        return f"{instruction}\n{response}"
 
