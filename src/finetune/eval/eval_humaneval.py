@@ -292,7 +292,7 @@ def generate_greedy_vllm(
     completions: List[str] = []
     for out in outs:
         text = out.outputs[0].text if out.outputs else ""
-        completions.append(strip_code_fences(text))
+        completions.append(text)
     return completions
 
 
@@ -386,7 +386,7 @@ def main() -> None:
                 prompt=prompt,
                 max_new_tokens=args.max_new_tokens,
             )
-            completions.append(strip_code_fences(comp_raw))
+            completions.append(comp_raw)
 
     # 3) Write samples JSONL (HumanEval format)
     adapter_tag = "lora" if args.adapter_dir else "base"
