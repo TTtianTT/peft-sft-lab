@@ -268,7 +268,6 @@ def generate_greedy_vllm(
 
     llm = LLM(
         model=base_model,
-        dtype="float16",
         max_model_len=int(max_model_len),
         tensor_parallel_size=int(tensor_parallel_size),
         enable_lora=enable_lora,
@@ -276,7 +275,7 @@ def generate_greedy_vllm(
         seed=int(seed),
     )
 
-    sp = SamplingParams(
+    sp = SamplinqgParams(
         n=1,
         temperature=0.0,
         top_p=1.0,
