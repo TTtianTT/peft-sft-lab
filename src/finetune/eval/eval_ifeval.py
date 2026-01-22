@@ -145,7 +145,7 @@ def build_arg_parser() -> argparse.ArgumentParser:
     p.add_argument("--base_model", type=str, required=True)
     p.add_argument("--adapter_dir", type=str, default=None)
     p.add_argument("--output_dir", type=str, required=True)
-    p.add_argument("--split", type=str, default="test")
+    p.add_argument("--split", type=str, default="train")
     p.add_argument("--max_samples", type=int, default=None)
     p.add_argument("--max_new_tokens", type=int, default=256)
     p.add_argument("--dtype", type=str, default="auto", choices=["auto", "bf16", "fp16", "fp32"])
