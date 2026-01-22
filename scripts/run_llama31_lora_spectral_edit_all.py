@@ -498,7 +498,7 @@ def run_evaluation(
     elif task == "magicoder":
         cmd.extend(["--max_new_tokens", "256", "--timeout_s", "3.0"])
     elif task == "alpaca":
-        cmd.extend(["--max_new_tokens", "256", "--split", "test"])
+        cmd.extend(["--max_new_tokens", "256", "--split", "train"])
     elif task == "csqa":
         cmd.extend(["--max_new_tokens", "8"])
 
