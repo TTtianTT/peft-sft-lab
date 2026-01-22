@@ -130,6 +130,29 @@ python -m finetune.eval.eval_csqa \
   --output_dir eval/csqa-mistral-csqa-lora
 ```
 
+## Spectral edit (LoRA)
+
+Smoke test: edit one metamath adapter, evaluate a small GSM8K slice, and verify outputs.
+
+```bash
+python -m finetune.spectral_edit.cli edit \
+  --base_model meta-llama/Llama-3.1-8B \
+  --lora_path runs/meta-llama-Llama-3.1-8B/metamath/lora/profile-default/rank-16/seed42 \
+  --out_dir runs/edited/metamath/lora/seed42/smooth_abs \
+  --mode smooth_abs \
+  --calib_samples 8 \
+  --calib_batch_size 2
+
+python -m finetune.eval.eval_gsm8k \
+  --base_model meta-llama/Llama-3.1-8B \
+  --adapter_dir runs/edited/metamath/lora/seed42/smooth_abs \
+  --output_dir eval/gsm8k-metamath-smooth-abs \
+  --max_samples 32
+
+ls runs/edited/metamath/lora/seed42/smooth_abs/adapter_model.safetensors \
+   runs/edited/metamath/lora/seed42/smooth_abs/spectral_edit_meta.json
+```
+
 ## Output structure
 
 Each training run writes:

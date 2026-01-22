@@ -4,7 +4,7 @@ Driver script for running spectral editing experiments on LoRA adapters.
 
 This script:
 1. Discovers LoRA adapters under a runs root directory
-2. Applies spectral editing methods from lora-spectral-edit
+2. Applies spectral editing methods from finetune.spectral_edit
 3. Evaluates on task-specific benchmarks using peft-sft-lab evaluators
 4. Saves results incrementally to JSONL and CSV files
 
@@ -24,7 +24,6 @@ Tasks:
 Usage:
     python scripts/run_llama31_lora_spectral_edit_all.py \
         --runs_root /path/to/runs/meta-llama-Llama-3.1-8B \
-        --spectral_edit_root /path/to/lora-spectral-edit \
         --tasks metamath magicoder alpaca csqa \
         --out_root /path/to/output \
         --use_vllm \
@@ -62,7 +61,7 @@ if str(SRC_DIR) not in sys.path:
 
 EDIT_METHODS = ["baseline", "random_index", "smooth_abs", "abs_select", "grad_direction"]
 
-# Map method names to lora-spectral-edit modes
+# Map method names to spectral edit modes
 METHOD_TO_MODE = {
     "random_index": "random_index",
     "smooth_abs": "smooth_abs",
@@ -339,22 +338,27 @@ def run_spectral_edit(
     adapter_dir: Path,
     out_dir: Path,
     edit_method: str,
-    spectral_edit_root: Path,
     base_model_id: str,
     seed: int = 42,
     calib_samples: int = 32,
     calib_batch_size: int = 2,
     target_modules: List[str] = None,
+    calib_dataset: Optional[str] = None,
+    calib_config: Optional[str] = None,
+    calib_split: Optional[str] = None,
+    calib_text_fields: Optional[List[str]] = None,
+    calib_shuffle: bool = False,
+    calib_seed: Optional[int] = None,
+    calib_start: int = 0,
     dry_run: bool = False,
 ) -> Tuple[bool, Optional[str]]:
     """
-    Run spectral editing on an adapter using lora-spectral-edit.
+    Run spectral editing on an adapter using finetune.spectral_edit.
 
     Args:
         adapter_dir: Path to original LoRA adapter
         out_dir: Path to save edited adapter
         edit_method: One of random_index, smooth_abs, abs_select, grad_direction
-        spectral_edit_root: Root of lora-spectral-edit project
         base_model_id: HuggingFace model ID
         seed: Random seed
         calib_samples: Number of calibration samples
@@ -374,7 +378,7 @@ def run_spectral_edit(
 
     # Build command
     cmd = [
-        sys.executable, "-m", "lora_spectral_edit", "edit",
+        sys.executable, "-m", "finetune.spectral_edit.cli", "edit",
         "--base_model", base_model_id,
         "--lora_path", str(adapter_dir),
         "--out_dir", str(out_dir),
@@ -386,6 +390,21 @@ def run_spectral_edit(
         "--grad_norm", "mean_abs",
         "--preserve_energy", "l1",
     ]
+
+    if calib_dataset:
+        cmd.extend(["--calib_dataset", calib_dataset])
+    if calib_config is not None:
+        cmd.extend(["--calib_config", calib_config])
+    if calib_split:
+        cmd.extend(["--calib_split", calib_split])
+    if calib_text_fields:
+        cmd.extend(["--calib_text_fields", *calib_text_fields])
+    if calib_shuffle:
+        cmd.append("--calib_shuffle")
+    if calib_seed is not None:
+        cmd.extend(["--calib_seed", str(calib_seed)])
+    if calib_start:
+        cmd.extend(["--calib_start", str(calib_start)])
 
     # Add method-specific parameters
     if edit_method in ["random_index", "abs_select"]:
@@ -416,11 +435,10 @@ def run_spectral_edit(
 
     # Set up environment
     env = os.environ.copy()
-    edit_src = spectral_edit_root / "src"
     if "PYTHONPATH" in env:
-        env["PYTHONPATH"] = f"{edit_src}:{env['PYTHONPATH']}"
+        env["PYTHONPATH"] = f"{SRC_DIR}:{env['PYTHONPATH']}"
     else:
-        env["PYTHONPATH"] = str(edit_src)
+        env["PYTHONPATH"] = str(SRC_DIR)
 
     # Run command
     try:
@@ -430,7 +448,7 @@ def run_spectral_edit(
             text=True,
             timeout=1800,  # 30 minute timeout
             env=env,
-            cwd=spectral_edit_root,
+            cwd=PEFT_SFT_LAB_ROOT,
         )
 
         if result.returncode != 0:
@@ -619,12 +637,6 @@ def build_arg_parser() -> argparse.ArgumentParser:
         help="Root directory containing LoRA adapter runs (e.g., runs/meta-llama-Llama-3.1-8B)",
     )
     p.add_argument(
-        "--spectral_edit_root",
-        type=Path,
-        required=True,
-        help="Root directory of lora-spectral-edit project",
-    )
-    p.add_argument(
         "--out_root",
         type=Path,
         required=True,
@@ -669,6 +681,34 @@ def build_arg_parser() -> argparse.ArgumentParser:
         default=["down_proj", "o_proj"],
         help="Target modules for spectral edit",
     )
+    p.add_argument(
+        "--calib_dataset",
+        type=str,
+        default=None,
+        help="Calibration dataset (default: gsm8k)",
+    )
+    p.add_argument(
+        "--calib_config",
+        type=str,
+        default=None,
+        help="Calibration dataset config (default: main for gsm8k)",
+    )
+    p.add_argument(
+        "--calib_split",
+        type=str,
+        default=None,
+        help="Calibration split (default: train)",
+    )
+    p.add_argument(
+        "--calib_text_fields",
+        type=str,
+        nargs="+",
+        default=None,
+        help="Calibration text fields for prompt/answer",
+    )
+    p.add_argument("--calib_shuffle", action="store_true", help="Shuffle calibration dataset")
+    p.add_argument("--calib_seed", type=int, default=None, help="Seed for calibration shuffle")
+    p.add_argument("--calib_start", type=int, default=0, help="Start offset into calibration dataset")
 
     # General settings
     p.add_argument("--seed", type=int, default=42, help="Random seed")
@@ -715,10 +755,6 @@ def main():
         print(f"[ERROR] Runs root does not exist: {args.runs_root}")
         sys.exit(1)
 
-    if not args.spectral_edit_root.exists():
-        print(f"[ERROR] Spectral edit root does not exist: {args.spectral_edit_root}")
-        sys.exit(1)
-
     # Normalize tasks
     tasks = [normalize_task(t) for t in args.tasks]
     for t in tasks:
@@ -733,7 +769,6 @@ def main():
     print("LoRA Spectral Edit Experiment Driver")
     print("=" * 70)
     print(f"Runs root: {args.runs_root}")
-    print(f"Spectral edit root: {args.spectral_edit_root}")
     print(f"Output root: {args.out_root}")
     print(f"Tasks: {tasks}")
     print(f"Methods: {args.methods}")
@@ -858,12 +893,18 @@ def main():
                             adapter_dir=adapter.adapter_dir,
                             out_dir=edited_adapter_dir,
                             edit_method=method,
-                            spectral_edit_root=args.spectral_edit_root,
                             base_model_id=adapter.base_model_id,
                             seed=args.seed,
                             calib_samples=args.calib_samples,
                             calib_batch_size=args.calib_batch_size,
                             target_modules=args.target_modules,
+                            calib_dataset=args.calib_dataset,
+                            calib_config=args.calib_config,
+                            calib_split=args.calib_split,
+                            calib_text_fields=args.calib_text_fields,
+                            calib_shuffle=args.calib_shuffle,
+                            calib_seed=args.calib_seed,
+                            calib_start=args.calib_start,
                         )
 
                         if not success:
