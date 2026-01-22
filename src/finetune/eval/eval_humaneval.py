@@ -275,7 +275,7 @@ def generate_greedy_vllm(
         seed=int(seed),
     )
 
-    sp = SamplinqgParams(
+    sp = SamplingParams(
         n=1,
         temperature=0.0,
         top_p=1.0,
