@@ -3,35 +3,43 @@
 """
 IFEval evaluation (prompt/inst × strict/loose), driven by instruction_id_list + kwargs.
 
-- Dataset: google/IFEval (train split, 541 prompts)
-- Metrics (as in the IFEval paper):
-  1) prompt_level_strict_acc
-  2) inst_level_strict_acc
-  3) prompt_level_loose_acc
-  4) inst_level_loose_acc
-
-Loose criterion follows the paper:
-- Apply 3 transformations (remove markdown */**, remove first line, remove last line),
-  evaluate any of the 8 combinations as True. (Identity included)
-
-Outputs:
-- outputs.jsonl: per-example generations + per-instruction strict/loose checks
-- metrics.json: aggregated metrics (and optional per-category breakdown)
+This script supports **Scheme 1** integration with the official Google IFEval evaluator:
+- It keeps your current generation logic (Transformers or vLLM),
+- It writes official-format JSONL files:
+    1) input_data.jsonl (key/prompt/instruction_id_list/kwargs)
+    2) input_response_data.jsonl (prompt/response)
+- Then it runs:
+    python -m instruction_following_eval.evaluation_main \
+      --input_data=... --input_response_data=... --output_dir=...
 
 Notes:
-- This script intentionally does NOT attempt to "parse constraints from prompt text".
-  It relies on dataset-provided instruction_id_list + kwargs.
+- Your own strict/loose checker + outputs.jsonl + metrics.json are preserved.
+- Official outputs will be written under: {output_dir}/official_ifeval/
+
+Expected official code layout:
+  <OFFICIAL_EVAL_ROOT>/
+    instruction_following_eval/
+      evaluation_main.py
+      instructions.py
+      ...
+
+You can point --official_eval_root either to:
+  - <OFFICIAL_EVAL_ROOT> (parent of instruction_following_eval/), or
+  - <OFFICIAL_EVAL_ROOT>/instruction_following_eval (the package directory itself).
 """
 
 from __future__ import annotations
 
 import argparse
 import json
+import os
 import re
+import subprocess
+import sys
 from collections import Counter, defaultdict
 from dataclasses import dataclass
 from pathlib import Path
-from typing import Any, Callable, Dict, Iterable, List, Optional, Tuple
+from typing import Any, Callable, Dict, List, Optional, Tuple
 
 from finetune.eval.generation import (
     generate_greedy,
@@ -49,6 +57,7 @@ from finetune.utils import seed_everything
 HAVE_LANGDETECT = False
 try:
     from langdetect import detect  # type: ignore
+
     HAVE_LANGDETECT = True
 except Exception:
     detect = None
@@ -84,23 +93,29 @@ _HIGHLIGHT_RE = re.compile(
     flags=re.UNICODE,
 )
 
+
 def _norm_newlines(s: str) -> str:
     return s.replace("\r\n", "\n").replace("\r", "\n")
+
 
 def _strip_outer_ws(s: str) -> str:
     return s.strip(" \t\n")
 
+
 def _count_words(s: str) -> int:
     return len(_WORD_RE.findall(s))
+
 
 def _count_sentences(s: str) -> int:
     parts = _SENT_SPLIT_RE.split(s.strip())
     return len([p for p in parts if p.strip()])
 
+
 def _split_paragraphs_by_divider(s: str) -> List[str]:
     s = _norm_newlines(s)
     parts = _DIVIDER_LINE_RE.split(s)
     return [p.strip() for p in parts if p.strip()]
+
 
 def _split_paragraphs_by_blanklines(s: str) -> List[str]:
     s = _norm_newlines(s).strip()
@@ -108,16 +123,20 @@ def _split_paragraphs_by_blanklines(s: str) -> List[str]:
     parts = re.split(r"\n\s*\n+", s)
     return [p.strip() for p in parts if p.strip()]
 
+
 def _first_word(s: str) -> str:
     s = s.strip()
     m = re.search(r"\b(\w+)\b", s)
     return m.group(1) if m else ""
 
+
 def _count_allcaps_words(s: str) -> int:
     return len(_ALLCAP_WORD_RE.findall(s))
 
+
 def _count_placeholders(s: str) -> int:
     return len(_PLACEHOLDER_RE.findall(s))
+
 
 def _count_bullets(s: str) -> int:
     # Count "* " bullet lines, but exclude divider "* * *"
@@ -129,8 +148,10 @@ def _count_bullets(s: str) -> int:
             bullets += 1
     return bullets
 
+
 def _count_highlights(s: str) -> int:
     return len([m for m in _HIGHLIGHT_RE.finditer(s)])
+
 
 def _lang_code_from_name(name: str) -> Optional[str]:
     # Dataset sometimes uses "English" etc.
@@ -161,6 +182,7 @@ def _lang_code_from_name(name: str) -> Optional[str]:
     }
     return mapping.get(n)
 
+
 def _detect_language_code(text: str) -> Optional[str]:
     if not HAVE_LANGDETECT:
         return None
@@ -178,17 +200,20 @@ def _t_remove_markdown_asterisks(s: str) -> str:
     # Paper explicitly mentions removing commonly seen font modifiers, especially * and **.
     return s.replace("**", "").replace("*", "")
 
+
 def _t_remove_first_line(s: str) -> str:
     lines = _norm_newlines(s).split("\n")
     if len(lines) <= 1:
         return ""
     return "\n".join(lines[1:])
 
+
 def _t_remove_last_line(s: str) -> str:
     lines = _norm_newlines(s).split("\n")
     if len(lines) <= 1:
         return ""
     return "\n".join(lines[:-1])
+
 
 def _loose_variants(s: str) -> List[str]:
     # Identity + 3 transforms + pairwise + all three = 8
@@ -225,11 +250,13 @@ def _norm_inst_id(inst_id: str) -> Tuple[str, str]:
         return a.strip(), b.strip()
     return "unknown", s
 
+
 def _get_relation(kwargs: Dict[str, Any]) -> Optional[str]:
     rel = kwargs.get("relation")
     if isinstance(rel, str) and rel.strip():
         return rel.strip().lower()
     return None
+
 
 def _compare_count(count: int, target: int, relation: Optional[str]) -> bool:
     # relation strings in dataset examples include: "at least", "less than"
@@ -252,10 +279,12 @@ def _compare_count(count: int, target: int, relation: Optional[str]) -> bool:
     # Fallback: default to equality (fail-closed-ish but stable)
     return count == target
 
+
 @dataclass
 class Check:
     passed: bool
     detail: Dict[str, Any]
+
 
 def _check_keywords_existence(resp: str, kwargs: Dict[str, Any]) -> Check:
     kws = kwargs.get("keywords")
@@ -282,6 +311,7 @@ def _check_keywords_existence(resp: str, kwargs: Dict[str, Any]) -> Check:
                 missing.append(k)
     return Check(passed=(len(missing) == 0), detail={"missing": missing, "keywords": kws})
 
+
 def _check_keyword_frequency(resp: str, kwargs: Dict[str, Any]) -> Check:
     kw = kwargs.get("keyword")
     n = kwargs.get("frequency")
@@ -296,6 +326,7 @@ def _check_keyword_frequency(resp: str, kwargs: Dict[str, Any]) -> Check:
     else:
         c = resp.lower().count(kw.lower())
     return Check(_compare_count(c, n, rel), {"keyword": kw, "count": c, "target": n, "relation": rel})
+
 
 def _check_forbidden_words(resp: str, kwargs: Dict[str, Any]) -> Check:
     bad = kwargs.get("forbidden_words") or []
@@ -317,6 +348,7 @@ def _check_forbidden_words(resp: str, kwargs: Dict[str, Any]) -> Check:
                 found.append(w)
     return Check(passed=(len(found) == 0), detail={"found": found, "forbidden_words": bad})
 
+
 def _check_letter_frequency(resp: str, kwargs: Dict[str, Any]) -> Check:
     letter = kwargs.get("letter")
     n = kwargs.get("let_frequency")
@@ -332,6 +364,7 @@ def _check_letter_frequency(resp: str, kwargs: Dict[str, Any]) -> Check:
     rel_s = str(rel).lower() if isinstance(rel, str) and rel.strip() else None
     return Check(_compare_count(c, n, rel_s), {"letter": letter, "count": c, "target": n, "relation": rel_s})
 
+
 def _check_response_language(resp: str, kwargs: Dict[str, Any]) -> Check:
     lang = kwargs.get("language")
     if not isinstance(lang, str) or not lang.strip():
@@ -344,6 +377,7 @@ def _check_response_language(resp: str, kwargs: Dict[str, Any]) -> Check:
     passed = (got == want) or (want.startswith("zh") and got.startswith("zh"))
     return Check(passed, {"wanted": want, "detected": got})
 
+
 def _check_number_words(resp: str, kwargs: Dict[str, Any]) -> Check:
     n = kwargs.get("num_words")
     rel = _get_relation(kwargs)
@@ -353,6 +387,7 @@ def _check_number_words(resp: str, kwargs: Dict[str, Any]) -> Check:
     c = _count_words(resp)
     return Check(_compare_count(c, n, rel), {"count": c, "target": n, "relation": rel})
 
+
 def _check_number_sentences(resp: str, kwargs: Dict[str, Any]) -> Check:
     n = kwargs.get("num_sentences")
     rel = _get_relation(kwargs)
@@ -361,6 +396,7 @@ def _check_number_sentences(resp: str, kwargs: Dict[str, Any]) -> Check:
     n = int(n)
     c = _count_sentences(resp)
     return Check(_compare_count(c, n, rel), {"count": c, "target": n, "relation": rel})
+
 
 def _check_number_paragraphs(resp: str, kwargs: Dict[str, Any]) -> Check:
     n = kwargs.get("num_paragraphs")
@@ -373,6 +409,7 @@ def _check_number_paragraphs(resp: str, kwargs: Dict[str, Any]) -> Check:
     c = len(paras)
     # number_paragraphs instruction is "should contain N paragraphs" → exact
     return Check(c == n, {"count": c, "target": n})
+
 
 def _check_nth_paragraph_first_word(resp: str, kwargs: Dict[str, Any]) -> Check:
     n = kwargs.get("num_paragraphs")
@@ -389,7 +426,11 @@ def _check_nth_paragraph_first_word(resp: str, kwargs: Dict[str, Any]) -> Check:
         return Check(False, {"count": len(paras), "target_paragraphs": n, "nth": i, "first_word": first})
     got = _first_word(paras[i - 1])
     ok_first = (got.lower() == first.lower())
-    return Check(ok_n and ok_first, {"count": len(paras), "target_paragraphs": n, "nth": i, "expected_first": first, "got_first": got})
+    return Check(
+        ok_n and ok_first,
+        {"count": len(paras), "target_paragraphs": n, "nth": i, "expected_first": first, "got_first": got},
+    )
+
 
 def _check_postscript(resp: str, kwargs: Dict[str, Any]) -> Check:
     marker = kwargs.get("postscript_marker")
@@ -406,6 +447,7 @@ def _check_postscript(resp: str, kwargs: Dict[str, Any]) -> Check:
     passed = last_nonempty.startswith(marker)
     return Check(passed, {"marker": marker, "last_nonempty_line": last_nonempty})
 
+
 def _check_number_placeholders(resp: str, kwargs: Dict[str, Any]) -> Check:
     n = kwargs.get("num_placeholders")
     if n is None:
@@ -413,6 +455,7 @@ def _check_number_placeholders(resp: str, kwargs: Dict[str, Any]) -> Check:
     n = int(n)
     c = _count_placeholders(resp)
     return Check(c >= n, {"count": c, "min_required": n})
+
 
 def _check_number_bullets(resp: str, kwargs: Dict[str, Any]) -> Check:
     n = kwargs.get("num_bullets")
@@ -422,9 +465,11 @@ def _check_number_bullets(resp: str, kwargs: Dict[str, Any]) -> Check:
     c = _count_bullets(resp)
     return Check(c == n, {"count": c, "target": n})
 
+
 def _check_title(resp: str, kwargs: Dict[str, Any]) -> Check:
     m = _TITLE_RE.search(resp)
     return Check(bool(m), {"matched": m.group(0) if m else None})
+
 
 def _check_choose_from(resp: str, kwargs: Dict[str, Any]) -> Check:
     # Dataset doesn't expose an explicit "options" field; commonly stored in `keywords`
@@ -439,6 +484,7 @@ def _check_choose_from(resp: str, kwargs: Dict[str, Any]) -> Check:
     passed = any(out == o for o in opts)
     return Check(passed, {"output": out, "options": opts})
 
+
 def _check_number_highlighted_sections(resp: str, kwargs: Dict[str, Any]) -> Check:
     n = kwargs.get("num_highlights")
     if n is None:
@@ -446,6 +492,7 @@ def _check_number_highlighted_sections(resp: str, kwargs: Dict[str, Any]) -> Che
     n = int(n)
     c = _count_highlights(resp)
     return Check(c >= n, {"count": c, "min_required": n})
+
 
 def _check_multiple_sections(resp: str, kwargs: Dict[str, Any]) -> Check:
     spl = kwargs.get("section_spliter")  # dataset uses this key (typo in schema)
@@ -460,17 +507,15 @@ def _check_multiple_sections(resp: str, kwargs: Dict[str, Any]) -> Check:
     passed = (len(hits) == n)
     return Check(passed, {"splitter": spl, "count": len(hits), "target": n, "hits": hits[:10]})
 
+
 def _check_json_format(resp: str, kwargs: Dict[str, Any]) -> Check:
     s = _strip_outer_ws(strip_code_fences(resp))
-    ok = False
-    parsed_type = None
     try:
         obj = json.loads(s)
-        ok = True
-        parsed_type = type(obj).__name__
+        return Check(True, {"parsed_type": type(obj).__name__})
     except Exception as e:
         return Check(False, {"error": str(e)})
-    return Check(ok, {"parsed_type": parsed_type})
+
 
 def _check_repeat_prompt(resp: str, prompt: str, kwargs: Dict[str, Any]) -> Check:
     to_repeat = kwargs.get("prompt_to_repeat")
@@ -479,10 +524,11 @@ def _check_repeat_prompt(resp: str, prompt: str, kwargs: Dict[str, Any]) -> Chec
     out = _norm_newlines(resp).lstrip()
     rep = _norm_newlines(to_repeat).strip()
     passed = out.startswith(rep)
-    tail = out[len(rep):] if passed else ""
+    tail = out[len(rep) :] if passed else ""
     # Must have some answer after repeating (non-empty after stripping)
     has_answer = bool(tail.strip())
     return Check(passed and has_answer, {"starts_with_repeat": passed, "has_answer_after": has_answer})
+
 
 def _check_two_responses(resp: str, kwargs: Dict[str, Any]) -> Check:
     delim = "******"
@@ -493,17 +539,20 @@ def _check_two_responses(resp: str, kwargs: Dict[str, Any]) -> Check:
     passed = bool(a) and bool(b) and (a != b)
     return Check(passed, {"a_len": len(a), "b_len": len(b), "different": a != b})
 
+
 def _check_english_capital(resp: str, kwargs: Dict[str, Any]) -> Check:
     # No lowercase letters allowed
     has_lower = bool(re.search(r"[a-z]", resp))
     passed = not has_lower
     return Check(passed, {"has_lowercase": has_lower})
 
+
 def _check_english_lowercase(resp: str, kwargs: Dict[str, Any]) -> Check:
     # No capital letters allowed
     has_upper = bool(re.search(r"[A-Z]", resp))
     passed = not has_upper
     return Check(passed, {"has_uppercase": has_upper})
+
 
 def _check_capital_word_frequency(resp: str, kwargs: Dict[str, Any]) -> Check:
     n = kwargs.get("capital_frequency")
@@ -515,6 +564,7 @@ def _check_capital_word_frequency(resp: str, kwargs: Dict[str, Any]) -> Check:
     c = _count_allcaps_words(resp)
     return Check(_compare_count(c, n, rel_s), {"count": c, "target": n, "relation": rel_s})
 
+
 def _check_end_checker(resp: str, kwargs: Dict[str, Any]) -> Check:
     phrase = kwargs.get("end_phrase")
     if not isinstance(phrase, str) or not phrase.strip():
@@ -524,10 +574,12 @@ def _check_end_checker(resp: str, kwargs: Dict[str, Any]) -> Check:
     passed = out.endswith(phrase)
     return Check(passed, {"end_phrase": phrase})
 
+
 def _check_quotation(resp: str, kwargs: Dict[str, Any]) -> Check:
     out = _strip_outer_ws(resp)
     passed = (len(out) >= 2 and out[0] == '"' and out[-1] == '"')
     return Check(passed, {"first_char": out[:1], "last_char": out[-1:] if out else ""})
+
 
 def _check_no_comma(resp: str, kwargs: Dict[str, Any]) -> Check:
     passed = ("," not in resp)
@@ -546,7 +598,8 @@ def check_instruction_strict(
     # keywords
     if cat == "keywords" and name == "existence":
         return _check_keywords_existence(resp, kwargs)
-    if cat == "keywords" and name == "keyword_frequency":
+    # HF dataset uses keywords:frequency
+    if cat == "keywords" and name in {"frequency", "keyword_frequency"}:
         return _check_keyword_frequency(resp, kwargs)
     if cat == "keywords" and name == "forbidden_words":
         return _check_forbidden_words(resp, kwargs)
@@ -563,11 +616,11 @@ def check_instruction_strict(
     if cat in {"length_constraints", "length_constraint"} and name == "number_sentences":
         return _check_number_sentences(resp, kwargs)
     if cat in {"length_constraints", "length_constraint"} and name == "number_paragraphs":
+        # Some dataset variants may still use number_paragraphs with nth/first_word in kwargs
+        if kwargs.get("nth_paragraph") is not None:
+            return _check_nth_paragraph_first_word(resp, kwargs)
         return _check_number_paragraphs(resp, kwargs)
     if cat in {"length_constraints", "length_constraint"} and name in {"nth_paragraph_first_word", "paragraph_first_word"}:
-        return _check_nth_paragraph_first_word(resp, kwargs)
-    # Some dataset variants may still use number_paragraphs with nth/first_word in kwargs
-    if cat in {"length_constraints", "length_constraint"} and name == "number_paragraphs" and kwargs.get("nth_paragraph") is not None:
         return _check_nth_paragraph_first_word(resp, kwargs)
 
     # detectable content
@@ -636,6 +689,105 @@ def check_instruction_loose(
 
 
 # ----------------------------
+# Official eval (Scheme 1)
+# ----------------------------
+def _dump_jsonl(path: Path, rows: List[Dict[str, Any]]) -> None:
+    path.parent.mkdir(parents=True, exist_ok=True)
+    with path.open("w", encoding="utf-8") as f:
+        for r in rows:
+            f.write(json.dumps(r, ensure_ascii=False) + "\n")
+
+
+def _resolve_official_pkg_parent(official_eval_root: str) -> Path:
+    """
+    Returns a directory that should be added to PYTHONPATH so that
+    `instruction_following_eval` becomes importable.
+    """
+    root = Path(official_eval_root).expanduser().resolve()
+    if (root / "instruction_following_eval").is_dir():
+        return root
+    if root.is_dir() and root.name == "instruction_following_eval":
+        return root.parent
+    raise RuntimeError(
+        f"Invalid --official_eval_root={official_eval_root}. "
+        f"Expected either a directory containing instruction_following_eval/, "
+        f"or the instruction_following_eval/ directory itself."
+    )
+
+
+def run_official_ifeval(
+    *,
+    out_dir: Path,
+    records: List[Dict[str, Any]],
+    generations: List[str],
+    official_eval_root: str,
+    official_input_data: Optional[str] = None,
+    extra_official_flags: Optional[List[str]] = None,
+) -> Path:
+    """
+    Exports official-format JSONLs and runs the official evaluator via subprocess.
+
+    Returns: path to official output dir.
+    """
+    official_out = out_dir / "official_ifeval"
+    official_out.mkdir(parents=True, exist_ok=True)
+
+    input_data_path = official_out / "input_data.jsonl"
+    input_resp_path = official_out / "input_response_data.jsonl"
+
+    # 1) input_data.jsonl (key/prompt/instruction_id_list/kwargs)
+    data_rows: List[Dict[str, Any]] = []
+    for r in records:
+        kw_clean: List[Dict[str, Any]] = []
+        for kw in r["kwargs"]:
+            kwd = dict(kw) if isinstance(kw, dict) else dict(kw)
+            # remove None keys to be safe
+            for k in list(kwd.keys()):
+                if kwd[k] is None:
+                    kwd.pop(k, None)
+            kw_clean.append(kwd)
+
+        data_rows.append(
+            {
+                "key": r.get("key"),
+                "prompt": r["prompt"],
+                "instruction_id_list": list(r["instruction_id_list"]),
+                "kwargs": kw_clean,
+            }
+        )
+    _dump_jsonl(input_data_path, data_rows)
+
+    # 2) input_response_data.jsonl (prompt/response)
+    # To be robust, we include both "response" and "output" (harmless extra key).
+    resp_rows = [
+        {"prompt": r["prompt"], "response": g, "output": g, "key": r.get("key")}
+        for r, g in zip(records, generations)
+    ]
+    _dump_jsonl(input_resp_path, resp_rows)
+
+    # 3) Run official evaluator
+    pkg_parent = _resolve_official_pkg_parent(official_eval_root)
+
+    env = os.environ.copy()
+    env["PYTHONPATH"] = str(pkg_parent) + (":" + env["PYTHONPATH"] if env.get("PYTHONPATH") else "")
+
+    cmd = [
+        sys.executable,
+        "-m",
+        "instruction_following_eval.evaluation_main",
+        f"--input_data={official_input_data or str(input_data_path)}",
+        f"--input_response_data={str(input_resp_path)}",
+        f"--output_dir={str(official_out)}",
+    ]
+    if extra_official_flags:
+        cmd.extend(extra_official_flags)
+
+    # Some absl-based scripts behave better when run with cwd=pkg_parent
+    subprocess.run(cmd, check=True, env=env, cwd=str(pkg_parent))
+    return official_out
+
+
+# ----------------------------
 # CLI
 # ----------------------------
 def build_arg_parser() -> argparse.ArgumentParser:
@@ -656,6 +808,28 @@ def build_arg_parser() -> argparse.ArgumentParser:
 
     p.add_argument("--per_category_metrics", action="store_true")
     p.add_argument("--fail_on_unknown", action="store_true", help="Raise if an unknown instruction id appears.")
+
+    # Scheme 1: official evaluation
+    p.add_argument("--run_official_eval", action="store_true", help="Run official IFEval evaluator after generation.")
+    p.add_argument(
+        "--official_eval_root",
+        type=str,
+        default=None,
+        help="Path to directory containing instruction_following_eval/ (or the package dir itself).",
+    )
+    p.add_argument(
+        "--official_input_data",
+        type=str,
+        default=None,
+        help="Optional: use an existing official input_data.jsonl instead of exporting from HF dataset.",
+    )
+    p.add_argument(
+        "--official_extra_flags",
+        type=str,
+        nargs="*",
+        default=None,
+        help="Optional: extra flags forwarded to official evaluation_main (e.g., --use_cached_results=...).",
+    )
     return p
 
 
@@ -703,7 +877,9 @@ def main() -> None:
         inst_ids = list(ex.get("instruction_id_list") or [])
         kwargs_list = list(ex.get("kwargs") or [])
         if len(inst_ids) != len(kwargs_list):
-            raise RuntimeError(f"Mismatch: {len(inst_ids)} instruction_ids vs {len(kwargs_list)} kwargs for key={ex.get('key')}")
+            raise RuntimeError(
+                f"Mismatch: {len(inst_ids)} instruction_ids vs {len(kwargs_list)} kwargs for key={ex.get('key')}"
+            )
         prompts.append(prompt)
         records.append({"key": ex.get("key"), "prompt": prompt, "instruction_id_list": inst_ids, "kwargs": kwargs_list})
 
@@ -726,6 +902,7 @@ def main() -> None:
             )
             generations.append(gen)
 
+    # Your existing JSONL outputs + your own metrics
     with outputs_path.open("w", encoding="utf-8") as f:
         for r, gen in zip(records, generations):
             prompt = r["prompt"]
@@ -742,7 +919,9 @@ def main() -> None:
 
                 if args.fail_on_unknown:
                     ck0 = check_instruction_strict(inst_id=inst_id, resp=gen, prompt=prompt, kwargs=kw)
-                    if (not ck0.passed) and isinstance(ck0.detail, dict) and "unknown instruction id" in str(ck0.detail.get("error", "")):
+                    if (not ck0.passed) and isinstance(ck0.detail, dict) and "unknown instruction id" in str(
+                        ck0.detail.get("error", "")
+                    ):
                         raise RuntimeError(f"Unknown instruction id encountered: {inst_id}")
 
                 ck_strict = check_instruction_strict(inst_id=inst_id, resp=gen, prompt=prompt, kwargs=kw)
@@ -814,6 +993,19 @@ def main() -> None:
         metrics["per_category"] = cat_metrics
 
     save_json(out_dir / "metrics.json", metrics)
+
+    # Scheme 1: run official evaluator (subprocess)
+    if args.run_official_eval:
+        if not args.official_eval_root:
+            raise RuntimeError("--official_eval_root is required when --run_official_eval is set.")
+        run_official_ifeval(
+            out_dir=out_dir,
+            records=records,
+            generations=generations,
+            official_eval_root=args.official_eval_root,
+            official_input_data=args.official_input_data,
+            extra_official_flags=args.official_extra_flags,
+        )
 
 
 if __name__ == "__main__":
