@@ -647,7 +647,7 @@ def build_arg_parser() -> argparse.ArgumentParser:
     p.add_argument("--split", type=str, default="train")
     p.add_argument("--max_samples", type=int, default=None)
 
-    p.add_argument("--max_new_tokens", type=int, default=256)
+    p.add_argument("--max_new_tokens", type=int, default=2048)
     p.add_argument("--dtype", type=str, default="auto", choices=["auto", "bf16", "fp16", "fp32"])
     p.add_argument("--seed", type=int, default=42)
 
