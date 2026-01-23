@@ -110,8 +110,6 @@ class CommonsenseQATask(TaskPlugin):
                 f"Have={sorted(choices_map.keys())}, expected={_LABEL_ORDER}."
             )
 
-        # Include concept only if present (it is provided by the dataset)
-        concept_block = f"Concept:\n{concept}\n\n" if concept else ""
 
         instruction = (
                 f"Question:\n{question}\n\nChoices:\n" + "\n".join(lines) + "\n\n"
