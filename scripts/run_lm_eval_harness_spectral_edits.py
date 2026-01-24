@@ -4,8 +4,7 @@ Run spectral edits on LoRA/LoRA+ adapters and evaluate with lm_eval (vLLM).
 
 This script:
   - Discovers final adapters under one or more runs roots (skipping checkpoints).
-  - Applies spectral edits using the same CLI invocation as
-    scripts/run_llama31_lora_spectral_edit_all.py.
+  - Applies spectral edits using the CLI
   - Evaluates baseline (no adapter), unedited adapter, and edited adapters
     with lm_eval harness using the vLLM backend.
 
@@ -460,7 +459,7 @@ def load_existing_results(
 
 
 # ============================================================================
-# Spectral editing (matches run_llama31_lora_spectral_edit_all.py)
+# Spectral editing
 # ============================================================================
 
 def run_spectral_edit(
@@ -895,7 +894,6 @@ def build_arg_parser() -> argparse.ArgumentParser:
         help="Discover adapters and print planned actions without running.",
     )
 
-    # Spectral edit settings (match run_llama31_lora_spectral_edit_all.py)
     p.add_argument("--calib_samples", type=int, default=32, help="Calibration samples for spectral edit")
     p.add_argument("--calib_batch_size", type=int, default=2, help="Calibration batch size")
     p.add_argument(
