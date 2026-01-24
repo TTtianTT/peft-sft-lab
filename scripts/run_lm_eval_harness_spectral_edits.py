@@ -346,6 +346,54 @@ def ensure_error_logs(output_dir: Path, message: str) -> None:
         write_text(stderr_path, message + "\n")
 
 
+def detect_lora_usage(output_dir: Path) -> bool:
+    cmd_path = output_dir / "cmd.txt"
+    if not cmd_path.exists():
+        return False
+    try:
+        return "lora_local_path=" in cmd_path.read_text()
+    except Exception:
+        return False
+
+
+def copy_tokenizer_files(src_dir: Path, dst_dir: Path) -> None:
+    for path in src_dir.glob("tokenizer*"):
+        if path.is_file():
+            dest = dst_dir / path.name
+            if not dest.exists():
+                shutil.copy2(path, dest)
+    for name in ("special_tokens_map.json", "added_tokens.json"):
+        src = src_dir / name
+        if src.exists() and not (dst_dir / name).exists():
+            shutil.copy2(src, dst_dir / name)
+
+
+def has_tokenizer_files(model_dir: Path) -> bool:
+    return (model_dir / "tokenizer.json").exists() or (model_dir / "tokenizer.model").exists()
+
+
+def ensure_tokenizer_assets(
+    model_dir: Path,
+    adapter_dir: Path,
+    base_model_id: str,
+) -> Optional[str]:
+    copy_tokenizer_files(adapter_dir, model_dir)
+    if has_tokenizer_files(model_dir):
+        return None
+    try:
+        from transformers import AutoTokenizer
+    except Exception as exc:
+        return f"Failed to import AutoTokenizer: {exc}"
+    try:
+        tokenizer = AutoTokenizer.from_pretrained(base_model_id, use_fast=True)
+        tokenizer.save_pretrained(model_dir)
+    except Exception as exc:
+        return f"Tokenizer save failed: {exc}"
+    if not has_tokenizer_files(model_dir):
+        return "Tokenizer assets missing after save."
+    return None
+
+
 def parse_lm_eval_results(raw: Dict[str, Any], lm_task: str) -> Dict[str, Any]:
     if "results" in raw and isinstance(raw["results"], dict):
         return raw["results"].get(lm_task, {})
@@ -355,26 +403,60 @@ def parse_lm_eval_results(raw: Dict[str, Any], lm_task: str) -> Dict[str, Any]:
 
 
 def select_metric(task: str, metrics: Dict[str, Any]) -> Tuple[Optional[str], Optional[float]]:
-    for key in TASK_METRIC_KEYS.get(task, []):
-        if key in metrics:
+    desired = TASK_METRIC_KEYS.get(task, [])
+    if not desired:
+        return None, None
+    for base in desired:
+        if base in metrics:
             try:
-                return key, float(metrics[key])
+                return base, float(metrics[base])
             except Exception:
-                return key, None
+                return base, None
+        for key, value in metrics.items():
+            if key.startswith(base + ","):
+                try:
+                    return key, float(value)
+                except Exception:
+                    return key, None
     return None, None
 
 
 def extract_num_examples(raw: Dict[str, Any], lm_task: str) -> Optional[int]:
-    for key in ("num_examples", "total", "n_samples"):
+    for key in ("num_examples", "total", "n_samples", "n-samples"):
         val = raw.get(key)
         if isinstance(val, int):
             return val
+        if isinstance(val, dict):
+            task_val = val.get(lm_task)
+            if isinstance(task_val, int):
+                return task_val
+            if isinstance(task_val, dict):
+                for subkey in ("effective", "original", "n"):
+                    subval = task_val.get(subkey)
+                    if isinstance(subval, int):
+                        return subval
     n_map = raw.get("n")
     if isinstance(n_map, dict):
         val = n_map.get(lm_task)
         if isinstance(val, int):
             return val
     return None
+
+
+def load_existing_results(
+    output_dir: Path,
+    task: str,
+) -> Tuple[Optional[Dict[str, Any]], Optional[Dict[str, Any]], Optional[int], Optional[str], Optional[Path]]:
+    result_path = find_recent_result_json(output_dir, 0)
+    if not result_path:
+        return None, None, None, None, None
+    raw = read_json(result_path)
+    if raw is None:
+        return None, None, None, f"Failed to read results JSON: {result_path}", result_path
+    lm_task = TASK_DIR_TO_LM_EVAL[task]
+    metrics = parse_lm_eval_results(raw, lm_task)
+    num_examples = extract_num_examples(raw, lm_task)
+    return raw, metrics, num_examples, None, result_path
 
 
 # ============================================================================
@@ -496,14 +578,17 @@ def build_lm_eval_command(
     lora_path: Optional[Path],
     lora_rank: Optional[int],
     output_path: Optional[Path],
+    gpu_memory_utilization: Optional[float] = None,
+    max_num_seqs: Optional[int] = None,
 ) -> Tuple[List[str], Dict[str, str]]:
     lm_task = TASK_DIR_TO_LM_EVAL[task]
     task_cfg = TASK_CONFIGS[task]
+    mem_util = gpu_memory_utilization if gpu_memory_utilization is not None else task_cfg["gpu_memory_utilization"]
     model_args = (
         f"pretrained={base_model},"
         f"tensor_parallel_size={tensor_parallel_size},"
         f"dtype=auto,"
-        f"gpu_memory_utilization={task_cfg['gpu_memory_utilization']}"
+        f"gpu_memory_utilization={mem_util}"
     )
     if lora_path:
         if lora_rank is None:
@@ -513,6 +598,8 @@ def build_lm_eval_command(
             f"max_loras=1,"
             f"max_lora_rank={lora_rank}"
         )
+    if max_num_seqs is not None:
+        model_args += f",max_num_seqs={max_num_seqs}"
 
     cmd = [
         "lm_eval",
@@ -553,63 +640,87 @@ def run_lm_eval(
 ) -> Tuple[Optional[Dict[str, Any]], Optional[Dict[str, Any]], Optional[int], Optional[str]]:
     output_dir.mkdir(parents=True, exist_ok=True)
     output_path = output_dir / "results.json" if supports_output_path() else None
-    suffix = f"_{log_suffix}" if log_suffix else ""
+    base_suffix = f"_{log_suffix}" if log_suffix else ""
+    base_mem_util = TASK_CONFIGS[task]["gpu_memory_utilization"]
+    oom_mem_util = max(0.5, round(base_mem_util - 0.1, 2))
 
-    try:
-        cmd, extra_env = build_lm_eval_command(
-            base_model=base_model,
-            task=task,
-            tensor_parallel_size=tensor_parallel_size,
-            lora_path=lora_path,
-            lora_rank=lora_rank,
-            output_path=output_path,
-        )
-    except Exception as exc:
-        write_text(output_dir / f"cmd{suffix}.txt", f"# failed to build lm_eval command: {exc}\n")
-        write_text(output_dir / f"stdout{suffix}.txt", "")
-        write_text(output_dir / f"stderr{suffix}.txt", str(exc))
-        return None, None, None, f"lm_eval command build failed: {exc}"
+    for attempt in range(2):
+        attempt_suffix = base_suffix if attempt == 0 else (base_suffix + "_oom_retry")
+        max_num_seqs = None if attempt == 0 else 128
+        mem_override = None if attempt == 0 else oom_mem_util
 
-    env = os.environ.copy()
-    env.update(extra_env)
+        try:
+            cmd, extra_env = build_lm_eval_command(
+                base_model=base_model,
+                task=task,
+                tensor_parallel_size=tensor_parallel_size,
+                lora_path=lora_path,
+                lora_rank=lora_rank,
+                output_path=output_path,
+                gpu_memory_utilization=mem_override,
+                max_num_seqs=max_num_seqs,
+            )
+        except Exception as exc:
+            write_text(output_dir / f"cmd{attempt_suffix}.txt", f"# failed to build lm_eval command: {exc}\n")
+            write_text(output_dir / f"stdout{attempt_suffix}.txt", "")
+            write_text(output_dir / f"stderr{attempt_suffix}.txt", str(exc))
+            return None, None, None, f"lm_eval command build failed: {exc}"
 
-    write_text(output_dir / f"cmd{suffix}.txt", format_cmd(cmd, extra_env if extra_env else None))
+        env = os.environ.copy()
+        env.update(extra_env)
 
-    start_time = time.time()
-    try:
-        result = subprocess.run(
-            cmd,
-            capture_output=True,
-            text=True,
-            cwd=output_dir,
-            env=env,
-        )
-    except Exception as exc:
-        return None, None, None, f"lm_eval failed to start: {exc}"
+        write_text(output_dir / f"cmd{attempt_suffix}.txt", format_cmd(cmd, extra_env if extra_env else None))
 
-    write_text(output_dir / f"stdout{suffix}.txt", result.stdout or "")
-    write_text(output_dir / f"stderr{suffix}.txt", result.stderr or "")
+        start_time = time.time()
+        try:
+            result = subprocess.run(
+                cmd,
+                capture_output=True,
+                text=True,
+                cwd=output_dir,
+                env=env,
+            )
+        except Exception as exc:
+            return None, None, None, f"lm_eval failed to start: {exc}"
 
-    if result.returncode != 0:
-        error_msg = result.stderr[-2000:] if result.stderr else "Unknown error"
-        return None, None, None, f"lm_eval failed (code {result.returncode}): {error_msg}"
+        write_text(output_dir / f"stdout{attempt_suffix}.txt", result.stdout or "")
+        write_text(output_dir / f"stderr{attempt_suffix}.txt", result.stderr or "")
 
-    raw = None
-    if output_path and output_path.exists():
-        raw = read_json(output_path)
-    if raw is None:
-        raw = extract_json_from_stdout(result.stdout)
-    if raw is None and output_path is None:
-        recent_json = find_recent_json(output_dir, start_time - 1)
-        if recent_json:
-            raw = read_json(recent_json)
-    if raw is None:
-        return None, None, None, "lm_eval completed but no results JSON found"
+        if result.returncode != 0:
+            error_msg = result.stderr[-2000:] if result.stderr else "Unknown error"
+            if attempt == 0 and is_vllm_oom(result.stderr or ""):
+                continue
+            return None, None, None, f"lm_eval failed (code {result.returncode}): {error_msg}"
 
-    lm_task = TASK_DIR_TO_LM_EVAL[task]
-    metrics = parse_lm_eval_results(raw, lm_task)
-    num_examples = extract_num_examples(raw, lm_task)
-    return raw, metrics, num_examples, None
+        raw = None
+        if output_path and output_path.exists():
+            if output_path.is_dir():
+                recent_json = find_recent_result_json(output_path, start_time - 1)
+                if recent_json:
+                    raw = read_json(recent_json)
+            else:
+                raw = read_json(output_path)
+        if raw is None:
+            raw = extract_json_from_stdout(result.stdout)
+        if raw is None:
+            search_dirs = [output_dir]
+            if output_path:
+                search_dirs.append(output_path if output_path.is_dir() else output_path.parent)
+            for search_dir in search_dirs:
+                recent_json = find_recent_result_json(search_dir, start_time - 1)
+                if recent_json:
+                    raw = read_json(recent_json)
+                    if raw is not None:
+                        break
+        if raw is None:
+            return None, None, None, "lm_eval completed but no results JSON found"
+
+        lm_task = TASK_DIR_TO_LM_EVAL[task]
+        metrics = parse_lm_eval_results(raw, lm_task)
+        num_examples = extract_num_examples(raw, lm_task)
+        return raw, metrics, num_examples, None
+
+    return None, None, None, "lm_eval failed after OOM retry"
 
 
 def extract_json_from_stdout(stdout: str) -> Optional[Dict[str, Any]]:
@@ -623,10 +734,13 @@ def extract_json_from_stdout(stdout: str) -> Optional[Dict[str, Any]]:
     return None
 
 
-def find_recent_json(output_dir: Path, min_mtime: float) -> Optional[Path]:
+def find_recent_result_json(output_dir: Path, min_mtime: float) -> Optional[Path]:
     candidates = []
     for path in output_dir.rglob("*.json"):
         try:
+            name = path.name.lower()
+            if not (name.startswith("results") or name.startswith("result")):
+                continue
             if path.is_file() and path.stat().st_mtime >= min_mtime:
                 candidates.append(path)
         except Exception:
@@ -636,21 +750,29 @@ def find_recent_json(output_dir: Path, min_mtime: float) -> Optional[Path]:
     return max(candidates, key=lambda p: p.stat().st_mtime)
 
 
+def is_vllm_oom(stderr: str) -> bool:
+    lower = (stderr or "").lower()
+    return "out of memory" in lower or "cuda oom" in lower
+
+
 def merge_adapter(
     base_model_id: str,
     adapter_dir: Path,
     output_dir: Path,
     device: str,
 ) -> Tuple[Optional[Path], Optional[str]]:
-    if output_dir.exists() and (output_dir / "config.json").exists():
-        return output_dir, None
-
     try:
         from peft import PeftModel
         from transformers import AutoModelForCausalLM, AutoTokenizer
         import torch
     except Exception as exc:
         return None, f"Failed to import merge dependencies: {exc}"
+
+    if output_dir.exists() and (output_dir / "config.json").exists():
+        tok_error = ensure_tokenizer_assets(output_dir, adapter_dir, base_model_id)
+        if tok_error:
+            return output_dir, tok_error
+        return output_dir, None
 
     output_dir.mkdir(parents=True, exist_ok=True)
 
@@ -666,6 +788,9 @@ def merge_adapter(
         merged.save_pretrained(output_dir)
         tokenizer = AutoTokenizer.from_pretrained(base_model_id, use_fast=True)
         tokenizer.save_pretrained(output_dir)
+        tok_error = ensure_tokenizer_assets(output_dir, adapter_dir, base_model_id)
+        if tok_error:
+            return output_dir, tok_error
     except Exception as exc:
         return None, f"Merge failed: {exc}"
     finally:
@@ -752,6 +877,19 @@ def build_arg_parser() -> argparse.ArgumentParser:
         help="Only process adapters matching this substring (debug).",
     )
     p.add_argument(
+        "--adapter_types",
+        type=str,
+        nargs="+",
+        choices=["lora", "loraplus"],
+        default=None,
+        help="Limit processing to specific adapter types.",
+    )
+    p.add_argument(
+        "--reuse_results",
+        action="store_true",
+        help="Reuse existing lm_eval results in the output directory when available.",
+    )
+    p.add_argument(
         "--dry_run",
         action="store_true",
         help="Discover adapters and print planned actions without running.",
@@ -829,6 +967,10 @@ def main() -> None:
     if args.adapter_filter:
         adapters = [a for a in adapters if args.adapter_filter in str(a.adapter_dir)]
         print(f"  After filter '{args.adapter_filter}': {len(adapters)} adapters")
+    if args.adapter_types:
+        allowed_types = set(args.adapter_types)
+        adapters = [a for a in adapters if a.adapter_type in allowed_types]
+        print(f"  After adapter_types {sorted(allowed_types)}: {len(adapters)} adapters")
     print(f"  Found {len(adapters)} adapters")
     print(f"  Skipped {skipped} checkpoint directories")
 
@@ -939,8 +1081,24 @@ def main() -> None:
             metrics = None
             num_examples = None
             edited_adapter_dir = None
+            reused = False
 
-            if adapter_path is not None:
+            if args.reuse_results:
+                raw_existing, metrics_existing, num_existing, _, result_path = load_existing_results(
+                    output_dir,
+                    adapter.task,
+                )
+                if result_path and raw_existing is not None:
+                    raw = raw_existing
+                    metrics = metrics_existing
+                    num_examples = num_existing
+                    used_fallback = (output_dir / "cmd_fallback.txt").exists()
+                    used_lora = False if used_fallback else detect_lora_usage(output_dir)
+                    edited_adapter_dir = str(adapter_path) if adapter_path else None
+                    print(f"  [REUSE] {variant}: {result_path.name}")
+                    reused = True
+
+            if not reused and adapter_path is not None:
                 if not adapter_path.exists():
                     lm_error = f"Adapter path missing: {adapter_path}"
                 elif not has_adapter_weights(adapter_path):
@@ -948,7 +1106,7 @@ def main() -> None:
                 else:
                     edited_adapter_dir = str(adapter_path)
 
-            if lm_error is None:
+            if lm_error is None and not reused:
                 try:
                     if adapter_path is None:
                         raw, metrics, num_examples, lm_error = run_lm_eval(
@@ -995,7 +1153,7 @@ def main() -> None:
                 except Exception as exc:
                     lm_error = f"lm_eval execution failed: {exc}"
 
-            if lm_error and args.fallback_merge and adapter_path is not None and args.use_vllm_lora:
+            if lm_error and not reused and args.fallback_merge and adapter_path is not None and args.use_vllm_lora:
                 print(f"  [FALLBACK MERGE] {variant}")
                 merge_dir = output_dir / "merged_model"
                 merged_path, merge_error = merge_adapter(
