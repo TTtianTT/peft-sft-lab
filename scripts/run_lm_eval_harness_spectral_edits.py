@@ -35,6 +35,8 @@ import shutil
 import subprocess
 import sys
 import time
+import signal
+import tempfile
 from dataclasses import asdict, dataclass
 from datetime import datetime
 from pathlib import Path
@@ -159,26 +161,6 @@ class EvalRecord:
 # ============================================================================
 # Utilities
 # ============================================================================
-
-_OUTPUT_PATH_SUPPORTED: Optional[bool] = None
-
-
-def supports_output_path() -> bool:
-    """Check whether lm_eval supports --output_path (cached)."""
-    global _OUTPUT_PATH_SUPPORTED
-    if _OUTPUT_PATH_SUPPORTED is not None:
-        return _OUTPUT_PATH_SUPPORTED
-    try:
-        result = subprocess.run(
-            ["lm_eval", "--help"],
-            capture_output=True,
-            text=True,
-            timeout=10,
-        )
-        _OUTPUT_PATH_SUPPORTED = "--output_path" in result.stdout
-    except Exception:
-        _OUTPUT_PATH_SUPPORTED = False
-    return _OUTPUT_PATH_SUPPORTED
 
 
 def is_checkpoint_path(path: Path) -> bool:
@@ -355,6 +337,46 @@ def detect_lora_usage(output_dir: Path) -> bool:
         return False
 
 
+def results_json_path(output_dir: Path) -> Path:
+    return output_dir / "results.json"
+
+
+def results_json_tmp_path(output_dir: Path) -> Path:
+    return output_dir / "results.json.tmp"
+
+
+def write_results_json_atomic(output_dir: Path, data: Dict[str, Any]) -> None:
+    tmp_path = results_json_tmp_path(output_dir)
+    final_path = results_json_path(output_dir)
+    with open(tmp_path, "w") as f:
+        json.dump(data, f)
+    os.replace(tmp_path, final_path)
+
+
+def is_valid_results_json(data: Dict[str, Any], lm_task: str) -> bool:
+    if not isinstance(data, dict):
+        return False
+    results = data.get("results")
+    if not isinstance(results, dict):
+        return False
+    if lm_task not in results:
+        return False
+    return True
+
+
+def read_tail(path: Path, max_bytes: int = 20000) -> str:
+    if not path.exists():
+        return ""
+    try:
+        with open(path, "rb") as f:
+            f.seek(0, os.SEEK_END)
+            size = f.tell()
+            f.seek(max(0, size - max_bytes))
+            return f.read().decode("utf-8", errors="replace")
+    except Exception:
+        return ""
+
+
 def copy_tokenizer_files(src_dir: Path, dst_dir: Path) -> None:
     for path in src_dir.glob("tokenizer*"):
         if path.is_file():
@@ -369,6 +391,55 @@ def copy_tokenizer_files(src_dir: Path, dst_dir: Path) -> None:
 
 def has_tokenizer_files(model_dir: Path) -> bool:
     return (model_dir / "tokenizer.json").exists() or (model_dir / "tokenizer.model").exists()
+
+
+def validate_merged_model(model_dir: Path) -> Optional[str]:
+    if not model_dir.exists():
+        return "Merged model directory does not exist."
+
+    index_path = model_dir / "model.safetensors.index.json"
+    if index_path.exists():
+        index = read_json(index_path)
+        if not index or "weight_map" not in index:
+            return f"Invalid index JSON: {index_path}"
+        weight_map = index.get("weight_map", {})
+        missing = [p for p in set(weight_map.values()) if not (model_dir / p).exists()]
+        if missing:
+            return f"Missing shard(s): {missing}"
+    else:
+        shards = list(model_dir.glob("model-*-of-*.safetensors"))
+        if shards:
+            max_total = None
+            present = set()
+            for shard in shards:
+                match = re.search(r"model-(\\d+)-of-(\\d+)\\.safetensors", shard.name)
+                if not match:
+                    continue
+                idx = int(match.group(1))
+                total = int(match.group(2))
+                present.add(idx)
+                max_total = total if max_total is None else max(max_total, total)
+            if max_total:
+                missing = [i for i in range(1, max_total + 1) if i not in present]
+                if missing:
+                    return f"Missing shard indices: {missing} of {max_total}"
+        else:
+            if not (model_dir / "model.safetensors").exists() and not (model_dir / "pytorch_model.bin").exists():
+                return "No model weights found in merged model directory."
+
+    try:
+        from safetensors import safe_open
+    except Exception:
+        return None
+
+    for st_file in model_dir.glob("*.safetensors"):
+        try:
+            with safe_open(st_file, framework="pt") as f:
+                _ = list(f.keys())
+        except Exception as exc:
+            return f"Safetensors validation failed for {st_file.name}: {exc}"
+
+    return None
 
 
 def ensure_tokenizer_assets(
@@ -446,13 +517,15 @@ def load_existing_results(
     output_dir: Path,
     task: str,
 ) -> Tuple[Optional[Dict[str, Any]], Optional[Dict[str, Any]], Optional[int], Optional[str], Optional[Path]]:
-    result_path = find_recent_result_json(output_dir, 0)
-    if not result_path:
+    result_path = results_json_path(output_dir)
+    if not result_path.exists():
         return None, None, None, None, None
     raw = read_json(result_path)
     if raw is None:
         return None, None, None, f"Failed to read results JSON: {result_path}", result_path
     lm_task = TASK_DIR_TO_LM_EVAL[task]
+    if not is_valid_results_json(raw, lm_task):
+        return None, None, None, f"Invalid results JSON: {result_path}", result_path
     metrics = parse_lm_eval_results(raw, lm_task)
     num_examples = extract_num_examples(raw, lm_task)
     return raw, metrics, num_examples, None, result_path
@@ -478,6 +551,7 @@ def run_spectral_edit(
     calib_shuffle: bool = False,
     calib_seed: Optional[int] = None,
     calib_start: int = 0,
+    preserve_energy: str = "l1",
     dry_run: bool = False,
 ) -> Tuple[bool, Optional[str]]:
     if target_modules is None:
@@ -498,7 +572,7 @@ def run_spectral_edit(
         "--calib_batch_size", str(calib_batch_size),
         "--seed", str(seed),
         "--grad_norm", "mean_abs",
-        "--preserve_energy", "l1",
+        "--preserve_energy", preserve_energy,
     ]
 
     if calib_dataset:
@@ -636,17 +710,33 @@ def run_lm_eval(
     lora_path: Optional[Path],
     lora_rank: Optional[int],
     log_suffix: Optional[str] = None,
+    timeout_s: Optional[int] = None,
 ) -> Tuple[Optional[Dict[str, Any]], Optional[Dict[str, Any]], Optional[int], Optional[str]]:
     output_dir.mkdir(parents=True, exist_ok=True)
-    output_path = output_dir / "results.json" if supports_output_path() else None
-    base_suffix = f"_{log_suffix}" if log_suffix else ""
+    results_dir = output_dir / "lm_eval_out"
+    results_dir.mkdir(parents=True, exist_ok=True)
+    results_path = results_json_path(output_dir)
+    results_tmp_path = results_json_tmp_path(output_dir)
+    if results_tmp_path.exists():
+        results_tmp_path.unlink()
+    if results_path.exists():
+        results_path.unlink()
+
+    for path in list(output_dir.glob("results*.json")):
+        if path != results_path:
+            path.unlink(missing_ok=True)
+    for path in results_dir.glob("results*.json"):
+        path.unlink(missing_ok=True)
+
     base_mem_util = TASK_CONFIGS[task]["gpu_memory_utilization"]
     oom_mem_util = max(0.5, round(base_mem_util - 0.1, 2))
+    log_prefix = f"_{log_suffix}" if log_suffix else ""
+    log_path = output_dir / (f"eval{log_prefix}.log")
 
     for attempt in range(2):
-        attempt_suffix = base_suffix if attempt == 0 else (base_suffix + "_oom_retry")
         max_num_seqs = None if attempt == 0 else 128
         mem_override = None if attempt == 0 else oom_mem_util
+        cmd_suffix = f"{log_prefix}" if attempt == 0 else f"{log_prefix}_oom_retry"
 
         try:
             cmd, extra_env = build_lm_eval_command(
@@ -655,66 +745,74 @@ def run_lm_eval(
                 tensor_parallel_size=tensor_parallel_size,
                 lora_path=lora_path,
                 lora_rank=lora_rank,
-                output_path=output_path,
+                output_path=results_dir,
                 gpu_memory_utilization=mem_override,
                 max_num_seqs=max_num_seqs,
             )
         except Exception as exc:
-            write_text(output_dir / f"cmd{attempt_suffix}.txt", f"# failed to build lm_eval command: {exc}\n")
-            write_text(output_dir / f"stdout{attempt_suffix}.txt", "")
-            write_text(output_dir / f"stderr{attempt_suffix}.txt", str(exc))
+            write_text(output_dir / f"cmd{cmd_suffix}.txt", f"# failed to build lm_eval command: {exc}\n")
             return None, None, None, f"lm_eval command build failed: {exc}"
 
         env = os.environ.copy()
         env.update(extra_env)
 
-        write_text(output_dir / f"cmd{attempt_suffix}.txt", format_cmd(cmd, extra_env if extra_env else None))
+        write_text(output_dir / f"cmd{cmd_suffix}.txt", format_cmd(cmd, extra_env if extra_env else None))
 
         start_time = time.time()
-        try:
-            result = subprocess.run(
-                cmd,
-                capture_output=True,
-                text=True,
-                cwd=output_dir,
-                env=env,
-            )
-        except Exception as exc:
-            return None, None, None, f"lm_eval failed to start: {exc}"
+        log_mode = "w" if attempt == 0 else "a"
+        with open(log_path, log_mode) as log_file:
+            if attempt > 0:
+                log_file.write(f"\n# retry: oom fallback (gpu_memory_utilization={mem_override}, max_num_seqs={max_num_seqs})\n")
+            try:
+                proc = subprocess.Popen(
+                    cmd,
+                    stdout=log_file,
+                    stderr=subprocess.STDOUT,
+                    text=True,
+                    cwd=output_dir,
+                    env=env,
+                    start_new_session=True,
+                )
+            except Exception as exc:
+                return None, None, None, f"lm_eval failed to start: {exc}"
 
-        write_text(output_dir / f"stdout{attempt_suffix}.txt", result.stdout or "")
-        write_text(output_dir / f"stderr{attempt_suffix}.txt", result.stderr or "")
+            try:
+                proc.wait(timeout=timeout_s)
+            except subprocess.TimeoutExpired:
+                try:
+                    os.killpg(proc.pid, signal.SIGKILL)
+                except Exception:
+                    pass
+                return None, None, None, f"lm_eval timed out after {timeout_s} seconds"
 
-        if result.returncode != 0:
-            error_msg = result.stderr[-2000:] if result.stderr else "Unknown error"
-            if attempt == 0 and is_vllm_oom(result.stderr or ""):
+        if log_suffix:
+            try:
+                shutil.copy2(log_path, output_dir / "eval.log")
+            except Exception:
+                pass
+
+        if proc.returncode != 0:
+            log_tail = read_tail(log_path)
+            if attempt == 0 and is_vllm_oom(log_tail):
                 continue
-            return None, None, None, f"lm_eval failed (code {result.returncode}): {error_msg}"
+            error_msg = log_tail[-2000:] if log_tail else "Unknown error"
+            return None, None, None, f"lm_eval failed (code {proc.returncode}): {error_msg}"
 
-        raw = None
-        if output_path and output_path.exists():
-            if output_path.is_dir():
-                recent_json = find_recent_result_json(output_path, start_time - 1)
-                if recent_json:
-                    raw = read_json(recent_json)
-            else:
-                raw = read_json(output_path)
-        if raw is None:
-            raw = extract_json_from_stdout(result.stdout)
-        if raw is None:
-            search_dirs = [output_dir]
-            if output_path:
-                search_dirs.append(output_path if output_path.is_dir() else output_path.parent)
-            for search_dir in search_dirs:
-                recent_json = find_recent_result_json(search_dir, start_time - 1)
-                if recent_json:
-                    raw = read_json(recent_json)
-                    if raw is not None:
-                        break
-        if raw is None:
+        recent_json = find_recent_result_json(results_dir, start_time - 1)
+        if recent_json is None:
+            recent_json = find_recent_result_json(output_dir, start_time - 1)
+        if recent_json is None:
             return None, None, None, "lm_eval completed but no results JSON found"
 
+        raw = read_json(recent_json)
+        if raw is None:
+            return None, None, None, f"Failed to read results JSON: {recent_json}"
+
         lm_task = TASK_DIR_TO_LM_EVAL[task]
+        if not is_valid_results_json(raw, lm_task):
+            return None, None, None, f"Invalid results JSON: {recent_json}"
+
+        write_results_json_atomic(output_dir, raw)
         metrics = parse_lm_eval_results(raw, lm_task)
         num_examples = extract_num_examples(raw, lm_task)
         return raw, metrics, num_examples, None
@@ -768,10 +866,14 @@ def merge_adapter(
         return None, f"Failed to import merge dependencies: {exc}"
 
     if output_dir.exists() and (output_dir / "config.json").exists():
-        tok_error = ensure_tokenizer_assets(output_dir, adapter_dir, base_model_id)
-        if tok_error:
-            return output_dir, tok_error
-        return output_dir, None
+        validation_error = validate_merged_model(output_dir)
+        if validation_error:
+            shutil.rmtree(output_dir)
+        else:
+            tok_error = ensure_tokenizer_assets(output_dir, adapter_dir, base_model_id)
+            if tok_error:
+                return output_dir, tok_error
+            return output_dir, None
 
     output_dir.mkdir(parents=True, exist_ok=True)
 
@@ -790,6 +892,9 @@ def merge_adapter(
         tok_error = ensure_tokenizer_assets(output_dir, adapter_dir, base_model_id)
         if tok_error:
             return output_dir, tok_error
+        validation_error = validate_merged_model(output_dir)
+        if validation_error:
+            return output_dir, validation_error
     except Exception as exc:
         return None, f"Merge failed: {exc}"
     finally:
@@ -870,6 +975,12 @@ def build_arg_parser() -> argparse.ArgumentParser:
         help="Device for merge_and_unload (e.g., cpu, cuda, auto).",
     )
     p.add_argument(
+        "--eval_timeout_s",
+        type=int,
+        default=None,
+        help="Optional timeout (seconds) per lm_eval run.",
+    )
+    p.add_argument(
         "--adapter_filter",
         type=str,
         default=None,
@@ -884,9 +995,27 @@ def build_arg_parser() -> argparse.ArgumentParser:
         help="Limit processing to specific adapter types.",
     )
     p.add_argument(
+        "--edited_out_dir",
+        type=Path,
+        default=None,
+        help="Root directory for edited adapters when --keep_edited_adapter is set.",
+    )
+    p.add_argument(
+        "--keep_edited_adapter",
+        action=argparse.BooleanOptionalAction,
+        default=False,
+        help="Keep edited adapters on disk (default: use temporary directories).",
+    )
+    p.add_argument(
+        "--resume",
+        action=argparse.BooleanOptionalAction,
+        default=True,
+        help="Reuse existing lm_eval results in the output directory when available.",
+    )
+    p.add_argument(
         "--reuse_results",
         action="store_true",
-        help="Reuse existing lm_eval results in the output directory when available.",
+        help="Deprecated alias for --resume.",
     )
     p.add_argument(
         "--dry_run",
@@ -896,6 +1025,12 @@ def build_arg_parser() -> argparse.ArgumentParser:
 
     p.add_argument("--calib_samples", type=int, default=32, help="Calibration samples for spectral edit")
     p.add_argument("--calib_batch_size", type=int, default=2, help="Calibration batch size")
+    p.add_argument(
+        "--preserve_energy",
+        type=str,
+        default="l1",
+        help="Spectral edit preserve_energy setting (e.g., l1, none).",
+    )
     p.add_argument(
         "--target_modules",
         type=str,
@@ -937,6 +1072,8 @@ def build_arg_parser() -> argparse.ArgumentParser:
 
 def main() -> None:
     args = build_arg_parser().parse_args()
+    if args.reuse_results:
+        args.resume = True
 
     runs_roots = [r.resolve() for r in args.runs_roots]
     for root in runs_roots:
@@ -946,7 +1083,10 @@ def main() -> None:
 
     tasks = args.tasks
     out_root = args.out_root.resolve()
-    edited_root = out_root / "edited_adapters"
+    edited_root = None
+    if args.keep_edited_adapter:
+        edited_root = args.edited_out_dir.resolve() if args.edited_out_dir else (out_root / "edited_adapters")
+        edited_root.mkdir(parents=True, exist_ok=True)
     out_root.mkdir(parents=True, exist_ok=True)
 
     print("=" * 70)
@@ -992,119 +1132,89 @@ def main() -> None:
 
     summary_records: List[EvalRecord] = []
 
-    print("\n[2/4] Editing adapters...")
-    for i, adapter in enumerate(adapters, 1):
-        print(f"\n[{i}/{len(adapters)}] {adapter.run_id}")
-        print(f"  Adapter: {adapter.adapter_dir}")
+    if args.keep_edited_adapter:
+        print("\n[2/4] Editing adapters...")
+        for i, adapter in enumerate(adapters, 1):
+            print(f"\n[{i}/{len(adapters)}] {adapter.run_id}")
+            print(f"  Adapter: {adapter.adapter_dir}")
 
-        for policy in args.policies:
-            edited_dir = (
-                edited_root
-                / adapter.base_model_tag
-                / adapter.task
-                / adapter.adapter_type
-                / f"profile-{adapter.profile}"
-                / f"rank-{adapter.rank}"
-                / f"seed{adapter.seed}"
-                / policy
-            )
+            for policy in args.policies:
+                edited_dir = (
+                    edited_root
+                    / adapter.base_model_tag
+                    / adapter.task
+                    / adapter.adapter_type
+                    / f"profile-{adapter.profile}"
+                    / f"rank-{adapter.rank}"
+                    / f"seed{adapter.seed}"
+                    / policy
+                )
 
-            if edited_dir.exists() and has_adapter_weights(edited_dir):
-                print(f"  [SKIP EDIT] {policy} already exists")
-                continue
-            if edited_dir.exists():
-                shutil.rmtree(edited_dir)
+                if edited_dir.exists() and has_adapter_weights(edited_dir):
+                    print(f"  [SKIP EDIT] {policy} already exists")
+                    continue
+                if edited_dir.exists():
+                    shutil.rmtree(edited_dir)
 
-            print(f"  [EDIT] {policy}")
-            success, error = run_spectral_edit(
-                adapter_dir=adapter.adapter_dir,
-                out_dir=edited_dir,
-                edit_method=policy,
-                base_model_id=adapter.base_model_id,
-                seed=args.seed,
-                calib_samples=args.calib_samples,
-                calib_batch_size=args.calib_batch_size,
-                target_modules=args.target_modules,
-                calib_dataset=args.calib_dataset,
-                calib_config=args.calib_config,
-                calib_split=args.calib_split,
-                calib_text_fields=args.calib_text_fields,
-                calib_shuffle=args.calib_shuffle,
-                calib_seed=args.calib_seed,
-                calib_start=args.calib_start,
-            )
-            if not success:
-                print(f"  [EDIT FAILED] {policy}: {error}")
-            gc.collect()
+                print(f"  [EDIT] {policy}")
+                success, error = run_spectral_edit(
+                    adapter_dir=adapter.adapter_dir,
+                    out_dir=edited_dir,
+                    edit_method=policy,
+                    base_model_id=adapter.base_model_id,
+                    seed=args.seed,
+                    calib_samples=args.calib_samples,
+                    calib_batch_size=args.calib_batch_size,
+                    target_modules=args.target_modules,
+                    calib_dataset=args.calib_dataset,
+                    calib_config=args.calib_config,
+                    calib_split=args.calib_split,
+                    calib_text_fields=args.calib_text_fields,
+                    calib_shuffle=args.calib_shuffle,
+                    calib_seed=args.calib_seed,
+                    calib_start=args.calib_start,
+                    preserve_energy=args.preserve_energy,
+                )
+                if not success:
+                    print(f"  [EDIT FAILED] {policy}: {error}")
+                gc.collect()
+    else:
+        print("\n[2/4] Skipping persistent edits (temporary edited adapters will be used).")
 
     print("\n[3/4] Evaluating with lm_eval...")
     for i, adapter in enumerate(adapters, 1):
         print(f"\n[{i}/{len(adapters)}] {adapter.run_id}")
         lora_rank = read_lora_rank(adapter.adapter_dir, adapter.rank)
 
-        variants: List[Tuple[str, Optional[Path]]] = [
-            ("baseline", None),
-            ("unedited", adapter.adapter_dir),
+        variants: List[Tuple[str, Optional[Path], Optional[str], bool]] = [
+            ("baseline", None, None, False),
+            ("unedited", adapter.adapter_dir, None, False),
         ]
         for policy in args.policies:
-            edited_dir = (
-                edited_root
-                / adapter.base_model_tag
-                / adapter.task
-                / adapter.adapter_type
-                / f"profile-{adapter.profile}"
-                / f"rank-{adapter.rank}"
-                / f"seed{adapter.seed}"
-                / policy
-            )
-            variants.append((f"edited/{policy}", edited_dir))
+            variants.append((f"edited/{policy}", None, policy, True))
 
-        for variant, adapter_path in variants:
-            output_dir = (
-                out_root
-                / adapter.base_model_tag
-                / adapter.task
-                / adapter.adapter_type
-                / f"profile-{adapter.profile}"
-                / f"rank-{adapter.rank}"
-                / f"seed{adapter.seed}"
-                / Path(variant)
-            )
-            output_dir.mkdir(parents=True, exist_ok=True)
-
+        def evaluate_adapter_path(adapter_path: Optional[Path]) -> Tuple[
+            Optional[Dict[str, Any]],
+            Optional[Dict[str, Any]],
+            Optional[int],
+            Optional[str],
+            bool,
+            bool,
+        ]:
             used_lora = False
             used_fallback = False
             lm_error = None
             raw = None
             metrics = None
             num_examples = None
-            edited_adapter_dir = None
-            reused = False
 
-            if args.reuse_results:
-                raw_existing, metrics_existing, num_existing, _, result_path = load_existing_results(
-                    output_dir,
-                    adapter.task,
-                )
-                if result_path and raw_existing is not None:
-                    raw = raw_existing
-                    metrics = metrics_existing
-                    num_examples = num_existing
-                    used_fallback = (output_dir / "cmd_fallback.txt").exists()
-                    used_lora = False if used_fallback else detect_lora_usage(output_dir)
-                    edited_adapter_dir = str(adapter_path) if adapter_path else None
-                    print(f"  [REUSE] {variant}: {result_path.name}")
-                    reused = True
-
-            if not reused and adapter_path is not None:
+            if adapter_path is not None:
                 if not adapter_path.exists():
-                    lm_error = f"Adapter path missing: {adapter_path}"
-                elif not has_adapter_weights(adapter_path):
-                    lm_error = f"Adapter weights missing: {adapter_path}"
-                else:
-                    edited_adapter_dir = str(adapter_path)
+                    return None, None, None, f"Adapter path missing: {adapter_path}", False, False
+                if not has_adapter_weights(adapter_path):
+                    return None, None, None, f"Adapter weights missing: {adapter_path}", False, False
 
-            if lm_error is None and not reused:
+            if lm_error is None:
                 try:
                     if adapter_path is None:
                         raw, metrics, num_examples, lm_error = run_lm_eval(
@@ -1114,6 +1224,7 @@ def main() -> None:
                             tensor_parallel_size=args.tensor_parallel_size,
                             lora_path=None,
                             lora_rank=None,
+                            timeout_s=args.eval_timeout_s,
                         )
                     elif args.use_vllm_lora:
                         used_lora = True
@@ -1124,6 +1235,7 @@ def main() -> None:
                             tensor_parallel_size=args.tensor_parallel_size,
                             lora_path=adapter_path.resolve(),
                             lora_rank=lora_rank,
+                            timeout_s=args.eval_timeout_s,
                         )
                     elif args.fallback_merge:
                         used_fallback = True
@@ -1145,13 +1257,14 @@ def main() -> None:
                                 tensor_parallel_size=args.tensor_parallel_size,
                                 lora_path=None,
                                 lora_rank=None,
+                                timeout_s=args.eval_timeout_s,
                             )
                     else:
                         lm_error = "Adapter evaluation requires --use_vllm_lora or --fallback_merge"
                 except Exception as exc:
                     lm_error = f"lm_eval execution failed: {exc}"
 
-            if lm_error and not reused and args.fallback_merge and adapter_path is not None and args.use_vllm_lora:
+            if lm_error and args.fallback_merge and adapter_path is not None and args.use_vllm_lora:
                 print(f"  [FALLBACK MERGE] {variant}")
                 merge_dir = output_dir / "merged_model"
                 merged_path, merge_error = merge_adapter(
@@ -1174,6 +1287,120 @@ def main() -> None:
                         lora_path=None,
                         lora_rank=None,
                         log_suffix="fallback",
+                        timeout_s=args.eval_timeout_s,
+                    )
+
+            return raw, metrics, num_examples, lm_error, used_lora, used_fallback
+
+        for variant, adapter_path, policy, is_edited in variants:
+            output_dir = (
+                out_root
+                / adapter.base_model_tag
+                / adapter.task
+                / adapter.adapter_type
+                / f"profile-{adapter.profile}"
+                / f"rank-{adapter.rank}"
+                / f"seed{adapter.seed}"
+                / Path(variant)
+            )
+            output_dir.mkdir(parents=True, exist_ok=True)
+
+            used_lora = False
+            used_fallback = False
+            lm_error = None
+            raw = None
+            metrics = None
+            num_examples = None
+            edited_adapter_dir = None
+            reused = False
+
+            if args.resume:
+                raw_existing, metrics_existing, num_existing, _, result_path = load_existing_results(
+                    output_dir,
+                    adapter.task,
+                )
+                if result_path and raw_existing is not None and metrics_existing:
+                    raw = raw_existing
+                    metrics = metrics_existing
+                    num_examples = num_existing
+                    used_fallback = (output_dir / "cmd_fallback.txt").exists()
+                    used_lora = False if used_fallback else detect_lora_usage(output_dir)
+                    edited_adapter_dir = str(adapter_path) if adapter_path else None
+                    print(f"  [REUSE] {variant}: {result_path.name}")
+                    reused = True
+
+            if not reused:
+                if is_edited:
+                    if args.keep_edited_adapter:
+                        edited_dir = (
+                            edited_root
+                            / adapter.base_model_tag
+                            / adapter.task
+                            / adapter.adapter_type
+                            / f"profile-{adapter.profile}"
+                            / f"rank-{adapter.rank}"
+                            / f"seed{adapter.seed}"
+                            / policy
+                        )
+                        if not (edited_dir.exists() and has_adapter_weights(edited_dir)):
+                            if edited_dir.exists():
+                                shutil.rmtree(edited_dir)
+                            success, error = run_spectral_edit(
+                                adapter_dir=adapter.adapter_dir,
+                                out_dir=edited_dir,
+                                edit_method=policy,
+                                base_model_id=adapter.base_model_id,
+                                seed=args.seed,
+                                calib_samples=args.calib_samples,
+                                calib_batch_size=args.calib_batch_size,
+                                target_modules=args.target_modules,
+                                calib_dataset=args.calib_dataset,
+                                calib_config=args.calib_config,
+                                calib_split=args.calib_split,
+                                calib_text_fields=args.calib_text_fields,
+                                calib_shuffle=args.calib_shuffle,
+                                calib_seed=args.calib_seed,
+                                calib_start=args.calib_start,
+                                preserve_energy=args.preserve_energy,
+                            )
+                            if not success:
+                                lm_error = error
+                        adapter_path = edited_dir if lm_error is None else None
+                        edited_adapter_dir = str(edited_dir) if args.keep_edited_adapter else None
+                        if lm_error is None:
+                            raw, metrics, num_examples, lm_error, used_lora, used_fallback = evaluate_adapter_path(
+                                adapter_path
+                            )
+                    else:
+                        with tempfile.TemporaryDirectory(prefix="edited_adapter_") as tmpdir:
+                            edited_dir = Path(tmpdir)
+                            success, error = run_spectral_edit(
+                                adapter_dir=adapter.adapter_dir,
+                                out_dir=edited_dir,
+                                edit_method=policy,
+                                base_model_id=adapter.base_model_id,
+                                seed=args.seed,
+                                calib_samples=args.calib_samples,
+                                calib_batch_size=args.calib_batch_size,
+                                target_modules=args.target_modules,
+                                calib_dataset=args.calib_dataset,
+                                calib_config=args.calib_config,
+                                calib_split=args.calib_split,
+                                calib_text_fields=args.calib_text_fields,
+                                calib_shuffle=args.calib_shuffle,
+                                calib_seed=args.calib_seed,
+                                calib_start=args.calib_start,
+                                preserve_energy=args.preserve_energy,
+                            )
+                            if not success:
+                                lm_error = error
+                            else:
+                                raw, metrics, num_examples, lm_error, used_lora, used_fallback = evaluate_adapter_path(
+                                    edited_dir
+                                )
+                else:
+                    raw, metrics, num_examples, lm_error, used_lora, used_fallback = evaluate_adapter_path(
+                        adapter_path
                     )
 
             metric_key, metric_value = (None, None)
