@@ -8,6 +8,12 @@ This script:
   - Evaluates baseline (no adapter), unedited adapter, and edited adapters
     with lm_eval harness using the vLLM backend.
 
+IMPORTANT (modified behavior):
+  - vLLM LoRA loading is DISABLED. Any adapter evaluation is done via FORCE MERGE:
+      adapter -> merged full model dir -> lm_eval(vLLM) on merged dir.
+  - After each run_lm_eval call, we aggressively kill leftover vLLM processes
+    (process group) and clear CUDA cache to avoid zombie GPU memory usage.
+
 Outputs are stored under:
   {out_root}/{base_model_tag}/{task}/{adapter_type}/{profile}/{rank}/{seed}/{variant}/
 
@@ -19,7 +25,7 @@ Usage:
     --runs_roots /path/to/meta-llama-Llama-3.1-8B /path/to/Qwen-Qwen3-8B \
     --out_root /path/to/lm_eval_outputs \
     --policies abs_select smooth_abs random_index grad_direction \
-    --use_vllm_lora --fallback_merge
+    --merge_device cpu
 """
 
 from __future__ import annotations
@@ -161,7 +167,6 @@ class EvalRecord:
 # ============================================================================
 # Utilities
 # ============================================================================
-
 
 def is_checkpoint_path(path: Path) -> bool:
     """Return True if any path segment is a checkpoint directory."""
@@ -327,16 +332,6 @@ def ensure_error_logs(output_dir: Path, message: str) -> None:
         write_text(stderr_path, message + "\n")
 
 
-def detect_lora_usage(output_dir: Path) -> bool:
-    cmd_path = output_dir / "cmd.txt"
-    if not cmd_path.exists():
-        return False
-    try:
-        return "lora_local_path=" in cmd_path.read_text()
-    except Exception:
-        return False
-
-
 def results_json_path(output_dir: Path) -> Path:
     return output_dir / "results.json"
 
@@ -412,7 +407,7 @@ def validate_merged_model(model_dir: Path) -> Optional[str]:
             max_total = None
             present = set()
             for shard in shards:
-                match = re.search(r"model-(\\d+)-of-(\\d+)\\.safetensors", shard.name)
+                match = re.search(r"model-(\d+)-of-(\d+)\.safetensors", shard.name)
                 if not match:
                     continue
                 idx = int(match.group(1))
@@ -641,15 +636,59 @@ def run_spectral_edit(
 
 
 # ============================================================================
-# lm_eval execution
+# lm_eval execution (vLLM)
 # ============================================================================
+
+def _cleanup_vllm_and_cuda(proc: Optional[subprocess.Popen]) -> None:
+    """
+    Best-effort cleanup:
+      - Kill the entire process group started by lm_eval (vLLM workers should be in it).
+      - Release Python-side memory and empty CUDA cache.
+    Intentionally aggressive to prevent zombie vLLM workers holding GPU memory.
+    """
+    if proc is not None:
+        try:
+            os.killpg(proc.pid, signal.SIGTERM)
+        except ProcessLookupError:
+            pass
+        except Exception:
+            pass
+
+        # brief grace, then hard kill
+        time.sleep(1.0)
+        try:
+            os.killpg(proc.pid, signal.SIGKILL)
+        except ProcessLookupError:
+            pass
+        except Exception:
+            pass
+
+    gc.collect()
+
+    # Clear CUDA cache in *this* process; vLLM workers must be killed to actually release VRAM.
+    try:
+        import torch
+        if torch.cuda.is_available():
+            try:
+                torch.cuda.synchronize()
+            except Exception:
+                pass
+            try:
+                torch.cuda.empty_cache()
+            except Exception:
+                pass
+            try:
+                torch.cuda.ipc_collect()
+            except Exception:
+                pass
+    except Exception:
+        pass
+
 
 def build_lm_eval_command(
     base_model: str,
     task: str,
     tensor_parallel_size: int,
-    lora_path: Optional[Path],
-    lora_rank: Optional[int],
     output_path: Optional[Path],
     gpu_memory_utilization: Optional[float] = None,
     max_num_seqs: Optional[int] = None,
@@ -663,14 +702,6 @@ def build_lm_eval_command(
         f"dtype=auto,"
         f"gpu_memory_utilization={mem_util}"
     )
-    if lora_path:
-        if lora_rank is None:
-            raise ValueError("max_lora_rank is required when using lora_local_path")
-        model_args += (
-            f",lora_local_path={lora_path},"
-            f"max_loras=1,"
-            f"max_lora_rank={lora_rank}"
-        )
     if max_num_seqs is not None:
         model_args += f",max_num_seqs={max_num_seqs}"
 
@@ -707,8 +738,6 @@ def run_lm_eval(
     task: str,
     output_dir: Path,
     tensor_parallel_size: int,
-    lora_path: Optional[Path],
-    lora_rank: Optional[int],
     log_suffix: Optional[str] = None,
     timeout_s: Optional[int] = None,
 ) -> Tuple[Optional[Dict[str, Any]], Optional[Dict[str, Any]], Optional[int], Optional[str]]:
@@ -743,8 +772,6 @@ def run_lm_eval(
                 base_model=base_model,
                 task=task,
                 tensor_parallel_size=tensor_parallel_size,
-                lora_path=lora_path,
-                lora_rank=lora_rank,
                 output_path=results_dir,
                 gpu_memory_utilization=mem_override,
                 max_num_seqs=max_num_seqs,
@@ -760,36 +787,43 @@ def run_lm_eval(
 
         start_time = time.time()
         log_mode = "w" if attempt == 0 else "a"
-        with open(log_path, log_mode) as log_file:
-            if attempt > 0:
-                log_file.write(f"\n# retry: oom fallback (gpu_memory_utilization={mem_override}, max_num_seqs={max_num_seqs})\n")
-            try:
-                proc = subprocess.Popen(
-                    cmd,
-                    stdout=log_file,
-                    stderr=subprocess.STDOUT,
-                    text=True,
-                    cwd=output_dir,
-                    env=env,
-                    start_new_session=True,
-                )
-            except Exception as exc:
-                return None, None, None, f"lm_eval failed to start: {exc}"
+        proc: Optional[subprocess.Popen] = None
 
-            try:
-                proc.wait(timeout=timeout_s)
-            except subprocess.TimeoutExpired:
+        try:
+            with open(log_path, log_mode) as log_file:
+                if attempt > 0:
+                    log_file.write(
+                        f"\n# retry: oom fallback (gpu_memory_utilization={mem_override}, max_num_seqs={max_num_seqs})\n"
+                    )
                 try:
-                    os.killpg(proc.pid, signal.SIGKILL)
-                except Exception:
-                    pass
-                return None, None, None, f"lm_eval timed out after {timeout_s} seconds"
+                    proc = subprocess.Popen(
+                        cmd,
+                        stdout=log_file,
+                        stderr=subprocess.STDOUT,
+                        text=True,
+                        cwd=output_dir,
+                        env=env,
+                        start_new_session=True,  # gives us a new process group to kill
+                    )
+                except Exception as exc:
+                    return None, None, None, f"lm_eval failed to start: {exc}"
+
+                try:
+                    proc.wait(timeout=timeout_s)
+                except subprocess.TimeoutExpired:
+                    return None, None, None, f"lm_eval timed out after {timeout_s} seconds"
+        finally:
+            # Always kill leftovers + clear cache even on success.
+            _cleanup_vllm_and_cuda(proc)
 
         if log_suffix:
             try:
                 shutil.copy2(log_path, output_dir / "eval.log")
             except Exception:
                 pass
+
+        if proc is None:
+            return None, None, None, "lm_eval did not start"
 
         if proc.returncode != 0:
             log_tail = read_tail(log_path)
@@ -959,16 +993,6 @@ def build_arg_parser() -> argparse.ArgumentParser:
         help="vLLM tensor parallel size.",
     )
     p.add_argument(
-        "--use_vllm_lora",
-        action="store_true",
-        help="Use vLLM LoRA loading for adapters.",
-    )
-    p.add_argument(
-        "--fallback_merge",
-        action="store_true",
-        help="If vLLM LoRA loading fails, merge adapter into base model and retry.",
-    )
-    p.add_argument(
         "--merge_device",
         type=str,
         default="cpu",
@@ -1096,8 +1120,7 @@ def main() -> None:
     print(f"Output root: {out_root}")
     print(f"Tasks: {tasks}")
     print(f"Policies: {args.policies}")
-    print(f"Use vLLM LoRA: {args.use_vllm_lora}")
-    print(f"Fallback merge: {args.fallback_merge}")
+    print("Adapter eval mode: FORCE MERGE (no vLLM LoRA loading)")
     print("=" * 70)
 
     print("\n[1/4] Discovering adapters...")
@@ -1184,7 +1207,6 @@ def main() -> None:
     print("\n[3/4] Evaluating with lm_eval...")
     for i, adapter in enumerate(adapters, 1):
         print(f"\n[{i}/{len(adapters)}] {adapter.run_id}")
-        lora_rank = read_lora_rank(adapter.adapter_dir, adapter.rank)
 
         variants: List[Tuple[str, Optional[Path], Optional[str], bool]] = [
             ("baseline", None, None, False),
@@ -1193,7 +1215,7 @@ def main() -> None:
         for policy in args.policies:
             variants.append((f"edited/{policy}", None, policy, True))
 
-        def evaluate_adapter_path(adapter_path: Optional[Path]) -> Tuple[
+        def evaluate_variant_with_merge(adapter_path: Optional[Path]) -> Tuple[
             Optional[Dict[str, Any]],
             Optional[Dict[str, Any]],
             Optional[int],
@@ -1202,8 +1224,8 @@ def main() -> None:
             bool,
         ]:
             used_lora = False
-            used_fallback = False
-            lm_error = None
+            used_merge = False
+            lm_error: Optional[str] = None
             raw = None
             metrics = None
             num_examples = None
@@ -1214,83 +1236,43 @@ def main() -> None:
                 if not has_adapter_weights(adapter_path):
                     return None, None, None, f"Adapter weights missing: {adapter_path}", False, False
 
-            if lm_error is None:
-                try:
-                    if adapter_path is None:
-                        raw, metrics, num_examples, lm_error = run_lm_eval(
-                            base_model=adapter.base_model_id,
-                            task=adapter.task,
-                            output_dir=output_dir,
-                            tensor_parallel_size=args.tensor_parallel_size,
-                            lora_path=None,
-                            lora_rank=None,
-                            timeout_s=args.eval_timeout_s,
-                        )
-                    elif args.use_vllm_lora:
-                        used_lora = True
-                        raw, metrics, num_examples, lm_error = run_lm_eval(
-                            base_model=adapter.base_model_id,
-                            task=adapter.task,
-                            output_dir=output_dir,
-                            tensor_parallel_size=args.tensor_parallel_size,
-                            lora_path=adapter_path.resolve(),
-                            lora_rank=lora_rank,
-                            timeout_s=args.eval_timeout_s,
-                        )
-                    elif args.fallback_merge:
-                        used_fallback = True
-                        merge_dir = output_dir / "merged_model"
-                        merged_path, merge_error = merge_adapter(
-                            base_model_id=adapter.base_model_id,
-                            adapter_dir=adapter_path,
-                            output_dir=merge_dir,
-                            device=args.merge_device,
-                        )
-                        if merge_error:
-                            lm_error = merge_error
-                            write_text(output_dir / "merge_error.txt", merge_error)
-                        else:
-                            raw, metrics, num_examples, lm_error = run_lm_eval(
-                                base_model=str(merged_path),
-                                task=adapter.task,
-                                output_dir=output_dir,
-                                tensor_parallel_size=args.tensor_parallel_size,
-                                lora_path=None,
-                                lora_rank=None,
-                                timeout_s=args.eval_timeout_s,
-                            )
-                    else:
-                        lm_error = "Adapter evaluation requires --use_vllm_lora or --fallback_merge"
-                except Exception as exc:
-                    lm_error = f"lm_eval execution failed: {exc}"
+            try:
+                if adapter_path is None:
+                    # Baseline: directly eval base model with vLLM.
+                    raw, metrics, num_examples, lm_error = run_lm_eval(
+                        base_model=adapter.base_model_id,
+                        task=adapter.task,
+                        output_dir=output_dir,
+                        tensor_parallel_size=args.tensor_parallel_size,
+                        timeout_s=args.eval_timeout_s,
+                    )
+                    return raw, metrics, num_examples, lm_error, used_lora, False
 
-            if lm_error and args.fallback_merge and adapter_path is not None and args.use_vllm_lora:
-                print(f"  [FALLBACK MERGE] {variant}")
-                merge_dir = output_dir / "merged_model"
-                merged_path, merge_error = merge_adapter(
-                    base_model_id=adapter.base_model_id,
-                    adapter_dir=adapter_path,
-                    output_dir=merge_dir,
-                    device=args.merge_device,
-                )
-                if merge_error:
-                    lm_error = f"{lm_error}; merge error: {merge_error}"
-                    write_text(output_dir / "merge_error.txt", merge_error)
-                else:
-                    used_fallback = True
-                    used_lora = False
+                # Adapter: FORCE MERGE -> eval merged model with vLLM.
+                used_merge = True
+                with tempfile.TemporaryDirectory(prefix="merged_model_") as tmp_merge:
+                    merge_dir = Path(tmp_merge)
+                    merged_path, merge_error = merge_adapter(
+                        base_model_id=adapter.base_model_id,
+                        adapter_dir=adapter_path,
+                        output_dir=merge_dir,
+                        device=args.merge_device,
+                    )
+                    if merge_error:
+                        lm_error = merge_error
+                        write_text(output_dir / "merge_error.txt", merge_error)
+                        return None, None, None, lm_error, used_lora, True
+
                     raw, metrics, num_examples, lm_error = run_lm_eval(
                         base_model=str(merged_path),
                         task=adapter.task,
                         output_dir=output_dir,
                         tensor_parallel_size=args.tensor_parallel_size,
-                        lora_path=None,
-                        lora_rank=None,
-                        log_suffix="fallback",
                         timeout_s=args.eval_timeout_s,
                     )
-
-            return raw, metrics, num_examples, lm_error, used_lora, used_fallback
+                    return raw, metrics, num_examples, lm_error, used_lora, True
+            except Exception as exc:
+                return None, None, None, f"lm_eval execution failed: {exc}", used_lora, used_merge
 
         for variant, adapter_path, policy, is_edited in variants:
             output_dir = (
@@ -1306,7 +1288,7 @@ def main() -> None:
             output_dir.mkdir(parents=True, exist_ok=True)
 
             used_lora = False
-            used_fallback = False
+            used_merge = False
             lm_error = None
             raw = None
             metrics = None
@@ -1323,8 +1305,8 @@ def main() -> None:
                     raw = raw_existing
                     metrics = metrics_existing
                     num_examples = num_existing
-                    used_fallback = (output_dir / "cmd_fallback.txt").exists()
-                    used_lora = False if used_fallback else detect_lora_usage(output_dir)
+                    used_lora = False
+                    used_merge = (variant != "baseline")  # in FORCE MERGE mode, any non-baseline implies merge
                     edited_adapter_dir = str(adapter_path) if adapter_path else None
                     print(f"  [REUSE] {variant}: {result_path.name}")
                     reused = True
@@ -1368,7 +1350,7 @@ def main() -> None:
                         adapter_path = edited_dir if lm_error is None else None
                         edited_adapter_dir = str(edited_dir) if args.keep_edited_adapter else None
                         if lm_error is None:
-                            raw, metrics, num_examples, lm_error, used_lora, used_fallback = evaluate_adapter_path(
+                            raw, metrics, num_examples, lm_error, used_lora, used_merge = evaluate_variant_with_merge(
                                 adapter_path
                             )
                     else:
@@ -1395,11 +1377,11 @@ def main() -> None:
                             if not success:
                                 lm_error = error
                             else:
-                                raw, metrics, num_examples, lm_error, used_lora, used_fallback = evaluate_adapter_path(
+                                raw, metrics, num_examples, lm_error, used_lora, used_merge = evaluate_variant_with_merge(
                                     edited_dir
                                 )
                 else:
-                    raw, metrics, num_examples, lm_error, used_lora, used_fallback = evaluate_adapter_path(
+                    raw, metrics, num_examples, lm_error, used_lora, used_merge = evaluate_variant_with_merge(
                         adapter_path
                     )
 
@@ -1424,8 +1406,8 @@ def main() -> None:
                 adapter_dir=str(adapter.adapter_dir) if adapter.adapter_dir else None,
                 edited_adapter_dir=edited_adapter_dir,
                 output_dir=str(output_dir),
-                used_vllm_lora=used_lora,
-                used_fallback_merge=used_fallback,
+                used_vllm_lora=False,               # forced off
+                used_fallback_merge=bool(used_merge),  # repurposed: True means we merged
                 metric_key=metric_key,
                 metric_value=metric_value,
                 metrics=metrics,
