@@ -5,13 +5,13 @@ Generate all figures discussed earlier from your LaTeX tables.
 
 Outputs:
   figs/
-    delta_heatmap_<model>_residual_l1_calib128.png
-    risk_reward_residual_l1_calib128.png
-    guided_vs_random_smooth_abs_residual_l1_calib128.png
-    guided_vs_random_grad_direction_residual_l1_calib128.png
-    calib_sweep_<model>_<task>_residual_l1.png
-    energy_ablation_delta_<model>_grad_direction_residual_calib128.png
-    locality_tradeoff_delta_<model>_grad_direction_l1_calib128.png
+    delta_heatmap_<model>_residual_l1_calib128.pdf
+    risk_reward_residual_l1_calib128.pdf
+    guided_vs_random_smooth_abs_residual_l1_calib128.pdf
+    guided_vs_random_grad_direction_residual_l1_calib128.pdf
+    calib_sweep_<model>_<task>_residual_l1.pdf
+    energy_ablation_delta_<model>_grad_direction_residual_calib128.pdf
+    locality_tradeoff_delta_<model>_grad_direction_l1_calib128.pdf
   parsed_results.csv
 
 Run:
@@ -26,10 +26,18 @@ from typing import List, Optional, Tuple
 import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt
-
+import seaborn as sns  # FIXED: Added missing import
+from adjustText import adjust_text  # FIXED: Added missing import
 
 # -----------------------------
-# 1) Paste your LaTeX tables here
+# Global Style Settings
+# -----------------------------
+sns.set_context("paper", font_scale=1.4)
+sns.set_style("ticks")
+plt.rcParams['font.family'] = 'serif'
+
+# -----------------------------
+# 1) LaTeX Tables
 # -----------------------------
 TABLE_RESIDUAL_L1_SWEEP = r"""
 Llama-3.1-8B & 32 & GSM8K & acc & \textbf{0.668} & 0.657 & 0.660 & 0.657 & 0.622 \\
@@ -151,17 +159,13 @@ Qwen3-8B & 128 & IFEval & score & \textbf{0.583} & 0.574 & \textbf{0.583} & 0.57
 Qwen3-8B & 128 & CSQA & acc & \textbf{0.852} & \textbf{0.852} & 0.850 & 0.849 & 0.851 \\
 """
 
-
 # -----------------------------
 # 2) Parsing utilities
 # -----------------------------
 POLICIES = ["abs_select", "smooth_abs", "random_index", "grad_direction"]
-ALL_COLS = ["baseline"] + POLICIES
 
 
 def _strip_latex_wrappers(s: str) -> str:
-    # Remove common wrappers like \textbf{...}, \underline{...}
-    # Repeat until stable to handle nested wrappers.
     prev = None
     cur = s
     while prev != cur:
@@ -174,7 +178,6 @@ def _strip_latex_wrappers(s: str) -> str:
 
 def to_float(cell: str) -> Optional[float]:
     cell = _strip_latex_wrappers(cell)
-    # Take first float-like token
     m = re.search(r"-?\d+(?:\.\d+)?", cell)
     if not m:
         return None
@@ -184,8 +187,8 @@ def to_float(cell: str) -> Optional[float]:
 @dataclass
 class TableMeta:
     preserve_energy: str  # "l1" or "none"
-    module_set: str       # "residual", "attn_inputs", "all_modules", "up_gate"
-    source_name: str      # for debugging
+    module_set: str  # "residual", "attn_inputs", "all_modules", "up_gate"
+    source_name: str  # for debugging
 
 
 def parse_latex_rows(table_str: str, meta: TableMeta) -> pd.DataFrame:
@@ -196,11 +199,9 @@ def parse_latex_rows(table_str: str, meta: TableMeta) -> pd.DataFrame:
             continue
         if "&" not in line:
             continue
-        # skip formatting rows
         if any(tok in line for tok in ["\\toprule", "\\midrule", "\\bottomrule", "\\addlinespace", "\\cmidrule"]):
             continue
 
-        # remove trailing LaTeX row end
         line = line.replace("\\\\", "").strip()
         parts = [p.strip() for p in line.split("&")]
         if len(parts) < 9:
@@ -232,7 +233,6 @@ def parse_latex_rows(table_str: str, meta: TableMeta) -> pd.DataFrame:
         })
 
     df = pd.DataFrame(rows)
-    # sanity: drop rows with missing policy values (shouldn't happen, but keep safe)
     for c in POLICIES:
         df[c] = df[c].astype(float)
     df["baseline"] = df["baseline"].astype(float)
@@ -251,8 +251,9 @@ def ensure_dir(path: str) -> None:
 
 
 # -----------------------------
-# 3) Plot helpers
+# 3) Plot Helpers
 # -----------------------------
+
 def plot_delta_heatmap_one_model(df_cfg: pd.DataFrame, model: str, outpath: str, title: str) -> None:
     dfm = df_cfg[df_cfg["model"] == model].copy()
     dfm = add_deltas(dfm)
@@ -264,17 +265,18 @@ def plot_delta_heatmap_one_model(df_cfg: pd.DataFrame, model: str, outpath: str,
 
     fig = plt.figure(figsize=(7.2, 3.4))
     ax = fig.add_subplot(111)
-    im = ax.imshow(mat, aspect="auto")
+    im = ax.imshow(mat, aspect="auto", cmap="RdBu_r", vmin=-0.05, vmax=0.05)
     ax.set_title(f"{title}\n{model}")
     ax.set_xticks(np.arange(len(POLICIES)))
     ax.set_xticklabels(POLICIES, rotation=20, ha="right")
     ax.set_yticks(np.arange(len(tasks)))
     ax.set_yticklabels(tasks)
 
-    # annotate
     for i in range(mat.shape[0]):
         for j in range(mat.shape[1]):
-            ax.text(j, i, f"{mat[i, j]:+.3f}", ha="center", va="center", fontsize=9)
+            val = mat[i, j]
+            color = "white" if abs(val) > 0.02 else "black"
+            ax.text(j, i, f"{val:+.3f}", ha="center", va="center", fontsize=9, color=color)
 
     fig.colorbar(im, ax=ax, fraction=0.046, pad=0.04, label="Δ vs baseline")
     fig.tight_layout()
@@ -283,11 +285,9 @@ def plot_delta_heatmap_one_model(df_cfg: pd.DataFrame, model: str, outpath: str,
 
 
 def plot_risk_reward(df_cfg: pd.DataFrame, outpath: str,
-                     aligned_tasks: List[str], constrained_task: str = "IFEval") -> None:
+                     aligned_tasks: list, constrained_task: str = "IFEval") -> None:
     """
-    Each point: (model, policy)
-      reward = mean Δ on aligned_tasks
-      risk   = max(0, baseline - policy) on constrained_task  (i.e., drop magnitude)
+    Risk-Reward Plot with auto-adjusting labels and clear markers.
     """
     df = add_deltas(df_cfg)
     points = []
@@ -295,71 +295,182 @@ def plot_risk_reward(df_cfg: pd.DataFrame, outpath: str,
     for model in sorted(df["model"].unique()):
         dfm = df[df["model"] == model]
         for p in POLICIES:
-            # reward: mean delta on aligned tasks present
             dfa = dfm[dfm["task"].isin(aligned_tasks)]
+            if len(dfa) == 0:
+                continue
             reward = float(np.nanmean(dfa[f"delta_{p}"].values))
-            # risk: drop on constrained task
+
             dfc = dfm[dfm["task"] == constrained_task]
             if len(dfc) == 0:
                 continue
             delta_c = float(dfc[f"delta_{p}"].values[0])
             risk = max(0.0, -delta_c)
-            points.append((model, p, reward, risk))
 
-    fig = plt.figure(figsize=(7.0, 4.2))
-    ax = fig.add_subplot(111)
-    for model, p, reward, risk in points:
-        ax.scatter(reward, risk)
-        ax.text(reward, risk, f"{model}\n{p}", fontsize=8, ha="left", va="bottom")
+            points.append({"Model": model, "Policy": p, "Reward": reward, "Risk": risk})
 
-    ax.set_xlabel("Reward = mean Δ on aligned tasks")
-    ax.set_ylabel("Risk = drop magnitude on constrained task (IFEval)")
-    ax.set_title("Policy Risk–Reward (default config)")
-    ax.axhline(0, linewidth=1)
-    ax.axvline(0, linewidth=1)
-    fig.tight_layout()
-    fig.savefig(outpath, dpi=220)
+    plot_df = pd.DataFrame(points)
+
+    # ---- unified font size / weight (same vibe as previous) ----
+    FS = 12          # 想更大就 13/14
+    FONT_W = "bold"  # 不要细线字体
+
+    fig, ax = plt.subplots(figsize=(6, 6))
+
+    sns.scatterplot(
+        data=plot_df,
+        x="Reward", y="Risk",
+        hue="Model", style="Policy",
+        s=170,
+        alpha=0.9,
+        palette="colorblind",
+        markers={"abs_select": "o", "smooth_abs": "s", "random_index": "^", "grad_direction": "D"},
+        ax=ax
+    )
+
+    ax.axhline(0, color='0.6', linestyle='--', linewidth=1.2, alpha=0.7)
+    ax.axvline(0, color='0.6', linestyle='--', linewidth=1.2, alpha=0.7)
+
+    texts = []
+    for _, row in plot_df.iterrows():
+        if abs(row["Reward"]) > 0.001 or row["Risk"] > 0.01:
+            texts.append(
+                ax.text(row["Reward"], row["Risk"], f"{row['Policy']}",
+                        fontsize=FS, fontweight=FONT_W, color="0.15")
+            )
+
+    adjust_text(
+        texts, ax=ax,
+        arrowprops=dict(arrowstyle='-', color='0.5', lw=0.8)
+    )
+
+    ax.set_xlabel(r"Reward (Mean $\Delta$ on Aligned Tasks)", fontsize=FS, fontweight=FONT_W)
+    ax.set_ylabel(fr"Risk (Drop on {constrained_task})", fontsize=FS, fontweight=FONT_W)
+    ax.set_title("Safety Trade-off: Policy Risk vs. Reward",
+                 pad=15, fontsize=FS+2, fontweight=FONT_W)
+
+    ax.tick_params(axis="both", labelsize=FS)
+
+    # ---- legend inside the axes (no outside space) ----
+    # 先把 seaborn 生成的 legend 挪到图内左上角，并加一个半透明背景避免遮点看不清
+    sns.move_legend(
+        ax, "upper left",
+        bbox_to_anchor=(0.02, 0.98),  # 图内坐标(0~1)，再往右/下就调这里
+        frameon=True,
+        borderaxespad=0.0
+    )
+    leg = ax.get_legend()
+    if leg is not None:
+        leg.get_frame().set_alpha(0.85)
+        leg.get_frame().set_edgecolor("0.8")
+        # legend 字体也统一变大 + 加粗
+        for t in leg.get_texts():
+            t.set_fontsize(FS)
+            t.set_fontweight(FONT_W)
+        if leg.get_title() is not None:
+            leg.get_title().set_fontsize(FS)
+            leg.get_title().set_fontweight(FONT_W)
+
+    sns.despine()
+    plt.tight_layout()
+    plt.savefig(outpath, dpi=300)  # legend 已在图内，不需要 bbox_inches='tight'
     plt.close(fig)
+
 
 
 def plot_guided_vs_random(df_cfg: pd.DataFrame, guided_policy: str, outpath: str, title: str) -> None:
     """
-    x = Δ(random_index), y = Δ(guided_policy), points over (model, task).
+    Scatter plot comparing a guided policy vs random noise.
     """
     assert guided_policy in POLICIES and guided_policy != "random_index"
     df = add_deltas(df_cfg)
 
-    x = df["delta_random_index"].values
-    y = df[f"delta_{guided_policy}"].values
+    x_vals = df["delta_random_index"].values
+    y_vals = df[f"delta_{guided_policy}"].values
 
-    fig = plt.figure(figsize=(5.8, 5.2))
-    ax = fig.add_subplot(111)
-    ax.scatter(x, y)
+    temp_df = df.copy()
+    temp_df["x"] = x_vals
+    temp_df["y"] = y_vals
 
-    # diagonal
-    lo = float(min(np.min(x), np.min(y), -0.5))
-    hi = float(max(np.max(x), np.max(y), 0.5))
-    ax.plot([lo, hi], [lo, hi], linewidth=1)
+    # ---- unified font size / weight ----
+    FS = 12  # 你想更大就改 13/14
+    FONT_W = "bold"  # 或 "semibold"
 
-    # annotate lightly
-    for _, r in df.iterrows():
-        ax.text(r["delta_random_index"], r[f"delta_{guided_policy}"],
-                f'{r["model"].split("-")[0]}-{r["task"]}', fontsize=8, ha="left", va="bottom")
+    fig, ax = plt.subplots(figsize=(6, 6))
 
-    ax.set_xlabel("Δ random_index (vs baseline)")
-    ax.set_ylabel(f"Δ {guided_policy} (vs baseline)")
-    ax.set_title(title)
-    fig.tight_layout()
-    fig.savefig(outpath, dpi=220)
+    all_vals = np.concatenate([x_vals, y_vals])
+    min_val = min(all_vals.min(), -0.05) * 1.1
+    max_val = max(all_vals.max(), 0.05) * 1.1
+
+    ax.plot([min_val, max_val], [min_val, max_val], ls="--", c="0.6", lw=1.2, zorder=0)
+
+    sns.scatterplot(
+        data=temp_df,
+        x="x", y="y",
+        hue="model",
+        style="task",
+        s=140,
+        palette="deep",
+        ax=ax,
+        legend=False
+    )
+
+    texts = []
+    for _, row in temp_df.iterrows():
+        diff = abs(row["x"] - row["y"])
+        dist_from_origin = np.sqrt(row["x"] ** 2 + row["y"] ** 2)
+
+        if diff > 0.02 or dist_from_origin > 0.1:
+            task_short = row['task'].replace("HumanEval", "HEval").replace("GSM8K", "GSM")
+            model_short = "Qwen" if "Qwen" in row['model'] else "Llama"
+            label = f"{model_short}-{task_short}"
+            texts.append(
+                ax.text(
+                    row["x"], row["y"], label,
+                    fontsize=FS, fontweight=FONT_W, color="0.15"
+                )
+            )
+
+    adjust_text(
+        texts, ax=ax,
+        arrowprops=dict(arrowstyle='-', color='0.5', lw=0.8)
+    )
+
+    ax.set_xlim(min_val, max_val)
+    ax.set_ylim(min_val, max_val)
+    ax.set_aspect('equal')
+
+    ax.set_xlabel(r"$\Delta$ Random Index", fontsize=FS, fontweight=FONT_W)
+    ax.set_ylabel(fr"$\Delta$ {guided_policy}", fontsize=FS, fontweight=FONT_W)
+
+    # ---- move annotation left (and darker + bold) ----
+    span = max_val - min_val
+    pad_x = 0.30 * span   # 这里越大越往左（往里）挪
+    pad_y = 0.06 * span
+
+    ann_color = "0.50"  # 越小越黑，比如 0.15 更深
+    ax.text(
+        max_val - pad_x, min_val + pad_y,
+        "Worse than\nRandom",
+        ha='right', va='bottom',
+        color=ann_color, fontsize=FS, fontweight=FONT_W
+    )
+    ax.text(
+        min_val + pad_y, max_val - pad_y,
+        "Better than\nRandom",
+        ha='left', va='top',
+        color=ann_color, fontsize=FS, fontweight=FONT_W
+    )
+
+    ax.tick_params(axis='both', labelsize=FS)
+    sns.despine()
+    plt.tight_layout()
+    plt.savefig(outpath, dpi=300)
     plt.close(fig)
 
 
 def plot_calib_sweep(df_all: pd.DataFrame, preserve_energy: str, module_set: str,
                      model: str, task: str, outpath: str,
                      policies_to_plot: Optional[List[str]] = None) -> None:
-    """
-    Line plot: metric vs calib for baseline + selected policies.
-    """
     if policies_to_plot is None:
         policies_to_plot = ["grad_direction", "random_index", "smooth_abs"]
 
@@ -368,7 +479,7 @@ def plot_calib_sweep(df_all: pd.DataFrame, preserve_energy: str, module_set: str
         (df_all["module_set"] == module_set) &
         (df_all["model"] == model) &
         (df_all["task"] == task)
-    ].copy()
+        ].copy()
 
     if df.empty:
         return
@@ -394,9 +505,6 @@ def plot_calib_sweep(df_all: pd.DataFrame, preserve_energy: str, module_set: str
 
 def plot_energy_ablation_delta(df_all: pd.DataFrame, module_set: str, calib: int,
                                model: str, policy: str, outpath: str) -> None:
-    """
-    For each task: bar plot of Δ(policy) under energy=l1 vs energy=none (within same module_set/calib/model).
-    """
     tasks = ["GSM8K", "HumanEval", "IFEval", "CSQA"]
     deltas = []
     for energy in ["l1", "none"]:
@@ -406,7 +514,7 @@ def plot_energy_ablation_delta(df_all: pd.DataFrame, module_set: str, calib: int
             (df_all["calib"] == calib) &
             (df_all["model"] == model) &
             (df_all["task"].isin(tasks))
-        ].copy()
+            ].copy()
         df = add_deltas(df)
         df["task"] = pd.Categorical(df["task"], categories=tasks, ordered=True)
         df = df.sort_values("task")
@@ -421,8 +529,8 @@ def plot_energy_ablation_delta(df_all: pd.DataFrame, module_set: str, calib: int
 
     fig = plt.figure(figsize=(7.0, 3.8))
     ax = fig.add_subplot(111)
-    ax.bar(x - width/2, l1_delta, width, label="energy=l1 (Δ)")
-    ax.bar(x + width/2, none_delta, width, label="energy=none (Δ)")
+    ax.bar(x - width / 2, l1_delta, width, label="energy=l1 (Δ)")
+    ax.bar(x + width / 2, none_delta, width, label="energy=none (Δ)")
 
     ax.set_xticks(x)
     ax.set_xticklabels(tasks)
@@ -439,9 +547,6 @@ def plot_locality_tradeoff_delta(df_all: pd.DataFrame, calib: int, preserve_ener
                                  model: str, policy: str,
                                  module_sets: List[str],
                                  outpath: str) -> None:
-    """
-    Grouped bars: per task, show Δ(policy) across module_sets.
-    """
     tasks = ["GSM8K", "HumanEval", "IFEval", "CSQA"]
     x = np.arange(len(tasks))
     width = 0.8 / max(1, len(module_sets))
@@ -456,7 +561,7 @@ def plot_locality_tradeoff_delta(df_all: pd.DataFrame, calib: int, preserve_ener
             (df_all["calib"] == calib) &
             (df_all["model"] == model) &
             (df_all["task"].isin(tasks))
-        ].copy()
+            ].copy()
         if df.empty:
             continue
         df = add_deltas(df)
@@ -478,14 +583,11 @@ def plot_locality_tradeoff_delta(df_all: pd.DataFrame, calib: int, preserve_ener
 
 
 # -----------------------------
-# 4) Main: parse + plot all
+# 4) Main Execution
 # -----------------------------
 def main() -> None:
     ensure_dir("figs")
 
-    # NOTE:
-    # We tag your first big table as preserve_energy="l1" and module_set="residual"
-    # (i.e., your default residual-writing modules). If you want different tags, change here.
     dfs = []
     dfs.append(parse_latex_rows(TABLE_RESIDUAL_L1_SWEEP, TableMeta("l1", "residual", "residual_l1_sweep")))
     dfs.append(parse_latex_rows(TABLE_RESIDUAL_NONE_SWEEP, TableMeta("none", "residual", "residual_none_sweep")))
@@ -494,51 +596,49 @@ def main() -> None:
     dfs.append(parse_latex_rows(TABLE_UP_GATE_L1_CALIB128, TableMeta("l1", "up_gate", "up_gate_l1_128")))
 
     df_all = pd.concat(dfs, ignore_index=True)
-    df_all = df_all.dropna(subset=["abs_select", "smooth_abs", "random_index", "grad_direction"])
+    df_all = df_all.dropna(subset=POLICIES)
     df_all.to_csv("parsed_results.csv", index=False)
 
-    # Default config subset for “main plots”
     df_default = df_all[
         (df_all["preserve_energy"] == "l1") &
         (df_all["module_set"] == "residual") &
         (df_all["calib"] == 128)
-    ].copy()
+        ].copy()
 
-    # ---- (A) Δ-heatmap (policy × task), per model ----
+    # ---- (A) Δ-heatmap ----
     for model in sorted(df_default["model"].unique()):
-        out = f"figs/delta_heatmap_{model.replace('/', '_')}_residual_l1_calib128.png"
+        out = f"figs/delta_heatmap_{model.replace('/', '_')}_residual_l1_calib128.pdf"
         plot_delta_heatmap_one_model(
             df_default, model, out,
             title="Δ Heatmap (policy × task) @ residual, energy=l1, calib=128"
         )
 
-    # ---- (B) Risk–reward scatter ----
-    aligned = ["GSM8K", "HumanEval", "CSQA"]  # treat IFEval as constrained axis
+    # ---- (B) Risk–reward scatter (Optimized) ----
+    aligned = ["GSM8K", "HumanEval", "CSQA"]
     plot_risk_reward(
         df_default,
-        outpath="figs/risk_reward_residual_l1_calib128.png",
+        outpath="figs/risk_reward_residual_l1_calib128.pdf",
         aligned_tasks=aligned,
         constrained_task="IFEval"
     )
 
-    # ---- (C) Guided vs Random scatter (Smooth vs Random; Grad vs Random) ----
+    # ---- (C) Guided vs Random scatter (Optimized) ----
     plot_guided_vs_random(
         df_default,
         guided_policy="smooth_abs",
-        outpath="figs/guided_vs_random_smooth_abs_residual_l1_calib128.png",
-        title="Guided vs Random: smooth_abs vs random_index (Δ over baseline)"
+        outpath="figs/guided_vs_random_smooth_abs_residual_l1_calib128.pdf",
+        title="Guided vs Random: smooth_abs vs random_index"
     )
     plot_guided_vs_random(
         df_default,
         guided_policy="grad_direction",
-        outpath="figs/guided_vs_random_grad_direction_residual_l1_calib128.png",
-        title="Guided vs Random: grad_direction vs random_index (Δ over baseline)"
-    )
+        outpath="figs/guided_vs_random_grad_direction_residual_l1_calib128.pdf",
+        title="")
 
-    # ---- (D) Calibration sweep curves (all tasks × both models) under residual + l1 ----
+    # ---- (D) Calibration sweep ----
     for model in sorted(df_all["model"].unique()):
         for task in ["GSM8K", "HumanEval", "IFEval", "CSQA"]:
-            out = f"figs/calib_sweep_{model.replace('/', '_')}_{task}_residual_l1.png"
+            out = f"figs/calib_sweep_{model.replace('/', '_')}_{task}_residual_l1.pdf"
             plot_calib_sweep(
                 df_all,
                 preserve_energy="l1",
@@ -549,9 +649,9 @@ def main() -> None:
                 policies_to_plot=["grad_direction", "random_index", "smooth_abs", "abs_select"],
             )
 
-    # ---- (E) Energy ablation (Δ grad_direction: l1 vs none), per model @ calib=128 residual ----
+    # ---- (E) Energy ablation ----
     for model in sorted(df_all["model"].unique()):
-        out = f"figs/energy_ablation_delta_{model.replace('/', '_')}_grad_direction_residual_calib128.png"
+        out = f"figs/energy_ablation_delta_{model.replace('/', '_')}_grad_direction_residual_calib128.pdf"
         plot_energy_ablation_delta(
             df_all,
             module_set="residual",
@@ -561,10 +661,10 @@ def main() -> None:
             outpath=out,
         )
 
-    # ---- (F) Locality tradeoff (Δ grad_direction across module sets), per model @ calib=128 l1 ----
+    # ---- (F) Locality tradeoff ----
     module_sets = ["attn_inputs", "up_gate", "residual", "all_modules"]
     for model in sorted(df_all["model"].unique()):
-        out = f"figs/locality_tradeoff_delta_{model.replace('/', '_')}_grad_direction_l1_calib128.png"
+        out = f"figs/locality_tradeoff_delta_{model.replace('/', '_')}_grad_direction_l1_calib128.pdf"
         plot_locality_tradeoff_delta(
             df_all,
             calib=128,
