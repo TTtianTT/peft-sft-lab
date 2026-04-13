@@ -5,8 +5,24 @@ __pycache__/
 .mypy_cache/
 .ruff_cache/
 .DS_Store
+.claude/
 
 runs/
 *.log
 *.jsonl
 
+# Generated experiment outputs and caches.
+eval_out/
+eval_results/llama31_spectral_edit/
+eval_results/llama3_spectral_edit/
+eval_results/new_llama3_spectral_edit/
+eval_results/new_qwen3_spectral_edit/
+eval_results/qwen3_spectral_edit/
+lm_eval_outputs/
+lm_eval_outputs_*/
+outputs/
+runs_refactor_data_20260121/
+u1_intralayer/
+u1_sim_out/
+uv_subspace_batch_out/
+uv_subspace_batch_out_top4/
