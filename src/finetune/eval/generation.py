@@ -30,6 +30,23 @@ class LoadedModel:
     tokenizer: Any
 
 
+def _active_adapter_names(model: Any) -> list[str]:
+    try:
+        active = model.active_adapters
+        if callable(active):
+            active = active()
+    except Exception:
+        active = None
+
+    if active is None:
+        active = getattr(model, "active_adapter", None)
+    if active is None:
+        return []
+    if isinstance(active, str):
+        return [active]
+    return [str(name) for name in active]
+
+
 def load_transformers_model(
     *,
     base_model: str,
@@ -69,6 +86,11 @@ def load_transformers_model(
                 f"Adapter requested but peft is missing: {exc}\nInstall: pip install -U peft"
             ) from exc
         model = PeftModel.from_pretrained(model, adapter_dir)
+        if not getattr(model, "peft_config", None):
+            raise RuntimeError(f"Adapter load failed: no PEFT config found for {adapter_dir}")
+        active_adapters = _active_adapter_names(model)
+        if not active_adapters:
+            raise RuntimeError(f"Adapter load failed: no active adapter after loading {adapter_dir}")
 
     model.eval()
     return LoadedModel(model=model, tokenizer=tokenizer)
@@ -81,12 +103,28 @@ def _model_input_device(model: Any):
         return None
 
 
+def _truncate_at_stop_strings(text: str, stop_strings: list[str] | None) -> str:
+    if not text or not stop_strings:
+        return text
+    cut_idx: int | None = None
+    for marker in stop_strings:
+        idx = text.find(marker)
+        if idx == -1:
+            continue
+        if cut_idx is None or idx < cut_idx:
+            cut_idx = idx
+    if cut_idx is None:
+        return text
+    return text[:cut_idx].rstrip()
+
+
 def generate_greedy(
     *,
     model: Any,
     tokenizer: Any,
     prompt: str,
     max_new_tokens: int,
+    stop_strings: list[str] | None = None,
 ) -> str:
     import torch
 
@@ -104,7 +142,8 @@ def generate_greedy(
             eos_token_id=tokenizer.eos_token_id,
         )
     generated = out[0][inputs["input_ids"].shape[1] :]
-    return tokenizer.decode(generated, skip_special_tokens=True).strip()
+    text = tokenizer.decode(generated, skip_special_tokens=True).strip()
+    return _truncate_at_stop_strings(text, stop_strings)
 
 
 def generate_greedy_vllm_batch(
@@ -114,6 +153,7 @@ def generate_greedy_vllm_batch(
     max_new_tokens: int,
     adapter_dir: str | None = None,
     tensor_parallel_size: int = 1,
+    stop_strings: list[str] | None = None,
 ) -> list[str]:
     try:
         from vllm import LLM, SamplingParams
@@ -139,7 +179,11 @@ def generate_greedy_vllm_batch(
         enable_lora=adapter_dir is not None,
         max_lora_rank=256,
     )
-    params = SamplingParams(temperature=0.0, max_tokens=max_new_tokens)
+    params = SamplingParams(
+        temperature=0.0,
+        max_tokens=max_new_tokens,
+        stop=stop_strings or None,
+    )
     outputs = llm.generate(prompts, params, lora_request=lora_request)
     if not outputs:
         return ["" for _ in prompts]
@@ -149,7 +193,7 @@ def generate_greedy_vllm_batch(
         if not getattr(req_out, "outputs", None):
             texts.append("")
         else:
-            texts.append(req_out.outputs[0].text.strip())
+            texts.append(_truncate_at_stop_strings(req_out.outputs[0].text.strip(), stop_strings))
 
     if len(texts) < len(prompts):
         texts.extend([""] * (len(prompts) - len(texts)))
@@ -166,6 +210,7 @@ def generate_greedy_vllm(
     max_new_tokens: int,
     adapter_dir: str | None = None,
     tensor_parallel_size: int = 1,
+    stop_strings: list[str] | None = None,
 ) -> str:
     outputs = generate_greedy_vllm_batch(
         base_model=base_model,
@@ -173,6 +218,7 @@ def generate_greedy_vllm(
         max_new_tokens=max_new_tokens,
         adapter_dir=adapter_dir,
         tensor_parallel_size=tensor_parallel_size,
+        stop_strings=stop_strings,
     )
     return outputs[0] if outputs else ""
 

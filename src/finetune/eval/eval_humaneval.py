@@ -114,6 +114,7 @@ def run_humaneval_evaluate_functional_correctness(
     n_workers: int,
     timeout: float,
     ignore_incomplete: bool,
+    problem_file: Optional[str] = None,
 ) -> Tuple[dict, Optional[str]]:
     """
     Run HumanEval evaluation. Prefer Python API; fallback to CLI.
@@ -131,6 +132,8 @@ def run_humaneval_evaluate_functional_correctness(
             kwargs["timeout"] = float(timeout)
         if "ignore_incomplete" in sig.parameters:
             kwargs["ignore_incomplete"] = bool(ignore_incomplete)
+        if "problem_file" in sig.parameters and problem_file:
+            kwargs["problem_file"] = str(problem_file)
 
         res = evaluate_functional_correctness(samples_path, **kwargs)
 
@@ -146,21 +149,27 @@ def run_humaneval_evaluate_functional_correctness(
         print(f"[Eval][Warn] Python API failed ({type(e).__name__}: {e}). Fallback to CLI...")
 
     exe = shutil.which("evaluate_functional_correctness")
-    if exe is None:
-        raise RuntimeError(
-            "Cannot find `evaluate_functional_correctness` on PATH.\n"
-            "Install HumanEval:\n"
-            "  git clone https://github.com/openai/human-eval\n"
-            "  pip install -e human-eval\n"
-        )
+    if exe is not None:
+        cmd = [
+            exe,
+            samples_path,
+            f"--k={','.join(map(str, k))}",
+            f"--n_workers={int(n_workers)}",
+            f"--timeout={float(timeout)}",
+        ]
+    else:
+        cmd = [
+            sys.executable,
+            "-m",
+            "human_eval.evaluate_functional_correctness",
+            samples_path,
+            f"--k={','.join(map(str, k))}",
+            f"--n_workers={int(n_workers)}",
+            f"--timeout={float(timeout)}",
+        ]
+    if problem_file:
+        cmd.append(f"--problem_file={problem_file}")
 
-    cmd = [
-        exe,
-        samples_path,
-        f"--k={','.join(map(str, k))}",
-        f"--n_workers={int(n_workers)}",
-        f"--timeout={float(timeout)}",
-    ]
     print("[Eval][CLI] " + " ".join(cmd))
     proc = subprocess.run(cmd, stdout=subprocess.PIPE, stderr=subprocess.STDOUT, text=True)
     print(proc.stdout)
@@ -173,6 +182,15 @@ def run_humaneval_evaluate_functional_correctness(
         results_path = alt if os.path.exists(alt) else results_path
 
     return {}, results_path if os.path.exists(results_path) else None
+
+
+def write_problem_subset_jsonl(path: str, problems: Dict[str, dict], task_ids: List[str]) -> None:
+    rows: List[dict] = []
+    for tid in task_ids:
+        row = dict(problems[tid])
+        row["task_id"] = tid
+        rows.append(row)
+    jsonl_write(path, rows)
 
 
 def parse_results_jsonl(results_path: str) -> Dict[str, List[bool]]:
@@ -407,6 +425,11 @@ def main() -> None:
          for tid, c in zip(task_ids, completions)],
     )
 
+    problem_file = None
+    if args.max_samples is not None and int(args.max_samples) > 0:
+        problem_file = str(out_dir / f"problems_subset_{adapter_tag}.jsonl")
+        write_problem_subset_jsonl(problem_file, problems, task_ids)
+
     # 4) Run evaluate_functional_correctness (temperature=0 => greedy pass@1)
     raw_res, results_path = run_humaneval_evaluate_functional_correctness(
         samples_path=samples_path,
@@ -414,6 +437,7 @@ def main() -> None:
         n_workers=args.eval_n_workers,
         timeout=args.timeout_s,
         ignore_incomplete=bool(args.max_samples is not None and int(args.max_samples) > 0),
+        problem_file=problem_file,
     )
 
     # 5) Parse results and compute pass@1
@@ -433,6 +457,7 @@ def main() -> None:
             "samples_path": samples_path,
             "results_path": results_path,
             "generations_path": gens_path,
+            "problem_file": problem_file,
             "n_generations": 1,
             "temperature": 0.0,
             "top_p": 1.0,

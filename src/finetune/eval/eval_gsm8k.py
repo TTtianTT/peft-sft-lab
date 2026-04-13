@@ -12,6 +12,13 @@ from finetune.eval.generation import (
     load_transformers_model,
     save_json,
 )
+from finetune.eval.fewshot import (
+    PromptStatsAccumulator,
+    load_dataset_split,
+    load_tokenizer_for_prompt_stats,
+    save_exemplars_jsonl,
+    select_fixed_exemplars,
+)
 from finetune.utils import seed_everything
 
 
@@ -22,6 +29,11 @@ _METAMATH_PROMPT_TEMPLATE = (
     "### Instruction:\n{instruction}\n\n"
     "### Response: Let's think step by step."
 )
+
+_NEXT_PROMPT_MARKERS = [
+    "\n\nBelow is an instruction",
+    "\n### Instruction:",
+]
 
 
 def _extract_answer(text: str) -> str:
@@ -65,6 +77,41 @@ def _build_prompt_gsm8k_metamath_style(question: str) -> str:
     return _METAMATH_PROMPT_TEMPLATE.format(instruction=instruction) + "\n"
 
 
+def _build_fewshot_example_text(ex: dict[str, Any]) -> dict[str, Any]:
+    question = str(ex.get("question", "")).strip()
+    answer = str(ex.get("answer", "")).strip()
+    return {
+        "orig_index": ex.get("__fewshot_orig_idx__"),
+        "question": question,
+        "answer": answer,
+        "prompt": _build_prompt_gsm8k_metamath_style(question),
+    }
+
+
+def _build_fewshot_prefix(exemplars: list[dict[str, Any]]) -> str:
+    if not exemplars:
+        return ""
+    blocks = []
+    for ex in exemplars:
+        blocks.append(ex["prompt"] + ex["answer"] + "\n")
+    return "\n".join(blocks).strip() + "\n\n"
+
+
+def _truncate_at_next_prompt(text: str) -> tuple[str, str | None]:
+    cut_idx: int | None = None
+    cut_marker: str | None = None
+    for marker in _NEXT_PROMPT_MARKERS:
+        idx = text.find(marker)
+        if idx == -1:
+            continue
+        if cut_idx is None or idx < cut_idx:
+            cut_idx = idx
+            cut_marker = marker
+    if cut_idx is None:
+        return text, None
+    return text[:cut_idx].rstrip(), cut_marker
+
+
 def build_arg_parser() -> argparse.ArgumentParser:
     p = argparse.ArgumentParser(description="Evaluate GSM8K strict-match accuracy (MetaMath-style prompt).")
     p.add_argument("--base_model", type=str, required=True)
@@ -77,6 +124,8 @@ def build_arg_parser() -> argparse.ArgumentParser:
     p.add_argument("--seed", type=int, default=42)
     p.add_argument("--use_vllm", action="store_true")
     p.add_argument("--tensor_parallel_size", type=int, default=1)
+    p.add_argument("--fewshot_k", type=int, default=0)
+    p.add_argument("--fewshot_seed", type=int, default=42)
     return p
 
 
@@ -101,6 +150,21 @@ def main() -> None:
     if args.max_samples is not None:
         ds = ds.select(range(min(args.max_samples, len(ds))))
 
+    tokenizer_for_stats = load_tokenizer_for_prompt_stats(
+        base_model=args.base_model,
+        adapter_dir=args.adapter_dir,
+    )
+    prompt_stats = PromptStatsAccumulator(tokenizer_for_stats)
+
+    fewshot_exemplars: list[dict[str, Any]] = []
+    fewshot_prefix = ""
+    if args.fewshot_k > 0:
+        source_ds = load_dataset_split("gsm8k", dataset_config="main", split="train")
+        raw_exemplars = select_fixed_exemplars(source_ds, k=args.fewshot_k, seed=args.fewshot_seed)
+        fewshot_exemplars = [_build_fewshot_example_text(ex) for ex in raw_exemplars]
+        fewshot_prefix = _build_fewshot_prefix(fewshot_exemplars)
+        save_exemplars_jsonl(out_dir / "fewshot_exemplars.jsonl", fewshot_exemplars)
+
     loaded = None
     if not args.use_vllm:
         loaded = load_transformers_model(
@@ -112,6 +176,8 @@ def main() -> None:
 
     correct = 0
     total = 0
+    next_prompt_truncation_count = 0
+    stop_strings = _NEXT_PROMPT_MARKERS if args.fewshot_k > 0 else None
 
     with preds_path.open("w", encoding="utf-8") as f:
         if args.use_vllm:
@@ -124,9 +190,11 @@ def main() -> None:
                 gold_raw = str(ex.get("answer", "")).strip()
                 gold = _norm(_extract_answer(gold_raw))
 
-                prompt = _build_prompt_gsm8k_metamath_style(q)
+                base_prompt = _build_prompt_gsm8k_metamath_style(q)
+                prompt = fewshot_prefix + base_prompt
+                base_prompt_tokens, prompt_tokens = prompt_stats.add(base_prompt=base_prompt, prompt=prompt)
                 prompts.append(prompt)
-                records.append((q, gold))
+                records.append((q, gold, base_prompt_tokens, prompt_tokens))
 
             generations = generate_greedy_vllm_batch(
                 base_model=args.base_model,
@@ -134,9 +202,12 @@ def main() -> None:
                 max_new_tokens=args.max_new_tokens,
                 adapter_dir=args.adapter_dir,
                 tensor_parallel_size=args.tensor_parallel_size,
+                stop_strings=stop_strings,
             )
 
-            for (q, gold), gen in zip(records, generations):
+            for (q, gold, base_prompt_tokens, prompt_tokens), raw_gen in zip(records, generations):
+                gen, truncation_marker = _truncate_at_next_prompt(raw_gen)
+                next_prompt_truncation_count += int(truncation_marker is not None)
                 pred = _norm(_extract_answer(gen))
                 is_correct = int(pred == gold)
                 correct += is_correct
@@ -146,7 +217,14 @@ def main() -> None:
                     "question": q,
                     "gold": gold,
                     "prompt_style": "metamath_model_usage",
+                    "fewshot_k": args.fewshot_k,
+                    "base_prompt_tokens": base_prompt_tokens,
+                    "prompt_tokens": prompt_tokens,
+                    "extra_prompt_tokens": prompt_tokens - base_prompt_tokens,
+                    "prediction_text_raw": raw_gen,
                     "prediction_text": gen,
+                    "next_prompt_truncation_marker": truncation_marker,
+                    "next_prompt_truncated": bool(truncation_marker is not None),
                     "prediction_extracted": pred,
                     "correct": bool(is_correct),
                 }
@@ -157,14 +235,19 @@ def main() -> None:
                 gold_raw = str(ex.get("answer", "")).strip()
                 gold = _norm(_extract_answer(gold_raw))
 
-                prompt = _build_prompt_gsm8k_metamath_style(q)
+                base_prompt = _build_prompt_gsm8k_metamath_style(q)
+                prompt = fewshot_prefix + base_prompt
+                base_prompt_tokens, prompt_tokens = prompt_stats.add(base_prompt=base_prompt, prompt=prompt)
 
                 gen = generate_greedy(
                     model=loaded.model,
                     tokenizer=loaded.tokenizer,
                     prompt=prompt,
                     max_new_tokens=args.max_new_tokens,
+                    stop_strings=stop_strings,
                 )
+                gen, truncation_marker = _truncate_at_next_prompt(gen)
+                next_prompt_truncation_count += int(truncation_marker is not None)
 
                 pred = _norm(_extract_answer(gen))
                 is_correct = int(pred == gold)
@@ -175,17 +258,39 @@ def main() -> None:
                     "question": q,
                     "gold": gold,
                     "prompt_style": "metamath_model_usage",
+                    "fewshot_k": args.fewshot_k,
+                    "base_prompt_tokens": base_prompt_tokens,
+                    "prompt_tokens": prompt_tokens,
+                    "extra_prompt_tokens": prompt_tokens - base_prompt_tokens,
                     "prediction_text": gen,
+                    "next_prompt_truncation_marker": truncation_marker,
+                    "next_prompt_truncated": bool(truncation_marker is not None),
                     "prediction_extracted": pred,
                     "correct": bool(is_correct),
                 }
                 f.write(json.dumps(rec, ensure_ascii=False) + "\n")
 
+    prompt_summary = prompt_stats.summary()
     metrics = {
         "accuracy_strict": (correct / total if total else 0.0),
         "correct": correct,
         "total": total,
         "prompt_style": "metamath_model_usage",
+        "fewshot_k": args.fewshot_k,
+        "fewshot_seed": args.fewshot_seed,
+        "fewshot_source_dataset": "gsm8k" if args.fewshot_k > 0 else None,
+        "fewshot_source_config": "main" if args.fewshot_k > 0 else None,
+        "fewshot_source_split": "train" if args.fewshot_k > 0 else None,
+        "fewshot_exemplar_count": len(fewshot_exemplars),
+        "fewshot_exemplar_orig_indices": [ex.get("orig_index") for ex in fewshot_exemplars],
+        "fewshot_prefix_tokens": (
+            len(tokenizer_for_stats(fewshot_prefix, add_special_tokens=False).input_ids)
+            if fewshot_prefix
+            else 0
+        ),
+        "next_prompt_stop_markers": stop_strings,
+        "next_prompt_truncation_count": next_prompt_truncation_count,
+        **prompt_summary,
     }
     save_json(out_dir / "metrics.json", metrics)
 

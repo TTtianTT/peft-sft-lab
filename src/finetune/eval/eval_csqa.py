@@ -6,12 +6,23 @@ import re
 from pathlib import Path
 from typing import Any
 
-from finetune.data.base import format_instruction_response
+from finetune.csqa_prompt import (
+    CSQA_PROMPT_STYLE_CHOICES,
+    build_csqa_prompt,
+    resolve_csqa_prompt_style,
+)
 from finetune.eval.generation import (
     generate_greedy,
     generate_greedy_vllm_batch,
     load_transformers_model,
     save_json,
+)
+from finetune.eval.fewshot import (
+    PromptStatsAccumulator,
+    load_dataset_split,
+    load_tokenizer_for_prompt_stats,
+    save_exemplars_jsonl,
+    select_fixed_exemplars,
 )
 from finetune.utils import seed_everything
 
@@ -77,8 +88,38 @@ def _build_csqa_instruction(example: dict[str, Any]) -> tuple[str, str, str]:
     return question, gold, instruction
 
 
-def _build_csqa_prompt(instruction: str) -> str:
-    return format_instruction_response(instruction=instruction, response="")
+def _build_csqa_prompt(instruction: str, prompt_style: str = "task_native") -> str:
+    return build_csqa_prompt(
+        instruction=instruction,
+        prompt_style=prompt_style,
+        response=None,
+    )
+
+
+def _build_fewshot_example_text(
+    ex: dict[str, Any],
+    prompt_style: str = "task_native",
+) -> dict[str, Any]:
+    question, gold, instruction = _build_csqa_instruction(ex)
+    return {
+        "orig_index": ex.get("__fewshot_orig_idx__"),
+        "id": ex.get("id"),
+        "question": question,
+        "gold": gold,
+        "instruction": instruction,
+        "prompt": build_csqa_prompt(
+            instruction=instruction,
+            prompt_style=prompt_style,
+            response=gold,
+        ),
+    }
+
+
+def _build_fewshot_prefix(exemplars: list[dict[str, Any]]) -> str:
+    if not exemplars:
+        return ""
+    blocks = [ex["prompt"].rstrip() for ex in exemplars]
+    return "\n\n".join(blocks).strip() + "\n\n"
 
 
 def _resolve_split(requested: str) -> tuple[str, str]:
@@ -116,6 +157,15 @@ def build_arg_parser() -> argparse.ArgumentParser:
     p.add_argument("--use_vllm", action="store_true")
     p.add_argument("--tensor_parallel_size", type=int, default=1)
     p.add_argument("--log_every", type=int, default=100)
+    p.add_argument("--fewshot_k", type=int, default=0)
+    p.add_argument("--fewshot_seed", type=int, default=42)
+    p.add_argument(
+        "--prompt_style",
+        type=str,
+        default="auto",
+        choices=list(CSQA_PROMPT_STYLE_CHOICES),
+        help="CSQA prompt style. Use auto to infer legacy adapters from saved run metadata.",
+    )
     return p
 
 
@@ -134,6 +184,12 @@ def main() -> None:
 
     split_to_load, split_note = _resolve_split(args.split)
     print(f"[CSQA] {split_note}")
+    prompt_style_resolution = resolve_csqa_prompt_style(args.prompt_style, args.adapter_dir)
+    print(
+        "[CSQA] "
+        f"Prompt style={prompt_style_resolution.resolved} "
+        f"({prompt_style_resolution.reason})"
+    )
 
     try:
         ds = load_dataset("tau/commonsense_qa", split=split_to_load)
@@ -142,6 +198,24 @@ def main() -> None:
 
     if args.max_samples is not None:
         ds = ds.select(range(min(args.max_samples, len(ds))))
+
+    tokenizer_for_stats = load_tokenizer_for_prompt_stats(
+        base_model=args.base_model,
+        adapter_dir=args.adapter_dir,
+    )
+    prompt_stats = PromptStatsAccumulator(tokenizer_for_stats)
+
+    fewshot_exemplars: list[dict[str, Any]] = []
+    fewshot_prefix = ""
+    if args.fewshot_k > 0:
+        source_ds = load_dataset_split("tau/commonsense_qa", split="train")
+        raw_exemplars = select_fixed_exemplars(source_ds, k=args.fewshot_k, seed=args.fewshot_seed)
+        fewshot_exemplars = [
+            _build_fewshot_example_text(ex, prompt_style=prompt_style_resolution.resolved)
+            for ex in raw_exemplars
+        ]
+        fewshot_prefix = _build_fewshot_prefix(fewshot_exemplars)
+        save_exemplars_jsonl(out_dir / "fewshot_exemplars.jsonl", fewshot_exemplars)
 
     loaded = None
     if not args.use_vllm:
@@ -164,7 +238,12 @@ def main() -> None:
             records: list[dict[str, Any]] = []
             for ex in examples:
                 q, gold, instruction = _build_csqa_instruction(ex)
-                prompt = _build_csqa_prompt(instruction)
+                base_prompt = _build_csqa_prompt(
+                    instruction,
+                    prompt_style=prompt_style_resolution.resolved,
+                )
+                prompt = fewshot_prefix + base_prompt
+                base_prompt_tokens, prompt_tokens = prompt_stats.add(base_prompt=base_prompt, prompt=prompt)
                 prompts.append(prompt)
                 records.append(
                     {
@@ -172,6 +251,8 @@ def main() -> None:
                         "question": q,
                         "gold": gold,
                         "instruction": instruction,
+                        "base_prompt_tokens": base_prompt_tokens,
+                        "prompt_tokens": prompt_tokens,
                     }
                 )
 
@@ -201,6 +282,11 @@ def main() -> None:
                             "question": rec["question"],
                             "gold": rec["gold"],
                             "instruction": rec["instruction"],
+                            "prompt_style": prompt_style_resolution.resolved,
+                            "fewshot_k": args.fewshot_k,
+                            "base_prompt_tokens": rec["base_prompt_tokens"],
+                            "prompt_tokens": rec["prompt_tokens"],
+                            "extra_prompt_tokens": rec["prompt_tokens"] - rec["base_prompt_tokens"],
                             "prediction_text": gen,
                             "prediction_letter": pred_letter,
                             "correct": bool(is_correct),
@@ -217,7 +303,12 @@ def main() -> None:
             assert loaded is not None
             for i, ex in enumerate(ds, start=1):
                 q, gold, instruction = _build_csqa_instruction(ex)
-                prompt = _build_csqa_prompt(instruction)
+                base_prompt = _build_csqa_prompt(
+                    instruction,
+                    prompt_style=prompt_style_resolution.resolved,
+                )
+                prompt = fewshot_prefix + base_prompt
+                base_prompt_tokens, prompt_tokens = prompt_stats.add(base_prompt=base_prompt, prompt=prompt)
 
                 gen = generate_greedy(
                     model=loaded.model,
@@ -240,6 +331,11 @@ def main() -> None:
                             "question": q,
                             "gold": gold,
                             "instruction": instruction,
+                            "prompt_style": prompt_style_resolution.resolved,
+                            "fewshot_k": args.fewshot_k,
+                            "base_prompt_tokens": base_prompt_tokens,
+                            "prompt_tokens": prompt_tokens,
+                            "extra_prompt_tokens": prompt_tokens - base_prompt_tokens,
                             "prediction_text": gen,
                             "prediction_letter": pred_letter,
                             "correct": bool(is_correct),
@@ -252,6 +348,7 @@ def main() -> None:
                 if args.log_every > 0 and (i % args.log_every == 0 or i == len(ds)):
                     print(f"[CSQA] {i}/{len(ds)} done | acc={correct/total:.4f}")
 
+    prompt_summary = prompt_stats.summary()
     metrics = {
         "dataset": "tau/commonsense_qa",
         "requested_split": args.split,
@@ -263,11 +360,26 @@ def main() -> None:
         "pred_histogram": pred_hist,
         "base_model": args.base_model,
         "adapter_dir": args.adapter_dir,
+        "prompt_style_requested": args.prompt_style,
+        "prompt_style_resolved": prompt_style_resolution.resolved,
+        "prompt_style_reason": prompt_style_resolution.reason,
         "use_vllm": bool(args.use_vllm),
         "tensor_parallel_size": args.tensor_parallel_size,
         "max_new_tokens": args.max_new_tokens,
         "seed": args.seed,
         "dtype": args.dtype,
+        "fewshot_k": args.fewshot_k,
+        "fewshot_seed": args.fewshot_seed,
+        "fewshot_source_dataset": "tau/commonsense_qa" if args.fewshot_k > 0 else None,
+        "fewshot_source_split": "train" if args.fewshot_k > 0 else None,
+        "fewshot_exemplar_count": len(fewshot_exemplars),
+        "fewshot_exemplar_orig_indices": [ex.get("orig_index") for ex in fewshot_exemplars],
+        "fewshot_prefix_tokens": (
+            len(tokenizer_for_stats(fewshot_prefix, add_special_tokens=False).input_ids)
+            if fewshot_prefix
+            else 0
+        ),
+        **prompt_summary,
     }
     save_json(out_dir / "metrics.json", metrics)
     print(f"[CSQA] Done. accuracy={metrics['accuracy']:.4f} ({correct}/{total})")

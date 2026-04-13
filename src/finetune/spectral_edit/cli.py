@@ -15,11 +15,20 @@ import torch
 from peft import PeftModel
 from transformers import AutoModelForCausalLM, AutoTokenizer
 
-from .calib import build_calib_formatter, load_calibration_split, make_calib_batch, sample_calibration_examples
+from finetune.csqa_prompt import resolve_csqa_prompt_style
+
+from .calib import (
+    build_calib_formatter,
+    load_calibration_split,
+    make_calib_batch,
+    resolve_calibration,
+    sample_calibration_examples,
+)
 from .edit_strategies import EditConfig, apply_spectral_edit
 from .hooks import HOOK_CTX, ModuleSpec, register_sigma_hooks, remove_hooks
 from .io import (
     ensure_local_lora_dir,
+    find_adapter_weight_file,
     get_scaling_for_module,
     layer_idx_from_module_prefix,
     load_adapter_config,
@@ -27,6 +36,7 @@ from .io import (
     parse_lora_ab_key,
     save_lora_state_dict,
 )
+from .rmt import bulk_noise_mask_from_summary, estimate_mp_summary
 from .svd import lowrank_svd_from_ba, rebuild_ba_from_uv_sigma
 
 
@@ -35,6 +45,49 @@ def set_seed(seed: int) -> None:
     random.seed(seed)
     torch.manual_seed(seed)
     torch.cuda.manual_seed_all(seed)
+
+
+def _normalize_model_ref(value: Optional[str]) -> Optional[str]:
+    if value is None:
+        return None
+    ref = str(value).strip().rstrip("/")
+    if not ref:
+        return None
+    if os.path.isdir(ref):
+        return os.path.abspath(ref)
+    return ref
+
+
+def _assert_adapter_matches_base_model(adapter_cfg: dict, base_model: str, lora_dir: str) -> None:
+    cfg_base = _normalize_model_ref(adapter_cfg.get("base_model_name_or_path"))
+    requested = _normalize_model_ref(base_model)
+    if cfg_base is None or requested is None:
+        return
+    if cfg_base == requested:
+        return
+    if os.path.basename(cfg_base) == os.path.basename(requested):
+        return
+    raise ValueError(
+        "Adapter/base-model mismatch: "
+        f"adapter_config.json expects {cfg_base!r} but --base_model={requested!r} for {lora_dir}."
+    )
+
+
+def _active_adapter_names(model: PeftModel) -> List[str]:
+    try:
+        active = model.active_adapters
+        if callable(active):
+            active = active()
+    except Exception:
+        active = None
+
+    if active is None:
+        active = getattr(model, "active_adapter", None)
+    if active is None:
+        return []
+    if isinstance(active, str):
+        return [active]
+    return [str(name) for name in active]
 
 
 def run_edit(args) -> None:
@@ -47,7 +100,28 @@ def run_edit(args) -> None:
 
     lora_dir = ensure_local_lora_dir(args.lora_path, cache_dir=args.cache_dir)
     adapter_cfg = load_adapter_config(lora_dir)
+    _assert_adapter_matches_base_model(adapter_cfg, args.base_model, lora_dir)
+    adapter_weights_path, _ = find_adapter_weight_file(lora_dir)
     sd, fmt = load_lora_state_dict(lora_dir)
+
+    calibration_mode = args.calibration_mode
+    if calibration_mode == "explicit" and args.calib_dataset is None and args.task is not None:
+        calibration_mode = "per_task"
+
+    resolved_calib = resolve_calibration(
+        task=args.task,
+        calib_dataset=args.calib_dataset,
+        calib_config=args.calib_config,
+        calib_split=args.calib_split,
+        calib_text_fields=args.calib_text_fields,
+        selection_mode=calibration_mode,
+    )
+    resolved_csqa_prompt_style = None
+    resolved_csqa_prompt_reason = None
+    if resolved_calib.dataset.strip().lower() in {"tau/commonsense_qa", "tau/commonsenseqa"}:
+        prompt_resolution = resolve_csqa_prompt_style(args.csqa_prompt_style, lora_dir)
+        resolved_csqa_prompt_style = prompt_resolution.resolved
+        resolved_csqa_prompt_reason = prompt_resolution.reason
 
     if os.path.abspath(args.out_dir) != os.path.abspath(lora_dir):
         if os.path.exists(args.out_dir):
@@ -97,8 +171,16 @@ def run_edit(args) -> None:
     ).to(device)
 
     model = PeftModel.from_pretrained(base, lora_dir, is_trainable=True).to(device)
+    if not getattr(model, "peft_config", None):
+        raise RuntimeError(f"Loaded model has no PEFT config for adapter {lora_dir}")
+    active_adapters = _active_adapter_names(model)
+    if not active_adapters:
+        raise RuntimeError(f"No active adapter detected after loading {lora_dir}")
     model.eval()
     model.config.use_cache = False
+    if getattr(args, "gradient_checkpointing", False):
+        model.gradient_checkpointing_enable(gradient_checkpointing_kwargs={"use_reentrant": False})
+        print("[Info] Gradient checkpointing enabled")
 
     for n, p in model.named_parameters():
         if "lora_" in n:
@@ -144,15 +226,37 @@ def run_edit(args) -> None:
 
     handles = register_sigma_hooks(specs)
 
-    calib_config = args.calib_config
-    if calib_config is None and args.calib_dataset == "gsm8k":
-        calib_config = "main"
-
-    formatter, normalized_fields = build_calib_formatter(args.calib_dataset, args.calib_text_fields)
+    formatter, normalized_fields = build_calib_formatter(
+        resolved_calib.dataset,
+        resolved_calib.text_fields,
+        csqa_prompt_style=resolved_csqa_prompt_style or "task_native",
+    )
+    checkpoint_path = lora_dir
+    print(
+        "[Config] "
+        f"task={resolved_calib.task or 'unknown'} "
+        f"calibration_mode={resolved_calib.selection_mode}"
+    )
+    print(
+        "[Config] "
+        f"calibration_dataset={resolved_calib.dataset} "
+        f"calibration_config={resolved_calib.config} "
+        f"calibration_split={resolved_calib.split} "
+        f"calibration_examples={args.calib_samples}"
+    )
+    print(f"[Config] adapter_path={args.lora_path}")
+    print(f"[Config] checkpoint_path={checkpoint_path}")
+    print(f"[Config] adapter_weights={adapter_weights_path}")
+    if resolved_csqa_prompt_style is not None:
+        print(
+            "[Config] "
+            f"csqa_prompt_style={resolved_csqa_prompt_style} "
+            f"(requested={args.csqa_prompt_style}; reason={resolved_csqa_prompt_reason})"
+        )
     ds_split = load_calibration_split(
-        args.calib_dataset,
-        calib_config,
-        args.calib_split,
+        resolved_calib.dataset,
+        resolved_calib.config,
+        resolved_calib.split,
         cache_dir=args.cache_dir,
     )
     calib_seed = args.calib_seed if args.calib_seed is not None else args.seed
@@ -164,6 +268,12 @@ def run_edit(args) -> None:
         args.calib_start,
     )
     ncal = len(calib_examples)
+    if ncal == 0:
+        raise RuntimeError(
+            "Resolved calibration split produced zero examples. "
+            f"dataset={resolved_calib.dataset} split={resolved_calib.split} start={args.calib_start} "
+            f"requested={args.calib_samples}"
+        )
 
     bs = max(1, args.calib_batch_size)
     total_loss = 0.0
@@ -173,7 +283,8 @@ def run_edit(args) -> None:
 
     for i in range(0, ncal, bs):
         batch_ex = calib_examples[i : i + bs]
-        input_ids, attn_mask, labels = make_calib_batch(tok, batch_ex, formatter, add_eos=True)
+        max_seq_len = getattr(args, "calib_max_seq_len", None)
+        input_ids, attn_mask, labels = make_calib_batch(tok, batch_ex, formatter, add_eos=True, max_seq_len=max_seq_len)
         input_ids = input_ids.to(device)
         attn_mask = attn_mask.to(device)
         labels = labels.to(device)
@@ -246,6 +357,53 @@ def run_edit(args) -> None:
 
         sigma_new, stats = apply_spectral_edit(sigma0, g, edit_config)
 
+        if args.rmt_bulk_only:
+            rmt_summary = estimate_mp_summary(
+                singular_values=sigma0.tolist(),
+                out_dim=int(spec.U.shape[0]),
+                in_dim=int(spec.Vh.shape[1]),
+                tail_count=args.rmt_tail_count,
+                edge_margin=args.rmt_edge_margin,
+            )
+            editable_mask = bulk_noise_mask_from_summary(rmt_summary, device=sigma_new.device)
+            frozen_mask = ~editable_mask
+
+            sigma_masked = sigma0.clone()
+            sigma_masked[editable_mask] = sigma_new[editable_mask]
+
+            if args.preserve_energy != "none" and int(editable_mask.sum().item()) > 0:
+                if args.preserve_energy == "l1":
+                    target_edit = sigma0[editable_mask].sum().clamp_min(0.0)
+                    current_edit = sigma_masked[editable_mask].sum().clamp_min(1e-8)
+                    scale = target_edit / current_edit
+                elif args.preserve_energy == "l2":
+                    target_edit = torch.linalg.norm(sigma0[editable_mask]).clamp_min(0.0)
+                    current_edit = torch.linalg.norm(sigma_masked[editable_mask]).clamp_min(1e-8)
+                    scale = target_edit / current_edit
+                else:
+                    scale = torch.tensor(1.0, dtype=sigma_masked.dtype, device=sigma_masked.device)
+                sigma_masked[editable_mask] = sigma_masked[editable_mask] * scale
+
+            sigma_new = sigma_masked
+            stats["rmt_guided"] = True
+            stats["rmt_tail_count"] = int(rmt_summary["tail_count"])
+            stats["rmt_edge_margin"] = float(args.rmt_edge_margin)
+            stats["rmt_theoretical_sigma_plus"] = float(rmt_summary["theoretical_sigma_plus"])
+            stats["rmt_conservative_sigma_plus"] = float(rmt_summary["conservative_sigma_plus"])
+            stats["rmt_signal_count"] = int(rmt_summary["label_counts"]["likely_signal"])
+            stats["rmt_near_edge_count"] = int(rmt_summary["label_counts"]["near_edge"])
+            stats["rmt_bulk_noise_count"] = int(rmt_summary["label_counts"]["likely_bulk_noise"])
+            stats["rmt_noise_ratio"] = float(rmt_summary["noise_ratio"])
+            stats["rmt_frozen_count"] = int(frozen_mask.sum().item())
+            stats["rmt_editable_count"] = int(editable_mask.sum().item())
+            stats["rmt_component_labels"] = [
+                comp["rmt_label"] for comp in rmt_summary["components"]
+            ]
+            stats["sigma0_sum"] = float(sigma0.sum().item())
+            stats["sigma_new_sum"] = float(sigma_new.sum().item())
+            stats["sigma0_top1"] = float(sigma0.max().item())
+            stats["sigma_new_top1"] = float(sigma_new.max().item())
+
         U = spec.U.to(device)
         Vh = spec.Vh.to(device)
         sigma_new_gpu = sigma_new.to(device)
@@ -265,14 +423,22 @@ def run_edit(args) -> None:
 
     meta = {
         "base_model": args.base_model,
+        "task": resolved_calib.task,
         "lora_path": args.lora_path,
+        "resolved_lora_path": lora_dir,
+        "checkpoint_path": checkpoint_path,
+        "adapter_weight_path": adapter_weights_path,
         "target_modules": args.target_modules,
         "layer_min": args.layer_min,
         "layer_max": args.layer_max,
-        "calib_dataset": args.calib_dataset,
-        "calib_config": calib_config,
-        "calib_split": args.calib_split,
+        "calibration_mode": resolved_calib.selection_mode,
+        "calib_dataset": resolved_calib.dataset,
+        "calib_config": resolved_calib.config,
+        "calib_split": resolved_calib.split,
         "calib_text_fields": normalized_fields,
+        "csqa_prompt_style_requested": args.csqa_prompt_style,
+        "csqa_prompt_style": resolved_csqa_prompt_style,
+        "csqa_prompt_style_reason": resolved_csqa_prompt_reason,
         "calib_shuffle": args.calib_shuffle,
         "calib_seed": calib_seed,
         "calib_start": args.calib_start,
@@ -287,6 +453,9 @@ def run_edit(args) -> None:
         "mid_factor": args.mid_factor,
         "grad_norm": args.grad_norm,
         "preserve_energy": args.preserve_energy,
+        "rmt_bulk_only": bool(args.rmt_bulk_only),
+        "rmt_tail_count": args.rmt_tail_count,
+        "rmt_edge_margin": args.rmt_edge_margin,
         "seed": args.seed,
     }
 
@@ -315,6 +484,19 @@ def build_arg_parser() -> argparse.ArgumentParser:
     edit_parser.add_argument("--base_model", type=str, required=True, help="HuggingFace model ID for base model")
     edit_parser.add_argument("--lora_path", type=str, required=True, help="Path or HF ID for LoRA adapter")
     edit_parser.add_argument("--out_dir", type=str, required=True, help="Output directory for edited adapter")
+    edit_parser.add_argument(
+        "--task",
+        type=str,
+        default=None,
+        help="Task name used to resolve the default calibration dataset when --calib_dataset is omitted.",
+    )
+    edit_parser.add_argument(
+        "--calibration_mode",
+        type=str,
+        default="explicit",
+        choices=["explicit", "per_task", "shared"],
+        help="Why this calibration dataset was selected (logged into metadata).",
+    )
 
     edit_parser.add_argument(
         "--target_modules",
@@ -332,27 +514,34 @@ def build_arg_parser() -> argparse.ArgumentParser:
     edit_parser.add_argument(
         "--calib_dataset",
         type=str,
-        default="gsm8k",
-        help="Calibration dataset (default: gsm8k)",
+        default=None,
+        help="Calibration dataset. Omit this and pass --task to use the task default.",
     )
     edit_parser.add_argument(
         "--calib_config",
         type=str,
         default=None,
-        help="Dataset config name (default: main for gsm8k)",
+        help="Dataset config name. Defaults to the task/dataset default when available.",
     )
     edit_parser.add_argument(
         "--calib_split",
         type=str,
-        default="train",
-        help="Dataset split for calibration (default: train)",
+        default=None,
+        help="Dataset split for calibration. Defaults to the task/dataset default when available.",
     )
     edit_parser.add_argument(
         "--calib_text_fields",
         type=str,
         nargs="*",
         default=None,
-        help="Text field(s) for prompt/answer (override GSM8K default)",
+        help="Text field(s) for prompt/answer (override dataset-specific defaults)",
+    )
+    edit_parser.add_argument(
+        "--csqa_prompt_style",
+        type=str,
+        default="auto",
+        choices=["auto", "task_native", "alpaca_legacy"],
+        help="Prompt style for CSQA calibration examples. Use auto to infer legacy adapters from run metadata.",
     )
     edit_parser.add_argument(
         "--calib_shuffle",
@@ -477,7 +666,28 @@ def build_arg_parser() -> argparse.ArgumentParser:
         default=0.0,
         help="Minimum sigma value after editing",
     )
+    edit_parser.add_argument(
+        "--rmt_bulk_only",
+        action="store_true",
+        help="Freeze non-bulk singular components under a conservative MP-style mask and only edit RMT bulk/noise components.",
+    )
+    edit_parser.add_argument(
+        "--rmt_tail_count",
+        type=int,
+        default=0,
+        help="Number of smallest singular values treated as the MP bulk candidate set. 0 means rank//2.",
+    )
+    edit_parser.add_argument(
+        "--rmt_edge_margin",
+        type=float,
+        default=0.10,
+        help="Relative margin around the conservative MP edge for near-edge classification.",
+    )
 
+    edit_parser.add_argument("--gradient_checkpointing", action="store_true",
+                             help="Enable gradient checkpointing to reduce memory")
+    edit_parser.add_argument("--calib_max_seq_len", type=int, default=None,
+                             help="Truncate calibration sequences to this length (helps OOM on long sequences)")
     edit_parser.add_argument("--cache_dir", type=str, default=None, help="Cache directory for HF downloads")
     edit_parser.add_argument("--seed", type=int, default=0, help="Random seed")
 

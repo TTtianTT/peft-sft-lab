@@ -2,7 +2,8 @@ from __future__ import annotations
 
 from typing import Any
 
-from finetune.data.base import TaskPlugin, format_instruction_response
+from finetune.csqa_prompt import build_csqa_prompt
+from finetune.data.base import TaskPlugin
 
 _LABEL_ORDER = ["A", "B", "C", "D", "E"]
 
@@ -115,4 +116,8 @@ class CommonsenseQATask(TaskPlugin):
                 f"Question:\n{question}\n\nChoices:\n" + "\n".join(lines) + "\n\n"
                 "Answer with a single letter: A, B, C, D, or E."
         )
-        return f"{instruction}\n{answer}"
+        return build_csqa_prompt(
+            instruction=instruction,
+            prompt_style="task_native",
+            response=answer,
+        )
