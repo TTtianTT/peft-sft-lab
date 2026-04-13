@@ -1,31 +1,23 @@
 #!/usr/bin/env python3
 """
-Run spectral edits on LoRA/LoRA+ adapters and evaluate with lm_eval (vLLM).
+Run magnitude-only spectral edits on LoRA/LoRA+ adapters and evaluate with lm_eval (vLLM).
 
 This script:
   - Discovers final adapters under one or more runs roots (skipping checkpoints).
-  - Applies spectral edits using the CLI
+  - Applies magnitude-only spectral edits where scores are singular values (no gradients).
   - Evaluates baseline (no adapter), unedited adapter, and edited adapters
     with lm_eval harness using the vLLM backend.
 
-IMPORTANT (modified behavior):
-  - vLLM LoRA loading is DISABLED. Any adapter evaluation is done via FORCE MERGE:
-      adapter -> merged full model dir -> lm_eval(vLLM) on merged dir.
-  - After each run_lm_eval call, we aggressively kill leftover vLLM processes
-    (process group) and clear CUDA cache to avoid zombie GPU memory usage.
+IMPORTANT (magnitude baseline):
+  - No calibration, no backprop. The sensitivity score is sigma_k itself.
+  - Edited adapters are created in temporary directories and deleted after eval.
+  - Optional vLLM LoRA loading with fallback merge.
 
 Outputs are stored under:
   {out_root}/{base_model_tag}/{task}/{adapter_type}/{profile}/{rank}/{seed}/{variant}/
 
-Edited adapters are stored under:
-  {out_root}/edited_adapters/{base_model_tag}/{task}/{adapter_type}/{profile}/{rank}/{seed}/{policy}/
-
-Usage:
-  python scripts/run_lm_eval_harness_spectral_edits.py \
-    --runs_roots /path/to/meta-llama-Llama-3.1-8B /path/to/Qwen-Qwen3-8B \
-    --out_root /path/to/lm_eval_outputs \
-    --policies abs_select smooth_abs random_index grad_direction \
-    --merge_device cpu
+Temporary edited adapters are stored under:
+  {tmp_dir}/edited_*/ (deleted after each evaluation)
 """
 
 from __future__ import annotations
@@ -38,11 +30,11 @@ import os
 import re
 import shlex
 import shutil
+import signal
 import subprocess
 import sys
-import time
-import signal
 import tempfile
+import time
 from dataclasses import asdict, dataclass
 from datetime import datetime
 from pathlib import Path
@@ -54,23 +46,16 @@ SRC_DIR = REPO_ROOT / "src"
 if str(SRC_DIR) not in sys.path:
     sys.path.insert(0, str(SRC_DIR))
 
-from finetune.csqa_prompt import CSQA_PROMPT_STYLE_CHOICES, resolve_csqa_prompt_style
-from finetune.spectral_edit.calib import CalibrationSpec, resolve_calibration
+from finetune.spectral_edit.edit_strategies import EditConfig, apply_spectral_edit
+from finetune.spectral_edit.io import load_lora_state_dict, parse_lora_ab_key, save_lora_state_dict
+from finetune.spectral_edit.svd import lowrank_svd_from_ba, rebuild_ba_from_uv_sigma
 
 
 # ============================================================================
 # Constants
 # ============================================================================
 
-EDIT_POLICIES = ["random_index", "smooth_abs", "rmt_guided_smooth_abs", "abs_select", "grad_direction"]
-
-METHOD_TO_MODE = {
-    "random_index": "random_index",
-    "smooth_abs": "smooth_abs",
-    "rmt_guided_smooth_abs": "smooth_abs",
-    "abs_select": "abs_select",
-    "grad_direction": "gd",
-}
+EDIT_POLICIES = ["abs_select", "smooth_abs", "gd"]
 
 BASE_MODEL_TAG_TO_ID = {
     "meta-llama-Llama-3.1-8B": "meta-llama/Llama-3.1-8B",
@@ -156,13 +141,7 @@ class EvalRecord:
     rank: str
     seed: str
     variant: str
-    calibration_mode: str
-    calib_dataset: str
-    calib_config: Optional[str]
-    calib_split: str
-    calib_samples: int
     adapter_dir: Optional[str]
-    adapter_checkpoint_path: Optional[str]
     edited_adapter_dir: Optional[str]
     output_dir: str
     used_vllm_lora: bool
@@ -217,6 +196,35 @@ def read_lora_rank(adapter_dir: Path, rank_hint: Optional[str]) -> Optional[int]
         except Exception:
             pass
     return parse_rank_value(rank_hint)
+
+
+def infer_lora_rank_from_state_dict(adapter_dir: Path) -> Optional[int]:
+    try:
+        state_dict, _ = load_lora_state_dict(str(adapter_dir))
+    except Exception:
+        return None
+
+    rank = None
+    for key, tensor in state_dict.items():
+        parsed = parse_lora_ab_key(key)
+        if not parsed:
+            continue
+        _, which, _ = parsed
+        if which == "A":
+            r = tensor.shape[0]
+        elif which == "B":
+            r = tensor.shape[1]
+        else:
+            continue
+        rank = r if rank is None else max(rank, r)
+    return rank
+
+
+def get_lora_rank(adapter_dir: Path, rank_hint: Optional[str]) -> Optional[int]:
+    rank = read_lora_rank(adapter_dir, rank_hint)
+    if rank is not None:
+        return rank
+    return infer_lora_rank_from_state_dict(adapter_dir)
 
 
 def parse_adapter_path(adapter_dir: Path, runs_root: Path) -> Optional[AdapterInfo]:
@@ -320,57 +328,6 @@ def write_text(path: Path, content: str) -> None:
     path.parent.mkdir(parents=True, exist_ok=True)
     with open(path, "w") as f:
         f.write(content)
-
-
-def write_json_pretty(path: Path, data: Dict[str, Any]) -> None:
-    path.parent.mkdir(parents=True, exist_ok=True)
-    with open(path, "w") as f:
-        json.dump(data, f, indent=2, sort_keys=True)
-
-
-def normalize_model_ref(value: Optional[str]) -> Optional[str]:
-    if value is None:
-        return None
-    ref = str(value).strip().rstrip("/")
-    if not ref:
-        return None
-    if os.path.isdir(ref):
-        return os.path.abspath(ref)
-    return ref
-
-
-def active_adapter_names(model: Any) -> List[str]:
-    try:
-        active = model.active_adapters
-        if callable(active):
-            active = active()
-    except Exception:
-        active = None
-
-    if active is None:
-        active = getattr(model, "active_adapter", None)
-    if active is None:
-        return []
-    if isinstance(active, str):
-        return [active]
-    return [str(name) for name in active]
-
-
-def values_match(actual: Any, expected: Any) -> bool:
-    if isinstance(actual, Path):
-        actual = str(actual)
-    if isinstance(expected, Path):
-        expected = str(expected)
-    if isinstance(actual, list) and isinstance(expected, list):
-        return [str(v) for v in actual] == [str(v) for v in expected]
-    return actual == expected
-
-
-def metadata_subset_matches(actual: Dict[str, Any], expected: Dict[str, Any]) -> Tuple[bool, Optional[str]]:
-    for key, value in expected.items():
-        if not values_match(actual.get(key), value):
-            return False, key
-    return True, None
 
 
 def format_cmd(cmd: List[str], env_prefix: Optional[Dict[str, str]] = None) -> str:
@@ -587,251 +544,115 @@ def load_existing_results(
     return raw, metrics, num_examples, None, result_path
 
 
-# ============================================================================
-# Calibration / request metadata
-# ============================================================================
-
-def resolve_adapter_calibration(
-    *,
-    adapter: AdapterInfo,
-    args: argparse.Namespace,
-    multi_task: bool,
-) -> CalibrationSpec:
-    if args.shared_calibration:
-        if not args.calib_dataset:
-            raise ValueError("--shared_calibration requires --calib_dataset.")
-        selection_mode = "shared"
-    elif args.calib_dataset and multi_task:
-        raise ValueError(
-            "--calib_dataset would apply to multiple tasks. "
-            "Pass --shared_calibration to do that explicitly, or omit --calib_dataset for per-task defaults."
-        )
-    elif args.calib_dataset:
-        selection_mode = "explicit"
+def infer_used_lora_from_results(raw: Dict[str, Any]) -> bool:
+    model_args = ""
+    if isinstance(raw.get("config"), dict):
+        model_args = raw.get("config", {}).get("model_args", "") or ""
     else:
-        selection_mode = "per_task"
+        model_args = raw.get("model_args", "") or ""
+    return "lora_local_path=" in model_args or "lora_path=" in model_args
 
-    return resolve_calibration(
-        task=adapter.task,
-        calib_dataset=args.calib_dataset,
-        calib_config=args.calib_config,
-        calib_split=args.calib_split,
-        calib_text_fields=args.calib_text_fields,
-        selection_mode=selection_mode,
+
+# ============================================================================
+# Magnitude-only spectral editing
+# ============================================================================
+
+def build_magnitude_edit_config(policy: str, preserve_energy: str) -> EditConfig:
+    config = EditConfig(
+        mode=policy,
+        core_frac=0.2,
+        noise_frac=0.2,
+        amp_factor=1.25,
+        sup_factor=0.80,
+        smooth_temperature=0.35,
+        smooth_center_q=0.5,
+        update_mode="multiplicative",
+        asymmetric_update=True,
+        eta_suppress=2.0,
+        eta_enhance=0.2,
+        grad_norm="mean_abs",
+        preserve_energy=preserve_energy,
+        sigma_clip_min=0.0,
     )
+    return config
 
 
-def build_edit_request(
-    *,
-    adapter: AdapterInfo,
-    policy: str,
-    calib_spec: CalibrationSpec,
-    args: argparse.Namespace,
-) -> Dict[str, Any]:
-    resolved_csqa_prompt_style = None
-    if calib_spec.dataset.strip().lower() in {"tau/commonsense_qa", "tau/commonsenseqa"}:
-        resolved_csqa_prompt_style = resolve_csqa_prompt_style(
-            args.csqa_prompt_style,
-            adapter.adapter_dir,
-        ).resolved
-    return {
-        "base_model": adapter.base_model_id,
-        "task": calib_spec.task or adapter.task,
-        "lora_path": str(adapter.adapter_dir),
-        "resolved_lora_path": str(adapter.adapter_dir),
-        "checkpoint_path": str(adapter.adapter_dir),
-        "target_modules": list(args.target_modules),
-        "calibration_mode": calib_spec.selection_mode,
-        "calib_dataset": calib_spec.dataset,
-        "calib_config": calib_spec.config,
-        "calib_split": calib_spec.split,
-        "calib_text_fields": calib_spec.text_fields,
-        "csqa_prompt_style_requested": (
-            args.csqa_prompt_style
-            if resolved_csqa_prompt_style is not None
-            else None
-        ),
-        "csqa_prompt_style": resolved_csqa_prompt_style,
-        "calib_shuffle": bool(args.calib_shuffle),
-        "calib_seed": args.calib_seed if args.calib_seed is not None else args.seed,
-        "calib_start": args.calib_start,
-        "calib_samples": args.calib_samples,
-        "calib_batch_size": args.calib_batch_size,
-        "mode": METHOD_TO_MODE[policy],
-        "rmt_bulk_only": bool(policy == "rmt_guided_smooth_abs"),
-        "rmt_tail_count": args.rmt_tail_count if policy == "rmt_guided_smooth_abs" else None,
-        "rmt_edge_margin": args.rmt_edge_margin if policy == "rmt_guided_smooth_abs" else None,
-        "grad_norm": "mean_abs",
-        "preserve_energy": args.preserve_energy,
-        "seed": args.seed,
-    }
+def copy_adapter_assets(src_dir: Path, dst_dir: Path) -> None:
+    dst_dir.mkdir(parents=True, exist_ok=True)
+    for path in src_dir.iterdir():
+        if path.name.startswith("adapter_model"):
+            continue
+        if path.is_file():
+            shutil.copy2(path, dst_dir / path.name)
+        elif path.is_dir():
+            shutil.copytree(path, dst_dir / path.name, dirs_exist_ok=True)
 
 
-def existing_edited_adapter_matches(edited_dir: Path, request: Dict[str, Any]) -> Tuple[bool, Optional[str]]:
-    meta_path = edited_dir / "spectral_edit_meta.json"
-    raw = read_json(meta_path)
-    if not raw or not isinstance(raw.get("meta"), dict):
-        return False, "missing spectral_edit_meta.json"
-    matches, mismatch_key = metadata_subset_matches(raw["meta"], request)
-    if not matches:
-        return False, f"metadata mismatch on {mismatch_key}"
-    return True, None
-
-
-def build_eval_request(
-    *,
-    adapter: AdapterInfo,
-    variant: str,
-    adapter_path: Optional[Path],
-    edit_request: Optional[Dict[str, Any]],
-    args: argparse.Namespace,
-) -> Dict[str, Any]:
-    return {
-        "base_model_id": adapter.base_model_id,
-        "task": adapter.task,
-        "variant": variant,
-        "adapter_path": str(adapter_path) if adapter_path else None,
-        "edit_request": edit_request,
-        "tensor_parallel_size": args.tensor_parallel_size,
-        "timeout_s": args.eval_timeout_s,
-        "task_config": TASK_CONFIGS[adapter.task],
-    }
-
-
-def existing_eval_matches(output_dir: Path, request: Dict[str, Any]) -> Tuple[bool, Optional[str]]:
-    req_path = output_dir / "eval_request.json"
-    raw = read_json(req_path)
-    if raw is None:
-        return False, "missing eval_request.json"
-    matches, mismatch_key = metadata_subset_matches(raw, request)
-    if not matches:
-        return False, f"eval request mismatch on {mismatch_key}"
-    return True, None
-
-
-# ============================================================================
-# Spectral editing
-# ============================================================================
-
-def run_spectral_edit(
+def run_magnitude_edit(
     adapter_dir: Path,
     out_dir: Path,
-    edit_method: str,
-    base_model_id: str,
-    task: str,
-    calibration_mode: str,
-    seed: int = 42,
-    calib_samples: int = 32,
-    calib_batch_size: int = 2,
-    target_modules: List[str] = None,
-    calib_spec: Optional[CalibrationSpec] = None,
-    csqa_prompt_style: str = "auto",
-    calib_shuffle: bool = False,
-    calib_seed: Optional[int] = None,
-    calib_start: int = 0,
-    preserve_energy: str = "l1",
-    rmt_tail_count: int = 0,
-    rmt_edge_margin: float = 0.10,
-    dry_run: bool = False,
+    policy: str,
+    target_modules: List[str],
+    preserve_energy: str,
 ) -> Tuple[bool, Optional[str]]:
-    if target_modules is None:
-        target_modules = ["down_proj", "o_proj"]
-
-    mode = METHOD_TO_MODE.get(edit_method)
-    if not mode:
-        return False, f"Unknown edit method: {edit_method}"
-
-    cmd = [
-        sys.executable, "-m", "finetune.spectral_edit.cli", "edit",
-        "--base_model", base_model_id,
-        "--lora_path", str(adapter_dir),
-        "--out_dir", str(out_dir),
-        "--task", task,
-        "--calibration_mode", calibration_mode,
-        "--mode", mode,
-        "--target_modules", *target_modules,
-        "--calib_samples", str(calib_samples),
-        "--calib_batch_size", str(calib_batch_size),
-        "--seed", str(seed),
-        "--grad_norm", "mean_abs",
-        "--preserve_energy", preserve_energy,
-    ]
-
-    if calib_spec is not None:
-        cmd.extend(["--calib_dataset", calib_spec.dataset])
-        if calib_spec.config is not None:
-            cmd.extend(["--calib_config", calib_spec.config])
-        if calib_spec.split:
-            cmd.extend(["--calib_split", calib_spec.split])
-        if calib_spec.text_fields:
-            cmd.extend(["--calib_text_fields", *calib_spec.text_fields])
-        if calib_spec.dataset.strip().lower() in {"tau/commonsense_qa", "tau/commonsenseqa"}:
-            cmd.extend(["--csqa_prompt_style", csqa_prompt_style])
-    if calib_shuffle:
-        cmd.append("--calib_shuffle")
-    if calib_seed is not None:
-        cmd.extend(["--calib_seed", str(calib_seed)])
-    if calib_start:
-        cmd.extend(["--calib_start", str(calib_start)])
-
-    if edit_method in ["random_index", "abs_select"]:
-        cmd.extend([
-            "--core_frac", "0.2",
-            "--noise_frac", "0.2",
-            "--amp_factor", "1.25",
-            "--sup_factor", "0.80",
-        ])
-    elif edit_method == "smooth_abs":
-        cmd.extend([
-            "--smooth_temperature", "0.35",
-            "--smooth_center_q", "0.5",
-            "--amp_factor", "1.25",
-            "--sup_factor", "0.80",
-        ])
-    elif edit_method == "rmt_guided_smooth_abs":
-        cmd.extend([
-            "--smooth_temperature", "0.35",
-            "--smooth_center_q", "0.5",
-            "--amp_factor", "1.25",
-            "--sup_factor", "0.80",
-            "--rmt_bulk_only",
-            "--rmt_tail_count", str(rmt_tail_count),
-            "--rmt_edge_margin", str(rmt_edge_margin),
-        ])
-    elif edit_method == "grad_direction":
-        cmd.extend([
-            "--update_mode", "multiplicative",
-            "--asymmetric_update",
-            "--eta_suppress", "2.0",
-            "--eta_enhance", "0.2",
-        ])
-
-    if dry_run:
-        print(f"[DRY-RUN] Would run: {shlex.join(cmd)}")
-        return True, None
-
-    env = os.environ.copy()
-    env["PYTHONPATH"] = f"{SRC_DIR}:{env.get('PYTHONPATH', '')}".strip(":")
+    if policy not in EDIT_POLICIES:
+        return False, f"Unknown edit policy: {policy}"
 
     try:
-        result = subprocess.run(
-            cmd,
-            capture_output=True,
-            text=True,
-            timeout=1800,
-            env=env,
-            cwd=REPO_ROOT,
-        )
-        if result.returncode != 0:
-            error_msg = result.stderr[-2000:] if result.stderr else "Unknown error"
-            return False, f"Edit failed (code {result.returncode}): {error_msg}"
-        if not has_adapter_weights(out_dir):
-            return False, "Edit completed but no adapter weights found in output"
+        copy_adapter_assets(adapter_dir, out_dir)
+        state_dict, fmt = load_lora_state_dict(str(adapter_dir))
+
+        pairs: Dict[str, dict] = {}
+        target_modules_set = set(target_modules)
+
+        for key, tensor in state_dict.items():
+            parsed = parse_lora_ab_key(key)
+            if not parsed:
+                continue
+            prefix, which, _ = parsed
+            suffix = prefix.split(".")[-1]
+            if suffix not in target_modules_set:
+                continue
+
+            pairs.setdefault(prefix, {})
+            pairs[prefix][which] = (key, tensor)
+
+        selected_prefixes = [p for p in pairs.keys() if "A" in pairs[p] and "B" in pairs[p]]
+        if not selected_prefixes:
+            return False, "No matching LoRA (A,B) pairs found for given target_modules."
+
+        edit_config = build_magnitude_edit_config(policy, preserve_energy)
+        sigma_stats: Dict[str, Any] = {}
+
+        for prefix in selected_prefixes:
+            keyA, A_old = pairs[prefix]["A"]
+            keyB, B_old = pairs[prefix]["B"]
+
+            U, S, Vh, _ = lowrank_svd_from_ba(B_old, A_old)
+
+            # Magnitude baseline: score_k is simply sigma_k (no gradient sign).
+            score = S.detach().clone()
+            sigma_new, stats = apply_spectral_edit(S, score, edit_config)
+
+            B_new, A_new = rebuild_ba_from_uv_sigma(U, Vh, sigma_new)
+            state_dict[keyA] = A_new.to(dtype=A_old.dtype)
+            state_dict[keyB] = B_new.to(dtype=B_old.dtype)
+            sigma_stats[prefix] = stats
+
+        save_lora_state_dict(str(out_dir), state_dict, fmt)
+
+        meta = {
+            "policy": policy,
+            "target_modules": target_modules,
+            "preserve_energy": preserve_energy,
+            "score": "sigma",
+        }
+        with open(out_dir / "magnitude_edit_meta.json", "w", encoding="utf-8") as f:
+            json.dump({"meta": meta, "sigma_stats": sigma_stats}, f, indent=2)
+
         return True, None
-    except subprocess.TimeoutExpired:
-        return False, "Edit timed out after 30 minutes"
     except Exception as exc:
-        return False, f"Edit failed with exception: {exc}"
+        return False, f"Magnitude edit failed: {exc}"
 
 
 # ============================================================================
@@ -891,6 +712,8 @@ def build_lm_eval_command(
     output_path: Optional[Path],
     gpu_memory_utilization: Optional[float] = None,
     max_num_seqs: Optional[int] = None,
+    lora_path: Optional[Path] = None,
+    max_lora_rank: Optional[int] = None,
 ) -> Tuple[List[str], Dict[str, str]]:
     lm_task = TASK_DIR_TO_LM_EVAL[task]
     task_cfg = TASK_CONFIGS[task]
@@ -901,6 +724,10 @@ def build_lm_eval_command(
         f"dtype=auto,"
         f"gpu_memory_utilization={mem_util}"
     )
+    if lora_path is not None:
+        model_args += f",lora_local_path={lora_path},max_loras=1"
+        if max_lora_rank is not None:
+            model_args += f",max_lora_rank={max_lora_rank}"
     if max_num_seqs is not None:
         model_args += f",max_num_seqs={max_num_seqs}"
 
@@ -939,6 +766,8 @@ def run_lm_eval(
     tensor_parallel_size: int,
     log_suffix: Optional[str] = None,
     timeout_s: Optional[int] = None,
+    lora_path: Optional[Path] = None,
+    max_lora_rank: Optional[int] = None,
 ) -> Tuple[Optional[Dict[str, Any]], Optional[Dict[str, Any]], Optional[int], Optional[str]]:
     output_dir.mkdir(parents=True, exist_ok=True)
     results_dir = output_dir / "lm_eval_out"
@@ -974,6 +803,8 @@ def run_lm_eval(
                 output_path=results_dir,
                 gpu_memory_utilization=mem_override,
                 max_num_seqs=max_num_seqs,
+                lora_path=lora_path,
+                max_lora_rank=max_lora_rank,
             )
         except Exception as exc:
             write_text(output_dir / f"cmd{cmd_suffix}.txt", f"# failed to build lm_eval command: {exc}\n")
@@ -1053,17 +884,6 @@ def run_lm_eval(
     return None, None, None, "lm_eval failed after OOM retry"
 
 
-def extract_json_from_stdout(stdout: str) -> Optional[Dict[str, Any]]:
-    for line in reversed(stdout.splitlines()):
-        line = line.strip()
-        if line.startswith("{") and line.endswith("}"):
-            try:
-                return json.loads(line)
-            except Exception:
-                continue
-    return None
-
-
 def find_recent_result_json(output_dir: Path, min_mtime: float) -> Optional[Path]:
     candidates = []
     for path in output_dir.rglob("*.json"):
@@ -1111,15 +931,6 @@ def merge_adapter(
     output_dir.mkdir(parents=True, exist_ok=True)
 
     try:
-        adapter_cfg = read_json(adapter_dir / "adapter_config.json")
-        cfg_base = normalize_model_ref(adapter_cfg.get("base_model_name_or_path") if adapter_cfg else None)
-        requested_base = normalize_model_ref(base_model_id)
-        if cfg_base and requested_base and cfg_base != requested_base and os.path.basename(cfg_base) != os.path.basename(requested_base):
-            return None, (
-                "Adapter/base-model mismatch during merge: "
-                f"{adapter_dir} expects {cfg_base!r} but requested {requested_base!r}."
-            )
-
         model = AutoModelForCausalLM.from_pretrained(
             base_model_id,
             torch_dtype="auto",
@@ -1127,10 +938,6 @@ def merge_adapter(
             low_cpu_mem_usage=True,
         )
         peft_model = PeftModel.from_pretrained(model, adapter_dir)
-        if not getattr(peft_model, "peft_config", None):
-            return None, f"PEFT config missing after loading adapter {adapter_dir}"
-        if not active_adapter_names(peft_model):
-            return None, f"No active adapter after loading {adapter_dir}"
         merged = peft_model.merge_and_unload()
         merged.save_pretrained(output_dir)
         tokenizer = AutoTokenizer.from_pretrained(base_model_id, use_fast=True)
@@ -1159,7 +966,7 @@ def merge_adapter(
 
 def build_arg_parser() -> argparse.ArgumentParser:
     p = argparse.ArgumentParser(
-        description="Run spectral edits and evaluate with lm_eval (vLLM).",
+        description="Run magnitude-only spectral edits and evaluate with lm_eval (vLLM).",
         formatter_class=argparse.RawDescriptionHelpFormatter,
         epilog=__doc__,
     )
@@ -1174,7 +981,7 @@ def build_arg_parser() -> argparse.ArgumentParser:
         "--out_root",
         type=Path,
         required=True,
-        help="Output root for edited adapters and lm_eval outputs.",
+        help="Output root for lm_eval outputs.",
     )
     p.add_argument(
         "--tasks",
@@ -1190,13 +997,13 @@ def build_arg_parser() -> argparse.ArgumentParser:
         nargs="+",
         default=EDIT_POLICIES,
         choices=EDIT_POLICIES,
-        help="Spectral edit policies to run.",
+        help="Magnitude edit policies to run.",
     )
     p.add_argument(
         "--seed",
         type=int,
         default=42,
-        help="Random seed for spectral edit.",
+        help="Random seed (unused for magnitude-only policies; kept for compatibility).",
     )
     p.add_argument(
         "--tensor_parallel_size",
@@ -1231,18 +1038,6 @@ def build_arg_parser() -> argparse.ArgumentParser:
         help="Limit processing to specific adapter types.",
     )
     p.add_argument(
-        "--edited_out_dir",
-        type=Path,
-        default=None,
-        help="Root directory for edited adapters when --keep_edited_adapter is set.",
-    )
-    p.add_argument(
-        "--keep_edited_adapter",
-        action=argparse.BooleanOptionalAction,
-        default=False,
-        help="Keep edited adapters on disk (default: use temporary directories).",
-    )
-    p.add_argument(
         "--resume",
         action=argparse.BooleanOptionalAction,
         default=True,
@@ -1259,72 +1054,92 @@ def build_arg_parser() -> argparse.ArgumentParser:
         help="Discover adapters and print planned actions without running.",
     )
 
-    p.add_argument("--calib_samples", type=int, default=32, help="Calibration samples for spectral edit")
-    p.add_argument("--calib_batch_size", type=int, default=2, help="Calibration batch size")
+    p.add_argument(
+        "--use_vllm_lora",
+        action=argparse.BooleanOptionalAction,
+        default=False,
+        help="Use vLLM LoRA loading when evaluating adapters.",
+    )
+    p.add_argument(
+        "--fallback_merge",
+        action=argparse.BooleanOptionalAction,
+        default=False,
+        help="Fallback to merge-and-eval if vLLM LoRA evaluation fails.",
+    )
+    p.add_argument(
+        "--tmp_dir",
+        type=Path,
+        default=None,
+        help="Temporary directory root for edited adapters (default: out_root/_tmp_edited_adapters).",
+    )
+
+    # Compatibility args (ignored for magnitude-only baseline).
+    p.add_argument(
+        "--calib_samples",
+        type=int,
+        default=128,
+        help="Ignored (magnitude baseline uses no calibration).",
+    )
+    p.add_argument(
+        "--calib_batch_size",
+        type=int,
+        default=2,
+        help="Ignored (magnitude baseline uses no calibration).",
+    )
     p.add_argument(
         "--preserve_energy",
         type=str,
         default="l1",
-        help="Spectral edit preserve_energy setting (e.g., l1, none).",
-    )
-    p.add_argument(
-        "--rmt_tail_count",
-        type=int,
-        default=0,
-        help="Tail size for the conservative MP bulk estimate used by rmt_guided_smooth_abs. 0 means rank//2.",
-    )
-    p.add_argument(
-        "--rmt_edge_margin",
-        type=float,
-        default=0.10,
-        help="Relative near-edge band for the conservative MP bulk estimate used by rmt_guided_smooth_abs.",
+        choices=["none", "l1", "l2"],
+        help="Preserve per-module spectral energy (default: l1).",
     )
     p.add_argument(
         "--target_modules",
         type=str,
         nargs="+",
-        default=["down_proj", "o_proj"],
-        help="Target modules for spectral edit",
+        default=["o_proj", "down_proj"],
+        help="Target modules for magnitude edit",
     )
     p.add_argument(
         "--calib_dataset",
         type=str,
         default=None,
-        help="Global calibration dataset override. Omit this for per-task defaults.",
+        help="Ignored (magnitude baseline uses no calibration).",
     )
     p.add_argument(
         "--calib_config",
         type=str,
         default=None,
-        help="Global calibration dataset config override.",
+        help="Ignored (magnitude baseline uses no calibration).",
     )
     p.add_argument(
         "--calib_split",
         type=str,
         default=None,
-        help="Calibration split override.",
+        help="Ignored (magnitude baseline uses no calibration).",
     )
     p.add_argument(
         "--calib_text_fields",
         type=str,
         nargs="+",
         default=None,
-        help="Calibration text fields for prompt/answer.",
+        help="Ignored (magnitude baseline uses no calibration).",
+    )
+    p.add_argument("--calib_shuffle", action="store_true", help="Ignored (magnitude baseline uses no calibration).")
+    p.add_argument("--calib_seed", type=int, default=None, help="Ignored (magnitude baseline uses no calibration).")
+    p.add_argument("--calib_start", type=int, default=0, help="Ignored (magnitude baseline uses no calibration).")
+
+    p.add_argument(
+        "--edited_out_dir",
+        type=Path,
+        default=None,
+        help="Ignored (edited adapters are always temporary).",
     )
     p.add_argument(
-        "--shared_calibration",
-        action="store_true",
-        help="Use the same --calib_dataset/--calib_config for every task. Without this flag, tasks use their own defaults.",
-    )
-    p.add_argument("--calib_shuffle", action="store_true", help="Shuffle calibration dataset")
-    p.add_argument("--calib_seed", type=int, default=None, help="Seed for calibration shuffle")
-    p.add_argument("--calib_start", type=int, default=0, help="Start offset into calibration dataset")
-    p.add_argument(
-        "--csqa_prompt_style",
-        type=str,
-        default="auto",
-        choices=list(CSQA_PROMPT_STYLE_CHOICES),
-        help="Prompt style for CSQA calibration. lm_eval itself still uses the harness prompt template.",
+        "--keep_edited_adapter",
+        action=argparse.BooleanOptionalAction,
+        default=False,
+        help="Ignored (edited adapters are always temporary).",
     )
 
     return p
@@ -1341,27 +1156,34 @@ def main() -> None:
             print(f"[ERROR] Runs root does not exist: {root}")
             sys.exit(1)
 
-    tasks = args.tasks
     out_root = args.out_root.resolve()
-    edited_root = None
-    if args.keep_edited_adapter:
-        edited_root = args.edited_out_dir.resolve() if args.edited_out_dir else (out_root / "edited_adapters")
-        edited_root.mkdir(parents=True, exist_ok=True)
     out_root.mkdir(parents=True, exist_ok=True)
+    tmp_root = args.tmp_dir.resolve() if args.tmp_dir else (out_root / "_tmp_edited_adapters")
+    tmp_root.mkdir(parents=True, exist_ok=True)
+
+    if args.keep_edited_adapter:
+        print("[WARN] --keep_edited_adapter is ignored; using temporary adapters only.")
 
     print("=" * 70)
-    print("Spectral Edit + lm_eval Harness Driver")
+    print("Magnitude Baseline + lm_eval Harness Driver")
     print("=" * 70)
     print(f"Runs roots: {', '.join(str(r) for r in runs_roots)}")
     print(f"Output root: {out_root}")
-    print(f"Tasks: {tasks}")
+    print(f"Temporary edited adapters: {tmp_root}")
+    print(f"Tasks: {args.tasks}")
     print(f"Policies: {args.policies}")
-    print(f"Shared calibration: {args.shared_calibration}")
-    print("Adapter eval mode: FORCE MERGE (no vLLM LoRA loading)")
+    print(f"Target modules: {args.target_modules}")
+    print(f"Preserve energy: {args.preserve_energy}")
+    if args.use_vllm_lora:
+        fallback_msg = " (fallback merge enabled)" if args.fallback_merge else ""
+        print(f"Adapter eval mode: vLLM LoRA loading{fallback_msg}")
+    else:
+        print("Adapter eval mode: FORCE MERGE (no vLLM LoRA loading)")
+    print("Calibration args ignored (magnitude-only baseline).")
     print("=" * 70)
 
-    print("\n[1/4] Discovering adapters...")
-    adapters, skipped = discover_adapters(runs_roots, tasks)
+    print("\n[1/3] Discovering adapters...")
+    adapters, skipped = discover_adapters(runs_roots, args.tasks)
     if args.adapter_filter:
         adapters = [a for a in adapters if args.adapter_filter in str(a.adapter_dir)]
         print(f"  After filter '{args.adapter_filter}': {len(adapters)} adapters")
@@ -1376,57 +1198,6 @@ def main() -> None:
         print("[ERROR] No adapters found.")
         sys.exit(1)
 
-    multi_task = len({a.task for a in adapters}) > 1
-    if args.shared_calibration and not args.calib_dataset:
-        print("[ERROR] --shared_calibration requires --calib_dataset.")
-        sys.exit(1)
-    if multi_task and args.calib_config is not None and args.calib_dataset is None:
-        print("[ERROR] --calib_config without --calib_dataset is ambiguous across multiple tasks.")
-        sys.exit(1)
-    if multi_task and args.calib_text_fields and args.calib_dataset is None:
-        print("[ERROR] --calib_text_fields without --calib_dataset is ambiguous across multiple tasks.")
-        sys.exit(1)
-
-    adapters_by_task: Dict[str, AdapterInfo] = {}
-    for adapter in adapters:
-        adapters_by_task.setdefault(adapter.task, adapter)
-    try:
-        calibration_by_task = {
-            task: resolve_adapter_calibration(
-                adapter=task_adapter,
-                args=args,
-                multi_task=multi_task,
-            )
-            for task, task_adapter in adapters_by_task.items()
-        }
-    except ValueError as exc:
-        print(f"[ERROR] {exc}")
-        sys.exit(1)
-
-    print("  Calibration plan:")
-    for task in sorted(calibration_by_task):
-        calib_spec = calibration_by_task[task]
-        print(
-            "    "
-            f"task={task} dataset={calib_spec.dataset} config={calib_spec.config} "
-            f"split={calib_spec.split} mode={calib_spec.selection_mode} samples={args.calib_samples}"
-        )
-        if calib_spec.dataset.strip().lower() in {"tau/commonsense_qa", "tau/commonsenseqa"}:
-            prompt_resolution = resolve_csqa_prompt_style(
-                args.csqa_prompt_style,
-                adapters_by_task[task].adapter_dir,
-            )
-            print(
-                "      "
-                f"csqa_prompt_style={prompt_resolution.resolved} "
-                f"(requested={args.csqa_prompt_style}; {prompt_resolution.reason})"
-            )
-    if "csqa" in calibration_by_task:
-        print(
-            "  Note: lm_eval commonsense_qa uses the harness prompt template. "
-            "--csqa_prompt_style only affects CSQA calibration, not lm_eval prompting."
-        )
-
     if args.dry_run:
         print("\n[DRY-RUN] Planned actions:")
         for adapter in adapters[:5]:
@@ -1434,11 +1205,6 @@ def main() -> None:
             print(f"    Task: {adapter.task}, Type: {adapter.adapter_type}")
             print(f"    Profile: {adapter.profile}, Rank: {adapter.rank}, Seed: {adapter.seed}")
             print(f"    Base model: {adapter.base_model_id}")
-            calib_spec = calibration_by_task[adapter.task]
-            print(
-                f"    Calibration: {calib_spec.dataset} / {calib_spec.config} / {calib_spec.split} "
-                f"({calib_spec.selection_mode})"
-            )
             for policy in args.policies:
                 print(f"    Edit policy: {policy}")
         if len(adapters) > 5:
@@ -1448,82 +1214,13 @@ def main() -> None:
 
     summary_records: List[EvalRecord] = []
 
-    if args.keep_edited_adapter:
-        print("\n[2/4] Editing adapters...")
-        for i, adapter in enumerate(adapters, 1):
-            calib_spec = calibration_by_task[adapter.task]
-            print(f"\n[{i}/{len(adapters)}] {adapter.run_id}")
-            print(f"  Adapter: {adapter.adapter_dir}")
-            print(
-                "  Calibration: "
-                f"task={adapter.task} dataset={calib_spec.dataset} config={calib_spec.config} "
-                f"split={calib_spec.split} samples={args.calib_samples} mode={calib_spec.selection_mode}"
-            )
-            print(f"  Checkpoint path: {adapter.adapter_dir}")
-
-            for policy in args.policies:
-                edited_dir = (
-                    edited_root
-                    / adapter.base_model_tag
-                    / adapter.task
-                    / adapter.adapter_type
-                    / f"profile-{adapter.profile}"
-                    / f"rank-{adapter.rank}"
-                    / f"seed{adapter.seed}"
-                    / policy
-                )
-                edit_request = build_edit_request(
-                    adapter=adapter,
-                    policy=policy,
-                    calib_spec=calib_spec,
-                    args=args,
-                )
-
-                if edited_dir.exists() and has_adapter_weights(edited_dir):
-                    matches, reason = existing_edited_adapter_matches(edited_dir, edit_request)
-                    if matches:
-                        print(f"  [SKIP EDIT] {policy} already exists and matches current request")
-                        continue
-                    print(f"  [REBUILD EDIT] {policy}: {reason}")
-                if edited_dir.exists():
-                    shutil.rmtree(edited_dir)
-
-                print(f"  [EDIT] {policy}")
-                success, error = run_spectral_edit(
-                    adapter_dir=adapter.adapter_dir,
-                    out_dir=edited_dir,
-                    edit_method=policy,
-                    base_model_id=adapter.base_model_id,
-                    task=adapter.task,
-                    calibration_mode=calib_spec.selection_mode,
-                    seed=args.seed,
-                    calib_samples=args.calib_samples,
-                    calib_batch_size=args.calib_batch_size,
-                    target_modules=args.target_modules,
-                    calib_spec=calib_spec,
-                    csqa_prompt_style=args.csqa_prompt_style,
-                    calib_shuffle=args.calib_shuffle,
-                    calib_seed=args.calib_seed,
-                    calib_start=args.calib_start,
-                    preserve_energy=args.preserve_energy,
-                    rmt_tail_count=args.rmt_tail_count,
-                    rmt_edge_margin=args.rmt_edge_margin,
-                )
-                if not success:
-                    print(f"  [EDIT FAILED] {policy}: {error}")
-                gc.collect()
-    else:
-        print("\n[2/4] Skipping persistent edits (temporary edited adapters will be used).")
-
-    print("\n[3/4] Evaluating with lm_eval...")
+    print("\n[2/3] Evaluating with lm_eval...")
     for i, adapter in enumerate(adapters, 1):
-        calib_spec = calibration_by_task[adapter.task]
         print(f"\n[{i}/{len(adapters)}] {adapter.run_id}")
-        print(
-            "  Calibration: "
-            f"task={adapter.task} dataset={calib_spec.dataset} config={calib_spec.config} "
-            f"split={calib_spec.split} samples={args.calib_samples} mode={calib_spec.selection_mode}"
-        )
+
+        adapter_rank = get_lora_rank(adapter.adapter_dir, adapter.rank) if args.use_vllm_lora else None
+        if args.use_vllm_lora and adapter_rank is None:
+            print("  [WARN] Could not infer LoRA rank; vLLM LoRA may fail without max_lora_rank.")
 
         variants: List[Tuple[str, Optional[Path], Optional[str], bool]] = [
             ("baseline", None, None, False),
@@ -1532,7 +1229,7 @@ def main() -> None:
         for policy in args.policies:
             variants.append((f"edited/{policy}", None, policy, True))
 
-        def evaluate_variant_with_merge(adapter_path: Optional[Path]) -> Tuple[
+        def evaluate_variant_with_adapter(adapter_path: Optional[Path]) -> Tuple[
             Optional[Dict[str, Any]],
             Optional[Dict[str, Any]],
             Optional[int],
@@ -1553,43 +1250,55 @@ def main() -> None:
                 if not has_adapter_weights(adapter_path):
                     return None, None, None, f"Adapter weights missing: {adapter_path}", False, False
 
-            try:
-                if adapter_path is None:
-                    # Baseline: directly eval base model with vLLM.
-                    raw, metrics, num_examples, lm_error = run_lm_eval(
-                        base_model=adapter.base_model_id,
-                        task=adapter.task,
-                        output_dir=output_dir,
-                        tensor_parallel_size=args.tensor_parallel_size,
-                        timeout_s=args.eval_timeout_s,
-                    )
-                    return raw, metrics, num_examples, lm_error, used_lora, False
+            if adapter_path is None:
+                raw, metrics, num_examples, lm_error = run_lm_eval(
+                    base_model=adapter.base_model_id,
+                    task=adapter.task,
+                    output_dir=output_dir,
+                    tensor_parallel_size=args.tensor_parallel_size,
+                    timeout_s=args.eval_timeout_s,
+                )
+                return raw, metrics, num_examples, lm_error, used_lora, used_merge
 
-                # Adapter: FORCE MERGE -> eval merged model with vLLM.
-                used_merge = True
-                with tempfile.TemporaryDirectory(prefix="merged_model_") as tmp_merge:
-                    merge_dir = Path(tmp_merge)
-                    merged_path, merge_error = merge_adapter(
-                        base_model_id=adapter.base_model_id,
-                        adapter_dir=adapter_path,
-                        output_dir=merge_dir,
-                        device=args.merge_device,
-                    )
-                    if merge_error:
-                        lm_error = merge_error
-                        write_text(output_dir / "merge_error.txt", merge_error)
-                        return None, None, None, lm_error, used_lora, True
+            if args.use_vllm_lora:
+                raw, metrics, num_examples, lm_error = run_lm_eval(
+                    base_model=adapter.base_model_id,
+                    task=adapter.task,
+                    output_dir=output_dir,
+                    tensor_parallel_size=args.tensor_parallel_size,
+                    timeout_s=args.eval_timeout_s,
+                    log_suffix="lora",
+                    lora_path=adapter_path,
+                    max_lora_rank=adapter_rank,
+                )
+                if lm_error and args.fallback_merge:
+                    write_text(output_dir / "lora_error.txt", lm_error + "\n")
+                else:
+                    return raw, metrics, num_examples, lm_error, True, False
 
-                    raw, metrics, num_examples, lm_error = run_lm_eval(
-                        base_model=str(merged_path),
-                        task=adapter.task,
-                        output_dir=output_dir,
-                        tensor_parallel_size=args.tensor_parallel_size,
-                        timeout_s=args.eval_timeout_s,
-                    )
-                    return raw, metrics, num_examples, lm_error, used_lora, True
-            except Exception as exc:
-                return None, None, None, f"lm_eval execution failed: {exc}", used_lora, used_merge
+            used_merge = True
+            with tempfile.TemporaryDirectory(prefix="merged_model_") as tmp_merge:
+                merge_dir = Path(tmp_merge)
+                merged_path, merge_error = merge_adapter(
+                    base_model_id=adapter.base_model_id,
+                    adapter_dir=adapter_path,
+                    output_dir=merge_dir,
+                    device=args.merge_device,
+                )
+                if merge_error:
+                    lm_error = merge_error
+                    write_text(output_dir / "merge_error.txt", merge_error)
+                    return None, None, None, lm_error, used_lora, True
+
+                raw, metrics, num_examples, lm_error = run_lm_eval(
+                    base_model=str(merged_path),
+                    task=adapter.task,
+                    output_dir=output_dir,
+                    tensor_parallel_size=args.tensor_parallel_size,
+                    timeout_s=args.eval_timeout_s,
+                    log_suffix="merge" if args.use_vllm_lora else None,
+                )
+                return raw, metrics, num_examples, lm_error, used_lora, True
 
         for variant, adapter_path, policy, is_edited in variants:
             output_dir = (
@@ -1612,35 +1321,6 @@ def main() -> None:
             num_examples = None
             edited_adapter_dir = None
             reused = False
-            edit_request = (
-                build_edit_request(
-                    adapter=adapter,
-                    policy=policy,
-                    calib_spec=calib_spec,
-                    args=args,
-                )
-                if is_edited and policy is not None
-                else None
-            )
-            planned_adapter_path = adapter_path
-            if is_edited and args.keep_edited_adapter and policy is not None:
-                planned_adapter_path = (
-                    edited_root
-                    / adapter.base_model_tag
-                    / adapter.task
-                    / adapter.adapter_type
-                    / f"profile-{adapter.profile}"
-                    / f"rank-{adapter.rank}"
-                    / f"seed{adapter.seed}"
-                    / policy
-                )
-            eval_request = build_eval_request(
-                adapter=adapter,
-                variant=variant,
-                adapter_path=planned_adapter_path,
-                edit_request=edit_request,
-                args=args,
-            )
 
             if args.resume:
                 raw_existing, metrics_existing, num_existing, _, result_path = load_existing_results(
@@ -1648,99 +1328,34 @@ def main() -> None:
                     adapter.task,
                 )
                 if result_path and raw_existing is not None and metrics_existing:
-                    matches, reason = existing_eval_matches(output_dir, eval_request)
-                    if matches:
-                        raw = raw_existing
-                        metrics = metrics_existing
-                        num_examples = num_existing
-                        used_lora = False
-                        used_merge = (variant != "baseline")  # in FORCE MERGE mode, any non-baseline implies merge
-                        edited_adapter_dir = str(planned_adapter_path) if is_edited and planned_adapter_path else None
-                        print(f"  [REUSE] {variant}: {result_path.name}")
-                        reused = True
-                    else:
-                        print(f"  [RERUN] {variant}: {reason}")
+                    raw = raw_existing
+                    metrics = metrics_existing
+                    num_examples = num_existing
+                    used_lora = infer_used_lora_from_results(raw_existing)
+                    used_merge = (variant != "baseline") and not used_lora
+                    edited_adapter_dir = None
+                    print(f"  [REUSE] {variant}: {result_path.name}")
+                    reused = True
 
             if not reused:
                 if is_edited:
-                    if args.keep_edited_adapter:
-                        edited_dir = (
-                            edited_root
-                            / adapter.base_model_tag
-                            / adapter.task
-                            / adapter.adapter_type
-                            / f"profile-{adapter.profile}"
-                            / f"rank-{adapter.rank}"
-                            / f"seed{adapter.seed}"
-                            / policy
+                    with tempfile.TemporaryDirectory(prefix="edited_adapter_", dir=tmp_root) as tmpdir:
+                        edited_dir = Path(tmpdir)
+                        success, error = run_magnitude_edit(
+                            adapter_dir=adapter.adapter_dir,
+                            out_dir=edited_dir,
+                            policy=policy,
+                            target_modules=args.target_modules,
+                            preserve_energy=args.preserve_energy,
                         )
-                        if edited_dir.exists() and has_adapter_weights(edited_dir):
-                            matches, reason = existing_edited_adapter_matches(edited_dir, edit_request or {})
-                            if not matches:
-                                print(f"  [REBUILD EDIT] {variant}: {reason}")
-                                shutil.rmtree(edited_dir)
-                        if not (edited_dir.exists() and has_adapter_weights(edited_dir)):
-                            if edited_dir.exists():
-                                shutil.rmtree(edited_dir)
-                            success, error = run_spectral_edit(
-                                adapter_dir=adapter.adapter_dir,
-                                out_dir=edited_dir,
-                                edit_method=policy,
-                                base_model_id=adapter.base_model_id,
-                                task=adapter.task,
-                                calibration_mode=calib_spec.selection_mode,
-                                seed=args.seed,
-                                calib_samples=args.calib_samples,
-                                calib_batch_size=args.calib_batch_size,
-                                target_modules=args.target_modules,
-                                calib_spec=calib_spec,
-                                csqa_prompt_style=args.csqa_prompt_style,
-                                calib_shuffle=args.calib_shuffle,
-                                calib_seed=args.calib_seed,
-                                calib_start=args.calib_start,
-                                preserve_energy=args.preserve_energy,
-                                rmt_tail_count=args.rmt_tail_count,
-                                rmt_edge_margin=args.rmt_edge_margin,
+                        if not success:
+                            lm_error = error
+                        else:
+                            raw, metrics, num_examples, lm_error, used_lora, used_merge = evaluate_variant_with_adapter(
+                                edited_dir
                             )
-                            if not success:
-                                lm_error = error
-                        adapter_path = edited_dir if lm_error is None else None
-                        edited_adapter_dir = str(edited_dir) if args.keep_edited_adapter else None
-                        if lm_error is None:
-                            raw, metrics, num_examples, lm_error, used_lora, used_merge = evaluate_variant_with_merge(
-                                adapter_path
-                            )
-                    else:
-                        with tempfile.TemporaryDirectory(prefix="edited_adapter_") as tmpdir:
-                            edited_dir = Path(tmpdir)
-                            success, error = run_spectral_edit(
-                                adapter_dir=adapter.adapter_dir,
-                                out_dir=edited_dir,
-                                edit_method=policy,
-                                base_model_id=adapter.base_model_id,
-                                task=adapter.task,
-                                calibration_mode=calib_spec.selection_mode,
-                                seed=args.seed,
-                                calib_samples=args.calib_samples,
-                                calib_batch_size=args.calib_batch_size,
-                                target_modules=args.target_modules,
-                                calib_spec=calib_spec,
-                                csqa_prompt_style=args.csqa_prompt_style,
-                                calib_shuffle=args.calib_shuffle,
-                                calib_seed=args.calib_seed,
-                                calib_start=args.calib_start,
-                                preserve_energy=args.preserve_energy,
-                                rmt_tail_count=args.rmt_tail_count,
-                                rmt_edge_margin=args.rmt_edge_margin,
-                            )
-                            if not success:
-                                lm_error = error
-                            else:
-                                raw, metrics, num_examples, lm_error, used_lora, used_merge = evaluate_variant_with_merge(
-                                    edited_dir
-                                )
                 else:
-                    raw, metrics, num_examples, lm_error, used_lora, used_merge = evaluate_variant_with_merge(
+                    raw, metrics, num_examples, lm_error, used_lora, used_merge = evaluate_variant_with_adapter(
                         adapter_path
                     )
 
@@ -1750,8 +1365,6 @@ def main() -> None:
 
             if lm_error:
                 ensure_error_logs(output_dir, lm_error)
-            else:
-                write_json_pretty(output_dir / "eval_request.json", eval_request)
 
             record = EvalRecord(
                 timestamp=datetime.now().isoformat(),
@@ -1764,17 +1377,11 @@ def main() -> None:
                 rank=adapter.rank,
                 seed=adapter.seed,
                 variant=variant,
-                calibration_mode=calib_spec.selection_mode,
-                calib_dataset=calib_spec.dataset,
-                calib_config=calib_spec.config,
-                calib_split=calib_spec.split,
-                calib_samples=args.calib_samples,
                 adapter_dir=str(adapter.adapter_dir) if adapter.adapter_dir else None,
-                adapter_checkpoint_path=str(adapter.adapter_dir) if adapter.adapter_dir else None,
                 edited_adapter_dir=edited_adapter_dir,
                 output_dir=str(output_dir),
-                used_vllm_lora=False,               # forced off
-                used_fallback_merge=bool(used_merge),  # repurposed: True means we merged
+                used_vllm_lora=bool(used_lora),
+                used_fallback_merge=bool(used_merge),
                 metric_key=metric_key,
                 metric_value=metric_value,
                 metrics=metrics,
@@ -1789,7 +1396,7 @@ def main() -> None:
                 metric_display = f"{metric_key}={metric_value}" if metric_key else "metric=unknown"
                 print(f"  [EVAL OK] {variant}: {metric_display}")
 
-    print("\n[4/4] Writing summary outputs...")
+    print("\n[3/3] Writing summary outputs...")
     summary_json = out_root / "summary.json"
     summary_csv = out_root / "summary.csv"
     summary_json.write_text(json.dumps([asdict(r) for r in summary_records], indent=2))

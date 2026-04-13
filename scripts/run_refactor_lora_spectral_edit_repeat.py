@@ -52,6 +52,9 @@ SRC_DIR = PEFT_SFT_LAB_ROOT / "src"
 if str(SRC_DIR) not in sys.path:
     sys.path.insert(0, str(SRC_DIR))
 
+from finetune.csqa_prompt import CSQA_PROMPT_STYLE_CHOICES, resolve_csqa_prompt_style
+from finetune.spectral_edit.calib import CalibrationSpec, resolve_calibration
+
 
 # ============================================================================
 # Constants
@@ -79,11 +82,18 @@ TASK_TO_EVAL_SCRIPT = {
     "csqa": "finetune.eval.eval_csqa",
 }
 
-TASK_TO_METRIC = {
-    "metamath": "accuracy_strict",
-    "magicoder": "pass@1",
-    "alpaca": "ifeval_strict_accuracy",
-    "csqa": "accuracy",
+TASK_TO_METRIC_KEYS = {
+    "metamath": ["accuracy_strict", "accuracy"],
+    "magicoder": ["pass@1"],
+    "alpaca": ["prompt_level_strict_acc", "ifeval_strict_accuracy", "inst_level_strict_acc"],
+    "csqa": ["accuracy"],
+}
+
+TASK_TO_COUNT_KEYS = {
+    "metamath": ["total", "num_examples"],
+    "magicoder": ["total", "num_examples"],
+    "alpaca": ["total_prompts", "total", "num_examples"],
+    "csqa": ["total", "num_examples"],
 }
 
 ALLOWED_PEFT_METHODS = {"lora", "loraplus"}
@@ -188,6 +198,35 @@ def normalize_task(task: str) -> str:
     """Normalize task name to canonical form."""
     task_lower = task.lower().strip()
     return TASK_ALIASES.get(task_lower, task_lower)
+
+
+def resolve_task_calibration(
+    task: str,
+    args: argparse.Namespace,
+    multi_task: bool,
+) -> CalibrationSpec:
+    if args.shared_calibration:
+        if not args.calib_dataset:
+            raise ValueError("--shared_calibration requires --calib_dataset.")
+        selection_mode = "shared"
+    elif args.calib_dataset and multi_task:
+        raise ValueError(
+            "--calib_dataset would apply to multiple tasks. "
+            "Pass --shared_calibration to make that explicit, or omit --calib_dataset for per-task defaults."
+        )
+    elif args.calib_dataset:
+        selection_mode = "explicit"
+    else:
+        selection_mode = "per_task"
+
+    return resolve_calibration(
+        task=task,
+        calib_dataset=args.calib_dataset,
+        calib_config=args.calib_config,
+        calib_split=args.calib_split,
+        calib_text_fields=args.calib_text_fields,
+        selection_mode=selection_mode,
+    )
 
 
 def parse_adapter_path(adapter_dir: Path, runs_root: Path) -> Optional[AdapterInfo]:
@@ -381,14 +420,14 @@ def run_spectral_edit(
     out_dir: Path,
     edit_method: str,
     base_model_id: str,
+    task: str,
+    calibration_mode: str,
     seed: int = 42,
     calib_samples: int = 32,
     calib_batch_size: int = 2,
     target_modules: List[str] = None,
-    calib_dataset: Optional[str] = None,
-    calib_config: Optional[str] = None,
-    calib_split: Optional[str] = None,
-    calib_text_fields: Optional[List[str]] = None,
+    calib_spec: Optional[CalibrationSpec] = None,
+    csqa_prompt_style: str = "auto",
     calib_shuffle: bool = False,
     calib_seed: Optional[int] = None,
     calib_start: int = 0,
@@ -409,6 +448,8 @@ def run_spectral_edit(
         "--base_model", base_model_id,
         "--lora_path", str(adapter_dir),
         "--out_dir", str(out_dir),
+        "--task", task,
+        "--calibration_mode", calibration_mode,
         "--mode", mode,
         "--target_modules", *target_modules,
         "--calib_samples", str(calib_samples),
@@ -418,14 +459,16 @@ def run_spectral_edit(
         "--preserve_energy", "l1",
     ]
 
-    if calib_dataset:
-        cmd.extend(["--calib_dataset", calib_dataset])
-    if calib_config is not None:
-        cmd.extend(["--calib_config", calib_config])
-    if calib_split:
-        cmd.extend(["--calib_split", calib_split])
-    if calib_text_fields:
-        cmd.extend(["--calib_text_fields", *calib_text_fields])
+    if calib_spec is not None:
+        cmd.extend(["--calib_dataset", calib_spec.dataset])
+        if calib_spec.config is not None:
+            cmd.extend(["--calib_config", calib_spec.config])
+        if calib_spec.split:
+            cmd.extend(["--calib_split", calib_spec.split])
+        if calib_spec.text_fields:
+            cmd.extend(["--calib_text_fields", *calib_spec.text_fields])
+        if calib_spec.dataset.strip().lower() in {"tau/commonsense_qa", "tau/commonsenseqa"}:
+            cmd.extend(["--csqa_prompt_style", csqa_prompt_style])
     if calib_shuffle:
         cmd.append("--calib_shuffle")
     if calib_seed is not None:
@@ -502,6 +545,7 @@ def run_evaluation(
     use_vllm: bool = True,
     tensor_parallel_size: int = 8,
     max_samples: Optional[int] = None,
+    csqa_prompt_style: str = "auto",
     seed: int = 42,
     dry_run: bool = False,
 ) -> Tuple[Optional[Dict[str, Any]], Optional[str]]:
@@ -536,20 +580,27 @@ def run_evaluation(
     elif task == "alpaca":
         cmd.extend(["--max_new_tokens", "256", "--split", "train"])
     elif task == "csqa":
-        cmd.extend(["--max_new_tokens", "8"])
+        cmd.extend(["--max_new_tokens", "8", "--prompt_style", csqa_prompt_style])
 
     if dry_run:
         print(f"  [DRY-RUN] Would run: {' '.join(cmd[:8])}...")
         return {"metric": 0.0, "dry_run": True}, None
+
+    env = os.environ.copy()
+    if "PYTHONPATH" in env:
+        env["PYTHONPATH"] = f"{SRC_DIR}:{env['PYTHONPATH']}"
+    else:
+        env["PYTHONPATH"] = str(SRC_DIR)
+    eval_timeout = None if max_samples is None else 7200
 
     try:
         result = subprocess.run(
             cmd,
             capture_output=True,
             text=True,
-            timeout=7200,
+            timeout=eval_timeout,
             cwd=PEFT_SFT_LAB_ROOT,
-            env={**os.environ, "PYTHONPATH": str(SRC_DIR)},
+            env=env,
         )
 
         if result.returncode != 0:
@@ -653,6 +704,23 @@ def compute_mean_std(values: List[float]) -> Tuple[Optional[float], Optional[flo
     mean_val = statistics.mean(values)
     std_val = statistics.pstdev(values) if len(values) > 1 else 0.0
     return mean_val, std_val
+
+
+def resolve_metric_value(task: str, metrics: Dict[str, Any]) -> Tuple[str, float]:
+    for key in TASK_TO_METRIC_KEYS[task]:
+        value = metrics.get(key)
+        if isinstance(value, (int, float)):
+            return key, float(value)
+    fallback = metrics.get("accuracy", -1.0)
+    return TASK_TO_METRIC_KEYS[task][0], float(fallback)
+
+
+def resolve_num_examples(task: str, metrics: Dict[str, Any]) -> int:
+    for key in TASK_TO_COUNT_KEYS[task]:
+        value = metrics.get(key)
+        if isinstance(value, int):
+            return value
+    return 0
 
 
 def aggregate_results(records: List[Dict[str, Any]]) -> List[Dict[str, Any]]:
@@ -841,30 +909,42 @@ def build_arg_parser() -> argparse.ArgumentParser:
         "--calib_dataset",
         type=str,
         default=None,
-        help="Calibration dataset (default: gsm8k)",
+        help="Global calibration dataset override. Omit this for per-task defaults.",
     )
     p.add_argument(
         "--calib_config",
         type=str,
         default=None,
-        help="Calibration dataset config (default: main for gsm8k)",
+        help="Global calibration dataset config override.",
     )
     p.add_argument(
         "--calib_split",
         type=str,
         default=None,
-        help="Calibration split (default: train)",
+        help="Calibration split override.",
     )
     p.add_argument(
         "--calib_text_fields",
         type=str,
         nargs="+",
         default=None,
-        help="Calibration text fields for prompt/answer",
+        help="Calibration text fields for prompt/answer.",
+    )
+    p.add_argument(
+        "--shared_calibration",
+        action="store_true",
+        help="Use the same --calib_dataset/--calib_config for every task. Without this, tasks use their own defaults.",
     )
     p.add_argument("--calib_shuffle", action="store_true", help="Shuffle calibration dataset")
     p.add_argument("--calib_seed", type=int, default=None, help="Seed for calibration shuffle")
     p.add_argument("--calib_start", type=int, default=0, help="Start offset into calibration dataset")
+    p.add_argument(
+        "--csqa_prompt_style",
+        type=str,
+        default="auto",
+        choices=list(CSQA_PROMPT_STYLE_CHOICES),
+        help="Prompt style for CSQA calibration/evaluation. Use auto to infer legacy adapters from run metadata.",
+    )
 
     p.add_argument("--seed", type=int, default=42, help="Base random seed")
     p.add_argument(
@@ -932,6 +1012,21 @@ def main():
         if t not in TASK_TO_EVAL_SCRIPT:
             print(f"[ERROR] Unknown task: {t}")
             sys.exit(1)
+    multi_task = len(set(tasks)) > 1
+    if multi_task and args.calib_config is not None and args.calib_dataset is None:
+        print("[ERROR] --calib_config without --calib_dataset is ambiguous across multiple tasks.")
+        sys.exit(1)
+    if multi_task and args.calib_text_fields and args.calib_dataset is None:
+        print("[ERROR] --calib_text_fields without --calib_dataset is ambiguous across multiple tasks.")
+        sys.exit(1)
+    try:
+        calibration_by_task = {
+            task: resolve_task_calibration(task, args, multi_task)
+            for task in sorted(set(tasks))
+        }
+    except ValueError as exc:
+        print(f"[ERROR] {exc}")
+        sys.exit(1)
 
     git_commit = get_git_commit()
 
@@ -942,11 +1037,20 @@ def main():
     print(f"Output root: {args.out_root}")
     print(f"Tasks: {tasks}")
     print(f"Methods: {args.methods}")
+    print(f"Shared calibration: {args.shared_calibration}")
     print(f"Repeats: {args.n_repeats} (seeds={repeat_seeds})")
     print(f"Use vLLM: {args.use_vllm}")
     print(f"Tensor parallel size: {args.tensor_parallel_size}")
     print(f"Max samples: {args.max_samples or 'all'}")
     print(f"Git commit: {git_commit or 'unknown'}")
+    print("Calibration plan:")
+    for task in sorted(calibration_by_task):
+        calib_spec = calibration_by_task[task]
+        print(
+            "  "
+            f"task={task} dataset={calib_spec.dataset} config={calib_spec.config} "
+            f"split={calib_spec.split} mode={calib_spec.selection_mode} samples={args.calib_samples}"
+        )
     print("=" * 70)
 
     print("\n[1/4] Discovering adapters...")
@@ -1031,9 +1135,24 @@ def main():
     skipped = 0
 
     for i, adapter in enumerate(adapters, 1):
+        calib_spec = calibration_by_task[adapter.task]
+        resolved_csqa_prompt_style = args.csqa_prompt_style
+        if adapter.task == "csqa":
+            prompt_resolution = resolve_csqa_prompt_style(args.csqa_prompt_style, adapter.adapter_dir)
+            resolved_csqa_prompt_style = prompt_resolution.resolved
         print(f"\n[{i}/{len(adapters)}] Processing: {adapter.run_id}")
         print(f"  Path: {adapter.adapter_dir}")
         print(f"  Base model: {adapter.base_model_id}")
+        print(
+            "  Calibration: "
+            f"task={adapter.task} dataset={calib_spec.dataset} config={calib_spec.config} "
+            f"split={calib_spec.split} samples={args.calib_samples} mode={calib_spec.selection_mode}"
+        )
+        if adapter.task == "csqa":
+            print(
+                "  CSQA prompt style: "
+                f"{resolved_csqa_prompt_style} ({prompt_resolution.reason})"
+            )
 
         for method in args.methods:
             print(f"\n  Method: {method}")
@@ -1076,14 +1195,14 @@ def main():
                             out_dir=edited_adapter_dir,
                             edit_method=method,
                             base_model_id=adapter.base_model_id,
+                            task=adapter.task,
+                            calibration_mode=calib_spec.selection_mode,
                             seed=repeat_seed,
                             calib_samples=args.calib_samples,
                             calib_batch_size=args.calib_batch_size,
                             target_modules=args.target_modules,
-                            calib_dataset=args.calib_dataset,
-                            calib_config=args.calib_config,
-                            calib_split=args.calib_split,
-                            calib_text_fields=args.calib_text_fields,
+                            calib_spec=calib_spec,
+                            csqa_prompt_style=resolved_csqa_prompt_style,
                             calib_shuffle=args.calib_shuffle,
                             calib_seed=args.calib_seed,
                             calib_start=args.calib_start,
@@ -1108,7 +1227,7 @@ def main():
                                 repeat_idx=repeat_idx,
                                 repeat_seed=repeat_seed,
                                 repeat_tag=repeat_tag,
-                                metric_name=TASK_TO_METRIC[adapter.task],
+                                metric_name=TASK_TO_METRIC_KEYS[adapter.task][0],
                                 metric_value=-1.0,
                                 num_examples=0,
                                 backend="vllm" if args.use_vllm else "transformers",
@@ -1149,7 +1268,7 @@ def main():
                                 repeat_idx=repeat_idx,
                                 repeat_seed=repeat_seed,
                                 repeat_tag=repeat_tag,
-                                metric_name=TASK_TO_METRIC[adapter.task],
+                                metric_name=TASK_TO_METRIC_KEYS[adapter.task][0],
                                 metric_value=-1.0,
                                 num_examples=0,
                                 backend="vllm" if args.use_vllm else "transformers",
@@ -1177,6 +1296,7 @@ def main():
                         use_vllm=args.use_vllm,
                         tensor_parallel_size=args.tensor_parallel_size,
                         max_samples=args.max_samples,
+                        csqa_prompt_style=resolved_csqa_prompt_style,
                         seed=repeat_seed,
                     )
                 else:
@@ -1184,12 +1304,12 @@ def main():
 
                 if error:
                     print(f"      [EVAL FAILED] {error}")
+                    metric_name = TASK_TO_METRIC_KEYS[adapter.task][0]
                     metric_value = -1.0
                     num_examples = 0
                 else:
-                    metric_name = TASK_TO_METRIC[adapter.task]
-                    metric_value = metrics.get(metric_name, metrics.get("accuracy", -1.0))
-                    num_examples = metrics.get("total", metrics.get("num_examples", 0))
+                    metric_name, metric_value = resolve_metric_value(adapter.task, metrics)
+                    num_examples = resolve_num_examples(adapter.task, metrics)
                     print(f"      [SUCCESS] {metric_name}={metric_value:.4f} (n={num_examples})")
 
                 result = EvalResult(
@@ -1209,7 +1329,7 @@ def main():
                     repeat_idx=repeat_idx,
                     repeat_seed=repeat_seed,
                     repeat_tag=repeat_tag,
-                    metric_name=TASK_TO_METRIC[adapter.task],
+                    metric_name=metric_name,
                     metric_value=metric_value,
                     num_examples=num_examples,
                     backend="vllm" if args.use_vllm else "transformers",
