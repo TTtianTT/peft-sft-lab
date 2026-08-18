@@ -3,7 +3,7 @@ accelerate>=0.28.0
 datasets>=2.18.0
 transformers>=4.40.0
 peft>=0.10.0
-trl>=0.8.0
+trl>=0.24.0
 
 numpy>=1.24
 tqdm>=4.66

@@ -2,7 +2,7 @@ from __future__ import annotations
 
 from typing import Any
 
-from finetune.data.base import TaskPlugin, first_present, format_instruction_response
+from finetune.data.base import TaskPlugin, first_present, make_single_turn_example
 
 
 class MagicoderTask(TaskPlugin):
@@ -23,7 +23,7 @@ class MagicoderTask(TaskPlugin):
                 "Verify the dataset id on Hugging Face."
             ) from exc
 
-    def format_example(self, example: dict[str, Any]) -> str:
+    def format_example(self, example: dict[str, Any]):
         instruction = first_present(example, ["instruction", "prompt", "query", "problem"])
         response = first_present(example, ["response", "output", "answer", "completion"])
         if instruction is None or response is None:
@@ -31,5 +31,4 @@ class MagicoderTask(TaskPlugin):
                 f"Magicoder example missing required fields. Keys: {sorted(example.keys())}. "
                 "Expected something like (instruction,response) or (prompt,output)."
             )
-        return f"{instruction}\n{response}"
-
+        return make_single_turn_example(user_content=instruction, assistant_content=response)

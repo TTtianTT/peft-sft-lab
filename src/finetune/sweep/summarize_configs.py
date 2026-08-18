@@ -23,22 +23,19 @@ METHOD_ORDER = ["lora", "loraplus", "adalora", "pissa"]
 
 TASK_FORMATTING = {
     "MetaMathQATask": (
-        "Uses first present of query/original_question/question/instruction/prompt as instruction and "
-        "response/answer/output/solution as response; formats with "
-        "'### Instruction' + '### Response'."
+        "Uses first present of query/original_question/question/instruction/prompt as the user message "
+        "and response/answer/output/solution as the assistant message."
     ),
     "MagicoderTask": (
-        "Uses first present of instruction/prompt/query/problem as instruction and "
-        "response/output/answer/completion as response; formats with "
-        "'### Instruction' + '### Response'."
+        "Uses first present of instruction/prompt/query/problem as the user message and "
+        "response/output/answer/completion as the assistant message."
     ),
     "AlpacaTask": (
-        "If text is present, uses text as-is; otherwise uses instruction + optional input + output, "
-        "formatted with '### Instruction' + '### Response'."
+        "Uses instruction plus optional input as the user message and output as the assistant message."
     ),
     "CommonsenseQATask": (
         "Formats question + choices (A-E) and expects a single-letter answer; "
-        "wraps with '### Instruction' + '### Response'."
+        "stores them as user/assistant messages for chat-template rendering."
     ),
 }
 

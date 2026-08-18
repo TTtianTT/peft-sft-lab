@@ -2,7 +2,7 @@ from __future__ import annotations
 
 from typing import Any
 
-from finetune.data.base import TaskPlugin, format_instruction_response
+from finetune.data.base import TaskPlugin, make_single_turn_example
 
 _LABEL_ORDER = ["A", "B", "C", "D", "E"]
 
@@ -82,7 +82,7 @@ class CommonsenseQATask(TaskPlugin):
                 "Verify the dataset id on Hugging Face."
             ) from exc
 
-    def format_example(self, example: dict[str, Any]) -> str:
+    def format_example(self, example: dict[str, Any]):
         ex_id = example.get("id", None)
         question = _get_question_text(example.get("question", ""))
         answer = str(example.get("answerKey", "") or "").strip().upper()
@@ -115,4 +115,4 @@ class CommonsenseQATask(TaskPlugin):
                 f"Question:\n{question}\n\nChoices:\n" + "\n".join(lines) + "\n\n"
                 "Answer with a single letter: A, B, C, D, or E."
         )
-        return f"{instruction}\n{answer}"
+        return make_single_turn_example(user_content=instruction, assistant_content=answer)

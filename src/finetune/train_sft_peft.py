@@ -130,13 +130,6 @@ def _maybe_enable_gradient_checkpointing(model: object, enabled: bool) -> None:
         model.config.use_cache = False
 
 
-def _format_sft_text(example: dict[str, Any]) -> str:
-    text = example.get("text", "")
-    if isinstance(text, str):
-        return text
-    return str(text)
-
-
 def _get_world_size() -> int:
     for key in ("WORLD_SIZE", "LOCAL_WORLD_SIZE", "SLURM_NTASKS", "PMI_SIZE"):
         value = os.environ.get(key)
@@ -240,7 +233,12 @@ def _resolve_adalora_schedule(total_steps: int) -> dict[str, int]:
 def main() -> None:
     args = build_arg_parser().parse_args()
 
-    from finetune.data.base import first_present
+    from finetune.data.chat_sft import (
+        CompletionOnlyDataCollator,
+        ensure_chat_template,
+        format_sft_debug_sample,
+        preprocess_chat_example,
+    )
     from finetune.data.registry import get_task_plugin
     from finetune.peft_builders import (
         build_loraplus_param_groups,
@@ -333,64 +331,30 @@ def main() -> None:
     if len(train_ds) == 0:
         raise RuntimeError(f"Loaded empty dataset for task={args.task}.")
 
-    if args.task == "alpaca":
-        def _normalize_field(value):
-            if value is None:
-                return ""
-            if isinstance(value, str):
-                return value.strip()
-            return str(value).strip()
+    def _is_valid_task_example(example: dict[str, Any]) -> bool:
+        try:
+            task.format_example(example)
+            return True
+        except ValueError:
+            return False
 
-        def _alpaca_is_valid(example):
-            text = example.get("text")
-            if isinstance(text, str) and text.strip():
-                return True
-            instruction = _normalize_field(example.get("instruction"))
-            output = _normalize_field(example.get("output"))
-            return bool(instruction) and bool(output)
-
-        before_count = len(train_ds)
-        train_ds = train_ds.filter(_alpaca_is_valid, desc="Filtering alpaca examples")
-        after_count = len(train_ds)
-        filtered = before_count - after_count
-        if is_rank0():
-            if filtered:
-                logger.info(
-                    "Filtered %d invalid alpaca examples (kept %d/%d).",
-                    filtered,
-                    after_count,
-                    before_count,
-                )
-            else:
-                logger.info("No invalid alpaca examples filtered (kept %d).", after_count)
-        if after_count == 0:
-            raise RuntimeError("All alpaca examples were filtered out; check dataset fields.")
-
-    if args.task in {"metamath", "metamathqa", "math"}:
-        def _metamath_is_valid(example):
-            instruction = first_present(
-                example,
-                ["query", "original_question", "question", "instruction", "prompt"],
+    before_count = len(train_ds)
+    train_ds = train_ds.filter(_is_valid_task_example, desc=f"Filtering invalid {args.task} examples")
+    after_count = len(train_ds)
+    filtered = before_count - after_count
+    if is_rank0():
+        if filtered:
+            logger.info(
+                "Filtered %d invalid %s examples (kept %d/%d).",
+                filtered,
+                args.task,
+                after_count,
+                before_count,
             )
-            response = first_present(example, ["response", "answer", "output", "solution"])
-            return bool(instruction) and bool(response)
-
-        before_count = len(train_ds)
-        train_ds = train_ds.filter(_metamath_is_valid, desc="Filtering metamath examples")
-        after_count = len(train_ds)
-        filtered = before_count - after_count
-        if is_rank0():
-            if filtered:
-                logger.info(
-                    "Filtered %d invalid metamath examples (kept %d/%d).",
-                    filtered,
-                    after_count,
-                    before_count,
-                )
-            else:
-                logger.info("No invalid metamath examples filtered (kept %d).", after_count)
-        if after_count == 0:
-            raise RuntimeError("All metamath examples were filtered out; check dataset fields.")
+        else:
+            logger.info("No invalid %s examples filtered (kept %d).", args.task, after_count)
+    if after_count == 0:
+        raise RuntimeError(f"All {args.task} examples were filtered out; check dataset fields.")
 
     if args.max_train_samples is not None:
         if args.max_train_samples <= 0:
@@ -512,25 +476,70 @@ def main() -> None:
         save_json(Path(output_dir) / "run_config.json", run_config)
         best_effort_pip_freeze(output_dir)
 
-    # Map to a single text field for SFTTrainer.
     try:
         train_ds = train_ds.map(
-            lambda ex: {"text": task.format_example(ex)},
+            task.format_example,
             remove_columns=train_ds.column_names,
-            desc=f"Formatting {args.task} examples",
+            desc=f"Structuring {args.task} examples",
         )
     except Exception as exc:
         raise RuntimeError(
-            f"Failed while formatting examples for task={args.task}: {exc}\n"
+            f"Failed while structuring examples for task={args.task}: {exc}\n"
             f"Dataset columns were: {getattr(train_ds, 'column_names', None)}"
         ) from exc
 
     from transformers import AutoModelForCausalLM, AutoTokenizer
 
     tokenizer = AutoTokenizer.from_pretrained(args.base_model, use_fast=True)
+    ensure_chat_template(tokenizer, args.base_model)
     tokenizer.padding_side = "right"
     if tokenizer.pad_token is None:
         tokenizer.pad_token = tokenizer.eos_token
+
+    try:
+        train_ds = train_ds.map(
+            lambda ex: preprocess_chat_example(
+                tokenizer=tokenizer,
+                example=ex,
+                max_seq_len=args.max_seq_len,
+            ),
+            remove_columns=train_ds.column_names,
+            desc=f"Applying chat template for {args.task}",
+        )
+    except Exception as exc:
+        raise RuntimeError(
+            f"Failed while preprocessing chat examples for task={args.task}: {exc}\n"
+            f"Dataset columns were: {getattr(train_ds, 'column_names', None)}"
+        ) from exc
+
+    before_count = len(train_ds)
+    train_ds = train_ds.filter(
+        lambda ex: ex["supervised_token_count"] > 0,
+        desc="Dropping examples without supervised completion tokens",
+    )
+    after_count = len(train_ds)
+    filtered = before_count - after_count
+    if is_rank0():
+        if filtered:
+            logger.info(
+                "Dropped %d examples after tokenization because truncation removed all supervised tokens.",
+                filtered,
+            )
+        logger.info("Prepared %d tokenized SFT examples with response-only labels.", after_count)
+    if after_count == 0:
+        raise RuntimeError("No training examples retain supervised assistant tokens after preprocessing.")
+
+    debug_sample = train_ds[0]
+    if is_rank0():
+        logger.info("\n%s", format_sft_debug_sample(tokenizer, debug_sample))
+
+    debug_columns = [
+        column_name
+        for column_name in train_ds.column_names
+        if column_name not in {"input_ids", "attention_mask", "labels"}
+    ]
+    if debug_columns:
+        train_ds = train_ds.remove_columns(debug_columns)
 
     import torch
 
@@ -689,6 +698,7 @@ def main() -> None:
         model=model,
         args=training_args,
         train_dataset=train_ds,
+        data_collator=CompletionOnlyDataCollator(tokenizer),
     )
     sig = inspect.signature(SFTTrainer.__init__)
     if "tokenizer" in sig.parameters:
@@ -699,10 +709,6 @@ def main() -> None:
         raise RuntimeError(
             "Unsupported trl.SFTTrainer signature (expected `tokenizer` or `processing_class`)."
         )
-    if "dataset_text_field" in sig.parameters:
-        trainer_kwargs["dataset_text_field"] = "text"
-    elif "formatting_func" in sig.parameters:
-        trainer_kwargs["formatting_func"] = _format_sft_text
     if "max_seq_length" in sig.parameters:
         trainer_kwargs["max_seq_length"] = args.max_seq_len
     trainer_kwargs = {k: v for k, v in trainer_kwargs.items() if k in sig.parameters}

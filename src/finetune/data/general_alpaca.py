@@ -2,7 +2,7 @@ from __future__ import annotations
 
 from typing import Any
 
-from finetune.data.base import TaskPlugin, format_instruction_response
+from finetune.data.base import TaskPlugin, make_single_turn_example
 
 
 class AlpacaTask(TaskPlugin):
@@ -31,20 +31,15 @@ class AlpacaTask(TaskPlugin):
                 "Verify the dataset id on Hugging Face."
             ) from exc
 
-    def format_example(self, example: dict[str, Any]) -> str:
-        text = example.get("text")
-        if isinstance(text, str):
-            text = text.strip()
-            if text:
-                return text
+    def format_example(self, example: dict[str, Any]):
         instruction = self._normalize_text(example.get("instruction"))
         input_text = self._normalize_text(example.get("input"))
         output = self._normalize_text(example.get("output"))
         if not instruction or not output:
             raise ValueError(
                 f"Alpaca example missing required fields. Keys: {sorted(example.keys())}. "
-                "Expected non-empty text or (instruction, output) with optional (input)."
+                "Expected non-empty (instruction, output) with optional (input)."
             )
         if input_text:
             instruction = f"{instruction}\n\nInput:\n{input_text}"
-        return format_instruction_response(instruction=instruction, response=output)
+        return make_single_turn_example(user_content=instruction, assistant_content=output)
