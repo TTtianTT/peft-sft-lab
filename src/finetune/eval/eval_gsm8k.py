@@ -3,6 +3,7 @@ from __future__ import annotations
 import argparse
 import json
 import re
+from glob import glob
 from pathlib import Path
 from typing import Any
 
@@ -53,11 +54,95 @@ def _build_gsm8k_user_instruction(question: str) -> str:
     )
 
 
+def _resolve_local_gsm8k_data_files(
+    dataset_path: str,
+    split: str,
+    dataset_config: str,
+) -> tuple[str, list[str]]:
+    path = Path(dataset_path)
+    if not path.exists():
+        raise RuntimeError(f"Local GSM8K dataset path not found: {dataset_path}")
+
+    if path.is_file():
+        suffix = path.suffix.lower()
+        if suffix == ".parquet":
+            return "parquet", [str(path)]
+        if suffix == ".json":
+            return "json", [str(path)]
+        if suffix == ".jsonl":
+            return "json", [str(path)]
+        raise RuntimeError(
+            f"Unsupported local GSM8K file extension: {path.suffix!r}. Use .parquet, .json, or .jsonl."
+        )
+
+    candidates = [
+        str(path / dataset_config / f"{split}-*.parquet"),
+        str(path / f"{split}-*.parquet"),
+    ]
+    matches: list[str] = []
+    for pattern in candidates:
+        matched = sorted(glob(pattern))
+        if matched:
+            matches = matched
+            break
+
+    if matches:
+        return "parquet", matches
+
+    raise RuntimeError(
+        f"Could not find local GSM8K files for split={split!r}, dataset_config={dataset_config!r} under {dataset_path}. "
+        f"Tried patterns: {candidates}"
+    )
+
+
+def load_gsm8k_split(
+    *,
+    split: str,
+    dataset_path: str | None,
+    dataset_config: str,
+):
+    try:
+        from datasets import load_dataset
+    except Exception as exc:
+        raise RuntimeError(f"datasets is required: {exc}") from exc
+
+    if dataset_path is None:
+        try:
+            return load_dataset("gsm8k", dataset_config, split=split)
+        except Exception as exc:
+            raise RuntimeError(f"Failed to load gsm8k: {exc}") from exc
+
+    loader_name, data_files = _resolve_local_gsm8k_data_files(
+        dataset_path=dataset_path,
+        split=split,
+        dataset_config=dataset_config,
+    )
+    try:
+        return load_dataset(loader_name, data_files=data_files, split="train")
+    except Exception as exc:
+        raise RuntimeError(
+            f"Failed to load local GSM8K data from {dataset_path}: {exc}\n"
+            f"Resolved loader={loader_name!r}, files={data_files!r}"
+        ) from exc
+
+
 def build_arg_parser() -> argparse.ArgumentParser:
     p = argparse.ArgumentParser(description="Evaluate GSM8K strict-match accuracy using tokenizer chat templates.")
     p.add_argument("--base_model", type=str, required=True)
     p.add_argument("--adapter_dir", type=str, default=None)
     p.add_argument("--output_dir", type=str, required=True)
+    p.add_argument(
+        "--dataset_path",
+        type=str,
+        default=None,
+        help="Optional local GSM8K dataset root or file. Supports a snapshot directory with main/test-*.parquet.",
+    )
+    p.add_argument(
+        "--dataset_config",
+        type=str,
+        default="main",
+        help="GSM8K config/subset name. Defaults to 'main'.",
+    )
     p.add_argument("--split", type=str, default="test")
     p.add_argument("--max_samples", type=int, default=None)
     p.add_argument("--max_new_tokens", type=int, default=256)
@@ -76,15 +161,11 @@ def main() -> None:
     out_dir.mkdir(parents=True, exist_ok=True)
     preds_path = out_dir / "predictions.jsonl"
 
-    try:
-        from datasets import load_dataset
-    except Exception as exc:
-        raise RuntimeError(f"datasets is required: {exc}") from exc
-
-    try:
-        ds = load_dataset("gsm8k", "main", split=args.split)
-    except Exception as exc:
-        raise RuntimeError(f"Failed to load gsm8k: {exc}") from exc
+    ds = load_gsm8k_split(
+        split=args.split,
+        dataset_path=args.dataset_path,
+        dataset_config=args.dataset_config,
+    )
 
     if args.max_samples is not None:
         ds = ds.select(range(min(args.max_samples, len(ds))))
@@ -184,6 +265,9 @@ def main() -> None:
         "correct": correct,
         "total": total,
         "prompt_style": "tokenizer_chat_template",
+        "dataset_source": args.dataset_path or "hf://gsm8k",
+        "dataset_config": args.dataset_config,
+        "split": args.split,
     }
     save_json(out_dir / "metrics.json", metrics)
 

@@ -19,7 +19,10 @@ from finetune.data.chat_sft import (
     format_sft_debug_sample,
     preprocess_chat_example,
 )
-from finetune.eval.eval_gsm8k import _build_gsm8k_user_instruction
+from finetune.eval.eval_gsm8k import (
+    _build_gsm8k_user_instruction,
+    _resolve_local_gsm8k_data_files,
+)
 from finetune.eval.generation import render_chat_prompt
 from finetune.data.math_metamathqa import MetaMathQATask
 
@@ -171,6 +174,37 @@ class GSM8KEvalPromptTests(unittest.TestCase):
         self.assertNotIn("### Instruction:", prompt)
         self.assertNotIn("### Response:", prompt)
         self.assertNotIn("Let's think step by step.", prompt)
+
+    def test_resolve_local_gsm8k_snapshot_directory(self):
+        with TemporaryDirectory() as tmpdir:
+            root = Path(tmpdir)
+            split_dir = root / "main"
+            split_dir.mkdir(parents=True, exist_ok=True)
+            target = split_dir / "test-00000-of-00001.parquet"
+            target.write_text("placeholder", encoding="utf-8")
+
+            loader_name, files = _resolve_local_gsm8k_data_files(
+                dataset_path=str(root),
+                split="test",
+                dataset_config="main",
+            )
+
+            self.assertEqual(loader_name, "parquet")
+            self.assertEqual(files, [str(target)])
+
+    def test_resolve_local_gsm8k_single_parquet_file(self):
+        with TemporaryDirectory() as tmpdir:
+            target = Path(tmpdir) / "gsm8k-test.parquet"
+            target.write_text("placeholder", encoding="utf-8")
+
+            loader_name, files = _resolve_local_gsm8k_data_files(
+                dataset_path=str(target),
+                split="test",
+                dataset_config="main",
+            )
+
+            self.assertEqual(loader_name, "parquet")
+            self.assertEqual(files, [str(target)])
 
 
 class OptionalLlamaTokenizerTests(unittest.TestCase):
