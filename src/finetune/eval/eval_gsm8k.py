@@ -9,19 +9,12 @@ from typing import Any
 from finetune.eval.generation import (
     generate_greedy,
     generate_greedy_vllm_batch,
+    load_eval_tokenizer,
     load_transformers_model,
+    render_chat_prompt,
     save_json,
 )
 from finetune.utils import seed_everything
-
-
-# MetaMathQA "Model Usage" prompting template
-_METAMATH_PROMPT_TEMPLATE = (
-    "Below is an instruction that describes a task. "
-    "Write a response that appropriately completes the request.\n\n"
-    "### Instruction:\n{instruction}\n\n"
-    "### Response: Let's think step by step."
-)
 
 
 def _extract_answer(text: str) -> str:
@@ -51,22 +44,17 @@ def _norm(s: str) -> str:
     return s.strip().replace(",", "")
 
 
-def _build_prompt_gsm8k_metamath_style(question: str) -> str:
-    """
-    Build a GSM8K prompt that *uses* the MetaMathQA Model Usage template, while still
-    instructing the model to output '#### <answer>' for strict-match evaluation.
-    """
-    instruction = (
+def _build_gsm8k_user_instruction(question: str) -> str:
+    return (
         "Solve the following math word problem.\n"
         "Put your final numeric answer on the last line exactly as:\n"
         "#### <answer>\n\n"
         f"{question.strip()}"
     )
-    return _METAMATH_PROMPT_TEMPLATE.format(instruction=instruction) + "\n"
 
 
 def build_arg_parser() -> argparse.ArgumentParser:
-    p = argparse.ArgumentParser(description="Evaluate GSM8K strict-match accuracy (MetaMath-style prompt).")
+    p = argparse.ArgumentParser(description="Evaluate GSM8K strict-match accuracy using tokenizer chat templates.")
     p.add_argument("--base_model", type=str, required=True)
     p.add_argument("--adapter_dir", type=str, default=None)
     p.add_argument("--output_dir", type=str, required=True)
@@ -101,6 +89,8 @@ def main() -> None:
     if args.max_samples is not None:
         ds = ds.select(range(min(args.max_samples, len(ds))))
 
+    eval_tokenizer = load_eval_tokenizer(base_model=args.base_model, adapter_dir=args.adapter_dir)
+
     loaded = None
     if not args.use_vllm:
         loaded = load_transformers_model(
@@ -124,7 +114,11 @@ def main() -> None:
                 gold_raw = str(ex.get("answer", "")).strip()
                 gold = _norm(_extract_answer(gold_raw))
 
-                prompt = _build_prompt_gsm8k_metamath_style(q)
+                prompt = render_chat_prompt(
+                    tokenizer=eval_tokenizer,
+                    base_model=args.base_model,
+                    user_content=_build_gsm8k_user_instruction(q),
+                )
                 prompts.append(prompt)
                 records.append((q, gold))
 
@@ -145,7 +139,7 @@ def main() -> None:
                 rec: dict[str, Any] = {
                     "question": q,
                     "gold": gold,
-                    "prompt_style": "metamath_model_usage",
+                    "prompt_style": "tokenizer_chat_template",
                     "prediction_text": gen,
                     "prediction_extracted": pred,
                     "correct": bool(is_correct),
@@ -157,7 +151,11 @@ def main() -> None:
                 gold_raw = str(ex.get("answer", "")).strip()
                 gold = _norm(_extract_answer(gold_raw))
 
-                prompt = _build_prompt_gsm8k_metamath_style(q)
+                prompt = render_chat_prompt(
+                    tokenizer=eval_tokenizer,
+                    base_model=args.base_model,
+                    user_content=_build_gsm8k_user_instruction(q),
+                )
 
                 gen = generate_greedy(
                     model=loaded.model,
@@ -174,7 +172,7 @@ def main() -> None:
                 rec: dict[str, Any] = {
                     "question": q,
                     "gold": gold,
-                    "prompt_style": "metamath_model_usage",
+                    "prompt_style": "tokenizer_chat_template",
                     "prediction_text": gen,
                     "prediction_extracted": pred,
                     "correct": bool(is_correct),
@@ -185,7 +183,7 @@ def main() -> None:
         "accuracy_strict": (correct / total if total else 0.0),
         "correct": correct,
         "total": total,
-        "prompt_style": "metamath_model_usage",
+        "prompt_style": "tokenizer_chat_template",
     }
     save_json(out_dir / "metrics.json", metrics)
 

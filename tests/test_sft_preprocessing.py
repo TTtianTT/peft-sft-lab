@@ -19,6 +19,8 @@ from finetune.data.chat_sft import (
     format_sft_debug_sample,
     preprocess_chat_example,
 )
+from finetune.eval.eval_gsm8k import _build_gsm8k_user_instruction
+from finetune.eval.generation import render_chat_prompt
 from finetune.data.math_metamathqa import MetaMathQATask
 
 
@@ -145,6 +147,30 @@ class ChatPreprocessingTests(unittest.TestCase):
 
         self.assertEqual(sample["supervised_token_count"], 0)
         self.assertTrue(all(label == -100 for label in sample["labels"]))
+
+
+class GSM8KEvalPromptTests(unittest.TestCase):
+    def test_gsm8k_instruction_keeps_answer_format_contract(self):
+        instruction = _build_gsm8k_user_instruction("What is 2 + 3?")
+        self.assertIn("Solve the following math word problem.", instruction)
+        self.assertIn("#### <answer>", instruction)
+        self.assertIn("What is 2 + 3?", instruction)
+        self.assertNotIn("### Instruction:", instruction)
+        self.assertNotIn("Let's think step by step.", instruction)
+
+    def test_gsm8k_eval_prompt_uses_chat_template_not_metamath_string_template(self):
+        prompt = render_chat_prompt(
+            tokenizer=DummyChatTokenizer(),
+            base_model="dummy-model",
+            user_content=_build_gsm8k_user_instruction("What is 2 + 3?"),
+        )
+
+        self.assertIn("<|user|>", prompt)
+        self.assertIn("<|assistant|>", prompt)
+        self.assertIn("#### <answer>", prompt)
+        self.assertNotIn("### Instruction:", prompt)
+        self.assertNotIn("### Response:", prompt)
+        self.assertNotIn("Let's think step by step.", prompt)
 
 
 class OptionalLlamaTokenizerTests(unittest.TestCase):

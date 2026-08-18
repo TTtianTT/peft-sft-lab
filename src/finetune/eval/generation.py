@@ -6,6 +6,8 @@ from dataclasses import dataclass
 from pathlib import Path
 from typing import Any
 
+from finetune.data.chat_sft import ensure_chat_template
+
 
 def strip_code_fences(text: str) -> str:
     text = text.strip()
@@ -30,6 +32,20 @@ class LoadedModel:
     tokenizer: Any
 
 
+def load_eval_tokenizer(
+    *,
+    base_model: str,
+    adapter_dir: str | None,
+):
+    from transformers import AutoTokenizer
+
+    tokenizer = AutoTokenizer.from_pretrained(_pick_tokenizer_source(base_model, adapter_dir), use_fast=True)
+    tokenizer.padding_side = "left"
+    if tokenizer.pad_token is None:
+        tokenizer.pad_token = tokenizer.eos_token
+    return tokenizer
+
+
 def load_transformers_model(
     *,
     base_model: str,
@@ -38,7 +54,7 @@ def load_transformers_model(
     device_map: str | dict[str, int] | None = "auto",
 ) -> LoadedModel:
     import torch
-    from transformers import AutoModelForCausalLM, AutoTokenizer
+    from transformers import AutoModelForCausalLM
 
     if dtype == "bf16":
         torch_dtype = torch.bfloat16
@@ -49,10 +65,7 @@ def load_transformers_model(
     else:
         torch_dtype = None
 
-    tokenizer = AutoTokenizer.from_pretrained(_pick_tokenizer_source(base_model, adapter_dir), use_fast=True)
-    tokenizer.padding_side = "left"
-    if tokenizer.pad_token is None:
-        tokenizer.pad_token = tokenizer.eos_token
+    tokenizer = load_eval_tokenizer(base_model=base_model, adapter_dir=adapter_dir)
 
     model = AutoModelForCausalLM.from_pretrained(
         base_model,
@@ -72,6 +85,27 @@ def load_transformers_model(
 
     model.eval()
     return LoadedModel(model=model, tokenizer=tokenizer)
+
+
+def render_chat_prompt(
+    *,
+    tokenizer: Any,
+    base_model: str,
+    user_content: str,
+    system_content: str | None = None,
+) -> str:
+    ensure_chat_template(tokenizer, base_model)
+
+    messages: list[dict[str, str]] = []
+    if system_content is not None and system_content.strip():
+        messages.append({"role": "system", "content": system_content})
+    messages.append({"role": "user", "content": user_content})
+
+    return tokenizer.apply_chat_template(
+        messages,
+        tokenize=False,
+        add_generation_prompt=True,
+    )
 
 
 def _model_input_device(model: Any):
