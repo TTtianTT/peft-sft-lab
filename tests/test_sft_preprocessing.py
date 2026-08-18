@@ -1,8 +1,10 @@
 from __future__ import annotations
 
 import sys
+import json
 import unittest
 from pathlib import Path
+from tempfile import TemporaryDirectory
 
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -71,6 +73,32 @@ class MetaMathTaskTests(unittest.TestCase):
         self.assertNotIn("### Instruction:", flattened)
         self.assertNotIn("### Response:", flattened)
         self.assertNotIn("Let's think step by step.", flattened)
+
+    def test_metamath_can_load_local_json_file(self):
+        try:
+            import datasets  # noqa: F401
+        except Exception as exc:
+            self.skipTest(f"datasets unavailable: {exc}")
+
+        payload = [
+            {
+                "query": "What is 2 + 3?",
+                "response": "We add 2 and 3 to get 5.",
+                "original_question": "What is 2 + 3?",
+                "type": "MATH_AnsAug",
+            }
+        ]
+
+        with TemporaryDirectory() as tmpdir:
+            dataset_path = Path(tmpdir) / "metamath.json"
+            dataset_path.write_text(json.dumps(payload), encoding="utf-8")
+
+            task = MetaMathQATask()
+            dataset = task.load("train", dataset_path=str(dataset_path))
+
+            self.assertEqual(len(dataset), 1)
+            self.assertEqual(dataset[0]["query"], payload[0]["query"])
+            self.assertEqual(dataset[0]["response"], payload[0]["response"])
 
 
 class ChatPreprocessingTests(unittest.TestCase):

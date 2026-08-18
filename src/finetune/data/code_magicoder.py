@@ -9,11 +9,14 @@ class MagicoderTask(TaskPlugin):
     name = "code"
     dataset_id = "ise-uiuc/Magicoder-Evol-Instruct-110K"
 
-    def load(self, split: str):
+    def load(self, split: str, dataset_path: str | None = None):
         try:
             from datasets import load_dataset
         except Exception as exc:
             raise RuntimeError(f"datasets is required: {exc}") from exc
+
+        if dataset_path:
+            raise RuntimeError("MagicoderTask does not support --dataset_path yet.")
 
         try:
             return load_dataset(self.dataset_id, split=split)

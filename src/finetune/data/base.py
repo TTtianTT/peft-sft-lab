@@ -69,7 +69,7 @@ class TaskPlugin(ABC):
     name: str
 
     @abstractmethod
-    def load(self, split: str):
+    def load(self, split: str, dataset_path: str | None = None):
         """Return a `datasets.Dataset` for the given split (usually `train`)."""
 
     @abstractmethod

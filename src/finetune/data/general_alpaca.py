@@ -17,11 +17,14 @@ class AlpacaTask(TaskPlugin):
             return value.strip()
         return str(value).strip()
 
-    def load(self, split: str):
+    def load(self, split: str, dataset_path: str | None = None):
         try:
             from datasets import load_dataset
         except Exception as exc:
             raise RuntimeError(f"datasets is required: {exc}") from exc
+
+        if dataset_path:
+            raise RuntimeError("AlpacaTask does not support --dataset_path yet.")
 
         try:
             return load_dataset(self.dataset_id, split=split)

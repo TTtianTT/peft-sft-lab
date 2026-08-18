@@ -28,6 +28,12 @@ def build_arg_parser() -> argparse.ArgumentParser:
     )
     parser.add_argument("--output_dir", type=str, required=True, help="Where to write adapter + logs.")
     parser.add_argument(
+        "--dataset_path",
+        type=str,
+        default=None,
+        help="Optional local dataset file override. Currently intended for --task math with a local MetaMathQA JSON/JSONL file.",
+    )
+    parser.add_argument(
         "--train_profile",
         type=str,
         default=None,
@@ -321,7 +327,7 @@ def main() -> None:
 
     try:
         task = get_task_plugin(args.task)
-        train_ds = task.load("train")
+        train_ds = task.load("train", dataset_path=args.dataset_path)
     except Exception as exc:
         raise RuntimeError(
             f"Failed to load dataset for task={args.task}: {exc}\n"
@@ -468,6 +474,7 @@ def main() -> None:
             "min_lr_ratio": args.min_lr_ratio,
             "max_seq_len": args.max_seq_len,
             "dataset_size": len(train_ds),
+            "dataset_path": args.dataset_path,
             "max_train_samples": args.max_train_samples,
             "dataset_seed": args.dataset_seed,
             "adalora_schedule": adalora_schedule,
