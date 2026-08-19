@@ -106,21 +106,30 @@ def _resolve_official_ifbench_root(official_eval_root: str) -> Path:
     )
 
 
-def run_official_ifbench(
+def export_official_ifbench_inputs(
     *,
     out_dir: Path,
     input_rows: list[dict[str, Any]],
     response_rows: list[dict[str, Any]],
-    official_eval_root: str,
-) -> Path:
-    official_root = _resolve_official_ifbench_root(official_eval_root)
-    official_out = out_dir / "official_ifbench"
+) -> tuple[Path, Path, Path]:
+    official_out = (out_dir / "official_ifbench").resolve()
     official_out.mkdir(parents=True, exist_ok=True)
 
     input_data_path = official_out / "input_data.jsonl"
     input_response_data_path = official_out / "input_response_data.jsonl"
     _dump_jsonl(input_data_path, input_rows)
     _dump_jsonl(input_response_data_path, response_rows)
+    return official_out, input_data_path, input_response_data_path
+
+
+def run_official_ifbench(
+    *,
+    official_eval_root: str,
+    official_out: Path,
+    input_data_path: Path,
+    input_response_data_path: Path,
+) -> Path:
+    official_root = _resolve_official_ifbench_root(official_eval_root)
 
     cmd = [
         sys.executable,
@@ -193,7 +202,7 @@ def build_arg_parser() -> argparse.ArgumentParser:
     p.add_argument(
         "--official_eval_root",
         type=str,
-        required=True,
+        default=None,
         help="Path to a local checkout of https://github.com/allenai/IFBench.",
     )
     p.add_argument(
@@ -232,6 +241,17 @@ def build_arg_parser() -> argparse.ArgumentParser:
         action="store_true",
         help="Disable FlashInfer top-k/top-p sampler inside vLLM and fall back to the native sampler.",
     )
+    mode = p.add_mutually_exclusive_group()
+    mode.add_argument(
+        "--only_generate",
+        action="store_true",
+        help="Only generate responses and export official input/response jsonl files. Skip official scoring.",
+    )
+    mode.add_argument(
+        "--only_score",
+        action="store_true",
+        help="Skip generation and only run official IFBench scoring on existing exported jsonl files under output_dir/official_ifbench.",
+    )
     return p
 
 
@@ -242,102 +262,141 @@ def main() -> None:
     out_dir = Path(args.output_dir)
     out_dir.mkdir(parents=True, exist_ok=True)
     responses_path = out_dir / "responses.jsonl"
+    official_out = (out_dir / "official_ifbench").resolve()
+    input_data_path = official_out / "input_data.jsonl"
+    input_response_data_path = official_out / "input_response_data.jsonl"
 
-    ds = load_ifbench_split(split=args.split, dataset_path=args.dataset_path)
-    if args.max_samples is not None:
-        ds = ds.select(range(min(args.max_samples, len(ds))))
+    if not args.only_score:
+        ds = load_ifbench_split(split=args.split, dataset_path=args.dataset_path)
+        if args.max_samples is not None:
+            ds = ds.select(range(min(args.max_samples, len(ds))))
 
-    eval_tokenizer = load_eval_tokenizer(base_model=args.base_model, adapter_dir=args.adapter_dir)
+        eval_tokenizer = load_eval_tokenizer(base_model=args.base_model, adapter_dir=args.adapter_dir)
 
-    loaded = None
-    if not args.use_vllm:
-        loaded = load_transformers_model(
-            base_model=args.base_model,
-            adapter_dir=args.adapter_dir,
-            dtype=args.dtype,
-            device_map="auto",
-        )
-
-    examples = list(ds)
-    prompts: list[str] = []
-    input_rows: list[dict[str, Any]] = []
-    response_rows: list[dict[str, Any]] = []
-    prompt_metadata: list[dict[str, Any]] = []
-
-    for ex in examples:
-        prompt = str(ex.get("prompt", "")).strip()
-        if not prompt:
-            raise RuntimeError(f"IFBench example missing prompt. Keys: {sorted(ex.keys())}")
-
-        instruction_id_list = list(ex.get("instruction_id_list") or [])
-        kwargs = list(ex.get("kwargs") or [])
-        if len(instruction_id_list) != len(kwargs):
-            raise RuntimeError(
-                f"Mismatch: {len(instruction_id_list)} instruction_ids vs {len(kwargs)} kwargs for key={ex.get('key')}"
-            )
-
-        prompts.append(
-            render_chat_prompt(
-                tokenizer=eval_tokenizer,
+        loaded = None
+        if not args.use_vllm:
+            loaded = load_transformers_model(
                 base_model=args.base_model,
-                user_content=prompt,
+                adapter_dir=args.adapter_dir,
+                dtype=args.dtype,
+                device_map="auto",
             )
-        )
-        input_rows.append(
-            {
-                "key": ex.get("key"),
-                "prompt": prompt,
-                "instruction_id_list": instruction_id_list,
-                "kwargs": kwargs,
-            }
-        )
-        prompt_metadata.append(
-            {
-                "key": ex.get("key"),
-                "prompt": prompt,
-                "instruction_id_list": instruction_id_list,
-                "kwargs": kwargs,
-            }
-        )
 
-    if args.use_vllm:
-        generations = generate_greedy_vllm_batch(
-            base_model=args.base_model,
-            prompts=prompts,
-            max_new_tokens=args.max_new_tokens,
-            adapter_dir=args.adapter_dir,
-            tensor_parallel_size=args.tensor_parallel_size,
-            max_model_len=args.vllm_max_model_len,
-            gpu_memory_utilization=args.vllm_gpu_memory_utilization,
-            attention_backend=args.vllm_attention_backend,
-            disable_flashinfer_sampler=args.vllm_disable_flashinfer_sampler,
-        )
-    else:
-        generations = [
-            generate_greedy(
-                model=loaded.model,
-                tokenizer=loaded.tokenizer,
-                prompt=rendered_prompt,
+        examples = list(ds)
+        prompts: list[str] = []
+        input_rows: list[dict[str, Any]] = []
+        response_rows: list[dict[str, Any]] = []
+        prompt_metadata: list[dict[str, Any]] = []
+
+        for ex in examples:
+            prompt = str(ex.get("prompt", "")).strip()
+            if not prompt:
+                raise RuntimeError(f"IFBench example missing prompt. Keys: {sorted(ex.keys())}")
+
+            instruction_id_list = list(ex.get("instruction_id_list") or [])
+            kwargs = list(ex.get("kwargs") or [])
+            if len(instruction_id_list) != len(kwargs):
+                raise RuntimeError(
+                    f"Mismatch: {len(instruction_id_list)} instruction_ids vs {len(kwargs)} kwargs for key={ex.get('key')}"
+                )
+
+            prompts.append(
+                render_chat_prompt(
+                    tokenizer=eval_tokenizer,
+                    base_model=args.base_model,
+                    user_content=prompt,
+                )
+            )
+            input_rows.append(
+                {
+                    "key": ex.get("key"),
+                    "prompt": prompt,
+                    "instruction_id_list": instruction_id_list,
+                    "kwargs": kwargs,
+                }
+            )
+            prompt_metadata.append(
+                {
+                    "key": ex.get("key"),
+                    "prompt": prompt,
+                    "instruction_id_list": instruction_id_list,
+                    "kwargs": kwargs,
+                }
+            )
+
+        if args.use_vllm:
+            generations = generate_greedy_vllm_batch(
+                base_model=args.base_model,
+                prompts=prompts,
                 max_new_tokens=args.max_new_tokens,
+                adapter_dir=args.adapter_dir,
+                tensor_parallel_size=args.tensor_parallel_size,
+                max_model_len=args.vllm_max_model_len,
+                gpu_memory_utilization=args.vllm_gpu_memory_utilization,
+                attention_backend=args.vllm_attention_backend,
+                disable_flashinfer_sampler=args.vllm_disable_flashinfer_sampler,
             )
-            for rendered_prompt in prompts
-        ]
+        else:
+            generations = [
+                generate_greedy(
+                    model=loaded.model,
+                    tokenizer=loaded.tokenizer,
+                    prompt=rendered_prompt,
+                    max_new_tokens=args.max_new_tokens,
+                )
+                for rendered_prompt in prompts
+            ]
 
-    for meta, generation in zip(prompt_metadata, generations):
-        response_rows.append(
-            {
-                "key": meta["key"],
-                "prompt": meta["prompt"],
-                "response": generation,
-            }
+        for meta, generation in zip(prompt_metadata, generations):
+            response_rows.append(
+                {
+                    "key": meta["key"],
+                    "prompt": meta["prompt"],
+                    "response": generation,
+                }
+            )
+
+        _dump_jsonl(responses_path, response_rows)
+        official_out, input_data_path, input_response_data_path = export_official_ifbench_inputs(
+            out_dir=out_dir,
+            input_rows=input_rows,
+            response_rows=response_rows,
         )
 
-    _dump_jsonl(responses_path, response_rows)
+        if args.only_generate:
+            save_json(
+                out_dir / "generation_manifest.json",
+                {
+                    "responses_path": str(responses_path.resolve()),
+                    "official_output_dir": str(official_out),
+                    "input_data_path": str(input_data_path),
+                    "input_response_data_path": str(input_response_data_path),
+                    "num_examples": len(input_rows),
+                    "dataset_source": args.dataset_path or f"hf://{HF_DATASET_ID}",
+                    "split": args.split,
+                    "use_vllm": bool(args.use_vllm),
+                    "vllm_attention_backend": args.vllm_attention_backend,
+                    "vllm_disable_flashinfer_sampler": bool(args.vllm_disable_flashinfer_sampler),
+                    "vllm_max_model_len": args.vllm_max_model_len,
+                    "vllm_gpu_memory_utilization": args.vllm_gpu_memory_utilization,
+                },
+            )
+            return
+    else:
+        if not input_data_path.exists() or not input_response_data_path.exists():
+            raise RuntimeError(
+                "Missing exported IFBench jsonl files for --only_score.\n"
+                f"Expected:\n  {input_data_path}\n  {input_response_data_path}"
+            )
+
+    if not args.official_eval_root:
+        raise RuntimeError("--official_eval_root is required unless --only_generate is used.")
+
     official_out = run_official_ifbench(
-        out_dir=out_dir,
-        input_rows=input_rows,
-        response_rows=response_rows,
         official_eval_root=args.official_eval_root,
+        official_out=official_out,
+        input_data_path=input_data_path,
+        input_response_data_path=input_response_data_path,
     )
 
     strict_rows = _load_official_outputs(official_out / "input_response_data-eval_results_strict.jsonl")
