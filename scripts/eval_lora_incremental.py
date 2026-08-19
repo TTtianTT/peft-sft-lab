@@ -73,8 +73,8 @@ TASK_SPECS: list[TaskSpec] = [
     TaskSpec(
         name="alpaca",
         eval_module="finetune.eval.eval_ifeval",
-        metric_key="ifeval_strict_accuracy",
-        max_new_tokens=256,
+        metric_key="prompt_level_strict_acc",
+        max_new_tokens=2048,
         split="train",
     ),
 ]
@@ -101,8 +101,10 @@ TASK_ALIASES = {
     "math": "metamath",
     "code": "magicoder",
     "instruction": "alpaca",
+    "if": "alpaca",
     "instruction_following": "alpaca",
     "instruction-following": "alpaca",
+    "tulu_if": "alpaca",
     "commonsense": "csqa",
     "metamath": "metamath",
     "magicoder": "magicoder",

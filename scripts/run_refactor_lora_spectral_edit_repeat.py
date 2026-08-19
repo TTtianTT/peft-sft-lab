@@ -82,7 +82,7 @@ TASK_TO_EVAL_SCRIPT = {
 TASK_TO_METRIC = {
     "metamath": "accuracy_strict",
     "magicoder": "pass@1",
-    "alpaca": "ifeval_strict_accuracy",
+    "alpaca": "prompt_level_strict_acc",
     "csqa": "accuracy",
 }
 
@@ -102,6 +102,10 @@ TASK_ALIASES = {
     "math": "metamath",
     "code": "magicoder",
     "general": "alpaca",
+    "if": "alpaca",
+    "instruction_following": "alpaca",
+    "instruction-following": "alpaca",
+    "tulu_if": "alpaca",
     "commonsenseqa": "csqa",
 }
 
@@ -534,7 +538,7 @@ def run_evaluation(
     elif task == "magicoder":
         cmd.extend(["--max_new_tokens", "256", "--timeout_s", "3.0"])
     elif task == "alpaca":
-        cmd.extend(["--max_new_tokens", "256", "--split", "train"])
+        cmd.extend(["--max_new_tokens", "2048", "--split", "train"])
     elif task == "csqa":
         cmd.extend(["--max_new_tokens", "8"])
 

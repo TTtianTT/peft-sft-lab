@@ -44,7 +44,9 @@ from typing import Any, Callable, Dict, List, Optional, Tuple
 from finetune.eval.generation import (
     generate_greedy,
     generate_greedy_vllm_batch,
+    load_eval_tokenizer,
     load_transformers_model,
+    render_chat_prompt,
     save_json,
     strip_code_fences,
 )
@@ -848,6 +850,8 @@ def main() -> None:
     if args.max_samples is not None:
         ds = ds.select(range(min(args.max_samples, len(ds))))
 
+    eval_tokenizer = load_eval_tokenizer(base_model=args.base_model, adapter_dir=args.adapter_dir)
+
     loaded = None
     if not args.use_vllm:
         loaded = load_transformers_model(
@@ -880,8 +884,21 @@ def main() -> None:
             raise RuntimeError(
                 f"Mismatch: {len(inst_ids)} instruction_ids vs {len(kwargs_list)} kwargs for key={ex.get('key')}"
             )
-        prompts.append(prompt)
-        records.append({"key": ex.get("key"), "prompt": prompt, "instruction_id_list": inst_ids, "kwargs": kwargs_list})
+        prompts.append(
+            render_chat_prompt(
+                tokenizer=eval_tokenizer,
+                base_model=args.base_model,
+                user_content=prompt,
+            )
+        )
+        records.append(
+            {
+                "key": ex.get("key"),
+                "prompt": prompt,
+                "instruction_id_list": inst_ids,
+                "kwargs": kwargs_list,
+            }
+        )
 
     if args.use_vllm:
         generations = generate_greedy_vllm_batch(
@@ -893,11 +910,11 @@ def main() -> None:
         )
     else:
         generations = []
-        for r in records:
+        for rendered_prompt in prompts:
             gen = generate_greedy(
                 model=loaded.model,
                 tokenizer=loaded.tokenizer,
-                prompt=r["prompt"],
+                prompt=rendered_prompt,
                 max_new_tokens=args.max_new_tokens,
             )
             generations.append(gen)
@@ -979,6 +996,12 @@ def main() -> None:
         "avg_instructions_per_prompt": (n_insts / n_prompts if n_prompts else 0.0),
         "use_vllm": bool(args.use_vllm),
         "langdetect_available": bool(HAVE_LANGDETECT),
+        "prompt_style": "tokenizer_chat_template",
+        "ifeval_strict_accuracy": (n_prompt_strict_ok / n_prompts if n_prompts else 0.0),
+        "ifeval_loose_accuracy": (n_prompt_loose_ok / n_prompts if n_prompts else 0.0),
+        "ifeval_instruction_strict_accuracy": (n_inst_strict_ok / n_insts if n_insts else 0.0),
+        "ifeval_instruction_loose_accuracy": (n_inst_loose_ok / n_insts if n_insts else 0.0),
+        "total": n_prompts,
     }
 
     if args.per_category_metrics:

@@ -68,8 +68,14 @@ TASK_SPECS = {
         task_dir="alpaca",
         dataset="ifeval",
         eval_script=Path("src/finetune/eval/eval_ifeval.py"),
-        primary_metric="ifeval_strict_accuracy",
-        metric_order=("ifeval_strict_accuracy", "ifeval_avg_score", "avg_checks_per_example", "total"),
+        primary_metric="prompt_level_strict_acc",
+        metric_order=(
+            "prompt_level_strict_acc",
+            "prompt_level_loose_acc",
+            "inst_level_strict_acc",
+            "inst_level_loose_acc",
+            "total_prompts",
+        ),
         supports_split=True,
         supports_timeout=False,
     ),
@@ -83,7 +89,10 @@ TASK_ALIASES = {
     "math": "metamath",
     "code": "magicoder",
     "instruction": "alpaca",
+    "if": "alpaca",
     "instruction_following": "alpaca",
+    "instruction-following": "alpaca",
+    "tulu_if": "alpaca",
     "commonsense": "csqa",
 }
 
@@ -505,12 +514,13 @@ def main() -> int:
         base_model_id = base_model_ids[base_dir]
         task_dirs = discover_task_dirs(runs_root, base_dir)
         for task_dir in task_dirs:
-            if task_dir not in TASK_SPECS:
+            canonical_task_dir = TASK_ALIASES.get(task_dir.lower().replace("-", "_"), task_dir)
+            if canonical_task_dir not in TASK_SPECS:
                 continue
-            if task_filters and task_dir not in task_filters:
+            if task_filters and canonical_task_dir not in task_filters:
                 continue
 
-            task_spec = TASK_SPECS[task_dir]
+            task_spec = TASK_SPECS[canonical_task_dir]
             adapters = discover_adapters(runs_root, base_dir, task_dir)
 
             for adapter in adapters:

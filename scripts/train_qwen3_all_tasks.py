@@ -67,8 +67,8 @@ TASKS: dict[str, TaskConfig] = {
         name="alpaca",
         profile="paper_alpaca_3ep",
         eval_module="finetune.eval.eval_ifeval",
-        metric_key="ifeval_strict_accuracy",
-        max_new_tokens=256,
+        metric_key="prompt_level_strict_acc",
+        max_new_tokens=2048,
         eval_split="train",
     ),
 }
