@@ -4,6 +4,7 @@ from finetune.data.base import TaskPlugin
 from finetune.data.code_magicoder import MagicoderTask
 from finetune.data.csqa import CommonsenseQATask
 from finetune.data.general_alpaca import AlpacaTask
+from finetune.data.instruction_following_tulu import TuluInstructionFollowingTask
 from finetune.data.math_metamathqa import MetaMathQATask
 
 
@@ -17,6 +18,10 @@ _TASKS: dict[str, type[TaskPlugin]] = {
     "general": AlpacaTask,
     "csqa": CommonsenseQATask,
     "commonsenseqa": CommonsenseQATask,
+    "if": TuluInstructionFollowingTask,
+    "ifbench": TuluInstructionFollowingTask,
+    "instruction_following": TuluInstructionFollowingTask,
+    "tulu_if": TuluInstructionFollowingTask,
 }
 
 

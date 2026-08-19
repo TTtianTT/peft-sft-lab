@@ -37,12 +37,21 @@ def parse_args() -> argparse.Namespace:
     p.add_argument("--peft_method", type=str, required=True)
     p.add_argument("--output_dir", type=str, required=True)
     p.add_argument("--train_profile", type=str, default=None)
+    p.add_argument("--dataset_path", type=str, default=None, help="Optional local training dataset override.")
     p.add_argument("--r", type=int, default=16)
     p.add_argument("--seed", type=int, default=42)
 
     # Evaluation args
     p.add_argument("--tensor_parallel_size", type=int, default=1)
     p.add_argument("--eval_max_new_tokens", type=int, default=8)
+    p.add_argument("--eval_dataset_path", type=str, default=None, help="Optional local evaluation dataset override.")
+    p.add_argument("--eval_split", type=str, default=None, help="Optional evaluation split override.")
+    p.add_argument(
+        "--official_eval_root",
+        type=str,
+        default=None,
+        help="Required for IFBench evaluation: local checkout of allenai/IFBench.",
+    )
     p.add_argument("--skip_pre_eval", action="store_true", help="Skip pre-training evaluation")
     p.add_argument("--skip_post_eval", action="store_true", help="Skip post-training evaluation")
     p.add_argument("--skip_training", action="store_true", help="Skip training (eval only)")
@@ -73,6 +82,9 @@ def run_evaluation(
     max_new_tokens: int,
     seed: int,
     use_vllm: bool,
+    dataset_path: str | None,
+    split: str | None,
+    official_eval_root: str | None,
 ) -> dict[str, Any]:
     """Run evaluation and return metrics."""
     output_dir.mkdir(parents=True, exist_ok=True)
@@ -88,6 +100,10 @@ def run_evaluation(
         "humaneval": "finetune.eval.eval_humaneval",
         "alpaca": "finetune.eval.eval_ifeval",
         "ifeval": "finetune.eval.eval_ifeval",
+        "if": "finetune.eval.eval_ifbench",
+        "ifbench": "finetune.eval.eval_ifbench",
+        "instruction_following": "finetune.eval.eval_ifbench",
+        "tulu_if": "finetune.eval.eval_ifbench",
     }
 
     eval_module = eval_modules.get(task.lower())
@@ -107,6 +123,17 @@ def run_evaluation(
 
     if adapter_dir is not None:
         cmd.extend(["--adapter_dir", adapter_dir])
+
+    if dataset_path is not None:
+        cmd.extend(["--dataset_path", dataset_path])
+
+    if split is not None:
+        cmd.extend(["--split", split])
+
+    if eval_module == "finetune.eval.eval_ifbench":
+        if official_eval_root is None:
+            raise ValueError("--official_eval_root is required for IFBench evaluation.")
+        cmd.extend(["--official_eval_root", official_eval_root])
 
     print(f"\n{'='*60}")
     print(f"Running evaluation: {' '.join(cmd)}")
@@ -143,6 +170,7 @@ def run_training(
     lr: float,
     num_train_epochs: float | None,
     max_steps: int | None,
+    dataset_path: str | None,
     r: int,
     seed: int,
     bf16: bool,
@@ -166,6 +194,9 @@ def run_training(
 
     if train_profile:
         cmd.extend(["--train_profile", train_profile])
+
+    if dataset_path is not None:
+        cmd.extend(["--dataset_path", dataset_path])
 
     if gradient_accumulation_steps is not None:
         cmd.extend(["--gradient_accumulation_steps", str(gradient_accumulation_steps)])
@@ -238,6 +269,9 @@ def main() -> int:
             max_new_tokens=args.eval_max_new_tokens,
             seed=args.seed,
             use_vllm=use_vllm,
+            dataset_path=args.eval_dataset_path,
+            split=args.eval_split,
+            official_eval_root=args.official_eval_root,
         )
         results["pre_eval"] = pre_metrics
         print_metrics("PRE-TRAINING EVALUATION (Base Model)", pre_metrics)
@@ -261,6 +295,7 @@ def main() -> int:
             lr=args.lr,
             num_train_epochs=args.num_train_epochs,
             max_steps=args.max_steps,
+            dataset_path=args.dataset_path,
             r=args.r,
             seed=args.seed,
             bf16=args.bf16,
@@ -300,12 +335,15 @@ def main() -> int:
                 base_model=args.base_model,
                 adapter_dir=str(output_dir),
                 output_dir=post_eval_dir,
-                task=args.task,
-                tensor_parallel_size=args.tensor_parallel_size,
-                max_new_tokens=args.eval_max_new_tokens,
-                seed=args.seed,
-                use_vllm=use_vllm,
-            )
+            task=args.task,
+            tensor_parallel_size=args.tensor_parallel_size,
+            max_new_tokens=args.eval_max_new_tokens,
+            seed=args.seed,
+            use_vllm=use_vllm,
+            dataset_path=args.eval_dataset_path,
+            split=args.eval_split,
+            official_eval_root=args.official_eval_root,
+        )
             results["post_eval"] = post_metrics
             print_metrics("POST-TRAINING EVALUATION (With Adapter)", post_metrics)
 

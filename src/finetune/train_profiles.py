@@ -124,6 +124,21 @@ TRAIN_PROFILES: dict[str, TrainProfile] = {
         lr_scheduler_type="cosine_with_min_lr",
         num_train_epochs=3.0,
     ),
+    "paper_if_tulu_2ep": TrainProfile(
+        name="paper_if_tulu_2ep",
+        max_seq_len=4096,
+        warmup_ratio=0.1,
+        min_lr_ratio=0.01,
+        weight_decay=0.0,
+        grad_clip=1.0,
+        bf16=True,
+        fp16=False,
+        adam_beta1=0.9,
+        adam_beta2=0.95,
+        global_train_batch_size=None,
+        lr_scheduler_type="cosine_with_min_lr",
+        num_train_epochs=2.0,
+    ),
 }
 
 
@@ -136,6 +151,10 @@ TASK_PROFILE_MAP: dict[str, str] = {
     "alpaca": "paper_alpaca_3ep",
     "csqa": "paper_csqa_3ep",
     "commonsenseqa": "paper_csqa_3ep",
+    "if": "paper_if_tulu_2ep",
+    "ifbench": "paper_if_tulu_2ep",
+    "instruction_following": "paper_if_tulu_2ep",
+    "tulu_if": "paper_if_tulu_2ep",
 }
 
 DEFAULT_PROFILE = "paper_default_ift"

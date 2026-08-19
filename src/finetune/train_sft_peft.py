@@ -18,7 +18,12 @@ def build_arg_parser() -> argparse.ArgumentParser:
         default="meta-llama/Llama-3.1-8B",
         help="HF model id (e.g. meta-llama/Llama-3.1-8B, mistralai/Mistral-7B-v0.3).",
     )
-    parser.add_argument("--task", type=str, required=True, help="Task plugin name (e.g. math, code, alpaca, csqa).")
+    parser.add_argument(
+        "--task",
+        type=str,
+        required=True,
+        help="Task plugin name (e.g. math, code, alpaca, csqa, if, instruction_following).",
+    )
     parser.add_argument(
         "--peft_method",
         type=str,
@@ -31,7 +36,7 @@ def build_arg_parser() -> argparse.ArgumentParser:
         "--dataset_path",
         type=str,
         default=None,
-        help="Optional local dataset file override. Currently intended for --task math with a local MetaMathQA JSON/JSONL file.",
+        help="Optional local dataset file override. Supported by tasks that load local JSON/JSONL data such as math and if.",
     )
     parser.add_argument(
         "--train_profile",

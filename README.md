@@ -32,6 +32,8 @@ accelerate launch --num_processes 2 -m finetune.train_sft_peft \
   --bf16 --gradient_checkpointing
 ```
 
+Instruction-following SFT is also supported with `--task if` (training on `allenai/tulu-3-sft-personas-instruction-following`).
+
 ## Train: one run
 
 ```bash
@@ -120,6 +122,21 @@ python -m finetune.eval.eval_ifeval \
   --adapter_dir runs/mistral-alpaca-lora \
   --output_dir eval/ifeval-mistral-alpaca-lora
 ```
+
+### IFBench (official scorer)
+
+```bash
+python -m finetune.eval.eval_ifbench \
+  --base_model meta-llama/Llama-3.1-8B-Instruct \
+  --adapter_dir runs/meta-llama-Llama-3.1-8B-Instruct/if/lora/profile-paper_if_tulu_2ep/rank-16/seed42 \
+  --official_eval_root external/IFBench \
+  --output_dir eval/ifbench-llama31-if-lora \
+  --use_vllm \
+  --tensor_parallel_size 8 \
+  --max_new_tokens 2048
+```
+
+See `reports/instruction_following_ifbench_recipe.md` for the recommended 2-epoch Llama-3.1-8B-Instruct setup and supported local data formats.
 
 ### CommonsenseQA (A/B/C/D/E accuracy)
 
