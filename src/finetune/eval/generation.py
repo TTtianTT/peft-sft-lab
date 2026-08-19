@@ -116,6 +116,26 @@ def _model_input_device(model: Any):
         return None
 
 
+def _gpu_requires_disabling_flashinfer_sampler() -> bool:
+    try:
+        import torch
+    except Exception:
+        return False
+
+    if not torch.cuda.is_available():
+        return False
+
+    try:
+        for device_idx in range(torch.cuda.device_count()):
+            major, minor = torch.cuda.get_device_capability(device_idx)
+            if (major, minor) < (7, 5):
+                return True
+    except Exception:
+        return False
+
+    return False
+
+
 def generate_greedy(
     *,
     model: Any,
@@ -155,7 +175,7 @@ def generate_greedy_vllm_batch(
     disable_flashinfer_sampler: bool = False,
     request_batch_size: int | None = None,
 ) -> list[str]:
-    if disable_flashinfer_sampler:
+    if disable_flashinfer_sampler or _gpu_requires_disabling_flashinfer_sampler():
         os.environ["VLLM_USE_FLASHINFER_SAMPLER"] = "0"
 
     try:
