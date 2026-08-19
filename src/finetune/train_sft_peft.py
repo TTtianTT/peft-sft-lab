@@ -699,12 +699,11 @@ def main() -> None:
     if is_rank0():
         save_json(Path(output_dir) / "training_args.json", training_args.to_dict())
 
-    try:
-        from trl import SFTTrainer
-    except Exception as exc:
-        raise RuntimeError(
-            f"Failed to import trl.SFTTrainer: {exc}\nInstall: pip install -U trl"
-        ) from exc
+    # We fully structure, tokenize, truncate, and label examples ahead of time.
+    # Using the plain Trainer avoids TRL's internal dataset rechunking paths,
+    # which have produced attention-mask shape mismatches with pretokenized
+    # Llama chat data on newer trl/transformers combinations.
+    from transformers import Trainer
 
     trainer_kwargs = dict(
         model=model,
@@ -712,17 +711,7 @@ def main() -> None:
         train_dataset=train_ds,
         data_collator=CompletionOnlyDataCollator(tokenizer),
     )
-    sig = inspect.signature(SFTTrainer.__init__)
-    if "tokenizer" in sig.parameters:
-        trainer_kwargs["tokenizer"] = tokenizer
-    elif "processing_class" in sig.parameters:
-        trainer_kwargs["processing_class"] = tokenizer
-    else:
-        raise RuntimeError(
-            "Unsupported trl.SFTTrainer signature (expected `tokenizer` or `processing_class`)."
-        )
-    if "max_seq_length" in sig.parameters:
-        trainer_kwargs["max_seq_length"] = args.max_seq_len
+    sig = inspect.signature(Trainer.__init__)
     trainer_kwargs = {k: v for k, v in trainer_kwargs.items() if k in sig.parameters}
 
     optimizers = None
@@ -750,7 +739,7 @@ def main() -> None:
         )
         optimizers = (optimizer, lr_scheduler)
 
-    trainer = SFTTrainer(**trainer_kwargs, **({} if optimizers is None else {"optimizers": optimizers}))
+    trainer = Trainer(**trainer_kwargs, **({} if optimizers is None else {"optimizers": optimizers}))
 
     try:
         trainer.train()
