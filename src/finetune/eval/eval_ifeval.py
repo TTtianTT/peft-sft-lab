@@ -50,6 +50,7 @@ from finetune.eval.generation import (
     save_json,
     strip_code_fences,
 )
+from finetune.data.base import load_local_dataset
 from finetune.utils import seed_everything
 
 
@@ -68,7 +69,13 @@ except Exception:
 # ----------------------------
 # Dataset
 # ----------------------------
-def _load_ifeval_dataset(split: str):
+def _load_ifeval_dataset(split: str, dataset_path: str | None = None):
+    if dataset_path:
+        return load_local_dataset(
+            dataset_path,
+            task_name="IFEval",
+            expected_fields_hint="(key, prompt, instruction_id_list, kwargs)",
+        )
     try:
         from datasets import load_dataset
     except Exception as exc:
@@ -797,6 +804,12 @@ def build_arg_parser() -> argparse.ArgumentParser:
     p.add_argument("--base_model", type=str, required=True)
     p.add_argument("--adapter_dir", type=str, default=None)
     p.add_argument("--output_dir", type=str, required=True)
+    p.add_argument(
+        "--dataset_path",
+        type=str,
+        default=None,
+        help="Optional local IFEval json/jsonl/parquet file or directory.",
+    )
 
     p.add_argument("--split", type=str, default="train")
     p.add_argument("--max_samples", type=int, default=None)
@@ -846,7 +859,7 @@ def main() -> None:
     out_dir.mkdir(parents=True, exist_ok=True)
     outputs_path = out_dir / "outputs.jsonl"
 
-    ds = _load_ifeval_dataset(args.split)
+    ds = _load_ifeval_dataset(args.split, args.dataset_path)
     if args.max_samples is not None:
         ds = ds.select(range(min(args.max_samples, len(ds))))
 
