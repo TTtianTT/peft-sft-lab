@@ -820,6 +820,29 @@ def build_arg_parser() -> argparse.ArgumentParser:
 
     p.add_argument("--use_vllm", action="store_true")
     p.add_argument("--tensor_parallel_size", type=int, default=1)
+    p.add_argument(
+        "--vllm_max_model_len",
+        type=int,
+        default=None,
+        help="Optional vLLM max_model_len override. Useful when the model's native context window is too large for available KV cache.",
+    )
+    p.add_argument(
+        "--vllm_gpu_memory_utilization",
+        type=float,
+        default=None,
+        help="Optional vLLM GPU memory utilization target, e.g. 0.9 or 0.95.",
+    )
+    p.add_argument(
+        "--vllm_attention_backend",
+        type=str,
+        default=None,
+        help="Optional vLLM attention backend override, e.g. FLASH_ATTN or FLASHINFER.",
+    )
+    p.add_argument(
+        "--vllm_disable_flashinfer_sampler",
+        action="store_true",
+        help="Disable FlashInfer top-k/top-p sampler inside vLLM and fall back to the native sampler.",
+    )
 
     p.add_argument("--per_category_metrics", action="store_true")
     p.add_argument("--fail_on_unknown", action="store_true", help="Raise if an unknown instruction id appears.")
@@ -920,6 +943,10 @@ def main() -> None:
             max_new_tokens=args.max_new_tokens,
             adapter_dir=args.adapter_dir,
             tensor_parallel_size=args.tensor_parallel_size,
+            max_model_len=args.vllm_max_model_len,
+            gpu_memory_utilization=args.vllm_gpu_memory_utilization,
+            attention_backend=args.vllm_attention_backend,
+            disable_flashinfer_sampler=args.vllm_disable_flashinfer_sampler,
         )
     else:
         generations = []
@@ -1015,6 +1042,9 @@ def main() -> None:
         "ifeval_instruction_strict_accuracy": (n_inst_strict_ok / n_insts if n_insts else 0.0),
         "ifeval_instruction_loose_accuracy": (n_inst_loose_ok / n_insts if n_insts else 0.0),
         "total": n_prompts,
+        "vllm_max_model_len": args.vllm_max_model_len,
+        "vllm_gpu_memory_utilization": args.vllm_gpu_memory_utilization,
+        "vllm_attention_backend": args.vllm_attention_backend,
     }
 
     if args.per_category_metrics:
