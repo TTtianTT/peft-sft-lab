@@ -24,8 +24,13 @@ from finetune.eval.eval_gsm8k import (
     _build_gsm8k_user_instruction,
     _resolve_local_gsm8k_data_files,
 )
+from finetune.eval.eval_humaneval import (
+    _normalize_humaneval_problem,
+    _resolve_local_humaneval_data_files,
+)
 from finetune.eval.eval_ifbench import _resolve_local_ifbench_data_files
 from finetune.eval.generation import render_chat_prompt
+from finetune.data.code_magicoder import MagicoderTask
 from finetune.data.instruction_following_tulu import TuluInstructionFollowingTask
 from finetune.data.math_metamathqa import MetaMathQATask
 
@@ -106,6 +111,63 @@ class MetaMathTaskTests(unittest.TestCase):
 
             self.assertEqual(len(dataset), 1)
             self.assertEqual(dataset[0]["query"], payload[0]["query"])
+            self.assertEqual(dataset[0]["response"], payload[0]["response"])
+
+
+class MagicoderTaskTests(unittest.TestCase):
+    def test_magicoder_field_mapping_stays_semantic(self):
+        task = MagicoderTask()
+        example = task.format_example(
+            {
+                "instruction": "Write a Python function that returns 42.",
+                "response": "def answer():\n    return 42",
+            }
+        )
+
+        self.assertEqual(example["prompt"][0]["role"], "user")
+        self.assertEqual(example["prompt"][0]["content"], "Write a Python function that returns 42.")
+        self.assertEqual(example["completion"][0]["role"], "assistant")
+        self.assertEqual(example["completion"][0]["content"], "def answer():\n    return 42")
+
+        flattened = str(example)
+        self.assertNotIn("### Instruction:", flattened)
+        self.assertNotIn("### Response:", flattened)
+        self.assertNotIn("Below is an instruction", flattened)
+
+    def test_magicoder_repo_native_chat_format_round_trips(self):
+        task = MagicoderTask()
+        example = task.format_example(
+            {
+                "prompt": [{"role": "user", "content": "Implement fibonacci(n)."}],
+                "completion": [{"role": "assistant", "content": "def fibonacci(n):\n    ..."}],
+            }
+        )
+
+        self.assertEqual(example["prompt"][0]["content"], "Implement fibonacci(n).")
+        self.assertEqual(example["completion"][0]["content"], "def fibonacci(n):\n    ...")
+
+    def test_magicoder_can_load_local_json_file(self):
+        try:
+            import datasets  # noqa: F401
+        except Exception as exc:
+            self.skipTest(f"datasets unavailable: {exc}")
+
+        payload = [
+            {
+                "instruction": "Return the larger integer.",
+                "response": "def larger(a, b):\n    return a if a > b else b",
+            }
+        ]
+
+        with TemporaryDirectory() as tmpdir:
+            dataset_path = Path(tmpdir) / "magicoder.json"
+            dataset_path.write_text(json.dumps(payload), encoding="utf-8")
+
+            task = MagicoderTask()
+            dataset = task.load("train", dataset_path=str(dataset_path))
+
+            self.assertEqual(len(dataset), 1)
+            self.assertEqual(dataset[0]["instruction"], payload[0]["instruction"])
             self.assertEqual(dataset[0]["response"], payload[0]["response"])
 
 
@@ -332,6 +394,39 @@ class IFBenchEvalDataTests(unittest.TestCase):
 
             self.assertEqual(loader_name, "parquet")
             self.assertEqual(files, [str(target)])
+
+
+class HumanEvalDataTests(unittest.TestCase):
+    def test_resolve_local_humaneval_snapshot_directory(self):
+        with TemporaryDirectory() as tmpdir:
+            root = Path(tmpdir)
+            split_dir = root / "openai_humaneval"
+            split_dir.mkdir(parents=True, exist_ok=True)
+            target = split_dir / "test-00000-of-00001.parquet"
+            target.write_text("placeholder", encoding="utf-8")
+
+            loader_name, files = _resolve_local_humaneval_data_files(
+                dataset_path=str(root),
+                split="test",
+            )
+
+            self.assertEqual(loader_name, "parquet")
+            self.assertEqual(files, [str(target)])
+
+    def test_normalize_humaneval_problem_accepts_hf_fields(self):
+        normalized = _normalize_humaneval_problem(
+            {
+                "task_id": "HumanEval/0",
+                "prompt": "def return1():\n",
+                "canonical_solution": "    return 1",
+                "test": "def check(candidate):\n    assert candidate() == 1",
+                "entry_point": "return1",
+            }
+        )
+
+        self.assertEqual(normalized["task_id"], "HumanEval/0")
+        self.assertEqual(normalized["entry_point"], "return1")
+        self.assertIn("def return1():", normalized["prompt"])
 
 class OptionalLlamaTokenizerTests(unittest.TestCase):
     def test_llama31_chat_template_when_available(self):

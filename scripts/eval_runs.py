@@ -27,11 +27,13 @@ class TaskSpec:
 
 BASE_MODEL_DIRS = [
     "meta-llama-Llama-3.1-8B",
+    "meta-llama-Llama-3.1-8B-Instruct",
     "mistralai-Mistral-7B-v0.3",
 ]
 
 BASE_MODEL_ID_FALLBACK = {
     "meta-llama-Llama-3.1-8B": "meta-llama/Llama-3.1-8B",
+    "meta-llama-Llama-3.1-8B-Instruct": "meta-llama/Llama-3.1-8B-Instruct",
     "mistralai-Mistral-7B-v0.3": "mistralai/Mistral-7B-v0.3",
 }
 

@@ -84,6 +84,7 @@ TASK_BY_NAME = {spec.name: spec for spec in TASK_SPECS}
 
 BASE_MODELS: list[BaseModelSpec] = [
     BaseModelSpec(model_id="meta-llama/Llama-3.1-8B", model_dir="meta-llama-Llama-3.1-8B"),
+    BaseModelSpec(model_id="meta-llama/Llama-3.1-8B-Instruct", model_dir="meta-llama-Llama-3.1-8B-Instruct"),
     BaseModelSpec(model_id="mistralai/Mistral-7B-v0.3", model_dir="mistralai-Mistral-7B-v0.3"),
 ]
 

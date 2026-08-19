@@ -36,13 +36,13 @@ def build_arg_parser() -> argparse.ArgumentParser:
         "--dataset_path",
         type=str,
         default=None,
-        help="Optional local dataset file override. Supported by tasks that load local JSON/JSONL data such as math and if.",
+        help="Optional local dataset file override. Supported by tasks that load local JSON/JSONL/parquet data such as math, code, and if.",
     )
     parser.add_argument(
         "--train_profile",
         type=str,
         default=None,
-        help="Recipe profile (e.g. paper_code_ift, paper_math_ift, paper_default_ift, or auto).",
+        help="Recipe profile (e.g. paper_code_ift_2ep, paper_math_ift, paper_default_ift, or auto).",
     )
     parser.add_argument(
         "--force_max_steps",

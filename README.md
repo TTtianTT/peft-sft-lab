@@ -114,6 +114,8 @@ python -m finetune.eval.eval_humaneval \
 
 Note: this evaluator executes generated code in a subprocess with a timeout.
 
+See `reports/code_humaneval_recipe.md` for the recommended 2-epoch `meta-llama/Llama-3.1-8B-Instruct` setup, supported local code-data formats, and checkpoint evaluation workflow.
+
 ### IFEval (rule-based, minimal)
 
 ```bash

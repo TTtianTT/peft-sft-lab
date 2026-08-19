@@ -4,6 +4,7 @@
 from __future__ import annotations
 
 import argparse
+import gzip
 import inspect
 import json
 import os
@@ -11,14 +12,15 @@ import shutil
 import subprocess
 from collections import defaultdict
 from datetime import datetime
+from glob import glob
 from pathlib import Path
 from typing import Any, Dict, List, Optional, Tuple
 
+from finetune.data.base import first_present, get_writable_datasets_cache_dir
 from finetune.eval.generation import (
     generate_greedy,
     load_transformers_model,
     save_json,
-    strip_code_fences,
 )
 from finetune.utils import seed_everything
 
@@ -45,13 +47,17 @@ except Exception:
     write_jsonl = None
 
 
+HF_DATASET_IDS = ("openai/openai_humaneval", "openai_humaneval")
+
+
 # ---------------------------
 # IO utils
 # ---------------------------
 
 def jsonl_read(path: str) -> List[dict]:
     rows: List[dict] = []
-    with open(path, "r", encoding="utf-8") as f:
+    opener = gzip.open if path.endswith(".gz") else open
+    with opener(path, "rt", encoding="utf-8") as f:
         for line in f:
             line = line.strip()
             if line:
@@ -63,6 +69,149 @@ def jsonl_write(path: str, rows: List[dict]) -> None:
     with open(path, "w", encoding="utf-8") as f:
         for r in rows:
             f.write(json.dumps(r, ensure_ascii=False) + "\n")
+
+
+def _guess_humaneval_results_path(samples_path: str) -> Optional[str]:
+    candidates = [
+        samples_path.replace(".jsonl", "_results.jsonl"),
+        samples_path + "_results.jsonl",
+        samples_path.replace(".jsonl", "_results.jsonl.gz"),
+        samples_path + "_results.jsonl.gz",
+    ]
+    for candidate in candidates:
+        if os.path.exists(candidate):
+            return candidate
+    return None
+
+
+def _resolve_local_humaneval_data_files(dataset_path: str, split: str) -> tuple[str, list[str]]:
+    path = Path(dataset_path)
+    if not path.exists():
+        raise RuntimeError(f"Local HumanEval dataset path not found: {dataset_path}")
+
+    if path.is_file():
+        suffix = path.suffix.lower()
+        if suffix == ".parquet":
+            return "parquet", [str(path)]
+        if suffix in {".json", ".jsonl"}:
+            return "json", [str(path)]
+        raise RuntimeError(
+            f"Unsupported local HumanEval file extension: {path.suffix!r}. Use .parquet, .json, or .jsonl."
+        )
+
+    parquet_patterns = [
+        str(path / "openai_humaneval" / f"{split}-*.parquet"),
+        str(path / "data" / f"{split}-*.parquet"),
+        str(path / f"{split}-*.parquet"),
+        str(path / "*" / f"{split}-*.parquet"),
+    ]
+    for pattern in parquet_patterns:
+        matches = sorted(glob(pattern))
+        if matches:
+            return "parquet", matches
+
+    json_patterns = [
+        str(path / "data" / f"*{split}*.json"),
+        str(path / "data" / f"*{split}*.jsonl"),
+        str(path / f"*{split}*.json"),
+        str(path / f"*{split}*.jsonl"),
+    ]
+    for pattern in json_patterns:
+        matches = sorted(glob(pattern))
+        if matches:
+            return "json", matches
+
+    raise RuntimeError(
+        f"Could not find local HumanEval files for split={split!r} under {dataset_path}. "
+        f"Tried parquet patterns {parquet_patterns} and json/jsonl patterns {json_patterns}."
+    )
+
+
+def _normalize_humaneval_problem(example: dict[str, Any]) -> dict[str, str]:
+    task_id = first_present(example, ["task_id", "id", "problem_id"])
+    prompt = first_present(example, ["prompt"])
+    test = first_present(example, ["test", "tests"])
+    entry_point = first_present(example, ["entry_point", "fn_name", "function_name"])
+    canonical_solution = first_present(
+        example,
+        ["canonical_solution", "reference_solution", "solution"],
+    ) or ""
+
+    if task_id is None or prompt is None or test is None or entry_point is None:
+        raise ValueError(
+            "HumanEval example missing required fields. "
+            f"Keys: {sorted(example.keys())}. "
+            "Expected at least (task_id, prompt, test, entry_point)."
+        )
+
+    return {
+        "task_id": task_id,
+        "prompt": prompt,
+        "canonical_solution": canonical_solution,
+        "test": test,
+        "entry_point": entry_point,
+    }
+
+
+def _load_humaneval_dataset(split: str, dataset_path: str | None):
+    try:
+        from datasets import load_dataset
+    except Exception as exc:
+        if dataset_path is None and read_problems is not None and split == "test":
+            return None
+        raise RuntimeError(f"datasets is required to load HumanEval from Hugging Face/local files: {exc}") from exc
+
+    if dataset_path is not None:
+        loader_name, data_files = _resolve_local_humaneval_data_files(dataset_path=dataset_path, split=split)
+        try:
+            return load_dataset(
+                loader_name,
+                data_files=data_files,
+                split="train",
+                cache_dir=get_writable_datasets_cache_dir(),
+            )
+        except Exception as exc:
+            raise RuntimeError(
+                f"Failed to load local HumanEval data from {dataset_path}: {exc}\n"
+                f"Resolved loader={loader_name!r}, files={data_files!r}"
+            ) from exc
+
+    last_error: Exception | None = None
+    for dataset_id in HF_DATASET_IDS:
+        try:
+            return load_dataset(
+                dataset_id,
+                split=split,
+                cache_dir=get_writable_datasets_cache_dir(),
+            )
+        except Exception as exc:
+            last_error = exc
+
+    if read_problems is not None and split == "test":
+        return None
+
+    raise RuntimeError(
+        f"Failed to load HumanEval split={split!r} from any of {HF_DATASET_IDS}: {last_error}"
+    ) from last_error
+
+
+def load_humaneval_problems(*, split: str, dataset_path: str | None) -> tuple[dict[str, dict[str, str]], str]:
+    dataset = _load_humaneval_dataset(split=split, dataset_path=dataset_path)
+    if dataset is None:
+        if read_problems is None:
+            raise RuntimeError("human_eval.read_problems is unavailable and datasets-based loading failed.")
+        return {str(tid): _normalize_humaneval_problem(problem) for tid, problem in read_problems().items()}, "builtin://human_eval"
+
+    problems: dict[str, dict[str, str]] = {}
+    for row in dataset:
+        normalized = _normalize_humaneval_problem(row)
+        problems[normalized["task_id"]] = normalized
+
+    if not problems:
+        raise RuntimeError(f"Loaded empty HumanEval dataset for split={split!r}.")
+
+    source = dataset_path or f"hf://{HF_DATASET_IDS[0]}"
+    return problems, source
 
 
 def load_adapter_config(lora_dir: str) -> Dict[str, Any]:
@@ -110,6 +259,7 @@ def infer_max_lora_rank(adapter_cfg: Dict[str, Any]) -> int:
 
 def run_humaneval_evaluate_functional_correctness(
     samples_path: str,
+    problem_file: str,
     k: List[int],
     n_workers: int,
     timeout: float,
@@ -129,18 +279,14 @@ def run_humaneval_evaluate_functional_correctness(
             kwargs["n_workers"] = int(n_workers)
         if "timeout" in sig.parameters:
             kwargs["timeout"] = float(timeout)
+        if "problem_file" in sig.parameters:
+            kwargs["problem_file"] = problem_file
         if "ignore_incomplete" in sig.parameters:
             kwargs["ignore_incomplete"] = bool(ignore_incomplete)
 
         res = evaluate_functional_correctness(samples_path, **kwargs)
 
-        # human-eval commonly writes: <samples>_results.jsonl
-        results_path = samples_path.replace(".jsonl", "_results.jsonl")
-        if not os.path.exists(results_path):
-            alt = samples_path + "_results.jsonl"
-            results_path = alt if os.path.exists(alt) else results_path
-
-        return res, results_path if os.path.exists(results_path) else None
+        return res, _guess_humaneval_results_path(samples_path)
 
     except Exception as e:
         print(f"[Eval][Warn] Python API failed ({type(e).__name__}: {e}). Fallback to CLI...")
@@ -160,6 +306,7 @@ def run_humaneval_evaluate_functional_correctness(
         f"--k={','.join(map(str, k))}",
         f"--n_workers={int(n_workers)}",
         f"--timeout={float(timeout)}",
+        f"--problem_file={problem_file}",
     ]
     print("[Eval][CLI] " + " ".join(cmd))
     proc = subprocess.run(cmd, stdout=subprocess.PIPE, stderr=subprocess.STDOUT, text=True)
@@ -167,12 +314,7 @@ def run_humaneval_evaluate_functional_correctness(
     if proc.returncode != 0:
         raise RuntimeError(f"evaluate_functional_correctness failed with code {proc.returncode}")
 
-    results_path = samples_path.replace(".jsonl", "_results.jsonl")
-    if not os.path.exists(results_path):
-        alt = samples_path + "_results.jsonl"
-        results_path = alt if os.path.exists(alt) else results_path
-
-    return {}, results_path if os.path.exists(results_path) else None
+    return {}, _guess_humaneval_results_path(samples_path)
 
 
 def parse_results_jsonl(results_path: str) -> Dict[str, List[bool]]:
@@ -206,6 +348,7 @@ def compute_pass_at_1_single_sample(task_results: Dict[str, List[bool]]) -> Dict
 def write_eval_config(
     out_dir: str,
     task: str,
+    split: str,
     n_generations: int,
     temperature: float,
     top_p: float,
@@ -217,7 +360,7 @@ def write_eval_config(
 ) -> str:
     config = {
         "task": task,
-        "split": "test",
+        "split": split,
         "num_fewshot": 0,
         "decoding": {
             "temperature": temperature,
@@ -301,10 +444,19 @@ def generate_greedy_vllm(
 # ---------------------------
 
 def build_arg_parser() -> argparse.ArgumentParser:
-    p = argparse.ArgumentParser(description="Evaluate HumanEval pass@1 with temperature=0 (greedy).")
+    p = argparse.ArgumentParser(
+        description="Evaluate HumanEval pass@1 with temperature=0 (greedy). Defaults to Hugging Face openai/openai_humaneval."
+    )
     p.add_argument("--base_model", type=str, required=True)
     p.add_argument("--adapter_dir", type=str, default=None)
     p.add_argument("--output_dir", type=str, required=True)
+    p.add_argument(
+        "--dataset_path",
+        type=str,
+        default=None,
+        help="Optional local HumanEval dataset root or file. Supports .parquet/.json/.jsonl and common Hugging Face snapshot layouts.",
+    )
+    p.add_argument("--split", type=str, default="test")
 
     p.add_argument("--max_samples", type=int, default=None, help="Max HumanEval tasks (None = all 164).")
     p.add_argument("--max_new_tokens", type=int, default=256)
@@ -350,13 +502,16 @@ def main() -> None:
     out_dir.mkdir(parents=True, exist_ok=True)
 
     # 1) Load problems
-    problems = read_problems()
+    problems, dataset_source = load_humaneval_problems(split=args.split, dataset_path=args.dataset_path)
     task_ids = sorted(problems.keys())
     if args.max_samples is not None and int(args.max_samples) > 0:
         task_ids = task_ids[: int(args.max_samples)]
 
     prompts = [problems[tid]["prompt"] for tid in task_ids]
-    print(f"[Data] Loaded {len(prompts)} HumanEval tasks.")
+    problem_rows = [problems[tid] for tid in task_ids]
+    problems_path = str(out_dir / "problems.jsonl")
+    jsonl_write(problems_path, problem_rows)
+    print(f"[Data] Loaded {len(prompts)} HumanEval tasks from {dataset_source}.")
 
     # 2) Generate (temperature=0, n=1)
     if args.use_vllm:
@@ -410,10 +565,11 @@ def main() -> None:
     # 4) Run evaluate_functional_correctness (temperature=0 => greedy pass@1)
     raw_res, results_path = run_humaneval_evaluate_functional_correctness(
         samples_path=samples_path,
+        problem_file=problems_path,
         k=[1],
         n_workers=args.eval_n_workers,
         timeout=args.timeout_s,
-        ignore_incomplete=bool(args.max_samples is not None and int(args.max_samples) > 0),
+        ignore_incomplete=False,
     )
 
     # 5) Parse results and compute pass@1
@@ -433,6 +589,7 @@ def main() -> None:
             "samples_path": samples_path,
             "results_path": results_path,
             "generations_path": gens_path,
+            "problems_path": problems_path,
             "n_generations": 1,
             "temperature": 0.0,
             "top_p": 1.0,
@@ -446,6 +603,8 @@ def main() -> None:
             "max_model_len": args.max_model_len,
             "stop_words": args.stop_words,
             "seed": args.seed,
+            "split": args.split,
+            "dataset_source": dataset_source,
         }
     )
 
@@ -481,6 +640,7 @@ def main() -> None:
     config_path = write_eval_config(
         out_dir=str(out_dir),
         task="humaneval",
+        split=args.split,
         n_generations=1,
         temperature=0.0,
         top_p=1.0,
@@ -492,6 +652,7 @@ def main() -> None:
             "base_model": args.base_model,
             "adapter_dir": args.adapter_dir,
             "use_vllm": bool(args.use_vllm),
+            "dataset_source": dataset_source,
         },
     )
 
