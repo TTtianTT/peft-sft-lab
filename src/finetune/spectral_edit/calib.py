@@ -2,6 +2,8 @@
 
 from __future__ import annotations
 
+from glob import glob
+from pathlib import Path
 from typing import Callable, Iterable, List, Optional, Sequence, Tuple
 
 import torch
@@ -177,13 +179,87 @@ def build_calib_formatter(
 # Dataset loading / sampling
 # ----------------------------
 
+def _resolve_local_calibration_data_files(
+    dataset_path: str,
+    split: str,
+    dataset_config: Optional[str],
+) -> tuple[str, list[str]]:
+    """Resolve a local calibration dataset path into a datasets loader + file list."""
+    path = Path(dataset_path)
+    if not path.exists():
+        raise RuntimeError(f"Local calibration dataset path not found: {dataset_path}")
+
+    if path.is_file():
+        suffix = path.suffix.lower()
+        if suffix == ".parquet":
+            return "parquet", [str(path)]
+        if suffix == ".json":
+            return "json", [str(path)]
+        if suffix == ".jsonl":
+            return "json", [str(path)]
+        raise RuntimeError(
+            f"Unsupported local calibration file extension: {path.suffix!r}. Use .parquet, .json, or .jsonl."
+        )
+
+    candidates = []
+    cfg = dataset_config if dataset_config not in (None, "", "none", "null") else None
+    if cfg:
+        candidates.extend(
+            [
+                str(path / cfg / f"{split}-*.parquet"),
+                str(path / cfg / f"{split}.parquet"),
+                str(path / cfg / f"{split}-*.json"),
+                str(path / cfg / f"{split}.json"),
+                str(path / cfg / f"{split}-*.jsonl"),
+                str(path / cfg / f"{split}.jsonl"),
+            ]
+        )
+    candidates.extend(
+        [
+            str(path / f"{split}-*.parquet"),
+            str(path / f"{split}.parquet"),
+            str(path / f"{split}-*.json"),
+            str(path / f"{split}.json"),
+            str(path / f"{split}-*.jsonl"),
+            str(path / f"{split}.jsonl"),
+        ]
+    )
+
+    matches: list[str] = []
+    loader_name = ""
+    for pattern in candidates:
+        matched = sorted(glob(pattern))
+        if matched:
+            matches = matched
+            sample_suffix = Path(matched[0]).suffix.lower()
+            loader_name = "parquet" if sample_suffix == ".parquet" else "json"
+            break
+
+    if matches:
+        return loader_name, matches
+
+    raise RuntimeError(
+        f"Could not find local calibration files for split={split!r}, dataset_config={cfg!r} under {dataset_path}. "
+        f"Tried patterns: {candidates}"
+    )
+
+
 def load_calibration_split(
     dataset_name: str,
     dataset_config: Optional[str],
     split: str,
     cache_dir: Optional[str] = None,
+    dataset_path: Optional[str] = None,
 ):
     """Load a dataset split for calibration."""
+    if dataset_path is not None:
+        loader_name, data_files = _resolve_local_calibration_data_files(
+            dataset_path=dataset_path,
+            split=split,
+            dataset_config=dataset_config,
+        )
+        return load_dataset(loader_name, data_files=data_files, split="train", cache_dir=cache_dir)
+
     cfg = dataset_config if dataset_config not in (None, "", "none", "null") else None
     if cfg:
         return load_dataset(dataset_name, cfg, split=split, cache_dir=cache_dir)

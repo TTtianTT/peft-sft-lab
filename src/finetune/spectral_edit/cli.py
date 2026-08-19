@@ -199,6 +199,7 @@ def run_edit(args) -> None:
         calib_config,
         args.calib_split,
         cache_dir=args.cache_dir,
+        dataset_path=args.calib_dataset_path,
     )
     calib_seed = args.calib_seed if args.calib_seed is not None else args.seed
     calib_examples = sample_calibration_examples(
@@ -316,6 +317,7 @@ def run_edit(args) -> None:
         "layer_min": args.layer_min,
         "layer_max": args.layer_max,
         "calib_dataset": args.calib_dataset,
+        "calib_dataset_path": args.calib_dataset_path,
         "calib_config": calib_config,
         "calib_split": args.calib_split,
         "calib_text_fields": normalized_fields,
@@ -480,6 +482,12 @@ def build_arg_parser() -> argparse.ArgumentParser:
         type=str,
         default="train",
         help="Dataset split for calibration (default: train)",
+    )
+    edit_parser.add_argument(
+        "--calib_dataset_path",
+        type=str,
+        default=None,
+        help="Optional local calibration dataset root or file. Supports split-named .parquet/.json/.jsonl files.",
     )
     edit_parser.add_argument(
         "--calib_text_fields",
