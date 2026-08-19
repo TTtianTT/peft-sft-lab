@@ -12,8 +12,6 @@ import shutil
 from typing import Dict, List, Optional
 
 import torch
-from peft import PeftModel
-from transformers import AutoModelForCausalLM, AutoTokenizer
 
 from .calib import build_calib_formatter, load_calibration_split, make_calib_batch, sample_calibration_examples
 from .edit_strategies import EditConfig, apply_spectral_edit
@@ -27,6 +25,12 @@ from .io import (
     parse_lora_ab_key,
     save_lora_state_dict,
 )
+from .posthoc_hns import (
+    FAST_HNS_COEFFICIENTS,
+    STABLE_HNS_COEFFICIENTS,
+    HNSEditConfig,
+    apply_hns_to_svd,
+)
 from .svd import lowrank_svd_from_ba, rebuild_ba_from_uv_sigma
 
 
@@ -37,9 +41,71 @@ def set_seed(seed: int) -> None:
     torch.cuda.manual_seed_all(seed)
 
 
+def _copy_lora_tree(lora_dir: str, out_dir: str) -> None:
+    """Copy a LoRA adapter directory unless editing in place."""
+    if os.path.abspath(out_dir) == os.path.abspath(lora_dir):
+        return
+    if os.path.exists(out_dir):
+        shutil.rmtree(out_dir)
+    shutil.copytree(lora_dir, out_dir)
+
+
+def _collect_lora_pairs(
+    sd: Dict[str, torch.Tensor],
+    target_modules: List[str],
+    layer_min: int,
+    layer_max: int,
+) -> tuple[Dict[str, dict], List[str], List[str]]:
+    """Collect LoRA A/B pairs filtered by suffix and layer range."""
+    discovered_suffixes: set[str] = set()
+    parsed_items: list[tuple[str, str, Optional[str], str, torch.Tensor]] = []
+
+    for key, tensor in sd.items():
+        parsed = parse_lora_ab_key(key)
+        if not parsed:
+            continue
+        prefix, which, adapter = parsed
+        suffix = prefix.split(".")[-1]
+        discovered_suffixes.add(suffix)
+        parsed_items.append((prefix, which, adapter, key, tensor))
+
+    target_aliases = {item.lower() for item in target_modules}
+    if "all" in target_aliases or "all_modules" in target_aliases:
+        resolved_targets = sorted(discovered_suffixes)
+    else:
+        resolved_targets = list(dict.fromkeys(target_modules))
+
+    target_modules_set = set(resolved_targets)
+    pairs: Dict[str, dict] = {}
+
+    for prefix, which, adapter, key, tensor in parsed_items:
+        suffix = prefix.split(".")[-1]
+        if suffix not in target_modules_set:
+            continue
+
+        layer_idx = layer_idx_from_module_prefix(prefix)
+        if layer_idx is not None and not (layer_min <= layer_idx <= layer_max):
+            continue
+
+        pairs.setdefault(prefix, {})
+        pairs[prefix][which] = (key, tensor, adapter)
+
+    selected_prefixes = sorted([prefix for prefix in pairs.keys() if "A" in pairs[prefix] and "B" in pairs[prefix]])
+    if not selected_prefixes:
+        raise RuntimeError(
+            "No matching LoRA (A,B) pairs found for the given target_modules/layer range. "
+            f"Available suffixes: {sorted(discovered_suffixes)}"
+        )
+
+    return pairs, selected_prefixes, resolved_targets
+
+
 def run_edit(args) -> None:
     """Main editing function."""
     set_seed(args.seed)
+
+    from peft import PeftModel
+    from transformers import AutoModelForCausalLM, AutoTokenizer
 
     device = "cuda" if torch.cuda.is_available() else "cpu"
     if device != "cuda":
@@ -49,34 +115,13 @@ def run_edit(args) -> None:
     adapter_cfg = load_adapter_config(lora_dir)
     sd, fmt = load_lora_state_dict(lora_dir)
 
-    if os.path.abspath(args.out_dir) != os.path.abspath(lora_dir):
-        if os.path.exists(args.out_dir):
-            shutil.rmtree(args.out_dir)
-        shutil.copytree(lora_dir, args.out_dir)
-
-    pairs: Dict[str, dict] = {}
-    target_modules_set = set(args.target_modules)
-
-    for k, t in sd.items():
-        parsed = parse_lora_ab_key(k)
-        if not parsed:
-            continue
-        prefix, which, adapter = parsed
-
-        suffix = prefix.split(".")[-1]
-        if suffix not in target_modules_set:
-            continue
-
-        li = layer_idx_from_module_prefix(prefix)
-        if li is not None and not (args.layer_min <= li <= args.layer_max):
-            continue
-
-        pairs.setdefault(prefix, {})
-        pairs[prefix][which] = (k, t, adapter)
-
-    selected_prefixes = [p for p in pairs.keys() if "A" in pairs[p] and "B" in pairs[p]]
-    if not selected_prefixes:
-        raise RuntimeError("No matching LoRA (A,B) pairs found for given target_modules/layer range.")
+    _copy_lora_tree(lora_dir, args.out_dir)
+    pairs, selected_prefixes, resolved_targets = _collect_lora_pairs(
+        sd=sd,
+        target_modules=args.target_modules,
+        layer_min=args.layer_min,
+        layer_max=args.layer_max,
+    )
 
     print(f"[Info] Selected LoRA modules: {len(selected_prefixes)}")
     for p in selected_prefixes[:5]:
@@ -266,7 +311,8 @@ def run_edit(args) -> None:
     meta = {
         "base_model": args.base_model,
         "lora_path": args.lora_path,
-        "target_modules": args.target_modules,
+        "target_modules_requested": args.target_modules,
+        "target_modules": resolved_targets,
         "layer_min": args.layer_min,
         "layer_max": args.layer_max,
         "calib_dataset": args.calib_dataset,
@@ -305,6 +351,94 @@ def run_edit(args) -> None:
     torch.cuda.empty_cache()
 
 
+def run_hns(args) -> None:
+    """Apply post-hoc Hybrid Newton-Schulz editing to a LoRA adapter."""
+    lora_dir = ensure_local_lora_dir(args.lora_path, cache_dir=args.cache_dir)
+    adapter_cfg = load_adapter_config(lora_dir)
+    sd, fmt = load_lora_state_dict(lora_dir)
+    _copy_lora_tree(lora_dir, args.out_dir)
+
+    pairs, selected_prefixes, resolved_targets = _collect_lora_pairs(
+        sd=sd,
+        target_modules=args.target_modules,
+        layer_min=args.layer_min,
+        layer_max=args.layer_max,
+    )
+
+    hns_config = HNSEditConfig(
+        fast_steps=args.fast_steps,
+        stable_steps=args.stable_steps,
+        fast_coefficients=tuple(float(x) for x in args.fast_coefficients),
+        stable_coefficients=tuple(float(x) for x in args.stable_coefficients),
+        preserve_nuclear_norm=not args.no_preserve_nuclear_norm,
+        output_rank=args.output_rank,
+        eps=args.eps,
+    )
+
+    module_stats: Dict[str, dict] = {}
+    eff_before: list[float] = []
+    eff_after: list[float] = []
+
+    for prefix in selected_prefixes:
+        keyA, A_old, adapterA = pairs[prefix]["A"]
+        keyB, B_old, adapterB = pairs[prefix]["B"]
+        adapter_name = adapterA if adapterA is not None else adapterB
+        scaling = get_scaling_for_module(adapter_cfg, prefix)
+
+        U, S, Vh, _ = lowrank_svd_from_ba(B_old, A_old)
+        U_new, Vh_new, sigma_new, stats = apply_hns_to_svd(U, Vh, S, config=hns_config)
+        B_new, A_new = rebuild_ba_from_uv_sigma(U_new, Vh_new, sigma_new)
+
+        sd[keyA] = A_new.to(dtype=A_old.dtype).detach().cpu()
+        sd[keyB] = B_new.to(dtype=B_old.dtype).detach().cpu()
+
+        stats.update(
+            {
+                "module_suffix": prefix.split(".")[-1],
+                "layer_index": layer_idx_from_module_prefix(prefix),
+                "adapter_name": adapter_name,
+                "scaling": float(scaling),
+            }
+        )
+        module_stats[prefix] = stats
+        eff_before.append(float(stats["effective_rank_before"]))
+        eff_after.append(float(stats["effective_rank_after"]))
+
+    save_lora_state_dict(args.out_dir, sd, fmt)
+
+    summary = {
+        "num_modules": len(module_stats),
+        "mean_effective_rank_before": (sum(eff_before) / len(eff_before)) if eff_before else 0.0,
+        "mean_effective_rank_after": (sum(eff_after) / len(eff_after)) if eff_after else 0.0,
+        "mean_effective_rank_delta": ((sum(eff_after) - sum(eff_before)) / len(eff_before)) if eff_before else 0.0,
+    }
+    meta = {
+        "method": "posthoc_hns",
+        "lora_path": args.lora_path,
+        "target_modules_requested": args.target_modules,
+        "target_modules": resolved_targets,
+        "layer_min": args.layer_min,
+        "layer_max": args.layer_max,
+        "output_rank": args.output_rank,
+        "fast_steps": args.fast_steps,
+        "stable_steps": args.stable_steps,
+        "fast_coefficients": [float(x) for x in args.fast_coefficients],
+        "stable_coefficients": [float(x) for x in args.stable_coefficients],
+        "preserve_nuclear_norm": not args.no_preserve_nuclear_norm,
+        "eps": args.eps,
+    }
+
+    with open(os.path.join(args.out_dir, "spectral_edit_meta.json"), "w", encoding="utf-8") as f:
+        json.dump({"meta": meta, "summary": summary, "module_stats": module_stats}, f, indent=2)
+
+    print(
+        "[HNS] Edited "
+        f"{len(module_stats)} modules | mean r_eff {summary['mean_effective_rank_before']:.4f} -> "
+        f"{summary['mean_effective_rank_after']:.4f}"
+    )
+    print(f"[Save] Edited adapter saved to: {args.out_dir}")
+
+
 def build_arg_parser() -> argparse.ArgumentParser:
     parser = argparse.ArgumentParser(
         description="LoRA Spectral Edit - Sensitivity-based spectral editing for LoRA adapters"
@@ -321,7 +455,7 @@ def build_arg_parser() -> argparse.ArgumentParser:
         type=str,
         nargs="+",
         default=["down_proj", "o_proj"],
-        help="Module names to edit (default: down_proj o_proj)",
+        help="Module names to edit (default: down_proj o_proj). Use 'all_modules' to edit every LoRA matrix suffix found.",
     )
     edit_parser.add_argument("--layer_min", type=int, default=0, help="Minimum layer index to edit")
     edit_parser.add_argument("--layer_max", type=int, default=10**9, help="Maximum layer index to edit")
@@ -481,6 +615,63 @@ def build_arg_parser() -> argparse.ArgumentParser:
     edit_parser.add_argument("--cache_dir", type=str, default=None, help="Cache directory for HF downloads")
     edit_parser.add_argument("--seed", type=int, default=0, help="Random seed")
 
+    hns_parser = subparsers.add_parser("hns", help="Apply post-hoc Hybrid Newton-Schulz editing to a LoRA adapter")
+    hns_parser.add_argument("--lora_path", type=str, required=True, help="Path or HF ID for LoRA adapter")
+    hns_parser.add_argument("--out_dir", type=str, required=True, help="Output directory for edited adapter")
+    hns_parser.add_argument(
+        "--target_modules",
+        type=str,
+        nargs="+",
+        default=["down_proj", "o_proj"],
+        help="Module names to edit (default: down_proj o_proj). Use 'all_modules' to edit every LoRA matrix suffix found.",
+    )
+    hns_parser.add_argument("--layer_min", type=int, default=0, help="Minimum layer index to edit")
+    hns_parser.add_argument("--layer_max", type=int, default=10**9, help="Maximum layer index to edit")
+    hns_parser.add_argument(
+        "--output_rank",
+        type=int,
+        default=None,
+        help="Optional rank to keep after HNS refactorization. Defaults to the adapter's current rank.",
+    )
+    hns_parser.add_argument(
+        "--fast_steps",
+        type=int,
+        default=8,
+        help="Number of aggressive Muon-style Newton-Schulz steps.",
+    )
+    hns_parser.add_argument(
+        "--stable_steps",
+        type=int,
+        default=2,
+        help="Number of stable Newton-Schulz refinement steps.",
+    )
+    hns_parser.add_argument(
+        "--fast_coefficients",
+        type=float,
+        nargs=3,
+        default=list(FAST_HNS_COEFFICIENTS),
+        help="Stage-1 coefficients a b c (default: 3.4445 -4.7750 2.0315).",
+    )
+    hns_parser.add_argument(
+        "--stable_coefficients",
+        type=float,
+        nargs=3,
+        default=list(STABLE_HNS_COEFFICIENTS),
+        help="Stage-2 coefficients a b c (default: 2 -1.5 0.5).",
+    )
+    hns_parser.add_argument(
+        "--no_preserve_nuclear_norm",
+        action="store_true",
+        help="Disable nuclear-norm restoration after HNS.",
+    )
+    hns_parser.add_argument(
+        "--eps",
+        type=float,
+        default=1e-7,
+        help="Numerical epsilon used for normalization and norm restoration.",
+    )
+    hns_parser.add_argument("--cache_dir", type=str, default=None, help="Cache directory for HF downloads")
+
     return parser
 
 
@@ -490,6 +681,8 @@ def main() -> None:
 
     if args.command == "edit":
         run_edit(args)
+    elif args.command == "hns":
+        run_hns(args)
     else:
         parser.print_help()
 

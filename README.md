@@ -153,6 +153,24 @@ ls runs/edited/metamath/lora/seed42/smooth_abs/adapter_model.safetensors \
    runs/edited/metamath/lora/seed42/smooth_abs/spectral_edit_meta.json
 ```
 
+Post-hoc HNS experiment: flatten one LoRA checkpoint with a Muon-style Hybrid Newton-Schulz pass, restore its nuclear norm, and then evaluate it directly without retraining or calibration data.
+
+```bash
+python -m finetune.spectral_edit.cli hns \
+  --lora_path runs/meta-llama-Llama-3.1-8B/metamath/lora/profile-default/rank-16/seed42 \
+  --out_dir runs/edited/metamath/lora/seed42/hns_8plus2 \
+  --target_modules down_proj o_proj \
+  --output_rank 16
+
+python -m finetune.eval.eval_gsm8k \
+  --base_model meta-llama/Llama-3.1-8B \
+  --adapter_dir runs/edited/metamath/lora/seed42/hns_8plus2 \
+  --output_dir eval/gsm8k-metamath-hns-8plus2 \
+  --max_samples 32
+
+cat runs/edited/metamath/lora/seed42/hns_8plus2/spectral_edit_meta.json
+```
+
 ## Output structure
 
 Each training run writes:
