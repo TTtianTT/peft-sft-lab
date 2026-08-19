@@ -154,6 +154,13 @@ def _load_official_outputs(path: Path) -> list[dict[str, Any]]:
     return rows
 
 
+def _load_json_if_exists(path: Path) -> dict[str, Any] | None:
+    if not path.exists():
+        return None
+    with path.open("r", encoding="utf-8") as handle:
+        return json.load(handle)
+
+
 def _summarize_official_outputs(rows: list[dict[str, Any]]) -> dict[str, Any]:
     prompt_total = len(rows)
     prompt_correct = sum(1 for row in rows if bool(row.get("follow_all_instructions")))
@@ -265,6 +272,8 @@ def main() -> None:
     official_out = (out_dir / "official_ifbench").resolve()
     input_data_path = official_out / "input_data.jsonl"
     input_response_data_path = official_out / "input_response_data.jsonl"
+    generation_manifest_path = out_dir / "generation_manifest.json"
+    generation_manifest = _load_json_if_exists(generation_manifest_path)
 
     if not args.only_score:
         ds = load_ifbench_split(split=args.split, dataset_path=args.dataset_path)
@@ -365,7 +374,7 @@ def main() -> None:
 
         if args.only_generate:
             save_json(
-                out_dir / "generation_manifest.json",
+                generation_manifest_path,
                 {
                     "responses_path": str(responses_path.resolve()),
                     "official_output_dir": str(official_out),
@@ -403,6 +412,7 @@ def main() -> None:
     loose_rows = _load_official_outputs(official_out / "input_response_data-eval_results_loose.jsonl")
     strict_summary = _summarize_official_outputs(strict_rows)
     loose_summary = _summarize_official_outputs(loose_rows)
+    num_examples = int(loose_summary["prompt_total"])
 
     metrics = {
         "ifbench_prompt_loose_accuracy": loose_summary["prompt_accuracy"],
@@ -410,19 +420,47 @@ def main() -> None:
         "ifbench_instruction_loose_accuracy": loose_summary["instruction_accuracy"],
         "ifbench_instruction_strict_accuracy": strict_summary["instruction_accuracy"],
         "primary_metric": "ifbench_prompt_loose_accuracy",
-        "dataset_source": args.dataset_path or f"hf://{HF_DATASET_ID}",
-        "split": args.split,
-        "use_vllm": bool(args.use_vllm),
+        "dataset_source": (
+            args.dataset_path
+            or (generation_manifest or {}).get("dataset_source")
+            or f"hf://{HF_DATASET_ID}"
+        ),
+        "split": args.split if not args.only_score else (generation_manifest or {}).get("split", args.split),
+        "use_vllm": (
+            bool(args.use_vllm)
+            if not args.only_score
+            else (generation_manifest or {}).get("use_vllm")
+        ),
         "official_eval_root": str(Path(args.official_eval_root).expanduser()),
         "official_output_dir": str(official_out),
-        "max_new_tokens": args.max_new_tokens,
-        "num_examples": len(input_rows),
+        "max_new_tokens": (
+            args.max_new_tokens
+            if not args.only_score
+            else (generation_manifest or {}).get("max_new_tokens", args.max_new_tokens)
+        ),
+        "num_examples": num_examples,
         "strict": strict_summary,
         "loose": loose_summary,
-        "vllm_attention_backend": args.vllm_attention_backend,
-        "vllm_disable_flashinfer_sampler": bool(args.vllm_disable_flashinfer_sampler),
-        "vllm_max_model_len": args.vllm_max_model_len,
-        "vllm_gpu_memory_utilization": args.vllm_gpu_memory_utilization,
+        "vllm_attention_backend": (
+            args.vllm_attention_backend
+            if not args.only_score
+            else (generation_manifest or {}).get("vllm_attention_backend")
+        ),
+        "vllm_disable_flashinfer_sampler": (
+            bool(args.vllm_disable_flashinfer_sampler)
+            if not args.only_score
+            else (generation_manifest or {}).get("vllm_disable_flashinfer_sampler")
+        ),
+        "vllm_max_model_len": (
+            args.vllm_max_model_len
+            if not args.only_score
+            else (generation_manifest or {}).get("vllm_max_model_len")
+        ),
+        "vllm_gpu_memory_utilization": (
+            args.vllm_gpu_memory_utilization
+            if not args.only_score
+            else (generation_manifest or {}).get("vllm_gpu_memory_utilization")
+        ),
     }
     save_json(out_dir / "metrics.json", metrics)
 
