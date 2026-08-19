@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 import json
+import os
 import re
 from dataclasses import dataclass
 from pathlib import Path
@@ -150,7 +151,12 @@ def generate_greedy_vllm_batch(
     tensor_parallel_size: int = 1,
     max_model_len: int | None = None,
     gpu_memory_utilization: float | None = None,
+    attention_backend: str | None = None,
+    disable_flashinfer_sampler: bool = False,
 ) -> list[str]:
+    if disable_flashinfer_sampler:
+        os.environ["VLLM_USE_FLASHINFER_SAMPLER"] = "0"
+
     try:
         from vllm import LLM, SamplingParams
     except Exception as exc:
@@ -180,6 +186,7 @@ def generate_greedy_vllm_batch(
             if gpu_memory_utilization is None
             else {"gpu_memory_utilization": gpu_memory_utilization}
         ),
+        **({} if attention_backend is None else {"attention_backend": attention_backend}),
     )
     params = SamplingParams(temperature=0.0, max_tokens=max_new_tokens)
     outputs = llm.generate(prompts, params, lora_request=lora_request)
@@ -210,6 +217,8 @@ def generate_greedy_vllm(
     tensor_parallel_size: int = 1,
     max_model_len: int | None = None,
     gpu_memory_utilization: float | None = None,
+    attention_backend: str | None = None,
+    disable_flashinfer_sampler: bool = False,
 ) -> str:
     outputs = generate_greedy_vllm_batch(
         base_model=base_model,
@@ -219,6 +228,8 @@ def generate_greedy_vllm(
         tensor_parallel_size=tensor_parallel_size,
         max_model_len=max_model_len,
         gpu_memory_utilization=gpu_memory_utilization,
+        attention_backend=attention_backend,
+        disable_flashinfer_sampler=disable_flashinfer_sampler,
     )
     return outputs[0] if outputs else ""
 

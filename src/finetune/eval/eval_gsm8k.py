@@ -162,6 +162,17 @@ def build_arg_parser() -> argparse.ArgumentParser:
         default=None,
         help="Optional vLLM GPU memory utilization target, e.g. 0.9 or 0.95.",
     )
+    p.add_argument(
+        "--vllm_attention_backend",
+        type=str,
+        default=None,
+        help="Optional vLLM attention backend override, e.g. FLASH_ATTN or FLASHINFER.",
+    )
+    p.add_argument(
+        "--vllm_disable_flashinfer_sampler",
+        action="store_true",
+        help="Disable FlashInfer top-k/top-p sampler inside vLLM and fall back to the native sampler.",
+    )
     return p
 
 
@@ -223,6 +234,8 @@ def main() -> None:
                 tensor_parallel_size=args.tensor_parallel_size,
                 max_model_len=args.vllm_max_model_len,
                 gpu_memory_utilization=args.vllm_gpu_memory_utilization,
+                attention_backend=args.vllm_attention_backend,
+                disable_flashinfer_sampler=args.vllm_disable_flashinfer_sampler,
             )
 
             for (q, gold), gen in zip(records, generations):
@@ -282,6 +295,11 @@ def main() -> None:
         "dataset_source": args.dataset_path or "hf://gsm8k",
         "dataset_config": args.dataset_config,
         "split": args.split,
+        "use_vllm": bool(args.use_vllm),
+        "vllm_attention_backend": args.vllm_attention_backend,
+        "vllm_disable_flashinfer_sampler": bool(args.vllm_disable_flashinfer_sampler),
+        "vllm_max_model_len": args.vllm_max_model_len,
+        "vllm_gpu_memory_utilization": args.vllm_gpu_memory_utilization,
     }
     save_json(out_dir / "metrics.json", metrics)
 
