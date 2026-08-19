@@ -843,6 +843,12 @@ def build_arg_parser() -> argparse.ArgumentParser:
         action="store_true",
         help="Disable FlashInfer top-k/top-p sampler inside vLLM and fall back to the native sampler.",
     )
+    p.add_argument(
+        "--vllm_request_batch_size",
+        type=int,
+        default=None,
+        help="Optional cap on how many prompts vLLM processes per generate() call.",
+    )
 
     p.add_argument("--per_category_metrics", action="store_true")
     p.add_argument("--fail_on_unknown", action="store_true", help="Raise if an unknown instruction id appears.")
@@ -947,6 +953,7 @@ def main() -> None:
             gpu_memory_utilization=args.vllm_gpu_memory_utilization,
             attention_backend=args.vllm_attention_backend,
             disable_flashinfer_sampler=args.vllm_disable_flashinfer_sampler,
+            request_batch_size=args.vllm_request_batch_size,
         )
     else:
         generations = []
@@ -1045,6 +1052,7 @@ def main() -> None:
         "vllm_max_model_len": args.vllm_max_model_len,
         "vllm_gpu_memory_utilization": args.vllm_gpu_memory_utilization,
         "vllm_attention_backend": args.vllm_attention_backend,
+        "vllm_request_batch_size": args.vllm_request_batch_size,
     }
 
     if args.per_category_metrics:
