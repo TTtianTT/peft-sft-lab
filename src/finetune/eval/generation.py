@@ -148,6 +148,8 @@ def generate_greedy_vllm_batch(
     max_new_tokens: int,
     adapter_dir: str | None = None,
     tensor_parallel_size: int = 1,
+    max_model_len: int | None = None,
+    gpu_memory_utilization: float | None = None,
 ) -> list[str]:
     try:
         from vllm import LLM, SamplingParams
@@ -172,6 +174,12 @@ def generate_greedy_vllm_batch(
         tensor_parallel_size=tensor_parallel_size,
         enable_lora=adapter_dir is not None,
         max_lora_rank=256,
+        **({} if max_model_len is None else {"max_model_len": max_model_len}),
+        **(
+            {}
+            if gpu_memory_utilization is None
+            else {"gpu_memory_utilization": gpu_memory_utilization}
+        ),
     )
     params = SamplingParams(temperature=0.0, max_tokens=max_new_tokens)
     outputs = llm.generate(prompts, params, lora_request=lora_request)
@@ -200,6 +208,8 @@ def generate_greedy_vllm(
     max_new_tokens: int,
     adapter_dir: str | None = None,
     tensor_parallel_size: int = 1,
+    max_model_len: int | None = None,
+    gpu_memory_utilization: float | None = None,
 ) -> str:
     outputs = generate_greedy_vllm_batch(
         base_model=base_model,
@@ -207,6 +217,8 @@ def generate_greedy_vllm(
         max_new_tokens=max_new_tokens,
         adapter_dir=adapter_dir,
         tensor_parallel_size=tensor_parallel_size,
+        max_model_len=max_model_len,
+        gpu_memory_utilization=gpu_memory_utilization,
     )
     return outputs[0] if outputs else ""
 

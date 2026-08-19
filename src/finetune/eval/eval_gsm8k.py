@@ -150,6 +150,18 @@ def build_arg_parser() -> argparse.ArgumentParser:
     p.add_argument("--seed", type=int, default=42)
     p.add_argument("--use_vllm", action="store_true")
     p.add_argument("--tensor_parallel_size", type=int, default=1)
+    p.add_argument(
+        "--vllm_max_model_len",
+        type=int,
+        default=None,
+        help="Optional vLLM max_model_len override. Useful on 24GB GPUs where the base model's full context window is too large.",
+    )
+    p.add_argument(
+        "--vllm_gpu_memory_utilization",
+        type=float,
+        default=None,
+        help="Optional vLLM GPU memory utilization target, e.g. 0.9 or 0.95.",
+    )
     return p
 
 
@@ -209,6 +221,8 @@ def main() -> None:
                 max_new_tokens=args.max_new_tokens,
                 adapter_dir=args.adapter_dir,
                 tensor_parallel_size=args.tensor_parallel_size,
+                max_model_len=args.vllm_max_model_len,
+                gpu_memory_utilization=args.vllm_gpu_memory_utilization,
             )
 
             for (q, gold), gen in zip(records, generations):
