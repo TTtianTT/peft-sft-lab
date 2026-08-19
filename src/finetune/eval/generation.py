@@ -153,6 +153,7 @@ def generate_greedy_vllm_batch(
     gpu_memory_utilization: float | None = None,
     attention_backend: str | None = None,
     disable_flashinfer_sampler: bool = False,
+    request_batch_size: int | None = None,
 ) -> list[str]:
     if disable_flashinfer_sampler:
         os.environ["VLLM_USE_FLASHINFER_SAMPLER"] = "0"
@@ -189,23 +190,33 @@ def generate_greedy_vllm_batch(
         **({} if attention_backend is None else {"attention_backend": attention_backend}),
     )
     params = SamplingParams(temperature=0.0, max_tokens=max_new_tokens)
-    outputs = llm.generate(prompts, params, lora_request=lora_request)
-    if not outputs:
-        return ["" for _ in prompts]
+    chunk_size = len(prompts)
+    if request_batch_size is not None and request_batch_size > 0:
+        chunk_size = min(int(request_batch_size), len(prompts))
 
     texts: list[str] = []
-    for req_out in outputs:
-        if not getattr(req_out, "outputs", None):
-            texts.append("")
-        else:
-            texts.append(req_out.outputs[0].text.strip())
+    for start in range(0, len(prompts), chunk_size):
+        prompt_chunk = prompts[start : start + chunk_size]
+        outputs = llm.generate(prompt_chunk, params, lora_request=lora_request)
+        if not outputs:
+            texts.extend([""] * len(prompt_chunk))
+            continue
 
-    if len(texts) < len(prompts):
-        texts.extend([""] * (len(prompts) - len(texts)))
-    elif len(texts) > len(prompts):
-        texts = texts[: len(prompts)]
+        chunk_texts: list[str] = []
+        for req_out in outputs:
+            if not getattr(req_out, "outputs", None):
+                chunk_texts.append("")
+            else:
+                chunk_texts.append(req_out.outputs[0].text.strip())
 
-    return texts
+        if len(chunk_texts) < len(prompt_chunk):
+            chunk_texts.extend([""] * (len(prompt_chunk) - len(chunk_texts)))
+        elif len(chunk_texts) > len(prompt_chunk):
+            chunk_texts = chunk_texts[: len(prompt_chunk)]
+
+        texts.extend(chunk_texts)
+
+    return texts[: len(prompts)]
 
 
 def generate_greedy_vllm(
@@ -219,6 +230,7 @@ def generate_greedy_vllm(
     gpu_memory_utilization: float | None = None,
     attention_backend: str | None = None,
     disable_flashinfer_sampler: bool = False,
+    request_batch_size: int | None = None,
 ) -> str:
     outputs = generate_greedy_vllm_batch(
         base_model=base_model,
@@ -230,6 +242,7 @@ def generate_greedy_vllm(
         gpu_memory_utilization=gpu_memory_utilization,
         attention_backend=attention_backend,
         disable_flashinfer_sampler=disable_flashinfer_sampler,
+        request_batch_size=request_batch_size,
     )
     return outputs[0] if outputs else ""
 

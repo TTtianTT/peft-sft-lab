@@ -248,6 +248,12 @@ def build_arg_parser() -> argparse.ArgumentParser:
         action="store_true",
         help="Disable FlashInfer top-k/top-p sampler inside vLLM and fall back to the native sampler.",
     )
+    p.add_argument(
+        "--vllm_request_batch_size",
+        type=int,
+        default=None,
+        help="Optional number of prompts to submit per vLLM generate() call. Useful on single-GPU runs to avoid OOM.",
+    )
     mode = p.add_mutually_exclusive_group()
     mode.add_argument(
         "--only_generate",
@@ -344,6 +350,7 @@ def main() -> None:
                 gpu_memory_utilization=args.vllm_gpu_memory_utilization,
                 attention_backend=args.vllm_attention_backend,
                 disable_flashinfer_sampler=args.vllm_disable_flashinfer_sampler,
+                request_batch_size=args.vllm_request_batch_size,
             )
         else:
             generations = [
@@ -388,6 +395,7 @@ def main() -> None:
                     "vllm_disable_flashinfer_sampler": bool(args.vllm_disable_flashinfer_sampler),
                     "vllm_max_model_len": args.vllm_max_model_len,
                     "vllm_gpu_memory_utilization": args.vllm_gpu_memory_utilization,
+                    "vllm_request_batch_size": args.vllm_request_batch_size,
                 },
             )
             return
@@ -460,6 +468,11 @@ def main() -> None:
             args.vllm_gpu_memory_utilization
             if not args.only_score
             else (generation_manifest or {}).get("vllm_gpu_memory_utilization")
+        ),
+        "vllm_request_batch_size": (
+            args.vllm_request_batch_size
+            if not args.only_score
+            else (generation_manifest or {}).get("vllm_request_batch_size")
         ),
     }
     save_json(out_dir / "metrics.json", metrics)
