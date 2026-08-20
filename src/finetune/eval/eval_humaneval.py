@@ -19,8 +19,11 @@ from typing import Any, Dict, List, Optional, Tuple
 from finetune.data.base import first_present, get_writable_datasets_cache_dir
 from finetune.eval.generation import (
     generate_greedy,
+    load_eval_tokenizer,
     load_transformers_model,
+    render_chat_prompt,
     save_json,
+    strip_code_fences,
 )
 from finetune.utils import seed_everything
 
@@ -48,6 +51,12 @@ except Exception:
 
 
 HF_DATASET_IDS = ("openai/openai_humaneval", "openai_humaneval")
+DEFAULT_PROMPT_STYLE = "chat"
+DEFAULT_SYSTEM_PROMPT = (
+    "You are a careful Python coding assistant. "
+    "Return only the missing Python continuation for the given code prefix. "
+    "Do not repeat the prefix. Do not add explanations. Do not use markdown fences."
+)
 
 
 # ---------------------------
@@ -345,6 +354,45 @@ def compute_pass_at_1_single_sample(task_results: Dict[str, List[bool]]) -> Dict
     }
 
 
+def build_humaneval_chat_user_prompt(problem_prompt: str) -> str:
+    return (
+        "Complete the following Python code.\n\n"
+        "Requirements:\n"
+        "- Output only the missing continuation.\n"
+        "- Do not repeat the provided prefix.\n"
+        "- Do not add explanations.\n"
+        "- Do not wrap the answer in markdown fences.\n\n"
+        "Code prefix:\n"
+        f"{problem_prompt}"
+    )
+
+
+def normalize_humaneval_completion(raw_text: str, problem_prompt: str) -> str:
+    text = raw_text.strip()
+
+    fenced_match = None
+    try:
+        import re
+
+        fenced_match = re.search(r"```(?:python)?\s*\n(.*?)```", text, flags=re.DOTALL | re.IGNORECASE)
+    except Exception:
+        fenced_match = None
+
+    if fenced_match:
+        text = fenced_match.group(1).strip()
+
+    text = strip_code_fences(text)
+
+    if text.startswith(problem_prompt):
+        text = text[len(problem_prompt) :]
+    else:
+        prompt_idx = text.find(problem_prompt)
+        if 0 <= prompt_idx <= 200:
+            text = text[prompt_idx + len(problem_prompt) :]
+
+    return text.lstrip("\n")
+
+
 def write_eval_config(
     out_dir: str,
     task: str,
@@ -478,6 +526,19 @@ def build_arg_parser() -> argparse.ArgumentParser:
         help="Optional local HumanEval dataset root or file. Supports .parquet/.json/.jsonl and common Hugging Face snapshot layouts.",
     )
     p.add_argument("--split", type=str, default="test")
+    p.add_argument(
+        "--prompt_style",
+        type=str,
+        default=DEFAULT_PROMPT_STYLE,
+        choices=["chat", "raw"],
+        help="Prompt formatting style. Defaults to chat to match SFT training.",
+    )
+    p.add_argument(
+        "--system_prompt",
+        type=str,
+        default=DEFAULT_SYSTEM_PROMPT,
+        help="System prompt used when --prompt_style=chat.",
+    )
 
     p.add_argument("--max_samples", type=int, default=None, help="Max HumanEval tasks (None = all 164).")
     p.add_argument("--max_new_tokens", type=int, default=256)
@@ -558,11 +619,25 @@ def main() -> None:
     jsonl_write(problems_path, problem_rows)
     print(f"[Data] Loaded {len(prompts)} HumanEval tasks from {dataset_source}.")
 
+    eval_tokenizer = None
+    rendered_prompts = prompts
+    if args.prompt_style == "chat":
+        eval_tokenizer = load_eval_tokenizer(base_model=args.base_model, adapter_dir=args.adapter_dir)
+        rendered_prompts = [
+            render_chat_prompt(
+                tokenizer=eval_tokenizer,
+                base_model=args.base_model,
+                user_content=build_humaneval_chat_user_prompt(problem_prompt),
+                system_content=args.system_prompt,
+            )
+            for problem_prompt in prompts
+        ]
+
     # 2) Generate (temperature=0, n=1)
     if args.use_vllm:
         completions = generate_greedy_vllm(
             base_model=args.base_model,
-            prompts=prompts,
+            prompts=rendered_prompts,
             adapter_dir=args.adapter_dir,
             tensor_parallel_size=args.tensor_parallel_size,
             max_new_tokens=args.max_new_tokens,
@@ -581,15 +656,22 @@ def main() -> None:
             dtype=args.dtype,
             device_map="auto",
         )
+        if eval_tokenizer is None:
+            eval_tokenizer = loaded.tokenizer
         completions = []
-        for prompt in prompts:
+        for prompt in rendered_prompts:
             comp_raw = generate_greedy(
                 model=loaded.model,
-                tokenizer=loaded.tokenizer,
+                tokenizer=eval_tokenizer,
                 prompt=prompt,
                 max_new_tokens=args.max_new_tokens,
             )
             completions.append(comp_raw)
+
+    completions = [
+        normalize_humaneval_completion(comp_raw, problem_prompt)
+        for comp_raw, problem_prompt in zip(completions, prompts)
+    ]
 
     # 3) Write samples JSONL (HumanEval format)
     adapter_tag = "lora" if args.adapter_dir else "base"
@@ -606,8 +688,16 @@ def main() -> None:
     gens_path = str(out_dir / f"generations_{adapter_tag}.jsonl")
     jsonl_write(
         gens_path,
-        [{"task_id": tid, "prompt": problems[tid]["prompt"], "completion": c}
-         for tid, c in zip(task_ids, completions)],
+        [
+            {
+                "task_id": tid,
+                "prompt_style": args.prompt_style,
+                "prompt": problems[tid]["prompt"],
+                "model_input_prompt": rendered_prompt,
+                "completion": c,
+            }
+            for tid, rendered_prompt, c in zip(task_ids, rendered_prompts, completions)
+        ],
     )
 
     # 4) Run evaluate_functional_correctness (temperature=0 => greedy pass@1)
@@ -656,6 +746,8 @@ def main() -> None:
             "stop_words": args.stop_words,
             "seed": args.seed,
             "split": args.split,
+            "prompt_style": args.prompt_style,
+            "system_prompt": args.system_prompt if args.prompt_style == "chat" else None,
             "dataset_source": dataset_source,
         }
     )
@@ -704,6 +796,8 @@ def main() -> None:
             "base_model": args.base_model,
             "adapter_dir": args.adapter_dir,
             "use_vllm": bool(args.use_vllm),
+            "prompt_style": args.prompt_style,
+            "system_prompt": args.system_prompt if args.prompt_style == "chat" else None,
             "vllm_max_model_len": args.vllm_max_model_len,
             "vllm_attention_backend": args.vllm_attention_backend,
             "vllm_disable_flashinfer_sampler": bool(args.vllm_disable_flashinfer_sampler),
