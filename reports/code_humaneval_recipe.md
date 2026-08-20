@@ -6,6 +6,7 @@ This repo now supports:
 - Local code SFT files in the same normalized style as the new math/IF pipeline
 - HumanEval evaluation on Hugging Face `openai/openai_humaneval`
 - Checkpoint-by-checkpoint evaluation for `meta-llama/Llama-3.1-8B-Instruct`
+- A second raw-completion code path via `--sft_format raw_completion`
 
 ## Training Data Format
 
@@ -227,6 +228,47 @@ If you want to evaluate a local HumanEval clone or subset instead of the default
 
 ```bash
 --dataset_path /abs/path/to/openai_humaneval_snapshot_or_file --split test
+```
+
+## Raw-Completion Variant
+
+If you want a second pipeline closer to completion-style HumanEval, train with:
+
+- `--sft_format raw_completion`
+- `--train_profile paper_code_raw_2ep`
+
+Example:
+
+```bash
+accelerate launch --num_processes 1 -m finetune.train_sft_peft \
+  --base_model meta-llama/Llama-3.1-8B-Instruct \
+  --task code \
+  --peft_method lora \
+  --dataset_path /root/autodl-tmp/magicoder-train.jsonl \
+  --output_dir runs/meta-llama-Llama-3.1-8B-Instruct/code/lora/raw-completion-50k-2ep/seed42 \
+  --train_profile paper_code_raw_2ep \
+  --sft_format raw_completion \
+  --max_train_samples 50000 \
+  --dataset_seed 42 \
+  --per_device_train_batch_size 1 \
+  --lr 2e-4 \
+  --r 16 \
+  --bf16 \
+  --gradient_checkpointing \
+  --seed 42
+```
+
+Evaluate that raw-completion adapter on HumanEval with:
+
+```bash
+python -m finetune.eval.eval_humaneval \
+  --base_model meta-llama/Llama-3.1-8B-Instruct \
+  --adapter_dir runs/meta-llama-Llama-3.1-8B-Instruct/code/lora/raw-completion-50k-2ep/seed42 \
+  --output_dir eval/humaneval-llama31-code-lora-raw \
+  --prompt_style raw \
+  --use_vllm \
+  --tensor_parallel_size 1 \
+  --max_new_tokens 256
 ```
 
 ## Batch Evaluation Workflow

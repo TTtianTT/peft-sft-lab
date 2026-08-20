@@ -94,6 +94,13 @@ def build_arg_parser() -> argparse.ArgumentParser:
     mp.add_argument("--fp16", action="store_true")
     parser.add_argument("--gradient_checkpointing", action="store_true")
     parser.add_argument("--use_qlora", action="store_true", help="4-bit QLoRA (bitsandbytes).")
+    parser.add_argument(
+        "--sft_format",
+        type=str,
+        default="chat",
+        choices=["chat", "raw_completion"],
+        help="How to render structured prompt/completion examples before tokenization.",
+    )
 
     # Modules
     parser.add_argument(
@@ -250,6 +257,7 @@ def main() -> None:
         format_sft_debug_sample,
         preprocess_chat_example,
     )
+    from finetune.data.plain_sft import preprocess_plain_example
     from finetune.data.registry import get_task_plugin
     from finetune.peft_builders import (
         build_loraplus_param_groups,
@@ -482,6 +490,7 @@ def main() -> None:
             "dataset_path": args.dataset_path,
             "max_train_samples": args.max_train_samples,
             "dataset_seed": args.dataset_seed,
+            "sft_format": args.sft_format,
             "adalora_schedule": adalora_schedule,
         }
         save_json(Path(output_dir) / "run_args.json", vars(args))
@@ -503,24 +512,37 @@ def main() -> None:
     from transformers import AutoModelForCausalLM, AutoTokenizer
 
     tokenizer = AutoTokenizer.from_pretrained(args.base_model, use_fast=True)
-    ensure_chat_template(tokenizer, args.base_model)
     tokenizer.padding_side = "right"
     if tokenizer.pad_token is None:
         tokenizer.pad_token = tokenizer.eos_token
 
+    if args.sft_format == "chat":
+        ensure_chat_template(tokenizer, args.base_model)
+
     try:
-        train_ds = train_ds.map(
-            lambda ex: preprocess_chat_example(
-                tokenizer=tokenizer,
-                example=ex,
-                max_seq_len=args.max_seq_len,
-            ),
-            remove_columns=train_ds.column_names,
-            desc=f"Applying chat template for {args.task}",
-        )
+        if args.sft_format == "chat":
+            train_ds = train_ds.map(
+                lambda ex: preprocess_chat_example(
+                    tokenizer=tokenizer,
+                    example=ex,
+                    max_seq_len=args.max_seq_len,
+                ),
+                remove_columns=train_ds.column_names,
+                desc=f"Applying chat template for {args.task}",
+            )
+        else:
+            train_ds = train_ds.map(
+                lambda ex: preprocess_plain_example(
+                    tokenizer=tokenizer,
+                    example=ex,
+                    max_seq_len=args.max_seq_len,
+                ),
+                remove_columns=train_ds.column_names,
+                desc=f"Applying raw completion format for {args.task}",
+            )
     except Exception as exc:
         raise RuntimeError(
-            f"Failed while preprocessing chat examples for task={args.task}: {exc}\n"
+            f"Failed while preprocessing {args.sft_format} examples for task={args.task}: {exc}\n"
             f"Dataset columns were: {getattr(train_ds, 'column_names', None)}"
         ) from exc
 
