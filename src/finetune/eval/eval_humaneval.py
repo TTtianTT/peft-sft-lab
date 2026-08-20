@@ -398,9 +398,15 @@ def generate_greedy_vllm(
     seed: int,
     stop_words: List[str],
     config_src: Optional[str],
+    attention_backend: Optional[str] = None,
+    disable_flashinfer_sampler: bool = False,
+    request_batch_size: Optional[int] = None,
 ) -> List[str]:
     if not HAVE_VLLM:
         raise RuntimeError("vLLM not available. Please `pip install vllm`.")
+
+    if disable_flashinfer_sampler:
+        os.environ["VLLM_USE_FLASHINFER_SAMPLER"] = "0"
 
     enable_lora = adapter_dir is not None
     max_r = 16
@@ -416,6 +422,7 @@ def generate_greedy_vllm(
         enable_lora=enable_lora,
         max_lora_rank=int(max_r) if enable_lora else 16,
         seed=int(seed),
+        **({} if attention_backend is None else {"attention_backend": attention_backend}),
     )
 
     sp = SamplingParams(
@@ -426,16 +433,30 @@ def generate_greedy_vllm(
         stop=stop_words if stop_words else None,
     )
 
-    if adapter_dir:
-        lora_req = LoRARequest("lora", 1, adapter_dir)
-        outs = llm.generate(prompts, sp, lora_request=lora_req)
-    else:
-        outs = llm.generate(prompts, sp)
-
     completions: List[str] = []
-    for out in outs:
-        text = out.outputs[0].text if out.outputs else ""
-        completions.append(text)
+    chunk_size = len(prompts)
+    if request_batch_size is not None and request_batch_size > 0:
+        chunk_size = min(int(request_batch_size), len(prompts))
+
+    for start in range(0, len(prompts), chunk_size):
+        prompt_chunk = prompts[start : start + chunk_size]
+        if adapter_dir:
+            lora_req = LoRARequest("lora", 1, adapter_dir)
+            outs = llm.generate(prompt_chunk, sp, lora_request=lora_req)
+        else:
+            outs = llm.generate(prompt_chunk, sp)
+
+        chunk_texts: List[str] = []
+        for out in outs:
+            text = out.outputs[0].text if out.outputs else ""
+            chunk_texts.append(text)
+
+        if len(chunk_texts) < len(prompt_chunk):
+            chunk_texts.extend([""] * (len(prompt_chunk) - len(chunk_texts)))
+        elif len(chunk_texts) > len(prompt_chunk):
+            chunk_texts = chunk_texts[: len(prompt_chunk)]
+
+        completions.extend(chunk_texts)
     return completions
 
 
@@ -472,7 +493,31 @@ def build_arg_parser() -> argparse.ArgumentParser:
     # vLLM
     p.add_argument("--use_vllm", action="store_true")
     p.add_argument("--tensor_parallel_size", type=int, default=1)
-    p.add_argument("--max_model_len", type=int, default=4096)
+    p.add_argument(
+        "--vllm_max_model_len",
+        "--max_model_len",
+        dest="vllm_max_model_len",
+        type=int,
+        default=4096,
+        help="Optional vLLM max_model_len override. `--max_model_len` is kept as a compatibility alias.",
+    )
+    p.add_argument(
+        "--vllm_attention_backend",
+        type=str,
+        default=None,
+        help="Optional vLLM attention backend override, e.g. FLASH_ATTN or FLASHINFER.",
+    )
+    p.add_argument(
+        "--vllm_disable_flashinfer_sampler",
+        action="store_true",
+        help="Disable FlashInfer sampler inside vLLM and fall back to the native sampler.",
+    )
+    p.add_argument(
+        "--vllm_request_batch_size",
+        type=int,
+        default=None,
+        help="Optional cap on how many prompts vLLM processes per generate() call.",
+    )
     p.add_argument(
         "--stop_words",
         type=str,
@@ -521,10 +566,13 @@ def main() -> None:
             adapter_dir=args.adapter_dir,
             tensor_parallel_size=args.tensor_parallel_size,
             max_new_tokens=args.max_new_tokens,
-            max_model_len=args.max_model_len,
+            max_model_len=args.vllm_max_model_len,
             seed=args.seed,
             stop_words=args.stop_words,
             config_src=args.config_src,
+            attention_backend=args.vllm_attention_backend,
+            disable_flashinfer_sampler=args.vllm_disable_flashinfer_sampler,
+            request_batch_size=args.vllm_request_batch_size,
         )
     else:
         loaded = load_transformers_model(
@@ -600,7 +648,11 @@ def main() -> None:
             "adapter_dir": args.adapter_dir,
             "use_vllm": bool(args.use_vllm),
             "tensor_parallel_size": args.tensor_parallel_size,
-            "max_model_len": args.max_model_len,
+            "vllm_max_model_len": args.vllm_max_model_len,
+            "max_model_len": args.vllm_max_model_len,
+            "vllm_attention_backend": args.vllm_attention_backend,
+            "vllm_disable_flashinfer_sampler": bool(args.vllm_disable_flashinfer_sampler),
+            "vllm_request_batch_size": args.vllm_request_batch_size,
             "stop_words": args.stop_words,
             "seed": args.seed,
             "split": args.split,
@@ -652,6 +704,10 @@ def main() -> None:
             "base_model": args.base_model,
             "adapter_dir": args.adapter_dir,
             "use_vllm": bool(args.use_vllm),
+            "vllm_max_model_len": args.vllm_max_model_len,
+            "vllm_attention_backend": args.vllm_attention_backend,
+            "vllm_disable_flashinfer_sampler": bool(args.vllm_disable_flashinfer_sampler),
+            "vllm_request_batch_size": args.vllm_request_batch_size,
             "dataset_source": dataset_source,
         },
     )
