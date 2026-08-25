@@ -52,11 +52,9 @@ except Exception:
 
 HF_DATASET_IDS = ("openai/openai_humaneval", "openai_humaneval")
 DEFAULT_PROMPT_STYLE = "chat"
-DEFAULT_SYSTEM_PROMPT = (
-    "You are a careful Python coding assistant. "
-    "Return only the missing Python continuation for the given code prefix. "
-    "Do not repeat the prefix. Do not add explanations. Do not use markdown fences."
-)
+# LlamaFactory's ``template: llama3`` renders a single user/assistant turn when
+# the source dataset has no system field. Magicoder provides exactly that shape.
+DEFAULT_SYSTEM_PROMPT: str | None = None
 
 
 # ---------------------------
@@ -356,18 +354,18 @@ def compute_pass_at_1_single_sample(task_results: Dict[str, List[bool]]) -> Dict
 
 def build_humaneval_chat_user_prompt(problem_prompt: str) -> str:
     return (
-        "Complete the following Python code.\n\n"
-        "Requirements:\n"
-        "- Output only the missing continuation.\n"
-        "- Do not repeat the provided prefix.\n"
-        "- Do not add explanations.\n"
-        "- Do not wrap the answer in markdown fences.\n\n"
-        "Code prefix:\n"
+        "Complete the following Python code. Return only the missing continuation "
+        "after the provided prefix. Do not repeat the prefix, add explanations, "
+        "or use Markdown code fences.\n\n"
         f"{problem_prompt}"
     )
 
 
-def normalize_humaneval_completion(raw_text: str, problem_prompt: str) -> str:
+def normalize_humaneval_completion(
+    raw_text: str,
+    problem_prompt: str,
+    entry_point: str | None = None,
+) -> str:
     text = raw_text.strip()
 
     fenced_match = None
@@ -389,6 +387,21 @@ def normalize_humaneval_completion(raw_text: str, problem_prompt: str) -> str:
         prompt_idx = text.find(problem_prompt)
         if 0 <= prompt_idx <= 200:
             text = text[prompt_idx + len(problem_prompt) :]
+
+    # Magicoder-style assistants sometimes emit the entire target function even
+    # when asked for a continuation. HumanEval expects only text after ``prompt``.
+    if entry_point:
+        try:
+            import re
+
+            repeated_signature = re.match(
+                rf"^[ \t]*(?:async\s+)?def\s+{re.escape(entry_point)}\s*\([^\n]*\)[^\n]*:[ \t]*\n?",
+                text,
+            )
+            if repeated_signature:
+                text = text[repeated_signature.end() :]
+        except Exception:
+            pass
 
     return text.lstrip("\n")
 
@@ -537,7 +550,10 @@ def build_arg_parser() -> argparse.ArgumentParser:
         "--system_prompt",
         type=str,
         default=DEFAULT_SYSTEM_PROMPT,
-        help="System prompt used when --prompt_style=chat.",
+        help=(
+            "Optional system prompt used when --prompt_style=chat. Defaults to no system message "
+            "to match LlamaFactory template: llama3 with Magicoder single-turn data."
+        ),
     )
 
     p.add_argument("--max_samples", type=int, default=None, help="Max HumanEval tasks (None = all 164).")
@@ -669,8 +685,12 @@ def main() -> None:
             completions.append(comp_raw)
 
     completions = [
-        normalize_humaneval_completion(comp_raw, problem_prompt)
-        for comp_raw, problem_prompt in zip(completions, prompts)
+        normalize_humaneval_completion(
+            comp_raw,
+            problem_prompt,
+            problem["entry_point"],
+        )
+        for comp_raw, problem_prompt, problem in zip(completions, prompts, problem_rows)
     ]
 
     # 3) Write samples JSONL (HumanEval format)

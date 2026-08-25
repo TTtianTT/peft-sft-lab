@@ -192,6 +192,41 @@ If your `magicoder-train.jsonl` is already a fixed 50K subset, remove `--max_tra
 
 `finetune.eval.eval_humaneval` now defaults to Hugging Face `openai/openai_humaneval`.
 
+### LlamaFactory `template: llama3` / Magicoder chat alignment
+
+For LlamaFactory SFT with `template: llama3`, `dataset: magicoder`, and
+`train_on_prompt: false`, use the evaluator default `--prompt_style chat` and
+do not pass `--system_prompt`. It renders one user message containing the code
+task and one assistant generation turn through the tokenizer saved with the
+adapter. This matches Magicoder's `instruction -> response` role structure and
+keeps the user prompt outside the supervised target. The evaluator removes code
+fences, a repeated prompt, or a repeated target function signature before
+running HumanEval's functional tests.
+
+This is a chat-wrapped HumanEval protocol. Report it separately from official
+raw-completion HumanEval (`--prompt_style raw`), because the prompts differ.
+
+Example using the local parquet file:
+
+```bash
+PYTHONPATH=src python -m finetune.eval.eval_humaneval \
+  --base_model /root/autodl-tmp/Llama-3.1-8B-Instruct \
+  --adapter_dir /root/autodl-tmp/llamafactory_outputs/llama31_magicoder_lora_r16 \
+  --dataset_path /root/autodl-tmp/humaneval-test.parquet \
+  --split test \
+  --prompt_style chat \
+  --output_dir eval/humaneval-llamafactory-llama3-magicoder-chat-lora \
+  --use_vllm \
+  --tensor_parallel_size 1 \
+  --vllm_max_model_len 4096 \
+  --vllm_attention_backend FLASH_ATTN \
+  --vllm_disable_flashinfer_sampler \
+  --vllm_request_batch_size 32 \
+  --max_new_tokens 512 \
+  --timeout_s 3.0 \
+  --seed 42
+```
+
 The expected eval fields are:
 
 - `task_id`

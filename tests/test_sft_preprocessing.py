@@ -27,6 +27,8 @@ from finetune.eval.eval_gsm8k import (
 from finetune.eval.eval_humaneval import (
     _normalize_humaneval_problem,
     _resolve_local_humaneval_data_files,
+    build_humaneval_chat_user_prompt,
+    normalize_humaneval_completion,
 )
 from finetune.eval.eval_ifbench import _resolve_local_ifbench_data_files
 from finetune.eval.generation import render_chat_prompt
@@ -459,6 +461,33 @@ class OptionalLlamaTokenizerTests(unittest.TestCase):
         self.assertIn("We add 2 and 3 to get 5.", supervised_text)
         self.assertNotIn("What is 2 + 3?", supervised_text)
         self.assertNotIn("### Instruction:", full_input)
+
+
+class HumanEvalChatPromptTests(unittest.TestCase):
+    def test_llamafactory_llama3_prompt_is_single_user_turn(self):
+        problem_prompt = "def answer():\n    \"\"\"Return 42.\"\"\"\n"
+        user_content = build_humaneval_chat_user_prompt(problem_prompt)
+        rendered = render_chat_prompt(
+            tokenizer=DummyChatTokenizer(),
+            base_model="dummy-llama3",
+            user_content=user_content,
+            system_content=None,
+        )
+
+        self.assertIn("<|user|>", rendered)
+        self.assertIn("<|assistant|>", rendered)
+        self.assertNotIn("<|system|>", rendered)
+        self.assertIn(problem_prompt, rendered)
+
+    def test_humaneval_normalizer_removes_repeated_function_signature(self):
+        problem_prompt = "def answer():\n    \"\"\"Return 42.\"\"\"\n"
+        completion = normalize_humaneval_completion(
+            "```python\ndef answer():\n    return 42\n```",
+            problem_prompt,
+            "answer",
+        )
+
+        self.assertEqual(completion, "    return 42")
 
 
 if __name__ == "__main__":
