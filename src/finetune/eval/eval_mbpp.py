@@ -119,11 +119,13 @@ def load_mbpp_problems(*, split: str, dataset_path: str | None) -> tuple[list[di
     return problems, source
 
 
-def build_mbpp_chat_user_prompt(problem_text: str) -> str:
+def build_mbpp_chat_user_prompt(problem_text: str, public_test: str) -> str:
     return (
         "Write a correct Python solution for the following programming problem. "
         "Return only executable Python code. Do not add explanations or Markdown code fences.\n\n"
-        f"Problem:\n{problem_text}"
+        f"Problem:\n{problem_text}\n\n"
+        "Your solution must satisfy this public test:\n"
+        f"{public_test}"
     )
 
 
@@ -251,7 +253,13 @@ def main() -> None:
         problems = problems[: args.max_samples]
     print(f"[Data] Loaded {len(problems)} MBPP tasks from {dataset_source}.")
 
-    user_prompts = [build_mbpp_chat_user_prompt(problem["text"]) for problem in problems]
+    # MBPP task text commonly omits the required function name. Its standard
+    # protocol exposes one test case in the prompt so the target entry point is
+    # known to the model; the remaining tests still determine correctness.
+    user_prompts = [
+        build_mbpp_chat_user_prompt(problem["text"], problem["test_list"][0])
+        for problem in problems
+    ]
     if args.prompt_style == "chat":
         tokenizer = load_eval_tokenizer(base_model=args.base_model, adapter_dir=args.adapter_dir)
         model_inputs = [

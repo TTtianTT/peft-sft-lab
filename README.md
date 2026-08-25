@@ -120,7 +120,9 @@ See `reports/code_humaneval_recipe.md` for the recommended 2-epoch `meta-llama/L
 
 The MBPP evaluator defaults to the sanitized MBPP test split and LlamaFactory-compatible
 Llama-3 chat prompting: one user task followed by an assistant code generation, with no
-system message. It runs generated Python against MBPP's test list in a temporary directory.
+system message. The user prompt includes MBPP's first public test, following the standard
+MBPP protocol so the required function name is visible. It runs generated Python against
+the full MBPP test list in a temporary directory.
 
 ```bash
 PYTHONPATH=src python -m finetune.eval.eval_mbpp \

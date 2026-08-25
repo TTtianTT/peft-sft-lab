@@ -515,13 +515,14 @@ class MBPPEvaluationTests(unittest.TestCase):
         rendered = render_chat_prompt(
             tokenizer=DummyChatTokenizer(),
             base_model="dummy-llama3",
-            user_content=build_mbpp_chat_user_prompt("Write answer()."),
+            user_content=build_mbpp_chat_user_prompt("Write answer().", "assert answer() == 42"),
             system_content=None,
         )
 
         self.assertIn("<|user|>", rendered)
         self.assertIn("<|assistant|>", rendered)
         self.assertNotIn("<|system|>", rendered)
+        self.assertIn("assert answer() == 42", rendered)
 
     def test_mbpp_normalizes_fenced_code_and_executes_tests(self):
         completion = normalize_mbpp_completion("```python\ndef answer():\n    return 42\n```")
