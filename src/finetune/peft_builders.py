@@ -24,7 +24,7 @@ def _fail_with_install_hint(msg: str, pip_hint: str) -> RuntimeError:
 def build_peft_config(
     *,
     peft_method: str,
-    target_modules: list[str],
+    target_modules: list[str] | str,
     r: int,
     lora_alpha: int,
     lora_dropout: float,

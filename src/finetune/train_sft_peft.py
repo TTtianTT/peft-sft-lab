@@ -53,6 +53,21 @@ def build_arg_parser() -> argparse.ArgumentParser:
     # Training budget
     parser.add_argument("--max_steps", type=int, default=None)
     parser.add_argument("--num_train_epochs", type=float, default=None)
+    parser.add_argument(
+        "--stop_at_step",
+        type=int,
+        default=None,
+        help=(
+            "Stop after this absolute optimizer step and save a resumable checkpoint. "
+            "Useful for externally evaluating intermediate checkpoints."
+        ),
+    )
+    parser.add_argument(
+        "--resume_from_checkpoint",
+        type=str,
+        default=None,
+        help="Trainer checkpoint directory from which to resume training.",
+    )
     parser.add_argument("--per_device_train_batch_size", type=int, default=1)
     parser.add_argument("--gradient_accumulation_steps", type=int, default=8)
     parser.add_argument(
@@ -75,6 +90,14 @@ def build_arg_parser() -> argparse.ArgumentParser:
     # Sequence / reproducibility
     parser.add_argument("--max_seq_len", type=int, default=2048)
     parser.add_argument("--seed", type=int, default=42)
+    parser.add_argument(
+        "--save_strategy",
+        choices=["no", "steps", "epoch"],
+        default="epoch",
+        help="Checkpoint save schedule.",
+    )
+    parser.add_argument("--save_steps", type=int, default=500, help="Save interval when --save_strategy=steps.")
+    parser.add_argument("--save_total_limit", type=int, default=None, help="Maximum number of Trainer checkpoints to retain.")
     parser.add_argument(
         "--max_train_samples",
         type=int,
@@ -308,6 +331,11 @@ def main() -> None:
             )
             args.max_steps = None
 
+    if args.stop_at_step is not None and args.stop_at_step <= 0:
+        raise ValueError("--stop_at_step must be > 0.")
+    if args.resume_from_checkpoint is not None and not Path(args.resume_from_checkpoint).is_dir():
+        raise ValueError(f"--resume_from_checkpoint is not a directory: {args.resume_from_checkpoint}")
+
     seed_everything(args.seed)
 
     if args.global_train_batch_size is not None:
@@ -472,6 +500,8 @@ def main() -> None:
             "train_profile": args.train_profile,
             "num_train_epochs": args.num_train_epochs,
             "max_steps": args.max_steps,
+            "stop_at_step": args.stop_at_step,
+            "resume_from_checkpoint": args.resume_from_checkpoint,
             "training_budget": "epochs" if args.num_train_epochs is not None else "max_steps",
             "per_device_train_batch_size": args.per_device_train_batch_size,
             "gradient_accumulation_steps": args.gradient_accumulation_steps,
@@ -491,6 +521,9 @@ def main() -> None:
             "max_train_samples": args.max_train_samples,
             "dataset_seed": args.dataset_seed,
             "sft_format": args.sft_format,
+            "save_strategy": args.save_strategy,
+            "save_steps": args.save_steps,
+            "save_total_limit": args.save_total_limit,
             "adalora_schedule": adalora_schedule,
         }
         save_json(Path(output_dir) / "run_args.json", vars(args))
@@ -636,6 +669,10 @@ def main() -> None:
             model = prepare_model_for_kbit_training(model)
 
     target_modules = parse_csv_list(args.target_modules)
+    # PEFT's all-linear selector matches LlamaFactory's lora_target: all.
+    # It deliberately excludes the model output head.
+    if target_modules == ["all"]:
+        target_modules = "all-linear"
     peft_config = build_peft_config(
         peft_method="lora" if args.peft_method == "loraplus" else args.peft_method,
         target_modules=target_modules,
@@ -684,7 +721,9 @@ def main() -> None:
         adam_beta2=args.adam_beta2,
         lr_scheduler_type=args.lr_scheduler_type,
         logging_steps=max(1, min(50, total_steps_for_logging // 10)),
-        save_strategy="epoch",
+        save_strategy=args.save_strategy,
+        save_steps=args.save_steps,
+        save_total_limit=args.save_total_limit,
         save_safetensors=True,
         evaluation_strategy="no",
         bf16=args.bf16,
@@ -725,13 +764,27 @@ def main() -> None:
     # Using the plain Trainer avoids TRL's internal dataset rechunking paths,
     # which have produced attention-mask shape mismatches with pretokenized
     # Llama chat data on newer trl/transformers combinations.
-    from transformers import Trainer
+    from transformers import Trainer, TrainerCallback
+
+    callbacks = []
+    if args.stop_at_step is not None:
+        class StopAtStepCallback(TrainerCallback):
+            """Persist a checkpoint before ending a staged training invocation."""
+
+            def on_step_end(self, _args, state, control, **_kwargs):
+                if state.global_step >= args.stop_at_step:
+                    control.should_save = True
+                    control.should_training_stop = True
+                return control
+
+        callbacks.append(StopAtStepCallback())
 
     trainer_kwargs = dict(
         model=model,
         args=training_args,
         train_dataset=train_ds,
         data_collator=CompletionOnlyDataCollator(tokenizer),
+        callbacks=callbacks,
     )
     sig = inspect.signature(Trainer.__init__)
     trainer_kwargs = {k: v for k, v in trainer_kwargs.items() if k in sig.parameters}
@@ -764,7 +817,7 @@ def main() -> None:
     trainer = Trainer(**trainer_kwargs, **({} if optimizers is None else {"optimizers": optimizers}))
 
     try:
-        trainer.train()
+        trainer.train(resume_from_checkpoint=args.resume_from_checkpoint)
     except RuntimeError as exc:
         msg = str(exc).lower()
         if "out of memory" in msg or "cuda oom" in msg:
