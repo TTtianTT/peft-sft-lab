@@ -30,6 +30,12 @@ from finetune.eval.eval_humaneval import (
     build_humaneval_chat_user_prompt,
     normalize_humaneval_completion,
 )
+from finetune.eval.eval_mbpp import (
+    _normalize_mbpp_problem,
+    _run_mbpp_problem,
+    build_mbpp_chat_user_prompt,
+    normalize_mbpp_completion,
+)
 from finetune.eval.eval_ifbench import _resolve_local_ifbench_data_files
 from finetune.eval.generation import render_chat_prompt
 from finetune.data.code_magicoder import MagicoderTask
@@ -488,6 +494,50 @@ class HumanEvalChatPromptTests(unittest.TestCase):
         )
 
         self.assertEqual(completion, "    return 42")
+
+
+class MBPPEvaluationTests(unittest.TestCase):
+    def test_normalize_mbpp_problem_accepts_standard_fields(self):
+        problem = _normalize_mbpp_problem(
+            {
+                "task_id": 7,
+                "text": "Write a function that returns 42.",
+                "test_list": ["assert answer() == 42"],
+                "test_imports": ["import math"],
+            }
+        )
+
+        self.assertEqual(problem["task_id"], "7")
+        self.assertEqual(problem["test_setup_code"], "import math")
+        self.assertEqual(problem["test_list"], ["assert answer() == 42"])
+
+    def test_mbpp_chat_prompt_is_single_user_turn(self):
+        rendered = render_chat_prompt(
+            tokenizer=DummyChatTokenizer(),
+            base_model="dummy-llama3",
+            user_content=build_mbpp_chat_user_prompt("Write answer()."),
+            system_content=None,
+        )
+
+        self.assertIn("<|user|>", rendered)
+        self.assertIn("<|assistant|>", rendered)
+        self.assertNotIn("<|system|>", rendered)
+
+    def test_mbpp_normalizes_fenced_code_and_executes_tests(self):
+        completion = normalize_mbpp_completion("```python\ndef answer():\n    return 42\n```")
+        result = _run_mbpp_problem(
+            {"test_setup_code": "", "test_list": ["assert answer() == 42"]},
+            completion,
+            timeout_s=1.0,
+        )
+
+        self.assertEqual(completion, "def answer():\n    return 42")
+        self.assertTrue(result["passed"])
+
+    def test_mbpp_normalizes_unfenced_prose_prefix(self):
+        completion = normalize_mbpp_completion("Here is the solution:\n\ndef answer():\n    return 42")
+
+        self.assertEqual(completion, "def answer():\n    return 42")
 
 
 if __name__ == "__main__":

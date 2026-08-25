@@ -116,6 +116,25 @@ Note: this evaluator executes generated code in a subprocess with a timeout.
 
 See `reports/code_humaneval_recipe.md` for the recommended 2-epoch `meta-llama/Llama-3.1-8B-Instruct` setup, supported local code-data formats, and checkpoint evaluation workflow.
 
+### MBPP (chat pass@1)
+
+The MBPP evaluator defaults to the sanitized MBPP test split and LlamaFactory-compatible
+Llama-3 chat prompting: one user task followed by an assistant code generation, with no
+system message. It runs generated Python against MBPP's test list in a temporary directory.
+
+```bash
+PYTHONPATH=src python -m finetune.eval.eval_mbpp \
+  --base_model /root/autodl-tmp/Llama-3.1-8B-Instruct \
+  --adapter_dir /root/autodl-tmp/llamafactory_outputs/llama31_magicoder_lora_r16 \
+  --output_dir eval/mbpp-llama31-magicoder-chat-lora \
+  --use_vllm \
+  --tensor_parallel_size 1 \
+  --vllm_attention_backend FLASH_ATTN \
+  --vllm_disable_flashinfer_sampler
+```
+
+Use `--dataset_path` with a local parquet/json/jsonl snapshot when Hugging Face access is unavailable.
+
 ### IFEval (rule-based, minimal)
 
 ```bash
