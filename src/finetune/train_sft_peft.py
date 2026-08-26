@@ -63,6 +63,15 @@ def build_arg_parser() -> argparse.ArgumentParser:
         ),
     )
     parser.add_argument(
+        "--stop_at_epoch",
+        type=float,
+        default=None,
+        help=(
+            "Stop at this absolute epoch boundary and save a resumable checkpoint. "
+            "The full num_train_epochs schedule is preserved when resuming."
+        ),
+    )
+    parser.add_argument(
         "--resume_from_checkpoint",
         type=str,
         default=None,
@@ -339,6 +348,15 @@ def main() -> None:
 
     if args.stop_at_step is not None and args.stop_at_step <= 0:
         raise ValueError("--stop_at_step must be > 0.")
+    if args.stop_at_epoch is not None and args.stop_at_epoch <= 0:
+        raise ValueError("--stop_at_epoch must be > 0.")
+    if args.stop_at_step is not None and args.stop_at_epoch is not None:
+        raise ValueError("Use only one of --stop_at_step and --stop_at_epoch.")
+    if args.stop_at_epoch is not None:
+        if args.num_train_epochs is None:
+            raise ValueError("--stop_at_epoch requires --num_train_epochs.")
+        if args.stop_at_epoch > args.num_train_epochs:
+            raise ValueError("--stop_at_epoch cannot exceed --num_train_epochs.")
     if args.resume_from_checkpoint is not None and not Path(args.resume_from_checkpoint).is_dir():
         raise ValueError(f"--resume_from_checkpoint is not a directory: {args.resume_from_checkpoint}")
     if args.logging_steps is not None and args.logging_steps <= 0:
@@ -509,6 +527,7 @@ def main() -> None:
             "num_train_epochs": args.num_train_epochs,
             "max_steps": args.max_steps,
             "stop_at_step": args.stop_at_step,
+            "stop_at_epoch": args.stop_at_epoch,
             "resume_from_checkpoint": args.resume_from_checkpoint,
             "training_budget": "epochs" if args.num_train_epochs is not None else "max_steps",
             "per_device_train_batch_size": args.per_device_train_batch_size,
@@ -791,6 +810,18 @@ def main() -> None:
                 return control
 
         callbacks.append(StopAtStepCallback())
+
+    if args.stop_at_epoch is not None:
+        class StopAtEpochCallback(TrainerCallback):
+            """Stop and persist state at an exact Trainer epoch boundary."""
+
+            def on_epoch_end(self, _args, state, control, **_kwargs):
+                if state.epoch is not None and state.epoch >= args.stop_at_epoch:
+                    control.should_save = True
+                    control.should_training_stop = True
+                return control
+
+        callbacks.append(StopAtEpochCallback())
 
     trainer_kwargs = dict(
         model=model,
