@@ -99,6 +99,12 @@ def build_arg_parser() -> argparse.ArgumentParser:
     parser.add_argument("--save_steps", type=int, default=500, help="Save interval when --save_strategy=steps.")
     parser.add_argument("--save_total_limit", type=int, default=None, help="Maximum number of Trainer checkpoints to retain.")
     parser.add_argument(
+        "--logging_steps",
+        type=int,
+        default=None,
+        help="Optimizer-step interval for loss logging. Defaults to roughly ten logs per run.",
+    )
+    parser.add_argument(
         "--max_train_samples",
         type=int,
         default=None,
@@ -335,6 +341,8 @@ def main() -> None:
         raise ValueError("--stop_at_step must be > 0.")
     if args.resume_from_checkpoint is not None and not Path(args.resume_from_checkpoint).is_dir():
         raise ValueError(f"--resume_from_checkpoint is not a directory: {args.resume_from_checkpoint}")
+    if args.logging_steps is not None and args.logging_steps <= 0:
+        raise ValueError("--logging_steps must be > 0.")
 
     seed_everything(args.seed)
 
@@ -524,6 +532,7 @@ def main() -> None:
             "save_strategy": args.save_strategy,
             "save_steps": args.save_steps,
             "save_total_limit": args.save_total_limit,
+            "logging_steps": args.logging_steps,
             "adalora_schedule": adalora_schedule,
         }
         save_json(Path(output_dir) / "run_args.json", vars(args))
@@ -720,7 +729,11 @@ def main() -> None:
         adam_beta1=args.adam_beta1,
         adam_beta2=args.adam_beta2,
         lr_scheduler_type=args.lr_scheduler_type,
-        logging_steps=max(1, min(50, total_steps_for_logging // 10)),
+        logging_steps=(
+            args.logging_steps
+            if args.logging_steps is not None
+            else max(1, min(50, total_steps_for_logging // 10))
+        ),
         save_strategy=args.save_strategy,
         save_steps=args.save_steps,
         save_total_limit=args.save_total_limit,
