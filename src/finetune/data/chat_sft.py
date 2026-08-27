@@ -5,6 +5,7 @@ from typing import Any
 from finetune.data.base import SFTExample, make_sft_example
 
 IGNORE_INDEX = -100
+CHAT_TEMPLATE_MODES = ("auto", "thinking", "non_thinking")
 
 
 def ensure_chat_template(tokenizer: Any, model_name: str) -> None:
@@ -18,6 +19,16 @@ def ensure_chat_template(tokenizer: Any, model_name: str) -> None:
             f"Tokenizer for {model_name!r} does not define chat_template. "
             "Refusing to fall back to a hard-coded prompt format."
         )
+
+
+def chat_template_kwargs(mode: str) -> dict[str, bool]:
+    normalized = mode.strip().lower()
+    if normalized not in CHAT_TEMPLATE_MODES:
+        known = ", ".join(CHAT_TEMPLATE_MODES)
+        raise ValueError(f"Unknown chat template mode {mode!r}. Expected one of: {known}.")
+    if normalized == "auto":
+        return {}
+    return {"enable_thinking": normalized == "thinking"}
 
 
 def _tokenize_rendered_text(tokenizer: Any, text: str) -> list[int]:
@@ -42,6 +53,7 @@ def preprocess_chat_example(
     tokenizer: Any,
     example: SFTExample,
     max_seq_len: int | None,
+    chat_template_mode: str = "auto",
 ) -> dict[str, Any]:
     structured = make_sft_example(
         prompt=example["prompt"],
@@ -49,16 +61,19 @@ def preprocess_chat_example(
     )
     prompt_messages = structured["prompt"]
     completion_messages = structured["completion"]
+    template_kwargs = chat_template_kwargs(chat_template_mode)
 
     prompt_text = tokenizer.apply_chat_template(
         prompt_messages,
         tokenize=False,
         add_generation_prompt=True,
+        **template_kwargs,
     )
     full_text = tokenizer.apply_chat_template(
         prompt_messages + completion_messages,
         tokenize=False,
         add_generation_prompt=False,
+        **template_kwargs,
     )
 
     prompt_ids = _tokenize_rendered_text(tokenizer, prompt_text)

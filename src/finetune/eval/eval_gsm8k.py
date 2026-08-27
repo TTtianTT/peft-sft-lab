@@ -148,6 +148,16 @@ def build_arg_parser() -> argparse.ArgumentParser:
     p.add_argument("--max_new_tokens", type=int, default=256)
     p.add_argument("--dtype", type=str, default="auto", choices=["auto", "bf16", "fp16", "fp32"])
     p.add_argument("--seed", type=int, default=42)
+    p.add_argument(
+        "--chat_template_mode",
+        type=str,
+        default="auto",
+        choices=["auto", "thinking", "non_thinking"],
+        help=(
+            "Thinking mode passed to tokenizer.apply_chat_template. "
+            "Use non_thinking for Qwen3 when matching a non-reasoning protocol."
+        ),
+    )
     p.add_argument("--use_vllm", action="store_true")
     p.add_argument("--tensor_parallel_size", type=int, default=1)
     p.add_argument(
@@ -222,6 +232,7 @@ def main() -> None:
                     tokenizer=eval_tokenizer,
                     base_model=args.base_model,
                     user_content=_build_gsm8k_user_instruction(q),
+                    chat_template_mode=args.chat_template_mode,
                 )
                 prompts.append(prompt)
                 records.append((q, gold))
@@ -263,6 +274,7 @@ def main() -> None:
                     tokenizer=eval_tokenizer,
                     base_model=args.base_model,
                     user_content=_build_gsm8k_user_instruction(q),
+                    chat_template_mode=args.chat_template_mode,
                 )
 
                 gen = generate_greedy(
@@ -292,6 +304,7 @@ def main() -> None:
         "correct": correct,
         "total": total,
         "prompt_style": "tokenizer_chat_template",
+        "chat_template_mode": args.chat_template_mode,
         "dataset_source": args.dataset_path or "hf://gsm8k",
         "dataset_config": args.dataset_config,
         "split": args.split,

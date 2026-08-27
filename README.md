@@ -103,6 +103,36 @@ python -m finetune.eval.eval_gsm8k \
   --output_dir eval/gsm8k-mistral-math-lora
 ```
 
+For a Qwen3-8B run that matches the Llama 3.1 math recipe, explicitly use the
+non-thinking chat template for both SFT and GSM8K evaluation:
+
+```bash
+PYTHONPATH=src accelerate launch --num_processes 8 \
+  -m finetune.train_sft_peft \
+  --base_model Qwen/Qwen3-8B \
+  --task math \
+  --peft_method lora \
+  --output_dir runs_refactor_data_20260121/Qwen-Qwen3-8B/math/lora/profile-paper_math_ift_3ep/rank-16/seed42 \
+  --train_profile paper_math_ift_3ep \
+  --per_device_train_batch_size 2 \
+  --lr 1e-4 \
+  --max_train_samples 50000 \
+  --r 16 \
+  --seed 42 \
+  --sft_format chat \
+  --chat_template_mode non_thinking
+
+PYTHONPATH=src python -m finetune.eval.eval_gsm8k \
+  --base_model Qwen/Qwen3-8B \
+  --adapter_dir runs_refactor_data_20260121/Qwen-Qwen3-8B/math/lora/profile-paper_math_ift_3ep/rank-16/seed42 \
+  --output_dir eval_results/qwen3-8b-metamath-lora-gsm8k \
+  --use_vllm \
+  --tensor_parallel_size 8 \
+  --max_new_tokens 256 \
+  --seed 42 \
+  --chat_template_mode non_thinking
+```
+
 ### HumanEval (pass@1, minimal)
 
 ```bash

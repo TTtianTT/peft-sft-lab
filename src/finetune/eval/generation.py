@@ -7,7 +7,7 @@ from dataclasses import dataclass
 from pathlib import Path
 from typing import Any
 
-from finetune.data.chat_sft import ensure_chat_template
+from finetune.data.chat_sft import chat_template_kwargs, ensure_chat_template
 
 
 _CODE_FENCE_RE = re.compile(
@@ -142,6 +142,7 @@ def render_chat_prompt(
     base_model: str,
     user_content: str,
     system_content: str | None = None,
+    chat_template_mode: str = "auto",
 ) -> str:
     ensure_chat_template(tokenizer, base_model)
 
@@ -154,6 +155,7 @@ def render_chat_prompt(
         messages,
         tokenize=False,
         add_generation_prompt=True,
+        **chat_template_kwargs(chat_template_mode),
     )
 
 

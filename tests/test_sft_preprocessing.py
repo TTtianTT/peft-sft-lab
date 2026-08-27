@@ -50,14 +50,25 @@ class DummyChatTokenizer:
     pad_token = "<pad>"
     padding_side = "right"
 
-    def apply_chat_template(self, messages, tokenize=False, add_generation_prompt=False):
+    def apply_chat_template(
+        self,
+        messages,
+        tokenize=False,
+        add_generation_prompt=False,
+        enable_thinking=None,
+    ):
         if tokenize:
             raise NotImplementedError("Dummy tokenizer only supports tokenize=False in these tests.")
         parts = ["<bos>"]
         for message in messages:
-            parts.append(f"<|{message['role']}|>\n{message['content']}<eot>")
+            parts.append(f"<|{message['role']}|>\n")
+            if message["role"] == "assistant" and enable_thinking is False:
+                parts.append("<think>\n\n</think>\n\n")
+            parts.append(f"{message['content']}<eot>")
         if add_generation_prompt:
             parts.append("<|assistant|>\n")
+            if enable_thinking is False:
+                parts.append("<think>\n\n</think>\n\n")
         return "".join(parts)
 
     def __call__(self, text, add_special_tokens=False):
@@ -308,6 +319,29 @@ class ChatPreprocessingTests(unittest.TestCase):
         self.assertEqual(sample["supervised_token_count"], 0)
         self.assertTrue(all(label == -100 for label in sample["labels"]))
 
+    def test_qwen_non_thinking_marker_is_part_of_masked_prompt(self):
+        tokenizer = DummyChatTokenizer()
+        example = make_single_turn_example(
+            user_content="What is 2 + 3?",
+            assistant_content="5",
+        )
+
+        sample = preprocess_chat_example(
+            tokenizer=tokenizer,
+            example=example,
+            max_seq_len=4096,
+            chat_template_mode="non_thinking",
+        )
+        prompt_text = tokenizer.decode(
+            sample["input_ids"][: sample["prompt_length"]],
+            skip_special_tokens=False,
+        )
+        supervised_text = decode_supervised_labels(tokenizer, sample["labels"])
+
+        self.assertIn("<think>\n\n</think>", prompt_text)
+        self.assertNotIn("<think>", supervised_text)
+        self.assertIn("5", supervised_text)
+
     def test_split_chat_messages_requires_final_assistant_turn(self):
         with self.assertRaisesRegex(ValueError, "end with an assistant message"):
             split_chat_messages_for_sft(
@@ -340,6 +374,16 @@ class GSM8KEvalPromptTests(unittest.TestCase):
         self.assertNotIn("### Instruction:", prompt)
         self.assertNotIn("### Response:", prompt)
         self.assertNotIn("Let's think step by step.", prompt)
+
+    def test_gsm8k_eval_can_explicitly_disable_qwen_thinking(self):
+        prompt = render_chat_prompt(
+            tokenizer=DummyChatTokenizer(),
+            base_model="Qwen/Qwen3-8B",
+            user_content=_build_gsm8k_user_instruction("What is 2 + 3?"),
+            chat_template_mode="non_thinking",
+        )
+
+        self.assertTrue(prompt.endswith("<|assistant|>\n<think>\n\n</think>\n\n"))
 
     def test_resolve_local_gsm8k_snapshot_directory(self):
         with TemporaryDirectory() as tmpdir:

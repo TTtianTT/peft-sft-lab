@@ -139,6 +139,16 @@ def build_arg_parser() -> argparse.ArgumentParser:
         choices=["chat", "raw_completion"],
         help="How to render structured prompt/completion examples before tokenization.",
     )
+    parser.add_argument(
+        "--chat_template_mode",
+        type=str,
+        default="auto",
+        choices=["auto", "thinking", "non_thinking"],
+        help=(
+            "Thinking mode passed to tokenizer.apply_chat_template. "
+            "Use non_thinking for Qwen3 when matching a non-reasoning evaluation protocol."
+        ),
+    )
 
     # Modules
     parser.add_argument(
@@ -548,6 +558,7 @@ def main() -> None:
             "max_train_samples": args.max_train_samples,
             "dataset_seed": args.dataset_seed,
             "sft_format": args.sft_format,
+            "chat_template_mode": args.chat_template_mode,
             "save_strategy": args.save_strategy,
             "save_steps": args.save_steps,
             "save_total_limit": args.save_total_limit,
@@ -587,6 +598,7 @@ def main() -> None:
                     tokenizer=tokenizer,
                     example=ex,
                     max_seq_len=args.max_seq_len,
+                    chat_template_mode=args.chat_template_mode,
                 ),
                 remove_columns=train_ds.column_names,
                 desc=f"Applying chat template for {args.task}",
