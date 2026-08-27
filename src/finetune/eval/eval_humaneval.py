@@ -18,12 +18,14 @@ from typing import Any, Dict, List, Optional, Tuple
 
 from finetune.data.base import first_present, get_writable_datasets_cache_dir
 from finetune.eval.generation import (
+    extract_first_python_code_block,
+    find_parseable_python_segment,
     generate_greedy,
     load_eval_tokenizer,
     load_transformers_model,
     render_chat_prompt,
     save_json,
-    strip_code_fences,
+    strip_outer_blank_lines,
 )
 from finetune.utils import seed_everything
 
@@ -366,20 +368,12 @@ def normalize_humaneval_completion(
     problem_prompt: str,
     entry_point: str | None = None,
 ) -> str:
-    text = raw_text.strip()
-
-    fenced_match = None
-    try:
-        import re
-
-        fenced_match = re.search(r"```(?:python)?\s*\n(.*?)```", text, flags=re.DOTALL | re.IGNORECASE)
-    except Exception:
-        fenced_match = None
-
-    if fenced_match:
-        text = fenced_match.group(1).strip()
-
-    text = strip_code_fences(text)
+    # Do not call str.strip(): leading spaces on the first generated line are
+    # semantically required for HumanEval continuations inside a function.
+    text = strip_outer_blank_lines(raw_text)
+    fenced_code = extract_first_python_code_block(text)
+    if fenced_code is not None:
+        text = fenced_code
 
     if text.startswith(problem_prompt):
         text = text[len(problem_prompt) :]
@@ -388,8 +382,10 @@ def normalize_humaneval_completion(
         if 0 <= prompt_idx <= 200:
             text = text[prompt_idx + len(problem_prompt) :]
 
-    # Magicoder-style assistants sometimes emit the entire target function even
-    # when asked for a continuation. HumanEval expects only text after ``prompt``.
+    candidates = [strip_outer_blank_lines(text)]
+
+    # Keep compatibility with Magicoder-style full-function answers. Stripping
+    # the repeated signature lets its indented body continue the official prompt.
     if entry_point:
         try:
             import re
@@ -399,11 +395,18 @@ def normalize_humaneval_completion(
                 text,
             )
             if repeated_signature:
-                text = text[repeated_signature.end() :]
+                candidates.insert(0, strip_outer_blank_lines(text[repeated_signature.end() :]))
         except Exception:
             pass
 
-    return text.lstrip("\n")
+    # Recover un-fenced leading/trailing prose without rewriting code. The first
+    # least-trimmed candidate whose prompt+completion parses is retained.
+    for candidate in candidates:
+        parseable = find_parseable_python_segment(candidate, prefix=problem_prompt)
+        if parseable is not None:
+            return parseable
+
+    return candidates[-1]
 
 
 def write_eval_config(
@@ -599,8 +602,11 @@ def build_arg_parser() -> argparse.ArgumentParser:
         "--stop_words",
         type=str,
         nargs="*",
-        default=["\ndef ", "\nclass ", "\nif __name__", "\n#", "\nprint"],
-        help="Stop sequences for code generation.",
+        default=None,
+        help=(
+            "Stop sequences for code generation. Chat evaluation defaults to EOS only; "
+            "raw completion keeps the legacy HumanEval stop sequences."
+        ),
     )
 
     # LoRA config补齐（给 edited dir 只有 adapter_model.* 的场景）
@@ -612,6 +618,13 @@ def build_arg_parser() -> argparse.ArgumentParser:
 def main() -> None:
     args = build_arg_parser().parse_args()
     seed_everything(args.seed)
+    resolved_stop_words = args.stop_words
+    if resolved_stop_words is None:
+        resolved_stop_words = (
+            []
+            if args.prompt_style == "chat"
+            else ["\ndef ", "\nclass ", "\nif __name__", "\n#", "\nprint"]
+        )
 
     if not HAVE_HUMAN_EVAL:
         raise RuntimeError(
@@ -651,7 +664,7 @@ def main() -> None:
 
     # 2) Generate (temperature=0, n=1)
     if args.use_vllm:
-        completions = generate_greedy_vllm(
+        raw_completions = generate_greedy_vllm(
             base_model=args.base_model,
             prompts=rendered_prompts,
             adapter_dir=args.adapter_dir,
@@ -659,7 +672,7 @@ def main() -> None:
             max_new_tokens=args.max_new_tokens,
             max_model_len=args.vllm_max_model_len,
             seed=args.seed,
-            stop_words=args.stop_words,
+            stop_words=resolved_stop_words,
             config_src=args.config_src,
             attention_backend=args.vllm_attention_backend,
             disable_flashinfer_sampler=args.vllm_disable_flashinfer_sampler,
@@ -674,7 +687,7 @@ def main() -> None:
         )
         if eval_tokenizer is None:
             eval_tokenizer = loaded.tokenizer
-        completions = []
+        raw_completions = []
         for prompt in rendered_prompts:
             comp_raw = generate_greedy(
                 model=loaded.model,
@@ -682,7 +695,7 @@ def main() -> None:
                 prompt=prompt,
                 max_new_tokens=args.max_new_tokens,
             )
-            completions.append(comp_raw)
+            raw_completions.append(comp_raw)
 
     completions = [
         normalize_humaneval_completion(
@@ -690,7 +703,7 @@ def main() -> None:
             problem_prompt,
             problem["entry_point"],
         )
-        for comp_raw, problem_prompt, problem in zip(completions, prompts, problem_rows)
+        for comp_raw, problem_prompt, problem in zip(raw_completions, prompts, problem_rows)
     ]
 
     # 3) Write samples JSONL (HumanEval format)
@@ -714,9 +727,15 @@ def main() -> None:
                 "prompt_style": args.prompt_style,
                 "prompt": problems[tid]["prompt"],
                 "model_input_prompt": rendered_prompt,
+                "raw_completion": raw,
                 "completion": c,
             }
-            for tid, rendered_prompt, c in zip(task_ids, rendered_prompts, completions)
+            for tid, rendered_prompt, raw, c in zip(
+                task_ids,
+                rendered_prompts,
+                raw_completions,
+                completions,
+            )
         ],
     )
 
@@ -763,7 +782,7 @@ def main() -> None:
             "vllm_attention_backend": args.vllm_attention_backend,
             "vllm_disable_flashinfer_sampler": bool(args.vllm_disable_flashinfer_sampler),
             "vllm_request_batch_size": args.vllm_request_batch_size,
-            "stop_words": args.stop_words,
+            "stop_words": resolved_stop_words,
             "seed": args.seed,
             "split": args.split,
             "prompt_style": args.prompt_style,
@@ -784,13 +803,14 @@ def main() -> None:
             if tid and tid not in passed_map:
                 passed_map[tid] = r
 
-    for tid, comp in zip(task_ids, completions):
+    for tid, raw, comp in zip(task_ids, raw_completions, completions):
         rr = passed_map.get(tid, {})
         merged_rows.append(
             {
                 "task_id": tid,
                 "passed": bool(rr.get("passed", False)) if rr else None,
                 "prompt": problems[tid]["prompt"],
+                "raw_completion": raw,
                 "completion": comp,
                 "result": rr.get("result", None),
                 "error": rr.get("error", None),

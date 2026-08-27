@@ -10,6 +10,54 @@ from typing import Any
 from finetune.data.chat_sft import ensure_chat_template
 
 
+_CODE_FENCE_RE = re.compile(
+    r"```[ \t]*(?P<language>[A-Za-z0-9_+.-]*)[ \t]*\r?\n(?P<code>.*?)```",
+    flags=re.DOTALL,
+)
+
+
+def strip_outer_blank_lines(text: str) -> str:
+    """Remove blank edge lines without destroying first-line code indentation."""
+    lines = text.replace("\r\n", "\n").replace("\r", "\n").splitlines(keepends=True)
+    while lines and not lines[0].strip():
+        lines.pop(0)
+    while lines and not lines[-1].strip():
+        lines.pop()
+    return "".join(lines).rstrip("\n")
+
+
+def extract_first_python_code_block(text: str) -> str | None:
+    """Return the first Python/unlabelled fenced block, preserving indentation."""
+    matches = list(_CODE_FENCE_RE.finditer(text))
+    for match in matches:
+        language = match.group("language").lower()
+        if language in {"", "python", "py", "python3"}:
+            return strip_outer_blank_lines(match.group("code"))
+    return None
+
+
+def find_parseable_python_segment(text: str, *, prefix: str = "") -> str | None:
+    """Find the least-trimmed line segment that forms valid Python with prefix."""
+    text = strip_outer_blank_lines(text)
+    if not text.strip():
+        return None
+
+    import ast
+
+    lines = text.splitlines(keepends=True)
+    for start in range(len(lines)):
+        for end in range(len(lines), start, -1):
+            candidate = strip_outer_blank_lines("".join(lines[start:end]))
+            if not candidate.strip():
+                continue
+            try:
+                ast.parse(prefix + candidate)
+            except (SyntaxError, ValueError, TypeError):
+                continue
+            return candidate
+    return None
+
+
 def strip_code_fences(text: str) -> str:
     text = text.strip()
     if text.startswith("```"):

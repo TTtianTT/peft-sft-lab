@@ -24,12 +24,15 @@ from typing import Any
 from finetune.data.base import first_present, get_writable_datasets_cache_dir, load_local_dataset
 from finetune.eval.eval_humaneval import ensure_lora_has_config
 from finetune.eval.generation import (
+    extract_first_python_code_block,
+    find_parseable_python_segment,
     generate_greedy,
     generate_greedy_vllm_batch,
     load_eval_tokenizer,
     load_transformers_model,
     render_chat_prompt,
     save_json,
+    strip_outer_blank_lines,
     strip_code_fences,
 )
 from finetune.utils import seed_everything
@@ -130,16 +133,12 @@ def build_mbpp_chat_user_prompt(problem_text: str, public_test: str) -> str:
 
 
 def normalize_mbpp_completion(raw_text: str) -> str:
-    text = raw_text.strip()
-    try:
-        import re
-
-        fenced = re.search(r"```(?:python)?\s*\n(.*?)```", text, flags=re.DOTALL | re.IGNORECASE)
-        if fenced:
-            text = fenced.group(1)
-    except Exception:
-        pass
-    text = strip_code_fences(text).strip()
+    text = strip_outer_blank_lines(raw_text)
+    fenced_code = extract_first_python_code_block(text)
+    if fenced_code is not None:
+        text = fenced_code
+    else:
+        text = strip_code_fences(text).strip()
     try:
         import re
 
@@ -150,7 +149,8 @@ def normalize_mbpp_completion(raw_text: str) -> str:
             text = text[code_start.start() :]
     except Exception:
         pass
-    return text
+    parseable = find_parseable_python_segment(text)
+    return parseable if parseable is not None else text
 
 
 def _mbpp_program(problem: dict[str, Any], completion: str) -> str:
@@ -308,10 +308,17 @@ def main() -> None:
             "result": result["result"],
             "error": result["error"],
             "prompt": problem["text"],
+            "raw_completion": raw_completion,
             "completion": completion,
             "model_input_prompt": model_input,
         }
-        for problem, completion, model_input, result in zip(problems, completions, model_inputs, results)
+        for problem, raw_completion, completion, model_input, result in zip(
+            problems,
+            raw_completions,
+            completions,
+            model_inputs,
+            results,
+        )
     ]
     adapter_tag = "lora" if args.adapter_dir else "base"
     outputs_path = out_dir / f"outputs_{adapter_tag}.jsonl"
