@@ -54,6 +54,7 @@ except Exception:
 
 HF_DATASET_IDS = ("openai/openai_humaneval", "openai_humaneval")
 DEFAULT_PROMPT_STYLE = "chat"
+CHAT_USER_PROMPT_STYLES = ("strict_continuation", "opencompass")
 # LlamaFactory's ``template: llama3`` renders a single user/assistant turn when
 # the source dataset has no system field. Magicoder provides exactly that shape.
 DEFAULT_SYSTEM_PROMPT: str | None = None
@@ -354,7 +355,17 @@ def compute_pass_at_1_single_sample(task_results: Dict[str, List[bool]]) -> Dict
     }
 
 
-def build_humaneval_chat_user_prompt(problem_prompt: str) -> str:
+def build_humaneval_chat_user_prompt(
+    problem_prompt: str,
+    *,
+    style: str = "strict_continuation",
+) -> str:
+    normalized_style = style.strip().lower()
+    if normalized_style == "opencompass":
+        return f"Complete the following python code:\n{problem_prompt}"
+    if normalized_style != "strict_continuation":
+        known = ", ".join(CHAT_USER_PROMPT_STYLES)
+        raise ValueError(f"Unknown HumanEval chat user prompt style {style!r}. Expected one of: {known}.")
     return (
         "Complete the following Python code. Return only the missing continuation "
         "after the provided prefix. Do not repeat the prefix, add explanations, "
@@ -568,6 +579,16 @@ def build_arg_parser() -> argparse.ArgumentParser:
             "Use non_thinking when evaluating Qwen3 adapters trained with enable_thinking=False."
         ),
     )
+    p.add_argument(
+        "--chat_user_prompt_style",
+        type=str,
+        default="strict_continuation",
+        choices=CHAT_USER_PROMPT_STYLES,
+        help=(
+            "User-message wrapper for chat HumanEval. opencompass renders exactly "
+            "'Complete the following python code:\\n{prompt}'."
+        ),
+    )
 
     p.add_argument("--max_samples", type=int, default=None, help="Max HumanEval tasks (None = all 164).")
     p.add_argument("--max_new_tokens", type=int, default=256)
@@ -666,7 +687,10 @@ def main() -> None:
             render_chat_prompt(
                 tokenizer=eval_tokenizer,
                 base_model=args.base_model,
-                user_content=build_humaneval_chat_user_prompt(problem_prompt),
+                user_content=build_humaneval_chat_user_prompt(
+                    problem_prompt,
+                    style=args.chat_user_prompt_style,
+                ),
                 system_content=args.system_prompt,
                 chat_template_mode=args.chat_template_mode,
             )
@@ -736,6 +760,9 @@ def main() -> None:
             {
                 "task_id": tid,
                 "prompt_style": args.prompt_style,
+                "chat_user_prompt_style": (
+                    args.chat_user_prompt_style if args.prompt_style == "chat" else None
+                ),
                 "prompt": problems[tid]["prompt"],
                 "model_input_prompt": rendered_prompt,
                 "raw_completion": raw,
@@ -797,6 +824,9 @@ def main() -> None:
             "seed": args.seed,
             "split": args.split,
             "prompt_style": args.prompt_style,
+            "chat_user_prompt_style": (
+                args.chat_user_prompt_style if args.prompt_style == "chat" else None
+            ),
             "chat_template_mode": args.chat_template_mode if args.prompt_style == "chat" else None,
             "system_prompt": args.system_prompt if args.prompt_style == "chat" else None,
             "dataset_source": dataset_source,
@@ -849,6 +879,9 @@ def main() -> None:
             "adapter_dir": args.adapter_dir,
             "use_vllm": bool(args.use_vllm),
             "prompt_style": args.prompt_style,
+            "chat_user_prompt_style": (
+                args.chat_user_prompt_style if args.prompt_style == "chat" else None
+            ),
             "chat_template_mode": args.chat_template_mode if args.prompt_style == "chat" else None,
             "system_prompt": args.system_prompt if args.prompt_style == "chat" else None,
             "vllm_max_model_len": args.vllm_max_model_len,

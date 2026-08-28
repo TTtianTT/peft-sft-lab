@@ -516,6 +516,35 @@ class OptionalLlamaTokenizerTests(unittest.TestCase):
 
 
 class HumanEvalChatPromptTests(unittest.TestCase):
+    def test_humaneval_opencompass_user_prompt_matches_requested_template(self):
+        problem_prompt = "def answer():\n    pass\n"
+
+        rendered = build_humaneval_chat_user_prompt(
+            problem_prompt,
+            style="opencompass",
+        )
+
+        self.assertEqual(
+            rendered,
+            "Complete the following python code:\ndef answer():\n    pass\n",
+        )
+        self.assertNotIn("Return only the missing continuation", rendered)
+        self.assertNotIn("Do not repeat the prefix", rendered)
+
+    def test_humaneval_cli_accepts_opencompass_user_prompt_style(self):
+        args = build_humaneval_arg_parser().parse_args(
+            [
+                "--base_model",
+                "Qwen/Qwen3-8B",
+                "--output_dir",
+                "eval/humaneval-qwen3-opencompass",
+                "--chat_user_prompt_style",
+                "opencompass",
+            ]
+        )
+
+        self.assertEqual(args.chat_user_prompt_style, "opencompass")
+
     def test_humaneval_cli_accepts_qwen_non_thinking_mode(self):
         args = build_humaneval_arg_parser().parse_args(
             [
