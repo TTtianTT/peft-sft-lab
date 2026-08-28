@@ -817,6 +817,16 @@ def build_arg_parser() -> argparse.ArgumentParser:
     p.add_argument("--max_new_tokens", type=int, default=2048)
     p.add_argument("--dtype", type=str, default="auto", choices=["auto", "bf16", "fp16", "fp32"])
     p.add_argument("--seed", type=int, default=42)
+    p.add_argument(
+        "--chat_template_mode",
+        type=str,
+        default="auto",
+        choices=["auto", "thinking", "non_thinking"],
+        help=(
+            "Thinking mode passed to tokenizer.apply_chat_template. "
+            "Use non_thinking for Qwen3 adapters trained with enable_thinking=False."
+        ),
+    )
 
     p.add_argument("--use_vllm", action="store_true")
     p.add_argument("--tensor_parallel_size", type=int, default=1)
@@ -931,6 +941,7 @@ def main() -> None:
                 tokenizer=eval_tokenizer,
                 base_model=args.base_model,
                 user_content=prompt,
+                chat_template_mode=args.chat_template_mode,
             )
         )
         records.append(
@@ -1044,6 +1055,7 @@ def main() -> None:
         "use_vllm": bool(args.use_vllm),
         "langdetect_available": bool(HAVE_LANGDETECT),
         "prompt_style": "tokenizer_chat_template",
+        "chat_template_mode": args.chat_template_mode,
         "ifeval_strict_accuracy": (n_prompt_strict_ok / n_prompts if n_prompts else 0.0),
         "ifeval_loose_accuracy": (n_prompt_loose_ok / n_prompts if n_prompts else 0.0),
         "ifeval_instruction_strict_accuracy": (n_inst_strict_ok / n_insts if n_insts else 0.0),

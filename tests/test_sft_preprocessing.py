@@ -31,6 +31,7 @@ from finetune.eval.eval_humaneval import (
     build_humaneval_chat_user_prompt,
     normalize_humaneval_completion,
 )
+from finetune.eval.eval_ifeval import build_arg_parser as build_ifeval_arg_parser
 from finetune.eval.eval_mbpp import (
     _normalize_mbpp_problem,
     _run_mbpp_problem,
@@ -513,6 +514,22 @@ class OptionalLlamaTokenizerTests(unittest.TestCase):
         self.assertIn("We add 2 and 3 to get 5.", supervised_text)
         self.assertNotIn("What is 2 + 3?", supervised_text)
         self.assertNotIn("### Instruction:", full_input)
+
+
+class IFEvalCliTests(unittest.TestCase):
+    def test_ifeval_cli_accepts_qwen_non_thinking_mode(self):
+        args = build_ifeval_arg_parser().parse_args(
+            [
+                "--base_model",
+                "Qwen/Qwen3-8B",
+                "--output_dir",
+                "eval/ifeval-qwen3",
+                "--chat_template_mode",
+                "non_thinking",
+            ]
+        )
+
+        self.assertEqual(args.chat_template_mode, "non_thinking")
 
 
 class HumanEvalChatPromptTests(unittest.TestCase):
