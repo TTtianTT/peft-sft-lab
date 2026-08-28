@@ -558,6 +558,16 @@ def build_arg_parser() -> argparse.ArgumentParser:
             "to match LlamaFactory template: llama3 with Magicoder single-turn data."
         ),
     )
+    p.add_argument(
+        "--chat_template_mode",
+        type=str,
+        default="auto",
+        choices=["auto", "thinking", "non_thinking"],
+        help=(
+            "Thinking mode passed to tokenizer.apply_chat_template for chat prompts. "
+            "Use non_thinking when evaluating Qwen3 adapters trained with enable_thinking=False."
+        ),
+    )
 
     p.add_argument("--max_samples", type=int, default=None, help="Max HumanEval tasks (None = all 164).")
     p.add_argument("--max_new_tokens", type=int, default=256)
@@ -658,6 +668,7 @@ def main() -> None:
                 base_model=args.base_model,
                 user_content=build_humaneval_chat_user_prompt(problem_prompt),
                 system_content=args.system_prompt,
+                chat_template_mode=args.chat_template_mode,
             )
             for problem_prompt in prompts
         ]
@@ -786,6 +797,7 @@ def main() -> None:
             "seed": args.seed,
             "split": args.split,
             "prompt_style": args.prompt_style,
+            "chat_template_mode": args.chat_template_mode if args.prompt_style == "chat" else None,
             "system_prompt": args.system_prompt if args.prompt_style == "chat" else None,
             "dataset_source": dataset_source,
         }
@@ -837,6 +849,7 @@ def main() -> None:
             "adapter_dir": args.adapter_dir,
             "use_vllm": bool(args.use_vllm),
             "prompt_style": args.prompt_style,
+            "chat_template_mode": args.chat_template_mode if args.prompt_style == "chat" else None,
             "system_prompt": args.system_prompt if args.prompt_style == "chat" else None,
             "vllm_max_model_len": args.vllm_max_model_len,
             "vllm_attention_backend": args.vllm_attention_backend,

@@ -27,12 +27,14 @@ from finetune.eval.eval_gsm8k import (
 from finetune.eval.eval_humaneval import (
     _normalize_humaneval_problem,
     _resolve_local_humaneval_data_files,
+    build_arg_parser as build_humaneval_arg_parser,
     build_humaneval_chat_user_prompt,
     normalize_humaneval_completion,
 )
 from finetune.eval.eval_mbpp import (
     _normalize_mbpp_problem,
     _run_mbpp_problem,
+    build_arg_parser as build_mbpp_arg_parser,
     build_mbpp_chat_user_prompt,
     normalize_mbpp_completion,
 )
@@ -514,6 +516,31 @@ class OptionalLlamaTokenizerTests(unittest.TestCase):
 
 
 class HumanEvalChatPromptTests(unittest.TestCase):
+    def test_humaneval_cli_accepts_qwen_non_thinking_mode(self):
+        args = build_humaneval_arg_parser().parse_args(
+            [
+                "--base_model",
+                "Qwen/Qwen3-8B",
+                "--output_dir",
+                "eval/humaneval-qwen3",
+                "--chat_template_mode",
+                "non_thinking",
+            ]
+        )
+
+        self.assertEqual(args.prompt_style, "chat")
+        self.assertEqual(args.chat_template_mode, "non_thinking")
+
+    def test_humaneval_qwen_prompt_can_disable_thinking(self):
+        rendered = render_chat_prompt(
+            tokenizer=DummyChatTokenizer(),
+            base_model="Qwen/Qwen3-8B",
+            user_content=build_humaneval_chat_user_prompt("def answer():\n    pass\n"),
+            chat_template_mode="non_thinking",
+        )
+
+        self.assertTrue(rendered.endswith("<|assistant|>\n<think>\n\n</think>\n\n"))
+
     def test_llamafactory_llama3_prompt_is_single_user_turn(self):
         problem_prompt = "def answer():\n    \"\"\"Return 42.\"\"\"\n"
         user_content = build_humaneval_chat_user_prompt(problem_prompt)
@@ -541,6 +568,34 @@ class HumanEvalChatPromptTests(unittest.TestCase):
 
 
 class MBPPEvaluationTests(unittest.TestCase):
+    def test_mbpp_cli_accepts_qwen_non_thinking_mode(self):
+        args = build_mbpp_arg_parser().parse_args(
+            [
+                "--base_model",
+                "Qwen/Qwen3-8B",
+                "--output_dir",
+                "eval/mbpp-qwen3",
+                "--chat_template_mode",
+                "non_thinking",
+            ]
+        )
+
+        self.assertEqual(args.prompt_style, "chat")
+        self.assertEqual(args.chat_template_mode, "non_thinking")
+
+    def test_mbpp_qwen_prompt_can_disable_thinking(self):
+        rendered = render_chat_prompt(
+            tokenizer=DummyChatTokenizer(),
+            base_model="Qwen/Qwen3-8B",
+            user_content=build_mbpp_chat_user_prompt(
+                "Write answer().",
+                "assert answer() == 42",
+            ),
+            chat_template_mode="non_thinking",
+        )
+
+        self.assertTrue(rendered.endswith("<|assistant|>\n<think>\n\n</think>\n\n"))
+
     def test_normalize_mbpp_problem_accepts_standard_fields(self):
         problem = _normalize_mbpp_problem(
             {

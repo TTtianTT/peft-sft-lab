@@ -224,6 +224,15 @@ def build_arg_parser() -> argparse.ArgumentParser:
     parser.add_argument("--dataset_path", default=None, help="Optional local MBPP parquet/json/jsonl file or directory.")
     parser.add_argument("--split", default=DEFAULT_SPLIT)
     parser.add_argument("--prompt_style", choices=["chat", "raw"], default=DEFAULT_PROMPT_STYLE)
+    parser.add_argument(
+        "--chat_template_mode",
+        default="auto",
+        choices=["auto", "thinking", "non_thinking"],
+        help=(
+            "Thinking mode passed to tokenizer.apply_chat_template for chat prompts. "
+            "Use non_thinking when evaluating Qwen3 adapters trained with enable_thinking=False."
+        ),
+    )
     parser.add_argument("--max_samples", type=int, default=None)
     parser.add_argument("--max_new_tokens", type=int, default=512)
     parser.add_argument("--timeout_s", type=float, default=3.0)
@@ -268,6 +277,7 @@ def main() -> None:
                 base_model=args.base_model,
                 user_content=user_prompt,
                 system_content=None,
+                chat_template_mode=args.chat_template_mode,
             )
             for user_prompt in user_prompts
         ]
@@ -332,6 +342,7 @@ def main() -> None:
         "total": total,
         "dataset_source": dataset_source,
         "prompt_style": args.prompt_style,
+        "chat_template_mode": args.chat_template_mode if args.prompt_style == "chat" else None,
         "base_model": args.base_model,
         "adapter_dir": args.adapter_dir,
         "use_vllm": bool(args.use_vllm),
