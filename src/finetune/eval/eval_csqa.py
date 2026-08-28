@@ -6,11 +6,12 @@ import re
 from pathlib import Path
 from typing import Any
 
-from finetune.data.base import format_instruction_response
 from finetune.eval.generation import (
     generate_greedy,
     generate_greedy_vllm_batch,
+    load_eval_tokenizer,
     load_transformers_model,
+    render_chat_prompt,
     save_json,
 )
 from finetune.utils import seed_everything
@@ -77,10 +78,6 @@ def _build_csqa_instruction(example: dict[str, Any]) -> tuple[str, str, str]:
     return question, gold, instruction
 
 
-def _build_csqa_prompt(instruction: str) -> str:
-    return format_instruction_response(instruction=instruction, response="")
-
-
 def _resolve_split(requested: str) -> tuple[str, str]:
     """
     Force using validation as the evaluation split (treat as 'test').
@@ -101,7 +98,9 @@ def _resolve_split(requested: str) -> tuple[str, str]:
 
 
 def build_arg_parser() -> argparse.ArgumentParser:
-    p = argparse.ArgumentParser(description="Evaluate CommonsenseQA accuracy (single-letter A/B/C/D/E).")
+    p = argparse.ArgumentParser(
+        description="Evaluate CommonsenseQA accuracy using the tokenizer chat template."
+    )
     p.add_argument("--base_model", type=str, required=True)
     p.add_argument("--adapter_dir", type=str, default=None)
     p.add_argument("--output_dir", type=str, required=True)
@@ -113,6 +112,16 @@ def build_arg_parser() -> argparse.ArgumentParser:
     p.add_argument("--max_new_tokens", type=int, default=8)
     p.add_argument("--dtype", type=str, default="auto", choices=["auto", "bf16", "fp16", "fp32"])
     p.add_argument("--seed", type=int, default=42)
+    p.add_argument(
+        "--chat_template_mode",
+        type=str,
+        default="auto",
+        choices=["auto", "thinking", "non_thinking"],
+        help=(
+            "Thinking mode passed to tokenizer.apply_chat_template. "
+            "Use non_thinking for Qwen3 when matching a non-reasoning protocol."
+        ),
+    )
     p.add_argument("--use_vllm", action="store_true")
     p.add_argument("--tensor_parallel_size", type=int, default=1)
     p.add_argument("--log_every", type=int, default=100)
@@ -143,6 +152,11 @@ def main() -> None:
     if args.max_samples is not None:
         ds = ds.select(range(min(args.max_samples, len(ds))))
 
+    eval_tokenizer = load_eval_tokenizer(
+        base_model=args.base_model,
+        adapter_dir=args.adapter_dir,
+    )
+
     loaded = None
     if not args.use_vllm:
         loaded = load_transformers_model(
@@ -164,7 +178,12 @@ def main() -> None:
             records: list[dict[str, Any]] = []
             for ex in examples:
                 q, gold, instruction = _build_csqa_instruction(ex)
-                prompt = _build_csqa_prompt(instruction)
+                prompt = render_chat_prompt(
+                    tokenizer=eval_tokenizer,
+                    base_model=args.base_model,
+                    user_content=instruction,
+                    chat_template_mode=args.chat_template_mode,
+                )
                 prompts.append(prompt)
                 records.append(
                     {
@@ -201,6 +220,7 @@ def main() -> None:
                             "question": rec["question"],
                             "gold": rec["gold"],
                             "instruction": rec["instruction"],
+                            "prompt_style": "tokenizer_chat_template",
                             "prediction_text": gen,
                             "prediction_letter": pred_letter,
                             "correct": bool(is_correct),
@@ -217,7 +237,12 @@ def main() -> None:
             assert loaded is not None
             for i, ex in enumerate(ds, start=1):
                 q, gold, instruction = _build_csqa_instruction(ex)
-                prompt = _build_csqa_prompt(instruction)
+                prompt = render_chat_prompt(
+                    tokenizer=eval_tokenizer,
+                    base_model=args.base_model,
+                    user_content=instruction,
+                    chat_template_mode=args.chat_template_mode,
+                )
 
                 gen = generate_greedy(
                     model=loaded.model,
@@ -240,6 +265,7 @@ def main() -> None:
                             "question": q,
                             "gold": gold,
                             "instruction": instruction,
+                            "prompt_style": "tokenizer_chat_template",
                             "prediction_text": gen,
                             "prediction_letter": pred_letter,
                             "correct": bool(is_correct),
@@ -263,6 +289,8 @@ def main() -> None:
         "pred_histogram": pred_hist,
         "base_model": args.base_model,
         "adapter_dir": args.adapter_dir,
+        "prompt_style": "tokenizer_chat_template",
+        "chat_template_mode": args.chat_template_mode,
         "use_vllm": bool(args.use_vllm),
         "tensor_parallel_size": args.tensor_parallel_size,
         "max_new_tokens": args.max_new_tokens,

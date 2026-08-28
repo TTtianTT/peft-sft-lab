@@ -24,6 +24,10 @@ from finetune.eval.eval_gsm8k import (
     _build_gsm8k_user_instruction,
     _resolve_local_gsm8k_data_files,
 )
+from finetune.eval.eval_csqa import (
+    _build_csqa_instruction,
+    build_arg_parser as build_csqa_arg_parser,
+)
 from finetune.eval.eval_humaneval import (
     _normalize_humaneval_problem,
     _resolve_local_humaneval_data_files,
@@ -404,6 +408,47 @@ class GSM8KEvalPromptTests(unittest.TestCase):
 
             self.assertEqual(loader_name, "parquet")
             self.assertEqual(files, [str(target)])
+
+
+class CSQAEvalPromptTests(unittest.TestCase):
+    def test_csqa_eval_prompt_uses_chat_template(self):
+        _question, gold, instruction = _build_csqa_instruction(
+            {
+                "question": "Where would you store milk?",
+                "choices": {
+                    "label": ["A", "B", "C", "D", "E"],
+                    "text": ["desk", "fridge", "car", "garden", "attic"],
+                },
+                "answerKey": "B",
+            }
+        )
+
+        prompt = render_chat_prompt(
+            tokenizer=DummyChatTokenizer(),
+            base_model="dummy-llama3-instruct",
+            user_content=instruction,
+        )
+
+        self.assertEqual(gold, "B")
+        self.assertIn("<|user|>", prompt)
+        self.assertIn("<|assistant|>", prompt)
+        self.assertIn("Answer with a single letter", prompt)
+        self.assertNotIn("### Instruction:", prompt)
+        self.assertNotIn("### Response:", prompt)
+
+    def test_csqa_cli_accepts_chat_template_mode(self):
+        args = build_csqa_arg_parser().parse_args(
+            [
+                "--base_model",
+                "Qwen/Qwen3-8B",
+                "--output_dir",
+                "eval/csqa-qwen3",
+                "--chat_template_mode",
+                "non_thinking",
+            ]
+        )
+
+        self.assertEqual(args.chat_template_mode, "non_thinking")
 
 
 class IFBenchEvalDataTests(unittest.TestCase):
