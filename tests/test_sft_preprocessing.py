@@ -450,6 +450,42 @@ class CSQAEvalPromptTests(unittest.TestCase):
 
         self.assertEqual(args.chat_template_mode, "non_thinking")
 
+    def test_csqa_cli_limits_vllm_context_by_default(self):
+        args = build_csqa_arg_parser().parse_args(
+            [
+                "--base_model",
+                "meta-llama/Llama-3.1-8B-Instruct",
+                "--output_dir",
+                "eval/csqa-llama3",
+                "--use_vllm",
+            ]
+        )
+
+        self.assertEqual(args.vllm_max_model_len, 2048)
+
+    def test_csqa_cli_accepts_vllm_memory_options(self):
+        args = build_csqa_arg_parser().parse_args(
+            [
+                "--base_model",
+                "meta-llama/Llama-3.1-8B-Instruct",
+                "--output_dir",
+                "eval/csqa-llama3",
+                "--use_vllm",
+                "--vllm_max_model_len",
+                "4096",
+                "--vllm_gpu_memory_utilization",
+                "0.95",
+                "--vllm_attention_backend",
+                "FLASH_ATTN",
+                "--vllm_disable_flashinfer_sampler",
+            ]
+        )
+
+        self.assertEqual(args.vllm_max_model_len, 4096)
+        self.assertEqual(args.vllm_gpu_memory_utilization, 0.95)
+        self.assertEqual(args.vllm_attention_backend, "FLASH_ATTN")
+        self.assertTrue(args.vllm_disable_flashinfer_sampler)
+
 
 class IFBenchEvalDataTests(unittest.TestCase):
     def test_resolve_local_ifbench_snapshot_directory(self):

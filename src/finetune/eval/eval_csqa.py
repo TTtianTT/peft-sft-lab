@@ -124,6 +124,32 @@ def build_arg_parser() -> argparse.ArgumentParser:
     )
     p.add_argument("--use_vllm", action="store_true")
     p.add_argument("--tensor_parallel_size", type=int, default=1)
+    p.add_argument(
+        "--vllm_max_model_len",
+        type=int,
+        default=2048,
+        help=(
+            "vLLM max_model_len override. Defaults to 2048 because CSQA prompts are short; "
+            "this avoids reserving KV cache for the model's full 131072-token context window."
+        ),
+    )
+    p.add_argument(
+        "--vllm_gpu_memory_utilization",
+        type=float,
+        default=None,
+        help="Optional vLLM GPU memory utilization target, e.g. 0.9 or 0.95.",
+    )
+    p.add_argument(
+        "--vllm_attention_backend",
+        type=str,
+        default=None,
+        help="Optional vLLM attention backend override, e.g. FLASH_ATTN or FLASHINFER.",
+    )
+    p.add_argument(
+        "--vllm_disable_flashinfer_sampler",
+        action="store_true",
+        help="Disable FlashInfer sampling and use vLLM's native sampler.",
+    )
     p.add_argument("--log_every", type=int, default=100)
     return p
 
@@ -200,6 +226,10 @@ def main() -> None:
                 max_new_tokens=args.max_new_tokens,
                 adapter_dir=args.adapter_dir,
                 tensor_parallel_size=args.tensor_parallel_size,
+                max_model_len=args.vllm_max_model_len,
+                gpu_memory_utilization=args.vllm_gpu_memory_utilization,
+                attention_backend=args.vllm_attention_backend,
+                disable_flashinfer_sampler=args.vllm_disable_flashinfer_sampler,
             )
 
             if len(generations) != len(records):
@@ -293,6 +323,10 @@ def main() -> None:
         "chat_template_mode": args.chat_template_mode,
         "use_vllm": bool(args.use_vllm),
         "tensor_parallel_size": args.tensor_parallel_size,
+        "vllm_max_model_len": args.vllm_max_model_len,
+        "vllm_gpu_memory_utilization": args.vllm_gpu_memory_utilization,
+        "vllm_attention_backend": args.vllm_attention_backend,
+        "vllm_disable_flashinfer_sampler": bool(args.vllm_disable_flashinfer_sampler),
         "max_new_tokens": args.max_new_tokens,
         "seed": args.seed,
         "dtype": args.dtype,
