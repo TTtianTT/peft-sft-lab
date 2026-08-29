@@ -37,6 +37,9 @@ from finetune.utils import seed_everything  # noqa: E402
 
 LETTERS = tuple("ABCDEFGHIJKLMNOPQRSTUVWXYZ")
 
+PIQA_ARCHIVE_URL = "https://storage.googleapis.com/ai2-mosaic/public/physicaliqa/physicaliqa-train-dev.zip"
+SIQA_ARCHIVE_URL = "https://storage.googleapis.com/ai2-mosaic/public/socialiqa/socialiqa-train-dev.zip"
+
 
 @dataclass(frozen=True)
 class EvalItem:
@@ -79,6 +82,16 @@ def _zero_based_label(value: Any, num_choices: int, *, task: str) -> int:
     return label
 
 
+def _one_based_label(value: Any, num_choices: int, *, task: str) -> int:
+    try:
+        label = int(value) - 1
+    except (TypeError, ValueError) as exc:
+        raise ValueError(f"{task}: invalid numeric label {value!r}") from exc
+    if not 0 <= label < num_choices:
+        raise ValueError(f"{task}: label {value!r} outside [1, {num_choices}]")
+    return label
+
+
 def _format_boolq(example: dict[str, Any], index: int) -> EvalItem:
     passage = _required_text(example, "passage")
     question = _required_text(example, "question")
@@ -107,8 +120,8 @@ def _format_siqa(example: dict[str, Any], index: int) -> EvalItem:
     context = _required_text(example, "context")
     question = _required_text(example, "question")
     choices = tuple(_required_text(example, key) for key in ("answerA", "answerB", "answerC"))
-    # The datasets package exposes SocialIQA's ClassLabel as zero-based 0/1/2.
-    gold = _zero_based_label(example.get("label"), len(choices), task="SocialIQA")
+    # The official SocialIQA labels file uses one-based string labels: 1/2/3.
+    gold = _one_based_label(example.get("label"), len(choices), task="SocialIQA")
     return EvalItem(
         _item_id(example, index),
         f"Context:\n{context}\n\nQuestion:\n{question}",
@@ -199,6 +212,70 @@ TASKS: dict[str, TaskSpec] = {
 }
 
 
+def _load_ai2_jsonl_with_labels(
+    *,
+    archive_url: str,
+    extracted_dir_name: str,
+    jsonl_name: str,
+    labels_name: str,
+):
+    """Load an official AI2 archive without executing a legacy dataset script."""
+    try:
+        from datasets import Dataset, DownloadManager
+    except Exception as exc:
+        raise RuntimeError(f"datasets is required: {exc}") from exc
+
+    download_manager = DownloadManager()
+    extracted_root = Path(download_manager.download_and_extract(archive_url))
+    data_dir = extracted_root / extracted_dir_name
+    data_path = data_dir / jsonl_name
+    labels_path = data_dir / labels_name
+    if not data_path.is_file() or not labels_path.is_file():
+        raise RuntimeError(
+            f"Official dataset archive has an unexpected layout: root={extracted_root}; "
+            f"expected {data_path} and {labels_path}."
+        )
+
+    with data_path.open("r", encoding="utf-8") as handle:
+        records = [json.loads(line) for line in handle if line.strip()]
+    with labels_path.open("r", encoding="utf-8") as handle:
+        labels = [line.strip() for line in handle if line.strip()]
+    if len(records) != len(labels):
+        raise RuntimeError(
+            f"Mismatched examples/labels in {archive_url}: {len(records)} != {len(labels)}"
+        )
+    for record, label in zip(records, labels):
+        record["label"] = label
+    return Dataset.from_list(records)
+
+
+def _load_task_dataset(task_name: str, spec: TaskSpec):
+    """Load a task, using official raw archives for script-only datasets."""
+    if task_name == "piqa":
+        return _load_ai2_jsonl_with_labels(
+            archive_url=PIQA_ARCHIVE_URL,
+            extracted_dir_name="physicaliqa-train-dev",
+            jsonl_name="dev.jsonl",
+            labels_name="dev-labels.lst",
+        )
+    if task_name == "siqa":
+        return _load_ai2_jsonl_with_labels(
+            archive_url=SIQA_ARCHIVE_URL,
+            extracted_dir_name="socialiqa-train-dev",
+            jsonl_name="dev.jsonl",
+            labels_name="dev-labels.lst",
+        )
+
+    try:
+        from datasets import load_dataset
+    except Exception as exc:
+        raise RuntimeError(f"datasets is required: {exc}") from exc
+    load_kwargs: dict[str, Any] = {"split": spec.split}
+    if spec.config is not None:
+        load_kwargs["name"] = spec.config
+    return load_dataset(spec.dataset_id, **load_kwargs)
+
+
 def _instruction(item: EvalItem) -> str:
     if not 2 <= len(item.choices) <= len(LETTERS):
         raise ValueError(f"Unsupported number of choices: {len(item.choices)}")
@@ -287,11 +364,6 @@ def main() -> None:
     output_dir = Path(args.output_dir)
     output_dir.mkdir(parents=True, exist_ok=True)
 
-    try:
-        from datasets import load_dataset
-    except Exception as exc:
-        raise RuntimeError(f"datasets is required: {exc}") from exc
-
     tokenizer = load_eval_tokenizer(base_model=args.base_model, adapter_dir=args.adapter_dir)
     all_prompts: list[str] = []
     all_records: list[tuple[str, EvalItem, str]] = []
@@ -299,10 +371,7 @@ def main() -> None:
     for task_name in selected_tasks:
         spec = TASKS[task_name]
         print(f"[{task_name}] Loading {spec.dataset_id} {spec.config or ''} split={spec.split}")
-        load_kwargs: dict[str, Any] = {"split": spec.split}
-        if spec.config is not None:
-            load_kwargs["name"] = spec.config
-        dataset = load_dataset(spec.dataset_id, **load_kwargs)
+        dataset = _load_task_dataset(task_name, spec)
         if args.max_samples is not None:
             if args.max_samples <= 0:
                 raise ValueError("--max_samples must be > 0")
