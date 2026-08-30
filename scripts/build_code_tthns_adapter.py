@@ -49,7 +49,10 @@ from finetune.spectral_edit.io import (  # noqa: E402
     save_lora_state_dict,
 )
 from finetune.spectral_edit.svd import lowrank_svd_from_ba  # noqa: E402
-from finetune.spectral_edit.runtime import saved_tensor_offload_context  # noqa: E402
+from finetune.spectral_edit.runtime import (  # noqa: E402
+    enable_deterministic_gradient_checkpointing,
+    saved_tensor_offload_context,
+)
 from finetune.utils import seed_everything  # noqa: E402
 
 
@@ -243,6 +246,11 @@ def build_arg_parser() -> argparse.ArgumentParser:
         action="store_true",
         help="Offload autograd-saved tensors to CPU during test-time gradient scoring.",
     )
+    parser.add_argument(
+        "--gradient_checkpointing",
+        action="store_true",
+        help="Checkpoint decoder blocks during the test-time gradient pass.",
+    )
     parser.add_argument("--cache_dir", default=None)
     parser.add_argument("--seed", type=int, default=42)
     parser.add_argument("--overwrite", action="store_true")
@@ -334,6 +342,8 @@ def main() -> None:
     model.config.use_cache = False
     for name, parameter in model.named_parameters():
         parameter.requires_grad_("lora_" in name and reference_adapter_name in name)
+    if args.gradient_checkpointing:
+        enable_deterministic_gradient_checkpointing(model)
 
     name_to_module = dict(model.named_modules())
     specs: dict[str, ModuleSpec] = {}
@@ -423,6 +433,7 @@ def main() -> None:
             adapter_name=candidate_adapter_name,
             is_trainable=False,
         )
+        model.eval()
         candidate_probabilities = _score_prompt_views(
             model=model,
             tokenizer=tokenizer,
@@ -463,6 +474,7 @@ def main() -> None:
                 list(args.chat_user_prompt_styles) if args.prompt_style == "chat" else []
             ),
             "chat_template_mode": args.chat_template_mode,
+            "gradient_checkpointing": args.gradient_checkpointing,
             "cpu_activation_offload": args.cpu_activation_offload,
             "calibration_candidate_modules": calibration_modules,
             "test_time_module_utilities": utilities,

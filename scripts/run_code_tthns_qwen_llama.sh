@@ -78,6 +78,7 @@ run_family() {
     --fast_steps 8 \
     --stable_steps 2 \
     --dtype bf16 \
+    --gradient_checkpointing \
     --cpu_activation_offload \
     --seed "$SEED"
 
@@ -96,6 +97,7 @@ run_family() {
     --chat_template_mode "$chat_template_mode" \
     --max_seq_len "$MAX_SEQ_LEN" \
     --dtype bf16 \
+    --gradient_checkpointing \
     --cpu_activation_offload \
     --seed "$SEED" \
     --overwrite

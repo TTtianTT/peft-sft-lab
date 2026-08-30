@@ -38,7 +38,10 @@ from .posthoc_hns import (
     HNSEditConfig,
     apply_hns_to_svd,
 )
-from .runtime import saved_tensor_offload_context
+from .runtime import (
+    enable_deterministic_gradient_checkpointing,
+    saved_tensor_offload_context,
+)
 from .svd import lowrank_svd_from_ba, rebuild_ba_from_uv_sigma
 
 
@@ -521,6 +524,8 @@ def run_sensitivity_hns(args) -> None:
     model.config.use_cache = False
     for parameter_name, parameter in model.named_parameters():
         parameter.requires_grad_("lora_" in parameter_name)
+    if args.gradient_checkpointing:
+        enable_deterministic_gradient_checkpointing(model)
 
     name_to_module = dict(model.named_modules())
     specs: Dict[str, ModuleSpec] = {}
@@ -729,6 +734,7 @@ def run_sensitivity_hns(args) -> None:
         "chat_template_mode": args.chat_template_mode,
         "max_seq_len": args.max_seq_len,
         "dtype": args.dtype,
+        "gradient_checkpointing": args.gradient_checkpointing,
         "cpu_activation_offload": args.cpu_activation_offload,
         "fast_steps": args.fast_steps,
         "stable_steps": args.stable_steps,
@@ -1093,6 +1099,13 @@ def build_arg_parser() -> argparse.ArgumentParser:
         help=(
             "Move tensors saved for backward to CPU. This substantially lowers peak GPU "
             "memory while preserving eval-mode calibration, at the cost of host transfers."
+        ),
+    )
+    sensitivity_hns_parser.add_argument(
+        "--gradient_checkpointing",
+        action="store_true",
+        help=(
+            "Checkpoint decoder blocks during calibration backward while keeping dropout disabled."
         ),
     )
 

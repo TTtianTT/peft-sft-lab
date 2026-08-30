@@ -314,8 +314,9 @@ the two `*_OUT_ROOT` variables. Qwen uses `chat_template_mode=non_thinking`;
 Llama uses `auto`. The launcher writes the calibration adapter, final TT-HNS
 adapter, LoRA/TT-HNS HumanEval results, and `test_time_hns_meta.json` under each
 output root. The launcher defaults both backward-scoring batch sizes to one and
-enables saved-tensor CPU activation offload so 8B models fit more reliably on a
-32 GiB GPU. Host-memory transfers make adapter construction slower than the
+enables deterministic gradient checkpointing plus saved-tensor CPU activation
+offload so 8B models fit more reliably on a 32 GiB GPU. Host-memory transfers
+and activation recomputation make adapter construction slower than the
 non-offloaded path.
 
 ## Output structure
