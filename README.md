@@ -241,6 +241,54 @@ python -m finetune.eval.eval_gsm8k \
 cat runs/edited/metamath/lora/seed42/hns_8plus2/spectral_edit_meta.json
 ```
 
+### Calibration importance + test-time HNS
+
+The two-stage commonsense workflow keeps HNS as a fixed binary edit. Stage 1
+ranks LoRA modules with calibration saliency `mean(|sigma * dL/dsigma|)`, keeps
+a high-importance budget, and rejects modules whose fixed HNS direction has
+non-positive first-order compatibility. Stage 2 uses unlabeled choice
+permutations on each test task to select a task-specific subset and falls back
+to the original LoRA when entropy/consistency does not improve or the KL trust
+region is exceeded.
+
+```bash
+# Stage 1: supervised calibration localization and fixed HNS proposal.
+PYTHONPATH=src python -m finetune.spectral_edit.cli sensitivity-hns \
+  --base_model /path/to/Llama-3.1-8B-Instruct \
+  --lora_path runs/Llama-3.1-8B-Instruct/commonsense170k/lora-2ep/seed42 \
+  --out_dir runs/Llama-3.1-8B-Instruct/commonsense170k/sensitivity-hns-8plus2/seed42 \
+  --target_modules all_modules \
+  --calib_dataset commonsense170k \
+  --calib_dataset_path /path/to/commonsense_170k.parquet \
+  --calib_samples 256 \
+  --calib_batch_size 2 \
+  --calib_shuffle \
+  --sft_format chat \
+  --chat_template_mode auto \
+  --fast_steps 8 \
+  --stable_steps 2
+
+# Stage 2: label-free task-level module routing and exact candidate validation.
+python scripts/build_commonsense_tthns_adapters.py \
+  --base_model /path/to/Llama-3.1-8B-Instruct \
+  --lora_path runs/Llama-3.1-8B-Instruct/commonsense170k/lora-2ep/seed42 \
+  --calibration_hns_path runs/Llama-3.1-8B-Instruct/commonsense170k/sensitivity-hns-8plus2/seed42 \
+  --out_root runs/Llama-3.1-8B-Instruct/commonsense170k/tthns-8plus2/seed42 \
+  --tasks all \
+  --selection_samples 64 \
+  --num_permutations 4 \
+  --chat_template_mode auto
+
+# Evaluate each task with its selected adapter and aggregate the suite.
+python scripts/eval_commonsense_tthns.py \
+  --base_model /path/to/Llama-3.1-8B-Instruct \
+  --adapters_root runs/Llama-3.1-8B-Instruct/commonsense170k/tthns-8plus2/seed42 \
+  --output_dir eval/Llama-3.1-8B-Instruct/commonsense170k/tthns-8plus2-chat/seed42 \
+  --tasks all \
+  --backend vllm \
+  --chat_template_mode auto
+```
+
 ## Output structure
 
 Each training run writes:

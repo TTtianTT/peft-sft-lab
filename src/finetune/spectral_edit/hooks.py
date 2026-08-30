@@ -63,31 +63,35 @@ def register_sigma_hooks(specs: Dict[str, ModuleSpec]):
         def _fwd_hook(module, inputs, output):
             x = inputs[0]
             if x is None:
-                module.__x_cache = None
+                module.__xv_cache = None
                 return
             if HOOK_CTX.attn_mask is not None and x.dim() == 3:
                 m = HOOK_CTX.attn_mask.to(dtype=x.dtype, device=x.device).unsqueeze(-1)
                 x = x * m
-            module.__x_cache = x.detach()
+            # Cache only the rank-r projection needed by dL/dsigma instead of
+            # the full hidden/intermediate activation. For all-linear LoRA on
+            # an 8B model this reduces the hook cache by hundreds of times.
+            V = specs[prefix].V
+            with torch.no_grad():
+                module.__xv_cache = x.detach() @ V.to(dtype=x.dtype, device=x.device)
 
         return _fwd_hook
 
     def bwd_hook_factory(prefix: str):
         def _bwd_hook(module, grad_input, grad_output):
             gy = grad_output[0] if isinstance(grad_output, (tuple, list)) else grad_output
-            x = getattr(module, "__x_cache", None)
-            if gy is None or x is None:
+            xv = getattr(module, "__xv_cache", None)
+            if gy is None or xv is None:
                 return
 
             spec = specs[prefix]
             U = spec.U
-            V = spec.V
             scaling = spec.scaling
 
             if gy.dim() == 3:
                 bsz, seqlen, dout = gy.shape
                 gy2 = gy.detach().reshape(-1, dout)
-                x2 = x.reshape(-1, x.shape[-1])
+                b = xv.reshape(-1, xv.shape[-1])
                 if HOOK_CTX.attn_mask is not None:
                     active = int(HOOK_CTX.attn_mask.sum().item())
                 else:
@@ -95,19 +99,18 @@ def register_sigma_hooks(specs: Dict[str, ModuleSpec]):
                 HOOK_CTX.total_active_tokens += active
             else:
                 gy2 = gy.detach()
-                x2 = x
+                b = xv
                 HOOK_CTX.total_active_tokens += gy2.shape[0]
 
             a = (gy2.float() @ U.float())
-            b = (x2.float() @ V.float())
-            g = (a * b).sum(dim=0) * float(scaling)
+            g = (a * b.float()).sum(dim=0) * float(scaling)
 
             if prefix not in HOOK_CTX.gsum:
                 HOOK_CTX.gsum[prefix] = g.detach().cpu()
             else:
                 HOOK_CTX.gsum[prefix] += g.detach().cpu()
 
-            module.__x_cache = None
+            module.__xv_cache = None
 
         return _bwd_hook
 

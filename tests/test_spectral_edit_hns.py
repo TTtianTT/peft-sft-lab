@@ -75,6 +75,29 @@ class PosthocHNSTests(unittest.TestCase):
     def test_effective_rank_helper_handles_zero_spectrum(self):
         self.assertEqual(effective_rank_from_sigma(torch.zeros(4)), 0.0)
 
+    def test_hns_strength_zero_is_identity_and_half_is_interpolation(self):
+        sigma = torch.tensor([8.0, 1.0, 0.2, 0.02], dtype=torch.float32)
+        eye = torch.eye(4, dtype=torch.float32)
+
+        _, _, sigma_full, _ = apply_hns_to_svd(
+            eye, eye, sigma, HNSEditConfig(hns_strength=1.0)
+        )
+        _, _, sigma_zero, _ = apply_hns_to_svd(
+            eye, eye, sigma, HNSEditConfig(hns_strength=0.0)
+        )
+        _, _, sigma_half, stats = apply_hns_to_svd(
+            eye, eye, sigma, HNSEditConfig(hns_strength=0.5)
+        )
+
+        self.assertTrue(torch.allclose(sigma_zero, sigma))
+        self.assertTrue(torch.allclose(sigma_half, (sigma + sigma_full) / 2, atol=1e-6))
+        self.assertAlmostEqual(float(sigma.sum()), float(sigma_half.sum()), places=5)
+        self.assertEqual(stats["hns_strength"], 0.5)
+
+    def test_hns_strength_must_be_in_unit_interval(self):
+        with self.assertRaisesRegex(ValueError, "hns_strength"):
+            HNSEditConfig(hns_strength=1.01)
+
 
 if __name__ == "__main__":
     unittest.main()

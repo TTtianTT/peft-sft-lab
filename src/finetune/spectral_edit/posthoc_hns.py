@@ -21,8 +21,13 @@ class HNSEditConfig:
     fast_coefficients: tuple[float, float, float] = FAST_HNS_COEFFICIENTS
     stable_coefficients: tuple[float, float, float] = STABLE_HNS_COEFFICIENTS
     preserve_nuclear_norm: bool = True
+    hns_strength: float = 1.0
     output_rank: int | None = None
     eps: float = 1e-7
+
+    def __post_init__(self) -> None:
+        if not 0.0 <= self.hns_strength <= 1.0:
+            raise ValueError(f"hns_strength must be in [0, 1], got {self.hns_strength}")
 
 
 def effective_rank_from_sigma(sigma: torch.Tensor, eps: float = 1e-12) -> float:
@@ -82,6 +87,7 @@ def hybrid_newton_schulz_singular_values(
             "fro_norm_before_full": 0.0,
             "fro_norm_after": 0.0,
             "preserve_nuclear_norm": bool(config.preserve_nuclear_norm),
+            "hns_strength": float(config.hns_strength),
             "fast_steps": int(config.fast_steps),
             "stable_steps": int(config.stable_steps),
             "fast_coefficients": list(config.fast_coefficients),
@@ -109,6 +115,12 @@ def hybrid_newton_schulz_singular_values(
         else:
             sigma_ns = sigma_ns * (target_sum / current_sum)
 
+    # A continuous path from the original LoRA spectrum (strength=0) to the
+    # full HNS edit (strength=1).  When nuclear norm preservation is enabled,
+    # both endpoints have the same L1 norm, so every interpolated spectrum does
+    # too.  This is useful for building a conservative test-time candidate bank.
+    sigma_ns = sigma_ref + float(config.hns_strength) * (sigma_ns - sigma_ref)
+
     stats: Dict[str, Any] = {
         "rank_before_full": rank_full,
         "rank_after": rank_out,
@@ -121,6 +133,7 @@ def hybrid_newton_schulz_singular_values(
         "fro_norm_before_full": float(fro_norm.item()),
         "fro_norm_after": float(torch.linalg.vector_norm(sigma_ns).item()),
         "preserve_nuclear_norm": bool(config.preserve_nuclear_norm),
+        "hns_strength": float(config.hns_strength),
         "fast_steps": int(config.fast_steps),
         "stable_steps": int(config.stable_steps),
         "fast_coefficients": list(config.fast_coefficients),

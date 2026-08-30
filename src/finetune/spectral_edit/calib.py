@@ -10,6 +10,9 @@ import torch
 from datasets import load_dataset
 from torch.nn.utils.rnn import pad_sequence
 
+from finetune.data.base import make_single_turn_example
+from finetune.data.chat_sft import preprocess_chat_example
+
 
 # ----------------------------
 # Field helpers
@@ -62,6 +65,26 @@ def _format_alpaca_example(ex: dict) -> Tuple[str, str]:
     else:
         prompt = f"### Instruction:\n{inst}\n\n### Response:"
     return prompt, out
+
+
+def _first_nonempty(ex: dict, names: Sequence[str]) -> str:
+    for name in names:
+        value = ex.get(name)
+        if value is not None and str(value).strip():
+            return str(value)
+    return ""
+
+
+def _format_commonsense170k_example(ex: dict) -> Tuple[str, str]:
+    """Accept the common query/response and instruction/output mirrors."""
+    prompt = _first_nonempty(ex, ("query", "question", "instruction", "prompt"))
+    answer = _first_nonempty(ex, ("response", "answer", "output", "solution"))
+    if not prompt or not answer:
+        raise ValueError(
+            "Commonsense170K example must contain a prompt and response; "
+            f"got keys={sorted(ex)}"
+        )
+    return prompt, answer
 
 
 def _choices_to_map(choices) -> dict[str, str]:
@@ -149,6 +172,7 @@ def build_calib_formatter(
          - ise-uiuc/Magicoder-Evol-Instruct-110K
          - tatsu-lab/alpaca
          - tau/commonsense_qa
+         - commonsense170k (local mirrors with query/response or instruction/output)
 
     For other datasets, calib_text_fields must be provided.
     """
@@ -168,6 +192,12 @@ def build_calib_formatter(
         return _format_alpaca_example, None
     if ds in {"tau/commonsense_qa", "tau/commonsenseqa"}:
         return _format_csqa_example, None
+    if ds in {
+        "commonsense170k",
+        "commonsense_170k",
+        "zwhe99/commonsense_170k",
+    }:
+        return _format_commonsense170k_example, None
 
     raise ValueError(
         "calib_text_fields must be provided for non-default datasets. "
@@ -336,4 +366,56 @@ def make_calib_batch(
     input_ids = pad_sequence(input_ids_list, batch_first=True, padding_value=tokenizer.pad_token_id)
     labels = pad_sequence(labels_list, batch_first=True, padding_value=-100)
     attn_mask = (input_ids != tokenizer.pad_token_id).to(torch.long)
+    return input_ids, attn_mask, labels
+
+
+def make_chat_calib_batch(
+    tokenizer,
+    examples: Iterable[dict],
+    formatter: Callable[[dict], Tuple[str, str]],
+    *,
+    chat_template_mode: str = "auto",
+    max_seq_len: int | None = 2048,
+):
+    """Build a response-only calibration batch with the model chat template.
+
+    This mirrors chat SFT preprocessing, including Qwen thinking/non-thinking
+    template kwargs, so calibration sensitivity is measured under the same
+    representation used during training and evaluation.
+    """
+    features = []
+    for raw_example in examples:
+        prompt, answer = formatter(raw_example)
+        feature = preprocess_chat_example(
+            tokenizer=tokenizer,
+            example=make_single_turn_example(
+                user_content=str(prompt or ""),
+                assistant_content=str(answer or ""),
+            ),
+            max_seq_len=max_seq_len,
+            chat_template_mode=chat_template_mode,
+        )
+        if feature["supervised_token_count"] > 0:
+            features.append(feature)
+
+    if not features:
+        raise ValueError(
+            "Calibration batch has no supervised assistant tokens after chat-template rendering/truncation"
+        )
+
+    input_ids = pad_sequence(
+        [torch.tensor(feature["input_ids"], dtype=torch.long) for feature in features],
+        batch_first=True,
+        padding_value=tokenizer.pad_token_id,
+    )
+    labels = pad_sequence(
+        [torch.tensor(feature["labels"], dtype=torch.long) for feature in features],
+        batch_first=True,
+        padding_value=-100,
+    )
+    attn_mask = pad_sequence(
+        [torch.tensor(feature["attention_mask"], dtype=torch.long) for feature in features],
+        batch_first=True,
+        padding_value=0,
+    )
     return input_ids, attn_mask, labels

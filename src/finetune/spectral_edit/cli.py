@@ -13,7 +13,13 @@ from typing import Dict, List, Optional
 
 import torch
 
-from .calib import build_calib_formatter, load_calibration_split, make_calib_batch, sample_calibration_examples
+from .calib import (
+    build_calib_formatter,
+    load_calibration_split,
+    make_calib_batch,
+    make_chat_calib_batch,
+    sample_calibration_examples,
+)
 from .edit_strategies import EditConfig, apply_spectral_edit
 from .hooks import HOOK_CTX, ModuleSpec, register_sigma_hooks, remove_hooks
 from .io import (
@@ -25,6 +31,7 @@ from .io import (
     parse_lora_ab_key,
     save_lora_state_dict,
 )
+from .module_selection import score_module_gradient_batches, select_important_modules
 from .posthoc_hns import (
     FAST_HNS_COEFFICIENTS,
     STABLE_HNS_COEFFICIENTS,
@@ -373,6 +380,7 @@ def run_hns(args) -> None:
         fast_coefficients=tuple(float(x) for x in args.fast_coefficients),
         stable_coefficients=tuple(float(x) for x in args.stable_coefficients),
         preserve_nuclear_norm=not args.no_preserve_nuclear_norm,
+        hns_strength=args.hns_strength,
         output_rank=args.output_rank,
         eps=args.eps,
     )
@@ -427,6 +435,7 @@ def run_hns(args) -> None:
         "fast_coefficients": [float(x) for x in args.fast_coefficients],
         "stable_coefficients": [float(x) for x in args.stable_coefficients],
         "preserve_nuclear_norm": not args.no_preserve_nuclear_norm,
+        "hns_strength": args.hns_strength,
         "eps": args.eps,
     }
 
@@ -439,6 +448,330 @@ def run_hns(args) -> None:
         f"{summary['mean_effective_rank_after']:.4f}"
     )
     print(f"[Save] Edited adapter saved to: {args.out_dir}")
+
+
+def _auto_importance_module_budget(module_prefixes: List[str]) -> int:
+    """Match the number of modules in the common down_proj+o_proj baseline."""
+    layers = {
+        layer_idx
+        for prefix in module_prefixes
+        if (layer_idx := layer_idx_from_module_prefix(prefix)) is not None
+    }
+    if layers:
+        return min(len(module_prefixes), 2 * len(layers))
+    return max(1, math.ceil(2 * len(module_prefixes) / 7))
+
+
+def run_sensitivity_hns(args) -> None:
+    """Select task-important, HNS-compatible LoRA modules using calibration CE."""
+    set_seed(args.seed)
+
+    from peft import PeftModel
+    from transformers import AutoModelForCausalLM, AutoTokenizer
+
+    from finetune.data.chat_sft import ensure_chat_template
+
+    if not torch.cuda.is_available():
+        raise RuntimeError("sensitivity-hns requires a CUDA GPU for calibration gradients.")
+    device = "cuda"
+
+    lora_dir = ensure_local_lora_dir(args.lora_path, cache_dir=args.cache_dir)
+    adapter_cfg = load_adapter_config(lora_dir)
+    sd, fmt = load_lora_state_dict(lora_dir)
+    pairs, selected_prefixes, resolved_targets = _collect_lora_pairs(
+        sd=sd,
+        target_modules=args.target_modules,
+        layer_min=args.layer_min,
+        layer_max=args.layer_max,
+    )
+
+    module_budget = args.module_budget
+    if module_budget is None:
+        module_budget = _auto_importance_module_budget(selected_prefixes)
+    if module_budget < 1:
+        raise ValueError("--module_budget must be >= 1")
+
+    print(
+        f"[Sensitivity-HNS] candidates={len(selected_prefixes)} "
+        f"importance_budget={min(module_budget, len(selected_prefixes))}"
+    )
+
+    tokenizer = AutoTokenizer.from_pretrained(args.base_model, use_fast=True, cache_dir=args.cache_dir)
+    tokenizer.padding_side = "right"
+    if tokenizer.pad_token is None:
+        tokenizer.pad_token = tokenizer.eos_token
+    if args.sft_format == "chat":
+        ensure_chat_template(tokenizer, args.base_model)
+
+    dtype_by_name = {
+        "bf16": torch.bfloat16,
+        "fp16": torch.float16,
+        "fp32": torch.float32,
+    }
+    base = AutoModelForCausalLM.from_pretrained(
+        args.base_model,
+        torch_dtype=dtype_by_name[args.dtype],
+        low_cpu_mem_usage=True,
+        device_map=None,
+        cache_dir=args.cache_dir,
+    ).to(device)
+    model = PeftModel.from_pretrained(base, lora_dir, is_trainable=True).to(device)
+    model.eval()
+    model.config.use_cache = False
+    for parameter_name, parameter in model.named_parameters():
+        parameter.requires_grad_("lora_" in parameter_name)
+
+    name_to_module = dict(model.named_modules())
+    specs: Dict[str, ModuleSpec] = {}
+    hns_sigmas: Dict[str, torch.Tensor] = {}
+    hns_stats: Dict[str, dict] = {}
+    hns_config = HNSEditConfig(
+        fast_steps=args.fast_steps,
+        stable_steps=args.stable_steps,
+        fast_coefficients=tuple(float(x) for x in args.fast_coefficients),
+        stable_coefficients=tuple(float(x) for x in args.stable_coefficients),
+        preserve_nuclear_norm=not args.no_preserve_nuclear_norm,
+        hns_strength=1.0,
+        output_rank=None,
+        eps=args.eps,
+    )
+
+    for prefix in selected_prefixes:
+        _, A_cpu, adapter_a = pairs[prefix]["A"]
+        _, B_cpu, adapter_b = pairs[prefix]["B"]
+        adapter_name = adapter_a if adapter_a is not None else adapter_b
+
+        module_name = prefix
+        if module_name not in name_to_module:
+            candidates = [name for name in name_to_module if name.endswith(prefix)]
+            if not candidates:
+                raise RuntimeError(f"Cannot find module {prefix!r} in model")
+            module_name = candidates[0]
+
+        U, sigma, Vh, V = lowrank_svd_from_ba(B_cpu.to(device), A_cpu.to(device))
+        _, _, sigma_hns, stats = apply_hns_to_svd(U, Vh, sigma, config=hns_config)
+        specs[prefix] = ModuleSpec(
+            module_prefix=prefix,
+            module=name_to_module[module_name],
+            U=U.detach(),
+            V=V.detach(),
+            Vh=Vh.detach(),
+            sigma0=sigma.detach().cpu(),
+            scaling=get_scaling_for_module(adapter_cfg, prefix),
+            adapter=adapter_name,
+        )
+        hns_sigmas[prefix] = sigma_hns.detach().cpu()
+        hns_stats[prefix] = stats
+
+    calib_config = args.calib_config
+    if calib_config is None and args.calib_dataset == "gsm8k":
+        calib_config = "main"
+    formatter, normalized_fields = build_calib_formatter(args.calib_dataset, args.calib_text_fields)
+    dataset = load_calibration_split(
+        args.calib_dataset,
+        calib_config,
+        args.calib_split,
+        cache_dir=args.cache_dir,
+        dataset_path=args.calib_dataset_path,
+    )
+    calib_seed = args.calib_seed if args.calib_seed is not None else args.seed
+    examples = sample_calibration_examples(
+        dataset,
+        args.calib_samples,
+        args.calib_shuffle,
+        calib_seed,
+        args.calib_start,
+    )
+    if not examples:
+        raise RuntimeError("Calibration selection produced zero examples")
+
+    gradient_batches: Dict[str, list[torch.Tensor]] = {prefix: [] for prefix in selected_prefixes}
+    handles = register_sigma_hooks(specs)
+    total_loss = 0.0
+    supervised_tokens = 0
+    batch_count = 0
+    HOOK_CTX.reset()
+    try:
+        batch_size = max(1, args.calib_batch_size)
+        total_batches = math.ceil(len(examples) / batch_size)
+        for start in range(0, len(examples), batch_size):
+            raw_batch = examples[start : start + batch_size]
+            if args.sft_format == "chat":
+                input_ids, attention_mask, labels = make_chat_calib_batch(
+                    tokenizer,
+                    raw_batch,
+                    formatter,
+                    chat_template_mode=args.chat_template_mode,
+                    max_seq_len=args.max_seq_len,
+                )
+            else:
+                input_ids, attention_mask, labels = make_calib_batch(
+                    tokenizer,
+                    raw_batch,
+                    formatter,
+                    add_eos=True,
+                )
+                if input_ids.shape[1] > args.max_seq_len:
+                    input_ids = input_ids[:, : args.max_seq_len]
+                    attention_mask = attention_mask[:, : args.max_seq_len]
+                    labels = labels[:, : args.max_seq_len]
+
+            input_ids = input_ids.to(device)
+            attention_mask = attention_mask.to(device)
+            labels = labels.to(device)
+            HOOK_CTX.attn_mask = attention_mask
+            HOOK_CTX.gsum = {}
+
+            model.zero_grad(set_to_none=True)
+            output = model(input_ids=input_ids, attention_mask=attention_mask, labels=labels)
+            output.loss.backward()
+
+            missing = [prefix for prefix in selected_prefixes if prefix not in HOOK_CTX.gsum]
+            if missing:
+                raise RuntimeError(
+                    f"No singular-value gradient captured for {len(missing)} modules; first={missing[0]}"
+                )
+            for prefix in selected_prefixes:
+                gradient_batches[prefix].append(HOOK_CTX.gsum[prefix].clone())
+
+            total_loss += float(output.loss.item())
+            supervised_tokens += int((labels != -100).sum().item())
+            batch_count += 1
+            model.zero_grad(set_to_none=True)
+            if batch_count % 5 == 0 or batch_count == total_batches:
+                print(
+                    f"[Calibration] batch {batch_count}/{total_batches} "
+                    f"loss={output.loss.item():.4f}"
+                )
+    finally:
+        remove_hooks(handles)
+        HOOK_CTX.attn_mask = None
+
+    raw_scores = {
+        prefix: score_module_gradient_batches(
+            specs[prefix].sigma0,
+            hns_sigmas[prefix],
+            torch.stack(gradient_batches[prefix], dim=0),
+        )
+        for prefix in selected_prefixes
+    }
+    require_compatibility = args.selection_rule == "importance_compatible"
+    chosen, annotated_scores = select_important_modules(
+        raw_scores,
+        module_budget=module_budget,
+        require_positive_compatibility=require_compatibility,
+        min_compatibility=args.min_compatibility,
+    )
+    _copy_lora_tree(lora_dir, args.out_dir)
+    module_stats: Dict[str, dict] = {}
+    for prefix in chosen:
+        key_a, A_old, _ = pairs[prefix]["A"]
+        key_b, B_old, _ = pairs[prefix]["B"]
+        spec = specs[prefix]
+        sigma_new = hns_sigmas[prefix].to(device)
+        B_new, A_new = rebuild_ba_from_uv_sigma(spec.U, spec.Vh, sigma_new)
+        sd[key_a] = A_new.to(dtype=A_old.dtype).detach().cpu()
+        sd[key_b] = B_new.to(dtype=B_old.dtype).detach().cpu()
+
+        stats = dict(hns_stats[prefix])
+        stats.update(
+            {
+                "module_suffix": prefix.split(".")[-1],
+                "layer_index": layer_idx_from_module_prefix(prefix),
+                "importance": annotated_scores[prefix].importance,
+                "compatibility": annotated_scores[prefix].compatibility,
+                "hns_risk": annotated_scores[prefix].hns_risk,
+            }
+        )
+        module_stats[prefix] = stats
+
+    save_lora_state_dict(args.out_dir, sd, fmt)
+    ranked_modules = sorted(
+        selected_prefixes,
+        key=lambda prefix: (-annotated_scores[prefix].importance, prefix),
+    )
+    selection_stats = {
+        prefix: annotated_scores[prefix].to_dict() for prefix in ranked_modules
+    }
+    suffix_counts: Dict[str, int] = {}
+    for prefix in chosen:
+        suffix = prefix.split(".")[-1]
+        suffix_counts[suffix] = suffix_counts.get(suffix, 0) + 1
+
+    meta = {
+        "method": "calibration_sensitivity_hns",
+        "base_model": args.base_model,
+        "lora_path": args.lora_path,
+        "target_modules_requested": args.target_modules,
+        "target_modules": resolved_targets,
+        "layer_min": args.layer_min,
+        "layer_max": args.layer_max,
+        "selection_rule": args.selection_rule,
+        "module_budget": module_budget,
+        "min_compatibility": args.min_compatibility,
+        "calib_dataset": args.calib_dataset,
+        "calib_dataset_path": args.calib_dataset_path,
+        "calib_config": calib_config,
+        "calib_split": args.calib_split,
+        "calib_text_fields": normalized_fields,
+        "calib_samples": args.calib_samples,
+        "calib_samples_used": len(examples),
+        "calib_batch_size": args.calib_batch_size,
+        "calib_shuffle": args.calib_shuffle,
+        "calib_seed": calib_seed,
+        "calib_start": args.calib_start,
+        "sft_format": args.sft_format,
+        "chat_template_mode": args.chat_template_mode,
+        "max_seq_len": args.max_seq_len,
+        "dtype": args.dtype,
+        "fast_steps": args.fast_steps,
+        "stable_steps": args.stable_steps,
+        "fast_coefficients": [float(x) for x in args.fast_coefficients],
+        "stable_coefficients": [float(x) for x in args.stable_coefficients],
+        "preserve_nuclear_norm": not args.no_preserve_nuclear_norm,
+        "hns_strength": 1.0,
+        "seed": args.seed,
+    }
+    summary = {
+        "num_candidates": len(selected_prefixes),
+        "num_importance_shortlisted": min(module_budget, len(selected_prefixes)),
+        "num_selected": len(chosen),
+        "num_compatibility_rejected": sum(
+            score.rejection_reason == "non_positive_hns_compatibility"
+            for score in annotated_scores.values()
+        ),
+        "selected_suffix_counts": suffix_counts,
+        "average_calibration_loss": total_loss / max(1, batch_count),
+        "supervised_tokens": supervised_tokens,
+        "selected_modules": chosen,
+    }
+    with open(os.path.join(args.out_dir, "spectral_edit_meta.json"), "w", encoding="utf-8") as handle:
+        json.dump(
+            {
+                "meta": meta,
+                "summary": summary,
+                "module_selection": selection_stats,
+                "module_stats": module_stats,
+            },
+            handle,
+            indent=2,
+        )
+
+    print(
+        f"[Sensitivity-HNS] selected {len(chosen)}/{len(selected_prefixes)} modules "
+        f"after importance+compatibility filtering"
+    )
+    print(f"[Sensitivity-HNS] selected suffixes: {suffix_counts}")
+    print(f"[Save] Edited adapter saved to: {args.out_dir}")
+
+    try:
+        model.to("cpu")
+        base.to("cpu")
+    except Exception:
+        pass
+    del model, base
+    gc.collect()
+    torch.cuda.empty_cache()
 
 
 def build_arg_parser() -> argparse.ArgumentParser:
@@ -673,12 +1006,100 @@ def build_arg_parser() -> argparse.ArgumentParser:
         help="Disable nuclear-norm restoration after HNS.",
     )
     hns_parser.add_argument(
+        "--hns_strength",
+        type=float,
+        default=1.0,
+        help="Interpolate from the original spectrum (0) to the full HNS edit (1).",
+    )
+    hns_parser.add_argument(
         "--eps",
         type=float,
         default=1e-7,
         help="Numerical epsilon used for normalization and norm restoration.",
     )
     hns_parser.add_argument("--cache_dir", type=str, default=None, help="Cache directory for HF downloads")
+
+    sensitivity_hns_parser = subparsers.add_parser(
+        "sensitivity-hns",
+        help="Use calibration task importance and HNS compatibility to select modules for full HNS editing",
+    )
+    sensitivity_hns_parser.add_argument("--base_model", type=str, required=True)
+    sensitivity_hns_parser.add_argument("--lora_path", type=str, required=True)
+    sensitivity_hns_parser.add_argument("--out_dir", type=str, required=True)
+    sensitivity_hns_parser.add_argument(
+        "--target_modules",
+        type=str,
+        nargs="+",
+        default=["all_modules"],
+        help="Candidate LoRA module suffixes. Defaults to every module present in the adapter.",
+    )
+    sensitivity_hns_parser.add_argument("--layer_min", type=int, default=0)
+    sensitivity_hns_parser.add_argument("--layer_max", type=int, default=10**9)
+    sensitivity_hns_parser.add_argument(
+        "--module_budget",
+        type=int,
+        default=None,
+        help="High-importance shortlist size. Default: 2 x number of transformer layers (down+o matched).",
+    )
+    sensitivity_hns_parser.add_argument(
+        "--selection_rule",
+        choices=("importance", "importance_compatible"),
+        default="importance_compatible",
+        help="Select by task importance alone or additionally require positive predicted HNS benefit.",
+    )
+    sensitivity_hns_parser.add_argument(
+        "--min_compatibility",
+        type=float,
+        default=0.0,
+        help="Minimum -<grad, HNS_delta> for shortlisted modules.",
+    )
+
+    sensitivity_hns_parser.add_argument("--calib_dataset", type=str, default="gsm8k")
+    sensitivity_hns_parser.add_argument("--calib_dataset_path", type=str, default=None)
+    sensitivity_hns_parser.add_argument("--calib_config", type=str, default=None)
+    sensitivity_hns_parser.add_argument("--calib_split", type=str, default="train")
+    sensitivity_hns_parser.add_argument("--calib_text_fields", type=str, nargs="*", default=None)
+    sensitivity_hns_parser.add_argument("--calib_samples", type=int, default=256)
+    sensitivity_hns_parser.add_argument("--calib_batch_size", type=int, default=2)
+    sensitivity_hns_parser.add_argument("--calib_shuffle", action="store_true")
+    sensitivity_hns_parser.add_argument("--calib_seed", type=int, default=None)
+    sensitivity_hns_parser.add_argument("--calib_start", type=int, default=0)
+    sensitivity_hns_parser.add_argument(
+        "--sft_format",
+        choices=("chat", "plain"),
+        default="chat",
+        help="Calibration rendering; chat is recommended to match chat SFT/evaluation.",
+    )
+    sensitivity_hns_parser.add_argument(
+        "--chat_template_mode",
+        choices=("auto", "thinking", "non_thinking"),
+        default="auto",
+    )
+    sensitivity_hns_parser.add_argument("--max_seq_len", type=int, default=2048)
+    sensitivity_hns_parser.add_argument(
+        "--dtype",
+        choices=("bf16", "fp16", "fp32"),
+        default="bf16",
+    )
+
+    sensitivity_hns_parser.add_argument("--fast_steps", type=int, default=8)
+    sensitivity_hns_parser.add_argument("--stable_steps", type=int, default=2)
+    sensitivity_hns_parser.add_argument(
+        "--fast_coefficients",
+        type=float,
+        nargs=3,
+        default=list(FAST_HNS_COEFFICIENTS),
+    )
+    sensitivity_hns_parser.add_argument(
+        "--stable_coefficients",
+        type=float,
+        nargs=3,
+        default=list(STABLE_HNS_COEFFICIENTS),
+    )
+    sensitivity_hns_parser.add_argument("--no_preserve_nuclear_norm", action="store_true")
+    sensitivity_hns_parser.add_argument("--eps", type=float, default=1e-7)
+    sensitivity_hns_parser.add_argument("--cache_dir", type=str, default=None)
+    sensitivity_hns_parser.add_argument("--seed", type=int, default=42)
 
     return parser
 
@@ -691,6 +1112,8 @@ def main() -> None:
         run_edit(args)
     elif args.command == "hns":
         run_hns(args)
+    elif args.command == "sensitivity-hns":
+        run_sensitivity_hns(args)
     else:
         parser.print_help()
 
