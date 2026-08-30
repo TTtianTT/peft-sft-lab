@@ -38,6 +38,7 @@ from .posthoc_hns import (
     HNSEditConfig,
     apply_hns_to_svd,
 )
+from .runtime import saved_tensor_offload_context
 from .svd import lowrank_svd_from_ba, rebuild_ba_from_uv_sigma
 
 
@@ -623,8 +624,10 @@ def run_sensitivity_hns(args) -> None:
             HOOK_CTX.gsum = {}
 
             model.zero_grad(set_to_none=True)
-            output = model(input_ids=input_ids, attention_mask=attention_mask, labels=labels)
-            output.loss.backward()
+            with saved_tensor_offload_context(args.cpu_activation_offload):
+                output = model(input_ids=input_ids, attention_mask=attention_mask, labels=labels)
+                loss = output.loss
+                loss.backward()
 
             missing = [prefix for prefix in selected_prefixes if prefix not in HOOK_CTX.gsum]
             if missing:
@@ -634,14 +637,16 @@ def run_sensitivity_hns(args) -> None:
             for prefix in selected_prefixes:
                 gradient_batches[prefix].append(HOOK_CTX.gsum[prefix].clone())
 
-            total_loss += float(output.loss.item())
+            batch_loss = float(loss.item())
+            total_loss += batch_loss
             supervised_tokens += int((labels != -100).sum().item())
             batch_count += 1
             model.zero_grad(set_to_none=True)
+            del output, loss
             if batch_count % 5 == 0 or batch_count == total_batches:
                 print(
                     f"[Calibration] batch {batch_count}/{total_batches} "
-                    f"loss={output.loss.item():.4f}"
+                    f"loss={batch_loss:.4f}"
                 )
     finally:
         remove_hooks(handles)
@@ -724,6 +729,7 @@ def run_sensitivity_hns(args) -> None:
         "chat_template_mode": args.chat_template_mode,
         "max_seq_len": args.max_seq_len,
         "dtype": args.dtype,
+        "cpu_activation_offload": args.cpu_activation_offload,
         "fast_steps": args.fast_steps,
         "stable_steps": args.stable_steps,
         "fast_coefficients": [float(x) for x in args.fast_coefficients],
@@ -1080,6 +1086,14 @@ def build_arg_parser() -> argparse.ArgumentParser:
         "--dtype",
         choices=("bf16", "fp16", "fp32"),
         default="bf16",
+    )
+    sensitivity_hns_parser.add_argument(
+        "--cpu_activation_offload",
+        action="store_true",
+        help=(
+            "Move tensors saved for backward to CPU. This substantially lowers peak GPU "
+            "memory while preserving eval-mode calibration, at the cost of host transfers."
+        ),
     )
 
     sensitivity_hns_parser.add_argument("--fast_steps", type=int, default=8)

@@ -21,8 +21,8 @@ LLAMA_OUT_ROOT="${LLAMA_OUT_ROOT:-runs/edited/meta-llama-Llama-3.1-8B-Instruct/c
 
 CALIB_SAMPLES="${CALIB_SAMPLES:-256}"
 SELECTION_SAMPLES="${SELECTION_SAMPLES:-64}"
-CALIB_BATCH_SIZE="${CALIB_BATCH_SIZE:-2}"
-SELECTION_BATCH_SIZE="${SELECTION_BATCH_SIZE:-2}"
+CALIB_BATCH_SIZE="${CALIB_BATCH_SIZE:-1}"
+SELECTION_BATCH_SIZE="${SELECTION_BATCH_SIZE:-1}"
 MAX_SEQ_LEN="${MAX_SEQ_LEN:-2048}"
 EVAL_MAX_NEW_TOKENS="${EVAL_MAX_NEW_TOKENS:-512}"
 EVAL_REQUEST_BATCH_SIZE="${EVAL_REQUEST_BATCH_SIZE:-8}"
@@ -78,6 +78,7 @@ run_family() {
     --fast_steps 8 \
     --stable_steps 2 \
     --dtype bf16 \
+    --cpu_activation_offload \
     --seed "$SEED"
 
   echo "[$family] Stage 2/3: label-free HumanEval TT-HNS routing"
@@ -95,6 +96,7 @@ run_family() {
     --chat_template_mode "$chat_template_mode" \
     --max_seq_len "$MAX_SEQ_LEN" \
     --dtype bf16 \
+    --cpu_activation_offload \
     --seed "$SEED" \
     --overwrite
 

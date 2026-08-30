@@ -49,6 +49,7 @@ from finetune.spectral_edit.io import (  # noqa: E402
     save_lora_state_dict,
 )
 from finetune.spectral_edit.svd import lowrank_svd_from_ba  # noqa: E402
+from finetune.spectral_edit.runtime import saved_tensor_offload_context  # noqa: E402
 from finetune.utils import seed_everything  # noqa: E402
 
 
@@ -141,6 +142,7 @@ def _score_prompt_views(
     max_seq_len: int,
     js_weight: float,
     compute_gradients: bool,
+    cpu_activation_offload: bool,
 ) -> torch.Tensor:
     if not prompt_views:
         raise ValueError("test-time prompt selection produced zero examples")
@@ -172,17 +174,18 @@ def _score_prompt_views(
         encoded = {key: value.to(device) for key, value in encoded.items()}
         HOOK_CTX.attn_mask = encoded.get("attention_mask")
 
-        context = torch.enable_grad() if compute_gradients else torch.no_grad()
-        with context:
-            next_token_logits = model(**encoded).logits[:, -1, :].float()
-            probabilities = next_token_logits.softmax(dim=-1).reshape(
-                stop - start,
-                num_views,
-                next_token_logits.shape[-1],
-            )
-            if compute_gradients:
-                weight = (stop - start) / total_examples
-                (_code_tt_objective(probabilities, js_weight=js_weight) * weight).backward()
+        grad_context = torch.enable_grad() if compute_gradients else torch.no_grad()
+        with grad_context:
+            with saved_tensor_offload_context(compute_gradients and cpu_activation_offload):
+                next_token_logits = model(**encoded).logits[:, -1, :].float()
+                probabilities = next_token_logits.softmax(dim=-1).reshape(
+                    stop - start,
+                    num_views,
+                    next_token_logits.shape[-1],
+                )
+                if compute_gradients:
+                    weight = (stop - start) / total_examples
+                    (_code_tt_objective(probabilities, js_weight=js_weight) * weight).backward()
         probability_batches.append(probabilities.detach().cpu())
 
     return torch.cat(probability_batches, dim=0)
@@ -235,6 +238,11 @@ def build_arg_parser() -> argparse.ArgumentParser:
     parser.add_argument("--system_prompt", default=None)
     parser.add_argument("--max_seq_len", type=int, default=2048)
     parser.add_argument("--dtype", choices=("bf16", "fp16", "fp32"), default="bf16")
+    parser.add_argument(
+        "--cpu_activation_offload",
+        action="store_true",
+        help="Offload autograd-saved tensors to CPU during test-time gradient scoring.",
+    )
     parser.add_argument("--cache_dir", default=None)
     parser.add_argument("--seed", type=int, default=42)
     parser.add_argument("--overwrite", action="store_true")
@@ -379,6 +387,7 @@ def main() -> None:
             max_seq_len=args.max_seq_len,
             js_weight=args.js_weight,
             compute_gradients=True,
+            cpu_activation_offload=args.cpu_activation_offload,
         )
         missing_gradients = [prefix for prefix in calibration_modules if prefix not in HOOK_CTX.gsum]
         if missing_gradients:
@@ -423,6 +432,7 @@ def main() -> None:
             max_seq_len=args.max_seq_len,
             js_weight=args.js_weight,
             compute_gradients=False,
+            cpu_activation_offload=False,
         )
         decision = select_candidate(
             {
@@ -453,6 +463,7 @@ def main() -> None:
                 list(args.chat_user_prompt_styles) if args.prompt_style == "chat" else []
             ),
             "chat_template_mode": args.chat_template_mode,
+            "cpu_activation_offload": args.cpu_activation_offload,
             "calibration_candidate_modules": calibration_modules,
             "test_time_module_utilities": utilities,
             "proposed_modules": selected,
