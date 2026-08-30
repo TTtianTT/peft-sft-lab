@@ -289,6 +289,32 @@ python scripts/eval_commonsense_tthns.py \
   --chat_template_mode auto
 ```
 
+### Code TT-HNS (Qwen + Llama)
+
+The code pipeline uses the same two-stage safety rule without reading HumanEval
+solutions or tests. Magicoder responses supervise calibration localization;
+HumanEval problem prompts then rank the fixed HNS directions using normalized
+next-token entropy and consistency between two equivalent prompt wrappers. The
+candidate is kept only when it improves the unlabeled objective inside a KL
+trust region; otherwise the output adapter is restored to the original LoRA.
+
+Set the real adapter directories from your runs, then launch either or both
+model families sequentially:
+
+```bash
+QWEN_LORA_PATH=/path/to/qwen3-code-lora \
+LLAMA_LORA_PATH=/path/to/llama31-code-lora \
+MODEL_FAMILIES="qwen llama" \
+bash scripts/run_code_tthns_qwen_llama.sh
+```
+
+Useful overrides include `QWEN_BASE_MODEL`, `LLAMA_BASE_MODEL`,
+`MAGICODER_PATH`, `HUMANEVAL_PATH`, `CALIB_SAMPLES`, `SELECTION_SAMPLES`, and
+the two `*_OUT_ROOT` variables. Qwen uses `chat_template_mode=non_thinking`;
+Llama uses `auto`. The launcher writes the calibration adapter, final TT-HNS
+adapter, LoRA/TT-HNS HumanEval results, and `test_time_hns_meta.json` under each
+output root.
+
 ## Output structure
 
 Each training run writes:
