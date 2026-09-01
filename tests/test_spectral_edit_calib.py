@@ -35,9 +35,12 @@ class _FakeChatTokenizer:
             return prefix
         return prefix + messages[-1]["content"]
 
-    def __call__(self, text, *, add_special_tokens=False):
+    def __call__(self, text, *, add_special_tokens=False, return_offsets_mapping=False):
         del add_special_tokens
-        return _Encoding(input_ids=[ord(char) + 1 for char in text])
+        encoded = _Encoding(input_ids=[ord(char) + 1 for char in text])
+        if return_offsets_mapping:
+            encoded["offset_mapping"] = [(index, index + 1) for index in range(len(text))]
+        return encoded
 
 
 class SpectralEditCalibrationTests(unittest.TestCase):

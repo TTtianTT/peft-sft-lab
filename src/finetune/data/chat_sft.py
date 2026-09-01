@@ -31,21 +31,37 @@ def chat_template_kwargs(mode: str) -> dict[str, bool]:
     return {"enable_thinking": normalized == "thinking"}
 
 
-def _tokenize_rendered_text(tokenizer: Any, text: str) -> list[int]:
-    encoded = tokenizer(text, add_special_tokens=False)
+def _tokenize_rendered_text_with_offsets(
+    tokenizer: Any,
+    text: str,
+) -> tuple[list[int], list[tuple[int, int]]]:
+    try:
+        encoded = tokenizer(
+            text,
+            add_special_tokens=False,
+            return_offsets_mapping=True,
+        )
+    except (NotImplementedError, TypeError) as exc:
+        raise RuntimeError(
+            "Chat SFT preprocessing requires a fast tokenizer with offset mapping support."
+        ) from exc
+
     input_ids = encoded.get("input_ids")
     if input_ids is None:
         raise RuntimeError("Tokenizer output is missing input_ids.")
-    return list(input_ids)
+    offsets = encoded.get("offset_mapping")
+    if offsets is None:
+        raise RuntimeError(
+            "Tokenizer output is missing offset_mapping; use a fast tokenizer for chat SFT."
+        )
 
-
-def _common_prefix_length(left: list[int], right: list[int]) -> int:
-    matched = 0
-    for lhs, rhs in zip(left, right):
-        if lhs != rhs:
-            break
-        matched += 1
-    return matched
+    normalized_ids = list(input_ids)
+    normalized_offsets = [(int(start), int(end)) for start, end in offsets]
+    if len(normalized_ids) != len(normalized_offsets):
+        raise RuntimeError(
+            "Tokenizer returned different lengths for input_ids and offset_mapping."
+        )
+    return normalized_ids, normalized_offsets
 
 
 def preprocess_chat_example(
@@ -76,18 +92,26 @@ def preprocess_chat_example(
         **template_kwargs,
     )
 
-    prompt_ids = _tokenize_rendered_text(tokenizer, prompt_text)
-    full_ids = _tokenize_rendered_text(tokenizer, full_text)
-    prompt_len = len(prompt_ids)
-    prefix_len = _common_prefix_length(prompt_ids, full_ids)
-    if prefix_len != prompt_len:
+    if not full_text.startswith(prompt_text):
         raise ValueError(
-            "Chat template is not prefix-preserving for prompt/completion rendering. "
-            f"Matched {prefix_len} of {prompt_len} prompt tokens."
+            "Chat template is not text-prefix-preserving for prompt/completion rendering. "
+            "The rendered generation prompt must be an exact character prefix of the "
+            "rendered conversation."
         )
 
+    full_ids, offsets = _tokenize_rendered_text_with_offsets(tokenizer, full_text)
+    prompt_char_len = len(prompt_text)
+    labels = [
+        token_id if start >= prompt_char_len and end > start else IGNORE_INDEX
+        for token_id, (start, end) in zip(full_ids, offsets)
+    ]
+    prompt_len = next(
+        (index for index, label in enumerate(labels) if label != IGNORE_INDEX),
+        len(labels),
+    )
+
     input_ids = full_ids if max_seq_len is None else full_ids[:max_seq_len]
-    labels = ([-100] * prompt_len + full_ids[prompt_len:])[: len(input_ids)]
+    labels = labels[: len(input_ids)]
     attention_mask = [1] * len(input_ids)
     supervised_token_count = sum(1 for value in labels if value != IGNORE_INDEX)
 

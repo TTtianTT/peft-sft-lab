@@ -78,11 +78,43 @@ class DummyChatTokenizer:
                 parts.append("<think>\n\n</think>\n\n")
         return "".join(parts)
 
-    def __call__(self, text, add_special_tokens=False):
-        return {"input_ids": [ord(char) for char in text]}
+    def __call__(self, text, add_special_tokens=False, return_offsets_mapping=False):
+        result = {"input_ids": [ord(char) for char in text]}
+        if return_offsets_mapping:
+            result["offset_mapping"] = [(index, index + 1) for index in range(len(text))]
+        return result
 
     def decode(self, ids, skip_special_tokens=False):
         return "".join(chr(token_id) for token_id in ids)
+
+
+class BoundaryMergingChatTokenizer(DummyChatTokenizer):
+    merged_newlines_token_id = 999_999
+
+    def __call__(self, text, add_special_tokens=False, return_offsets_mapping=False):
+        input_ids = []
+        offsets = []
+        index = 0
+        while index < len(text):
+            if text.startswith("\n\n", index):
+                input_ids.append(self.merged_newlines_token_id)
+                offsets.append((index, index + 2))
+                index += 2
+            else:
+                input_ids.append(ord(text[index]))
+                offsets.append((index, index + 1))
+                index += 1
+
+        result = {"input_ids": input_ids}
+        if return_offsets_mapping:
+            result["offset_mapping"] = offsets
+        return result
+
+    def decode(self, ids, skip_special_tokens=False):
+        return "".join(
+            "\n\n" if token_id == self.merged_newlines_token_id else chr(token_id)
+            for token_id in ids
+        )
 
 
 class MissingTemplateTokenizer:
@@ -313,6 +345,25 @@ class ChatPreprocessingTests(unittest.TestCase):
         debug_text = format_sft_debug_sample(tokenizer, sample)
         self.assertIn("===== SFT SAMPLE =====", debug_text)
         self.assertIn("Supervised labels:", debug_text)
+
+    def test_response_boundary_token_merge_is_masked_safely(self):
+        tokenizer = BoundaryMergingChatTokenizer()
+        example = make_single_turn_example(
+            user_content="Write a function.",
+            assistant_content="\n    def solve():\n        pass",
+        )
+
+        sample = preprocess_chat_example(tokenizer=tokenizer, example=example, max_seq_len=4096)
+
+        merged_index = sample["input_ids"].index(tokenizer.merged_newlines_token_id)
+        self.assertEqual(sample["labels"][merged_index], -100)
+        self.assertLess(merged_index, sample["prompt_length"])
+
+        full_input = tokenizer.decode(sample["input_ids"], skip_special_tokens=False)
+        supervised_text = decode_supervised_labels(tokenizer, sample["labels"])
+        self.assertIn("<|assistant|>\n\n    def solve():", full_input)
+        self.assertNotIn("<|assistant|>", supervised_text)
+        self.assertIn("    def solve():", supervised_text)
 
     def test_truncation_can_drop_all_supervised_tokens(self):
         tokenizer = DummyChatTokenizer()
