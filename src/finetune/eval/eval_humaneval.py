@@ -6,10 +6,12 @@ from __future__ import annotations
 import argparse
 import gzip
 import inspect
+import importlib.util
 import json
 import os
 import shutil
 import subprocess
+import sys
 from collections import defaultdict
 from datetime import datetime
 from glob import glob
@@ -267,6 +269,14 @@ def infer_max_lora_rank(adapter_cfg: Dict[str, Any]) -> int:
 # HumanEval evaluation
 # ---------------------------
 
+def format_humaneval_cli_k(k: List[int]) -> str:
+    """Keep Fire from coercing ``--k`` to an int or tuple before entry_point."""
+    if not k:
+        raise ValueError("HumanEval k must contain at least one value.")
+    values = ",".join(str(int(value)) for value in k)
+    return f'"{values}"'
+
+
 def run_humaneval_evaluate_functional_correctness(
     samples_path: str,
     problem_file: str,
@@ -278,42 +288,54 @@ def run_humaneval_evaluate_functional_correctness(
     """
     Run HumanEval evaluation. Prefer Python API; fallback to CLI.
     """
-    try:
-        from human_eval.evaluation import evaluate_functional_correctness
+    force_subprocess = os.getenv("HUMANEVAL_FORCE_SUBPROCESS", "").strip().lower() in {
+        "1", "true", "yes", "on"
+    }
+    if not force_subprocess:
+        try:
+            from human_eval.evaluation import evaluate_functional_correctness
 
-        sig = inspect.signature(evaluate_functional_correctness)
-        kwargs: Dict[str, Any] = {}
-        if "k" in sig.parameters:
-            kwargs["k"] = k
-        if "n_workers" in sig.parameters:
-            kwargs["n_workers"] = int(n_workers)
-        if "timeout" in sig.parameters:
-            kwargs["timeout"] = float(timeout)
-        if "problem_file" in sig.parameters:
-            kwargs["problem_file"] = problem_file
-        if "ignore_incomplete" in sig.parameters:
-            kwargs["ignore_incomplete"] = bool(ignore_incomplete)
+            sig = inspect.signature(evaluate_functional_correctness)
+            kwargs: Dict[str, Any] = {}
+            if "k" in sig.parameters:
+                kwargs["k"] = k
+            if "n_workers" in sig.parameters:
+                kwargs["n_workers"] = int(n_workers)
+            if "timeout" in sig.parameters:
+                kwargs["timeout"] = float(timeout)
+            if "problem_file" in sig.parameters:
+                kwargs["problem_file"] = problem_file
+            if "ignore_incomplete" in sig.parameters:
+                kwargs["ignore_incomplete"] = bool(ignore_incomplete)
 
-        res = evaluate_functional_correctness(samples_path, **kwargs)
+            res = evaluate_functional_correctness(samples_path, **kwargs)
 
-        return res, _guess_humaneval_results_path(samples_path)
+            return res, _guess_humaneval_results_path(samples_path)
 
-    except Exception as e:
-        print(f"[Eval][Warn] Python API failed ({type(e).__name__}: {e}). Fallback to CLI...")
+        except Exception as e:
+            print(f"[Eval][Warn] Python API failed ({type(e).__name__}: {e}). Fallback to CLI...")
+    else:
+        print("[Eval] HUMANEVAL_FORCE_SUBPROCESS enabled; using isolated CLI module.")
 
     exe = shutil.which("evaluate_functional_correctness")
-    if exe is None:
+    if exe is not None:
+        command_prefix = [exe]
+    elif importlib.util.find_spec("human_eval.evaluate_functional_correctness") is not None:
+        # Some HumanEval wheels include the Fire module but omit the console-script
+        # entry point. Running it in a clean subprocess also avoids Python 3.12's
+        # unsafe-fork guard after libraries such as filelock have been imported.
+        command_prefix = [sys.executable, "-m", "human_eval.evaluate_functional_correctness"]
+    else:
         raise RuntimeError(
-            "Cannot find `evaluate_functional_correctness` on PATH.\n"
+            "Cannot find the HumanEval CLI or Python module.\n"
             "Install HumanEval:\n"
             "  git clone https://github.com/openai/human-eval\n"
             "  pip install -e human-eval\n"
         )
 
-    cmd = [
-        exe,
+    cmd = command_prefix + [
         samples_path,
-        f"--k={','.join(map(str, k))}",
+        f"--k={format_humaneval_cli_k(k)}",
         f"--n_workers={int(n_workers)}",
         f"--timeout={float(timeout)}",
         f"--problem_file={problem_file}",

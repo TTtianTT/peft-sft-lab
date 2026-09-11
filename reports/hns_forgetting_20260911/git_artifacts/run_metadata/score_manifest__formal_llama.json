@@ -1,0 +1,5417 @@
+{
+  "status": "complete",
+  "records": [
+    {
+      "task": "magicoder",
+      "variant": "base",
+      "samples": 164,
+      "primary_metric": "pass_at_1",
+      "pass_at_1": 0.524390243902439,
+      "correct": 86,
+      "results_path": "/dataset1/zailong/runs/peft-sft-lab/hns-forgetting-2x4-20260911/formal/Llama-3.1-8B-Instruct/magicoder/base/samples.jsonl_results.jsonl"
+    },
+    {
+      "task": "magicoder",
+      "variant": "commonsense__common_hns",
+      "samples": 164,
+      "primary_metric": "pass_at_1",
+      "pass_at_1": 0.45121951219512196,
+      "correct": 74,
+      "results_path": "/dataset1/zailong/runs/peft-sft-lab/hns-forgetting-2x4-20260911/formal/Llama-3.1-8B-Instruct/magicoder/commonsense__common_hns/samples.jsonl_results.jsonl"
+    },
+    {
+      "task": "magicoder",
+      "variant": "commonsense__common_lora",
+      "samples": 164,
+      "primary_metric": "pass_at_1",
+      "pass_at_1": 0.22560975609756098,
+      "correct": 37,
+      "results_path": "/dataset1/zailong/runs/peft-sft-lab/hns-forgetting-2x4-20260911/formal/Llama-3.1-8B-Instruct/magicoder/commonsense__common_lora/samples.jsonl_results.jsonl"
+    },
+    {
+      "task": "magicoder",
+      "variant": "commonsense__common_per_module",
+      "samples": 164,
+      "primary_metric": "pass_at_1",
+      "pass_at_1": 0.43902439024390244,
+      "correct": 72,
+      "results_path": "/dataset1/zailong/runs/peft-sft-lab/hns-forgetting-2x4-20260911/formal/Llama-3.1-8B-Instruct/magicoder/commonsense__common_per_module/samples.jsonl_results.jsonl"
+    },
+    {
+      "task": "magicoder",
+      "variant": "commonsense__global_0p25",
+      "samples": 164,
+      "primary_metric": "pass_at_1",
+      "pass_at_1": 0.5121951219512195,
+      "correct": 84,
+      "results_path": "/dataset1/zailong/runs/peft-sft-lab/hns-forgetting-2x4-20260911/formal/Llama-3.1-8B-Instruct/magicoder/commonsense__global_0p25/samples.jsonl_results.jsonl"
+    },
+    {
+      "task": "magicoder",
+      "variant": "commonsense__global_0p40",
+      "samples": 164,
+      "primary_metric": "pass_at_1",
+      "pass_at_1": 0.4878048780487805,
+      "correct": 80,
+      "results_path": "/dataset1/zailong/runs/peft-sft-lab/hns-forgetting-2x4-20260911/formal/Llama-3.1-8B-Instruct/magicoder/commonsense__global_0p40/samples.jsonl_results.jsonl"
+    },
+    {
+      "task": "magicoder",
+      "variant": "commonsense__global_0p55",
+      "samples": 164,
+      "primary_metric": "pass_at_1",
+      "pass_at_1": 0.47560975609756095,
+      "correct": 78,
+      "results_path": "/dataset1/zailong/runs/peft-sft-lab/hns-forgetting-2x4-20260911/formal/Llama-3.1-8B-Instruct/magicoder/commonsense__global_0p55/samples.jsonl_results.jsonl"
+    },
+    {
+      "task": "magicoder",
+      "variant": "commonsense__global_0p70",
+      "samples": 164,
+      "primary_metric": "pass_at_1",
+      "pass_at_1": 0.40853658536585363,
+      "correct": 67,
+      "results_path": "/dataset1/zailong/runs/peft-sft-lab/hns-forgetting-2x4-20260911/formal/Llama-3.1-8B-Instruct/magicoder/commonsense__global_0p70/samples.jsonl_results.jsonl"
+    },
+    {
+      "task": "magicoder",
+      "variant": "commonsense__global_0p85",
+      "samples": 164,
+      "primary_metric": "pass_at_1",
+      "pass_at_1": 0.32926829268292684,
+      "correct": 54,
+      "results_path": "/dataset1/zailong/runs/peft-sft-lab/hns-forgetting-2x4-20260911/formal/Llama-3.1-8B-Instruct/magicoder/commonsense__global_0p85/samples.jsonl_results.jsonl"
+    },
+    {
+      "task": "magicoder",
+      "variant": "commonsense__original_hns",
+      "samples": 164,
+      "primary_metric": "pass_at_1",
+      "pass_at_1": 0.4573170731707317,
+      "correct": 75,
+      "results_path": "/dataset1/zailong/runs/peft-sft-lab/hns-forgetting-2x4-20260911/formal/Llama-3.1-8B-Instruct/magicoder/commonsense__original_hns/samples.jsonl_results.jsonl"
+    },
+    {
+      "task": "magicoder",
+      "variant": "commonsense__original_lora",
+      "samples": 164,
+      "primary_metric": "pass_at_1",
+      "pass_at_1": 0.23170731707317074,
+      "correct": 38,
+      "results_path": "/dataset1/zailong/runs/peft-sft-lab/hns-forgetting-2x4-20260911/formal/Llama-3.1-8B-Instruct/magicoder/commonsense__original_lora/samples.jsonl_results.jsonl"
+    },
+    {
+      "task": "magicoder",
+      "variant": "magicoder__common_hns",
+      "samples": 164,
+      "primary_metric": "pass_at_1",
+      "pass_at_1": 0.5304878048780488,
+      "correct": 87,
+      "results_path": "/dataset1/zailong/runs/peft-sft-lab/hns-forgetting-2x4-20260911/formal/Llama-3.1-8B-Instruct/magicoder/magicoder__common_hns/samples.jsonl_results.jsonl"
+    },
+    {
+      "task": "magicoder",
+      "variant": "magicoder__common_lora",
+      "samples": 164,
+      "primary_metric": "pass_at_1",
+      "pass_at_1": 0.5426829268292683,
+      "correct": 89,
+      "results_path": "/dataset1/zailong/runs/peft-sft-lab/hns-forgetting-2x4-20260911/formal/Llama-3.1-8B-Instruct/magicoder/magicoder__common_lora/samples.jsonl_results.jsonl"
+    },
+    {
+      "task": "magicoder",
+      "variant": "magicoder__common_per_module",
+      "samples": 164,
+      "primary_metric": "pass_at_1",
+      "pass_at_1": 0.5609756097560976,
+      "correct": 92,
+      "results_path": "/dataset1/zailong/runs/peft-sft-lab/hns-forgetting-2x4-20260911/formal/Llama-3.1-8B-Instruct/magicoder/magicoder__common_per_module/samples.jsonl_results.jsonl"
+    },
+    {
+      "task": "magicoder",
+      "variant": "magicoder__global_0p25",
+      "samples": 164,
+      "primary_metric": "pass_at_1",
+      "pass_at_1": 0.5487804878048781,
+      "correct": 90,
+      "results_path": "/dataset1/zailong/runs/peft-sft-lab/hns-forgetting-2x4-20260911/formal/Llama-3.1-8B-Instruct/magicoder/magicoder__global_0p25/samples.jsonl_results.jsonl"
+    },
+    {
+      "task": "magicoder",
+      "variant": "magicoder__global_0p40",
+      "samples": 164,
+      "primary_metric": "pass_at_1",
+      "pass_at_1": 0.5609756097560976,
+      "correct": 92,
+      "results_path": "/dataset1/zailong/runs/peft-sft-lab/hns-forgetting-2x4-20260911/formal/Llama-3.1-8B-Instruct/magicoder/magicoder__global_0p40/samples.jsonl_results.jsonl"
+    },
+    {
+      "task": "magicoder",
+      "variant": "magicoder__global_0p55",
+      "samples": 164,
+      "primary_metric": "pass_at_1",
+      "pass_at_1": 0.5609756097560976,
+      "correct": 92,
+      "results_path": "/dataset1/zailong/runs/peft-sft-lab/hns-forgetting-2x4-20260911/formal/Llama-3.1-8B-Instruct/magicoder/magicoder__global_0p55/samples.jsonl_results.jsonl"
+    },
+    {
+      "task": "magicoder",
+      "variant": "magicoder__global_0p70",
+      "samples": 164,
+      "primary_metric": "pass_at_1",
+      "pass_at_1": 0.5487804878048781,
+      "correct": 90,
+      "results_path": "/dataset1/zailong/runs/peft-sft-lab/hns-forgetting-2x4-20260911/formal/Llama-3.1-8B-Instruct/magicoder/magicoder__global_0p70/samples.jsonl_results.jsonl"
+    },
+    {
+      "task": "magicoder",
+      "variant": "magicoder__global_0p85",
+      "samples": 164,
+      "primary_metric": "pass_at_1",
+      "pass_at_1": 0.5792682926829268,
+      "correct": 95,
+      "results_path": "/dataset1/zailong/runs/peft-sft-lab/hns-forgetting-2x4-20260911/formal/Llama-3.1-8B-Instruct/magicoder/magicoder__global_0p85/samples.jsonl_results.jsonl"
+    },
+    {
+      "task": "magicoder",
+      "variant": "magicoder__original_hns",
+      "samples": 164,
+      "primary_metric": "pass_at_1",
+      "pass_at_1": 0.5426829268292683,
+      "correct": 89,
+      "results_path": "/dataset1/zailong/runs/peft-sft-lab/hns-forgetting-2x4-20260911/formal/Llama-3.1-8B-Instruct/magicoder/magicoder__original_hns/samples.jsonl_results.jsonl"
+    },
+    {
+      "task": "magicoder",
+      "variant": "magicoder__original_lora",
+      "samples": 164,
+      "primary_metric": "pass_at_1",
+      "pass_at_1": 0.5365853658536586,
+      "correct": 88,
+      "results_path": "/dataset1/zailong/runs/peft-sft-lab/hns-forgetting-2x4-20260911/formal/Llama-3.1-8B-Instruct/magicoder/magicoder__original_lora/samples.jsonl_results.jsonl"
+    },
+    {
+      "task": "magicoder",
+      "variant": "metamath__common_hns",
+      "samples": 164,
+      "primary_metric": "pass_at_1",
+      "pass_at_1": 0.6158536585365854,
+      "correct": 101,
+      "results_path": "/dataset1/zailong/runs/peft-sft-lab/hns-forgetting-2x4-20260911/formal/Llama-3.1-8B-Instruct/magicoder/metamath__common_hns/samples.jsonl_results.jsonl"
+    },
+    {
+      "task": "magicoder",
+      "variant": "metamath__common_lora",
+      "samples": 164,
+      "primary_metric": "pass_at_1",
+      "pass_at_1": 0.5487804878048781,
+      "correct": 90,
+      "results_path": "/dataset1/zailong/runs/peft-sft-lab/hns-forgetting-2x4-20260911/formal/Llama-3.1-8B-Instruct/magicoder/metamath__common_lora/samples.jsonl_results.jsonl"
+    },
+    {
+      "task": "magicoder",
+      "variant": "metamath__common_per_module",
+      "samples": 164,
+      "primary_metric": "pass_at_1",
+      "pass_at_1": 0.5426829268292683,
+      "correct": 89,
+      "results_path": "/dataset1/zailong/runs/peft-sft-lab/hns-forgetting-2x4-20260911/formal/Llama-3.1-8B-Instruct/magicoder/metamath__common_per_module/samples.jsonl_results.jsonl"
+    },
+    {
+      "task": "magicoder",
+      "variant": "metamath__global_0p25",
+      "samples": 164,
+      "primary_metric": "pass_at_1",
+      "pass_at_1": 0.5487804878048781,
+      "correct": 90,
+      "results_path": "/dataset1/zailong/runs/peft-sft-lab/hns-forgetting-2x4-20260911/formal/Llama-3.1-8B-Instruct/magicoder/metamath__global_0p25/samples.jsonl_results.jsonl"
+    },
+    {
+      "task": "magicoder",
+      "variant": "metamath__global_0p40",
+      "samples": 164,
+      "primary_metric": "pass_at_1",
+      "pass_at_1": 0.5914634146341463,
+      "correct": 97,
+      "results_path": "/dataset1/zailong/runs/peft-sft-lab/hns-forgetting-2x4-20260911/formal/Llama-3.1-8B-Instruct/magicoder/metamath__global_0p40/samples.jsonl_results.jsonl"
+    },
+    {
+      "task": "magicoder",
+      "variant": "metamath__global_0p55",
+      "samples": 164,
+      "primary_metric": "pass_at_1",
+      "pass_at_1": 0.5853658536585366,
+      "correct": 96,
+      "results_path": "/dataset1/zailong/runs/peft-sft-lab/hns-forgetting-2x4-20260911/formal/Llama-3.1-8B-Instruct/magicoder/metamath__global_0p55/samples.jsonl_results.jsonl"
+    },
+    {
+      "task": "magicoder",
+      "variant": "metamath__global_0p70",
+      "samples": 164,
+      "primary_metric": "pass_at_1",
+      "pass_at_1": 0.5609756097560976,
+      "correct": 92,
+      "results_path": "/dataset1/zailong/runs/peft-sft-lab/hns-forgetting-2x4-20260911/formal/Llama-3.1-8B-Instruct/magicoder/metamath__global_0p70/samples.jsonl_results.jsonl"
+    },
+    {
+      "task": "magicoder",
+      "variant": "metamath__global_0p85",
+      "samples": 164,
+      "primary_metric": "pass_at_1",
+      "pass_at_1": 0.5548780487804879,
+      "correct": 91,
+      "results_path": "/dataset1/zailong/runs/peft-sft-lab/hns-forgetting-2x4-20260911/formal/Llama-3.1-8B-Instruct/magicoder/metamath__global_0p85/samples.jsonl_results.jsonl"
+    },
+    {
+      "task": "magicoder",
+      "variant": "metamath__original_hns",
+      "samples": 164,
+      "primary_metric": "pass_at_1",
+      "pass_at_1": 0.6036585365853658,
+      "correct": 99,
+      "results_path": "/dataset1/zailong/runs/peft-sft-lab/hns-forgetting-2x4-20260911/formal/Llama-3.1-8B-Instruct/magicoder/metamath__original_hns/samples.jsonl_results.jsonl"
+    },
+    {
+      "task": "magicoder",
+      "variant": "metamath__original_lora",
+      "samples": 164,
+      "primary_metric": "pass_at_1",
+      "pass_at_1": 0.5426829268292683,
+      "correct": 89,
+      "results_path": "/dataset1/zailong/runs/peft-sft-lab/hns-forgetting-2x4-20260911/formal/Llama-3.1-8B-Instruct/magicoder/metamath__original_lora/samples.jsonl_results.jsonl"
+    },
+    {
+      "task": "magicoder",
+      "variant": "tulu__common_hns",
+      "samples": 164,
+      "primary_metric": "pass_at_1",
+      "pass_at_1": 0.6219512195121951,
+      "correct": 102,
+      "results_path": "/dataset1/zailong/runs/peft-sft-lab/hns-forgetting-2x4-20260911/formal/Llama-3.1-8B-Instruct/magicoder/tulu__common_hns/samples.jsonl_results.jsonl"
+    },
+    {
+      "task": "magicoder",
+      "variant": "tulu__common_lora",
+      "samples": 164,
+      "primary_metric": "pass_at_1",
+      "pass_at_1": 0.6219512195121951,
+      "correct": 102,
+      "results_path": "/dataset1/zailong/runs/peft-sft-lab/hns-forgetting-2x4-20260911/formal/Llama-3.1-8B-Instruct/magicoder/tulu__common_lora/samples.jsonl_results.jsonl"
+    },
+    {
+      "task": "magicoder",
+      "variant": "tulu__common_per_module",
+      "samples": 164,
+      "primary_metric": "pass_at_1",
+      "pass_at_1": 0.6280487804878049,
+      "correct": 103,
+      "results_path": "/dataset1/zailong/runs/peft-sft-lab/hns-forgetting-2x4-20260911/formal/Llama-3.1-8B-Instruct/magicoder/tulu__common_per_module/samples.jsonl_results.jsonl"
+    },
+    {
+      "task": "magicoder",
+      "variant": "tulu__global_0p25",
+      "samples": 164,
+      "primary_metric": "pass_at_1",
+      "pass_at_1": 0.5914634146341463,
+      "correct": 97,
+      "results_path": "/dataset1/zailong/runs/peft-sft-lab/hns-forgetting-2x4-20260911/formal/Llama-3.1-8B-Instruct/magicoder/tulu__global_0p25/samples.jsonl_results.jsonl"
+    },
+    {
+      "task": "magicoder",
+      "variant": "tulu__global_0p40",
+      "samples": 164,
+      "primary_metric": "pass_at_1",
+      "pass_at_1": 0.6097560975609756,
+      "correct": 100,
+      "results_path": "/dataset1/zailong/runs/peft-sft-lab/hns-forgetting-2x4-20260911/formal/Llama-3.1-8B-Instruct/magicoder/tulu__global_0p40/samples.jsonl_results.jsonl"
+    },
+    {
+      "task": "magicoder",
+      "variant": "tulu__global_0p55",
+      "samples": 164,
+      "primary_metric": "pass_at_1",
+      "pass_at_1": 0.6219512195121951,
+      "correct": 102,
+      "results_path": "/dataset1/zailong/runs/peft-sft-lab/hns-forgetting-2x4-20260911/formal/Llama-3.1-8B-Instruct/magicoder/tulu__global_0p55/samples.jsonl_results.jsonl"
+    },
+    {
+      "task": "magicoder",
+      "variant": "tulu__global_0p70",
+      "samples": 164,
+      "primary_metric": "pass_at_1",
+      "pass_at_1": 0.6158536585365854,
+      "correct": 101,
+      "results_path": "/dataset1/zailong/runs/peft-sft-lab/hns-forgetting-2x4-20260911/formal/Llama-3.1-8B-Instruct/magicoder/tulu__global_0p70/samples.jsonl_results.jsonl"
+    },
+    {
+      "task": "magicoder",
+      "variant": "tulu__global_0p85",
+      "samples": 164,
+      "primary_metric": "pass_at_1",
+      "pass_at_1": 0.6158536585365854,
+      "correct": 101,
+      "results_path": "/dataset1/zailong/runs/peft-sft-lab/hns-forgetting-2x4-20260911/formal/Llama-3.1-8B-Instruct/magicoder/tulu__global_0p85/samples.jsonl_results.jsonl"
+    },
+    {
+      "task": "magicoder",
+      "variant": "tulu__original_hns",
+      "samples": 164,
+      "primary_metric": "pass_at_1",
+      "pass_at_1": 0.6280487804878049,
+      "correct": 103,
+      "results_path": "/dataset1/zailong/runs/peft-sft-lab/hns-forgetting-2x4-20260911/formal/Llama-3.1-8B-Instruct/magicoder/tulu__original_hns/samples.jsonl_results.jsonl"
+    },
+    {
+      "task": "magicoder",
+      "variant": "tulu__original_lora",
+      "samples": 164,
+      "primary_metric": "pass_at_1",
+      "pass_at_1": 0.6341463414634146,
+      "correct": 104,
+      "results_path": "/dataset1/zailong/runs/peft-sft-lab/hns-forgetting-2x4-20260911/formal/Llama-3.1-8B-Instruct/magicoder/tulu__original_lora/samples.jsonl_results.jsonl"
+    },
+    {
+      "task": "metamath",
+      "variant": "base",
+      "samples": 1319,
+      "primary_metric": "strict_accuracy",
+      "strict_accuracy": 0.6239575435936315,
+      "numeric_accuracy": 0.6269901440485216
+    },
+    {
+      "task": "metamath",
+      "variant": "commonsense__common_hns",
+      "samples": 1319,
+      "primary_metric": "strict_accuracy",
+      "strict_accuracy": 0.05913570887035633,
+      "numeric_accuracy": 0.05913570887035633
+    },
+    {
+      "task": "metamath",
+      "variant": "commonsense__common_lora",
+      "samples": 1319,
+      "primary_metric": "strict_accuracy",
+      "strict_accuracy": 0.0,
+      "numeric_accuracy": 0.0
+    },
+    {
+      "task": "metamath",
+      "variant": "commonsense__common_per_module",
+      "samples": 1319,
+      "primary_metric": "strict_accuracy",
+      "strict_accuracy": 0.002274450341167551,
+      "numeric_accuracy": 0.002274450341167551
+    },
+    {
+      "task": "metamath",
+      "variant": "commonsense__global_0p25",
+      "samples": 1319,
+      "primary_metric": "strict_accuracy",
+      "strict_accuracy": 0.645185746777862,
+      "numeric_accuracy": 0.6884003032600455
+    },
+    {
+      "task": "metamath",
+      "variant": "commonsense__global_0p40",
+      "samples": 1319,
+      "primary_metric": "strict_accuracy",
+      "strict_accuracy": 0.6823351023502654,
+      "numeric_accuracy": 0.7126611068991661
+    },
+    {
+      "task": "metamath",
+      "variant": "commonsense__global_0p55",
+      "samples": 1319,
+      "primary_metric": "strict_accuracy",
+      "strict_accuracy": 0.33965125094768767,
+      "numeric_accuracy": 0.3464746019711903
+    },
+    {
+      "task": "metamath",
+      "variant": "commonsense__global_0p70",
+      "samples": 1319,
+      "primary_metric": "strict_accuracy",
+      "strict_accuracy": 0.013646702047005308,
+      "numeric_accuracy": 0.013646702047005308
+    },
+    {
+      "task": "metamath",
+      "variant": "commonsense__global_0p85",
+      "samples": 1319,
+      "primary_metric": "strict_accuracy",
+      "strict_accuracy": 0.0,
+      "numeric_accuracy": 0.0
+    },
+    {
+      "task": "metamath",
+      "variant": "commonsense__original_hns",
+      "samples": 1319,
+      "primary_metric": "strict_accuracy",
+      "strict_accuracy": 0.0576194086429113,
+      "numeric_accuracy": 0.0576194086429113
+    },
+    {
+      "task": "metamath",
+      "variant": "commonsense__original_lora",
+      "samples": 1319,
+      "primary_metric": "strict_accuracy",
+      "strict_accuracy": 0.0,
+      "numeric_accuracy": 0.0
+    },
+    {
+      "task": "metamath",
+      "variant": "magicoder__common_hns",
+      "samples": 1319,
+      "primary_metric": "strict_accuracy",
+      "strict_accuracy": 0.6360879454131918,
+      "numeric_accuracy": 0.645185746777862
+    },
+    {
+      "task": "metamath",
+      "variant": "magicoder__common_lora",
+      "samples": 1319,
+      "primary_metric": "strict_accuracy",
+      "strict_accuracy": 0.5640636846095527,
+      "numeric_accuracy": 0.621683093252464
+    },
+    {
+      "task": "metamath",
+      "variant": "magicoder__common_per_module",
+      "samples": 1319,
+      "primary_metric": "strict_accuracy",
+      "strict_accuracy": 0.6292645943896892,
+      "numeric_accuracy": 0.6588324488248674
+    },
+    {
+      "task": "metamath",
+      "variant": "magicoder__global_0p25",
+      "samples": 1319,
+      "primary_metric": "strict_accuracy",
+      "strict_accuracy": 0.6345716451857468,
+      "numeric_accuracy": 0.6421531463229719
+    },
+    {
+      "task": "metamath",
+      "variant": "magicoder__global_0p40",
+      "samples": 1319,
+      "primary_metric": "strict_accuracy",
+      "strict_accuracy": 0.6360879454131918,
+      "numeric_accuracy": 0.6459438968915845
+    },
+    {
+      "task": "metamath",
+      "variant": "magicoder__global_0p55",
+      "samples": 1319,
+      "primary_metric": "strict_accuracy",
+      "strict_accuracy": 0.6148597422289613,
+      "numeric_accuracy": 0.6300227445034117
+    },
+    {
+      "task": "metamath",
+      "variant": "magicoder__global_0p70",
+      "samples": 1319,
+      "primary_metric": "strict_accuracy",
+      "strict_accuracy": 0.6163760424564063,
+      "numeric_accuracy": 0.6338134950720242
+    },
+    {
+      "task": "metamath",
+      "variant": "magicoder__global_0p85",
+      "samples": 1319,
+      "primary_metric": "strict_accuracy",
+      "strict_accuracy": 0.5966641394996209,
+      "numeric_accuracy": 0.6338134950720242
+    },
+    {
+      "task": "metamath",
+      "variant": "magicoder__original_hns",
+      "samples": 1319,
+      "primary_metric": "strict_accuracy",
+      "strict_accuracy": 0.624715693707354,
+      "numeric_accuracy": 0.6338134950720242
+    },
+    {
+      "task": "metamath",
+      "variant": "magicoder__original_lora",
+      "samples": 1319,
+      "primary_metric": "strict_accuracy",
+      "strict_accuracy": 0.5640636846095527,
+      "numeric_accuracy": 0.6163760424564063
+    },
+    {
+      "task": "metamath",
+      "variant": "metamath__common_hns",
+      "samples": 1319,
+      "primary_metric": "strict_accuracy",
+      "strict_accuracy": 0.8081880212282032,
+      "numeric_accuracy": 0.8081880212282032
+    },
+    {
+      "task": "metamath",
+      "variant": "metamath__common_lora",
+      "samples": 1319,
+      "primary_metric": "strict_accuracy",
+      "strict_accuracy": 0.7748294162244125,
+      "numeric_accuracy": 0.7748294162244125
+    },
+    {
+      "task": "metamath",
+      "variant": "metamath__common_per_module",
+      "samples": 1319,
+      "primary_metric": "strict_accuracy",
+      "strict_accuracy": 0.7763457164518575,
+      "numeric_accuracy": 0.7763457164518575
+    },
+    {
+      "task": "metamath",
+      "variant": "metamath__global_0p25",
+      "samples": 1319,
+      "primary_metric": "strict_accuracy",
+      "strict_accuracy": 0.8097043214556482,
+      "numeric_accuracy": 0.8142532221379833
+    },
+    {
+      "task": "metamath",
+      "variant": "metamath__global_0p40",
+      "samples": 1319,
+      "primary_metric": "strict_accuracy",
+      "strict_accuracy": 0.8097043214556482,
+      "numeric_accuracy": 0.8112206216830933
+    },
+    {
+      "task": "metamath",
+      "variant": "metamath__global_0p55",
+      "samples": 1319,
+      "primary_metric": "strict_accuracy",
+      "strict_accuracy": 0.7952994692949203,
+      "numeric_accuracy": 0.7952994692949203
+    },
+    {
+      "task": "metamath",
+      "variant": "metamath__global_0p70",
+      "samples": 1319,
+      "primary_metric": "strict_accuracy",
+      "strict_accuracy": 0.7816527672479151,
+      "numeric_accuracy": 0.7816527672479151
+    },
+    {
+      "task": "metamath",
+      "variant": "metamath__global_0p85",
+      "samples": 1319,
+      "primary_metric": "strict_accuracy",
+      "strict_accuracy": 0.7687642153146323,
+      "numeric_accuracy": 0.7687642153146323
+    },
+    {
+      "task": "metamath",
+      "variant": "metamath__original_hns",
+      "samples": 1319,
+      "primary_metric": "strict_accuracy",
+      "strict_accuracy": 0.8043972706595905,
+      "numeric_accuracy": 0.8043972706595905
+    },
+    {
+      "task": "metamath",
+      "variant": "metamath__original_lora",
+      "samples": 1319,
+      "primary_metric": "strict_accuracy",
+      "strict_accuracy": 0.7710386656557998,
+      "numeric_accuracy": 0.7710386656557998
+    },
+    {
+      "task": "metamath",
+      "variant": "tulu__common_hns",
+      "samples": 1319,
+      "primary_metric": "strict_accuracy",
+      "strict_accuracy": 0.6641394996209249,
+      "numeric_accuracy": 0.66868840030326
+    },
+    {
+      "task": "metamath",
+      "variant": "tulu__common_lora",
+      "samples": 1319,
+      "primary_metric": "strict_accuracy",
+      "strict_accuracy": 0.5943896891584534,
+      "numeric_accuracy": 0.601213040181956
+    },
+    {
+      "task": "metamath",
+      "variant": "tulu__common_per_module",
+      "samples": 1319,
+      "primary_metric": "strict_accuracy",
+      "strict_accuracy": 0.6444275966641395,
+      "numeric_accuracy": 0.6497346474601972
+    },
+    {
+      "task": "metamath",
+      "variant": "tulu__global_0p25",
+      "samples": 1319,
+      "primary_metric": "strict_accuracy",
+      "strict_accuracy": 0.6512509476876421,
+      "numeric_accuracy": 0.6557998483699773
+    },
+    {
+      "task": "metamath",
+      "variant": "tulu__global_0p40",
+      "samples": 1319,
+      "primary_metric": "strict_accuracy",
+      "strict_accuracy": 0.6573161485974223,
+      "numeric_accuracy": 0.6595905989385898
+    },
+    {
+      "task": "metamath",
+      "variant": "tulu__global_0p55",
+      "samples": 1319,
+      "primary_metric": "strict_accuracy",
+      "strict_accuracy": 0.6626231993934799,
+      "numeric_accuracy": 0.66868840030326
+    },
+    {
+      "task": "metamath",
+      "variant": "tulu__global_0p70",
+      "samples": 1319,
+      "primary_metric": "strict_accuracy",
+      "strict_accuracy": 0.6747536012130402,
+      "numeric_accuracy": 0.6800606520090978
+    },
+    {
+      "task": "metamath",
+      "variant": "tulu__global_0p85",
+      "samples": 1319,
+      "primary_metric": "strict_accuracy",
+      "strict_accuracy": 0.6254738438210766,
+      "numeric_accuracy": 0.6338134950720242
+    },
+    {
+      "task": "metamath",
+      "variant": "tulu__original_hns",
+      "samples": 1319,
+      "primary_metric": "strict_accuracy",
+      "strict_accuracy": 0.6603487490523123,
+      "numeric_accuracy": 0.6648976497346475
+    },
+    {
+      "task": "metamath",
+      "variant": "tulu__original_lora",
+      "samples": 1319,
+      "primary_metric": "strict_accuracy",
+      "strict_accuracy": 0.5678544351781653,
+      "numeric_accuracy": 0.5754359363153905
+    },
+    {
+      "task": "tulu",
+      "variant": "base",
+      "samples": 541,
+      "instructions": 834,
+      "primary_metric": "prompt_level_strict_accuracy",
+      "prompt_level_strict_accuracy": 0.6210720887245841,
+      "prompt_level_loose_accuracy": 0.6913123844731978,
+      "instruction_level_strict_accuracy": 0.7278177458033573,
+      "instruction_level_loose_accuracy": 0.7853717026378897,
+      "per_category": {
+        "change_case": {
+          "total": 89,
+          "strict_accuracy": 0.8314606741573034,
+          "loose_accuracy": 0.8764044943820225
+        },
+        "combination": {
+          "total": 65,
+          "strict_accuracy": 0.5692307692307692,
+          "loose_accuracy": 0.5692307692307692
+        },
+        "detectable_content": {
+          "total": 53,
+          "strict_accuracy": 0.6981132075471698,
+          "loose_accuracy": 0.8113207547169812
+        },
+        "detectable_format": {
+          "total": 157,
+          "strict_accuracy": 0.732484076433121,
+          "loose_accuracy": 0.7834394904458599
+        },
+        "keywords": {
+          "total": 163,
+          "strict_accuracy": 0.7484662576687117,
+          "loose_accuracy": 0.8343558282208589
+        },
+        "language": {
+          "total": 31,
+          "strict_accuracy": 0.0,
+          "loose_accuracy": 0.0
+        },
+        "length_constraints": {
+          "total": 143,
+          "strict_accuracy": 0.6993006993006993,
+          "loose_accuracy": 0.8041958041958042
+        },
+        "punctuation": {
+          "total": 66,
+          "strict_accuracy": 0.9090909090909091,
+          "loose_accuracy": 0.9090909090909091
+        },
+        "startend": {
+          "total": 67,
+          "strict_accuracy": 0.9253731343283582,
+          "loose_accuracy": 0.9402985074626866
+        }
+      }
+    },
+    {
+      "task": "tulu",
+      "variant": "commonsense__common_hns",
+      "samples": 541,
+      "instructions": 834,
+      "primary_metric": "prompt_level_strict_accuracy",
+      "prompt_level_strict_accuracy": 0.49168207024029575,
+      "prompt_level_loose_accuracy": 0.5175600739371534,
+      "instruction_level_strict_accuracy": 0.60431654676259,
+      "instruction_level_loose_accuracy": 0.6282973621103117,
+      "per_category": {
+        "change_case": {
+          "total": 89,
+          "strict_accuracy": 0.898876404494382,
+          "loose_accuracy": 0.9438202247191011
+        },
+        "combination": {
+          "total": 65,
+          "strict_accuracy": 0.12307692307692308,
+          "loose_accuracy": 0.12307692307692308
+        },
+        "detectable_content": {
+          "total": 53,
+          "strict_accuracy": 0.4339622641509434,
+          "loose_accuracy": 0.4528301886792453
+        },
+        "detectable_format": {
+          "total": 157,
+          "strict_accuracy": 0.6878980891719745,
+          "loose_accuracy": 0.7197452229299363
+        },
+        "keywords": {
+          "total": 163,
+          "strict_accuracy": 0.6625766871165644,
+          "loose_accuracy": 0.6932515337423313
+        },
+        "language": {
+          "total": 31,
+          "strict_accuracy": 0.0,
+          "loose_accuracy": 0.0
+        },
+        "length_constraints": {
+          "total": 143,
+          "strict_accuracy": 0.5664335664335665,
+          "loose_accuracy": 0.5944055944055944
+        },
+        "punctuation": {
+          "total": 66,
+          "strict_accuracy": 0.9242424242424242,
+          "loose_accuracy": 0.9242424242424242
+        },
+        "startend": {
+          "total": 67,
+          "strict_accuracy": 0.5223880597014925,
+          "loose_accuracy": 0.5373134328358209
+        }
+      }
+    },
+    {
+      "task": "tulu",
+      "variant": "commonsense__common_lora",
+      "samples": 541,
+      "instructions": 834,
+      "primary_metric": "prompt_level_strict_accuracy",
+      "prompt_level_strict_accuracy": 0.32532347504621073,
+      "prompt_level_loose_accuracy": 0.3419593345656192,
+      "instruction_level_strict_accuracy": 0.44964028776978415,
+      "instruction_level_loose_accuracy": 0.46522781774580335,
+      "per_category": {
+        "change_case": {
+          "total": 89,
+          "strict_accuracy": 0.8426966292134831,
+          "loose_accuracy": 0.8764044943820225
+        },
+        "combination": {
+          "total": 65,
+          "strict_accuracy": 0.015384615384615385,
+          "loose_accuracy": 0.015384615384615385
+        },
+        "detectable_content": {
+          "total": 53,
+          "strict_accuracy": 0.1509433962264151,
+          "loose_accuracy": 0.1509433962264151
+        },
+        "detectable_format": {
+          "total": 157,
+          "strict_accuracy": 0.4394904458598726,
+          "loose_accuracy": 0.4394904458598726
+        },
+        "keywords": {
+          "total": 163,
+          "strict_accuracy": 0.5153374233128835,
+          "loose_accuracy": 0.558282208588957
+        },
+        "language": {
+          "total": 31,
+          "strict_accuracy": 0.0,
+          "loose_accuracy": 0.0
+        },
+        "length_constraints": {
+          "total": 143,
+          "strict_accuracy": 0.40559440559440557,
+          "loose_accuracy": 0.4195804195804196
+        },
+        "punctuation": {
+          "total": 66,
+          "strict_accuracy": 1.0,
+          "loose_accuracy": 1.0
+        },
+        "startend": {
+          "total": 67,
+          "strict_accuracy": 0.208955223880597,
+          "loose_accuracy": 0.22388059701492538
+        }
+      }
+    },
+    {
+      "task": "tulu",
+      "variant": "commonsense__common_per_module",
+      "samples": 541,
+      "instructions": 834,
+      "primary_metric": "prompt_level_strict_accuracy",
+      "prompt_level_strict_accuracy": 0.4029574861367837,
+      "prompt_level_loose_accuracy": 0.4343807763401109,
+      "instruction_level_strict_accuracy": 0.5347721822541966,
+      "instruction_level_loose_accuracy": 0.564748201438849,
+      "per_category": {
+        "change_case": {
+          "total": 89,
+          "strict_accuracy": 0.8764044943820225,
+          "loose_accuracy": 0.9325842696629213
+        },
+        "combination": {
+          "total": 65,
+          "strict_accuracy": 0.06153846153846154,
+          "loose_accuracy": 0.06153846153846154
+        },
+        "detectable_content": {
+          "total": 53,
+          "strict_accuracy": 0.39622641509433965,
+          "loose_accuracy": 0.39622641509433965
+        },
+        "detectable_format": {
+          "total": 157,
+          "strict_accuracy": 0.5605095541401274,
+          "loose_accuracy": 0.5732484076433121
+        },
+        "keywords": {
+          "total": 163,
+          "strict_accuracy": 0.5398773006134969,
+          "loose_accuracy": 0.6012269938650306
+        },
+        "language": {
+          "total": 31,
+          "strict_accuracy": 0.0,
+          "loose_accuracy": 0.0
+        },
+        "length_constraints": {
+          "total": 143,
+          "strict_accuracy": 0.5104895104895105,
+          "loose_accuracy": 0.5384615384615384
+        },
+        "punctuation": {
+          "total": 66,
+          "strict_accuracy": 0.9545454545454546,
+          "loose_accuracy": 0.9545454545454546
+        },
+        "startend": {
+          "total": 67,
+          "strict_accuracy": 0.4626865671641791,
+          "loose_accuracy": 0.5223880597014925
+        }
+      }
+    },
+    {
+      "task": "tulu",
+      "variant": "commonsense__global_0p25",
+      "samples": 541,
+      "instructions": 834,
+      "primary_metric": "prompt_level_strict_accuracy",
+      "prompt_level_strict_accuracy": 0.589648798521257,
+      "prompt_level_loose_accuracy": 0.634011090573013,
+      "instruction_level_strict_accuracy": 0.6942446043165468,
+      "instruction_level_loose_accuracy": 0.7314148681055156,
+      "per_category": {
+        "change_case": {
+          "total": 89,
+          "strict_accuracy": 0.8651685393258427,
+          "loose_accuracy": 0.9101123595505618
+        },
+        "combination": {
+          "total": 65,
+          "strict_accuracy": 0.4461538461538462,
+          "loose_accuracy": 0.4461538461538462
+        },
+        "detectable_content": {
+          "total": 53,
+          "strict_accuracy": 0.6792452830188679,
+          "loose_accuracy": 0.7169811320754716
+        },
+        "detectable_format": {
+          "total": 157,
+          "strict_accuracy": 0.732484076433121,
+          "loose_accuracy": 0.7770700636942676
+        },
+        "keywords": {
+          "total": 163,
+          "strict_accuracy": 0.7361963190184049,
+          "loose_accuracy": 0.7791411042944786
+        },
+        "language": {
+          "total": 31,
+          "strict_accuracy": 0.0,
+          "loose_accuracy": 0.0
+        },
+        "length_constraints": {
+          "total": 143,
+          "strict_accuracy": 0.6293706293706294,
+          "loose_accuracy": 0.6853146853146853
+        },
+        "punctuation": {
+          "total": 66,
+          "strict_accuracy": 0.9242424242424242,
+          "loose_accuracy": 0.9545454545454546
+        },
+        "startend": {
+          "total": 67,
+          "strict_accuracy": 0.7611940298507462,
+          "loose_accuracy": 0.7761194029850746
+        }
+      }
+    },
+    {
+      "task": "tulu",
+      "variant": "commonsense__global_0p40",
+      "samples": 541,
+      "instructions": 834,
+      "primary_metric": "prompt_level_strict_accuracy",
+      "prompt_level_strict_accuracy": 0.5341959334565619,
+      "prompt_level_loose_accuracy": 0.5674676524953789,
+      "instruction_level_strict_accuracy": 0.6594724220623501,
+      "instruction_level_loose_accuracy": 0.6882494004796164,
+      "per_category": {
+        "change_case": {
+          "total": 89,
+          "strict_accuracy": 0.8426966292134831,
+          "loose_accuracy": 0.8876404494382022
+        },
+        "combination": {
+          "total": 65,
+          "strict_accuracy": 0.26153846153846155,
+          "loose_accuracy": 0.26153846153846155
+        },
+        "detectable_content": {
+          "total": 53,
+          "strict_accuracy": 0.6037735849056604,
+          "loose_accuracy": 0.6415094339622641
+        },
+        "detectable_format": {
+          "total": 157,
+          "strict_accuracy": 0.732484076433121,
+          "loose_accuracy": 0.7707006369426752
+        },
+        "keywords": {
+          "total": 163,
+          "strict_accuracy": 0.6932515337423313,
+          "loose_accuracy": 0.7300613496932515
+        },
+        "language": {
+          "total": 31,
+          "strict_accuracy": 0.0,
+          "loose_accuracy": 0.0
+        },
+        "length_constraints": {
+          "total": 143,
+          "strict_accuracy": 0.6573426573426573,
+          "loose_accuracy": 0.6923076923076923
+        },
+        "punctuation": {
+          "total": 66,
+          "strict_accuracy": 0.8939393939393939,
+          "loose_accuracy": 0.9090909090909091
+        },
+        "startend": {
+          "total": 67,
+          "strict_accuracy": 0.6716417910447762,
+          "loose_accuracy": 0.6716417910447762
+        }
+      }
+    },
+    {
+      "task": "tulu",
+      "variant": "commonsense__global_0p55",
+      "samples": 541,
+      "instructions": 834,
+      "primary_metric": "prompt_level_strict_accuracy",
+      "prompt_level_strict_accuracy": 0.4824399260628466,
+      "prompt_level_loose_accuracy": 0.5304990757855823,
+      "instruction_level_strict_accuracy": 0.6079136690647482,
+      "instruction_level_loose_accuracy": 0.645083932853717,
+      "per_category": {
+        "change_case": {
+          "total": 89,
+          "strict_accuracy": 0.8539325842696629,
+          "loose_accuracy": 0.9550561797752809
+        },
+        "combination": {
+          "total": 65,
+          "strict_accuracy": 0.12307692307692308,
+          "loose_accuracy": 0.12307692307692308
+        },
+        "detectable_content": {
+          "total": 53,
+          "strict_accuracy": 0.5849056603773585,
+          "loose_accuracy": 0.6037735849056604
+        },
+        "detectable_format": {
+          "total": 157,
+          "strict_accuracy": 0.7133757961783439,
+          "loose_accuracy": 0.7452229299363057
+        },
+        "keywords": {
+          "total": 163,
+          "strict_accuracy": 0.6257668711656442,
+          "loose_accuracy": 0.6748466257668712
+        },
+        "language": {
+          "total": 31,
+          "strict_accuracy": 0.0,
+          "loose_accuracy": 0.0
+        },
+        "length_constraints": {
+          "total": 143,
+          "strict_accuracy": 0.5874125874125874,
+          "loose_accuracy": 0.6363636363636364
+        },
+        "punctuation": {
+          "total": 66,
+          "strict_accuracy": 0.9090909090909091,
+          "loose_accuracy": 0.9090909090909091
+        },
+        "startend": {
+          "total": 67,
+          "strict_accuracy": 0.5074626865671642,
+          "loose_accuracy": 0.5223880597014925
+        }
+      }
+    },
+    {
+      "task": "tulu",
+      "variant": "commonsense__global_0p70",
+      "samples": 541,
+      "instructions": 834,
+      "primary_metric": "prompt_level_strict_accuracy",
+      "prompt_level_strict_accuracy": 0.40850277264325324,
+      "prompt_level_loose_accuracy": 0.4399260628465804,
+      "instruction_level_strict_accuracy": 0.5431654676258992,
+      "instruction_level_loose_accuracy": 0.5707434052757794,
+      "per_category": {
+        "change_case": {
+          "total": 89,
+          "strict_accuracy": 0.8426966292134831,
+          "loose_accuracy": 0.9101123595505618
+        },
+        "combination": {
+          "total": 65,
+          "strict_accuracy": 0.07692307692307693,
+          "loose_accuracy": 0.07692307692307693
+        },
+        "detectable_content": {
+          "total": 53,
+          "strict_accuracy": 0.39622641509433965,
+          "loose_accuracy": 0.39622641509433965
+        },
+        "detectable_format": {
+          "total": 157,
+          "strict_accuracy": 0.5796178343949044,
+          "loose_accuracy": 0.5987261146496815
+        },
+        "keywords": {
+          "total": 163,
+          "strict_accuracy": 0.5828220858895705,
+          "loose_accuracy": 0.6196319018404908
+        },
+        "language": {
+          "total": 31,
+          "strict_accuracy": 0.0,
+          "loose_accuracy": 0.0
+        },
+        "length_constraints": {
+          "total": 143,
+          "strict_accuracy": 0.5244755244755245,
+          "loose_accuracy": 0.5664335664335665
+        },
+        "punctuation": {
+          "total": 66,
+          "strict_accuracy": 0.9545454545454546,
+          "loose_accuracy": 0.9545454545454546
+        },
+        "startend": {
+          "total": 67,
+          "strict_accuracy": 0.417910447761194,
+          "loose_accuracy": 0.44776119402985076
+        }
+      }
+    },
+    {
+      "task": "tulu",
+      "variant": "commonsense__global_0p85",
+      "samples": 541,
+      "instructions": 834,
+      "primary_metric": "prompt_level_strict_accuracy",
+      "prompt_level_strict_accuracy": 0.38632162661737524,
+      "prompt_level_loose_accuracy": 0.41035120147874304,
+      "instruction_level_strict_accuracy": 0.5083932853717026,
+      "instruction_level_loose_accuracy": 0.5311750599520384,
+      "per_category": {
+        "change_case": {
+          "total": 89,
+          "strict_accuracy": 0.8314606741573034,
+          "loose_accuracy": 0.8876404494382022
+        },
+        "combination": {
+          "total": 65,
+          "strict_accuracy": 0.015384615384615385,
+          "loose_accuracy": 0.015384615384615385
+        },
+        "detectable_content": {
+          "total": 53,
+          "strict_accuracy": 0.2830188679245283,
+          "loose_accuracy": 0.2830188679245283
+        },
+        "detectable_format": {
+          "total": 157,
+          "strict_accuracy": 0.5668789808917197,
+          "loose_accuracy": 0.5668789808917197
+        },
+        "keywords": {
+          "total": 163,
+          "strict_accuracy": 0.5460122699386503,
+          "loose_accuracy": 0.588957055214724
+        },
+        "language": {
+          "total": 31,
+          "strict_accuracy": 0.0,
+          "loose_accuracy": 0.0
+        },
+        "length_constraints": {
+          "total": 143,
+          "strict_accuracy": 0.44755244755244755,
+          "loose_accuracy": 0.4755244755244755
+        },
+        "punctuation": {
+          "total": 66,
+          "strict_accuracy": 0.9848484848484849,
+          "loose_accuracy": 0.9848484848484849
+        },
+        "startend": {
+          "total": 67,
+          "strict_accuracy": 0.40298507462686567,
+          "loose_accuracy": 0.44776119402985076
+        }
+      }
+    },
+    {
+      "task": "tulu",
+      "variant": "commonsense__original_hns",
+      "samples": 541,
+      "instructions": 834,
+      "primary_metric": "prompt_level_strict_accuracy",
+      "prompt_level_strict_accuracy": 0.4787430683918669,
+      "prompt_level_loose_accuracy": 0.5046210720887245,
+      "instruction_level_strict_accuracy": 0.6019184652278178,
+      "instruction_level_loose_accuracy": 0.6258992805755396,
+      "per_category": {
+        "change_case": {
+          "total": 89,
+          "strict_accuracy": 0.8764044943820225,
+          "loose_accuracy": 0.9325842696629213
+        },
+        "combination": {
+          "total": 65,
+          "strict_accuracy": 0.1076923076923077,
+          "loose_accuracy": 0.1076923076923077
+        },
+        "detectable_content": {
+          "total": 53,
+          "strict_accuracy": 0.4339622641509434,
+          "loose_accuracy": 0.4528301886792453
+        },
+        "detectable_format": {
+          "total": 157,
+          "strict_accuracy": 0.6815286624203821,
+          "loose_accuracy": 0.7133757961783439
+        },
+        "keywords": {
+          "total": 163,
+          "strict_accuracy": 0.6687116564417178,
+          "loose_accuracy": 0.6993865030674846
+        },
+        "language": {
+          "total": 31,
+          "strict_accuracy": 0.0,
+          "loose_accuracy": 0.0
+        },
+        "length_constraints": {
+          "total": 143,
+          "strict_accuracy": 0.5454545454545454,
+          "loose_accuracy": 0.5664335664335665
+        },
+        "punctuation": {
+          "total": 66,
+          "strict_accuracy": 0.9242424242424242,
+          "loose_accuracy": 0.9393939393939394
+        },
+        "startend": {
+          "total": 67,
+          "strict_accuracy": 0.582089552238806,
+          "loose_accuracy": 0.582089552238806
+        }
+      }
+    },
+    {
+      "task": "tulu",
+      "variant": "commonsense__original_lora",
+      "samples": 541,
+      "instructions": 834,
+      "primary_metric": "prompt_level_strict_accuracy",
+      "prompt_level_strict_accuracy": 0.32532347504621073,
+      "prompt_level_loose_accuracy": 0.3438077634011091,
+      "instruction_level_strict_accuracy": 0.447242206235012,
+      "instruction_level_loose_accuracy": 0.46522781774580335,
+      "per_category": {
+        "change_case": {
+          "total": 89,
+          "strict_accuracy": 0.8314606741573034,
+          "loose_accuracy": 0.8651685393258427
+        },
+        "combination": {
+          "total": 65,
+          "strict_accuracy": 0.015384615384615385,
+          "loose_accuracy": 0.015384615384615385
+        },
+        "detectable_content": {
+          "total": 53,
+          "strict_accuracy": 0.1320754716981132,
+          "loose_accuracy": 0.1320754716981132
+        },
+        "detectable_format": {
+          "total": 157,
+          "strict_accuracy": 0.43312101910828027,
+          "loose_accuracy": 0.4394904458598726
+        },
+        "keywords": {
+          "total": 163,
+          "strict_accuracy": 0.5153374233128835,
+          "loose_accuracy": 0.5644171779141104
+        },
+        "language": {
+          "total": 31,
+          "strict_accuracy": 0.0,
+          "loose_accuracy": 0.0
+        },
+        "length_constraints": {
+          "total": 143,
+          "strict_accuracy": 0.3986013986013986,
+          "loose_accuracy": 0.4125874125874126
+        },
+        "punctuation": {
+          "total": 66,
+          "strict_accuracy": 0.9848484848484849,
+          "loose_accuracy": 0.9848484848484849
+        },
+        "startend": {
+          "total": 67,
+          "strict_accuracy": 0.2537313432835821,
+          "loose_accuracy": 0.26865671641791045
+        }
+      }
+    },
+    {
+      "task": "tulu",
+      "variant": "magicoder__common_hns",
+      "samples": 541,
+      "instructions": 834,
+      "primary_metric": "prompt_level_strict_accuracy",
+      "prompt_level_strict_accuracy": 0.5970425138632163,
+      "prompt_level_loose_accuracy": 0.6709796672828097,
+      "instruction_level_strict_accuracy": 0.7074340527577938,
+      "instruction_level_loose_accuracy": 0.7649880095923262,
+      "per_category": {
+        "change_case": {
+          "total": 89,
+          "strict_accuracy": 0.8202247191011236,
+          "loose_accuracy": 0.898876404494382
+        },
+        "combination": {
+          "total": 65,
+          "strict_accuracy": 0.5538461538461539,
+          "loose_accuracy": 0.5538461538461539
+        },
+        "detectable_content": {
+          "total": 53,
+          "strict_accuracy": 0.6415094339622641,
+          "loose_accuracy": 0.7169811320754716
+        },
+        "detectable_format": {
+          "total": 157,
+          "strict_accuracy": 0.7197452229299363,
+          "loose_accuracy": 0.7961783439490446
+        },
+        "keywords": {
+          "total": 163,
+          "strict_accuracy": 0.7361963190184049,
+          "loose_accuracy": 0.7914110429447853
+        },
+        "language": {
+          "total": 31,
+          "strict_accuracy": 0.0,
+          "loose_accuracy": 0.0
+        },
+        "length_constraints": {
+          "total": 143,
+          "strict_accuracy": 0.6783216783216783,
+          "loose_accuracy": 0.7692307692307693
+        },
+        "punctuation": {
+          "total": 66,
+          "strict_accuracy": 0.8787878787878788,
+          "loose_accuracy": 0.8939393939393939
+        },
+        "startend": {
+          "total": 67,
+          "strict_accuracy": 0.8805970149253731,
+          "loose_accuracy": 0.9104477611940298
+        }
+      }
+    },
+    {
+      "task": "tulu",
+      "variant": "magicoder__common_lora",
+      "samples": 541,
+      "instructions": 834,
+      "primary_metric": "prompt_level_strict_accuracy",
+      "prompt_level_strict_accuracy": 0.5674676524953789,
+      "prompt_level_loose_accuracy": 0.6395563770794824,
+      "instruction_level_strict_accuracy": 0.6666666666666666,
+      "instruction_level_loose_accuracy": 0.7326139088729017,
+      "per_category": {
+        "change_case": {
+          "total": 89,
+          "strict_accuracy": 0.7752808988764045,
+          "loose_accuracy": 0.9101123595505618
+        },
+        "combination": {
+          "total": 65,
+          "strict_accuracy": 0.6153846153846154,
+          "loose_accuracy": 0.6153846153846154
+        },
+        "detectable_content": {
+          "total": 53,
+          "strict_accuracy": 0.6037735849056604,
+          "loose_accuracy": 0.6226415094339622
+        },
+        "detectable_format": {
+          "total": 157,
+          "strict_accuracy": 0.7133757961783439,
+          "loose_accuracy": 0.7643312101910829
+        },
+        "keywords": {
+          "total": 163,
+          "strict_accuracy": 0.7055214723926381,
+          "loose_accuracy": 0.7484662576687117
+        },
+        "language": {
+          "total": 31,
+          "strict_accuracy": 0.0,
+          "loose_accuracy": 0.0
+        },
+        "length_constraints": {
+          "total": 143,
+          "strict_accuracy": 0.6083916083916084,
+          "loose_accuracy": 0.7342657342657343
+        },
+        "punctuation": {
+          "total": 66,
+          "strict_accuracy": 0.6666666666666666,
+          "loose_accuracy": 0.7878787878787878
+        },
+        "startend": {
+          "total": 67,
+          "strict_accuracy": 0.8507462686567164,
+          "loose_accuracy": 0.8656716417910447
+        }
+      }
+    },
+    {
+      "task": "tulu",
+      "variant": "magicoder__common_per_module",
+      "samples": 541,
+      "instructions": 834,
+      "primary_metric": "prompt_level_strict_accuracy",
+      "prompt_level_strict_accuracy": 0.5526802218114603,
+      "prompt_level_loose_accuracy": 0.6303142329020333,
+      "instruction_level_strict_accuracy": 0.6618705035971223,
+      "instruction_level_loose_accuracy": 0.7326139088729017,
+      "per_category": {
+        "change_case": {
+          "total": 89,
+          "strict_accuracy": 0.8089887640449438,
+          "loose_accuracy": 0.9101123595505618
+        },
+        "combination": {
+          "total": 65,
+          "strict_accuracy": 0.5384615384615384,
+          "loose_accuracy": 0.5384615384615384
+        },
+        "detectable_content": {
+          "total": 53,
+          "strict_accuracy": 0.6226415094339622,
+          "loose_accuracy": 0.660377358490566
+        },
+        "detectable_format": {
+          "total": 157,
+          "strict_accuracy": 0.7133757961783439,
+          "loose_accuracy": 0.7579617834394905
+        },
+        "keywords": {
+          "total": 163,
+          "strict_accuracy": 0.6993865030674846,
+          "loose_accuracy": 0.7791411042944786
+        },
+        "language": {
+          "total": 31,
+          "strict_accuracy": 0.0,
+          "loose_accuracy": 0.0
+        },
+        "length_constraints": {
+          "total": 143,
+          "strict_accuracy": 0.5734265734265734,
+          "loose_accuracy": 0.7062937062937062
+        },
+        "punctuation": {
+          "total": 66,
+          "strict_accuracy": 0.696969696969697,
+          "loose_accuracy": 0.803030303030303
+        },
+        "startend": {
+          "total": 67,
+          "strict_accuracy": 0.8656716417910447,
+          "loose_accuracy": 0.8955223880597015
+        }
+      }
+    },
+    {
+      "task": "tulu",
+      "variant": "magicoder__global_0p25",
+      "samples": 541,
+      "instructions": 834,
+      "primary_metric": "prompt_level_strict_accuracy",
+      "prompt_level_strict_accuracy": 0.6025878003696857,
+      "prompt_level_loose_accuracy": 0.6746765249537893,
+      "instruction_level_strict_accuracy": 0.7050359712230215,
+      "instruction_level_loose_accuracy": 0.7697841726618705,
+      "per_category": {
+        "change_case": {
+          "total": 89,
+          "strict_accuracy": 0.8202247191011236,
+          "loose_accuracy": 0.898876404494382
+        },
+        "combination": {
+          "total": 65,
+          "strict_accuracy": 0.5384615384615384,
+          "loose_accuracy": 0.5384615384615384
+        },
+        "detectable_content": {
+          "total": 53,
+          "strict_accuracy": 0.6981132075471698,
+          "loose_accuracy": 0.7735849056603774
+        },
+        "detectable_format": {
+          "total": 157,
+          "strict_accuracy": 0.7197452229299363,
+          "loose_accuracy": 0.802547770700637
+        },
+        "keywords": {
+          "total": 163,
+          "strict_accuracy": 0.7300613496932515,
+          "loose_accuracy": 0.7852760736196319
+        },
+        "language": {
+          "total": 31,
+          "strict_accuracy": 0.0,
+          "loose_accuracy": 0.0
+        },
+        "length_constraints": {
+          "total": 143,
+          "strict_accuracy": 0.6573426573426573,
+          "loose_accuracy": 0.7762237762237763
+        },
+        "punctuation": {
+          "total": 66,
+          "strict_accuracy": 0.8787878787878788,
+          "loose_accuracy": 0.9090909090909091
+        },
+        "startend": {
+          "total": 67,
+          "strict_accuracy": 0.8805970149253731,
+          "loose_accuracy": 0.9104477611940298
+        }
+      }
+    },
+    {
+      "task": "tulu",
+      "variant": "magicoder__global_0p40",
+      "samples": 541,
+      "instructions": 834,
+      "primary_metric": "prompt_level_strict_accuracy",
+      "prompt_level_strict_accuracy": 0.589648798521257,
+      "prompt_level_loose_accuracy": 0.6635859519408502,
+      "instruction_level_strict_accuracy": 0.697841726618705,
+      "instruction_level_loose_accuracy": 0.7577937649880095,
+      "per_category": {
+        "change_case": {
+          "total": 89,
+          "strict_accuracy": 0.7865168539325843,
+          "loose_accuracy": 0.8764044943820225
+        },
+        "combination": {
+          "total": 65,
+          "strict_accuracy": 0.5384615384615384,
+          "loose_accuracy": 0.5384615384615384
+        },
+        "detectable_content": {
+          "total": 53,
+          "strict_accuracy": 0.7169811320754716,
+          "loose_accuracy": 0.7735849056603774
+        },
+        "detectable_format": {
+          "total": 157,
+          "strict_accuracy": 0.7452229299363057,
+          "loose_accuracy": 0.8089171974522293
+        },
+        "keywords": {
+          "total": 163,
+          "strict_accuracy": 0.754601226993865,
+          "loose_accuracy": 0.8159509202453987
+        },
+        "language": {
+          "total": 31,
+          "strict_accuracy": 0.0,
+          "loose_accuracy": 0.0
+        },
+        "length_constraints": {
+          "total": 143,
+          "strict_accuracy": 0.6153846153846154,
+          "loose_accuracy": 0.7132867132867133
+        },
+        "punctuation": {
+          "total": 66,
+          "strict_accuracy": 0.803030303030303,
+          "loose_accuracy": 0.8333333333333334
+        },
+        "startend": {
+          "total": 67,
+          "strict_accuracy": 0.8656716417910447,
+          "loose_accuracy": 0.9104477611940298
+        }
+      }
+    },
+    {
+      "task": "tulu",
+      "variant": "magicoder__global_0p55",
+      "samples": 541,
+      "instructions": 834,
+      "primary_metric": "prompt_level_strict_accuracy",
+      "prompt_level_strict_accuracy": 0.5988909426987061,
+      "prompt_level_loose_accuracy": 0.66728280961183,
+      "instruction_level_strict_accuracy": 0.6930455635491607,
+      "instruction_level_loose_accuracy": 0.7577937649880095,
+      "per_category": {
+        "change_case": {
+          "total": 89,
+          "strict_accuracy": 0.8089887640449438,
+          "loose_accuracy": 0.898876404494382
+        },
+        "combination": {
+          "total": 65,
+          "strict_accuracy": 0.5384615384615384,
+          "loose_accuracy": 0.5384615384615384
+        },
+        "detectable_content": {
+          "total": 53,
+          "strict_accuracy": 0.6981132075471698,
+          "loose_accuracy": 0.7358490566037735
+        },
+        "detectable_format": {
+          "total": 157,
+          "strict_accuracy": 0.7452229299363057,
+          "loose_accuracy": 0.8089171974522293
+        },
+        "keywords": {
+          "total": 163,
+          "strict_accuracy": 0.7607361963190185,
+          "loose_accuracy": 0.8159509202453987
+        },
+        "language": {
+          "total": 31,
+          "strict_accuracy": 0.0,
+          "loose_accuracy": 0.0
+        },
+        "length_constraints": {
+          "total": 143,
+          "strict_accuracy": 0.6363636363636364,
+          "loose_accuracy": 0.7482517482517482
+        },
+        "punctuation": {
+          "total": 66,
+          "strict_accuracy": 0.7424242424242424,
+          "loose_accuracy": 0.8484848484848485
+        },
+        "startend": {
+          "total": 67,
+          "strict_accuracy": 0.7910447761194029,
+          "loose_accuracy": 0.8208955223880597
+        }
+      }
+    },
+    {
+      "task": "tulu",
+      "variant": "magicoder__global_0p70",
+      "samples": 541,
+      "instructions": 834,
+      "primary_metric": "prompt_level_strict_accuracy",
+      "prompt_level_strict_accuracy": 0.5767097966728281,
+      "prompt_level_loose_accuracy": 0.6580406654343808,
+      "instruction_level_strict_accuracy": 0.6762589928057554,
+      "instruction_level_loose_accuracy": 0.7482014388489209,
+      "per_category": {
+        "change_case": {
+          "total": 89,
+          "strict_accuracy": 0.8089887640449438,
+          "loose_accuracy": 0.9325842696629213
+        },
+        "combination": {
+          "total": 65,
+          "strict_accuracy": 0.5538461538461539,
+          "loose_accuracy": 0.5538461538461539
+        },
+        "detectable_content": {
+          "total": 53,
+          "strict_accuracy": 0.6226415094339622,
+          "loose_accuracy": 0.6415094339622641
+        },
+        "detectable_format": {
+          "total": 157,
+          "strict_accuracy": 0.732484076433121,
+          "loose_accuracy": 0.7898089171974523
+        },
+        "keywords": {
+          "total": 163,
+          "strict_accuracy": 0.7484662576687117,
+          "loose_accuracy": 0.8098159509202454
+        },
+        "language": {
+          "total": 31,
+          "strict_accuracy": 0.0,
+          "loose_accuracy": 0.0
+        },
+        "length_constraints": {
+          "total": 143,
+          "strict_accuracy": 0.5804195804195804,
+          "loose_accuracy": 0.7132867132867133
+        },
+        "punctuation": {
+          "total": 66,
+          "strict_accuracy": 0.7121212121212122,
+          "loose_accuracy": 0.8333333333333334
+        },
+        "startend": {
+          "total": 67,
+          "strict_accuracy": 0.835820895522388,
+          "loose_accuracy": 0.8656716417910447
+        }
+      }
+    },
+    {
+      "task": "tulu",
+      "variant": "magicoder__global_0p85",
+      "samples": 541,
+      "instructions": 834,
+      "primary_metric": "prompt_level_strict_accuracy",
+      "prompt_level_strict_accuracy": 0.5767097966728281,
+      "prompt_level_loose_accuracy": 0.6524953789279113,
+      "instruction_level_strict_accuracy": 0.6810551558752997,
+      "instruction_level_loose_accuracy": 0.7434052757793765,
+      "per_category": {
+        "change_case": {
+          "total": 89,
+          "strict_accuracy": 0.797752808988764,
+          "loose_accuracy": 0.9101123595505618
+        },
+        "combination": {
+          "total": 65,
+          "strict_accuracy": 0.5538461538461539,
+          "loose_accuracy": 0.5538461538461539
+        },
+        "detectable_content": {
+          "total": 53,
+          "strict_accuracy": 0.660377358490566,
+          "loose_accuracy": 0.660377358490566
+        },
+        "detectable_format": {
+          "total": 157,
+          "strict_accuracy": 0.7197452229299363,
+          "loose_accuracy": 0.7834394904458599
+        },
+        "keywords": {
+          "total": 163,
+          "strict_accuracy": 0.7423312883435583,
+          "loose_accuracy": 0.7852760736196319
+        },
+        "language": {
+          "total": 31,
+          "strict_accuracy": 0.0,
+          "loose_accuracy": 0.0
+        },
+        "length_constraints": {
+          "total": 143,
+          "strict_accuracy": 0.5944055944055944,
+          "loose_accuracy": 0.7202797202797203
+        },
+        "punctuation": {
+          "total": 66,
+          "strict_accuracy": 0.7121212121212122,
+          "loose_accuracy": 0.803030303030303
+        },
+        "startend": {
+          "total": 67,
+          "strict_accuracy": 0.8955223880597015,
+          "loose_accuracy": 0.9104477611940298
+        }
+      }
+    },
+    {
+      "task": "tulu",
+      "variant": "magicoder__original_hns",
+      "samples": 541,
+      "instructions": 834,
+      "primary_metric": "prompt_level_strict_accuracy",
+      "prompt_level_strict_accuracy": 0.5951940850277264,
+      "prompt_level_loose_accuracy": 0.66728280961183,
+      "instruction_level_strict_accuracy": 0.7038369304556354,
+      "instruction_level_loose_accuracy": 0.762589928057554,
+      "per_category": {
+        "change_case": {
+          "total": 89,
+          "strict_accuracy": 0.8202247191011236,
+          "loose_accuracy": 0.898876404494382
+        },
+        "combination": {
+          "total": 65,
+          "strict_accuracy": 0.5538461538461539,
+          "loose_accuracy": 0.5538461538461539
+        },
+        "detectable_content": {
+          "total": 53,
+          "strict_accuracy": 0.660377358490566,
+          "loose_accuracy": 0.7169811320754716
+        },
+        "detectable_format": {
+          "total": 157,
+          "strict_accuracy": 0.7133757961783439,
+          "loose_accuracy": 0.7898089171974523
+        },
+        "keywords": {
+          "total": 163,
+          "strict_accuracy": 0.7361963190184049,
+          "loose_accuracy": 0.7914110429447853
+        },
+        "language": {
+          "total": 31,
+          "strict_accuracy": 0.0,
+          "loose_accuracy": 0.0
+        },
+        "length_constraints": {
+          "total": 143,
+          "strict_accuracy": 0.6573426573426573,
+          "loose_accuracy": 0.7622377622377622
+        },
+        "punctuation": {
+          "total": 66,
+          "strict_accuracy": 0.9090909090909091,
+          "loose_accuracy": 0.9242424242424242
+        },
+        "startend": {
+          "total": 67,
+          "strict_accuracy": 0.8507462686567164,
+          "loose_accuracy": 0.8805970149253731
+        }
+      }
+    },
+    {
+      "task": "tulu",
+      "variant": "magicoder__original_lora",
+      "samples": 541,
+      "instructions": 834,
+      "primary_metric": "prompt_level_strict_accuracy",
+      "prompt_level_strict_accuracy": 0.5545286506469501,
+      "prompt_level_loose_accuracy": 0.6284658040665434,
+      "instruction_level_strict_accuracy": 0.6630695443645084,
+      "instruction_level_loose_accuracy": 0.7266187050359713,
+      "per_category": {
+        "change_case": {
+          "total": 89,
+          "strict_accuracy": 0.8089887640449438,
+          "loose_accuracy": 0.9213483146067416
+        },
+        "combination": {
+          "total": 65,
+          "strict_accuracy": 0.5538461538461539,
+          "loose_accuracy": 0.5538461538461539
+        },
+        "detectable_content": {
+          "total": 53,
+          "strict_accuracy": 0.6415094339622641,
+          "loose_accuracy": 0.660377358490566
+        },
+        "detectable_format": {
+          "total": 157,
+          "strict_accuracy": 0.7006369426751592,
+          "loose_accuracy": 0.7515923566878981
+        },
+        "keywords": {
+          "total": 163,
+          "strict_accuracy": 0.7116564417177914,
+          "loose_accuracy": 0.7484662576687117
+        },
+        "language": {
+          "total": 31,
+          "strict_accuracy": 0.0,
+          "loose_accuracy": 0.0
+        },
+        "length_constraints": {
+          "total": 143,
+          "strict_accuracy": 0.6013986013986014,
+          "loose_accuracy": 0.7272727272727273
+        },
+        "punctuation": {
+          "total": 66,
+          "strict_accuracy": 0.6363636363636364,
+          "loose_accuracy": 0.7727272727272727
+        },
+        "startend": {
+          "total": 67,
+          "strict_accuracy": 0.8507462686567164,
+          "loose_accuracy": 0.8656716417910447
+        }
+      }
+    },
+    {
+      "task": "tulu",
+      "variant": "metamath__common_hns",
+      "samples": 541,
+      "instructions": 834,
+      "primary_metric": "prompt_level_strict_accuracy",
+      "prompt_level_strict_accuracy": 0.5951940850277264,
+      "prompt_level_loose_accuracy": 0.6709796672828097,
+      "instruction_level_strict_accuracy": 0.7002398081534772,
+      "instruction_level_loose_accuracy": 0.7601918465227818,
+      "per_category": {
+        "change_case": {
+          "total": 89,
+          "strict_accuracy": 0.8426966292134831,
+          "loose_accuracy": 0.8876404494382022
+        },
+        "combination": {
+          "total": 65,
+          "strict_accuracy": 0.6307692307692307,
+          "loose_accuracy": 0.6461538461538462
+        },
+        "detectable_content": {
+          "total": 53,
+          "strict_accuracy": 0.7169811320754716,
+          "loose_accuracy": 0.7169811320754716
+        },
+        "detectable_format": {
+          "total": 157,
+          "strict_accuracy": 0.7006369426751592,
+          "loose_accuracy": 0.7707006369426752
+        },
+        "keywords": {
+          "total": 163,
+          "strict_accuracy": 0.7484662576687117,
+          "loose_accuracy": 0.803680981595092
+        },
+        "language": {
+          "total": 31,
+          "strict_accuracy": 0.0,
+          "loose_accuracy": 0.0
+        },
+        "length_constraints": {
+          "total": 143,
+          "strict_accuracy": 0.6783216783216783,
+          "loose_accuracy": 0.7762237762237763
+        },
+        "punctuation": {
+          "total": 66,
+          "strict_accuracy": 0.7424242424242424,
+          "loose_accuracy": 0.8333333333333334
+        },
+        "startend": {
+          "total": 67,
+          "strict_accuracy": 0.7761194029850746,
+          "loose_accuracy": 0.8507462686567164
+        }
+      }
+    },
+    {
+      "task": "tulu",
+      "variant": "metamath__common_lora",
+      "samples": 541,
+      "instructions": 834,
+      "primary_metric": "prompt_level_strict_accuracy",
+      "prompt_level_strict_accuracy": 0.5619223659889094,
+      "prompt_level_loose_accuracy": 0.6543438077634011,
+      "instruction_level_strict_accuracy": 0.6690647482014388,
+      "instruction_level_loose_accuracy": 0.7398081534772182,
+      "per_category": {
+        "change_case": {
+          "total": 89,
+          "strict_accuracy": 0.7078651685393258,
+          "loose_accuracy": 0.8764044943820225
+        },
+        "combination": {
+          "total": 65,
+          "strict_accuracy": 0.676923076923077,
+          "loose_accuracy": 0.676923076923077
+        },
+        "detectable_content": {
+          "total": 53,
+          "strict_accuracy": 0.6226415094339622,
+          "loose_accuracy": 0.6415094339622641
+        },
+        "detectable_format": {
+          "total": 157,
+          "strict_accuracy": 0.6942675159235668,
+          "loose_accuracy": 0.7770700636942676
+        },
+        "keywords": {
+          "total": 163,
+          "strict_accuracy": 0.7239263803680982,
+          "loose_accuracy": 0.7914110429447853
+        },
+        "language": {
+          "total": 31,
+          "strict_accuracy": 0.0,
+          "loose_accuracy": 0.0
+        },
+        "length_constraints": {
+          "total": 143,
+          "strict_accuracy": 0.6993006993006993,
+          "loose_accuracy": 0.7762237762237763
+        },
+        "punctuation": {
+          "total": 66,
+          "strict_accuracy": 0.6363636363636364,
+          "loose_accuracy": 0.7121212121212122
+        },
+        "startend": {
+          "total": 67,
+          "strict_accuracy": 0.7313432835820896,
+          "loose_accuracy": 0.7761194029850746
+        }
+      }
+    },
+    {
+      "task": "tulu",
+      "variant": "metamath__common_per_module",
+      "samples": 541,
+      "instructions": 834,
+      "primary_metric": "prompt_level_strict_accuracy",
+      "prompt_level_strict_accuracy": 0.5748613678373382,
+      "prompt_level_loose_accuracy": 0.6543438077634011,
+      "instruction_level_strict_accuracy": 0.6726618705035972,
+      "instruction_level_loose_accuracy": 0.7398081534772182,
+      "per_category": {
+        "change_case": {
+          "total": 89,
+          "strict_accuracy": 0.7752808988764045,
+          "loose_accuracy": 0.8764044943820225
+        },
+        "combination": {
+          "total": 65,
+          "strict_accuracy": 0.676923076923077,
+          "loose_accuracy": 0.676923076923077
+        },
+        "detectable_content": {
+          "total": 53,
+          "strict_accuracy": 0.6415094339622641,
+          "loose_accuracy": 0.660377358490566
+        },
+        "detectable_format": {
+          "total": 157,
+          "strict_accuracy": 0.6942675159235668,
+          "loose_accuracy": 0.7643312101910829
+        },
+        "keywords": {
+          "total": 163,
+          "strict_accuracy": 0.7239263803680982,
+          "loose_accuracy": 0.803680981595092
+        },
+        "language": {
+          "total": 31,
+          "strict_accuracy": 0.0,
+          "loose_accuracy": 0.0
+        },
+        "length_constraints": {
+          "total": 143,
+          "strict_accuracy": 0.6713286713286714,
+          "loose_accuracy": 0.7692307692307693
+        },
+        "punctuation": {
+          "total": 66,
+          "strict_accuracy": 0.6363636363636364,
+          "loose_accuracy": 0.696969696969697
+        },
+        "startend": {
+          "total": 67,
+          "strict_accuracy": 0.7313432835820896,
+          "loose_accuracy": 0.7910447761194029
+        }
+      }
+    },
+    {
+      "task": "tulu",
+      "variant": "metamath__global_0p25",
+      "samples": 541,
+      "instructions": 834,
+      "primary_metric": "prompt_level_strict_accuracy",
+      "prompt_level_strict_accuracy": 0.5951940850277264,
+      "prompt_level_loose_accuracy": 0.6580406654343808,
+      "instruction_level_strict_accuracy": 0.7002398081534772,
+      "instruction_level_loose_accuracy": 0.7541966426858513,
+      "per_category": {
+        "change_case": {
+          "total": 89,
+          "strict_accuracy": 0.8314606741573034,
+          "loose_accuracy": 0.8651685393258427
+        },
+        "combination": {
+          "total": 65,
+          "strict_accuracy": 0.5846153846153846,
+          "loose_accuracy": 0.5846153846153846
+        },
+        "detectable_content": {
+          "total": 53,
+          "strict_accuracy": 0.6792452830188679,
+          "loose_accuracy": 0.7358490566037735
+        },
+        "detectable_format": {
+          "total": 157,
+          "strict_accuracy": 0.6942675159235668,
+          "loose_accuracy": 0.7643312101910829
+        },
+        "keywords": {
+          "total": 163,
+          "strict_accuracy": 0.7484662576687117,
+          "loose_accuracy": 0.7852760736196319
+        },
+        "language": {
+          "total": 31,
+          "strict_accuracy": 0.0,
+          "loose_accuracy": 0.0
+        },
+        "length_constraints": {
+          "total": 143,
+          "strict_accuracy": 0.6713286713286714,
+          "loose_accuracy": 0.7832167832167832
+        },
+        "punctuation": {
+          "total": 66,
+          "strict_accuracy": 0.803030303030303,
+          "loose_accuracy": 0.8484848484848485
+        },
+        "startend": {
+          "total": 67,
+          "strict_accuracy": 0.835820895522388,
+          "loose_accuracy": 0.8805970149253731
+        }
+      }
+    },
+    {
+      "task": "tulu",
+      "variant": "metamath__global_0p40",
+      "samples": 541,
+      "instructions": 834,
+      "primary_metric": "prompt_level_strict_accuracy",
+      "prompt_level_strict_accuracy": 0.5970425138632163,
+      "prompt_level_loose_accuracy": 0.6709796672828097,
+      "instruction_level_strict_accuracy": 0.6930455635491607,
+      "instruction_level_loose_accuracy": 0.7613908872901679,
+      "per_category": {
+        "change_case": {
+          "total": 89,
+          "strict_accuracy": 0.8089887640449438,
+          "loose_accuracy": 0.8539325842696629
+        },
+        "combination": {
+          "total": 65,
+          "strict_accuracy": 0.6153846153846154,
+          "loose_accuracy": 0.6307692307692307
+        },
+        "detectable_content": {
+          "total": 53,
+          "strict_accuracy": 0.6981132075471698,
+          "loose_accuracy": 0.7169811320754716
+        },
+        "detectable_format": {
+          "total": 157,
+          "strict_accuracy": 0.6815286624203821,
+          "loose_accuracy": 0.7643312101910829
+        },
+        "keywords": {
+          "total": 163,
+          "strict_accuracy": 0.7361963190184049,
+          "loose_accuracy": 0.7975460122699386
+        },
+        "language": {
+          "total": 31,
+          "strict_accuracy": 0.0,
+          "loose_accuracy": 0.0
+        },
+        "length_constraints": {
+          "total": 143,
+          "strict_accuracy": 0.6853146853146853,
+          "loose_accuracy": 0.8041958041958042
+        },
+        "punctuation": {
+          "total": 66,
+          "strict_accuracy": 0.7272727272727273,
+          "loose_accuracy": 0.8333333333333334
+        },
+        "startend": {
+          "total": 67,
+          "strict_accuracy": 0.835820895522388,
+          "loose_accuracy": 0.8955223880597015
+        }
+      }
+    },
+    {
+      "task": "tulu",
+      "variant": "metamath__global_0p55",
+      "samples": 541,
+      "instructions": 834,
+      "primary_metric": "prompt_level_strict_accuracy",
+      "prompt_level_strict_accuracy": 0.5988909426987061,
+      "prompt_level_loose_accuracy": 0.6728280961182994,
+      "instruction_level_strict_accuracy": 0.6918465227817746,
+      "instruction_level_loose_accuracy": 0.7565947242206235,
+      "per_category": {
+        "change_case": {
+          "total": 89,
+          "strict_accuracy": 0.7865168539325843,
+          "loose_accuracy": 0.8426966292134831
+        },
+        "combination": {
+          "total": 65,
+          "strict_accuracy": 0.676923076923077,
+          "loose_accuracy": 0.676923076923077
+        },
+        "detectable_content": {
+          "total": 53,
+          "strict_accuracy": 0.7547169811320755,
+          "loose_accuracy": 0.7735849056603774
+        },
+        "detectable_format": {
+          "total": 157,
+          "strict_accuracy": 0.6942675159235668,
+          "loose_accuracy": 0.7579617834394905
+        },
+        "keywords": {
+          "total": 163,
+          "strict_accuracy": 0.754601226993865,
+          "loose_accuracy": 0.8220858895705522
+        },
+        "language": {
+          "total": 31,
+          "strict_accuracy": 0.0,
+          "loose_accuracy": 0.0
+        },
+        "length_constraints": {
+          "total": 143,
+          "strict_accuracy": 0.6503496503496503,
+          "loose_accuracy": 0.7762237762237763
+        },
+        "punctuation": {
+          "total": 66,
+          "strict_accuracy": 0.6818181818181818,
+          "loose_accuracy": 0.7575757575757576
+        },
+        "startend": {
+          "total": 67,
+          "strict_accuracy": 0.7910447761194029,
+          "loose_accuracy": 0.8507462686567164
+        }
+      }
+    },
+    {
+      "task": "tulu",
+      "variant": "metamath__global_0p70",
+      "samples": 541,
+      "instructions": 834,
+      "primary_metric": "prompt_level_strict_accuracy",
+      "prompt_level_strict_accuracy": 0.5859519408502772,
+      "prompt_level_loose_accuracy": 0.6580406654343808,
+      "instruction_level_strict_accuracy": 0.6882494004796164,
+      "instruction_level_loose_accuracy": 0.7517985611510791,
+      "per_category": {
+        "change_case": {
+          "total": 89,
+          "strict_accuracy": 0.8314606741573034,
+          "loose_accuracy": 0.8876404494382022
+        },
+        "combination": {
+          "total": 65,
+          "strict_accuracy": 0.6461538461538462,
+          "loose_accuracy": 0.6461538461538462
+        },
+        "detectable_content": {
+          "total": 53,
+          "strict_accuracy": 0.660377358490566,
+          "loose_accuracy": 0.7169811320754716
+        },
+        "detectable_format": {
+          "total": 157,
+          "strict_accuracy": 0.6942675159235668,
+          "loose_accuracy": 0.7770700636942676
+        },
+        "keywords": {
+          "total": 163,
+          "strict_accuracy": 0.7177914110429447,
+          "loose_accuracy": 0.7914110429447853
+        },
+        "language": {
+          "total": 31,
+          "strict_accuracy": 0.0,
+          "loose_accuracy": 0.0
+        },
+        "length_constraints": {
+          "total": 143,
+          "strict_accuracy": 0.6853146853146853,
+          "loose_accuracy": 0.7692307692307693
+        },
+        "punctuation": {
+          "total": 66,
+          "strict_accuracy": 0.696969696969697,
+          "loose_accuracy": 0.7424242424242424
+        },
+        "startend": {
+          "total": 67,
+          "strict_accuracy": 0.7910447761194029,
+          "loose_accuracy": 0.8656716417910447
+        }
+      }
+    },
+    {
+      "task": "tulu",
+      "variant": "metamath__global_0p85",
+      "samples": 541,
+      "instructions": 834,
+      "primary_metric": "prompt_level_strict_accuracy",
+      "prompt_level_strict_accuracy": 0.5693160813308688,
+      "prompt_level_loose_accuracy": 0.6487985212569316,
+      "instruction_level_strict_accuracy": 0.6690647482014388,
+      "instruction_level_loose_accuracy": 0.7410071942446043,
+      "per_category": {
+        "change_case": {
+          "total": 89,
+          "strict_accuracy": 0.7640449438202247,
+          "loose_accuracy": 0.8651685393258427
+        },
+        "combination": {
+          "total": 65,
+          "strict_accuracy": 0.6923076923076923,
+          "loose_accuracy": 0.6923076923076923
+        },
+        "detectable_content": {
+          "total": 53,
+          "strict_accuracy": 0.660377358490566,
+          "loose_accuracy": 0.6981132075471698
+        },
+        "detectable_format": {
+          "total": 157,
+          "strict_accuracy": 0.6942675159235668,
+          "loose_accuracy": 0.7707006369426752
+        },
+        "keywords": {
+          "total": 163,
+          "strict_accuracy": 0.6748466257668712,
+          "loose_accuracy": 0.754601226993865
+        },
+        "language": {
+          "total": 31,
+          "strict_accuracy": 0.0,
+          "loose_accuracy": 0.0
+        },
+        "length_constraints": {
+          "total": 143,
+          "strict_accuracy": 0.6853146853146853,
+          "loose_accuracy": 0.7902097902097902
+        },
+        "punctuation": {
+          "total": 66,
+          "strict_accuracy": 0.6363636363636364,
+          "loose_accuracy": 0.7121212121212122
+        },
+        "startend": {
+          "total": 67,
+          "strict_accuracy": 0.7611940298507462,
+          "loose_accuracy": 0.8208955223880597
+        }
+      }
+    },
+    {
+      "task": "tulu",
+      "variant": "metamath__original_hns",
+      "samples": 541,
+      "instructions": 834,
+      "primary_metric": "prompt_level_strict_accuracy",
+      "prompt_level_strict_accuracy": 0.5859519408502772,
+      "prompt_level_loose_accuracy": 0.6709796672828097,
+      "instruction_level_strict_accuracy": 0.6918465227817746,
+      "instruction_level_loose_accuracy": 0.7601918465227818,
+      "per_category": {
+        "change_case": {
+          "total": 89,
+          "strict_accuracy": 0.7865168539325843,
+          "loose_accuracy": 0.8651685393258427
+        },
+        "combination": {
+          "total": 65,
+          "strict_accuracy": 0.6307692307692307,
+          "loose_accuracy": 0.6307692307692307
+        },
+        "detectable_content": {
+          "total": 53,
+          "strict_accuracy": 0.7358490566037735,
+          "loose_accuracy": 0.7547169811320755
+        },
+        "detectable_format": {
+          "total": 157,
+          "strict_accuracy": 0.6815286624203821,
+          "loose_accuracy": 0.7515923566878981
+        },
+        "keywords": {
+          "total": 163,
+          "strict_accuracy": 0.7484662576687117,
+          "loose_accuracy": 0.8159509202453987
+        },
+        "language": {
+          "total": 31,
+          "strict_accuracy": 0.0,
+          "loose_accuracy": 0.0
+        },
+        "length_constraints": {
+          "total": 143,
+          "strict_accuracy": 0.6713286713286714,
+          "loose_accuracy": 0.7832167832167832
+        },
+        "punctuation": {
+          "total": 66,
+          "strict_accuracy": 0.7575757575757576,
+          "loose_accuracy": 0.8484848484848485
+        },
+        "startend": {
+          "total": 67,
+          "strict_accuracy": 0.7761194029850746,
+          "loose_accuracy": 0.8507462686567164
+        }
+      }
+    },
+    {
+      "task": "tulu",
+      "variant": "metamath__original_lora",
+      "samples": 541,
+      "instructions": 834,
+      "primary_metric": "prompt_level_strict_accuracy",
+      "prompt_level_strict_accuracy": 0.5434380776340111,
+      "prompt_level_loose_accuracy": 0.6358595194085028,
+      "instruction_level_strict_accuracy": 0.6522781774580336,
+      "instruction_level_loose_accuracy": 0.7290167865707434,
+      "per_category": {
+        "change_case": {
+          "total": 89,
+          "strict_accuracy": 0.6741573033707865,
+          "loose_accuracy": 0.8764044943820225
+        },
+        "combination": {
+          "total": 65,
+          "strict_accuracy": 0.6461538461538462,
+          "loose_accuracy": 0.6461538461538462
+        },
+        "detectable_content": {
+          "total": 53,
+          "strict_accuracy": 0.6037735849056604,
+          "loose_accuracy": 0.6226415094339622
+        },
+        "detectable_format": {
+          "total": 157,
+          "strict_accuracy": 0.7070063694267515,
+          "loose_accuracy": 0.7961783439490446
+        },
+        "keywords": {
+          "total": 163,
+          "strict_accuracy": 0.6932515337423313,
+          "loose_accuracy": 0.7607361963190185
+        },
+        "language": {
+          "total": 31,
+          "strict_accuracy": 0.0,
+          "loose_accuracy": 0.0
+        },
+        "length_constraints": {
+          "total": 143,
+          "strict_accuracy": 0.6643356643356644,
+          "loose_accuracy": 0.7412587412587412
+        },
+        "punctuation": {
+          "total": 66,
+          "strict_accuracy": 0.6212121212121212,
+          "loose_accuracy": 0.7121212121212122
+        },
+        "startend": {
+          "total": 67,
+          "strict_accuracy": 0.746268656716418,
+          "loose_accuracy": 0.7910447761194029
+        }
+      }
+    },
+    {
+      "task": "tulu",
+      "variant": "tulu__common_hns",
+      "samples": 541,
+      "instructions": 834,
+      "primary_metric": "prompt_level_strict_accuracy",
+      "prompt_level_strict_accuracy": 0.6506469500924215,
+      "prompt_level_loose_accuracy": 0.711645101663586,
+      "instruction_level_strict_accuracy": 0.7541966426858513,
+      "instruction_level_loose_accuracy": 0.8009592326139089,
+      "per_category": {
+        "change_case": {
+          "total": 89,
+          "strict_accuracy": 0.7752808988764045,
+          "loose_accuracy": 0.8539325842696629
+        },
+        "combination": {
+          "total": 65,
+          "strict_accuracy": 0.6923076923076923,
+          "loose_accuracy": 0.6923076923076923
+        },
+        "detectable_content": {
+          "total": 53,
+          "strict_accuracy": 0.7924528301886793,
+          "loose_accuracy": 0.8301886792452831
+        },
+        "detectable_format": {
+          "total": 157,
+          "strict_accuracy": 0.7770700636942676,
+          "loose_accuracy": 0.802547770700637
+        },
+        "keywords": {
+          "total": 163,
+          "strict_accuracy": 0.7668711656441718,
+          "loose_accuracy": 0.8282208588957055
+        },
+        "language": {
+          "total": 31,
+          "strict_accuracy": 0.0,
+          "loose_accuracy": 0.0
+        },
+        "length_constraints": {
+          "total": 143,
+          "strict_accuracy": 0.6993006993006993,
+          "loose_accuracy": 0.8041958041958042
+        },
+        "punctuation": {
+          "total": 66,
+          "strict_accuracy": 0.9696969696969697,
+          "loose_accuracy": 0.9848484848484849
+        },
+        "startend": {
+          "total": 67,
+          "strict_accuracy": 0.9253731343283582,
+          "loose_accuracy": 0.9253731343283582
+        }
+      }
+    },
+    {
+      "task": "tulu",
+      "variant": "tulu__common_lora",
+      "samples": 541,
+      "instructions": 834,
+      "primary_metric": "prompt_level_strict_accuracy",
+      "prompt_level_strict_accuracy": 0.6266173752310537,
+      "prompt_level_loose_accuracy": 0.678373382624769,
+      "instruction_level_strict_accuracy": 0.7302158273381295,
+      "instruction_level_loose_accuracy": 0.7745803357314148,
+      "per_category": {
+        "change_case": {
+          "total": 89,
+          "strict_accuracy": 0.8314606741573034,
+          "loose_accuracy": 0.8764044943820225
+        },
+        "combination": {
+          "total": 65,
+          "strict_accuracy": 0.6923076923076923,
+          "loose_accuracy": 0.7076923076923077
+        },
+        "detectable_content": {
+          "total": 53,
+          "strict_accuracy": 0.660377358490566,
+          "loose_accuracy": 0.7169811320754716
+        },
+        "detectable_format": {
+          "total": 157,
+          "strict_accuracy": 0.7133757961783439,
+          "loose_accuracy": 0.7515923566878981
+        },
+        "keywords": {
+          "total": 163,
+          "strict_accuracy": 0.7177914110429447,
+          "loose_accuracy": 0.7791411042944786
+        },
+        "language": {
+          "total": 31,
+          "strict_accuracy": 0.0,
+          "loose_accuracy": 0.0
+        },
+        "length_constraints": {
+          "total": 143,
+          "strict_accuracy": 0.7062937062937062,
+          "loose_accuracy": 0.7832167832167832
+        },
+        "punctuation": {
+          "total": 66,
+          "strict_accuracy": 0.9545454545454546,
+          "loose_accuracy": 0.9848484848484849
+        },
+        "startend": {
+          "total": 67,
+          "strict_accuracy": 0.9253731343283582,
+          "loose_accuracy": 0.9253731343283582
+        }
+      }
+    },
+    {
+      "task": "tulu",
+      "variant": "tulu__common_per_module",
+      "samples": 541,
+      "instructions": 834,
+      "primary_metric": "prompt_level_strict_accuracy",
+      "prompt_level_strict_accuracy": 0.6506469500924215,
+      "prompt_level_loose_accuracy": 0.6987060998151571,
+      "instruction_level_strict_accuracy": 0.7553956834532374,
+      "instruction_level_loose_accuracy": 0.7937649880095923,
+      "per_category": {
+        "change_case": {
+          "total": 89,
+          "strict_accuracy": 0.8314606741573034,
+          "loose_accuracy": 0.8651685393258427
+        },
+        "combination": {
+          "total": 65,
+          "strict_accuracy": 0.7230769230769231,
+          "loose_accuracy": 0.7384615384615385
+        },
+        "detectable_content": {
+          "total": 53,
+          "strict_accuracy": 0.7735849056603774,
+          "loose_accuracy": 0.8113207547169812
+        },
+        "detectable_format": {
+          "total": 157,
+          "strict_accuracy": 0.7579617834394905,
+          "loose_accuracy": 0.7898089171974523
+        },
+        "keywords": {
+          "total": 163,
+          "strict_accuracy": 0.7668711656441718,
+          "loose_accuracy": 0.8159509202453987
+        },
+        "language": {
+          "total": 31,
+          "strict_accuracy": 0.0,
+          "loose_accuracy": 0.0
+        },
+        "length_constraints": {
+          "total": 143,
+          "strict_accuracy": 0.6853146853146853,
+          "loose_accuracy": 0.7692307692307693
+        },
+        "punctuation": {
+          "total": 66,
+          "strict_accuracy": 0.9696969696969697,
+          "loose_accuracy": 0.9696969696969697
+        },
+        "startend": {
+          "total": 67,
+          "strict_accuracy": 0.9253731343283582,
+          "loose_accuracy": 0.9402985074626866
+        }
+      }
+    },
+    {
+      "task": "tulu",
+      "variant": "tulu__global_0p25",
+      "samples": 541,
+      "instructions": 834,
+      "primary_metric": "prompt_level_strict_accuracy",
+      "prompt_level_strict_accuracy": 0.6358595194085028,
+      "prompt_level_loose_accuracy": 0.7005545286506469,
+      "instruction_level_strict_accuracy": 0.7434052757793765,
+      "instruction_level_loose_accuracy": 0.7925659472422062,
+      "per_category": {
+        "change_case": {
+          "total": 89,
+          "strict_accuracy": 0.8202247191011236,
+          "loose_accuracy": 0.8876404494382022
+        },
+        "combination": {
+          "total": 65,
+          "strict_accuracy": 0.6153846153846154,
+          "loose_accuracy": 0.6153846153846154
+        },
+        "detectable_content": {
+          "total": 53,
+          "strict_accuracy": 0.7735849056603774,
+          "loose_accuracy": 0.8490566037735849
+        },
+        "detectable_format": {
+          "total": 157,
+          "strict_accuracy": 0.7452229299363057,
+          "loose_accuracy": 0.7961783439490446
+        },
+        "keywords": {
+          "total": 163,
+          "strict_accuracy": 0.7852760736196319,
+          "loose_accuracy": 0.8220858895705522
+        },
+        "language": {
+          "total": 31,
+          "strict_accuracy": 0.0,
+          "loose_accuracy": 0.0
+        },
+        "length_constraints": {
+          "total": 143,
+          "strict_accuracy": 0.6853146853146853,
+          "loose_accuracy": 0.8041958041958042
+        },
+        "punctuation": {
+          "total": 66,
+          "strict_accuracy": 0.9242424242424242,
+          "loose_accuracy": 0.9242424242424242
+        },
+        "startend": {
+          "total": 67,
+          "strict_accuracy": 0.9253731343283582,
+          "loose_accuracy": 0.9253731343283582
+        }
+      }
+    },
+    {
+      "task": "tulu",
+      "variant": "tulu__global_0p40",
+      "samples": 541,
+      "instructions": 834,
+      "primary_metric": "prompt_level_strict_accuracy",
+      "prompt_level_strict_accuracy": 0.6487985212569316,
+      "prompt_level_loose_accuracy": 0.6950092421441775,
+      "instruction_level_strict_accuracy": 0.7470023980815348,
+      "instruction_level_loose_accuracy": 0.7865707434052758,
+      "per_category": {
+        "change_case": {
+          "total": 89,
+          "strict_accuracy": 0.8651685393258427,
+          "loose_accuracy": 0.9213483146067416
+        },
+        "combination": {
+          "total": 65,
+          "strict_accuracy": 0.6307692307692307,
+          "loose_accuracy": 0.6307692307692307
+        },
+        "detectable_content": {
+          "total": 53,
+          "strict_accuracy": 0.7169811320754716,
+          "loose_accuracy": 0.7547169811320755
+        },
+        "detectable_format": {
+          "total": 157,
+          "strict_accuracy": 0.7834394904458599,
+          "loose_accuracy": 0.8089171974522293
+        },
+        "keywords": {
+          "total": 163,
+          "strict_accuracy": 0.7484662576687117,
+          "loose_accuracy": 0.7914110429447853
+        },
+        "language": {
+          "total": 31,
+          "strict_accuracy": 0.0,
+          "loose_accuracy": 0.0
+        },
+        "length_constraints": {
+          "total": 143,
+          "strict_accuracy": 0.6783216783216783,
+          "loose_accuracy": 0.7832167832167832
+        },
+        "punctuation": {
+          "total": 66,
+          "strict_accuracy": 0.9545454545454546,
+          "loose_accuracy": 0.9545454545454546
+        },
+        "startend": {
+          "total": 67,
+          "strict_accuracy": 0.9253731343283582,
+          "loose_accuracy": 0.9253731343283582
+        }
+      }
+    },
+    {
+      "task": "tulu",
+      "variant": "tulu__global_0p55",
+      "samples": 541,
+      "instructions": 834,
+      "primary_metric": "prompt_level_strict_accuracy",
+      "prompt_level_strict_accuracy": 0.6506469500924215,
+      "prompt_level_loose_accuracy": 0.7134935304990758,
+      "instruction_level_strict_accuracy": 0.750599520383693,
+      "instruction_level_loose_accuracy": 0.7985611510791367,
+      "per_category": {
+        "change_case": {
+          "total": 89,
+          "strict_accuracy": 0.8539325842696629,
+          "loose_accuracy": 0.9213483146067416
+        },
+        "combination": {
+          "total": 65,
+          "strict_accuracy": 0.676923076923077,
+          "loose_accuracy": 0.6923076923076923
+        },
+        "detectable_content": {
+          "total": 53,
+          "strict_accuracy": 0.7547169811320755,
+          "loose_accuracy": 0.7924528301886793
+        },
+        "detectable_format": {
+          "total": 157,
+          "strict_accuracy": 0.7707006369426752,
+          "loose_accuracy": 0.8089171974522293
+        },
+        "keywords": {
+          "total": 163,
+          "strict_accuracy": 0.754601226993865,
+          "loose_accuracy": 0.803680981595092
+        },
+        "language": {
+          "total": 31,
+          "strict_accuracy": 0.0,
+          "loose_accuracy": 0.0
+        },
+        "length_constraints": {
+          "total": 143,
+          "strict_accuracy": 0.6713286713286714,
+          "loose_accuracy": 0.7832167832167832
+        },
+        "punctuation": {
+          "total": 66,
+          "strict_accuracy": 0.9545454545454546,
+          "loose_accuracy": 0.9696969696969697
+        },
+        "startend": {
+          "total": 67,
+          "strict_accuracy": 0.9402985074626866,
+          "loose_accuracy": 0.9402985074626866
+        }
+      }
+    },
+    {
+      "task": "tulu",
+      "variant": "tulu__global_0p70",
+      "samples": 541,
+      "instructions": 834,
+      "primary_metric": "prompt_level_strict_accuracy",
+      "prompt_level_strict_accuracy": 0.6524953789279113,
+      "prompt_level_loose_accuracy": 0.7005545286506469,
+      "instruction_level_strict_accuracy": 0.7517985611510791,
+      "instruction_level_loose_accuracy": 0.7913669064748201,
+      "per_category": {
+        "change_case": {
+          "total": 89,
+          "strict_accuracy": 0.8426966292134831,
+          "loose_accuracy": 0.8876404494382022
+        },
+        "combination": {
+          "total": 65,
+          "strict_accuracy": 0.7076923076923077,
+          "loose_accuracy": 0.7230769230769231
+        },
+        "detectable_content": {
+          "total": 53,
+          "strict_accuracy": 0.7924528301886793,
+          "loose_accuracy": 0.8301886792452831
+        },
+        "detectable_format": {
+          "total": 157,
+          "strict_accuracy": 0.7643312101910829,
+          "loose_accuracy": 0.7961783439490446
+        },
+        "keywords": {
+          "total": 163,
+          "strict_accuracy": 0.7361963190184049,
+          "loose_accuracy": 0.7914110429447853
+        },
+        "language": {
+          "total": 31,
+          "strict_accuracy": 0.0,
+          "loose_accuracy": 0.0
+        },
+        "length_constraints": {
+          "total": 143,
+          "strict_accuracy": 0.6923076923076923,
+          "loose_accuracy": 0.7762237762237763
+        },
+        "punctuation": {
+          "total": 66,
+          "strict_accuracy": 0.9696969696969697,
+          "loose_accuracy": 0.9696969696969697
+        },
+        "startend": {
+          "total": 67,
+          "strict_accuracy": 0.9104477611940298,
+          "loose_accuracy": 0.9104477611940298
+        }
+      }
+    },
+    {
+      "task": "tulu",
+      "variant": "tulu__global_0p85",
+      "samples": 541,
+      "instructions": 834,
+      "primary_metric": "prompt_level_strict_accuracy",
+      "prompt_level_strict_accuracy": 0.6487985212569316,
+      "prompt_level_loose_accuracy": 0.7060998151571165,
+      "instruction_level_strict_accuracy": 0.7482014388489209,
+      "instruction_level_loose_accuracy": 0.7937649880095923,
+      "per_category": {
+        "change_case": {
+          "total": 89,
+          "strict_accuracy": 0.8426966292134831,
+          "loose_accuracy": 0.898876404494382
+        },
+        "combination": {
+          "total": 65,
+          "strict_accuracy": 0.7076923076923077,
+          "loose_accuracy": 0.7230769230769231
+        },
+        "detectable_content": {
+          "total": 53,
+          "strict_accuracy": 0.7735849056603774,
+          "loose_accuracy": 0.8113207547169812
+        },
+        "detectable_format": {
+          "total": 157,
+          "strict_accuracy": 0.7515923566878981,
+          "loose_accuracy": 0.7770700636942676
+        },
+        "keywords": {
+          "total": 163,
+          "strict_accuracy": 0.7423312883435583,
+          "loose_accuracy": 0.803680981595092
+        },
+        "language": {
+          "total": 31,
+          "strict_accuracy": 0.0,
+          "loose_accuracy": 0.0
+        },
+        "length_constraints": {
+          "total": 143,
+          "strict_accuracy": 0.6783216783216783,
+          "loose_accuracy": 0.7832167832167832
+        },
+        "punctuation": {
+          "total": 66,
+          "strict_accuracy": 0.9545454545454546,
+          "loose_accuracy": 0.9696969696969697
+        },
+        "startend": {
+          "total": 67,
+          "strict_accuracy": 0.9402985074626866,
+          "loose_accuracy": 0.9402985074626866
+        }
+      }
+    },
+    {
+      "task": "tulu",
+      "variant": "tulu__original_hns",
+      "samples": 541,
+      "instructions": 834,
+      "primary_metric": "prompt_level_strict_accuracy",
+      "prompt_level_strict_accuracy": 0.6432532347504621,
+      "prompt_level_loose_accuracy": 0.7024029574861368,
+      "instruction_level_strict_accuracy": 0.750599520383693,
+      "instruction_level_loose_accuracy": 0.7961630695443646,
+      "per_category": {
+        "change_case": {
+          "total": 89,
+          "strict_accuracy": 0.7752808988764045,
+          "loose_accuracy": 0.8426966292134831
+        },
+        "combination": {
+          "total": 65,
+          "strict_accuracy": 0.7230769230769231,
+          "loose_accuracy": 0.7384615384615385
+        },
+        "detectable_content": {
+          "total": 53,
+          "strict_accuracy": 0.6981132075471698,
+          "loose_accuracy": 0.7547169811320755
+        },
+        "detectable_format": {
+          "total": 157,
+          "strict_accuracy": 0.7579617834394905,
+          "loose_accuracy": 0.7898089171974523
+        },
+        "keywords": {
+          "total": 163,
+          "strict_accuracy": 0.7791411042944786,
+          "loose_accuracy": 0.8282208588957055
+        },
+        "language": {
+          "total": 31,
+          "strict_accuracy": 0.0,
+          "loose_accuracy": 0.0
+        },
+        "length_constraints": {
+          "total": 143,
+          "strict_accuracy": 0.7062937062937062,
+          "loose_accuracy": 0.8041958041958042
+        },
+        "punctuation": {
+          "total": 66,
+          "strict_accuracy": 0.9696969696969697,
+          "loose_accuracy": 0.9848484848484849
+        },
+        "startend": {
+          "total": 67,
+          "strict_accuracy": 0.9253731343283582,
+          "loose_accuracy": 0.9253731343283582
+        }
+      }
+    },
+    {
+      "task": "tulu",
+      "variant": "tulu__original_lora",
+      "samples": 541,
+      "instructions": 834,
+      "primary_metric": "prompt_level_strict_accuracy",
+      "prompt_level_strict_accuracy": 0.6321626617375231,
+      "prompt_level_loose_accuracy": 0.6857670979667283,
+      "instruction_level_strict_accuracy": 0.7386091127098321,
+      "instruction_level_loose_accuracy": 0.7841726618705036,
+      "per_category": {
+        "change_case": {
+          "total": 89,
+          "strict_accuracy": 0.8764044943820225,
+          "loose_accuracy": 0.9101123595505618
+        },
+        "combination": {
+          "total": 65,
+          "strict_accuracy": 0.676923076923077,
+          "loose_accuracy": 0.6923076923076923
+        },
+        "detectable_content": {
+          "total": 53,
+          "strict_accuracy": 0.7358490566037735,
+          "loose_accuracy": 0.7924528301886793
+        },
+        "detectable_format": {
+          "total": 157,
+          "strict_accuracy": 0.7133757961783439,
+          "loose_accuracy": 0.7515923566878981
+        },
+        "keywords": {
+          "total": 163,
+          "strict_accuracy": 0.7300613496932515,
+          "loose_accuracy": 0.7852760736196319
+        },
+        "language": {
+          "total": 31,
+          "strict_accuracy": 0.0,
+          "loose_accuracy": 0.0
+        },
+        "length_constraints": {
+          "total": 143,
+          "strict_accuracy": 0.7062937062937062,
+          "loose_accuracy": 0.8041958041958042
+        },
+        "punctuation": {
+          "total": 66,
+          "strict_accuracy": 0.9545454545454546,
+          "loose_accuracy": 0.9848484848484849
+        },
+        "startend": {
+          "total": 67,
+          "strict_accuracy": 0.8955223880597015,
+          "loose_accuracy": 0.8955223880597015
+        }
+      }
+    },
+    {
+      "task": "commonsense",
+      "variant": "base",
+      "samples": 22419,
+      "primary_metric": "macro_accuracy",
+      "macro_accuracy": 0.713917020346049,
+      "per_task": {
+        "arc_challenge": {
+          "total": 1172,
+          "correct": 860,
+          "invalid": 12,
+          "accuracy": 0.7337883959044369
+        },
+        "arc_easy": {
+          "total": 2376,
+          "correct": 2094,
+          "invalid": 13,
+          "accuracy": 0.8813131313131313
+        },
+        "boolq": {
+          "total": 3270,
+          "correct": 2802,
+          "invalid": 0,
+          "accuracy": 0.8568807339449541
+        },
+        "hellaswag": {
+          "total": 10042,
+          "correct": 5516,
+          "invalid": 159,
+          "accuracy": 0.5492929695279825
+        },
+        "openbookqa": {
+          "total": 500,
+          "correct": 330,
+          "invalid": 0,
+          "accuracy": 0.66
+        },
+        "piqa": {
+          "total": 1838,
+          "correct": 1422,
+          "invalid": 11,
+          "accuracy": 0.7736670293797606
+        },
+        "siqa": {
+          "total": 1954,
+          "correct": 1323,
+          "invalid": 52,
+          "accuracy": 0.6770726714431935
+        },
+        "winogrande": {
+          "total": 1267,
+          "correct": 734,
+          "invalid": 6,
+          "accuracy": 0.579321231254933
+        }
+      }
+    },
+    {
+      "task": "commonsense",
+      "variant": "commonsense__common_hns",
+      "samples": 22419,
+      "primary_metric": "macro_accuracy",
+      "macro_accuracy": 0.8766370288914633,
+      "per_task": {
+        "arc_challenge": {
+          "total": 1172,
+          "correct": 997,
+          "invalid": 0,
+          "accuracy": 0.8506825938566553
+        },
+        "arc_easy": {
+          "total": 2376,
+          "correct": 2231,
+          "invalid": 0,
+          "accuracy": 0.938973063973064
+        },
+        "boolq": {
+          "total": 3270,
+          "correct": 2881,
+          "invalid": 0,
+          "accuracy": 0.881039755351682
+        },
+        "hellaswag": {
+          "total": 10042,
+          "correct": 9083,
+          "invalid": 0,
+          "accuracy": 0.9045010953993229
+        },
+        "openbookqa": {
+          "total": 500,
+          "correct": 446,
+          "invalid": 0,
+          "accuracy": 0.892
+        },
+        "piqa": {
+          "total": 1838,
+          "correct": 1628,
+          "invalid": 0,
+          "accuracy": 0.8857453754080522
+        },
+        "siqa": {
+          "total": 1954,
+          "correct": 1566,
+          "invalid": 0,
+          "accuracy": 0.8014329580348004
+        },
+        "winogrande": {
+          "total": 1267,
+          "correct": 1088,
+          "invalid": 0,
+          "accuracy": 0.8587213891081295
+        }
+      }
+    },
+    {
+      "task": "commonsense",
+      "variant": "commonsense__common_lora",
+      "samples": 22419,
+      "primary_metric": "macro_accuracy",
+      "macro_accuracy": 0.8798154748360931,
+      "per_task": {
+        "arc_challenge": {
+          "total": 1172,
+          "correct": 988,
+          "invalid": 0,
+          "accuracy": 0.8430034129692833
+        },
+        "arc_easy": {
+          "total": 2376,
+          "correct": 2218,
+          "invalid": 0,
+          "accuracy": 0.9335016835016835
+        },
+        "boolq": {
+          "total": 3270,
+          "correct": 2874,
+          "invalid": 2,
+          "accuracy": 0.8788990825688073
+        },
+        "hellaswag": {
+          "total": 10042,
+          "correct": 9268,
+          "invalid": 0,
+          "accuracy": 0.9229237203744274
+        },
+        "openbookqa": {
+          "total": 500,
+          "correct": 445,
+          "invalid": 1,
+          "accuracy": 0.89
+        },
+        "piqa": {
+          "total": 1838,
+          "correct": 1642,
+          "invalid": 0,
+          "accuracy": 0.8933623503808488
+        },
+        "siqa": {
+          "total": 1954,
+          "correct": 1577,
+          "invalid": 0,
+          "accuracy": 0.8070624360286591
+        },
+        "winogrande": {
+          "total": 1267,
+          "correct": 1102,
+          "invalid": 0,
+          "accuracy": 0.8697711128650355
+        }
+      }
+    },
+    {
+      "task": "commonsense",
+      "variant": "commonsense__common_per_module",
+      "samples": 22419,
+      "primary_metric": "macro_accuracy",
+      "macro_accuracy": 0.8837846804507218,
+      "per_task": {
+        "arc_challenge": {
+          "total": 1172,
+          "correct": 1004,
+          "invalid": 0,
+          "accuracy": 0.856655290102389
+        },
+        "arc_easy": {
+          "total": 2376,
+          "correct": 2242,
+          "invalid": 0,
+          "accuracy": 0.9436026936026936
+        },
+        "boolq": {
+          "total": 3270,
+          "correct": 2884,
+          "invalid": 0,
+          "accuracy": 0.8819571865443425
+        },
+        "hellaswag": {
+          "total": 10042,
+          "correct": 9250,
+          "invalid": 0,
+          "accuracy": 0.921131248755228
+        },
+        "openbookqa": {
+          "total": 500,
+          "correct": 448,
+          "invalid": 0,
+          "accuracy": 0.896
+        },
+        "piqa": {
+          "total": 1838,
+          "correct": 1643,
+          "invalid": 0,
+          "accuracy": 0.8939064200217628
+        },
+        "siqa": {
+          "total": 1954,
+          "correct": 1582,
+          "invalid": 0,
+          "accuracy": 0.8096212896622313
+        },
+        "winogrande": {
+          "total": 1267,
+          "correct": 1099,
+          "invalid": 0,
+          "accuracy": 0.8674033149171271
+        }
+      }
+    },
+    {
+      "task": "commonsense",
+      "variant": "commonsense__global_0p25",
+      "samples": 22419,
+      "primary_metric": "macro_accuracy",
+      "macro_accuracy": 0.8303486604259545,
+      "per_task": {
+        "arc_challenge": {
+          "total": 1172,
+          "correct": 947,
+          "invalid": 0,
+          "accuracy": 0.8080204778156996
+        },
+        "arc_easy": {
+          "total": 2376,
+          "correct": 2222,
+          "invalid": 0,
+          "accuracy": 0.9351851851851852
+        },
+        "boolq": {
+          "total": 3270,
+          "correct": 2871,
+          "invalid": 0,
+          "accuracy": 0.8779816513761468
+        },
+        "hellaswag": {
+          "total": 10042,
+          "correct": 8172,
+          "invalid": 17,
+          "accuracy": 0.8137821151165107
+        },
+        "openbookqa": {
+          "total": 500,
+          "correct": 413,
+          "invalid": 0,
+          "accuracy": 0.826
+        },
+        "piqa": {
+          "total": 1838,
+          "correct": 1560,
+          "invalid": 0,
+          "accuracy": 0.8487486398258978
+        },
+        "siqa": {
+          "total": 1954,
+          "correct": 1512,
+          "invalid": 2,
+          "accuracy": 0.7737973387922211
+        },
+        "winogrande": {
+          "total": 1267,
+          "correct": 962,
+          "invalid": 0,
+          "accuracy": 0.7592738752959748
+        }
+      }
+    },
+    {
+      "task": "commonsense",
+      "variant": "commonsense__global_0p40",
+      "samples": 22419,
+      "primary_metric": "macro_accuracy",
+      "macro_accuracy": 0.863489045324964,
+      "per_task": {
+        "arc_challenge": {
+          "total": 1172,
+          "correct": 981,
+          "invalid": 0,
+          "accuracy": 0.8370307167235495
+        },
+        "arc_easy": {
+          "total": 2376,
+          "correct": 2245,
+          "invalid": 0,
+          "accuracy": 0.9448653198653199
+        },
+        "boolq": {
+          "total": 3270,
+          "correct": 2879,
+          "invalid": 0,
+          "accuracy": 0.8804281345565749
+        },
+        "hellaswag": {
+          "total": 10042,
+          "correct": 8778,
+          "invalid": 0,
+          "accuracy": 0.8741286596295559
+        },
+        "openbookqa": {
+          "total": 500,
+          "correct": 436,
+          "invalid": 0,
+          "accuracy": 0.872
+        },
+        "piqa": {
+          "total": 1838,
+          "correct": 1596,
+          "invalid": 0,
+          "accuracy": 0.8683351468988031
+        },
+        "siqa": {
+          "total": 1954,
+          "correct": 1554,
+          "invalid": 0,
+          "accuracy": 0.7952917093142272
+        },
+        "winogrande": {
+          "total": 1267,
+          "correct": 1059,
+          "invalid": 0,
+          "accuracy": 0.8358326756116812
+        }
+      }
+    },
+    {
+      "task": "commonsense",
+      "variant": "commonsense__global_0p55",
+      "samples": 22419,
+      "primary_metric": "macro_accuracy",
+      "macro_accuracy": 0.8778576702024903,
+      "per_task": {
+        "arc_challenge": {
+          "total": 1172,
+          "correct": 1002,
+          "invalid": 0,
+          "accuracy": 0.8549488054607508
+        },
+        "arc_easy": {
+          "total": 2376,
+          "correct": 2242,
+          "invalid": 0,
+          "accuracy": 0.9436026936026936
+        },
+        "boolq": {
+          "total": 3270,
+          "correct": 2878,
+          "invalid": 0,
+          "accuracy": 0.8801223241590214
+        },
+        "hellaswag": {
+          "total": 10042,
+          "correct": 9060,
+          "invalid": 0,
+          "accuracy": 0.9022107149970126
+        },
+        "openbookqa": {
+          "total": 500,
+          "correct": 449,
+          "invalid": 0,
+          "accuracy": 0.898
+        },
+        "piqa": {
+          "total": 1838,
+          "correct": 1616,
+          "invalid": 0,
+          "accuracy": 0.8792165397170838
+        },
+        "siqa": {
+          "total": 1954,
+          "correct": 1575,
+          "invalid": 0,
+          "accuracy": 0.8060388945752303
+        },
+        "winogrande": {
+          "total": 1267,
+          "correct": 1088,
+          "invalid": 0,
+          "accuracy": 0.8587213891081295
+        }
+      }
+    },
+    {
+      "task": "commonsense",
+      "variant": "commonsense__global_0p70",
+      "samples": 22419,
+      "primary_metric": "macro_accuracy",
+      "macro_accuracy": 0.8830918088856659,
+      "per_task": {
+        "arc_challenge": {
+          "total": 1172,
+          "correct": 1005,
+          "invalid": 0,
+          "accuracy": 0.8575085324232082
+        },
+        "arc_easy": {
+          "total": 2376,
+          "correct": 2249,
+          "invalid": 0,
+          "accuracy": 0.9465488215488216
+        },
+        "boolq": {
+          "total": 3270,
+          "correct": 2877,
+          "invalid": 0,
+          "accuracy": 0.8798165137614679
+        },
+        "hellaswag": {
+          "total": 10042,
+          "correct": 9224,
+          "invalid": 0,
+          "accuracy": 0.9185421230830512
+        },
+        "openbookqa": {
+          "total": 500,
+          "correct": 451,
+          "invalid": 0,
+          "accuracy": 0.902
+        },
+        "piqa": {
+          "total": 1838,
+          "correct": 1634,
+          "invalid": 0,
+          "accuracy": 0.8890097932535365
+        },
+        "siqa": {
+          "total": 1954,
+          "correct": 1577,
+          "invalid": 0,
+          "accuracy": 0.8070624360286591
+        },
+        "winogrande": {
+          "total": 1267,
+          "correct": 1095,
+          "invalid": 0,
+          "accuracy": 0.8642462509865825
+        }
+      }
+    },
+    {
+      "task": "commonsense",
+      "variant": "commonsense__global_0p85",
+      "samples": 22419,
+      "primary_metric": "macro_accuracy",
+      "macro_accuracy": 0.883758814557494,
+      "per_task": {
+        "arc_challenge": {
+          "total": 1172,
+          "correct": 1000,
+          "invalid": 0,
+          "accuracy": 0.8532423208191127
+        },
+        "arc_easy": {
+          "total": 2376,
+          "correct": 2241,
+          "invalid": 0,
+          "accuracy": 0.9431818181818182
+        },
+        "boolq": {
+          "total": 3270,
+          "correct": 2886,
+          "invalid": 0,
+          "accuracy": 0.8825688073394495
+        },
+        "hellaswag": {
+          "total": 10042,
+          "correct": 9283,
+          "invalid": 0,
+          "accuracy": 0.9244174467237602
+        },
+        "openbookqa": {
+          "total": 500,
+          "correct": 449,
+          "invalid": 0,
+          "accuracy": 0.898
+        },
+        "piqa": {
+          "total": 1838,
+          "correct": 1646,
+          "invalid": 0,
+          "accuracy": 0.8955386289445049
+        },
+        "siqa": {
+          "total": 1954,
+          "correct": 1579,
+          "invalid": 0,
+          "accuracy": 0.808085977482088
+        },
+        "winogrande": {
+          "total": 1267,
+          "correct": 1096,
+          "invalid": 0,
+          "accuracy": 0.8650355169692187
+        }
+      }
+    },
+    {
+      "task": "commonsense",
+      "variant": "commonsense__original_hns",
+      "samples": 22419,
+      "primary_metric": "macro_accuracy",
+      "macro_accuracy": 0.8758559592618774,
+      "per_task": {
+        "arc_challenge": {
+          "total": 1172,
+          "correct": 993,
+          "invalid": 0,
+          "accuracy": 0.8472696245733788
+        },
+        "arc_easy": {
+          "total": 2376,
+          "correct": 2228,
+          "invalid": 0,
+          "accuracy": 0.9377104377104377
+        },
+        "boolq": {
+          "total": 3270,
+          "correct": 2884,
+          "invalid": 0,
+          "accuracy": 0.8819571865443425
+        },
+        "hellaswag": {
+          "total": 10042,
+          "correct": 9083,
+          "invalid": 0,
+          "accuracy": 0.9045010953993229
+        },
+        "openbookqa": {
+          "total": 500,
+          "correct": 445,
+          "invalid": 0,
+          "accuracy": 0.89
+        },
+        "piqa": {
+          "total": 1838,
+          "correct": 1630,
+          "invalid": 0,
+          "accuracy": 0.8868335146898803
+        },
+        "siqa": {
+          "total": 1954,
+          "correct": 1566,
+          "invalid": 0,
+          "accuracy": 0.8014329580348004
+        },
+        "winogrande": {
+          "total": 1267,
+          "correct": 1086,
+          "invalid": 0,
+          "accuracy": 0.8571428571428571
+        }
+      }
+    },
+    {
+      "task": "commonsense",
+      "variant": "commonsense__original_lora",
+      "samples": 22419,
+      "primary_metric": "macro_accuracy",
+      "macro_accuracy": 0.8795895457536193,
+      "per_task": {
+        "arc_challenge": {
+          "total": 1172,
+          "correct": 987,
+          "invalid": 0,
+          "accuracy": 0.8421501706484642
+        },
+        "arc_easy": {
+          "total": 2376,
+          "correct": 2218,
+          "invalid": 0,
+          "accuracy": 0.9335016835016835
+        },
+        "boolq": {
+          "total": 3270,
+          "correct": 2869,
+          "invalid": 2,
+          "accuracy": 0.8773700305810398
+        },
+        "hellaswag": {
+          "total": 10042,
+          "correct": 9266,
+          "invalid": 0,
+          "accuracy": 0.922724556861183
+        },
+        "openbookqa": {
+          "total": 500,
+          "correct": 444,
+          "invalid": 1,
+          "accuracy": 0.888
+        },
+        "piqa": {
+          "total": 1838,
+          "correct": 1650,
+          "invalid": 0,
+          "accuracy": 0.8977149075081611
+        },
+        "siqa": {
+          "total": 1954,
+          "correct": 1577,
+          "invalid": 0,
+          "accuracy": 0.8070624360286591
+        },
+        "winogrande": {
+          "total": 1267,
+          "correct": 1100,
+          "invalid": 0,
+          "accuracy": 0.8681925808997633
+        }
+      }
+    },
+    {
+      "task": "commonsense",
+      "variant": "magicoder__common_hns",
+      "samples": 22419,
+      "primary_metric": "macro_accuracy",
+      "macro_accuracy": 0.7037349052047899,
+      "per_task": {
+        "arc_challenge": {
+          "total": 1172,
+          "correct": 859,
+          "invalid": 9,
+          "accuracy": 0.7329351535836177
+        },
+        "arc_easy": {
+          "total": 2376,
+          "correct": 2099,
+          "invalid": 12,
+          "accuracy": 0.8834175084175084
+        },
+        "boolq": {
+          "total": 3270,
+          "correct": 2804,
+          "invalid": 0,
+          "accuracy": 0.8574923547400611
+        },
+        "hellaswag": {
+          "total": 10042,
+          "correct": 5017,
+          "invalid": 146,
+          "accuracy": 0.49960167297351127
+        },
+        "openbookqa": {
+          "total": 500,
+          "correct": 323,
+          "invalid": 1,
+          "accuracy": 0.646
+        },
+        "piqa": {
+          "total": 1838,
+          "correct": 1404,
+          "invalid": 8,
+          "accuracy": 0.763873775843308
+        },
+        "siqa": {
+          "total": 1954,
+          "correct": 1330,
+          "invalid": 33,
+          "accuracy": 0.6806550665301945
+        },
+        "winogrande": {
+          "total": 1267,
+          "correct": 717,
+          "invalid": 4,
+          "accuracy": 0.5659037095501184
+        }
+      }
+    },
+    {
+      "task": "commonsense",
+      "variant": "magicoder__common_lora",
+      "samples": 22419,
+      "primary_metric": "macro_accuracy",
+      "macro_accuracy": 0.6905252497516037,
+      "per_task": {
+        "arc_challenge": {
+          "total": 1172,
+          "correct": 835,
+          "invalid": 11,
+          "accuracy": 0.712457337883959
+        },
+        "arc_easy": {
+          "total": 2376,
+          "correct": 2095,
+          "invalid": 11,
+          "accuracy": 0.8817340067340067
+        },
+        "boolq": {
+          "total": 3270,
+          "correct": 2799,
+          "invalid": 0,
+          "accuracy": 0.8559633027522936
+        },
+        "hellaswag": {
+          "total": 10042,
+          "correct": 4567,
+          "invalid": 21,
+          "accuracy": 0.4547898824935272
+        },
+        "openbookqa": {
+          "total": 500,
+          "correct": 317,
+          "invalid": 2,
+          "accuracy": 0.634
+        },
+        "piqa": {
+          "total": 1838,
+          "correct": 1388,
+          "invalid": 6,
+          "accuracy": 0.7551686615886833
+        },
+        "siqa": {
+          "total": 1954,
+          "correct": 1341,
+          "invalid": 6,
+          "accuracy": 0.6862845445240532
+        },
+        "winogrande": {
+          "total": 1267,
+          "correct": 689,
+          "invalid": 0,
+          "accuracy": 0.5438042620363063
+        }
+      }
+    },
+    {
+      "task": "commonsense",
+      "variant": "magicoder__common_per_module",
+      "samples": 22419,
+      "primary_metric": "macro_accuracy",
+      "macro_accuracy": 0.6972503073011441,
+      "per_task": {
+        "arc_challenge": {
+          "total": 1172,
+          "correct": 845,
+          "invalid": 11,
+          "accuracy": 0.7209897610921502
+        },
+        "arc_easy": {
+          "total": 2376,
+          "correct": 2112,
+          "invalid": 11,
+          "accuracy": 0.8888888888888888
+        },
+        "boolq": {
+          "total": 3270,
+          "correct": 2808,
+          "invalid": 0,
+          "accuracy": 0.8587155963302753
+        },
+        "hellaswag": {
+          "total": 10042,
+          "correct": 4795,
+          "invalid": 71,
+          "accuracy": 0.4774945230033858
+        },
+        "openbookqa": {
+          "total": 500,
+          "correct": 320,
+          "invalid": 3,
+          "accuracy": 0.64
+        },
+        "piqa": {
+          "total": 1838,
+          "correct": 1390,
+          "invalid": 7,
+          "accuracy": 0.7562568008705114
+        },
+        "siqa": {
+          "total": 1954,
+          "correct": 1338,
+          "invalid": 9,
+          "accuracy": 0.6847492323439099
+        },
+        "winogrande": {
+          "total": 1267,
+          "correct": 698,
+          "invalid": 1,
+          "accuracy": 0.5509076558800315
+        }
+      }
+    },
+    {
+      "task": "commonsense",
+      "variant": "magicoder__global_0p25",
+      "samples": 22419,
+      "primary_metric": "macro_accuracy",
+      "macro_accuracy": 0.7112827246807949,
+      "per_task": {
+        "arc_challenge": {
+          "total": 1172,
+          "correct": 864,
+          "invalid": 11,
+          "accuracy": 0.7372013651877133
+        },
+        "arc_easy": {
+          "total": 2376,
+          "correct": 2112,
+          "invalid": 11,
+          "accuracy": 0.8888888888888888
+        },
+        "boolq": {
+          "total": 3270,
+          "correct": 2801,
+          "invalid": 0,
+          "accuracy": 0.8565749235474006
+        },
+        "hellaswag": {
+          "total": 10042,
+          "correct": 5245,
+          "invalid": 147,
+          "accuracy": 0.5223063134833699
+        },
+        "openbookqa": {
+          "total": 500,
+          "correct": 328,
+          "invalid": 0,
+          "accuracy": 0.656
+        },
+        "piqa": {
+          "total": 1838,
+          "correct": 1418,
+          "invalid": 9,
+          "accuracy": 0.7714907508161044
+        },
+        "siqa": {
+          "total": 1954,
+          "correct": 1335,
+          "invalid": 43,
+          "accuracy": 0.6832139201637666
+        },
+        "winogrande": {
+          "total": 1267,
+          "correct": 728,
+          "invalid": 7,
+          "accuracy": 0.574585635359116
+        }
+      }
+    },
+    {
+      "task": "commonsense",
+      "variant": "magicoder__global_0p40",
+      "samples": 22419,
+      "primary_metric": "macro_accuracy",
+      "macro_accuracy": 0.7073544130918498,
+      "per_task": {
+        "arc_challenge": {
+          "total": 1172,
+          "correct": 864,
+          "invalid": 12,
+          "accuracy": 0.7372013651877133
+        },
+        "arc_easy": {
+          "total": 2376,
+          "correct": 2107,
+          "invalid": 11,
+          "accuracy": 0.8867845117845118
+        },
+        "boolq": {
+          "total": 3270,
+          "correct": 2804,
+          "invalid": 0,
+          "accuracy": 0.8574923547400611
+        },
+        "hellaswag": {
+          "total": 10042,
+          "correct": 5129,
+          "invalid": 123,
+          "accuracy": 0.5107548297151961
+        },
+        "openbookqa": {
+          "total": 500,
+          "correct": 324,
+          "invalid": 0,
+          "accuracy": 0.648
+        },
+        "piqa": {
+          "total": 1838,
+          "correct": 1408,
+          "invalid": 9,
+          "accuracy": 0.766050054406964
+        },
+        "siqa": {
+          "total": 1954,
+          "correct": 1334,
+          "invalid": 29,
+          "accuracy": 0.6827021494370522
+        },
+        "winogrande": {
+          "total": 1267,
+          "correct": 722,
+          "invalid": 5,
+          "accuracy": 0.5698500394632992
+        }
+      }
+    },
+    {
+      "task": "commonsense",
+      "variant": "magicoder__global_0p55",
+      "samples": 22419,
+      "primary_metric": "macro_accuracy",
+      "macro_accuracy": 0.7029810854985796,
+      "per_task": {
+        "arc_challenge": {
+          "total": 1172,
+          "correct": 856,
+          "invalid": 11,
+          "accuracy": 0.7303754266211604
+        },
+        "arc_easy": {
+          "total": 2376,
+          "correct": 2111,
+          "invalid": 10,
+          "accuracy": 0.8884680134680135
+        },
+        "boolq": {
+          "total": 3270,
+          "correct": 2801,
+          "invalid": 0,
+          "accuracy": 0.8565749235474006
+        },
+        "hellaswag": {
+          "total": 10042,
+          "correct": 4993,
+          "invalid": 101,
+          "accuracy": 0.49721171081457877
+        },
+        "openbookqa": {
+          "total": 500,
+          "correct": 322,
+          "invalid": 1,
+          "accuracy": 0.644
+        },
+        "piqa": {
+          "total": 1838,
+          "correct": 1399,
+          "invalid": 8,
+          "accuracy": 0.7611534276387377
+        },
+        "siqa": {
+          "total": 1954,
+          "correct": 1346,
+          "invalid": 20,
+          "accuracy": 0.6888433981576254
+        },
+        "winogrande": {
+          "total": 1267,
+          "correct": 706,
+          "invalid": 4,
+          "accuracy": 0.5572217837411207
+        }
+      }
+    },
+    {
+      "task": "commonsense",
+      "variant": "magicoder__global_0p70",
+      "samples": 22419,
+      "primary_metric": "macro_accuracy",
+      "macro_accuracy": 0.69944004259362,
+      "per_task": {
+        "arc_challenge": {
+          "total": 1172,
+          "correct": 848,
+          "invalid": 11,
+          "accuracy": 0.7235494880546075
+        },
+        "arc_easy": {
+          "total": 2376,
+          "correct": 2112,
+          "invalid": 10,
+          "accuracy": 0.8888888888888888
+        },
+        "boolq": {
+          "total": 3270,
+          "correct": 2805,
+          "invalid": 0,
+          "accuracy": 0.8577981651376146
+        },
+        "hellaswag": {
+          "total": 10042,
+          "correct": 4848,
+          "invalid": 71,
+          "accuracy": 0.4827723561043617
+        },
+        "openbookqa": {
+          "total": 500,
+          "correct": 323,
+          "invalid": 3,
+          "accuracy": 0.646
+        },
+        "piqa": {
+          "total": 1838,
+          "correct": 1397,
+          "invalid": 7,
+          "accuracy": 0.7600652883569097
+        },
+        "siqa": {
+          "total": 1954,
+          "correct": 1338,
+          "invalid": 10,
+          "accuracy": 0.6847492323439099
+        },
+        "winogrande": {
+          "total": 1267,
+          "correct": 699,
+          "invalid": 1,
+          "accuracy": 0.5516969218626677
+        }
+      }
+    },
+    {
+      "task": "commonsense",
+      "variant": "magicoder__global_0p85",
+      "samples": 22419,
+      "primary_metric": "macro_accuracy",
+      "macro_accuracy": 0.6965009573413591,
+      "per_task": {
+        "arc_challenge": {
+          "total": 1172,
+          "correct": 848,
+          "invalid": 9,
+          "accuracy": 0.7235494880546075
+        },
+        "arc_easy": {
+          "total": 2376,
+          "correct": 2108,
+          "invalid": 14,
+          "accuracy": 0.8872053872053872
+        },
+        "boolq": {
+          "total": 3270,
+          "correct": 2805,
+          "invalid": 0,
+          "accuracy": 0.8577981651376146
+        },
+        "hellaswag": {
+          "total": 10042,
+          "correct": 4705,
+          "invalid": 38,
+          "accuracy": 0.46853216490738897
+        },
+        "openbookqa": {
+          "total": 500,
+          "correct": 320,
+          "invalid": 2,
+          "accuracy": 0.64
+        },
+        "piqa": {
+          "total": 1838,
+          "correct": 1394,
+          "invalid": 6,
+          "accuracy": 0.7584330794341676
+        },
+        "siqa": {
+          "total": 1954,
+          "correct": 1335,
+          "invalid": 8,
+          "accuracy": 0.6832139201637666
+        },
+        "winogrande": {
+          "total": 1267,
+          "correct": 701,
+          "invalid": 0,
+          "accuracy": 0.55327545382794
+        }
+      }
+    },
+    {
+      "task": "commonsense",
+      "variant": "magicoder__original_hns",
+      "samples": 22419,
+      "primary_metric": "macro_accuracy",
+      "macro_accuracy": 0.7046059632921794,
+      "per_task": {
+        "arc_challenge": {
+          "total": 1172,
+          "correct": 853,
+          "invalid": 10,
+          "accuracy": 0.7278156996587031
+        },
+        "arc_easy": {
+          "total": 2376,
+          "correct": 2104,
+          "invalid": 12,
+          "accuracy": 0.8855218855218855
+        },
+        "boolq": {
+          "total": 3270,
+          "correct": 2803,
+          "invalid": 0,
+          "accuracy": 0.8571865443425076
+        },
+        "hellaswag": {
+          "total": 10042,
+          "correct": 5022,
+          "invalid": 144,
+          "accuracy": 0.5000995817566222
+        },
+        "openbookqa": {
+          "total": 500,
+          "correct": 323,
+          "invalid": 1,
+          "accuracy": 0.646
+        },
+        "piqa": {
+          "total": 1838,
+          "correct": 1408,
+          "invalid": 8,
+          "accuracy": 0.766050054406964
+        },
+        "siqa": {
+          "total": 1954,
+          "correct": 1331,
+          "invalid": 34,
+          "accuracy": 0.6811668372569089
+        },
+        "winogrande": {
+          "total": 1267,
+          "correct": 726,
+          "invalid": 5,
+          "accuracy": 0.5730071033938438
+        }
+      }
+    },
+    {
+      "task": "commonsense",
+      "variant": "magicoder__original_lora",
+      "samples": 22419,
+      "primary_metric": "macro_accuracy",
+      "macro_accuracy": 0.6910028349871595,
+      "per_task": {
+        "arc_challenge": {
+          "total": 1172,
+          "correct": 836,
+          "invalid": 11,
+          "accuracy": 0.7133105802047781
+        },
+        "arc_easy": {
+          "total": 2376,
+          "correct": 2096,
+          "invalid": 14,
+          "accuracy": 0.8821548821548821
+        },
+        "boolq": {
+          "total": 3270,
+          "correct": 2802,
+          "invalid": 0,
+          "accuracy": 0.8568807339449541
+        },
+        "hellaswag": {
+          "total": 10042,
+          "correct": 4575,
+          "invalid": 20,
+          "accuracy": 0.45558653654650466
+        },
+        "openbookqa": {
+          "total": 500,
+          "correct": 319,
+          "invalid": 2,
+          "accuracy": 0.638
+        },
+        "piqa": {
+          "total": 1838,
+          "correct": 1385,
+          "invalid": 6,
+          "accuracy": 0.7535364526659413
+        },
+        "siqa": {
+          "total": 1954,
+          "correct": 1338,
+          "invalid": 5,
+          "accuracy": 0.6847492323439099
+        },
+        "winogrande": {
+          "total": 1267,
+          "correct": 689,
+          "invalid": 0,
+          "accuracy": 0.5438042620363063
+        }
+      }
+    },
+    {
+      "task": "commonsense",
+      "variant": "metamath__common_hns",
+      "samples": 22419,
+      "primary_metric": "macro_accuracy",
+      "macro_accuracy": 0.6964724293862639,
+      "per_task": {
+        "arc_challenge": {
+          "total": 1172,
+          "correct": 832,
+          "invalid": 117,
+          "accuracy": 0.7098976109215017
+        },
+        "arc_easy": {
+          "total": 2376,
+          "correct": 2067,
+          "invalid": 104,
+          "accuracy": 0.8699494949494949
+        },
+        "boolq": {
+          "total": 3270,
+          "correct": 2766,
+          "invalid": 12,
+          "accuracy": 0.8458715596330275
+        },
+        "hellaswag": {
+          "total": 10042,
+          "correct": 5070,
+          "invalid": 52,
+          "accuracy": 0.5048795060744872
+        },
+        "openbookqa": {
+          "total": 500,
+          "correct": 349,
+          "invalid": 4,
+          "accuracy": 0.698
+        },
+        "piqa": {
+          "total": 1838,
+          "correct": 1329,
+          "invalid": 12,
+          "accuracy": 0.7230685527747551
+        },
+        "siqa": {
+          "total": 1954,
+          "correct": 1303,
+          "invalid": 19,
+          "accuracy": 0.6668372569089048
+        },
+        "winogrande": {
+          "total": 1267,
+          "correct": 701,
+          "invalid": 0,
+          "accuracy": 0.55327545382794
+        }
+      }
+    },
+    {
+      "task": "commonsense",
+      "variant": "metamath__common_lora",
+      "samples": 22419,
+      "primary_metric": "macro_accuracy",
+      "macro_accuracy": 0.6501614357969798,
+      "per_task": {
+        "arc_challenge": {
+          "total": 1172,
+          "correct": 684,
+          "invalid": 256,
+          "accuracy": 0.5836177474402731
+        },
+        "arc_easy": {
+          "total": 2376,
+          "correct": 1837,
+          "invalid": 298,
+          "accuracy": 0.7731481481481481
+        },
+        "boolq": {
+          "total": 3270,
+          "correct": 2735,
+          "invalid": 86,
+          "accuracy": 0.8363914373088684
+        },
+        "hellaswag": {
+          "total": 10042,
+          "correct": 4546,
+          "invalid": 56,
+          "accuracy": 0.45269866560446126
+        },
+        "openbookqa": {
+          "total": 500,
+          "correct": 330,
+          "invalid": 18,
+          "accuracy": 0.66
+        },
+        "piqa": {
+          "total": 1838,
+          "correct": 1277,
+          "invalid": 74,
+          "accuracy": 0.6947769314472253
+        },
+        "siqa": {
+          "total": 1954,
+          "correct": 1302,
+          "invalid": 9,
+          "accuracy": 0.6663254861821903
+        },
+        "winogrande": {
+          "total": 1267,
+          "correct": 677,
+          "invalid": 0,
+          "accuracy": 0.5343330702446725
+        }
+      }
+    },
+    {
+      "task": "commonsense",
+      "variant": "metamath__common_per_module",
+      "samples": 22419,
+      "primary_metric": "macro_accuracy",
+      "macro_accuracy": 0.6639435706674255,
+      "per_task": {
+        "arc_challenge": {
+          "total": 1172,
+          "correct": 720,
+          "invalid": 226,
+          "accuracy": 0.6143344709897611
+        },
+        "arc_easy": {
+          "total": 2376,
+          "correct": 1898,
+          "invalid": 252,
+          "accuracy": 0.7988215488215489
+        },
+        "boolq": {
+          "total": 3270,
+          "correct": 2738,
+          "invalid": 83,
+          "accuracy": 0.8373088685015291
+        },
+        "hellaswag": {
+          "total": 10042,
+          "correct": 4602,
+          "invalid": 49,
+          "accuracy": 0.4582752439753037
+        },
+        "openbookqa": {
+          "total": 500,
+          "correct": 337,
+          "invalid": 11,
+          "accuracy": 0.674
+        },
+        "piqa": {
+          "total": 1838,
+          "correct": 1304,
+          "invalid": 48,
+          "accuracy": 0.7094668117519043
+        },
+        "siqa": {
+          "total": 1954,
+          "correct": 1320,
+          "invalid": 4,
+          "accuracy": 0.6755373592630501
+        },
+        "winogrande": {
+          "total": 1267,
+          "correct": 689,
+          "invalid": 0,
+          "accuracy": 0.5438042620363063
+        }
+      }
+    },
+    {
+      "task": "commonsense",
+      "variant": "metamath__global_0p25",
+      "samples": 22419,
+      "primary_metric": "macro_accuracy",
+      "macro_accuracy": 0.7116238283527241,
+      "per_task": {
+        "arc_challenge": {
+          "total": 1172,
+          "correct": 837,
+          "invalid": 50,
+          "accuracy": 0.7141638225255973
+        },
+        "arc_easy": {
+          "total": 2376,
+          "correct": 2061,
+          "invalid": 40,
+          "accuracy": 0.8674242424242424
+        },
+        "boolq": {
+          "total": 3270,
+          "correct": 2787,
+          "invalid": 0,
+          "accuracy": 0.8522935779816514
+        },
+        "hellaswag": {
+          "total": 10042,
+          "correct": 5700,
+          "invalid": 146,
+          "accuracy": 0.5676160127464649
+        },
+        "openbookqa": {
+          "total": 500,
+          "correct": 344,
+          "invalid": 0,
+          "accuracy": 0.688
+        },
+        "piqa": {
+          "total": 1838,
+          "correct": 1389,
+          "invalid": 13,
+          "accuracy": 0.7557127312295974
+        },
+        "siqa": {
+          "total": 1954,
+          "correct": 1300,
+          "invalid": 45,
+          "accuracy": 0.6653019447287615
+        },
+        "winogrande": {
+          "total": 1267,
+          "correct": 738,
+          "invalid": 5,
+          "accuracy": 0.5824782951854776
+        }
+      }
+    },
+    {
+      "task": "commonsense",
+      "variant": "metamath__global_0p40",
+      "samples": 22419,
+      "primary_metric": "macro_accuracy",
+      "macro_accuracy": 0.7058562575099003,
+      "per_task": {
+        "arc_challenge": {
+          "total": 1172,
+          "correct": 817,
+          "invalid": 92,
+          "accuracy": 0.697098976109215
+        },
+        "arc_easy": {
+          "total": 2376,
+          "correct": 2049,
+          "invalid": 83,
+          "accuracy": 0.8623737373737373
+        },
+        "boolq": {
+          "total": 3270,
+          "correct": 2783,
+          "invalid": 7,
+          "accuracy": 0.8510703363914373
+        },
+        "hellaswag": {
+          "total": 10042,
+          "correct": 5439,
+          "invalid": 97,
+          "accuracy": 0.5416251742680741
+        },
+        "openbookqa": {
+          "total": 500,
+          "correct": 354,
+          "invalid": 4,
+          "accuracy": 0.708
+        },
+        "piqa": {
+          "total": 1838,
+          "correct": 1379,
+          "invalid": 14,
+          "accuracy": 0.750272034820457
+        },
+        "siqa": {
+          "total": 1954,
+          "correct": 1304,
+          "invalid": 33,
+          "accuracy": 0.6673490276356192
+        },
+        "winogrande": {
+          "total": 1267,
+          "correct": 721,
+          "invalid": 0,
+          "accuracy": 0.569060773480663
+        }
+      }
+    },
+    {
+      "task": "commonsense",
+      "variant": "metamath__global_0p55",
+      "samples": 22419,
+      "primary_metric": "macro_accuracy",
+      "macro_accuracy": 0.697433203808135,
+      "per_task": {
+        "arc_challenge": {
+          "total": 1172,
+          "correct": 800,
+          "invalid": 136,
+          "accuracy": 0.6825938566552902
+        },
+        "arc_easy": {
+          "total": 2376,
+          "correct": 2021,
+          "invalid": 134,
+          "accuracy": 0.8505892255892256
+        },
+        "boolq": {
+          "total": 3270,
+          "correct": 2760,
+          "invalid": 23,
+          "accuracy": 0.8440366972477065
+        },
+        "hellaswag": {
+          "total": 10042,
+          "correct": 5088,
+          "invalid": 64,
+          "accuracy": 0.5066719776936865
+        },
+        "openbookqa": {
+          "total": 500,
+          "correct": 364,
+          "invalid": 4,
+          "accuracy": 0.728
+        },
+        "piqa": {
+          "total": 1838,
+          "correct": 1350,
+          "invalid": 17,
+          "accuracy": 0.73449401523395
+        },
+        "siqa": {
+          "total": 1954,
+          "correct": 1316,
+          "invalid": 22,
+          "accuracy": 0.6734902763561924
+        },
+        "winogrande": {
+          "total": 1267,
+          "correct": 709,
+          "invalid": 0,
+          "accuracy": 0.5595895816890292
+        }
+      }
+    },
+    {
+      "task": "commonsense",
+      "variant": "metamath__global_0p70",
+      "samples": 22419,
+      "primary_metric": "macro_accuracy",
+      "macro_accuracy": 0.6851854501375144,
+      "per_task": {
+        "arc_challenge": {
+          "total": 1172,
+          "correct": 772,
+          "invalid": 185,
+          "accuracy": 0.658703071672355
+        },
+        "arc_easy": {
+          "total": 2376,
+          "correct": 1971,
+          "invalid": 191,
+          "accuracy": 0.8295454545454546
+        },
+        "boolq": {
+          "total": 3270,
+          "correct": 2764,
+          "invalid": 57,
+          "accuracy": 0.8452599388379205
+        },
+        "hellaswag": {
+          "total": 10042,
+          "correct": 4818,
+          "invalid": 51,
+          "accuracy": 0.4797849034056961
+        },
+        "openbookqa": {
+          "total": 500,
+          "correct": 358,
+          "invalid": 4,
+          "accuracy": 0.716
+        },
+        "piqa": {
+          "total": 1838,
+          "correct": 1338,
+          "invalid": 31,
+          "accuracy": 0.7279651795429815
+        },
+        "siqa": {
+          "total": 1954,
+          "correct": 1328,
+          "invalid": 9,
+          "accuracy": 0.6796315250767656
+        },
+        "winogrande": {
+          "total": 1267,
+          "correct": 690,
+          "invalid": 0,
+          "accuracy": 0.5445935280189423
+        }
+      }
+    },
+    {
+      "task": "commonsense",
+      "variant": "metamath__global_0p85",
+      "samples": 22419,
+      "primary_metric": "macro_accuracy",
+      "macro_accuracy": 0.666155799131956,
+      "per_task": {
+        "arc_challenge": {
+          "total": 1172,
+          "correct": 726,
+          "invalid": 223,
+          "accuracy": 0.6194539249146758
+        },
+        "arc_easy": {
+          "total": 2376,
+          "correct": 1906,
+          "invalid": 250,
+          "accuracy": 0.8021885521885522
+        },
+        "boolq": {
+          "total": 3270,
+          "correct": 2745,
+          "invalid": 81,
+          "accuracy": 0.8394495412844036
+        },
+        "hellaswag": {
+          "total": 10042,
+          "correct": 4632,
+          "invalid": 48,
+          "accuracy": 0.46126269667396935
+        },
+        "openbookqa": {
+          "total": 500,
+          "correct": 337,
+          "invalid": 14,
+          "accuracy": 0.674
+        },
+        "piqa": {
+          "total": 1838,
+          "correct": 1305,
+          "invalid": 49,
+          "accuracy": 0.7100108813928183
+        },
+        "siqa": {
+          "total": 1954,
+          "correct": 1330,
+          "invalid": 3,
+          "accuracy": 0.6806550665301945
+        },
+        "winogrande": {
+          "total": 1267,
+          "correct": 687,
+          "invalid": 0,
+          "accuracy": 0.5422257300710339
+        }
+      }
+    },
+    {
+      "task": "commonsense",
+      "variant": "metamath__original_hns",
+      "samples": 22419,
+      "primary_metric": "macro_accuracy",
+      "macro_accuracy": 0.6967705287913811,
+      "per_task": {
+        "arc_challenge": {
+          "total": 1172,
+          "correct": 833,
+          "invalid": 119,
+          "accuracy": 0.7107508532423208
+        },
+        "arc_easy": {
+          "total": 2376,
+          "correct": 2064,
+          "invalid": 106,
+          "accuracy": 0.8686868686868687
+        },
+        "boolq": {
+          "total": 3270,
+          "correct": 2766,
+          "invalid": 11,
+          "accuracy": 0.8458715596330275
+        },
+        "hellaswag": {
+          "total": 10042,
+          "correct": 5072,
+          "invalid": 51,
+          "accuracy": 0.5050786695877315
+        },
+        "openbookqa": {
+          "total": 500,
+          "correct": 348,
+          "invalid": 4,
+          "accuracy": 0.696
+        },
+        "piqa": {
+          "total": 1838,
+          "correct": 1330,
+          "invalid": 12,
+          "accuracy": 0.7236126224156693
+        },
+        "siqa": {
+          "total": 1954,
+          "correct": 1314,
+          "invalid": 20,
+          "accuracy": 0.6724667349027635
+        },
+        "winogrande": {
+          "total": 1267,
+          "correct": 699,
+          "invalid": 0,
+          "accuracy": 0.5516969218626677
+        }
+      }
+    },
+    {
+      "task": "commonsense",
+      "variant": "metamath__original_lora",
+      "samples": 22419,
+      "primary_metric": "macro_accuracy",
+      "macro_accuracy": 0.6503916506071838,
+      "per_task": {
+        "arc_challenge": {
+          "total": 1172,
+          "correct": 685,
+          "invalid": 253,
+          "accuracy": 0.5844709897610921
+        },
+        "arc_easy": {
+          "total": 2376,
+          "correct": 1830,
+          "invalid": 297,
+          "accuracy": 0.7702020202020202
+        },
+        "boolq": {
+          "total": 3270,
+          "correct": 2729,
+          "invalid": 86,
+          "accuracy": 0.8345565749235474
+        },
+        "hellaswag": {
+          "total": 10042,
+          "correct": 4549,
+          "invalid": 58,
+          "accuracy": 0.4529974108743278
+        },
+        "openbookqa": {
+          "total": 500,
+          "correct": 330,
+          "invalid": 18,
+          "accuracy": 0.66
+        },
+        "piqa": {
+          "total": 1838,
+          "correct": 1278,
+          "invalid": 70,
+          "accuracy": 0.6953210010881393
+        },
+        "siqa": {
+          "total": 1954,
+          "correct": 1307,
+          "invalid": 8,
+          "accuracy": 0.6688843398157626
+        },
+        "winogrande": {
+          "total": 1267,
+          "correct": 680,
+          "invalid": 0,
+          "accuracy": 0.5367008681925809
+        }
+      }
+    },
+    {
+      "task": "commonsense",
+      "variant": "tulu__common_hns",
+      "samples": 22419,
+      "primary_metric": "macro_accuracy",
+      "macro_accuracy": 0.7050443485759772,
+      "per_task": {
+        "arc_challenge": {
+          "total": 1172,
+          "correct": 832,
+          "invalid": 0,
+          "accuracy": 0.7098976109215017
+        },
+        "arc_easy": {
+          "total": 2376,
+          "correct": 2068,
+          "invalid": 9,
+          "accuracy": 0.8703703703703703
+        },
+        "boolq": {
+          "total": 3270,
+          "correct": 2805,
+          "invalid": 0,
+          "accuracy": 0.8577981651376146
+        },
+        "hellaswag": {
+          "total": 10042,
+          "correct": 4914,
+          "invalid": 18,
+          "accuracy": 0.489344752041426
+        },
+        "openbookqa": {
+          "total": 500,
+          "correct": 329,
+          "invalid": 0,
+          "accuracy": 0.658
+        },
+        "piqa": {
+          "total": 1838,
+          "correct": 1471,
+          "invalid": 1,
+          "accuracy": 0.8003264417845484
+        },
+        "siqa": {
+          "total": 1954,
+          "correct": 1355,
+          "invalid": 7,
+          "accuracy": 0.6934493346980553
+        },
+        "winogrande": {
+          "total": 1267,
+          "correct": 711,
+          "invalid": 0,
+          "accuracy": 0.5611681136543015
+        }
+      }
+    },
+    {
+      "task": "commonsense",
+      "variant": "tulu__common_lora",
+      "samples": 22419,
+      "primary_metric": "macro_accuracy",
+      "macro_accuracy": 0.7118565907102112,
+      "per_task": {
+        "arc_challenge": {
+          "total": 1172,
+          "correct": 843,
+          "invalid": 2,
+          "accuracy": 0.7192832764505119
+        },
+        "arc_easy": {
+          "total": 2376,
+          "correct": 2086,
+          "invalid": 9,
+          "accuracy": 0.8779461279461279
+        },
+        "boolq": {
+          "total": 3270,
+          "correct": 2801,
+          "invalid": 0,
+          "accuracy": 0.8565749235474006
+        },
+        "hellaswag": {
+          "total": 10042,
+          "correct": 5065,
+          "invalid": 1,
+          "accuracy": 0.5043815972913762
+        },
+        "openbookqa": {
+          "total": 500,
+          "correct": 345,
+          "invalid": 0,
+          "accuracy": 0.69
+        },
+        "piqa": {
+          "total": 1838,
+          "correct": 1491,
+          "invalid": 0,
+          "accuracy": 0.8112078346028292
+        },
+        "siqa": {
+          "total": 1954,
+          "correct": 1370,
+          "invalid": 0,
+          "accuracy": 0.7011258955987717
+        },
+        "winogrande": {
+          "total": 1267,
+          "correct": 677,
+          "invalid": 0,
+          "accuracy": 0.5343330702446725
+        }
+      }
+    },
+    {
+      "task": "commonsense",
+      "variant": "tulu__common_per_module",
+      "samples": 22419,
+      "primary_metric": "macro_accuracy",
+      "macro_accuracy": 0.7074076829052167,
+      "per_task": {
+        "arc_challenge": {
+          "total": 1172,
+          "correct": 836,
+          "invalid": 1,
+          "accuracy": 0.7133105802047781
+        },
+        "arc_easy": {
+          "total": 2376,
+          "correct": 2079,
+          "invalid": 9,
+          "accuracy": 0.875
+        },
+        "boolq": {
+          "total": 3270,
+          "correct": 2805,
+          "invalid": 0,
+          "accuracy": 0.8577981651376146
+        },
+        "hellaswag": {
+          "total": 10042,
+          "correct": 4850,
+          "invalid": 0,
+          "accuracy": 0.48297151961760604
+        },
+        "openbookqa": {
+          "total": 500,
+          "correct": 341,
+          "invalid": 0,
+          "accuracy": 0.682
+        },
+        "piqa": {
+          "total": 1838,
+          "correct": 1485,
+          "invalid": 1,
+          "accuracy": 0.8079434167573449
+        },
+        "siqa": {
+          "total": 1954,
+          "correct": 1367,
+          "invalid": 1,
+          "accuracy": 0.6995905834186285
+        },
+        "winogrande": {
+          "total": 1267,
+          "correct": 685,
+          "invalid": 0,
+          "accuracy": 0.5406471981057617
+        }
+      }
+    },
+    {
+      "task": "commonsense",
+      "variant": "tulu__global_0p25",
+      "samples": 22419,
+      "primary_metric": "macro_accuracy",
+      "macro_accuracy": 0.7060844284524703,
+      "per_task": {
+        "arc_challenge": {
+          "total": 1172,
+          "correct": 855,
+          "invalid": 8,
+          "accuracy": 0.7295221843003413
+        },
+        "arc_easy": {
+          "total": 2376,
+          "correct": 2106,
+          "invalid": 9,
+          "accuracy": 0.8863636363636364
+        },
+        "boolq": {
+          "total": 3270,
+          "correct": 2813,
+          "invalid": 0,
+          "accuracy": 0.8602446483180428
+        },
+        "hellaswag": {
+          "total": 10042,
+          "correct": 4915,
+          "invalid": 46,
+          "accuracy": 0.4894443337980482
+        },
+        "openbookqa": {
+          "total": 500,
+          "correct": 319,
+          "invalid": 0,
+          "accuracy": 0.638
+        },
+        "piqa": {
+          "total": 1838,
+          "correct": 1448,
+          "invalid": 5,
+          "accuracy": 0.7878128400435256
+        },
+        "siqa": {
+          "total": 1954,
+          "correct": 1334,
+          "invalid": 26,
+          "accuracy": 0.6827021494370522
+        },
+        "winogrande": {
+          "total": 1267,
+          "correct": 728,
+          "invalid": 2,
+          "accuracy": 0.574585635359116
+        }
+      }
+    },
+    {
+      "task": "commonsense",
+      "variant": "tulu__global_0p40",
+      "samples": 22419,
+      "primary_metric": "macro_accuracy",
+      "macro_accuracy": 0.7064221810339524,
+      "per_task": {
+        "arc_challenge": {
+          "total": 1172,
+          "correct": 838,
+          "invalid": 6,
+          "accuracy": 0.7150170648464164
+        },
+        "arc_easy": {
+          "total": 2376,
+          "correct": 2102,
+          "invalid": 11,
+          "accuracy": 0.8846801346801347
+        },
+        "boolq": {
+          "total": 3270,
+          "correct": 2816,
+          "invalid": 0,
+          "accuracy": 0.8611620795107033
+        },
+        "hellaswag": {
+          "total": 10042,
+          "correct": 4840,
+          "invalid": 23,
+          "accuracy": 0.4819757020513842
+        },
+        "openbookqa": {
+          "total": 500,
+          "correct": 322,
+          "invalid": 0,
+          "accuracy": 0.644
+        },
+        "piqa": {
+          "total": 1838,
+          "correct": 1461,
+          "invalid": 3,
+          "accuracy": 0.794885745375408
+        },
+        "siqa": {
+          "total": 1954,
+          "correct": 1352,
+          "invalid": 12,
+          "accuracy": 0.691914022517912
+        },
+        "winogrande": {
+          "total": 1267,
+          "correct": 732,
+          "invalid": 1,
+          "accuracy": 0.5777426992896606
+        }
+      }
+    },
+    {
+      "task": "commonsense",
+      "variant": "tulu__global_0p55",
+      "samples": 22419,
+      "primary_metric": "macro_accuracy",
+      "macro_accuracy": 0.7067427059118483,
+      "per_task": {
+        "arc_challenge": {
+          "total": 1172,
+          "correct": 840,
+          "invalid": 4,
+          "accuracy": 0.7167235494880546
+        },
+        "arc_easy": {
+          "total": 2376,
+          "correct": 2086,
+          "invalid": 10,
+          "accuracy": 0.8779461279461279
+        },
+        "boolq": {
+          "total": 3270,
+          "correct": 2817,
+          "invalid": 0,
+          "accuracy": 0.8614678899082568
+        },
+        "hellaswag": {
+          "total": 10042,
+          "correct": 4858,
+          "invalid": 14,
+          "accuracy": 0.48376817367058356
+        },
+        "openbookqa": {
+          "total": 500,
+          "correct": 324,
+          "invalid": 0,
+          "accuracy": 0.648
+        },
+        "piqa": {
+          "total": 1838,
+          "correct": 1479,
+          "invalid": 1,
+          "accuracy": 0.8046789989118607
+        },
+        "siqa": {
+          "total": 1954,
+          "correct": 1362,
+          "invalid": 10,
+          "accuracy": 0.6970317297850563
+        },
+        "winogrande": {
+          "total": 1267,
+          "correct": 715,
+          "invalid": 0,
+          "accuracy": 0.5643251775848461
+        }
+      }
+    },
+    {
+      "task": "commonsense",
+      "variant": "tulu__global_0p70",
+      "samples": 22419,
+      "primary_metric": "macro_accuracy",
+      "macro_accuracy": 0.707919644497516,
+      "per_task": {
+        "arc_challenge": {
+          "total": 1172,
+          "correct": 834,
+          "invalid": 3,
+          "accuracy": 0.71160409556314
+        },
+        "arc_easy": {
+          "total": 2376,
+          "correct": 2077,
+          "invalid": 11,
+          "accuracy": 0.8741582491582491
+        },
+        "boolq": {
+          "total": 3270,
+          "correct": 2813,
+          "invalid": 0,
+          "accuracy": 0.8602446483180428
+        },
+        "hellaswag": {
+          "total": 10042,
+          "correct": 4914,
+          "invalid": 11,
+          "accuracy": 0.489344752041426
+        },
+        "openbookqa": {
+          "total": 500,
+          "correct": 333,
+          "invalid": 0,
+          "accuracy": 0.666
+        },
+        "piqa": {
+          "total": 1838,
+          "correct": 1489,
+          "invalid": 1,
+          "accuracy": 0.8101196953210011
+        },
+        "siqa": {
+          "total": 1954,
+          "correct": 1362,
+          "invalid": 5,
+          "accuracy": 0.6970317297850563
+        },
+        "winogrande": {
+          "total": 1267,
+          "correct": 703,
+          "invalid": 0,
+          "accuracy": 0.5548539857932123
+        }
+      }
+    },
+    {
+      "task": "commonsense",
+      "variant": "tulu__global_0p85",
+      "samples": 22419,
+      "primary_metric": "macro_accuracy",
+      "macro_accuracy": 0.7109531740086238,
+      "per_task": {
+        "arc_challenge": {
+          "total": 1172,
+          "correct": 841,
+          "invalid": 3,
+          "accuracy": 0.7175767918088737
+        },
+        "arc_easy": {
+          "total": 2376,
+          "correct": 2081,
+          "invalid": 10,
+          "accuracy": 0.8758417508417509
+        },
+        "boolq": {
+          "total": 3270,
+          "correct": 2805,
+          "invalid": 0,
+          "accuracy": 0.8577981651376146
+        },
+        "hellaswag": {
+          "total": 10042,
+          "correct": 5010,
+          "invalid": 2,
+          "accuracy": 0.4989046006771559
+        },
+        "openbookqa": {
+          "total": 500,
+          "correct": 342,
+          "invalid": 0,
+          "accuracy": 0.684
+        },
+        "piqa": {
+          "total": 1838,
+          "correct": 1486,
+          "invalid": 1,
+          "accuracy": 0.808487486398259
+        },
+        "siqa": {
+          "total": 1954,
+          "correct": 1364,
+          "invalid": 1,
+          "accuracy": 0.6980552712384852
+        },
+        "winogrande": {
+          "total": 1267,
+          "correct": 693,
+          "invalid": 0,
+          "accuracy": 0.5469613259668509
+        }
+      }
+    },
+    {
+      "task": "commonsense",
+      "variant": "tulu__original_hns",
+      "samples": 22419,
+      "primary_metric": "macro_accuracy",
+      "macro_accuracy": 0.7032469293727327,
+      "per_task": {
+        "arc_challenge": {
+          "total": 1172,
+          "correct": 829,
+          "invalid": 1,
+          "accuracy": 0.7073378839590444
+        },
+        "arc_easy": {
+          "total": 2376,
+          "correct": 2066,
+          "invalid": 9,
+          "accuracy": 0.8695286195286195
+        },
+        "boolq": {
+          "total": 3270,
+          "correct": 2799,
+          "invalid": 0,
+          "accuracy": 0.8559633027522936
+        },
+        "hellaswag": {
+          "total": 10042,
+          "correct": 4920,
+          "invalid": 18,
+          "accuracy": 0.48994224258115915
+        },
+        "openbookqa": {
+          "total": 500,
+          "correct": 329,
+          "invalid": 0,
+          "accuracy": 0.658
+        },
+        "piqa": {
+          "total": 1838,
+          "correct": 1464,
+          "invalid": 1,
+          "accuracy": 0.7965179542981502
+        },
+        "siqa": {
+          "total": 1954,
+          "correct": 1365,
+          "invalid": 5,
+          "accuracy": 0.6985670419651996
+        },
+        "winogrande": {
+          "total": 1267,
+          "correct": 697,
+          "invalid": 0,
+          "accuracy": 0.5501183898973955
+        }
+      }
+    },
+    {
+      "task": "commonsense",
+      "variant": "tulu__original_lora",
+      "samples": 22419,
+      "primary_metric": "macro_accuracy",
+      "macro_accuracy": 0.7127823483564126,
+      "per_task": {
+        "arc_challenge": {
+          "total": 1172,
+          "correct": 842,
+          "invalid": 3,
+          "accuracy": 0.7184300341296929
+        },
+        "arc_easy": {
+          "total": 2376,
+          "correct": 2090,
+          "invalid": 9,
+          "accuracy": 0.8796296296296297
+        },
+        "boolq": {
+          "total": 3270,
+          "correct": 2804,
+          "invalid": 0,
+          "accuracy": 0.8574923547400611
+        },
+        "hellaswag": {
+          "total": 10042,
+          "correct": 5065,
+          "invalid": 1,
+          "accuracy": 0.5043815972913762
+        },
+        "openbookqa": {
+          "total": 500,
+          "correct": 348,
+          "invalid": 0,
+          "accuracy": 0.696
+        },
+        "piqa": {
+          "total": 1838,
+          "correct": 1485,
+          "invalid": 0,
+          "accuracy": 0.8079434167573449
+        },
+        "siqa": {
+          "total": 1954,
+          "correct": 1368,
+          "invalid": 0,
+          "accuracy": 0.7001023541453428
+        },
+        "winogrande": {
+          "total": 1267,
+          "correct": 682,
+          "invalid": 0,
+          "accuracy": 0.5382794001578532
+        }
+      }
+    }
+  ]
+}

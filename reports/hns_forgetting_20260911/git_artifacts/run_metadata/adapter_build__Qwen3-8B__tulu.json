@@ -1,0 +1,5346 @@
+{
+  "status": "complete",
+  "source_lora": "/dataset1/zailong/models/spectral-surgery/Qwen3-8B-InstructionFollowing-LoRA",
+  "source_hns": "/dataset1/zailong/models/spectral-surgery/Qwen3-8B-InstructionFollowing-SpectralSurgery-HNS4p1",
+  "global_gamma_candidates": [
+    0.25,
+    0.4,
+    0.55,
+    0.7,
+    0.85,
+    1.0
+  ],
+  "hns_norm_matched_global_gamma": 0.7574307508660958,
+  "modules": 252,
+  "max_hns_basis_error": 0.0007452088695126657,
+  "max_saved_target_relative_error": 0.0,
+  "max_common_lora_source_relative_error": 6.907839007461397e-06,
+  "variants": [
+    {
+      "label": "common_hns",
+      "path": "/dataset1/zailong/runs/peft-sft-lab/hns-forgetting-2x4-20260911/adapters/Qwen3-8B/tulu/common-hns"
+    },
+    {
+      "label": "common_per_module",
+      "path": "/dataset1/zailong/runs/peft-sft-lab/hns-forgetting-2x4-20260911/adapters/Qwen3-8B/tulu/common-per-module"
+    },
+    {
+      "label": "common_global_0p25",
+      "path": "/dataset1/zailong/runs/peft-sft-lab/hns-forgetting-2x4-20260911/adapters/Qwen3-8B/tulu/common-global-0p25"
+    },
+    {
+      "label": "common_global_0p40",
+      "path": "/dataset1/zailong/runs/peft-sft-lab/hns-forgetting-2x4-20260911/adapters/Qwen3-8B/tulu/common-global-0p40"
+    },
+    {
+      "label": "common_global_0p55",
+      "path": "/dataset1/zailong/runs/peft-sft-lab/hns-forgetting-2x4-20260911/adapters/Qwen3-8B/tulu/common-global-0p55"
+    },
+    {
+      "label": "common_global_0p70",
+      "path": "/dataset1/zailong/runs/peft-sft-lab/hns-forgetting-2x4-20260911/adapters/Qwen3-8B/tulu/common-global-0p70"
+    },
+    {
+      "label": "common_global_0p85",
+      "path": "/dataset1/zailong/runs/peft-sft-lab/hns-forgetting-2x4-20260911/adapters/Qwen3-8B/tulu/common-global-0p85"
+    },
+    {
+      "label": "common_global_1p00",
+      "path": "/dataset1/zailong/runs/peft-sft-lab/hns-forgetting-2x4-20260911/adapters/Qwen3-8B/tulu/common-global-1p00"
+    }
+  ],
+  "module_stats": {
+    "base_model.model.model.layers.0.mlp.down_proj": {
+      "lora_fro": 1.656917691230774,
+      "hns_fro": 1.1512068510055542,
+      "per_module_gamma": 0.6947882175445557,
+      "basis": {
+        "basis_offdiag_fraction": 1.1410024659697419e-06,
+        "basis_projection_residual_fraction": 0.0,
+        "negative_aligned_fraction": 0.0
+      },
+      "common_lora_source_relative_error": 2.6636845119169456e-06,
+      "saved_target_relative_errors": {
+        "common_hns": 0.0,
+        "common_per_module": 0.0,
+        "common_global_0p25": 0.0,
+        "common_global_0p40": 0.0,
+        "common_global_0p55": 0.0,
+        "common_global_0p70": 0.0,
+        "common_global_0p85": 0.0,
+        "common_global_1p00": 0.0
+      }
+    },
+    "base_model.model.model.layers.0.mlp.gate_proj": {
+      "lora_fro": 1.6919294595718384,
+      "hns_fro": 1.3736435174942017,
+      "per_module_gamma": 0.8118798732757568,
+      "basis": {
+        "basis_offdiag_fraction": 8.652448628215915e-07,
+        "basis_projection_residual_fraction": 0.0,
+        "negative_aligned_fraction": 0.0
+      },
+      "common_lora_source_relative_error": 2.800831763510358e-06,
+      "saved_target_relative_errors": {
+        "common_hns": 0.0,
+        "common_per_module": 0.0,
+        "common_global_0p25": 0.0,
+        "common_global_0p40": 0.0,
+        "common_global_0p55": 0.0,
+        "common_global_0p70": 0.0,
+        "common_global_0p85": 0.0,
+        "common_global_1p00": 0.0
+      }
+    },
+    "base_model.model.model.layers.0.mlp.up_proj": {
+      "lora_fro": 1.96943199634552,
+      "hns_fro": 1.5481369495391846,
+      "per_module_gamma": 0.7860829830169678,
+      "basis": {
+        "basis_offdiag_fraction": 8.59887458625365e-07,
+        "basis_projection_residual_fraction": 0.0,
+        "negative_aligned_fraction": 0.0
+      },
+      "common_lora_source_relative_error": 2.7939173996607337e-06,
+      "saved_target_relative_errors": {
+        "common_hns": 0.0,
+        "common_per_module": 0.0,
+        "common_global_0p25": 0.0,
+        "common_global_0p40": 0.0,
+        "common_global_0p55": 0.0,
+        "common_global_0p70": 0.0,
+        "common_global_0p85": 0.0,
+        "common_global_1p00": 0.0
+      }
+    },
+    "base_model.model.model.layers.0.self_attn.k_proj": {
+      "lora_fro": 0.5723745226860046,
+      "hns_fro": 0.4745769798755646,
+      "per_module_gamma": 0.8291371464729309,
+      "basis": {
+        "basis_offdiag_fraction": 8.573541874159366e-07,
+        "basis_projection_residual_fraction": 0.0,
+        "negative_aligned_fraction": 0.0
+      },
+      "common_lora_source_relative_error": 2.0578587203373817e-06,
+      "saved_target_relative_errors": {
+        "common_hns": 0.0,
+        "common_per_module": 0.0,
+        "common_global_0p25": 0.0,
+        "common_global_0p40": 0.0,
+        "common_global_0p55": 0.0,
+        "common_global_0p70": 0.0,
+        "common_global_0p85": 0.0,
+        "common_global_1p00": 0.0
+      }
+    },
+    "base_model.model.model.layers.0.self_attn.o_proj": {
+      "lora_fro": 0.9033580422401428,
+      "hns_fro": 0.6936725378036499,
+      "per_module_gamma": 0.7678821682929993,
+      "basis": {
+        "basis_offdiag_fraction": 8.263430968078334e-07,
+        "basis_projection_residual_fraction": 0.0,
+        "negative_aligned_fraction": 0.0
+      },
+      "common_lora_source_relative_error": 3.037549214871197e-06,
+      "saved_target_relative_errors": {
+        "common_hns": 0.0,
+        "common_per_module": 0.0,
+        "common_global_0p25": 0.0,
+        "common_global_0p40": 0.0,
+        "common_global_0p55": 0.0,
+        "common_global_0p70": 0.0,
+        "common_global_0p85": 0.0,
+        "common_global_1p00": 0.0
+      }
+    },
+    "base_model.model.model.layers.0.self_attn.q_proj": {
+      "lora_fro": 0.8794245719909668,
+      "hns_fro": 0.7465473413467407,
+      "per_module_gamma": 0.8489043712615967,
+      "basis": {
+        "basis_offdiag_fraction": 9.367362170480777e-07,
+        "basis_projection_residual_fraction": 0.0,
+        "negative_aligned_fraction": 0.0
+      },
+      "common_lora_source_relative_error": 5.037352857387952e-06,
+      "saved_target_relative_errors": {
+        "common_hns": 0.0,
+        "common_per_module": 0.0,
+        "common_global_0p25": 0.0,
+        "common_global_0p40": 0.0,
+        "common_global_0p55": 0.0,
+        "common_global_0p70": 0.0,
+        "common_global_0p85": 0.0,
+        "common_global_1p00": 0.0
+      }
+    },
+    "base_model.model.model.layers.0.self_attn.v_proj": {
+      "lora_fro": 0.47345662117004395,
+      "hns_fro": 0.2970134913921356,
+      "per_module_gamma": 0.6273298859596252,
+      "basis": {
+        "basis_offdiag_fraction": 8.022108523416416e-07,
+        "basis_projection_residual_fraction": 0.0,
+        "negative_aligned_fraction": 0.0
+      },
+      "common_lora_source_relative_error": 2.239481038931739e-06,
+      "saved_target_relative_errors": {
+        "common_hns": 0.0,
+        "common_per_module": 0.0,
+        "common_global_0p25": 0.0,
+        "common_global_0p40": 0.0,
+        "common_global_0p55": 0.0,
+        "common_global_0p70": 0.0,
+        "common_global_0p85": 0.0,
+        "common_global_1p00": 0.0
+      }
+    },
+    "base_model.model.model.layers.1.mlp.down_proj": {
+      "lora_fro": 1.3667948246002197,
+      "hns_fro": 0.9835543632507324,
+      "per_module_gamma": 0.7196064591407776,
+      "basis": {
+        "basis_offdiag_fraction": 1.142595781436371e-06,
+        "basis_projection_residual_fraction": 0.0,
+        "negative_aligned_fraction": 0.0
+      },
+      "common_lora_source_relative_error": 1.6124934256719006e-06,
+      "saved_target_relative_errors": {
+        "common_hns": 0.0,
+        "common_per_module": 0.0,
+        "common_global_0p25": 0.0,
+        "common_global_0p40": 0.0,
+        "common_global_0p55": 0.0,
+        "common_global_0p70": 0.0,
+        "common_global_0p85": 0.0,
+        "common_global_1p00": 0.0
+      }
+    },
+    "base_model.model.model.layers.1.mlp.gate_proj": {
+      "lora_fro": 1.9074760675430298,
+      "hns_fro": 0.9577045440673828,
+      "per_module_gamma": 0.502079427242279,
+      "basis": {
+        "basis_offdiag_fraction": 9.638920788543694e-07,
+        "basis_projection_residual_fraction": 0.0,
+        "negative_aligned_fraction": 0.0
+      },
+      "common_lora_source_relative_error": 2.5291668370558594e-06,
+      "saved_target_relative_errors": {
+        "common_hns": 0.0,
+        "common_per_module": 0.0,
+        "common_global_0p25": 0.0,
+        "common_global_0p40": 0.0,
+        "common_global_0p55": 0.0,
+        "common_global_0p70": 0.0,
+        "common_global_0p85": 0.0,
+        "common_global_1p00": 0.0
+      }
+    },
+    "base_model.model.model.layers.1.mlp.up_proj": {
+      "lora_fro": 1.4478514194488525,
+      "hns_fro": 0.9032384753227234,
+      "per_module_gamma": 0.623847484588623,
+      "basis": {
+        "basis_offdiag_fraction": 7.75980906834935e-07,
+        "basis_projection_residual_fraction": 0.0007452088695126657,
+        "negative_aligned_fraction": 0.0
+      },
+      "common_lora_source_relative_error": 6.907839007461397e-06,
+      "saved_target_relative_errors": {
+        "common_hns": 0.0,
+        "common_per_module": 0.0,
+        "common_global_0p25": 0.0,
+        "common_global_0p40": 0.0,
+        "common_global_0p55": 0.0,
+        "common_global_0p70": 0.0,
+        "common_global_0p85": 0.0,
+        "common_global_1p00": 0.0
+      }
+    },
+    "base_model.model.model.layers.1.self_attn.k_proj": {
+      "lora_fro": 0.6409633159637451,
+      "hns_fro": 0.4399353265762329,
+      "per_module_gamma": 0.6863658428192139,
+      "basis": {
+        "basis_offdiag_fraction": 8.620710380508136e-07,
+        "basis_projection_residual_fraction": 0.0,
+        "negative_aligned_fraction": 0.0
+      },
+      "common_lora_source_relative_error": 1.7105015130981193e-06,
+      "saved_target_relative_errors": {
+        "common_hns": 0.0,
+        "common_per_module": 0.0,
+        "common_global_0p25": 0.0,
+        "common_global_0p40": 0.0,
+        "common_global_0p55": 0.0,
+        "common_global_0p70": 0.0,
+        "common_global_0p85": 0.0,
+        "common_global_1p00": 0.0
+      }
+    },
+    "base_model.model.model.layers.1.self_attn.o_proj": {
+      "lora_fro": 1.2298482656478882,
+      "hns_fro": 0.7982678413391113,
+      "per_module_gamma": 0.6490783095359802,
+      "basis": {
+        "basis_offdiag_fraction": 9.1774844821829e-07,
+        "basis_projection_residual_fraction": 0.0,
+        "negative_aligned_fraction": 0.0
+      },
+      "common_lora_source_relative_error": 1.866831433791765e-06,
+      "saved_target_relative_errors": {
+        "common_hns": 0.0,
+        "common_per_module": 0.0,
+        "common_global_0p25": 0.0,
+        "common_global_0p40": 0.0,
+        "common_global_0p55": 0.0,
+        "common_global_0p70": 0.0,
+        "common_global_0p85": 0.0,
+        "common_global_1p00": 0.0
+      }
+    },
+    "base_model.model.model.layers.1.self_attn.q_proj": {
+      "lora_fro": 1.2222900390625,
+      "hns_fro": 0.7804338932037354,
+      "per_module_gamma": 0.6385014057159424,
+      "basis": {
+        "basis_offdiag_fraction": 7.604931674133231e-07,
+        "basis_projection_residual_fraction": 0.0,
+        "negative_aligned_fraction": 0.0
+      },
+      "common_lora_source_relative_error": 2.3465656025302397e-06,
+      "saved_target_relative_errors": {
+        "common_hns": 0.0,
+        "common_per_module": 0.0,
+        "common_global_0p25": 0.0,
+        "common_global_0p40": 0.0,
+        "common_global_0p55": 0.0,
+        "common_global_0p70": 0.0,
+        "common_global_0p85": 0.0,
+        "common_global_1p00": 0.0
+      }
+    },
+    "base_model.model.model.layers.1.self_attn.v_proj": {
+      "lora_fro": 0.5386448502540588,
+      "hns_fro": 0.3296133577823639,
+      "per_module_gamma": 0.611930787563324,
+      "basis": {
+        "basis_offdiag_fraction": 1.0757190445535066e-06,
+        "basis_projection_residual_fraction": 0.0,
+        "negative_aligned_fraction": 0.0
+      },
+      "common_lora_source_relative_error": 1.9165425227729172e-06,
+      "saved_target_relative_errors": {
+        "common_hns": 0.0,
+        "common_per_module": 0.0,
+        "common_global_0p25": 0.0,
+        "common_global_0p40": 0.0,
+        "common_global_0p55": 0.0,
+        "common_global_0p70": 0.0,
+        "common_global_0p85": 0.0,
+        "common_global_1p00": 0.0
+      }
+    },
+    "base_model.model.model.layers.10.mlp.down_proj": {
+      "lora_fro": 1.715254306793213,
+      "hns_fro": 1.0462626218795776,
+      "per_module_gamma": 0.6099752187728882,
+      "basis": {
+        "basis_offdiag_fraction": 7.995103647659117e-07,
+        "basis_projection_residual_fraction": 0.0,
+        "negative_aligned_fraction": 0.0
+      },
+      "common_lora_source_relative_error": 2.2357137231337282e-06,
+      "saved_target_relative_errors": {
+        "common_hns": 0.0,
+        "common_per_module": 0.0,
+        "common_global_0p25": 0.0,
+        "common_global_0p40": 0.0,
+        "common_global_0p55": 0.0,
+        "common_global_0p70": 0.0,
+        "common_global_0p85": 0.0,
+        "common_global_1p00": 0.0
+      }
+    },
+    "base_model.model.model.layers.10.mlp.gate_proj": {
+      "lora_fro": 2.1366970539093018,
+      "hns_fro": 1.523978590965271,
+      "per_module_gamma": 0.713240385055542,
+      "basis": {
+        "basis_offdiag_fraction": 8.720765574909265e-07,
+        "basis_projection_residual_fraction": 0.0,
+        "negative_aligned_fraction": 0.0
+      },
+      "common_lora_source_relative_error": 2.01337499978503e-06,
+      "saved_target_relative_errors": {
+        "common_hns": 0.0,
+        "common_per_module": 0.0,
+        "common_global_0p25": 0.0,
+        "common_global_0p40": 0.0,
+        "common_global_0p55": 0.0,
+        "common_global_0p70": 0.0,
+        "common_global_0p85": 0.0,
+        "common_global_1p00": 0.0
+      }
+    },
+    "base_model.model.model.layers.10.mlp.up_proj": {
+      "lora_fro": 1.6485316753387451,
+      "hns_fro": 1.2894765138626099,
+      "per_module_gamma": 0.7821969985961914,
+      "basis": {
+        "basis_offdiag_fraction": 7.996450682210989e-07,
+        "basis_projection_residual_fraction": 0.0,
+        "negative_aligned_fraction": 0.0
+      },
+      "common_lora_source_relative_error": 1.5973545094275945e-06,
+      "saved_target_relative_errors": {
+        "common_hns": 0.0,
+        "common_per_module": 0.0,
+        "common_global_0p25": 0.0,
+        "common_global_0p40": 0.0,
+        "common_global_0p55": 0.0,
+        "common_global_0p70": 0.0,
+        "common_global_0p85": 0.0,
+        "common_global_1p00": 0.0
+      }
+    },
+    "base_model.model.model.layers.10.self_attn.k_proj": {
+      "lora_fro": 0.6051405668258667,
+      "hns_fro": 0.3883132040500641,
+      "per_module_gamma": 0.6416909098625183,
+      "basis": {
+        "basis_offdiag_fraction": 9.724844518089559e-07,
+        "basis_projection_residual_fraction": 0.0,
+        "negative_aligned_fraction": 0.0
+      },
+      "common_lora_source_relative_error": 2.8633308806322266e-06,
+      "saved_target_relative_errors": {
+        "common_hns": 0.0,
+        "common_per_module": 0.0,
+        "common_global_0p25": 0.0,
+        "common_global_0p40": 0.0,
+        "common_global_0p55": 0.0,
+        "common_global_0p70": 0.0,
+        "common_global_0p85": 0.0,
+        "common_global_1p00": 0.0
+      }
+    },
+    "base_model.model.model.layers.10.self_attn.o_proj": {
+      "lora_fro": 1.039870023727417,
+      "hns_fro": 0.7490661144256592,
+      "per_module_gamma": 0.7203459143638611,
+      "basis": {
+        "basis_offdiag_fraction": 9.030835206071851e-07,
+        "basis_projection_residual_fraction": 0.0,
+        "negative_aligned_fraction": 0.0
+      },
+      "common_lora_source_relative_error": 3.1294552661476213e-06,
+      "saved_target_relative_errors": {
+        "common_hns": 0.0,
+        "common_per_module": 0.0,
+        "common_global_0p25": 0.0,
+        "common_global_0p40": 0.0,
+        "common_global_0p55": 0.0,
+        "common_global_0p70": 0.0,
+        "common_global_0p85": 0.0,
+        "common_global_1p00": 0.0
+      }
+    },
+    "base_model.model.model.layers.10.self_attn.q_proj": {
+      "lora_fro": 1.1121021509170532,
+      "hns_fro": 0.8075401186943054,
+      "per_module_gamma": 0.7261384129524231,
+      "basis": {
+        "basis_offdiag_fraction": 8.854943472423586e-07,
+        "basis_projection_residual_fraction": 0.0,
+        "negative_aligned_fraction": 0.0
+      },
+      "common_lora_source_relative_error": 1.9451721204833586e-06,
+      "saved_target_relative_errors": {
+        "common_hns": 0.0,
+        "common_per_module": 0.0,
+        "common_global_0p25": 0.0,
+        "common_global_0p40": 0.0,
+        "common_global_0p55": 0.0,
+        "common_global_0p70": 0.0,
+        "common_global_0p85": 0.0,
+        "common_global_1p00": 0.0
+      }
+    },
+    "base_model.model.model.layers.10.self_attn.v_proj": {
+      "lora_fro": 0.48917436599731445,
+      "hns_fro": 0.29905617237091064,
+      "per_module_gamma": 0.6113488078117371,
+      "basis": {
+        "basis_offdiag_fraction": 8.718598146412306e-07,
+        "basis_projection_residual_fraction": 0.0,
+        "negative_aligned_fraction": 0.0
+      },
+      "common_lora_source_relative_error": 1.730254152629234e-06,
+      "saved_target_relative_errors": {
+        "common_hns": 0.0,
+        "common_per_module": 0.0,
+        "common_global_0p25": 0.0,
+        "common_global_0p40": 0.0,
+        "common_global_0p55": 0.0,
+        "common_global_0p70": 0.0,
+        "common_global_0p85": 0.0,
+        "common_global_1p00": 0.0
+      }
+    },
+    "base_model.model.model.layers.11.mlp.down_proj": {
+      "lora_fro": 1.727278232574463,
+      "hns_fro": 1.1128792762756348,
+      "per_module_gamma": 0.6442964673042297,
+      "basis": {
+        "basis_offdiag_fraction": 8.372557993974223e-07,
+        "basis_projection_residual_fraction": 0.0,
+        "negative_aligned_fraction": 0.0
+      },
+      "common_lora_source_relative_error": 1.7766864444792589e-06,
+      "saved_target_relative_errors": {
+        "common_hns": 0.0,
+        "common_per_module": 0.0,
+        "common_global_0p25": 0.0,
+        "common_global_0p40": 0.0,
+        "common_global_0p55": 0.0,
+        "common_global_0p70": 0.0,
+        "common_global_0p85": 0.0,
+        "common_global_1p00": 0.0
+      }
+    },
+    "base_model.model.model.layers.11.mlp.gate_proj": {
+      "lora_fro": 2.1372454166412354,
+      "hns_fro": 1.6135199069976807,
+      "per_module_gamma": 0.7549530267715454,
+      "basis": {
+        "basis_offdiag_fraction": 9.404844007028656e-07,
+        "basis_projection_residual_fraction": 0.0,
+        "negative_aligned_fraction": 0.0
+      },
+      "common_lora_source_relative_error": 1.8683741565011873e-06,
+      "saved_target_relative_errors": {
+        "common_hns": 0.0,
+        "common_per_module": 0.0,
+        "common_global_0p25": 0.0,
+        "common_global_0p40": 0.0,
+        "common_global_0p55": 0.0,
+        "common_global_0p70": 0.0,
+        "common_global_0p85": 0.0,
+        "common_global_1p00": 0.0
+      }
+    },
+    "base_model.model.model.layers.11.mlp.up_proj": {
+      "lora_fro": 1.7536941766738892,
+      "hns_fro": 1.4618791341781616,
+      "per_module_gamma": 0.8335998058319092,
+      "basis": {
+        "basis_offdiag_fraction": 8.141887717841979e-07,
+        "basis_projection_residual_fraction": 0.0004483566871288858,
+        "negative_aligned_fraction": 0.0
+      },
+      "common_lora_source_relative_error": 3.884111992462482e-06,
+      "saved_target_relative_errors": {
+        "common_hns": 0.0,
+        "common_per_module": 0.0,
+        "common_global_0p25": 0.0,
+        "common_global_0p40": 0.0,
+        "common_global_0p55": 0.0,
+        "common_global_0p70": 0.0,
+        "common_global_0p85": 0.0,
+        "common_global_1p00": 0.0
+      }
+    },
+    "base_model.model.model.layers.11.self_attn.k_proj": {
+      "lora_fro": 0.700497031211853,
+      "hns_fro": 0.4343860149383545,
+      "per_module_gamma": 0.6201111674308777,
+      "basis": {
+        "basis_offdiag_fraction": 7.420374340128524e-07,
+        "basis_projection_residual_fraction": 0.0,
+        "negative_aligned_fraction": 0.0
+      },
+      "common_lora_source_relative_error": 2.0381867433066167e-06,
+      "saved_target_relative_errors": {
+        "common_hns": 0.0,
+        "common_per_module": 0.0,
+        "common_global_0p25": 0.0,
+        "common_global_0p40": 0.0,
+        "common_global_0p55": 0.0,
+        "common_global_0p70": 0.0,
+        "common_global_0p85": 0.0,
+        "common_global_1p00": 0.0
+      }
+    },
+    "base_model.model.model.layers.11.self_attn.o_proj": {
+      "lora_fro": 1.070501446723938,
+      "hns_fro": 0.8130219578742981,
+      "per_module_gamma": 0.7594776749610901,
+      "basis": {
+        "basis_offdiag_fraction": 8.754264548290424e-07,
+        "basis_projection_residual_fraction": 0.0003035090450639064,
+        "negative_aligned_fraction": 0.0
+      },
+      "common_lora_source_relative_error": 2.306269000325944e-06,
+      "saved_target_relative_errors": {
+        "common_hns": 0.0,
+        "common_per_module": 0.0,
+        "common_global_0p25": 0.0,
+        "common_global_0p40": 0.0,
+        "common_global_0p55": 0.0,
+        "common_global_0p70": 0.0,
+        "common_global_0p85": 0.0,
+        "common_global_1p00": 0.0
+      }
+    },
+    "base_model.model.model.layers.11.self_attn.q_proj": {
+      "lora_fro": 1.1862515211105347,
+      "hns_fro": 0.860670268535614,
+      "per_module_gamma": 0.7255377769470215,
+      "basis": {
+        "basis_offdiag_fraction": 8.193032360168077e-07,
+        "basis_projection_residual_fraction": 0.0,
+        "negative_aligned_fraction": 0.0
+      },
+      "common_lora_source_relative_error": 3.3166187865410524e-06,
+      "saved_target_relative_errors": {
+        "common_hns": 0.0,
+        "common_per_module": 0.0,
+        "common_global_0p25": 0.0,
+        "common_global_0p40": 0.0,
+        "common_global_0p55": 0.0,
+        "common_global_0p70": 0.0,
+        "common_global_0p85": 0.0,
+        "common_global_1p00": 0.0
+      }
+    },
+    "base_model.model.model.layers.11.self_attn.v_proj": {
+      "lora_fro": 0.46189063787460327,
+      "hns_fro": 0.3211744725704193,
+      "per_module_gamma": 0.6953474283218384,
+      "basis": {
+        "basis_offdiag_fraction": 7.8791743986392e-07,
+        "basis_projection_residual_fraction": 0.0,
+        "negative_aligned_fraction": 0.0
+      },
+      "common_lora_source_relative_error": 2.932281441275633e-06,
+      "saved_target_relative_errors": {
+        "common_hns": 0.0,
+        "common_per_module": 0.0,
+        "common_global_0p25": 0.0,
+        "common_global_0p40": 0.0,
+        "common_global_0p55": 0.0,
+        "common_global_0p70": 0.0,
+        "common_global_0p85": 0.0,
+        "common_global_1p00": 0.0
+      }
+    },
+    "base_model.model.model.layers.12.mlp.down_proj": {
+      "lora_fro": 1.666090488433838,
+      "hns_fro": 1.1611367464065552,
+      "per_module_gamma": 0.6969229578971863,
+      "basis": {
+        "basis_offdiag_fraction": 8.777244204862465e-07,
+        "basis_projection_residual_fraction": 0.0,
+        "negative_aligned_fraction": 0.0
+      },
+      "common_lora_source_relative_error": 2.1411301114622905e-06,
+      "saved_target_relative_errors": {
+        "common_hns": 0.0,
+        "common_per_module": 0.0,
+        "common_global_0p25": 0.0,
+        "common_global_0p40": 0.0,
+        "common_global_0p55": 0.0,
+        "common_global_0p70": 0.0,
+        "common_global_0p85": 0.0,
+        "common_global_1p00": 0.0
+      }
+    },
+    "base_model.model.model.layers.12.mlp.gate_proj": {
+      "lora_fro": 2.030344247817993,
+      "hns_fro": 1.488438606262207,
+      "per_module_gamma": 0.7330966591835022,
+      "basis": {
+        "basis_offdiag_fraction": 1.0549077148449457e-06,
+        "basis_projection_residual_fraction": 0.0,
+        "negative_aligned_fraction": 0.0
+      },
+      "common_lora_source_relative_error": 2.4104353531192166e-06,
+      "saved_target_relative_errors": {
+        "common_hns": 0.0,
+        "common_per_module": 0.0,
+        "common_global_0p25": 0.0,
+        "common_global_0p40": 0.0,
+        "common_global_0p55": 0.0,
+        "common_global_0p70": 0.0,
+        "common_global_0p85": 0.0,
+        "common_global_1p00": 0.0
+      }
+    },
+    "base_model.model.model.layers.12.mlp.up_proj": {
+      "lora_fro": 1.694427490234375,
+      "hns_fro": 1.4072966575622559,
+      "per_module_gamma": 0.8305440545082092,
+      "basis": {
+        "basis_offdiag_fraction": 9.779230769048902e-07,
+        "basis_projection_residual_fraction": 0.0,
+        "negative_aligned_fraction": 0.0
+      },
+      "common_lora_source_relative_error": 2.551893101557889e-06,
+      "saved_target_relative_errors": {
+        "common_hns": 0.0,
+        "common_per_module": 0.0,
+        "common_global_0p25": 0.0,
+        "common_global_0p40": 0.0,
+        "common_global_0p55": 0.0,
+        "common_global_0p70": 0.0,
+        "common_global_0p85": 0.0,
+        "common_global_1p00": 0.0
+      }
+    },
+    "base_model.model.model.layers.12.self_attn.k_proj": {
+      "lora_fro": 0.7274191379547119,
+      "hns_fro": 0.43724215030670166,
+      "per_module_gamma": 0.6010869741439819,
+      "basis": {
+        "basis_offdiag_fraction": 8.77740759716942e-07,
+        "basis_projection_residual_fraction": 0.0,
+        "negative_aligned_fraction": 0.0
+      },
+      "common_lora_source_relative_error": 2.2659890675063362e-06,
+      "saved_target_relative_errors": {
+        "common_hns": 0.0,
+        "common_per_module": 0.0,
+        "common_global_0p25": 0.0,
+        "common_global_0p40": 0.0,
+        "common_global_0p55": 0.0,
+        "common_global_0p70": 0.0,
+        "common_global_0p85": 0.0,
+        "common_global_1p00": 0.0
+      }
+    },
+    "base_model.model.model.layers.12.self_attn.o_proj": {
+      "lora_fro": 1.0169377326965332,
+      "hns_fro": 0.8528656959533691,
+      "per_module_gamma": 0.8386606574058533,
+      "basis": {
+        "basis_offdiag_fraction": 8.884458040748805e-07,
+        "basis_projection_residual_fraction": 0.0,
+        "negative_aligned_fraction": 0.0
+      },
+      "common_lora_source_relative_error": 4.4341203913588874e-06,
+      "saved_target_relative_errors": {
+        "common_hns": 0.0,
+        "common_per_module": 0.0,
+        "common_global_0p25": 0.0,
+        "common_global_0p40": 0.0,
+        "common_global_0p55": 0.0,
+        "common_global_0p70": 0.0,
+        "common_global_0p85": 0.0,
+        "common_global_1p00": 0.0
+      }
+    },
+    "base_model.model.model.layers.12.self_attn.q_proj": {
+      "lora_fro": 1.0870572328567505,
+      "hns_fro": 0.8399268388748169,
+      "per_module_gamma": 0.7726610898971558,
+      "basis": {
+        "basis_offdiag_fraction": 9.422943325074306e-07,
+        "basis_projection_residual_fraction": 0.0,
+        "negative_aligned_fraction": 0.0
+      },
+      "common_lora_source_relative_error": 4.093893949048872e-06,
+      "saved_target_relative_errors": {
+        "common_hns": 0.0,
+        "common_per_module": 0.0,
+        "common_global_0p25": 0.0,
+        "common_global_0p40": 0.0,
+        "common_global_0p55": 0.0,
+        "common_global_0p70": 0.0,
+        "common_global_0p85": 0.0,
+        "common_global_1p00": 0.0
+      }
+    },
+    "base_model.model.model.layers.12.self_attn.v_proj": {
+      "lora_fro": 0.52667236328125,
+      "hns_fro": 0.33006030321121216,
+      "per_module_gamma": 0.6266899704933167,
+      "basis": {
+        "basis_offdiag_fraction": 9.093011966613484e-07,
+        "basis_projection_residual_fraction": 0.0,
+        "negative_aligned_fraction": 0.0
+      },
+      "common_lora_source_relative_error": 2.636315377840805e-06,
+      "saved_target_relative_errors": {
+        "common_hns": 0.0,
+        "common_per_module": 0.0,
+        "common_global_0p25": 0.0,
+        "common_global_0p40": 0.0,
+        "common_global_0p55": 0.0,
+        "common_global_0p70": 0.0,
+        "common_global_0p85": 0.0,
+        "common_global_1p00": 0.0
+      }
+    },
+    "base_model.model.model.layers.13.mlp.down_proj": {
+      "lora_fro": 1.6454330682754517,
+      "hns_fro": 1.0238196849822998,
+      "per_module_gamma": 0.6222189664840698,
+      "basis": {
+        "basis_offdiag_fraction": 7.65628461973431e-07,
+        "basis_projection_residual_fraction": 0.0,
+        "negative_aligned_fraction": 0.0
+      },
+      "common_lora_source_relative_error": 4.1883821888668524e-06,
+      "saved_target_relative_errors": {
+        "common_hns": 0.0,
+        "common_per_module": 0.0,
+        "common_global_0p25": 0.0,
+        "common_global_0p40": 0.0,
+        "common_global_0p55": 0.0,
+        "common_global_0p70": 0.0,
+        "common_global_0p85": 0.0,
+        "common_global_1p00": 0.0
+      }
+    },
+    "base_model.model.model.layers.13.mlp.gate_proj": {
+      "lora_fro": 2.021409034729004,
+      "hns_fro": 1.5781034231185913,
+      "per_module_gamma": 0.7806947231292725,
+      "basis": {
+        "basis_offdiag_fraction": 9.238782899105585e-07,
+        "basis_projection_residual_fraction": 0.0004924614107164338,
+        "negative_aligned_fraction": 0.0
+      },
+      "common_lora_source_relative_error": 5.447394637924166e-06,
+      "saved_target_relative_errors": {
+        "common_hns": 0.0,
+        "common_per_module": 0.0,
+        "common_global_0p25": 0.0,
+        "common_global_0p40": 0.0,
+        "common_global_0p55": 0.0,
+        "common_global_0p70": 0.0,
+        "common_global_0p85": 0.0,
+        "common_global_1p00": 0.0
+      }
+    },
+    "base_model.model.model.layers.13.mlp.up_proj": {
+      "lora_fro": 1.6762125492095947,
+      "hns_fro": 1.3896251916885376,
+      "per_module_gamma": 0.8290268182754517,
+      "basis": {
+        "basis_offdiag_fraction": 8.672339312510323e-07,
+        "basis_projection_residual_fraction": 0.0,
+        "negative_aligned_fraction": 0.0
+      },
+      "common_lora_source_relative_error": 1.8349038257649294e-06,
+      "saved_target_relative_errors": {
+        "common_hns": 0.0,
+        "common_per_module": 0.0,
+        "common_global_0p25": 0.0,
+        "common_global_0p40": 0.0,
+        "common_global_0p55": 0.0,
+        "common_global_0p70": 0.0,
+        "common_global_0p85": 0.0,
+        "common_global_1p00": 0.0
+      }
+    },
+    "base_model.model.model.layers.13.self_attn.k_proj": {
+      "lora_fro": 0.6313940286636353,
+      "hns_fro": 0.4325619637966156,
+      "per_module_gamma": 0.6850903630256653,
+      "basis": {
+        "basis_offdiag_fraction": 1.0367434080534667e-06,
+        "basis_projection_residual_fraction": 0.0,
+        "negative_aligned_fraction": 0.0
+      },
+      "common_lora_source_relative_error": 3.2356734542647764e-06,
+      "saved_target_relative_errors": {
+        "common_hns": 0.0,
+        "common_per_module": 0.0,
+        "common_global_0p25": 0.0,
+        "common_global_0p40": 0.0,
+        "common_global_0p55": 0.0,
+        "common_global_0p70": 0.0,
+        "common_global_0p85": 0.0,
+        "common_global_1p00": 0.0
+      }
+    },
+    "base_model.model.model.layers.13.self_attn.o_proj": {
+      "lora_fro": 1.1089534759521484,
+      "hns_fro": 0.8796501159667969,
+      "per_module_gamma": 0.7932254672050476,
+      "basis": {
+        "basis_offdiag_fraction": 1.0228285353220365e-06,
+        "basis_projection_residual_fraction": 0.0,
+        "negative_aligned_fraction": 0.0
+      },
+      "common_lora_source_relative_error": 2.0968233417227294e-06,
+      "saved_target_relative_errors": {
+        "common_hns": 0.0,
+        "common_per_module": 0.0,
+        "common_global_0p25": 0.0,
+        "common_global_0p40": 0.0,
+        "common_global_0p55": 0.0,
+        "common_global_0p70": 0.0,
+        "common_global_0p85": 0.0,
+        "common_global_1p00": 0.0
+      }
+    },
+    "base_model.model.model.layers.13.self_attn.q_proj": {
+      "lora_fro": 1.0404185056686401,
+      "hns_fro": 0.8094183206558228,
+      "per_module_gamma": 0.7779737710952759,
+      "basis": {
+        "basis_offdiag_fraction": 9.851879407504074e-07,
+        "basis_projection_residual_fraction": 0.0006164438320465905,
+        "negative_aligned_fraction": 0.0
+      },
+      "common_lora_source_relative_error": 3.3590861921952284e-06,
+      "saved_target_relative_errors": {
+        "common_hns": 0.0,
+        "common_per_module": 0.0,
+        "common_global_0p25": 0.0,
+        "common_global_0p40": 0.0,
+        "common_global_0p55": 0.0,
+        "common_global_0p70": 0.0,
+        "common_global_0p85": 0.0,
+        "common_global_1p00": 0.0
+      }
+    },
+    "base_model.model.model.layers.13.self_attn.v_proj": {
+      "lora_fro": 0.5206562876701355,
+      "hns_fro": 0.3407529890537262,
+      "per_module_gamma": 0.6544682383537292,
+      "basis": {
+        "basis_offdiag_fraction": 7.264124868081187e-07,
+        "basis_projection_residual_fraction": 0.0,
+        "negative_aligned_fraction": 0.0
+      },
+      "common_lora_source_relative_error": 2.748224124512634e-06,
+      "saved_target_relative_errors": {
+        "common_hns": 0.0,
+        "common_per_module": 0.0,
+        "common_global_0p25": 0.0,
+        "common_global_0p40": 0.0,
+        "common_global_0p55": 0.0,
+        "common_global_0p70": 0.0,
+        "common_global_0p85": 0.0,
+        "common_global_1p00": 0.0
+      }
+    },
+    "base_model.model.model.layers.14.mlp.down_proj": {
+      "lora_fro": 1.7343506813049316,
+      "hns_fro": 0.9854949712753296,
+      "per_module_gamma": 0.5682212710380554,
+      "basis": {
+        "basis_offdiag_fraction": 8.87757256131292e-07,
+        "basis_projection_residual_fraction": 0.0,
+        "negative_aligned_fraction": 0.0
+      },
+      "common_lora_source_relative_error": 2.0759162074091173e-06,
+      "saved_target_relative_errors": {
+        "common_hns": 0.0,
+        "common_per_module": 0.0,
+        "common_global_0p25": 0.0,
+        "common_global_0p40": 0.0,
+        "common_global_0p55": 0.0,
+        "common_global_0p70": 0.0,
+        "common_global_0p85": 0.0,
+        "common_global_1p00": 0.0
+      }
+    },
+    "base_model.model.model.layers.14.mlp.gate_proj": {
+      "lora_fro": 2.073845863342285,
+      "hns_fro": 1.5712300539016724,
+      "per_module_gamma": 0.7576407194137573,
+      "basis": {
+        "basis_offdiag_fraction": 9.323519064773616e-07,
+        "basis_projection_residual_fraction": 0.0,
+        "negative_aligned_fraction": 0.0
+      },
+      "common_lora_source_relative_error": 2.0339680704507527e-06,
+      "saved_target_relative_errors": {
+        "common_hns": 0.0,
+        "common_per_module": 0.0,
+        "common_global_0p25": 0.0,
+        "common_global_0p40": 0.0,
+        "common_global_0p55": 0.0,
+        "common_global_0p70": 0.0,
+        "common_global_0p85": 0.0,
+        "common_global_1p00": 0.0
+      }
+    },
+    "base_model.model.model.layers.14.mlp.up_proj": {
+      "lora_fro": 1.6717849969863892,
+      "hns_fro": 1.3222088813781738,
+      "per_module_gamma": 0.790896475315094,
+      "basis": {
+        "basis_offdiag_fraction": 9.11178276143808e-07,
+        "basis_projection_residual_fraction": 0.0,
+        "negative_aligned_fraction": 0.0
+      },
+      "common_lora_source_relative_error": 3.096595736832367e-06,
+      "saved_target_relative_errors": {
+        "common_hns": 0.0,
+        "common_per_module": 0.0,
+        "common_global_0p25": 0.0,
+        "common_global_0p40": 0.0,
+        "common_global_0p55": 0.0,
+        "common_global_0p70": 0.0,
+        "common_global_0p85": 0.0,
+        "common_global_1p00": 0.0
+      }
+    },
+    "base_model.model.model.layers.14.self_attn.k_proj": {
+      "lora_fro": 0.543680727481842,
+      "hns_fro": 0.42122989892959595,
+      "per_module_gamma": 0.7747743725776672,
+      "basis": {
+        "basis_offdiag_fraction": 7.789222309062664e-07,
+        "basis_projection_residual_fraction": 0.0,
+        "negative_aligned_fraction": 0.0
+      },
+      "common_lora_source_relative_error": 1.4925057780344013e-06,
+      "saved_target_relative_errors": {
+        "common_hns": 0.0,
+        "common_per_module": 0.0,
+        "common_global_0p25": 0.0,
+        "common_global_0p40": 0.0,
+        "common_global_0p55": 0.0,
+        "common_global_0p70": 0.0,
+        "common_global_0p85": 0.0,
+        "common_global_1p00": 0.0
+      }
+    },
+    "base_model.model.model.layers.14.self_attn.o_proj": {
+      "lora_fro": 0.9709869027137756,
+      "hns_fro": 0.7953941822052002,
+      "per_module_gamma": 0.8191605806350708,
+      "basis": {
+        "basis_offdiag_fraction": 7.802885443518832e-07,
+        "basis_projection_residual_fraction": 0.0,
+        "negative_aligned_fraction": 0.0
+      },
+      "common_lora_source_relative_error": 1.8032567665456777e-06,
+      "saved_target_relative_errors": {
+        "common_hns": 0.0,
+        "common_per_module": 0.0,
+        "common_global_0p25": 0.0,
+        "common_global_0p40": 0.0,
+        "common_global_0p55": 0.0,
+        "common_global_0p70": 0.0,
+        "common_global_0p85": 0.0,
+        "common_global_1p00": 0.0
+      }
+    },
+    "base_model.model.model.layers.14.self_attn.q_proj": {
+      "lora_fro": 1.1497472524642944,
+      "hns_fro": 0.8561476469039917,
+      "per_module_gamma": 0.7446398735046387,
+      "basis": {
+        "basis_offdiag_fraction": 8.732819083529276e-07,
+        "basis_projection_residual_fraction": 0.0,
+        "negative_aligned_fraction": 0.0
+      },
+      "common_lora_source_relative_error": 1.6565025183976025e-06,
+      "saved_target_relative_errors": {
+        "common_hns": 0.0,
+        "common_per_module": 0.0,
+        "common_global_0p25": 0.0,
+        "common_global_0p40": 0.0,
+        "common_global_0p55": 0.0,
+        "common_global_0p70": 0.0,
+        "common_global_0p85": 0.0,
+        "common_global_1p00": 0.0
+      }
+    },
+    "base_model.model.model.layers.14.self_attn.v_proj": {
+      "lora_fro": 0.4601038992404938,
+      "hns_fro": 0.313161164522171,
+      "per_module_gamma": 0.6806313991546631,
+      "basis": {
+        "basis_offdiag_fraction": 9.0392204904042e-07,
+        "basis_projection_residual_fraction": 0.0,
+        "negative_aligned_fraction": 0.0
+      },
+      "common_lora_source_relative_error": 2.9712832594285705e-06,
+      "saved_target_relative_errors": {
+        "common_hns": 0.0,
+        "common_per_module": 0.0,
+        "common_global_0p25": 0.0,
+        "common_global_0p40": 0.0,
+        "common_global_0p55": 0.0,
+        "common_global_0p70": 0.0,
+        "common_global_0p85": 0.0,
+        "common_global_1p00": 0.0
+      }
+    },
+    "base_model.model.model.layers.15.mlp.down_proj": {
+      "lora_fro": 1.6202391386032104,
+      "hns_fro": 0.9802138209342957,
+      "per_module_gamma": 0.6049809455871582,
+      "basis": {
+        "basis_offdiag_fraction": 7.346340147892685e-07,
+        "basis_projection_residual_fraction": 0.0,
+        "negative_aligned_fraction": 0.0
+      },
+      "common_lora_source_relative_error": 3.6864061783668383e-06,
+      "saved_target_relative_errors": {
+        "common_hns": 0.0,
+        "common_per_module": 0.0,
+        "common_global_0p25": 0.0,
+        "common_global_0p40": 0.0,
+        "common_global_0p55": 0.0,
+        "common_global_0p70": 0.0,
+        "common_global_0p85": 0.0,
+        "common_global_1p00": 0.0
+      }
+    },
+    "base_model.model.model.layers.15.mlp.gate_proj": {
+      "lora_fro": 1.9498319625854492,
+      "hns_fro": 1.5019387006759644,
+      "per_module_gamma": 0.7702913284301758,
+      "basis": {
+        "basis_offdiag_fraction": 7.704297364417591e-07,
+        "basis_projection_residual_fraction": 0.0,
+        "negative_aligned_fraction": 0.0
+      },
+      "common_lora_source_relative_error": 2.6947845423164503e-06,
+      "saved_target_relative_errors": {
+        "common_hns": 0.0,
+        "common_per_module": 0.0,
+        "common_global_0p25": 0.0,
+        "common_global_0p40": 0.0,
+        "common_global_0p55": 0.0,
+        "common_global_0p70": 0.0,
+        "common_global_0p85": 0.0,
+        "common_global_1p00": 0.0
+      }
+    },
+    "base_model.model.model.layers.15.mlp.up_proj": {
+      "lora_fro": 1.6308976411819458,
+      "hns_fro": 1.3640564680099487,
+      "per_module_gamma": 0.8363838791847229,
+      "basis": {
+        "basis_offdiag_fraction": 7.812863711360942e-07,
+        "basis_projection_residual_fraction": 0.0,
+        "negative_aligned_fraction": 0.0
+      },
+      "common_lora_source_relative_error": 2.589525174792814e-06,
+      "saved_target_relative_errors": {
+        "common_hns": 0.0,
+        "common_per_module": 0.0,
+        "common_global_0p25": 0.0,
+        "common_global_0p40": 0.0,
+        "common_global_0p55": 0.0,
+        "common_global_0p70": 0.0,
+        "common_global_0p85": 0.0,
+        "common_global_1p00": 0.0
+      }
+    },
+    "base_model.model.model.layers.15.self_attn.k_proj": {
+      "lora_fro": 0.5990839600563049,
+      "hns_fro": 0.3854411840438843,
+      "per_module_gamma": 0.6433842778205872,
+      "basis": {
+        "basis_offdiag_fraction": 9.980700310436695e-07,
+        "basis_projection_residual_fraction": 0.0,
+        "negative_aligned_fraction": 0.0
+      },
+      "common_lora_source_relative_error": 2.3477401351613864e-06,
+      "saved_target_relative_errors": {
+        "common_hns": 0.0,
+        "common_per_module": 0.0,
+        "common_global_0p25": 0.0,
+        "common_global_0p40": 0.0,
+        "common_global_0p55": 0.0,
+        "common_global_0p70": 0.0,
+        "common_global_0p85": 0.0,
+        "common_global_1p00": 0.0
+      }
+    },
+    "base_model.model.model.layers.15.self_attn.o_proj": {
+      "lora_fro": 0.9516992568969727,
+      "hns_fro": 0.7401608824729919,
+      "per_module_gamma": 0.7777256369590759,
+      "basis": {
+        "basis_offdiag_fraction": 9.429993304946647e-07,
+        "basis_projection_residual_fraction": 0.0,
+        "negative_aligned_fraction": 0.0
+      },
+      "common_lora_source_relative_error": 2.270073011146878e-06,
+      "saved_target_relative_errors": {
+        "common_hns": 0.0,
+        "common_per_module": 0.0,
+        "common_global_0p25": 0.0,
+        "common_global_0p40": 0.0,
+        "common_global_0p55": 0.0,
+        "common_global_0p70": 0.0,
+        "common_global_0p85": 0.0,
+        "common_global_1p00": 0.0
+      }
+    },
+    "base_model.model.model.layers.15.self_attn.q_proj": {
+      "lora_fro": 1.0769931077957153,
+      "hns_fro": 0.8117497563362122,
+      "per_module_gamma": 0.7537186145782471,
+      "basis": {
+        "basis_offdiag_fraction": 9.32919764111249e-07,
+        "basis_projection_residual_fraction": 0.0,
+        "negative_aligned_fraction": 0.0
+      },
+      "common_lora_source_relative_error": 3.4911962887781076e-06,
+      "saved_target_relative_errors": {
+        "common_hns": 0.0,
+        "common_per_module": 0.0,
+        "common_global_0p25": 0.0,
+        "common_global_0p40": 0.0,
+        "common_global_0p55": 0.0,
+        "common_global_0p70": 0.0,
+        "common_global_0p85": 0.0,
+        "common_global_1p00": 0.0
+      }
+    },
+    "base_model.model.model.layers.15.self_attn.v_proj": {
+      "lora_fro": 0.4827234447002411,
+      "hns_fro": 0.3164639472961426,
+      "per_module_gamma": 0.6555802226066589,
+      "basis": {
+        "basis_offdiag_fraction": 9.510032953173048e-07,
+        "basis_projection_residual_fraction": 0.0,
+        "negative_aligned_fraction": 0.0
+      },
+      "common_lora_source_relative_error": 2.515015999070665e-06,
+      "saved_target_relative_errors": {
+        "common_hns": 0.0,
+        "common_per_module": 0.0,
+        "common_global_0p25": 0.0,
+        "common_global_0p40": 0.0,
+        "common_global_0p55": 0.0,
+        "common_global_0p70": 0.0,
+        "common_global_0p85": 0.0,
+        "common_global_1p00": 0.0
+      }
+    },
+    "base_model.model.model.layers.16.mlp.down_proj": {
+      "lora_fro": 1.3851051330566406,
+      "hns_fro": 0.9047996401786804,
+      "per_module_gamma": 0.6532353758811951,
+      "basis": {
+        "basis_offdiag_fraction": 6.918741721243537e-07,
+        "basis_projection_residual_fraction": 0.0,
+        "negative_aligned_fraction": 0.0
+      },
+      "common_lora_source_relative_error": 6.861276695226172e-06,
+      "saved_target_relative_errors": {
+        "common_hns": 0.0,
+        "common_per_module": 0.0,
+        "common_global_0p25": 0.0,
+        "common_global_0p40": 0.0,
+        "common_global_0p55": 0.0,
+        "common_global_0p70": 0.0,
+        "common_global_0p85": 0.0,
+        "common_global_1p00": 0.0
+      }
+    },
+    "base_model.model.model.layers.16.mlp.gate_proj": {
+      "lora_fro": 1.9768998622894287,
+      "hns_fro": 1.6299375295639038,
+      "per_module_gamma": 0.8244916796684265,
+      "basis": {
+        "basis_offdiag_fraction": 7.643511308117763e-07,
+        "basis_projection_residual_fraction": 0.0,
+        "negative_aligned_fraction": 0.0
+      },
+      "common_lora_source_relative_error": 2.330056088387149e-06,
+      "saved_target_relative_errors": {
+        "common_hns": 0.0,
+        "common_per_module": 0.0,
+        "common_global_0p25": 0.0,
+        "common_global_0p40": 0.0,
+        "common_global_0p55": 0.0,
+        "common_global_0p70": 0.0,
+        "common_global_0p85": 0.0,
+        "common_global_1p00": 0.0
+      }
+    },
+    "base_model.model.model.layers.16.mlp.up_proj": {
+      "lora_fro": 1.637690544128418,
+      "hns_fro": 1.2850546836853027,
+      "per_module_gamma": 0.784674882888794,
+      "basis": {
+        "basis_offdiag_fraction": 8.966991691358118e-07,
+        "basis_projection_residual_fraction": 0.0,
+        "negative_aligned_fraction": 0.0
+      },
+      "common_lora_source_relative_error": 2.899290261163021e-06,
+      "saved_target_relative_errors": {
+        "common_hns": 0.0,
+        "common_per_module": 0.0,
+        "common_global_0p25": 0.0,
+        "common_global_0p40": 0.0,
+        "common_global_0p55": 0.0,
+        "common_global_0p70": 0.0,
+        "common_global_0p85": 0.0,
+        "common_global_1p00": 0.0
+      }
+    },
+    "base_model.model.model.layers.16.self_attn.k_proj": {
+      "lora_fro": 0.5665408968925476,
+      "hns_fro": 0.42737624049186707,
+      "per_module_gamma": 0.7543607950210571,
+      "basis": {
+        "basis_offdiag_fraction": 9.937338652794561e-07,
+        "basis_projection_residual_fraction": 0.0,
+        "negative_aligned_fraction": 0.0
+      },
+      "common_lora_source_relative_error": 2.895367180837097e-06,
+      "saved_target_relative_errors": {
+        "common_hns": 0.0,
+        "common_per_module": 0.0,
+        "common_global_0p25": 0.0,
+        "common_global_0p40": 0.0,
+        "common_global_0p55": 0.0,
+        "common_global_0p70": 0.0,
+        "common_global_0p85": 0.0,
+        "common_global_1p00": 0.0
+      }
+    },
+    "base_model.model.model.layers.16.self_attn.o_proj": {
+      "lora_fro": 0.9616851806640625,
+      "hns_fro": 0.7079837918281555,
+      "per_module_gamma": 0.7361907958984375,
+      "basis": {
+        "basis_offdiag_fraction": 8.121099072941254e-07,
+        "basis_projection_residual_fraction": 0.0,
+        "negative_aligned_fraction": 0.0
+      },
+      "common_lora_source_relative_error": 3.824153272466424e-06,
+      "saved_target_relative_errors": {
+        "common_hns": 0.0,
+        "common_per_module": 0.0,
+        "common_global_0p25": 0.0,
+        "common_global_0p40": 0.0,
+        "common_global_0p55": 0.0,
+        "common_global_0p70": 0.0,
+        "common_global_0p85": 0.0,
+        "common_global_1p00": 0.0
+      }
+    },
+    "base_model.model.model.layers.16.self_attn.q_proj": {
+      "lora_fro": 1.108812689781189,
+      "hns_fro": 0.8584856986999512,
+      "per_module_gamma": 0.7742387056350708,
+      "basis": {
+        "basis_offdiag_fraction": 9.106014259534362e-07,
+        "basis_projection_residual_fraction": 0.0,
+        "negative_aligned_fraction": 0.0
+      },
+      "common_lora_source_relative_error": 2.7688951282978405e-06,
+      "saved_target_relative_errors": {
+        "common_hns": 0.0,
+        "common_per_module": 0.0,
+        "common_global_0p25": 0.0,
+        "common_global_0p40": 0.0,
+        "common_global_0p55": 0.0,
+        "common_global_0p70": 0.0,
+        "common_global_0p85": 0.0,
+        "common_global_1p00": 0.0
+      }
+    },
+    "base_model.model.model.layers.16.self_attn.v_proj": {
+      "lora_fro": 0.4378335475921631,
+      "hns_fro": 0.2921000123023987,
+      "per_module_gamma": 0.6671485304832458,
+      "basis": {
+        "basis_offdiag_fraction": 8.774651557305699e-07,
+        "basis_projection_residual_fraction": 0.0,
+        "negative_aligned_fraction": 0.0
+      },
+      "common_lora_source_relative_error": 1.8130679423857426e-06,
+      "saved_target_relative_errors": {
+        "common_hns": 0.0,
+        "common_per_module": 0.0,
+        "common_global_0p25": 0.0,
+        "common_global_0p40": 0.0,
+        "common_global_0p55": 0.0,
+        "common_global_0p70": 0.0,
+        "common_global_0p85": 0.0,
+        "common_global_1p00": 0.0
+      }
+    },
+    "base_model.model.model.layers.17.mlp.down_proj": {
+      "lora_fro": 1.45418119430542,
+      "hns_fro": 0.8860523104667664,
+      "per_module_gamma": 0.6093135476112366,
+      "basis": {
+        "basis_offdiag_fraction": 7.723656079991821e-07,
+        "basis_projection_residual_fraction": 0.0,
+        "negative_aligned_fraction": 0.0
+      },
+      "common_lora_source_relative_error": 3.820526470826205e-06,
+      "saved_target_relative_errors": {
+        "common_hns": 0.0,
+        "common_per_module": 0.0,
+        "common_global_0p25": 0.0,
+        "common_global_0p40": 0.0,
+        "common_global_0p55": 0.0,
+        "common_global_0p70": 0.0,
+        "common_global_0p85": 0.0,
+        "common_global_1p00": 0.0
+      }
+    },
+    "base_model.model.model.layers.17.mlp.gate_proj": {
+      "lora_fro": 2.2650201320648193,
+      "hns_fro": 1.6843451261520386,
+      "per_module_gamma": 0.7436336278915405,
+      "basis": {
+        "basis_offdiag_fraction": 6.941516482990363e-07,
+        "basis_projection_residual_fraction": 0.0,
+        "negative_aligned_fraction": 0.0
+      },
+      "common_lora_source_relative_error": 1.221432787632042e-06,
+      "saved_target_relative_errors": {
+        "common_hns": 0.0,
+        "common_per_module": 0.0,
+        "common_global_0p25": 0.0,
+        "common_global_0p40": 0.0,
+        "common_global_0p55": 0.0,
+        "common_global_0p70": 0.0,
+        "common_global_0p85": 0.0,
+        "common_global_1p00": 0.0
+      }
+    },
+    "base_model.model.model.layers.17.mlp.up_proj": {
+      "lora_fro": 1.698805332183838,
+      "hns_fro": 1.3800073862075806,
+      "per_module_gamma": 0.8123399019241333,
+      "basis": {
+        "basis_offdiag_fraction": 8.249137325381334e-07,
+        "basis_projection_residual_fraction": 0.0,
+        "negative_aligned_fraction": 0.0
+      },
+      "common_lora_source_relative_error": 2.0624440672734284e-06,
+      "saved_target_relative_errors": {
+        "common_hns": 0.0,
+        "common_per_module": 0.0,
+        "common_global_0p25": 0.0,
+        "common_global_0p40": 0.0,
+        "common_global_0p55": 0.0,
+        "common_global_0p70": 0.0,
+        "common_global_0p85": 0.0,
+        "common_global_1p00": 0.0
+      }
+    },
+    "base_model.model.model.layers.17.self_attn.k_proj": {
+      "lora_fro": 0.577651858329773,
+      "hns_fro": 0.44161245226860046,
+      "per_module_gamma": 0.764495849609375,
+      "basis": {
+        "basis_offdiag_fraction": 8.780422951243775e-07,
+        "basis_projection_residual_fraction": 0.0,
+        "negative_aligned_fraction": 0.0
+      },
+      "common_lora_source_relative_error": 2.536649892711486e-06,
+      "saved_target_relative_errors": {
+        "common_hns": 0.0,
+        "common_per_module": 0.0,
+        "common_global_0p25": 0.0,
+        "common_global_0p40": 0.0,
+        "common_global_0p55": 0.0,
+        "common_global_0p70": 0.0,
+        "common_global_0p85": 0.0,
+        "common_global_1p00": 0.0
+      }
+    },
+    "base_model.model.model.layers.17.self_attn.o_proj": {
+      "lora_fro": 0.8379836678504944,
+      "hns_fro": 0.6913700699806213,
+      "per_module_gamma": 0.8250400424003601,
+      "basis": {
+        "basis_offdiag_fraction": 8.791265706388751e-07,
+        "basis_projection_residual_fraction": 0.0,
+        "negative_aligned_fraction": 0.0
+      },
+      "common_lora_source_relative_error": 2.3630352787225025e-06,
+      "saved_target_relative_errors": {
+        "common_hns": 0.0,
+        "common_per_module": 0.0,
+        "common_global_0p25": 0.0,
+        "common_global_0p40": 0.0,
+        "common_global_0p55": 0.0,
+        "common_global_0p70": 0.0,
+        "common_global_0p85": 0.0,
+        "common_global_1p00": 0.0
+      }
+    },
+    "base_model.model.model.layers.17.self_attn.q_proj": {
+      "lora_fro": 1.1233245134353638,
+      "hns_fro": 0.8258338570594788,
+      "per_module_gamma": 0.7351694703102112,
+      "basis": {
+        "basis_offdiag_fraction": 9.292290359302263e-07,
+        "basis_projection_residual_fraction": 0.0,
+        "negative_aligned_fraction": 0.0
+      },
+      "common_lora_source_relative_error": 1.9839786107287767e-06,
+      "saved_target_relative_errors": {
+        "common_hns": 0.0,
+        "common_per_module": 0.0,
+        "common_global_0p25": 0.0,
+        "common_global_0p40": 0.0,
+        "common_global_0p55": 0.0,
+        "common_global_0p70": 0.0,
+        "common_global_0p85": 0.0,
+        "common_global_1p00": 0.0
+      }
+    },
+    "base_model.model.model.layers.17.self_attn.v_proj": {
+      "lora_fro": 0.45777249336242676,
+      "hns_fro": 0.3189944922924042,
+      "per_module_gamma": 0.6968406438827515,
+      "basis": {
+        "basis_offdiag_fraction": 8.376853372917553e-07,
+        "basis_projection_residual_fraction": 0.0,
+        "negative_aligned_fraction": 0.0
+      },
+      "common_lora_source_relative_error": 2.311949913635517e-06,
+      "saved_target_relative_errors": {
+        "common_hns": 0.0,
+        "common_per_module": 0.0,
+        "common_global_0p25": 0.0,
+        "common_global_0p40": 0.0,
+        "common_global_0p55": 0.0,
+        "common_global_0p70": 0.0,
+        "common_global_0p85": 0.0,
+        "common_global_1p00": 0.0
+      }
+    },
+    "base_model.model.model.layers.18.mlp.down_proj": {
+      "lora_fro": 1.4245922565460205,
+      "hns_fro": 0.9985848665237427,
+      "per_module_gamma": 0.7009618878364563,
+      "basis": {
+        "basis_offdiag_fraction": 9.127444288314272e-07,
+        "basis_projection_residual_fraction": 0.0,
+        "negative_aligned_fraction": 0.0
+      },
+      "common_lora_source_relative_error": 2.6360255865779497e-06,
+      "saved_target_relative_errors": {
+        "common_hns": 0.0,
+        "common_per_module": 0.0,
+        "common_global_0p25": 0.0,
+        "common_global_0p40": 0.0,
+        "common_global_0p55": 0.0,
+        "common_global_0p70": 0.0,
+        "common_global_0p85": 0.0,
+        "common_global_1p00": 0.0
+      }
+    },
+    "base_model.model.model.layers.18.mlp.gate_proj": {
+      "lora_fro": 2.189467668533325,
+      "hns_fro": 1.8186029195785522,
+      "per_module_gamma": 0.8306142091751099,
+      "basis": {
+        "basis_offdiag_fraction": 8.515525866685289e-07,
+        "basis_projection_residual_fraction": 0.0,
+        "negative_aligned_fraction": 0.0
+      },
+      "common_lora_source_relative_error": 2.6786165563644008e-06,
+      "saved_target_relative_errors": {
+        "common_hns": 0.0,
+        "common_per_module": 0.0,
+        "common_global_0p25": 0.0,
+        "common_global_0p40": 0.0,
+        "common_global_0p55": 0.0,
+        "common_global_0p70": 0.0,
+        "common_global_0p85": 0.0,
+        "common_global_1p00": 0.0
+      }
+    },
+    "base_model.model.model.layers.18.mlp.up_proj": {
+      "lora_fro": 1.6511998176574707,
+      "hns_fro": 1.4119998216629028,
+      "per_module_gamma": 0.8551356196403503,
+      "basis": {
+        "basis_offdiag_fraction": 7.84223035218338e-07,
+        "basis_projection_residual_fraction": 0.0,
+        "negative_aligned_fraction": 0.0
+      },
+      "common_lora_source_relative_error": 3.6353465638410933e-06,
+      "saved_target_relative_errors": {
+        "common_hns": 0.0,
+        "common_per_module": 0.0,
+        "common_global_0p25": 0.0,
+        "common_global_0p40": 0.0,
+        "common_global_0p55": 0.0,
+        "common_global_0p70": 0.0,
+        "common_global_0p85": 0.0,
+        "common_global_1p00": 0.0
+      }
+    },
+    "base_model.model.model.layers.18.self_attn.k_proj": {
+      "lora_fro": 0.5722125172615051,
+      "hns_fro": 0.4568655490875244,
+      "per_module_gamma": 0.7984193563461304,
+      "basis": {
+        "basis_offdiag_fraction": 1.078731292696618e-06,
+        "basis_projection_residual_fraction": 0.0,
+        "negative_aligned_fraction": 0.0
+      },
+      "common_lora_source_relative_error": 2.717796502385041e-06,
+      "saved_target_relative_errors": {
+        "common_hns": 0.0,
+        "common_per_module": 0.0,
+        "common_global_0p25": 0.0,
+        "common_global_0p40": 0.0,
+        "common_global_0p55": 0.0,
+        "common_global_0p70": 0.0,
+        "common_global_0p85": 0.0,
+        "common_global_1p00": 0.0
+      }
+    },
+    "base_model.model.model.layers.18.self_attn.o_proj": {
+      "lora_fro": 0.85059654712677,
+      "hns_fro": 0.6795332431793213,
+      "per_module_gamma": 0.7988901734352112,
+      "basis": {
+        "basis_offdiag_fraction": 9.516255871436561e-07,
+        "basis_projection_residual_fraction": 0.0,
+        "negative_aligned_fraction": 0.0
+      },
+      "common_lora_source_relative_error": 2.554841786640913e-06,
+      "saved_target_relative_errors": {
+        "common_hns": 0.0,
+        "common_per_module": 0.0,
+        "common_global_0p25": 0.0,
+        "common_global_0p40": 0.0,
+        "common_global_0p55": 0.0,
+        "common_global_0p70": 0.0,
+        "common_global_0p85": 0.0,
+        "common_global_1p00": 0.0
+      }
+    },
+    "base_model.model.model.layers.18.self_attn.q_proj": {
+      "lora_fro": 1.1092218160629272,
+      "hns_fro": 0.8623164892196655,
+      "per_module_gamma": 0.7774066925048828,
+      "basis": {
+        "basis_offdiag_fraction": 8.565036194660773e-07,
+        "basis_projection_residual_fraction": 0.0,
+        "negative_aligned_fraction": 0.0
+      },
+      "common_lora_source_relative_error": 2.0991136161956885e-06,
+      "saved_target_relative_errors": {
+        "common_hns": 0.0,
+        "common_per_module": 0.0,
+        "common_global_0p25": 0.0,
+        "common_global_0p40": 0.0,
+        "common_global_0p55": 0.0,
+        "common_global_0p70": 0.0,
+        "common_global_0p85": 0.0,
+        "common_global_1p00": 0.0
+      }
+    },
+    "base_model.model.model.layers.18.self_attn.v_proj": {
+      "lora_fro": 0.4498615264892578,
+      "hns_fro": 0.32781583070755005,
+      "per_module_gamma": 0.7287038564682007,
+      "basis": {
+        "basis_offdiag_fraction": 7.022058701465756e-07,
+        "basis_projection_residual_fraction": 0.0,
+        "negative_aligned_fraction": 0.0
+      },
+      "common_lora_source_relative_error": 1.7835631118245881e-06,
+      "saved_target_relative_errors": {
+        "common_hns": 0.0,
+        "common_per_module": 0.0,
+        "common_global_0p25": 0.0,
+        "common_global_0p40": 0.0,
+        "common_global_0p55": 0.0,
+        "common_global_0p70": 0.0,
+        "common_global_0p85": 0.0,
+        "common_global_1p00": 0.0
+      }
+    },
+    "base_model.model.model.layers.19.mlp.down_proj": {
+      "lora_fro": 1.438366413116455,
+      "hns_fro": 1.0816997289657593,
+      "per_module_gamma": 0.7520334720611572,
+      "basis": {
+        "basis_offdiag_fraction": 8.868708543846276e-07,
+        "basis_projection_residual_fraction": 0.0,
+        "negative_aligned_fraction": 0.0
+      },
+      "common_lora_source_relative_error": 4.34103353032837e-06,
+      "saved_target_relative_errors": {
+        "common_hns": 0.0,
+        "common_per_module": 0.0,
+        "common_global_0p25": 0.0,
+        "common_global_0p40": 0.0,
+        "common_global_0p55": 0.0,
+        "common_global_0p70": 0.0,
+        "common_global_0p85": 0.0,
+        "common_global_1p00": 0.0
+      }
+    },
+    "base_model.model.model.layers.19.mlp.gate_proj": {
+      "lora_fro": 2.3939692974090576,
+      "hns_fro": 1.879417896270752,
+      "per_module_gamma": 0.7850635051727295,
+      "basis": {
+        "basis_offdiag_fraction": 1.0129822490550855e-06,
+        "basis_projection_residual_fraction": 0.0,
+        "negative_aligned_fraction": 0.0
+      },
+      "common_lora_source_relative_error": 2.9787120532132964e-06,
+      "saved_target_relative_errors": {
+        "common_hns": 0.0,
+        "common_per_module": 0.0,
+        "common_global_0p25": 0.0,
+        "common_global_0p40": 0.0,
+        "common_global_0p55": 0.0,
+        "common_global_0p70": 0.0,
+        "common_global_0p85": 0.0,
+        "common_global_1p00": 0.0
+      }
+    },
+    "base_model.model.model.layers.19.mlp.up_proj": {
+      "lora_fro": 1.7516515254974365,
+      "hns_fro": 1.5382847785949707,
+      "per_module_gamma": 0.8781911134719849,
+      "basis": {
+        "basis_offdiag_fraction": 7.908578344540112e-07,
+        "basis_projection_residual_fraction": 0.0,
+        "negative_aligned_fraction": 0.0
+      },
+      "common_lora_source_relative_error": 2.301526760757864e-06,
+      "saved_target_relative_errors": {
+        "common_hns": 0.0,
+        "common_per_module": 0.0,
+        "common_global_0p25": 0.0,
+        "common_global_0p40": 0.0,
+        "common_global_0p55": 0.0,
+        "common_global_0p70": 0.0,
+        "common_global_0p85": 0.0,
+        "common_global_1p00": 0.0
+      }
+    },
+    "base_model.model.model.layers.19.self_attn.k_proj": {
+      "lora_fro": 0.5383049249649048,
+      "hns_fro": 0.37987300753593445,
+      "per_module_gamma": 0.705683708190918,
+      "basis": {
+        "basis_offdiag_fraction": 8.399590556572427e-07,
+        "basis_projection_residual_fraction": 0.0,
+        "negative_aligned_fraction": 0.0
+      },
+      "common_lora_source_relative_error": 2.4908897762328374e-06,
+      "saved_target_relative_errors": {
+        "common_hns": 0.0,
+        "common_per_module": 0.0,
+        "common_global_0p25": 0.0,
+        "common_global_0p40": 0.0,
+        "common_global_0p55": 0.0,
+        "common_global_0p70": 0.0,
+        "common_global_0p85": 0.0,
+        "common_global_1p00": 0.0
+      }
+    },
+    "base_model.model.model.layers.19.self_attn.o_proj": {
+      "lora_fro": 0.9580445289611816,
+      "hns_fro": 0.8234861493110657,
+      "per_module_gamma": 0.8595489263534546,
+      "basis": {
+        "basis_offdiag_fraction": 8.535714152157576e-07,
+        "basis_projection_residual_fraction": 0.0,
+        "negative_aligned_fraction": 0.0
+      },
+      "common_lora_source_relative_error": 1.7176320556577656e-06,
+      "saved_target_relative_errors": {
+        "common_hns": 0.0,
+        "common_per_module": 0.0,
+        "common_global_0p25": 0.0,
+        "common_global_0p40": 0.0,
+        "common_global_0p55": 0.0,
+        "common_global_0p70": 0.0,
+        "common_global_0p85": 0.0,
+        "common_global_1p00": 0.0
+      }
+    },
+    "base_model.model.model.layers.19.self_attn.q_proj": {
+      "lora_fro": 1.0514178276062012,
+      "hns_fro": 0.8127914071083069,
+      "per_module_gamma": 0.7730432152748108,
+      "basis": {
+        "basis_offdiag_fraction": 7.69588800275496e-07,
+        "basis_projection_residual_fraction": 0.0,
+        "negative_aligned_fraction": 0.0
+      },
+      "common_lora_source_relative_error": 2.456091589212153e-06,
+      "saved_target_relative_errors": {
+        "common_hns": 0.0,
+        "common_per_module": 0.0,
+        "common_global_0p25": 0.0,
+        "common_global_0p40": 0.0,
+        "common_global_0p55": 0.0,
+        "common_global_0p70": 0.0,
+        "common_global_0p85": 0.0,
+        "common_global_1p00": 0.0
+      }
+    },
+    "base_model.model.model.layers.19.self_attn.v_proj": {
+      "lora_fro": 0.4365626573562622,
+      "hns_fro": 0.28538385033607483,
+      "per_module_gamma": 0.6537064909934998,
+      "basis": {
+        "basis_offdiag_fraction": 7.777771714308242e-07,
+        "basis_projection_residual_fraction": 0.0,
+        "negative_aligned_fraction": 0.0
+      },
+      "common_lora_source_relative_error": 2.0118742946589674e-06,
+      "saved_target_relative_errors": {
+        "common_hns": 0.0,
+        "common_per_module": 0.0,
+        "common_global_0p25": 0.0,
+        "common_global_0p40": 0.0,
+        "common_global_0p55": 0.0,
+        "common_global_0p70": 0.0,
+        "common_global_0p85": 0.0,
+        "common_global_1p00": 0.0
+      }
+    },
+    "base_model.model.model.layers.2.mlp.down_proj": {
+      "lora_fro": 1.1712238788604736,
+      "hns_fro": 0.8817035555839539,
+      "per_module_gamma": 0.7528052926063538,
+      "basis": {
+        "basis_offdiag_fraction": 7.552036104436017e-07,
+        "basis_projection_residual_fraction": 0.0,
+        "negative_aligned_fraction": 0.0
+      },
+      "common_lora_source_relative_error": 2.176562263478593e-06,
+      "saved_target_relative_errors": {
+        "common_hns": 0.0,
+        "common_per_module": 0.0,
+        "common_global_0p25": 0.0,
+        "common_global_0p40": 0.0,
+        "common_global_0p55": 0.0,
+        "common_global_0p70": 0.0,
+        "common_global_0p85": 0.0,
+        "common_global_1p00": 0.0
+      }
+    },
+    "base_model.model.model.layers.2.mlp.gate_proj": {
+      "lora_fro": 2.0461173057556152,
+      "hns_fro": 0.8965495824813843,
+      "per_module_gamma": 0.4381711483001709,
+      "basis": {
+        "basis_offdiag_fraction": 7.907598278317023e-07,
+        "basis_projection_residual_fraction": 0.0,
+        "negative_aligned_fraction": 0.0
+      },
+      "common_lora_source_relative_error": 3.5309606875960503e-06,
+      "saved_target_relative_errors": {
+        "common_hns": 0.0,
+        "common_per_module": 0.0,
+        "common_global_0p25": 0.0,
+        "common_global_0p40": 0.0,
+        "common_global_0p55": 0.0,
+        "common_global_0p70": 0.0,
+        "common_global_0p85": 0.0,
+        "common_global_1p00": 0.0
+      }
+    },
+    "base_model.model.model.layers.2.mlp.up_proj": {
+      "lora_fro": 1.3811339139938354,
+      "hns_fro": 0.8349862098693848,
+      "per_module_gamma": 0.6045657396316528,
+      "basis": {
+        "basis_offdiag_fraction": 1.0435403098600811e-06,
+        "basis_projection_residual_fraction": 0.0,
+        "negative_aligned_fraction": 0.0
+      },
+      "common_lora_source_relative_error": 2.218520818371949e-06,
+      "saved_target_relative_errors": {
+        "common_hns": 0.0,
+        "common_per_module": 0.0,
+        "common_global_0p25": 0.0,
+        "common_global_0p40": 0.0,
+        "common_global_0p55": 0.0,
+        "common_global_0p70": 0.0,
+        "common_global_0p85": 0.0,
+        "common_global_1p00": 0.0
+      }
+    },
+    "base_model.model.model.layers.2.self_attn.k_proj": {
+      "lora_fro": 0.6479517817497253,
+      "hns_fro": 0.5155016779899597,
+      "per_module_gamma": 0.7955864667892456,
+      "basis": {
+        "basis_offdiag_fraction": 8.795896581226722e-07,
+        "basis_projection_residual_fraction": 0.0,
+        "negative_aligned_fraction": 0.0
+      },
+      "common_lora_source_relative_error": 2.4728962811941688e-06,
+      "saved_target_relative_errors": {
+        "common_hns": 0.0,
+        "common_per_module": 0.0,
+        "common_global_0p25": 0.0,
+        "common_global_0p40": 0.0,
+        "common_global_0p55": 0.0,
+        "common_global_0p70": 0.0,
+        "common_global_0p85": 0.0,
+        "common_global_1p00": 0.0
+      }
+    },
+    "base_model.model.model.layers.2.self_attn.o_proj": {
+      "lora_fro": 1.2004752159118652,
+      "hns_fro": 0.7803373336791992,
+      "per_module_gamma": 0.6500236988067627,
+      "basis": {
+        "basis_offdiag_fraction": 9.602149514801915e-07,
+        "basis_projection_residual_fraction": 0.0,
+        "negative_aligned_fraction": 0.0
+      },
+      "common_lora_source_relative_error": 1.8673548111193704e-06,
+      "saved_target_relative_errors": {
+        "common_hns": 0.0,
+        "common_per_module": 0.0,
+        "common_global_0p25": 0.0,
+        "common_global_0p40": 0.0,
+        "common_global_0p55": 0.0,
+        "common_global_0p70": 0.0,
+        "common_global_0p85": 0.0,
+        "common_global_1p00": 0.0
+      }
+    },
+    "base_model.model.model.layers.2.self_attn.q_proj": {
+      "lora_fro": 1.253767490386963,
+      "hns_fro": 0.9253808259963989,
+      "per_module_gamma": 0.7380800843238831,
+      "basis": {
+        "basis_offdiag_fraction": 8.351289054957866e-07,
+        "basis_projection_residual_fraction": 0.0,
+        "negative_aligned_fraction": 0.0
+      },
+      "common_lora_source_relative_error": 1.9118048086638237e-06,
+      "saved_target_relative_errors": {
+        "common_hns": 0.0,
+        "common_per_module": 0.0,
+        "common_global_0p25": 0.0,
+        "common_global_0p40": 0.0,
+        "common_global_0p55": 0.0,
+        "common_global_0p70": 0.0,
+        "common_global_0p85": 0.0,
+        "common_global_1p00": 0.0
+      }
+    },
+    "base_model.model.model.layers.2.self_attn.v_proj": {
+      "lora_fro": 0.6205679774284363,
+      "hns_fro": 0.3482895493507385,
+      "per_module_gamma": 0.5612431764602661,
+      "basis": {
+        "basis_offdiag_fraction": 8.928747783290791e-07,
+        "basis_projection_residual_fraction": 0.0,
+        "negative_aligned_fraction": 0.0
+      },
+      "common_lora_source_relative_error": 2.269907672717892e-06,
+      "saved_target_relative_errors": {
+        "common_hns": 0.0,
+        "common_per_module": 0.0,
+        "common_global_0p25": 0.0,
+        "common_global_0p40": 0.0,
+        "common_global_0p55": 0.0,
+        "common_global_0p70": 0.0,
+        "common_global_0p85": 0.0,
+        "common_global_1p00": 0.0
+      }
+    },
+    "base_model.model.model.layers.20.mlp.down_proj": {
+      "lora_fro": 1.5002636909484863,
+      "hns_fro": 1.1321064233779907,
+      "per_module_gamma": 0.7546049356460571,
+      "basis": {
+        "basis_offdiag_fraction": 8.595805675935654e-07,
+        "basis_projection_residual_fraction": 0.0,
+        "negative_aligned_fraction": 0.0
+      },
+      "common_lora_source_relative_error": 2.477616788385052e-06,
+      "saved_target_relative_errors": {
+        "common_hns": 0.0,
+        "common_per_module": 0.0,
+        "common_global_0p25": 0.0,
+        "common_global_0p40": 0.0,
+        "common_global_0p55": 0.0,
+        "common_global_0p70": 0.0,
+        "common_global_0p85": 0.0,
+        "common_global_1p00": 0.0
+      }
+    },
+    "base_model.model.model.layers.20.mlp.gate_proj": {
+      "lora_fro": 2.5484166145324707,
+      "hns_fro": 1.9644778966903687,
+      "per_module_gamma": 0.7708621621131897,
+      "basis": {
+        "basis_offdiag_fraction": 9.566238074883909e-07,
+        "basis_projection_residual_fraction": 0.0,
+        "negative_aligned_fraction": 0.0
+      },
+      "common_lora_source_relative_error": 4.232149075181484e-06,
+      "saved_target_relative_errors": {
+        "common_hns": 0.0,
+        "common_per_module": 0.0,
+        "common_global_0p25": 0.0,
+        "common_global_0p40": 0.0,
+        "common_global_0p55": 0.0,
+        "common_global_0p70": 0.0,
+        "common_global_0p85": 0.0,
+        "common_global_1p00": 0.0
+      }
+    },
+    "base_model.model.model.layers.20.mlp.up_proj": {
+      "lora_fro": 1.820928931236267,
+      "hns_fro": 1.6061179637908936,
+      "per_module_gamma": 0.8820322155952454,
+      "basis": {
+        "basis_offdiag_fraction": 8.939163014376324e-07,
+        "basis_projection_residual_fraction": 0.0,
+        "negative_aligned_fraction": 0.0
+      },
+      "common_lora_source_relative_error": 1.99958336244131e-06,
+      "saved_target_relative_errors": {
+        "common_hns": 0.0,
+        "common_per_module": 0.0,
+        "common_global_0p25": 0.0,
+        "common_global_0p40": 0.0,
+        "common_global_0p55": 0.0,
+        "common_global_0p70": 0.0,
+        "common_global_0p85": 0.0,
+        "common_global_1p00": 0.0
+      }
+    },
+    "base_model.model.model.layers.20.self_attn.k_proj": {
+      "lora_fro": 0.5799758434295654,
+      "hns_fro": 0.45756587386131287,
+      "per_module_gamma": 0.7889395356178284,
+      "basis": {
+        "basis_offdiag_fraction": 8.308627816295937e-07,
+        "basis_projection_residual_fraction": 0.0,
+        "negative_aligned_fraction": 0.0
+      },
+      "common_lora_source_relative_error": 2.423332494136851e-06,
+      "saved_target_relative_errors": {
+        "common_hns": 0.0,
+        "common_per_module": 0.0,
+        "common_global_0p25": 0.0,
+        "common_global_0p40": 0.0,
+        "common_global_0p55": 0.0,
+        "common_global_0p70": 0.0,
+        "common_global_0p85": 0.0,
+        "common_global_1p00": 0.0
+      }
+    },
+    "base_model.model.model.layers.20.self_attn.o_proj": {
+      "lora_fro": 0.8896939754486084,
+      "hns_fro": 0.7393835186958313,
+      "per_module_gamma": 0.8310537338256836,
+      "basis": {
+        "basis_offdiag_fraction": 7.889523937276306e-07,
+        "basis_projection_residual_fraction": 0.0,
+        "negative_aligned_fraction": 0.0
+      },
+      "common_lora_source_relative_error": 2.599103703224469e-06,
+      "saved_target_relative_errors": {
+        "common_hns": 0.0,
+        "common_per_module": 0.0,
+        "common_global_0p25": 0.0,
+        "common_global_0p40": 0.0,
+        "common_global_0p55": 0.0,
+        "common_global_0p70": 0.0,
+        "common_global_0p85": 0.0,
+        "common_global_1p00": 0.0
+      }
+    },
+    "base_model.model.model.layers.20.self_attn.q_proj": {
+      "lora_fro": 1.0843188762664795,
+      "hns_fro": 0.8597453236579895,
+      "per_module_gamma": 0.7928897738456726,
+      "basis": {
+        "basis_offdiag_fraction": 7.82017926937758e-07,
+        "basis_projection_residual_fraction": 0.0,
+        "negative_aligned_fraction": 0.0
+      },
+      "common_lora_source_relative_error": 2.37492348755058e-06,
+      "saved_target_relative_errors": {
+        "common_hns": 0.0,
+        "common_per_module": 0.0,
+        "common_global_0p25": 0.0,
+        "common_global_0p40": 0.0,
+        "common_global_0p55": 0.0,
+        "common_global_0p70": 0.0,
+        "common_global_0p85": 0.0,
+        "common_global_1p00": 0.0
+      }
+    },
+    "base_model.model.model.layers.20.self_attn.v_proj": {
+      "lora_fro": 0.4503241777420044,
+      "hns_fro": 0.3199429512023926,
+      "per_module_gamma": 0.7104725241661072,
+      "basis": {
+        "basis_offdiag_fraction": 8.616789708527832e-07,
+        "basis_projection_residual_fraction": 0.0,
+        "negative_aligned_fraction": 0.0
+      },
+      "common_lora_source_relative_error": 2.2747986563259933e-06,
+      "saved_target_relative_errors": {
+        "common_hns": 0.0,
+        "common_per_module": 0.0,
+        "common_global_0p25": 0.0,
+        "common_global_0p40": 0.0,
+        "common_global_0p55": 0.0,
+        "common_global_0p70": 0.0,
+        "common_global_0p85": 0.0,
+        "common_global_1p00": 0.0
+      }
+    },
+    "base_model.model.model.layers.21.mlp.down_proj": {
+      "lora_fro": 1.5369765758514404,
+      "hns_fro": 1.183630108833313,
+      "per_module_gamma": 0.7701029181480408,
+      "basis": {
+        "basis_offdiag_fraction": 9.697739693707994e-07,
+        "basis_projection_residual_fraction": 0.0,
+        "negative_aligned_fraction": 0.0
+      },
+      "common_lora_source_relative_error": 2.4519892554977247e-06,
+      "saved_target_relative_errors": {
+        "common_hns": 0.0,
+        "common_per_module": 0.0,
+        "common_global_0p25": 0.0,
+        "common_global_0p40": 0.0,
+        "common_global_0p55": 0.0,
+        "common_global_0p70": 0.0,
+        "common_global_0p85": 0.0,
+        "common_global_1p00": 0.0
+      }
+    },
+    "base_model.model.model.layers.21.mlp.gate_proj": {
+      "lora_fro": 2.345076084136963,
+      "hns_fro": 1.9473332166671753,
+      "per_module_gamma": 0.8303923606872559,
+      "basis": {
+        "basis_offdiag_fraction": 9.391099118365586e-07,
+        "basis_projection_residual_fraction": 0.0,
+        "negative_aligned_fraction": 0.0
+      },
+      "common_lora_source_relative_error": 2.3399980101077233e-06,
+      "saved_target_relative_errors": {
+        "common_hns": 0.0,
+        "common_per_module": 0.0,
+        "common_global_0p25": 0.0,
+        "common_global_0p40": 0.0,
+        "common_global_0p55": 0.0,
+        "common_global_0p70": 0.0,
+        "common_global_0p85": 0.0,
+        "common_global_1p00": 0.0
+      }
+    },
+    "base_model.model.model.layers.21.mlp.up_proj": {
+      "lora_fro": 1.8922594785690308,
+      "hns_fro": 1.6233766078948975,
+      "per_module_gamma": 0.857903778553009,
+      "basis": {
+        "basis_offdiag_fraction": 1.0475766238852114e-06,
+        "basis_projection_residual_fraction": 0.0,
+        "negative_aligned_fraction": 0.0
+      },
+      "common_lora_source_relative_error": 2.0481165442364097e-06,
+      "saved_target_relative_errors": {
+        "common_hns": 0.0,
+        "common_per_module": 0.0,
+        "common_global_0p25": 0.0,
+        "common_global_0p40": 0.0,
+        "common_global_0p55": 0.0,
+        "common_global_0p70": 0.0,
+        "common_global_0p85": 0.0,
+        "common_global_1p00": 0.0
+      }
+    },
+    "base_model.model.model.layers.21.self_attn.k_proj": {
+      "lora_fro": 0.5435810685157776,
+      "hns_fro": 0.4212051033973694,
+      "per_module_gamma": 0.7748708128929138,
+      "basis": {
+        "basis_offdiag_fraction": 8.261493021787005e-07,
+        "basis_projection_residual_fraction": 0.0,
+        "negative_aligned_fraction": 0.0
+      },
+      "common_lora_source_relative_error": 2.6626887179352455e-06,
+      "saved_target_relative_errors": {
+        "common_hns": 0.0,
+        "common_per_module": 0.0,
+        "common_global_0p25": 0.0,
+        "common_global_0p40": 0.0,
+        "common_global_0p55": 0.0,
+        "common_global_0p70": 0.0,
+        "common_global_0p85": 0.0,
+        "common_global_1p00": 0.0
+      }
+    },
+    "base_model.model.model.layers.21.self_attn.o_proj": {
+      "lora_fro": 0.8811110854148865,
+      "hns_fro": 0.7592113018035889,
+      "per_module_gamma": 0.8616521954536438,
+      "basis": {
+        "basis_offdiag_fraction": 8.497784720210939e-07,
+        "basis_projection_residual_fraction": 0.0,
+        "negative_aligned_fraction": 0.0
+      },
+      "common_lora_source_relative_error": 2.035681749789836e-06,
+      "saved_target_relative_errors": {
+        "common_hns": 0.0,
+        "common_per_module": 0.0,
+        "common_global_0p25": 0.0,
+        "common_global_0p40": 0.0,
+        "common_global_0p55": 0.0,
+        "common_global_0p70": 0.0,
+        "common_global_0p85": 0.0,
+        "common_global_1p00": 0.0
+      }
+    },
+    "base_model.model.model.layers.21.self_attn.q_proj": {
+      "lora_fro": 1.0294066667556763,
+      "hns_fro": 0.8257301449775696,
+      "per_module_gamma": 0.8021418452262878,
+      "basis": {
+        "basis_offdiag_fraction": 7.314333584216512e-07,
+        "basis_projection_residual_fraction": 0.0,
+        "negative_aligned_fraction": 0.0
+      },
+      "common_lora_source_relative_error": 1.6376594960112616e-06,
+      "saved_target_relative_errors": {
+        "common_hns": 0.0,
+        "common_per_module": 0.0,
+        "common_global_0p25": 0.0,
+        "common_global_0p40": 0.0,
+        "common_global_0p55": 0.0,
+        "common_global_0p70": 0.0,
+        "common_global_0p85": 0.0,
+        "common_global_1p00": 0.0
+      }
+    },
+    "base_model.model.model.layers.21.self_attn.v_proj": {
+      "lora_fro": 0.45412084460258484,
+      "hns_fro": 0.3149070143699646,
+      "per_module_gamma": 0.6934431791305542,
+      "basis": {
+        "basis_offdiag_fraction": 7.716111914976953e-07,
+        "basis_projection_residual_fraction": 0.0,
+        "negative_aligned_fraction": 0.0
+      },
+      "common_lora_source_relative_error": 1.7866433561498638e-06,
+      "saved_target_relative_errors": {
+        "common_hns": 0.0,
+        "common_per_module": 0.0,
+        "common_global_0p25": 0.0,
+        "common_global_0p40": 0.0,
+        "common_global_0p55": 0.0,
+        "common_global_0p70": 0.0,
+        "common_global_0p85": 0.0,
+        "common_global_1p00": 0.0
+      }
+    },
+    "base_model.model.model.layers.22.mlp.down_proj": {
+      "lora_fro": 1.6574071645736694,
+      "hns_fro": 1.257819652557373,
+      "per_module_gamma": 0.7589080333709717,
+      "basis": {
+        "basis_offdiag_fraction": 8.019395585194125e-07,
+        "basis_projection_residual_fraction": 0.0,
+        "negative_aligned_fraction": 0.0
+      },
+      "common_lora_source_relative_error": 3.041213008361885e-06,
+      "saved_target_relative_errors": {
+        "common_hns": 0.0,
+        "common_per_module": 0.0,
+        "common_global_0p25": 0.0,
+        "common_global_0p40": 0.0,
+        "common_global_0p55": 0.0,
+        "common_global_0p70": 0.0,
+        "common_global_0p85": 0.0,
+        "common_global_1p00": 0.0
+      }
+    },
+    "base_model.model.model.layers.22.mlp.gate_proj": {
+      "lora_fro": 2.6050236225128174,
+      "hns_fro": 2.0769999027252197,
+      "per_module_gamma": 0.7973055839538574,
+      "basis": {
+        "basis_offdiag_fraction": 8.756697310566105e-07,
+        "basis_projection_residual_fraction": 0.0,
+        "negative_aligned_fraction": 0.0
+      },
+      "common_lora_source_relative_error": 2.3803599244152575e-06,
+      "saved_target_relative_errors": {
+        "common_hns": 0.0,
+        "common_per_module": 0.0,
+        "common_global_0p25": 0.0,
+        "common_global_0p40": 0.0,
+        "common_global_0p55": 0.0,
+        "common_global_0p70": 0.0,
+        "common_global_0p85": 0.0,
+        "common_global_1p00": 0.0
+      }
+    },
+    "base_model.model.model.layers.22.mlp.up_proj": {
+      "lora_fro": 2.022770643234253,
+      "hns_fro": 1.810772180557251,
+      "per_module_gamma": 0.8951939940452576,
+      "basis": {
+        "basis_offdiag_fraction": 7.601851562180204e-07,
+        "basis_projection_residual_fraction": 0.0,
+        "negative_aligned_fraction": 0.0
+      },
+      "common_lora_source_relative_error": 1.7749501292979699e-06,
+      "saved_target_relative_errors": {
+        "common_hns": 0.0,
+        "common_per_module": 0.0,
+        "common_global_0p25": 0.0,
+        "common_global_0p40": 0.0,
+        "common_global_0p55": 0.0,
+        "common_global_0p70": 0.0,
+        "common_global_0p85": 0.0,
+        "common_global_1p00": 0.0
+      }
+    },
+    "base_model.model.model.layers.22.self_attn.k_proj": {
+      "lora_fro": 0.5399753451347351,
+      "hns_fro": 0.40555745363235474,
+      "per_module_gamma": 0.7510666251182556,
+      "basis": {
+        "basis_offdiag_fraction": 8.792324459498215e-07,
+        "basis_projection_residual_fraction": 0.0,
+        "negative_aligned_fraction": 0.0
+      },
+      "common_lora_source_relative_error": 2.4341227821999396e-06,
+      "saved_target_relative_errors": {
+        "common_hns": 0.0,
+        "common_per_module": 0.0,
+        "common_global_0p25": 0.0,
+        "common_global_0p40": 0.0,
+        "common_global_0p55": 0.0,
+        "common_global_0p70": 0.0,
+        "common_global_0p85": 0.0,
+        "common_global_1p00": 0.0
+      }
+    },
+    "base_model.model.model.layers.22.self_attn.o_proj": {
+      "lora_fro": 0.9387270212173462,
+      "hns_fro": 0.7919279336929321,
+      "per_module_gamma": 0.8436189889907837,
+      "basis": {
+        "basis_offdiag_fraction": 8.62112024758659e-07,
+        "basis_projection_residual_fraction": 0.0,
+        "negative_aligned_fraction": 0.0
+      },
+      "common_lora_source_relative_error": 2.420962055376928e-06,
+      "saved_target_relative_errors": {
+        "common_hns": 0.0,
+        "common_per_module": 0.0,
+        "common_global_0p25": 0.0,
+        "common_global_0p40": 0.0,
+        "common_global_0p55": 0.0,
+        "common_global_0p70": 0.0,
+        "common_global_0p85": 0.0,
+        "common_global_1p00": 0.0
+      }
+    },
+    "base_model.model.model.layers.22.self_attn.q_proj": {
+      "lora_fro": 1.0979458093643188,
+      "hns_fro": 0.8664259910583496,
+      "per_module_gamma": 0.7891336679458618,
+      "basis": {
+        "basis_offdiag_fraction": 8.107457659863477e-07,
+        "basis_projection_residual_fraction": 0.0,
+        "negative_aligned_fraction": 0.0
+      },
+      "common_lora_source_relative_error": 2.2598310889657146e-06,
+      "saved_target_relative_errors": {
+        "common_hns": 0.0,
+        "common_per_module": 0.0,
+        "common_global_0p25": 0.0,
+        "common_global_0p40": 0.0,
+        "common_global_0p55": 0.0,
+        "common_global_0p70": 0.0,
+        "common_global_0p85": 0.0,
+        "common_global_1p00": 0.0
+      }
+    },
+    "base_model.model.model.layers.22.self_attn.v_proj": {
+      "lora_fro": 0.4479081928730011,
+      "hns_fro": 0.3102450370788574,
+      "per_module_gamma": 0.6926531791687012,
+      "basis": {
+        "basis_offdiag_fraction": 8.324800760985868e-07,
+        "basis_projection_residual_fraction": 0.0,
+        "negative_aligned_fraction": 0.0
+      },
+      "common_lora_source_relative_error": 4.059515900356237e-06,
+      "saved_target_relative_errors": {
+        "common_hns": 0.0,
+        "common_per_module": 0.0,
+        "common_global_0p25": 0.0,
+        "common_global_0p40": 0.0,
+        "common_global_0p55": 0.0,
+        "common_global_0p70": 0.0,
+        "common_global_0p85": 0.0,
+        "common_global_1p00": 0.0
+      }
+    },
+    "base_model.model.model.layers.23.mlp.down_proj": {
+      "lora_fro": 1.7619787454605103,
+      "hns_fro": 1.3039531707763672,
+      "per_module_gamma": 0.7400504350662231,
+      "basis": {
+        "basis_offdiag_fraction": 9.08143449855041e-07,
+        "basis_projection_residual_fraction": 0.0,
+        "negative_aligned_fraction": 0.0
+      },
+      "common_lora_source_relative_error": 2.3450321207783344e-06,
+      "saved_target_relative_errors": {
+        "common_hns": 0.0,
+        "common_per_module": 0.0,
+        "common_global_0p25": 0.0,
+        "common_global_0p40": 0.0,
+        "common_global_0p55": 0.0,
+        "common_global_0p70": 0.0,
+        "common_global_0p85": 0.0,
+        "common_global_1p00": 0.0
+      }
+    },
+    "base_model.model.model.layers.23.mlp.gate_proj": {
+      "lora_fro": 2.6339879035949707,
+      "hns_fro": 2.1997454166412354,
+      "per_module_gamma": 0.8351387977600098,
+      "basis": {
+        "basis_offdiag_fraction": 7.465528701047957e-07,
+        "basis_projection_residual_fraction": 0.0,
+        "negative_aligned_fraction": 0.0
+      },
+      "common_lora_source_relative_error": 2.9112231786609184e-06,
+      "saved_target_relative_errors": {
+        "common_hns": 0.0,
+        "common_per_module": 0.0,
+        "common_global_0p25": 0.0,
+        "common_global_0p40": 0.0,
+        "common_global_0p55": 0.0,
+        "common_global_0p70": 0.0,
+        "common_global_0p85": 0.0,
+        "common_global_1p00": 0.0
+      }
+    },
+    "base_model.model.model.layers.23.mlp.up_proj": {
+      "lora_fro": 2.131861925125122,
+      "hns_fro": 1.9044126272201538,
+      "per_module_gamma": 0.8933095335960388,
+      "basis": {
+        "basis_offdiag_fraction": 7.981655555476266e-07,
+        "basis_projection_residual_fraction": 0.0,
+        "negative_aligned_fraction": 0.0
+      },
+      "common_lora_source_relative_error": 3.0174515352734705e-06,
+      "saved_target_relative_errors": {
+        "common_hns": 0.0,
+        "common_per_module": 0.0,
+        "common_global_0p25": 0.0,
+        "common_global_0p40": 0.0,
+        "common_global_0p55": 0.0,
+        "common_global_0p70": 0.0,
+        "common_global_0p85": 0.0,
+        "common_global_1p00": 0.0
+      }
+    },
+    "base_model.model.model.layers.23.self_attn.k_proj": {
+      "lora_fro": 0.5959883332252502,
+      "hns_fro": 0.5022246241569519,
+      "per_module_gamma": 0.8426752686500549,
+      "basis": {
+        "basis_offdiag_fraction": 7.977799525821738e-07,
+        "basis_projection_residual_fraction": 0.0,
+        "negative_aligned_fraction": 0.0
+      },
+      "common_lora_source_relative_error": 3.307876497877559e-06,
+      "saved_target_relative_errors": {
+        "common_hns": 0.0,
+        "common_per_module": 0.0,
+        "common_global_0p25": 0.0,
+        "common_global_0p40": 0.0,
+        "common_global_0p55": 0.0,
+        "common_global_0p70": 0.0,
+        "common_global_0p85": 0.0,
+        "common_global_1p00": 0.0
+      }
+    },
+    "base_model.model.model.layers.23.self_attn.o_proj": {
+      "lora_fro": 1.103501796722412,
+      "hns_fro": 0.9922237992286682,
+      "per_module_gamma": 0.8991591930389404,
+      "basis": {
+        "basis_offdiag_fraction": 9.040253755184925e-07,
+        "basis_projection_residual_fraction": 0.0,
+        "negative_aligned_fraction": 0.0
+      },
+      "common_lora_source_relative_error": 2.7852308939026705e-06,
+      "saved_target_relative_errors": {
+        "common_hns": 0.0,
+        "common_per_module": 0.0,
+        "common_global_0p25": 0.0,
+        "common_global_0p40": 0.0,
+        "common_global_0p55": 0.0,
+        "common_global_0p70": 0.0,
+        "common_global_0p85": 0.0,
+        "common_global_1p00": 0.0
+      }
+    },
+    "base_model.model.model.layers.23.self_attn.q_proj": {
+      "lora_fro": 1.1936250925064087,
+      "hns_fro": 0.9940871000289917,
+      "per_module_gamma": 0.8328302502632141,
+      "basis": {
+        "basis_offdiag_fraction": 8.747467766741435e-07,
+        "basis_projection_residual_fraction": 0.0,
+        "negative_aligned_fraction": 0.0
+      },
+      "common_lora_source_relative_error": 2.109338531416903e-06,
+      "saved_target_relative_errors": {
+        "common_hns": 0.0,
+        "common_per_module": 0.0,
+        "common_global_0p25": 0.0,
+        "common_global_0p40": 0.0,
+        "common_global_0p55": 0.0,
+        "common_global_0p70": 0.0,
+        "common_global_0p85": 0.0,
+        "common_global_1p00": 0.0
+      }
+    },
+    "base_model.model.model.layers.23.self_attn.v_proj": {
+      "lora_fro": 0.5225589275360107,
+      "hns_fro": 0.38505902886390686,
+      "per_module_gamma": 0.7368719577789307,
+      "basis": {
+        "basis_offdiag_fraction": 9.416017399735657e-07,
+        "basis_projection_residual_fraction": 0.0,
+        "negative_aligned_fraction": 0.0
+      },
+      "common_lora_source_relative_error": 3.1627079683281693e-06,
+      "saved_target_relative_errors": {
+        "common_hns": 0.0,
+        "common_per_module": 0.0,
+        "common_global_0p25": 0.0,
+        "common_global_0p40": 0.0,
+        "common_global_0p55": 0.0,
+        "common_global_0p70": 0.0,
+        "common_global_0p85": 0.0,
+        "common_global_1p00": 0.0
+      }
+    },
+    "base_model.model.model.layers.24.mlp.down_proj": {
+      "lora_fro": 1.863389253616333,
+      "hns_fro": 1.3909881114959717,
+      "per_module_gamma": 0.7464828491210938,
+      "basis": {
+        "basis_offdiag_fraction": 7.496400372268182e-07,
+        "basis_projection_residual_fraction": 0.0,
+        "negative_aligned_fraction": 0.0
+      },
+      "common_lora_source_relative_error": 3.4222068791338466e-06,
+      "saved_target_relative_errors": {
+        "common_hns": 0.0,
+        "common_per_module": 0.0,
+        "common_global_0p25": 0.0,
+        "common_global_0p40": 0.0,
+        "common_global_0p55": 0.0,
+        "common_global_0p70": 0.0,
+        "common_global_0p85": 0.0,
+        "common_global_1p00": 0.0
+      }
+    },
+    "base_model.model.model.layers.24.mlp.gate_proj": {
+      "lora_fro": 2.541269540786743,
+      "hns_fro": 2.0665223598480225,
+      "per_module_gamma": 0.8131850361824036,
+      "basis": {
+        "basis_offdiag_fraction": 9.444183198479138e-07,
+        "basis_projection_residual_fraction": 0.0,
+        "negative_aligned_fraction": 0.0
+      },
+      "common_lora_source_relative_error": 3.163531527053054e-06,
+      "saved_target_relative_errors": {
+        "common_hns": 0.0,
+        "common_per_module": 0.0,
+        "common_global_0p25": 0.0,
+        "common_global_0p40": 0.0,
+        "common_global_0p55": 0.0,
+        "common_global_0p70": 0.0,
+        "common_global_0p85": 0.0,
+        "common_global_1p00": 0.0
+      }
+    },
+    "base_model.model.model.layers.24.mlp.up_proj": {
+      "lora_fro": 2.204521417617798,
+      "hns_fro": 1.9375845193862915,
+      "per_module_gamma": 0.8789138793945312,
+      "basis": {
+        "basis_offdiag_fraction": 7.29681077882619e-07,
+        "basis_projection_residual_fraction": 0.0,
+        "negative_aligned_fraction": 0.0
+      },
+      "common_lora_source_relative_error": 1.588449030370889e-06,
+      "saved_target_relative_errors": {
+        "common_hns": 0.0,
+        "common_per_module": 0.0,
+        "common_global_0p25": 0.0,
+        "common_global_0p40": 0.0,
+        "common_global_0p55": 0.0,
+        "common_global_0p70": 0.0,
+        "common_global_0p85": 0.0,
+        "common_global_1p00": 0.0
+      }
+    },
+    "base_model.model.model.layers.24.self_attn.k_proj": {
+      "lora_fro": 0.6323530673980713,
+      "hns_fro": 0.5260763764381409,
+      "per_module_gamma": 0.8319345712661743,
+      "basis": {
+        "basis_offdiag_fraction": 9.160483516359635e-07,
+        "basis_projection_residual_fraction": 0.0,
+        "negative_aligned_fraction": 0.0
+      },
+      "common_lora_source_relative_error": 2.2350125875211622e-06,
+      "saved_target_relative_errors": {
+        "common_hns": 0.0,
+        "common_per_module": 0.0,
+        "common_global_0p25": 0.0,
+        "common_global_0p40": 0.0,
+        "common_global_0p55": 0.0,
+        "common_global_0p70": 0.0,
+        "common_global_0p85": 0.0,
+        "common_global_1p00": 0.0
+      }
+    },
+    "base_model.model.model.layers.24.self_attn.o_proj": {
+      "lora_fro": 1.1677937507629395,
+      "hns_fro": 1.0214931964874268,
+      "per_module_gamma": 0.874720573425293,
+      "basis": {
+        "basis_offdiag_fraction": 8.192104633064902e-07,
+        "basis_projection_residual_fraction": 0.0005193992592730833,
+        "negative_aligned_fraction": 0.0
+      },
+      "common_lora_source_relative_error": 3.693911116553935e-06,
+      "saved_target_relative_errors": {
+        "common_hns": 0.0,
+        "common_per_module": 0.0,
+        "common_global_0p25": 0.0,
+        "common_global_0p40": 0.0,
+        "common_global_0p55": 0.0,
+        "common_global_0p70": 0.0,
+        "common_global_0p85": 0.0,
+        "common_global_1p00": 0.0
+      }
+    },
+    "base_model.model.model.layers.24.self_attn.q_proj": {
+      "lora_fro": 1.2674891948699951,
+      "hns_fro": 1.0639805793762207,
+      "per_module_gamma": 0.8394395709037781,
+      "basis": {
+        "basis_offdiag_fraction": 7.768474109655446e-07,
+        "basis_projection_residual_fraction": 0.0,
+        "negative_aligned_fraction": 0.0
+      },
+      "common_lora_source_relative_error": 2.04681647324977e-06,
+      "saved_target_relative_errors": {
+        "common_hns": 0.0,
+        "common_per_module": 0.0,
+        "common_global_0p25": 0.0,
+        "common_global_0p40": 0.0,
+        "common_global_0p55": 0.0,
+        "common_global_0p70": 0.0,
+        "common_global_0p85": 0.0,
+        "common_global_1p00": 0.0
+      }
+    },
+    "base_model.model.model.layers.24.self_attn.v_proj": {
+      "lora_fro": 0.48949703574180603,
+      "hns_fro": 0.3506113886833191,
+      "per_module_gamma": 0.7162686586380005,
+      "basis": {
+        "basis_offdiag_fraction": 8.049773433929113e-07,
+        "basis_projection_residual_fraction": 0.0,
+        "negative_aligned_fraction": 0.0
+      },
+      "common_lora_source_relative_error": 1.960702759110308e-06,
+      "saved_target_relative_errors": {
+        "common_hns": 0.0,
+        "common_per_module": 0.0,
+        "common_global_0p25": 0.0,
+        "common_global_0p40": 0.0,
+        "common_global_0p55": 0.0,
+        "common_global_0p70": 0.0,
+        "common_global_0p85": 0.0,
+        "common_global_1p00": 0.0
+      }
+    },
+    "base_model.model.model.layers.25.mlp.down_proj": {
+      "lora_fro": 1.8205124139785767,
+      "hns_fro": 1.3928117752075195,
+      "per_module_gamma": 0.7650657892227173,
+      "basis": {
+        "basis_offdiag_fraction": 8.915843154929377e-07,
+        "basis_projection_residual_fraction": 0.0,
+        "negative_aligned_fraction": 0.0
+      },
+      "common_lora_source_relative_error": 3.967292420784456e-06,
+      "saved_target_relative_errors": {
+        "common_hns": 0.0,
+        "common_per_module": 0.0,
+        "common_global_0p25": 0.0,
+        "common_global_0p40": 0.0,
+        "common_global_0p55": 0.0,
+        "common_global_0p70": 0.0,
+        "common_global_0p85": 0.0,
+        "common_global_1p00": 0.0
+      }
+    },
+    "base_model.model.model.layers.25.mlp.gate_proj": {
+      "lora_fro": 2.6939916610717773,
+      "hns_fro": 2.126478433609009,
+      "per_module_gamma": 0.789341151714325,
+      "basis": {
+        "basis_offdiag_fraction": 8.808450097683995e-07,
+        "basis_projection_residual_fraction": 0.0,
+        "negative_aligned_fraction": 0.0
+      },
+      "common_lora_source_relative_error": 1.573508592604401e-06,
+      "saved_target_relative_errors": {
+        "common_hns": 0.0,
+        "common_per_module": 0.0,
+        "common_global_0p25": 0.0,
+        "common_global_0p40": 0.0,
+        "common_global_0p55": 0.0,
+        "common_global_0p70": 0.0,
+        "common_global_0p85": 0.0,
+        "common_global_1p00": 0.0
+      }
+    },
+    "base_model.model.model.layers.25.mlp.up_proj": {
+      "lora_fro": 2.2989890575408936,
+      "hns_fro": 1.9753944873809814,
+      "per_module_gamma": 0.8592448234558105,
+      "basis": {
+        "basis_offdiag_fraction": 9.295780191447706e-07,
+        "basis_projection_residual_fraction": 0.00032010084480372955,
+        "negative_aligned_fraction": 0.0
+      },
+      "common_lora_source_relative_error": 2.944902115406001e-06,
+      "saved_target_relative_errors": {
+        "common_hns": 0.0,
+        "common_per_module": 0.0,
+        "common_global_0p25": 0.0,
+        "common_global_0p40": 0.0,
+        "common_global_0p55": 0.0,
+        "common_global_0p70": 0.0,
+        "common_global_0p85": 0.0,
+        "common_global_1p00": 0.0
+      }
+    },
+    "base_model.model.model.layers.25.self_attn.k_proj": {
+      "lora_fro": 0.593167245388031,
+      "hns_fro": 0.47906389832496643,
+      "per_module_gamma": 0.8076371550559998,
+      "basis": {
+        "basis_offdiag_fraction": 7.582165325647109e-07,
+        "basis_projection_residual_fraction": 0.0,
+        "negative_aligned_fraction": 0.0
+      },
+      "common_lora_source_relative_error": 2.1616536420508145e-06,
+      "saved_target_relative_errors": {
+        "common_hns": 0.0,
+        "common_per_module": 0.0,
+        "common_global_0p25": 0.0,
+        "common_global_0p40": 0.0,
+        "common_global_0p55": 0.0,
+        "common_global_0p70": 0.0,
+        "common_global_0p85": 0.0,
+        "common_global_1p00": 0.0
+      }
+    },
+    "base_model.model.model.layers.25.self_attn.o_proj": {
+      "lora_fro": 1.2007708549499512,
+      "hns_fro": 1.0742110013961792,
+      "per_module_gamma": 0.8946011662483215,
+      "basis": {
+        "basis_offdiag_fraction": 8.861683098247835e-07,
+        "basis_projection_residual_fraction": 0.0,
+        "negative_aligned_fraction": 0.0
+      },
+      "common_lora_source_relative_error": 3.7147924941772388e-06,
+      "saved_target_relative_errors": {
+        "common_hns": 0.0,
+        "common_per_module": 0.0,
+        "common_global_0p25": 0.0,
+        "common_global_0p40": 0.0,
+        "common_global_0p55": 0.0,
+        "common_global_0p70": 0.0,
+        "common_global_0p85": 0.0,
+        "common_global_1p00": 0.0
+      }
+    },
+    "base_model.model.model.layers.25.self_attn.q_proj": {
+      "lora_fro": 1.1520733833312988,
+      "hns_fro": 0.9621801972389221,
+      "per_module_gamma": 0.8351726531982422,
+      "basis": {
+        "basis_offdiag_fraction": 7.520765087094451e-07,
+        "basis_projection_residual_fraction": 0.0,
+        "negative_aligned_fraction": 0.0
+      },
+      "common_lora_source_relative_error": 2.8206673267595224e-06,
+      "saved_target_relative_errors": {
+        "common_hns": 0.0,
+        "common_per_module": 0.0,
+        "common_global_0p25": 0.0,
+        "common_global_0p40": 0.0,
+        "common_global_0p55": 0.0,
+        "common_global_0p70": 0.0,
+        "common_global_0p85": 0.0,
+        "common_global_1p00": 0.0
+      }
+    },
+    "base_model.model.model.layers.25.self_attn.v_proj": {
+      "lora_fro": 0.5502051115036011,
+      "hns_fro": 0.387639582157135,
+      "per_module_gamma": 0.704536497592926,
+      "basis": {
+        "basis_offdiag_fraction": 7.754943874782522e-07,
+        "basis_projection_residual_fraction": 0.0,
+        "negative_aligned_fraction": 0.0
+      },
+      "common_lora_source_relative_error": 4.446448192804683e-06,
+      "saved_target_relative_errors": {
+        "common_hns": 0.0,
+        "common_per_module": 0.0,
+        "common_global_0p25": 0.0,
+        "common_global_0p40": 0.0,
+        "common_global_0p55": 0.0,
+        "common_global_0p70": 0.0,
+        "common_global_0p85": 0.0,
+        "common_global_1p00": 0.0
+      }
+    },
+    "base_model.model.model.layers.26.mlp.down_proj": {
+      "lora_fro": 1.9303737878799438,
+      "hns_fro": 1.4264200925827026,
+      "per_module_gamma": 0.7389346361160278,
+      "basis": {
+        "basis_offdiag_fraction": 9.237804225605824e-07,
+        "basis_projection_residual_fraction": 0.0,
+        "negative_aligned_fraction": 0.0
+      },
+      "common_lora_source_relative_error": 5.3253600089934295e-06,
+      "saved_target_relative_errors": {
+        "common_hns": 0.0,
+        "common_per_module": 0.0,
+        "common_global_0p25": 0.0,
+        "common_global_0p40": 0.0,
+        "common_global_0p55": 0.0,
+        "common_global_0p70": 0.0,
+        "common_global_0p85": 0.0,
+        "common_global_1p00": 0.0
+      }
+    },
+    "base_model.model.model.layers.26.mlp.gate_proj": {
+      "lora_fro": 2.6357200145721436,
+      "hns_fro": 2.055386781692505,
+      "per_module_gamma": 0.7798198461532593,
+      "basis": {
+        "basis_offdiag_fraction": 8.489979169019078e-07,
+        "basis_projection_residual_fraction": 0.0,
+        "negative_aligned_fraction": 0.0
+      },
+      "common_lora_source_relative_error": 2.3955010476554983e-06,
+      "saved_target_relative_errors": {
+        "common_hns": 0.0,
+        "common_per_module": 0.0,
+        "common_global_0p25": 0.0,
+        "common_global_0p40": 0.0,
+        "common_global_0p55": 0.0,
+        "common_global_0p70": 0.0,
+        "common_global_0p85": 0.0,
+        "common_global_1p00": 0.0
+      }
+    },
+    "base_model.model.model.layers.26.mlp.up_proj": {
+      "lora_fro": 2.289686918258667,
+      "hns_fro": 2.0646023750305176,
+      "per_module_gamma": 0.9016963839530945,
+      "basis": {
+        "basis_offdiag_fraction": 8.410599375344378e-07,
+        "basis_projection_residual_fraction": 0.0,
+        "negative_aligned_fraction": 0.0
+      },
+      "common_lora_source_relative_error": 2.4065133440460344e-06,
+      "saved_target_relative_errors": {
+        "common_hns": 0.0,
+        "common_per_module": 0.0,
+        "common_global_0p25": 0.0,
+        "common_global_0p40": 0.0,
+        "common_global_0p55": 0.0,
+        "common_global_0p70": 0.0,
+        "common_global_0p85": 0.0,
+        "common_global_1p00": 0.0
+      }
+    },
+    "base_model.model.model.layers.26.self_attn.k_proj": {
+      "lora_fro": 0.6267053484916687,
+      "hns_fro": 0.5063530206680298,
+      "per_module_gamma": 0.8079602718353271,
+      "basis": {
+        "basis_offdiag_fraction": 9.60820929426412e-07,
+        "basis_projection_residual_fraction": 0.0,
+        "negative_aligned_fraction": 0.0
+      },
+      "common_lora_source_relative_error": 2.28026260893187e-06,
+      "saved_target_relative_errors": {
+        "common_hns": 0.0,
+        "common_per_module": 0.0,
+        "common_global_0p25": 0.0,
+        "common_global_0p40": 0.0,
+        "common_global_0p55": 0.0,
+        "common_global_0p70": 0.0,
+        "common_global_0p85": 0.0,
+        "common_global_1p00": 0.0
+      }
+    },
+    "base_model.model.model.layers.26.self_attn.o_proj": {
+      "lora_fro": 1.2860984802246094,
+      "hns_fro": 1.1559276580810547,
+      "per_module_gamma": 0.8987862467765808,
+      "basis": {
+        "basis_offdiag_fraction": 9.034652349158257e-07,
+        "basis_projection_residual_fraction": 0.0,
+        "negative_aligned_fraction": 0.0
+      },
+      "common_lora_source_relative_error": 2.0332184233042706e-06,
+      "saved_target_relative_errors": {
+        "common_hns": 0.0,
+        "common_per_module": 0.0,
+        "common_global_0p25": 0.0,
+        "common_global_0p40": 0.0,
+        "common_global_0p55": 0.0,
+        "common_global_0p70": 0.0,
+        "common_global_0p85": 0.0,
+        "common_global_1p00": 0.0
+      }
+    },
+    "base_model.model.model.layers.26.self_attn.q_proj": {
+      "lora_fro": 1.3181229829788208,
+      "hns_fro": 1.0591635704040527,
+      "per_module_gamma": 0.8035392761230469,
+      "basis": {
+        "basis_offdiag_fraction": 8.255269716125941e-07,
+        "basis_projection_residual_fraction": 0.0,
+        "negative_aligned_fraction": 0.0
+      },
+      "common_lora_source_relative_error": 3.906148465596547e-06,
+      "saved_target_relative_errors": {
+        "common_hns": 0.0,
+        "common_per_module": 0.0,
+        "common_global_0p25": 0.0,
+        "common_global_0p40": 0.0,
+        "common_global_0p55": 0.0,
+        "common_global_0p70": 0.0,
+        "common_global_0p85": 0.0,
+        "common_global_1p00": 0.0
+      }
+    },
+    "base_model.model.model.layers.26.self_attn.v_proj": {
+      "lora_fro": 0.5391265153884888,
+      "hns_fro": 0.3977285921573639,
+      "per_module_gamma": 0.7377277612686157,
+      "basis": {
+        "basis_offdiag_fraction": 7.689299160354073e-07,
+        "basis_projection_residual_fraction": 0.0,
+        "negative_aligned_fraction": 0.0
+      },
+      "common_lora_source_relative_error": 1.856824821324955e-06,
+      "saved_target_relative_errors": {
+        "common_hns": 0.0,
+        "common_per_module": 0.0,
+        "common_global_0p25": 0.0,
+        "common_global_0p40": 0.0,
+        "common_global_0p55": 0.0,
+        "common_global_0p70": 0.0,
+        "common_global_0p85": 0.0,
+        "common_global_1p00": 0.0
+      }
+    },
+    "base_model.model.model.layers.27.mlp.down_proj": {
+      "lora_fro": 2.022678852081299,
+      "hns_fro": 1.5042364597320557,
+      "per_module_gamma": 0.743685245513916,
+      "basis": {
+        "basis_offdiag_fraction": 8.37083611241884e-07,
+        "basis_projection_residual_fraction": 0.0,
+        "negative_aligned_fraction": 0.0
+      },
+      "common_lora_source_relative_error": 3.4826484155834125e-06,
+      "saved_target_relative_errors": {
+        "common_hns": 0.0,
+        "common_per_module": 0.0,
+        "common_global_0p25": 0.0,
+        "common_global_0p40": 0.0,
+        "common_global_0p55": 0.0,
+        "common_global_0p70": 0.0,
+        "common_global_0p85": 0.0,
+        "common_global_1p00": 0.0
+      }
+    },
+    "base_model.model.model.layers.27.mlp.gate_proj": {
+      "lora_fro": 2.643545627593994,
+      "hns_fro": 2.1273176670074463,
+      "per_module_gamma": 0.8047213554382324,
+      "basis": {
+        "basis_offdiag_fraction": 9.70430817660945e-07,
+        "basis_projection_residual_fraction": 0.0,
+        "negative_aligned_fraction": 0.0
+      },
+      "common_lora_source_relative_error": 4.445137229277623e-06,
+      "saved_target_relative_errors": {
+        "common_hns": 0.0,
+        "common_per_module": 0.0,
+        "common_global_0p25": 0.0,
+        "common_global_0p40": 0.0,
+        "common_global_0p55": 0.0,
+        "common_global_0p70": 0.0,
+        "common_global_0p85": 0.0,
+        "common_global_1p00": 0.0
+      }
+    },
+    "base_model.model.model.layers.27.mlp.up_proj": {
+      "lora_fro": 2.324007511138916,
+      "hns_fro": 2.064523935317993,
+      "per_module_gamma": 0.8883464932441711,
+      "basis": {
+        "basis_offdiag_fraction": 7.433877983824859e-07,
+        "basis_projection_residual_fraction": 0.0,
+        "negative_aligned_fraction": 0.0
+      },
+      "common_lora_source_relative_error": 2.6678341856712083e-06,
+      "saved_target_relative_errors": {
+        "common_hns": 0.0,
+        "common_per_module": 0.0,
+        "common_global_0p25": 0.0,
+        "common_global_0p40": 0.0,
+        "common_global_0p55": 0.0,
+        "common_global_0p70": 0.0,
+        "common_global_0p85": 0.0,
+        "common_global_1p00": 0.0
+      }
+    },
+    "base_model.model.model.layers.27.self_attn.k_proj": {
+      "lora_fro": 0.6138410568237305,
+      "hns_fro": 0.45050421357154846,
+      "per_module_gamma": 0.7339102029800415,
+      "basis": {
+        "basis_offdiag_fraction": 8.464186476083464e-07,
+        "basis_projection_residual_fraction": 0.0,
+        "negative_aligned_fraction": 0.0
+      },
+      "common_lora_source_relative_error": 2.595895394015515e-06,
+      "saved_target_relative_errors": {
+        "common_hns": 0.0,
+        "common_per_module": 0.0,
+        "common_global_0p25": 0.0,
+        "common_global_0p40": 0.0,
+        "common_global_0p55": 0.0,
+        "common_global_0p70": 0.0,
+        "common_global_0p85": 0.0,
+        "common_global_1p00": 0.0
+      }
+    },
+    "base_model.model.model.layers.27.self_attn.o_proj": {
+      "lora_fro": 1.282609224319458,
+      "hns_fro": 1.1165509223937988,
+      "per_module_gamma": 0.8705308437347412,
+      "basis": {
+        "basis_offdiag_fraction": 7.556025247208972e-07,
+        "basis_projection_residual_fraction": 0.0,
+        "negative_aligned_fraction": 0.0
+      },
+      "common_lora_source_relative_error": 2.636765027958697e-06,
+      "saved_target_relative_errors": {
+        "common_hns": 0.0,
+        "common_per_module": 0.0,
+        "common_global_0p25": 0.0,
+        "common_global_0p40": 0.0,
+        "common_global_0p55": 0.0,
+        "common_global_0p70": 0.0,
+        "common_global_0p85": 0.0,
+        "common_global_1p00": 0.0
+      }
+    },
+    "base_model.model.model.layers.27.self_attn.q_proj": {
+      "lora_fro": 1.271453857421875,
+      "hns_fro": 1.0527390241622925,
+      "per_module_gamma": 0.8279805183410645,
+      "basis": {
+        "basis_offdiag_fraction": 7.215366854122258e-07,
+        "basis_projection_residual_fraction": 0.0,
+        "negative_aligned_fraction": 0.0
+      },
+      "common_lora_source_relative_error": 2.2885256924068517e-06,
+      "saved_target_relative_errors": {
+        "common_hns": 0.0,
+        "common_per_module": 0.0,
+        "common_global_0p25": 0.0,
+        "common_global_0p40": 0.0,
+        "common_global_0p55": 0.0,
+        "common_global_0p70": 0.0,
+        "common_global_0p85": 0.0,
+        "common_global_1p00": 0.0
+      }
+    },
+    "base_model.model.model.layers.27.self_attn.v_proj": {
+      "lora_fro": 0.5464122295379639,
+      "hns_fro": 0.34021949768066406,
+      "per_module_gamma": 0.6226425170898438,
+      "basis": {
+        "basis_offdiag_fraction": 8.789660663526925e-07,
+        "basis_projection_residual_fraction": 0.0,
+        "negative_aligned_fraction": 0.0
+      },
+      "common_lora_source_relative_error": 1.8478278656443342e-06,
+      "saved_target_relative_errors": {
+        "common_hns": 0.0,
+        "common_per_module": 0.0,
+        "common_global_0p25": 0.0,
+        "common_global_0p40": 0.0,
+        "common_global_0p55": 0.0,
+        "common_global_0p70": 0.0,
+        "common_global_0p85": 0.0,
+        "common_global_1p00": 0.0
+      }
+    },
+    "base_model.model.model.layers.28.mlp.down_proj": {
+      "lora_fro": 1.9020540714263916,
+      "hns_fro": 1.4752899408340454,
+      "per_module_gamma": 0.7756298780441284,
+      "basis": {
+        "basis_offdiag_fraction": 9.418871102693573e-07,
+        "basis_projection_residual_fraction": 0.0,
+        "negative_aligned_fraction": 0.0
+      },
+      "common_lora_source_relative_error": 3.817681128189736e-06,
+      "saved_target_relative_errors": {
+        "common_hns": 0.0,
+        "common_per_module": 0.0,
+        "common_global_0p25": 0.0,
+        "common_global_0p40": 0.0,
+        "common_global_0p55": 0.0,
+        "common_global_0p70": 0.0,
+        "common_global_0p85": 0.0,
+        "common_global_1p00": 0.0
+      }
+    },
+    "base_model.model.model.layers.28.mlp.gate_proj": {
+      "lora_fro": 2.5804741382598877,
+      "hns_fro": 2.1791117191314697,
+      "per_module_gamma": 0.8444617390632629,
+      "basis": {
+        "basis_offdiag_fraction": 8.087318660546453e-07,
+        "basis_projection_residual_fraction": 0.00043099732402449275,
+        "negative_aligned_fraction": 0.0
+      },
+      "common_lora_source_relative_error": 2.476485877972912e-06,
+      "saved_target_relative_errors": {
+        "common_hns": 0.0,
+        "common_per_module": 0.0,
+        "common_global_0p25": 0.0,
+        "common_global_0p40": 0.0,
+        "common_global_0p55": 0.0,
+        "common_global_0p70": 0.0,
+        "common_global_0p85": 0.0,
+        "common_global_1p00": 0.0
+      }
+    },
+    "base_model.model.model.layers.28.mlp.up_proj": {
+      "lora_fro": 2.4220826625823975,
+      "hns_fro": 2.0334835052490234,
+      "per_module_gamma": 0.8395599126815796,
+      "basis": {
+        "basis_offdiag_fraction": 9.491258737097852e-07,
+        "basis_projection_residual_fraction": 0.0,
+        "negative_aligned_fraction": 0.0
+      },
+      "common_lora_source_relative_error": 2.3826352015895163e-06,
+      "saved_target_relative_errors": {
+        "common_hns": 0.0,
+        "common_per_module": 0.0,
+        "common_global_0p25": 0.0,
+        "common_global_0p40": 0.0,
+        "common_global_0p55": 0.0,
+        "common_global_0p70": 0.0,
+        "common_global_0p85": 0.0,
+        "common_global_1p00": 0.0
+      }
+    },
+    "base_model.model.model.layers.28.self_attn.k_proj": {
+      "lora_fro": 0.634536862373352,
+      "hns_fro": 0.5001279711723328,
+      "per_module_gamma": 0.7881779670715332,
+      "basis": {
+        "basis_offdiag_fraction": 9.464654469427963e-07,
+        "basis_projection_residual_fraction": 0.0,
+        "negative_aligned_fraction": 0.0
+      },
+      "common_lora_source_relative_error": 4.223861224537487e-06,
+      "saved_target_relative_errors": {
+        "common_hns": 0.0,
+        "common_per_module": 0.0,
+        "common_global_0p25": 0.0,
+        "common_global_0p40": 0.0,
+        "common_global_0p55": 0.0,
+        "common_global_0p70": 0.0,
+        "common_global_0p85": 0.0,
+        "common_global_1p00": 0.0
+      }
+    },
+    "base_model.model.model.layers.28.self_attn.o_proj": {
+      "lora_fro": 1.2535815238952637,
+      "hns_fro": 1.0782852172851562,
+      "per_module_gamma": 0.8601636290550232,
+      "basis": {
+        "basis_offdiag_fraction": 8.510162374806356e-07,
+        "basis_projection_residual_fraction": 0.0,
+        "negative_aligned_fraction": 0.0
+      },
+      "common_lora_source_relative_error": 2.5382730797921534e-06,
+      "saved_target_relative_errors": {
+        "common_hns": 0.0,
+        "common_per_module": 0.0,
+        "common_global_0p25": 0.0,
+        "common_global_0p40": 0.0,
+        "common_global_0p55": 0.0,
+        "common_global_0p70": 0.0,
+        "common_global_0p85": 0.0,
+        "common_global_1p00": 0.0
+      }
+    },
+    "base_model.model.model.layers.28.self_attn.q_proj": {
+      "lora_fro": 1.2896506786346436,
+      "hns_fro": 0.9622034430503845,
+      "per_module_gamma": 0.7460961937904358,
+      "basis": {
+        "basis_offdiag_fraction": 8.346331348911831e-07,
+        "basis_projection_residual_fraction": 0.0,
+        "negative_aligned_fraction": 0.0
+      },
+      "common_lora_source_relative_error": 1.9680155396596123e-06,
+      "saved_target_relative_errors": {
+        "common_hns": 0.0,
+        "common_per_module": 0.0,
+        "common_global_0p25": 0.0,
+        "common_global_0p40": 0.0,
+        "common_global_0p55": 0.0,
+        "common_global_0p70": 0.0,
+        "common_global_0p85": 0.0,
+        "common_global_1p00": 0.0
+      }
+    },
+    "base_model.model.model.layers.28.self_attn.v_proj": {
+      "lora_fro": 0.6091935634613037,
+      "hns_fro": 0.4133082926273346,
+      "per_module_gamma": 0.6784515380859375,
+      "basis": {
+        "basis_offdiag_fraction": 9.336996911159512e-07,
+        "basis_projection_residual_fraction": 0.0006228610912882017,
+        "negative_aligned_fraction": 0.0
+      },
+      "common_lora_source_relative_error": 3.222760044075526e-06,
+      "saved_target_relative_errors": {
+        "common_hns": 0.0,
+        "common_per_module": 0.0,
+        "common_global_0p25": 0.0,
+        "common_global_0p40": 0.0,
+        "common_global_0p55": 0.0,
+        "common_global_0p70": 0.0,
+        "common_global_0p85": 0.0,
+        "common_global_1p00": 0.0
+      }
+    },
+    "base_model.model.model.layers.29.mlp.down_proj": {
+      "lora_fro": 2.050136089324951,
+      "hns_fro": 1.5034983158111572,
+      "per_module_gamma": 0.7333651185035706,
+      "basis": {
+        "basis_offdiag_fraction": 8.735066428107143e-07,
+        "basis_projection_residual_fraction": 0.0,
+        "negative_aligned_fraction": 0.0
+      },
+      "common_lora_source_relative_error": 4.3916767351866605e-06,
+      "saved_target_relative_errors": {
+        "common_hns": 0.0,
+        "common_per_module": 0.0,
+        "common_global_0p25": 0.0,
+        "common_global_0p40": 0.0,
+        "common_global_0p55": 0.0,
+        "common_global_0p70": 0.0,
+        "common_global_0p85": 0.0,
+        "common_global_1p00": 0.0
+      }
+    },
+    "base_model.model.model.layers.29.mlp.gate_proj": {
+      "lora_fro": 2.7971816062927246,
+      "hns_fro": 2.24235463142395,
+      "per_module_gamma": 0.8016478419303894,
+      "basis": {
+        "basis_offdiag_fraction": 7.543401250422371e-07,
+        "basis_projection_residual_fraction": 0.0,
+        "negative_aligned_fraction": 0.0
+      },
+      "common_lora_source_relative_error": 2.5880485220285777e-06,
+      "saved_target_relative_errors": {
+        "common_hns": 0.0,
+        "common_per_module": 0.0,
+        "common_global_0p25": 0.0,
+        "common_global_0p40": 0.0,
+        "common_global_0p55": 0.0,
+        "common_global_0p70": 0.0,
+        "common_global_0p85": 0.0,
+        "common_global_1p00": 0.0
+      }
+    },
+    "base_model.model.model.layers.29.mlp.up_proj": {
+      "lora_fro": 2.4710533618927,
+      "hns_fro": 2.2149720191955566,
+      "per_module_gamma": 0.8963675498962402,
+      "basis": {
+        "basis_offdiag_fraction": 7.328751295040319e-07,
+        "basis_projection_residual_fraction": 0.0,
+        "negative_aligned_fraction": 0.0
+      },
+      "common_lora_source_relative_error": 2.7161011117538636e-06,
+      "saved_target_relative_errors": {
+        "common_hns": 0.0,
+        "common_per_module": 0.0,
+        "common_global_0p25": 0.0,
+        "common_global_0p40": 0.0,
+        "common_global_0p55": 0.0,
+        "common_global_0p70": 0.0,
+        "common_global_0p85": 0.0,
+        "common_global_1p00": 0.0
+      }
+    },
+    "base_model.model.model.layers.29.self_attn.k_proj": {
+      "lora_fro": 0.6627784967422485,
+      "hns_fro": 0.5192026495933533,
+      "per_module_gamma": 0.7833728194236755,
+      "basis": {
+        "basis_offdiag_fraction": 8.203328870340645e-07,
+        "basis_projection_residual_fraction": 0.0007418193155011723,
+        "negative_aligned_fraction": 0.0
+      },
+      "common_lora_source_relative_error": 1.8666859326270401e-06,
+      "saved_target_relative_errors": {
+        "common_hns": 0.0,
+        "common_per_module": 0.0,
+        "common_global_0p25": 0.0,
+        "common_global_0p40": 0.0,
+        "common_global_0p55": 0.0,
+        "common_global_0p70": 0.0,
+        "common_global_0p85": 0.0,
+        "common_global_1p00": 0.0
+      }
+    },
+    "base_model.model.model.layers.29.self_attn.o_proj": {
+      "lora_fro": 1.2115297317504883,
+      "hns_fro": 0.980960488319397,
+      "per_module_gamma": 0.8096874952316284,
+      "basis": {
+        "basis_offdiag_fraction": 7.650530834445525e-07,
+        "basis_projection_residual_fraction": 0.0,
+        "negative_aligned_fraction": 0.0
+      },
+      "common_lora_source_relative_error": 2.3536854676163705e-06,
+      "saved_target_relative_errors": {
+        "common_hns": 0.0,
+        "common_per_module": 0.0,
+        "common_global_0p25": 0.0,
+        "common_global_0p40": 0.0,
+        "common_global_0p55": 0.0,
+        "common_global_0p70": 0.0,
+        "common_global_0p85": 0.0,
+        "common_global_1p00": 0.0
+      }
+    },
+    "base_model.model.model.layers.29.self_attn.q_proj": {
+      "lora_fro": 1.3274871110916138,
+      "hns_fro": 1.0917266607284546,
+      "per_module_gamma": 0.8224009275436401,
+      "basis": {
+        "basis_offdiag_fraction": 7.232250253378485e-07,
+        "basis_projection_residual_fraction": 0.0006443696619487701,
+        "negative_aligned_fraction": 0.0
+      },
+      "common_lora_source_relative_error": 2.0912868163709596e-06,
+      "saved_target_relative_errors": {
+        "common_hns": 0.0,
+        "common_per_module": 0.0,
+        "common_global_0p25": 0.0,
+        "common_global_0p40": 0.0,
+        "common_global_0p55": 0.0,
+        "common_global_0p70": 0.0,
+        "common_global_0p85": 0.0,
+        "common_global_1p00": 0.0
+      }
+    },
+    "base_model.model.model.layers.29.self_attn.v_proj": {
+      "lora_fro": 0.5280613899230957,
+      "hns_fro": 0.3630790412425995,
+      "per_module_gamma": 0.6875697374343872,
+      "basis": {
+        "basis_offdiag_fraction": 1.046240605984997e-06,
+        "basis_projection_residual_fraction": 0.0,
+        "negative_aligned_fraction": 0.0
+      },
+      "common_lora_source_relative_error": 3.143647239811184e-06,
+      "saved_target_relative_errors": {
+        "common_hns": 0.0,
+        "common_per_module": 0.0,
+        "common_global_0p25": 0.0,
+        "common_global_0p40": 0.0,
+        "common_global_0p55": 0.0,
+        "common_global_0p70": 0.0,
+        "common_global_0p85": 0.0,
+        "common_global_1p00": 0.0
+      }
+    },
+    "base_model.model.model.layers.3.mlp.down_proj": {
+      "lora_fro": 1.29252028465271,
+      "hns_fro": 0.9780704975128174,
+      "per_module_gamma": 0.7567157745361328,
+      "basis": {
+        "basis_offdiag_fraction": 9.128044789909856e-07,
+        "basis_projection_residual_fraction": 0.0,
+        "negative_aligned_fraction": 0.0
+      },
+      "common_lora_source_relative_error": 2.9268137576303512e-06,
+      "saved_target_relative_errors": {
+        "common_hns": 0.0,
+        "common_per_module": 0.0,
+        "common_global_0p25": 0.0,
+        "common_global_0p40": 0.0,
+        "common_global_0p55": 0.0,
+        "common_global_0p70": 0.0,
+        "common_global_0p85": 0.0,
+        "common_global_1p00": 0.0
+      }
+    },
+    "base_model.model.model.layers.3.mlp.gate_proj": {
+      "lora_fro": 2.0405051708221436,
+      "hns_fro": 0.9239171147346497,
+      "per_module_gamma": 0.45278841257095337,
+      "basis": {
+        "basis_offdiag_fraction": 1.0364626881438305e-06,
+        "basis_projection_residual_fraction": 0.0005028657719916917,
+        "negative_aligned_fraction": 0.0
+      },
+      "common_lora_source_relative_error": 2.2391838855035263e-06,
+      "saved_target_relative_errors": {
+        "common_hns": 0.0,
+        "common_per_module": 0.0,
+        "common_global_0p25": 0.0,
+        "common_global_0p40": 0.0,
+        "common_global_0p55": 0.0,
+        "common_global_0p70": 0.0,
+        "common_global_0p85": 0.0,
+        "common_global_1p00": 0.0
+      }
+    },
+    "base_model.model.model.layers.3.mlp.up_proj": {
+      "lora_fro": 1.333877444267273,
+      "hns_fro": 0.763785183429718,
+      "per_module_gamma": 0.5726051926612854,
+      "basis": {
+        "basis_offdiag_fraction": 7.282961563124561e-07,
+        "basis_projection_residual_fraction": 0.0,
+        "negative_aligned_fraction": 0.0
+      },
+      "common_lora_source_relative_error": 2.6371639950720146e-06,
+      "saved_target_relative_errors": {
+        "common_hns": 0.0,
+        "common_per_module": 0.0,
+        "common_global_0p25": 0.0,
+        "common_global_0p40": 0.0,
+        "common_global_0p55": 0.0,
+        "common_global_0p70": 0.0,
+        "common_global_0p85": 0.0,
+        "common_global_1p00": 0.0
+      }
+    },
+    "base_model.model.model.layers.3.self_attn.k_proj": {
+      "lora_fro": 0.5768538117408752,
+      "hns_fro": 0.4456140398979187,
+      "per_module_gamma": 0.7724904417991638,
+      "basis": {
+        "basis_offdiag_fraction": 7.683744900366076e-07,
+        "basis_projection_residual_fraction": 0.0,
+        "negative_aligned_fraction": 0.0
+      },
+      "common_lora_source_relative_error": 3.338105422423356e-06,
+      "saved_target_relative_errors": {
+        "common_hns": 0.0,
+        "common_per_module": 0.0,
+        "common_global_0p25": 0.0,
+        "common_global_0p40": 0.0,
+        "common_global_0p55": 0.0,
+        "common_global_0p70": 0.0,
+        "common_global_0p85": 0.0,
+        "common_global_1p00": 0.0
+      }
+    },
+    "base_model.model.model.layers.3.self_attn.o_proj": {
+      "lora_fro": 1.1201692819595337,
+      "hns_fro": 0.7440339922904968,
+      "per_module_gamma": 0.6642156839370728,
+      "basis": {
+        "basis_offdiag_fraction": 8.939386782075811e-07,
+        "basis_projection_residual_fraction": 0.0,
+        "negative_aligned_fraction": 0.0
+      },
+      "common_lora_source_relative_error": 3.3765848112687145e-06,
+      "saved_target_relative_errors": {
+        "common_hns": 0.0,
+        "common_per_module": 0.0,
+        "common_global_0p25": 0.0,
+        "common_global_0p40": 0.0,
+        "common_global_0p55": 0.0,
+        "common_global_0p70": 0.0,
+        "common_global_0p85": 0.0,
+        "common_global_1p00": 0.0
+      }
+    },
+    "base_model.model.model.layers.3.self_attn.q_proj": {
+      "lora_fro": 1.0700087547302246,
+      "hns_fro": 0.8335873484611511,
+      "per_module_gamma": 0.7790472507476807,
+      "basis": {
+        "basis_offdiag_fraction": 8.444874720161779e-07,
+        "basis_projection_residual_fraction": 0.0,
+        "negative_aligned_fraction": 0.0
+      },
+      "common_lora_source_relative_error": 4.282488413793147e-06,
+      "saved_target_relative_errors": {
+        "common_hns": 0.0,
+        "common_per_module": 0.0,
+        "common_global_0p25": 0.0,
+        "common_global_0p40": 0.0,
+        "common_global_0p55": 0.0,
+        "common_global_0p70": 0.0,
+        "common_global_0p85": 0.0,
+        "common_global_1p00": 0.0
+      }
+    },
+    "base_model.model.model.layers.3.self_attn.v_proj": {
+      "lora_fro": 0.6073871850967407,
+      "hns_fro": 0.3918002247810364,
+      "per_module_gamma": 0.6450584530830383,
+      "basis": {
+        "basis_offdiag_fraction": 9.249100462060071e-07,
+        "basis_projection_residual_fraction": 0.00048491558735391717,
+        "negative_aligned_fraction": 0.0
+      },
+      "common_lora_source_relative_error": 1.9503374300487453e-06,
+      "saved_target_relative_errors": {
+        "common_hns": 0.0,
+        "common_per_module": 0.0,
+        "common_global_0p25": 0.0,
+        "common_global_0p40": 0.0,
+        "common_global_0p55": 0.0,
+        "common_global_0p70": 0.0,
+        "common_global_0p85": 0.0,
+        "common_global_1p00": 0.0
+      }
+    },
+    "base_model.model.model.layers.30.mlp.down_proj": {
+      "lora_fro": 2.1146700382232666,
+      "hns_fro": 1.470465898513794,
+      "per_module_gamma": 0.695364236831665,
+      "basis": {
+        "basis_offdiag_fraction": 7.491267504750803e-07,
+        "basis_projection_residual_fraction": 0.0,
+        "negative_aligned_fraction": 0.0
+      },
+      "common_lora_source_relative_error": 1.4040102411111777e-06,
+      "saved_target_relative_errors": {
+        "common_hns": 0.0,
+        "common_per_module": 0.0,
+        "common_global_0p25": 0.0,
+        "common_global_0p40": 0.0,
+        "common_global_0p55": 0.0,
+        "common_global_0p70": 0.0,
+        "common_global_0p85": 0.0,
+        "common_global_1p00": 0.0
+      }
+    },
+    "base_model.model.model.layers.30.mlp.gate_proj": {
+      "lora_fro": 2.867809295654297,
+      "hns_fro": 2.3077588081359863,
+      "per_module_gamma": 0.8047114014625549,
+      "basis": {
+        "basis_offdiag_fraction": 8.010366612384799e-07,
+        "basis_projection_residual_fraction": 0.0,
+        "negative_aligned_fraction": 0.0
+      },
+      "common_lora_source_relative_error": 2.3056407236257426e-06,
+      "saved_target_relative_errors": {
+        "common_hns": 0.0,
+        "common_per_module": 0.0,
+        "common_global_0p25": 0.0,
+        "common_global_0p40": 0.0,
+        "common_global_0p55": 0.0,
+        "common_global_0p70": 0.0,
+        "common_global_0p85": 0.0,
+        "common_global_1p00": 0.0
+      }
+    },
+    "base_model.model.model.layers.30.mlp.up_proj": {
+      "lora_fro": 2.647345781326294,
+      "hns_fro": 2.2953879833221436,
+      "per_module_gamma": 0.8670525550842285,
+      "basis": {
+        "basis_offdiag_fraction": 7.343254747954429e-07,
+        "basis_projection_residual_fraction": 0.0,
+        "negative_aligned_fraction": 0.0
+      },
+      "common_lora_source_relative_error": 2.327123238097041e-06,
+      "saved_target_relative_errors": {
+        "common_hns": 0.0,
+        "common_per_module": 0.0,
+        "common_global_0p25": 0.0,
+        "common_global_0p40": 0.0,
+        "common_global_0p55": 0.0,
+        "common_global_0p70": 0.0,
+        "common_global_0p85": 0.0,
+        "common_global_1p00": 0.0
+      }
+    },
+    "base_model.model.model.layers.30.self_attn.k_proj": {
+      "lora_fro": 0.6617012023925781,
+      "hns_fro": 0.4818289279937744,
+      "per_module_gamma": 0.728166937828064,
+      "basis": {
+        "basis_offdiag_fraction": 9.822320772788726e-07,
+        "basis_projection_residual_fraction": 0.0,
+        "negative_aligned_fraction": 0.0
+      },
+      "common_lora_source_relative_error": 2.7177147262735473e-06,
+      "saved_target_relative_errors": {
+        "common_hns": 0.0,
+        "common_per_module": 0.0,
+        "common_global_0p25": 0.0,
+        "common_global_0p40": 0.0,
+        "common_global_0p55": 0.0,
+        "common_global_0p70": 0.0,
+        "common_global_0p85": 0.0,
+        "common_global_1p00": 0.0
+      }
+    },
+    "base_model.model.model.layers.30.self_attn.o_proj": {
+      "lora_fro": 1.367867350578308,
+      "hns_fro": 1.1267887353897095,
+      "per_module_gamma": 0.8237558603286743,
+      "basis": {
+        "basis_offdiag_fraction": 7.174411047030356e-07,
+        "basis_projection_residual_fraction": 0.0,
+        "negative_aligned_fraction": 0.0
+      },
+      "common_lora_source_relative_error": 3.228058914701428e-06,
+      "saved_target_relative_errors": {
+        "common_hns": 0.0,
+        "common_per_module": 0.0,
+        "common_global_0p25": 0.0,
+        "common_global_0p40": 0.0,
+        "common_global_0p55": 0.0,
+        "common_global_0p70": 0.0,
+        "common_global_0p85": 0.0,
+        "common_global_1p00": 0.0
+      }
+    },
+    "base_model.model.model.layers.30.self_attn.q_proj": {
+      "lora_fro": 1.3862513303756714,
+      "hns_fro": 1.0349299907684326,
+      "per_module_gamma": 0.7465673685073853,
+      "basis": {
+        "basis_offdiag_fraction": 7.477738339725662e-07,
+        "basis_projection_residual_fraction": 0.0,
+        "negative_aligned_fraction": 0.0
+      },
+      "common_lora_source_relative_error": 3.039633729237495e-06,
+      "saved_target_relative_errors": {
+        "common_hns": 0.0,
+        "common_per_module": 0.0,
+        "common_global_0p25": 0.0,
+        "common_global_0p40": 0.0,
+        "common_global_0p55": 0.0,
+        "common_global_0p70": 0.0,
+        "common_global_0p85": 0.0,
+        "common_global_1p00": 0.0
+      }
+    },
+    "base_model.model.model.layers.30.self_attn.v_proj": {
+      "lora_fro": 0.5428351163864136,
+      "hns_fro": 0.3560791313648224,
+      "per_module_gamma": 0.6559618711471558,
+      "basis": {
+        "basis_offdiag_fraction": 1.2725271775737629e-06,
+        "basis_projection_residual_fraction": 0.0,
+        "negative_aligned_fraction": 0.0
+      },
+      "common_lora_source_relative_error": 5.022972303515206e-06,
+      "saved_target_relative_errors": {
+        "common_hns": 0.0,
+        "common_per_module": 0.0,
+        "common_global_0p25": 0.0,
+        "common_global_0p40": 0.0,
+        "common_global_0p55": 0.0,
+        "common_global_0p70": 0.0,
+        "common_global_0p85": 0.0,
+        "common_global_1p00": 0.0
+      }
+    },
+    "base_model.model.model.layers.31.mlp.down_proj": {
+      "lora_fro": 2.191011428833008,
+      "hns_fro": 1.5395280122756958,
+      "per_module_gamma": 0.7026563286781311,
+      "basis": {
+        "basis_offdiag_fraction": 1.0204232080531428e-06,
+        "basis_projection_residual_fraction": 0.0,
+        "negative_aligned_fraction": 0.0
+      },
+      "common_lora_source_relative_error": 4.260710924072912e-06,
+      "saved_target_relative_errors": {
+        "common_hns": 0.0,
+        "common_per_module": 0.0,
+        "common_global_0p25": 0.0,
+        "common_global_0p40": 0.0,
+        "common_global_0p55": 0.0,
+        "common_global_0p70": 0.0,
+        "common_global_0p85": 0.0,
+        "common_global_1p00": 0.0
+      }
+    },
+    "base_model.model.model.layers.31.mlp.gate_proj": {
+      "lora_fro": 2.8859572410583496,
+      "hns_fro": 2.3780322074890137,
+      "per_module_gamma": 0.8240011930465698,
+      "basis": {
+        "basis_offdiag_fraction": 6.893375673933022e-07,
+        "basis_projection_residual_fraction": 0.0,
+        "negative_aligned_fraction": 0.0
+      },
+      "common_lora_source_relative_error": 3.832588800096771e-06,
+      "saved_target_relative_errors": {
+        "common_hns": 0.0,
+        "common_per_module": 0.0,
+        "common_global_0p25": 0.0,
+        "common_global_0p40": 0.0,
+        "common_global_0p55": 0.0,
+        "common_global_0p70": 0.0,
+        "common_global_0p85": 0.0,
+        "common_global_1p00": 0.0
+      }
+    },
+    "base_model.model.model.layers.31.mlp.up_proj": {
+      "lora_fro": 2.7596445083618164,
+      "hns_fro": 2.276099681854248,
+      "per_module_gamma": 0.8247800469398499,
+      "basis": {
+        "basis_offdiag_fraction": 9.682251698123129e-07,
+        "basis_projection_residual_fraction": 0.0,
+        "negative_aligned_fraction": 0.0
+      },
+      "common_lora_source_relative_error": 3.830192599878374e-06,
+      "saved_target_relative_errors": {
+        "common_hns": 0.0,
+        "common_per_module": 0.0,
+        "common_global_0p25": 0.0,
+        "common_global_0p40": 0.0,
+        "common_global_0p55": 0.0,
+        "common_global_0p70": 0.0,
+        "common_global_0p85": 0.0,
+        "common_global_1p00": 0.0
+      }
+    },
+    "base_model.model.model.layers.31.self_attn.k_proj": {
+      "lora_fro": 0.6707433462142944,
+      "hns_fro": 0.4968782663345337,
+      "per_module_gamma": 0.7407874464988708,
+      "basis": {
+        "basis_offdiag_fraction": 8.775674347286986e-07,
+        "basis_projection_residual_fraction": 0.0,
+        "negative_aligned_fraction": 0.0
+      },
+      "common_lora_source_relative_error": 3.2334859952320194e-06,
+      "saved_target_relative_errors": {
+        "common_hns": 0.0,
+        "common_per_module": 0.0,
+        "common_global_0p25": 0.0,
+        "common_global_0p40": 0.0,
+        "common_global_0p55": 0.0,
+        "common_global_0p70": 0.0,
+        "common_global_0p85": 0.0,
+        "common_global_1p00": 0.0
+      }
+    },
+    "base_model.model.model.layers.31.self_attn.o_proj": {
+      "lora_fro": 1.3248008489608765,
+      "hns_fro": 1.1122887134552002,
+      "per_module_gamma": 0.8395893573760986,
+      "basis": {
+        "basis_offdiag_fraction": 7.769947427478183e-07,
+        "basis_projection_residual_fraction": 0.0,
+        "negative_aligned_fraction": 0.0
+      },
+      "common_lora_source_relative_error": 1.917215767912072e-06,
+      "saved_target_relative_errors": {
+        "common_hns": 0.0,
+        "common_per_module": 0.0,
+        "common_global_0p25": 0.0,
+        "common_global_0p40": 0.0,
+        "common_global_0p55": 0.0,
+        "common_global_0p70": 0.0,
+        "common_global_0p85": 0.0,
+        "common_global_1p00": 0.0
+      }
+    },
+    "base_model.model.model.layers.31.self_attn.q_proj": {
+      "lora_fro": 1.3277043104171753,
+      "hns_fro": 1.0704089403152466,
+      "per_module_gamma": 0.8062103390693665,
+      "basis": {
+        "basis_offdiag_fraction": 9.640551804009687e-07,
+        "basis_projection_residual_fraction": 0.0,
+        "negative_aligned_fraction": 0.0
+      },
+      "common_lora_source_relative_error": 3.4146212578948414e-06,
+      "saved_target_relative_errors": {
+        "common_hns": 0.0,
+        "common_per_module": 0.0,
+        "common_global_0p25": 0.0,
+        "common_global_0p40": 0.0,
+        "common_global_0p55": 0.0,
+        "common_global_0p70": 0.0,
+        "common_global_0p85": 0.0,
+        "common_global_1p00": 0.0
+      }
+    },
+    "base_model.model.model.layers.31.self_attn.v_proj": {
+      "lora_fro": 0.5719059705734253,
+      "hns_fro": 0.4147307276725769,
+      "per_module_gamma": 0.7251729369163513,
+      "basis": {
+        "basis_offdiag_fraction": 8.836447504416861e-07,
+        "basis_projection_residual_fraction": 0.0,
+        "negative_aligned_fraction": 0.0
+      },
+      "common_lora_source_relative_error": 4.042172249592811e-06,
+      "saved_target_relative_errors": {
+        "common_hns": 0.0,
+        "common_per_module": 0.0,
+        "common_global_0p25": 0.0,
+        "common_global_0p40": 0.0,
+        "common_global_0p55": 0.0,
+        "common_global_0p70": 0.0,
+        "common_global_0p85": 0.0,
+        "common_global_1p00": 0.0
+      }
+    },
+    "base_model.model.model.layers.32.mlp.down_proj": {
+      "lora_fro": 2.253582715988159,
+      "hns_fro": 1.7371234893798828,
+      "per_module_gamma": 0.7708274722099304,
+      "basis": {
+        "basis_offdiag_fraction": 8.140051837411713e-07,
+        "basis_projection_residual_fraction": 0.0,
+        "negative_aligned_fraction": 0.0
+      },
+      "common_lora_source_relative_error": 4.1715547614635885e-06,
+      "saved_target_relative_errors": {
+        "common_hns": 0.0,
+        "common_per_module": 0.0,
+        "common_global_0p25": 0.0,
+        "common_global_0p40": 0.0,
+        "common_global_0p55": 0.0,
+        "common_global_0p70": 0.0,
+        "common_global_0p85": 0.0,
+        "common_global_1p00": 0.0
+      }
+    },
+    "base_model.model.model.layers.32.mlp.gate_proj": {
+      "lora_fro": 2.9429361820220947,
+      "hns_fro": 2.329106092453003,
+      "per_module_gamma": 0.7914225459098816,
+      "basis": {
+        "basis_offdiag_fraction": 9.392676525864888e-07,
+        "basis_projection_residual_fraction": 0.0,
+        "negative_aligned_fraction": 0.0
+      },
+      "common_lora_source_relative_error": 2.1441572942122762e-06,
+      "saved_target_relative_errors": {
+        "common_hns": 0.0,
+        "common_per_module": 0.0,
+        "common_global_0p25": 0.0,
+        "common_global_0p40": 0.0,
+        "common_global_0p55": 0.0,
+        "common_global_0p70": 0.0,
+        "common_global_0p85": 0.0,
+        "common_global_1p00": 0.0
+      }
+    },
+    "base_model.model.model.layers.32.mlp.up_proj": {
+      "lora_fro": 2.8415586948394775,
+      "hns_fro": 2.4782001972198486,
+      "per_module_gamma": 0.8721270561218262,
+      "basis": {
+        "basis_offdiag_fraction": 9.045112451075187e-07,
+        "basis_projection_residual_fraction": 0.0,
+        "negative_aligned_fraction": 0.0
+      },
+      "common_lora_source_relative_error": 2.033111144041729e-06,
+      "saved_target_relative_errors": {
+        "common_hns": 0.0,
+        "common_per_module": 0.0,
+        "common_global_0p25": 0.0,
+        "common_global_0p40": 0.0,
+        "common_global_0p55": 0.0,
+        "common_global_0p70": 0.0,
+        "common_global_0p85": 0.0,
+        "common_global_1p00": 0.0
+      }
+    },
+    "base_model.model.model.layers.32.self_attn.k_proj": {
+      "lora_fro": 0.543819785118103,
+      "hns_fro": 0.41937899589538574,
+      "per_module_gamma": 0.7711727619171143,
+      "basis": {
+        "basis_offdiag_fraction": 9.946884415505906e-07,
+        "basis_projection_residual_fraction": 0.0,
+        "negative_aligned_fraction": 0.0
+      },
+      "common_lora_source_relative_error": 4.523522801473397e-06,
+      "saved_target_relative_errors": {
+        "common_hns": 0.0,
+        "common_per_module": 0.0,
+        "common_global_0p25": 0.0,
+        "common_global_0p40": 0.0,
+        "common_global_0p55": 0.0,
+        "common_global_0p70": 0.0,
+        "common_global_0p85": 0.0,
+        "common_global_1p00": 0.0
+      }
+    },
+    "base_model.model.model.layers.32.self_attn.o_proj": {
+      "lora_fro": 1.1292283535003662,
+      "hns_fro": 0.9346195459365845,
+      "per_module_gamma": 0.8276621103286743,
+      "basis": {
+        "basis_offdiag_fraction": 8.669483278004571e-07,
+        "basis_projection_residual_fraction": 0.0,
+        "negative_aligned_fraction": 0.0
+      },
+      "common_lora_source_relative_error": 2.956425310795712e-06,
+      "saved_target_relative_errors": {
+        "common_hns": 0.0,
+        "common_per_module": 0.0,
+        "common_global_0p25": 0.0,
+        "common_global_0p40": 0.0,
+        "common_global_0p55": 0.0,
+        "common_global_0p70": 0.0,
+        "common_global_0p85": 0.0,
+        "common_global_1p00": 0.0
+      }
+    },
+    "base_model.model.model.layers.32.self_attn.q_proj": {
+      "lora_fro": 1.1884750127792358,
+      "hns_fro": 0.8868165016174316,
+      "per_module_gamma": 0.7461801767349243,
+      "basis": {
+        "basis_offdiag_fraction": 8.280385671529761e-07,
+        "basis_projection_residual_fraction": 0.0,
+        "negative_aligned_fraction": 0.0
+      },
+      "common_lora_source_relative_error": 2.692782246622003e-06,
+      "saved_target_relative_errors": {
+        "common_hns": 0.0,
+        "common_per_module": 0.0,
+        "common_global_0p25": 0.0,
+        "common_global_0p40": 0.0,
+        "common_global_0p55": 0.0,
+        "common_global_0p70": 0.0,
+        "common_global_0p85": 0.0,
+        "common_global_1p00": 0.0
+      }
+    },
+    "base_model.model.model.layers.32.self_attn.v_proj": {
+      "lora_fro": 0.5827624797821045,
+      "hns_fro": 0.3790537714958191,
+      "per_module_gamma": 0.6504430174827576,
+      "basis": {
+        "basis_offdiag_fraction": 7.865904817395404e-07,
+        "basis_projection_residual_fraction": 0.0,
+        "negative_aligned_fraction": 0.0
+      },
+      "common_lora_source_relative_error": 2.223257168637398e-06,
+      "saved_target_relative_errors": {
+        "common_hns": 0.0,
+        "common_per_module": 0.0,
+        "common_global_0p25": 0.0,
+        "common_global_0p40": 0.0,
+        "common_global_0p55": 0.0,
+        "common_global_0p70": 0.0,
+        "common_global_0p85": 0.0,
+        "common_global_1p00": 0.0
+      }
+    },
+    "base_model.model.model.layers.33.mlp.down_proj": {
+      "lora_fro": 2.2684664726257324,
+      "hns_fro": 1.4897648096084595,
+      "per_module_gamma": 0.6567277312278748,
+      "basis": {
+        "basis_offdiag_fraction": 8.318029489469547e-07,
+        "basis_projection_residual_fraction": 0.0004993041425028026,
+        "negative_aligned_fraction": 0.0
+      },
+      "common_lora_source_relative_error": 2.6904230163450797e-06,
+      "saved_target_relative_errors": {
+        "common_hns": 0.0,
+        "common_per_module": 0.0,
+        "common_global_0p25": 0.0,
+        "common_global_0p40": 0.0,
+        "common_global_0p55": 0.0,
+        "common_global_0p70": 0.0,
+        "common_global_0p85": 0.0,
+        "common_global_1p00": 0.0
+      }
+    },
+    "base_model.model.model.layers.33.mlp.gate_proj": {
+      "lora_fro": 2.9665486812591553,
+      "hns_fro": 2.2440567016601562,
+      "per_module_gamma": 0.7564536929130554,
+      "basis": {
+        "basis_offdiag_fraction": 9.797387864624328e-07,
+        "basis_projection_residual_fraction": 0.0,
+        "negative_aligned_fraction": 0.0
+      },
+      "common_lora_source_relative_error": 2.0612663612229885e-06,
+      "saved_target_relative_errors": {
+        "common_hns": 0.0,
+        "common_per_module": 0.0,
+        "common_global_0p25": 0.0,
+        "common_global_0p40": 0.0,
+        "common_global_0p55": 0.0,
+        "common_global_0p70": 0.0,
+        "common_global_0p85": 0.0,
+        "common_global_1p00": 0.0
+      }
+    },
+    "base_model.model.model.layers.33.mlp.up_proj": {
+      "lora_fro": 2.813805103302002,
+      "hns_fro": 2.360645055770874,
+      "per_module_gamma": 0.8389511704444885,
+      "basis": {
+        "basis_offdiag_fraction": 9.307085421558262e-07,
+        "basis_projection_residual_fraction": 0.0,
+        "negative_aligned_fraction": 0.0
+      },
+      "common_lora_source_relative_error": 4.980419963611885e-06,
+      "saved_target_relative_errors": {
+        "common_hns": 0.0,
+        "common_per_module": 0.0,
+        "common_global_0p25": 0.0,
+        "common_global_0p40": 0.0,
+        "common_global_0p55": 0.0,
+        "common_global_0p70": 0.0,
+        "common_global_0p85": 0.0,
+        "common_global_1p00": 0.0
+      }
+    },
+    "base_model.model.model.layers.33.self_attn.k_proj": {
+      "lora_fro": 0.5391316413879395,
+      "hns_fro": 0.4366127848625183,
+      "per_module_gamma": 0.8098444938659668,
+      "basis": {
+        "basis_offdiag_fraction": 8.686288183047924e-07,
+        "basis_projection_residual_fraction": 0.0,
+        "negative_aligned_fraction": 0.0
+      },
+      "common_lora_source_relative_error": 2.4670056546946304e-06,
+      "saved_target_relative_errors": {
+        "common_hns": 0.0,
+        "common_per_module": 0.0,
+        "common_global_0p25": 0.0,
+        "common_global_0p40": 0.0,
+        "common_global_0p55": 0.0,
+        "common_global_0p70": 0.0,
+        "common_global_0p85": 0.0,
+        "common_global_1p00": 0.0
+      }
+    },
+    "base_model.model.model.layers.33.self_attn.o_proj": {
+      "lora_fro": 1.115617036819458,
+      "hns_fro": 0.9059195518493652,
+      "per_module_gamma": 0.812034547328949,
+      "basis": {
+        "basis_offdiag_fraction": 6.405407135678961e-07,
+        "basis_projection_residual_fraction": 0.0,
+        "negative_aligned_fraction": 0.0
+      },
+      "common_lora_source_relative_error": 3.169958357464935e-06,
+      "saved_target_relative_errors": {
+        "common_hns": 0.0,
+        "common_per_module": 0.0,
+        "common_global_0p25": 0.0,
+        "common_global_0p40": 0.0,
+        "common_global_0p55": 0.0,
+        "common_global_0p70": 0.0,
+        "common_global_0p85": 0.0,
+        "common_global_1p00": 0.0
+      }
+    },
+    "base_model.model.model.layers.33.self_attn.q_proj": {
+      "lora_fro": 1.1992343664169312,
+      "hns_fro": 0.9278842806816101,
+      "per_module_gamma": 0.7737305760383606,
+      "basis": {
+        "basis_offdiag_fraction": 8.726148024872278e-07,
+        "basis_projection_residual_fraction": 0.0,
+        "negative_aligned_fraction": 0.0
+      },
+      "common_lora_source_relative_error": 4.63404446639131e-06,
+      "saved_target_relative_errors": {
+        "common_hns": 0.0,
+        "common_per_module": 0.0,
+        "common_global_0p25": 0.0,
+        "common_global_0p40": 0.0,
+        "common_global_0p55": 0.0,
+        "common_global_0p70": 0.0,
+        "common_global_0p85": 0.0,
+        "common_global_1p00": 0.0
+      }
+    },
+    "base_model.model.model.layers.33.self_attn.v_proj": {
+      "lora_fro": 0.5476906299591064,
+      "hns_fro": 0.33834630250930786,
+      "per_module_gamma": 0.6177690029144287,
+      "basis": {
+        "basis_offdiag_fraction": 1.0501441748889052e-06,
+        "basis_projection_residual_fraction": 0.0,
+        "negative_aligned_fraction": 0.0
+      },
+      "common_lora_source_relative_error": 2.0939708567077586e-06,
+      "saved_target_relative_errors": {
+        "common_hns": 0.0,
+        "common_per_module": 0.0,
+        "common_global_0p25": 0.0,
+        "common_global_0p40": 0.0,
+        "common_global_0p55": 0.0,
+        "common_global_0p70": 0.0,
+        "common_global_0p85": 0.0,
+        "common_global_1p00": 0.0
+      }
+    },
+    "base_model.model.model.layers.34.mlp.down_proj": {
+      "lora_fro": 2.04750394821167,
+      "hns_fro": 1.1571623086929321,
+      "per_module_gamma": 0.5651575326919556,
+      "basis": {
+        "basis_offdiag_fraction": 1.0058899520339554e-06,
+        "basis_projection_residual_fraction": 0.0,
+        "negative_aligned_fraction": 0.0
+      },
+      "common_lora_source_relative_error": 5.934741162341469e-06,
+      "saved_target_relative_errors": {
+        "common_hns": 0.0,
+        "common_per_module": 0.0,
+        "common_global_0p25": 0.0,
+        "common_global_0p40": 0.0,
+        "common_global_0p55": 0.0,
+        "common_global_0p70": 0.0,
+        "common_global_0p85": 0.0,
+        "common_global_1p00": 0.0
+      }
+    },
+    "base_model.model.model.layers.34.mlp.gate_proj": {
+      "lora_fro": 2.947516441345215,
+      "hns_fro": 2.0787978172302246,
+      "per_module_gamma": 0.7052710056304932,
+      "basis": {
+        "basis_offdiag_fraction": 9.71797606118955e-07,
+        "basis_projection_residual_fraction": 0.0,
+        "negative_aligned_fraction": 0.0
+      },
+      "common_lora_source_relative_error": 6.145603728833069e-06,
+      "saved_target_relative_errors": {
+        "common_hns": 0.0,
+        "common_per_module": 0.0,
+        "common_global_0p25": 0.0,
+        "common_global_0p40": 0.0,
+        "common_global_0p55": 0.0,
+        "common_global_0p70": 0.0,
+        "common_global_0p85": 0.0,
+        "common_global_1p00": 0.0
+      }
+    },
+    "base_model.model.model.layers.34.mlp.up_proj": {
+      "lora_fro": 2.74499773979187,
+      "hns_fro": 1.9297378063201904,
+      "per_module_gamma": 0.7030016183853149,
+      "basis": {
+        "basis_offdiag_fraction": 9.014788540669572e-07,
+        "basis_projection_residual_fraction": 0.0,
+        "negative_aligned_fraction": 0.0
+      },
+      "common_lora_source_relative_error": 2.6782993010537978e-06,
+      "saved_target_relative_errors": {
+        "common_hns": 0.0,
+        "common_per_module": 0.0,
+        "common_global_0p25": 0.0,
+        "common_global_0p40": 0.0,
+        "common_global_0p55": 0.0,
+        "common_global_0p70": 0.0,
+        "common_global_0p85": 0.0,
+        "common_global_1p00": 0.0
+      }
+    },
+    "base_model.model.model.layers.34.self_attn.k_proj": {
+      "lora_fro": 0.5961993932723999,
+      "hns_fro": 0.4505388140678406,
+      "per_module_gamma": 0.7556847929954529,
+      "basis": {
+        "basis_offdiag_fraction": 8.79328711972568e-07,
+        "basis_projection_residual_fraction": 0.0,
+        "negative_aligned_fraction": 0.0
+      },
+      "common_lora_source_relative_error": 2.65853144213811e-06,
+      "saved_target_relative_errors": {
+        "common_hns": 0.0,
+        "common_per_module": 0.0,
+        "common_global_0p25": 0.0,
+        "common_global_0p40": 0.0,
+        "common_global_0p55": 0.0,
+        "common_global_0p70": 0.0,
+        "common_global_0p85": 0.0,
+        "common_global_1p00": 0.0
+      }
+    },
+    "base_model.model.model.layers.34.self_attn.o_proj": {
+      "lora_fro": 1.0281825065612793,
+      "hns_fro": 0.8082665205001831,
+      "per_module_gamma": 0.7861118912696838,
+      "basis": {
+        "basis_offdiag_fraction": 6.736795795954047e-07,
+        "basis_projection_residual_fraction": 0.0,
+        "negative_aligned_fraction": 0.0
+      },
+      "common_lora_source_relative_error": 1.8009714974391064e-06,
+      "saved_target_relative_errors": {
+        "common_hns": 0.0,
+        "common_per_module": 0.0,
+        "common_global_0p25": 0.0,
+        "common_global_0p40": 0.0,
+        "common_global_0p55": 0.0,
+        "common_global_0p70": 0.0,
+        "common_global_0p85": 0.0,
+        "common_global_1p00": 0.0
+      }
+    },
+    "base_model.model.model.layers.34.self_attn.q_proj": {
+      "lora_fro": 1.4554708003997803,
+      "hns_fro": 0.8402405977249146,
+      "per_module_gamma": 0.5772981643676758,
+      "basis": {
+        "basis_offdiag_fraction": 6.981111092971749e-07,
+        "basis_projection_residual_fraction": 0.0,
+        "negative_aligned_fraction": 0.0
+      },
+      "common_lora_source_relative_error": 1.8602717186879721e-06,
+      "saved_target_relative_errors": {
+        "common_hns": 0.0,
+        "common_per_module": 0.0,
+        "common_global_0p25": 0.0,
+        "common_global_0p40": 0.0,
+        "common_global_0p55": 0.0,
+        "common_global_0p70": 0.0,
+        "common_global_0p85": 0.0,
+        "common_global_1p00": 0.0
+      }
+    },
+    "base_model.model.model.layers.34.self_attn.v_proj": {
+      "lora_fro": 0.5165597200393677,
+      "hns_fro": 0.32485219836235046,
+      "per_module_gamma": 0.6288763880729675,
+      "basis": {
+        "basis_offdiag_fraction": 8.333447833974064e-07,
+        "basis_projection_residual_fraction": 0.0,
+        "negative_aligned_fraction": 0.0
+      },
+      "common_lora_source_relative_error": 1.4247473190988745e-06,
+      "saved_target_relative_errors": {
+        "common_hns": 0.0,
+        "common_per_module": 0.0,
+        "common_global_0p25": 0.0,
+        "common_global_0p40": 0.0,
+        "common_global_0p55": 0.0,
+        "common_global_0p70": 0.0,
+        "common_global_0p85": 0.0,
+        "common_global_1p00": 0.0
+      }
+    },
+    "base_model.model.model.layers.35.mlp.down_proj": {
+      "lora_fro": 1.4065067768096924,
+      "hns_fro": 0.9194128513336182,
+      "per_module_gamma": 0.6536853313446045,
+      "basis": {
+        "basis_offdiag_fraction": 8.358543911749472e-07,
+        "basis_projection_residual_fraction": 0.0,
+        "negative_aligned_fraction": 0.0
+      },
+      "common_lora_source_relative_error": 1.573629827769119e-06,
+      "saved_target_relative_errors": {
+        "common_hns": 0.0,
+        "common_per_module": 0.0,
+        "common_global_0p25": 0.0,
+        "common_global_0p40": 0.0,
+        "common_global_0p55": 0.0,
+        "common_global_0p70": 0.0,
+        "common_global_0p85": 0.0,
+        "common_global_1p00": 0.0
+      }
+    },
+    "base_model.model.model.layers.35.mlp.gate_proj": {
+      "lora_fro": 2.8478643894195557,
+      "hns_fro": 1.9180629253387451,
+      "per_module_gamma": 0.6735092401504517,
+      "basis": {
+        "basis_offdiag_fraction": 1.0230154179581005e-06,
+        "basis_projection_residual_fraction": 0.0,
+        "negative_aligned_fraction": 0.0
+      },
+      "common_lora_source_relative_error": 2.034091266504384e-06,
+      "saved_target_relative_errors": {
+        "common_hns": 0.0,
+        "common_per_module": 0.0,
+        "common_global_0p25": 0.0,
+        "common_global_0p40": 0.0,
+        "common_global_0p55": 0.0,
+        "common_global_0p70": 0.0,
+        "common_global_0p85": 0.0,
+        "common_global_1p00": 0.0
+      }
+    },
+    "base_model.model.model.layers.35.mlp.up_proj": {
+      "lora_fro": 2.580988645553589,
+      "hns_fro": 1.8045839071273804,
+      "per_module_gamma": 0.6991832256317139,
+      "basis": {
+        "basis_offdiag_fraction": 8.605463032695783e-07,
+        "basis_projection_residual_fraction": 0.0,
+        "negative_aligned_fraction": 0.0
+      },
+      "common_lora_source_relative_error": 2.8792364220506e-06,
+      "saved_target_relative_errors": {
+        "common_hns": 0.0,
+        "common_per_module": 0.0,
+        "common_global_0p25": 0.0,
+        "common_global_0p40": 0.0,
+        "common_global_0p55": 0.0,
+        "common_global_0p70": 0.0,
+        "common_global_0p85": 0.0,
+        "common_global_1p00": 0.0
+      }
+    },
+    "base_model.model.model.layers.35.self_attn.k_proj": {
+      "lora_fro": 0.6871161460876465,
+      "hns_fro": 0.46877261996269226,
+      "per_module_gamma": 0.6822320222854614,
+      "basis": {
+        "basis_offdiag_fraction": 7.715377522539069e-07,
+        "basis_projection_residual_fraction": 0.0,
+        "negative_aligned_fraction": 0.0
+      },
+      "common_lora_source_relative_error": 2.4014196716231735e-06,
+      "saved_target_relative_errors": {
+        "common_hns": 0.0,
+        "common_per_module": 0.0,
+        "common_global_0p25": 0.0,
+        "common_global_0p40": 0.0,
+        "common_global_0p55": 0.0,
+        "common_global_0p70": 0.0,
+        "common_global_0p85": 0.0,
+        "common_global_1p00": 0.0
+      }
+    },
+    "base_model.model.model.layers.35.self_attn.o_proj": {
+      "lora_fro": 1.1499124765396118,
+      "hns_fro": 0.7294722199440002,
+      "per_module_gamma": 0.6343719363212585,
+      "basis": {
+        "basis_offdiag_fraction": 9.241515780954635e-07,
+        "basis_projection_residual_fraction": 0.0,
+        "negative_aligned_fraction": 0.0
+      },
+      "common_lora_source_relative_error": 2.0588312967599924e-06,
+      "saved_target_relative_errors": {
+        "common_hns": 0.0,
+        "common_per_module": 0.0,
+        "common_global_0p25": 0.0,
+        "common_global_0p40": 0.0,
+        "common_global_0p55": 0.0,
+        "common_global_0p70": 0.0,
+        "common_global_0p85": 0.0,
+        "common_global_1p00": 0.0
+      }
+    },
+    "base_model.model.model.layers.35.self_attn.q_proj": {
+      "lora_fro": 1.50124192237854,
+      "hns_fro": 0.9505048394203186,
+      "per_module_gamma": 0.6331456899642944,
+      "basis": {
+        "basis_offdiag_fraction": 8.89364288061144e-07,
+        "basis_projection_residual_fraction": 0.0,
+        "negative_aligned_fraction": 0.0
+      },
+      "common_lora_source_relative_error": 2.803978899825224e-06,
+      "saved_target_relative_errors": {
+        "common_hns": 0.0,
+        "common_per_module": 0.0,
+        "common_global_0p25": 0.0,
+        "common_global_0p40": 0.0,
+        "common_global_0p55": 0.0,
+        "common_global_0p70": 0.0,
+        "common_global_0p85": 0.0,
+        "common_global_1p00": 0.0
+      }
+    },
+    "base_model.model.model.layers.35.self_attn.v_proj": {
+      "lora_fro": 0.5792961120605469,
+      "hns_fro": 0.3528299033641815,
+      "per_module_gamma": 0.6090666055679321,
+      "basis": {
+        "basis_offdiag_fraction": 8.682222634551486e-07,
+        "basis_projection_residual_fraction": 0.0,
+        "negative_aligned_fraction": 0.0
+      },
+      "common_lora_source_relative_error": 1.6235458048054016e-06,
+      "saved_target_relative_errors": {
+        "common_hns": 0.0,
+        "common_per_module": 0.0,
+        "common_global_0p25": 0.0,
+        "common_global_0p40": 0.0,
+        "common_global_0p55": 0.0,
+        "common_global_0p70": 0.0,
+        "common_global_0p85": 0.0,
+        "common_global_1p00": 0.0
+      }
+    },
+    "base_model.model.model.layers.4.mlp.down_proj": {
+      "lora_fro": 1.528361201286316,
+      "hns_fro": 1.057550072669983,
+      "per_module_gamma": 0.6919503808021545,
+      "basis": {
+        "basis_offdiag_fraction": 9.754486736313992e-07,
+        "basis_projection_residual_fraction": 0.0,
+        "negative_aligned_fraction": 0.0
+      },
+      "common_lora_source_relative_error": 1.6924405503423417e-06,
+      "saved_target_relative_errors": {
+        "common_hns": 0.0,
+        "common_per_module": 0.0,
+        "common_global_0p25": 0.0,
+        "common_global_0p40": 0.0,
+        "common_global_0p55": 0.0,
+        "common_global_0p70": 0.0,
+        "common_global_0p85": 0.0,
+        "common_global_1p00": 0.0
+      }
+    },
+    "base_model.model.model.layers.4.mlp.gate_proj": {
+      "lora_fro": 2.762709379196167,
+      "hns_fro": 1.418478012084961,
+      "per_module_gamma": 0.5134372711181641,
+      "basis": {
+        "basis_offdiag_fraction": 8.703555335712164e-07,
+        "basis_projection_residual_fraction": 0.0,
+        "negative_aligned_fraction": 0.0
+      },
+      "common_lora_source_relative_error": 7.111583368023483e-07,
+      "saved_target_relative_errors": {
+        "common_hns": 0.0,
+        "common_per_module": 0.0,
+        "common_global_0p25": 0.0,
+        "common_global_0p40": 0.0,
+        "common_global_0p55": 0.0,
+        "common_global_0p70": 0.0,
+        "common_global_0p85": 0.0,
+        "common_global_1p00": 0.0
+      }
+    },
+    "base_model.model.model.layers.4.mlp.up_proj": {
+      "lora_fro": 1.4170756340026855,
+      "hns_fro": 0.9854546189308167,
+      "per_module_gamma": 0.6954142451286316,
+      "basis": {
+        "basis_offdiag_fraction": 7.954391576253455e-07,
+        "basis_projection_residual_fraction": 0.0,
+        "negative_aligned_fraction": 0.0
+      },
+      "common_lora_source_relative_error": 1.7969860616124781e-06,
+      "saved_target_relative_errors": {
+        "common_hns": 0.0,
+        "common_per_module": 0.0,
+        "common_global_0p25": 0.0,
+        "common_global_0p40": 0.0,
+        "common_global_0p55": 0.0,
+        "common_global_0p70": 0.0,
+        "common_global_0p85": 0.0,
+        "common_global_1p00": 0.0
+      }
+    },
+    "base_model.model.model.layers.4.self_attn.k_proj": {
+      "lora_fro": 0.7296831607818604,
+      "hns_fro": 0.5282518267631531,
+      "per_module_gamma": 0.7239468693733215,
+      "basis": {
+        "basis_offdiag_fraction": 7.227079562055885e-07,
+        "basis_projection_residual_fraction": 0.0,
+        "negative_aligned_fraction": 0.0
+      },
+      "common_lora_source_relative_error": 2.712415539638794e-06,
+      "saved_target_relative_errors": {
+        "common_hns": 0.0,
+        "common_per_module": 0.0,
+        "common_global_0p25": 0.0,
+        "common_global_0p40": 0.0,
+        "common_global_0p55": 0.0,
+        "common_global_0p70": 0.0,
+        "common_global_0p85": 0.0,
+        "common_global_1p00": 0.0
+      }
+    },
+    "base_model.model.model.layers.4.self_attn.o_proj": {
+      "lora_fro": 0.9946704506874084,
+      "hns_fro": 0.7221061587333679,
+      "per_module_gamma": 0.7259752750396729,
+      "basis": {
+        "basis_offdiag_fraction": 8.752869304838681e-07,
+        "basis_projection_residual_fraction": 0.0,
+        "negative_aligned_fraction": 0.0
+      },
+      "common_lora_source_relative_error": 2.370612290063916e-06,
+      "saved_target_relative_errors": {
+        "common_hns": 0.0,
+        "common_per_module": 0.0,
+        "common_global_0p25": 0.0,
+        "common_global_0p40": 0.0,
+        "common_global_0p55": 0.0,
+        "common_global_0p70": 0.0,
+        "common_global_0p85": 0.0,
+        "common_global_1p00": 0.0
+      }
+    },
+    "base_model.model.model.layers.4.self_attn.q_proj": {
+      "lora_fro": 1.4850406646728516,
+      "hns_fro": 0.9540493488311768,
+      "per_module_gamma": 0.6424399018287659,
+      "basis": {
+        "basis_offdiag_fraction": 8.25202373949146e-07,
+        "basis_projection_residual_fraction": 0.0,
+        "negative_aligned_fraction": 0.0
+      },
+      "common_lora_source_relative_error": 3.535079891509138e-06,
+      "saved_target_relative_errors": {
+        "common_hns": 0.0,
+        "common_per_module": 0.0,
+        "common_global_0p25": 0.0,
+        "common_global_0p40": 0.0,
+        "common_global_0p55": 0.0,
+        "common_global_0p70": 0.0,
+        "common_global_0p85": 0.0,
+        "common_global_1p00": 0.0
+      }
+    },
+    "base_model.model.model.layers.4.self_attn.v_proj": {
+      "lora_fro": 0.5586725473403931,
+      "hns_fro": 0.3639446198940277,
+      "per_module_gamma": 0.6514453291893005,
+      "basis": {
+        "basis_offdiag_fraction": 1.0497287382754574e-06,
+        "basis_projection_residual_fraction": 0.0,
+        "negative_aligned_fraction": 0.0
+      },
+      "common_lora_source_relative_error": 2.4613324297485288e-06,
+      "saved_target_relative_errors": {
+        "common_hns": 0.0,
+        "common_per_module": 0.0,
+        "common_global_0p25": 0.0,
+        "common_global_0p40": 0.0,
+        "common_global_0p55": 0.0,
+        "common_global_0p70": 0.0,
+        "common_global_0p85": 0.0,
+        "common_global_1p00": 0.0
+      }
+    },
+    "base_model.model.model.layers.5.mlp.down_proj": {
+      "lora_fro": 1.8432390689849854,
+      "hns_fro": 1.1337735652923584,
+      "per_module_gamma": 0.6150984764099121,
+      "basis": {
+        "basis_offdiag_fraction": 9.275956355132942e-07,
+        "basis_projection_residual_fraction": 0.0,
+        "negative_aligned_fraction": 0.0
+      },
+      "common_lora_source_relative_error": 5.120979251705967e-06,
+      "saved_target_relative_errors": {
+        "common_hns": 0.0,
+        "common_per_module": 0.0,
+        "common_global_0p25": 0.0,
+        "common_global_0p40": 0.0,
+        "common_global_0p55": 0.0,
+        "common_global_0p70": 0.0,
+        "common_global_0p85": 0.0,
+        "common_global_1p00": 0.0
+      }
+    },
+    "base_model.model.model.layers.5.mlp.gate_proj": {
+      "lora_fro": 2.48306941986084,
+      "hns_fro": 1.7040408849716187,
+      "per_module_gamma": 0.686263918876648,
+      "basis": {
+        "basis_offdiag_fraction": 8.798544257561298e-07,
+        "basis_projection_residual_fraction": 0.0,
+        "negative_aligned_fraction": 0.0
+      },
+      "common_lora_source_relative_error": 1.8135638625383715e-06,
+      "saved_target_relative_errors": {
+        "common_hns": 0.0,
+        "common_per_module": 0.0,
+        "common_global_0p25": 0.0,
+        "common_global_0p40": 0.0,
+        "common_global_0p55": 0.0,
+        "common_global_0p70": 0.0,
+        "common_global_0p85": 0.0,
+        "common_global_1p00": 0.0
+      }
+    },
+    "base_model.model.model.layers.5.mlp.up_proj": {
+      "lora_fro": 1.4804803133010864,
+      "hns_fro": 1.195898175239563,
+      "per_module_gamma": 0.8077771663665771,
+      "basis": {
+        "basis_offdiag_fraction": 8.571797280010864e-07,
+        "basis_projection_residual_fraction": 0.0,
+        "negative_aligned_fraction": 0.0
+      },
+      "common_lora_source_relative_error": 5.22476638149197e-06,
+      "saved_target_relative_errors": {
+        "common_hns": 0.0,
+        "common_per_module": 0.0,
+        "common_global_0p25": 0.0,
+        "common_global_0p40": 0.0,
+        "common_global_0p55": 0.0,
+        "common_global_0p70": 0.0,
+        "common_global_0p85": 0.0,
+        "common_global_1p00": 0.0
+      }
+    },
+    "base_model.model.model.layers.5.self_attn.k_proj": {
+      "lora_fro": 0.7079953551292419,
+      "hns_fro": 0.5036611557006836,
+      "per_module_gamma": 0.711390495300293,
+      "basis": {
+        "basis_offdiag_fraction": 9.657933834082593e-07,
+        "basis_projection_residual_fraction": 0.0,
+        "negative_aligned_fraction": 0.0
+      },
+      "common_lora_source_relative_error": 2.523312832434976e-06,
+      "saved_target_relative_errors": {
+        "common_hns": 0.0,
+        "common_per_module": 0.0,
+        "common_global_0p25": 0.0,
+        "common_global_0p40": 0.0,
+        "common_global_0p55": 0.0,
+        "common_global_0p70": 0.0,
+        "common_global_0p85": 0.0,
+        "common_global_1p00": 0.0
+      }
+    },
+    "base_model.model.model.layers.5.self_attn.o_proj": {
+      "lora_fro": 1.0609265565872192,
+      "hns_fro": 0.7874950766563416,
+      "per_module_gamma": 0.7422710657119751,
+      "basis": {
+        "basis_offdiag_fraction": 8.652681862137704e-07,
+        "basis_projection_residual_fraction": 0.0,
+        "negative_aligned_fraction": 0.0
+      },
+      "common_lora_source_relative_error": 3.2216509699509215e-06,
+      "saved_target_relative_errors": {
+        "common_hns": 0.0,
+        "common_per_module": 0.0,
+        "common_global_0p25": 0.0,
+        "common_global_0p40": 0.0,
+        "common_global_0p55": 0.0,
+        "common_global_0p70": 0.0,
+        "common_global_0p85": 0.0,
+        "common_global_1p00": 0.0
+      }
+    },
+    "base_model.model.model.layers.5.self_attn.q_proj": {
+      "lora_fro": 1.1719921827316284,
+      "hns_fro": 0.8870545625686646,
+      "per_module_gamma": 0.7568775415420532,
+      "basis": {
+        "basis_offdiag_fraction": 9.473554079803107e-07,
+        "basis_projection_residual_fraction": 0.0,
+        "negative_aligned_fraction": 0.0
+      },
+      "common_lora_source_relative_error": 3.355317592142341e-06,
+      "saved_target_relative_errors": {
+        "common_hns": 0.0,
+        "common_per_module": 0.0,
+        "common_global_0p25": 0.0,
+        "common_global_0p40": 0.0,
+        "common_global_0p55": 0.0,
+        "common_global_0p70": 0.0,
+        "common_global_0p85": 0.0,
+        "common_global_1p00": 0.0
+      }
+    },
+    "base_model.model.model.layers.5.self_attn.v_proj": {
+      "lora_fro": 0.5773377418518066,
+      "hns_fro": 0.3655794560909271,
+      "per_module_gamma": 0.6332159042358398,
+      "basis": {
+        "basis_offdiag_fraction": 7.980546793602607e-07,
+        "basis_projection_residual_fraction": 0.0,
+        "negative_aligned_fraction": 0.0
+      },
+      "common_lora_source_relative_error": 3.3706936027408337e-06,
+      "saved_target_relative_errors": {
+        "common_hns": 0.0,
+        "common_per_module": 0.0,
+        "common_global_0p25": 0.0,
+        "common_global_0p40": 0.0,
+        "common_global_0p55": 0.0,
+        "common_global_0p70": 0.0,
+        "common_global_0p85": 0.0,
+        "common_global_1p00": 0.0
+      }
+    },
+    "base_model.model.model.layers.6.mlp.down_proj": {
+      "lora_fro": 1.9563995599746704,
+      "hns_fro": 0.6192958950996399,
+      "per_module_gamma": 0.31654879450798035,
+      "basis": {
+        "basis_offdiag_fraction": 9.241571446371942e-07,
+        "basis_projection_residual_fraction": 0.0,
+        "negative_aligned_fraction": 0.0
+      },
+      "common_lora_source_relative_error": 1.9791066740323902e-06,
+      "saved_target_relative_errors": {
+        "common_hns": 0.0,
+        "common_per_module": 0.0,
+        "common_global_0p25": 0.0,
+        "common_global_0p40": 0.0,
+        "common_global_0p55": 0.0,
+        "common_global_0p70": 0.0,
+        "common_global_0p85": 0.0,
+        "common_global_1p00": 0.0
+      }
+    },
+    "base_model.model.model.layers.6.mlp.gate_proj": {
+      "lora_fro": 2.1475086212158203,
+      "hns_fro": 1.483591079711914,
+      "per_module_gamma": 0.6908429265022278,
+      "basis": {
+        "basis_offdiag_fraction": 7.967933772828463e-07,
+        "basis_projection_residual_fraction": 0.0,
+        "negative_aligned_fraction": 0.0
+      },
+      "common_lora_source_relative_error": 3.3030205743968102e-06,
+      "saved_target_relative_errors": {
+        "common_hns": 0.0,
+        "common_per_module": 0.0,
+        "common_global_0p25": 0.0,
+        "common_global_0p40": 0.0,
+        "common_global_0p55": 0.0,
+        "common_global_0p70": 0.0,
+        "common_global_0p85": 0.0,
+        "common_global_1p00": 0.0
+      }
+    },
+    "base_model.model.model.layers.6.mlp.up_proj": {
+      "lora_fro": 1.7579338550567627,
+      "hns_fro": 1.0552380084991455,
+      "per_module_gamma": 0.6002717614173889,
+      "basis": {
+        "basis_offdiag_fraction": 7.990233932606799e-07,
+        "basis_projection_residual_fraction": 0.0,
+        "negative_aligned_fraction": 0.0
+      },
+      "common_lora_source_relative_error": 4.383362629288868e-06,
+      "saved_target_relative_errors": {
+        "common_hns": 0.0,
+        "common_per_module": 0.0,
+        "common_global_0p25": 0.0,
+        "common_global_0p40": 0.0,
+        "common_global_0p55": 0.0,
+        "common_global_0p70": 0.0,
+        "common_global_0p85": 0.0,
+        "common_global_1p00": 0.0
+      }
+    },
+    "base_model.model.model.layers.6.self_attn.k_proj": {
+      "lora_fro": 0.7169380187988281,
+      "hns_fro": 0.5200923681259155,
+      "per_module_gamma": 0.7254356145858765,
+      "basis": {
+        "basis_offdiag_fraction": 9.207939082554134e-07,
+        "basis_projection_residual_fraction": 0.0,
+        "negative_aligned_fraction": 0.0
+      },
+      "common_lora_source_relative_error": 2.248962963270272e-06,
+      "saved_target_relative_errors": {
+        "common_hns": 0.0,
+        "common_per_module": 0.0,
+        "common_global_0p25": 0.0,
+        "common_global_0p40": 0.0,
+        "common_global_0p55": 0.0,
+        "common_global_0p70": 0.0,
+        "common_global_0p85": 0.0,
+        "common_global_1p00": 0.0
+      }
+    },
+    "base_model.model.model.layers.6.self_attn.o_proj": {
+      "lora_fro": 1.1081078052520752,
+      "hns_fro": 0.8604766130447388,
+      "per_module_gamma": 0.7765278816223145,
+      "basis": {
+        "basis_offdiag_fraction": 8.008918228278329e-07,
+        "basis_projection_residual_fraction": 0.0,
+        "negative_aligned_fraction": 0.0
+      },
+      "common_lora_source_relative_error": 2.754262344961294e-06,
+      "saved_target_relative_errors": {
+        "common_hns": 0.0,
+        "common_per_module": 0.0,
+        "common_global_0p25": 0.0,
+        "common_global_0p40": 0.0,
+        "common_global_0p55": 0.0,
+        "common_global_0p70": 0.0,
+        "common_global_0p85": 0.0,
+        "common_global_1p00": 0.0
+      }
+    },
+    "base_model.model.model.layers.6.self_attn.q_proj": {
+      "lora_fro": 1.4313077926635742,
+      "hns_fro": 0.9585443139076233,
+      "per_module_gamma": 0.6696982383728027,
+      "basis": {
+        "basis_offdiag_fraction": 9.034738348399243e-07,
+        "basis_projection_residual_fraction": 0.0,
+        "negative_aligned_fraction": 0.0
+      },
+      "common_lora_source_relative_error": 2.1407148880446517e-06,
+      "saved_target_relative_errors": {
+        "common_hns": 0.0,
+        "common_per_module": 0.0,
+        "common_global_0p25": 0.0,
+        "common_global_0p40": 0.0,
+        "common_global_0p55": 0.0,
+        "common_global_0p70": 0.0,
+        "common_global_0p85": 0.0,
+        "common_global_1p00": 0.0
+      }
+    },
+    "base_model.model.model.layers.6.self_attn.v_proj": {
+      "lora_fro": 0.49985232949256897,
+      "hns_fro": 0.38826531171798706,
+      "per_module_gamma": 0.7767600417137146,
+      "basis": {
+        "basis_offdiag_fraction": 7.607374299953167e-07,
+        "basis_projection_residual_fraction": 0.0,
+        "negative_aligned_fraction": 0.0
+      },
+      "common_lora_source_relative_error": 2.6557315023446784e-06,
+      "saved_target_relative_errors": {
+        "common_hns": 0.0,
+        "common_per_module": 0.0,
+        "common_global_0p25": 0.0,
+        "common_global_0p40": 0.0,
+        "common_global_0p55": 0.0,
+        "common_global_0p70": 0.0,
+        "common_global_0p85": 0.0,
+        "common_global_1p00": 0.0
+      }
+    },
+    "base_model.model.model.layers.7.mlp.down_proj": {
+      "lora_fro": 1.8424291610717773,
+      "hns_fro": 0.9441725611686707,
+      "per_module_gamma": 0.5124607086181641,
+      "basis": {
+        "basis_offdiag_fraction": 8.584780872351864e-07,
+        "basis_projection_residual_fraction": 0.0,
+        "negative_aligned_fraction": 0.0
+      },
+      "common_lora_source_relative_error": 1.3600141128609934e-06,
+      "saved_target_relative_errors": {
+        "common_hns": 0.0,
+        "common_per_module": 0.0,
+        "common_global_0p25": 0.0,
+        "common_global_0p40": 0.0,
+        "common_global_0p55": 0.0,
+        "common_global_0p70": 0.0,
+        "common_global_0p85": 0.0,
+        "common_global_1p00": 0.0
+      }
+    },
+    "base_model.model.model.layers.7.mlp.gate_proj": {
+      "lora_fro": 2.1527202129364014,
+      "hns_fro": 1.6119359731674194,
+      "per_module_gamma": 0.7487902641296387,
+      "basis": {
+        "basis_offdiag_fraction": 1.1339182612223698e-06,
+        "basis_projection_residual_fraction": 0.0,
+        "negative_aligned_fraction": 0.0
+      },
+      "common_lora_source_relative_error": 2.5340362571481176e-06,
+      "saved_target_relative_errors": {
+        "common_hns": 0.0,
+        "common_per_module": 0.0,
+        "common_global_0p25": 0.0,
+        "common_global_0p40": 0.0,
+        "common_global_0p55": 0.0,
+        "common_global_0p70": 0.0,
+        "common_global_0p85": 0.0,
+        "common_global_1p00": 0.0
+      }
+    },
+    "base_model.model.model.layers.7.mlp.up_proj": {
+      "lora_fro": 1.5384440422058105,
+      "hns_fro": 1.0071107149124146,
+      "per_module_gamma": 0.6546294093132019,
+      "basis": {
+        "basis_offdiag_fraction": 8.192678450296586e-07,
+        "basis_projection_residual_fraction": 0.000695417045485608,
+        "negative_aligned_fraction": 0.0
+      },
+      "common_lora_source_relative_error": 3.3498660149700404e-06,
+      "saved_target_relative_errors": {
+        "common_hns": 0.0,
+        "common_per_module": 0.0,
+        "common_global_0p25": 0.0,
+        "common_global_0p40": 0.0,
+        "common_global_0p55": 0.0,
+        "common_global_0p70": 0.0,
+        "common_global_0p85": 0.0,
+        "common_global_1p00": 0.0
+      }
+    },
+    "base_model.model.model.layers.7.self_attn.k_proj": {
+      "lora_fro": 0.5191742181777954,
+      "hns_fro": 0.40033861994743347,
+      "per_module_gamma": 0.771106481552124,
+      "basis": {
+        "basis_offdiag_fraction": 6.765640416980131e-07,
+        "basis_projection_residual_fraction": 0.0,
+        "negative_aligned_fraction": 0.0
+      },
+      "common_lora_source_relative_error": 1.6996258217758944e-06,
+      "saved_target_relative_errors": {
+        "common_hns": 0.0,
+        "common_per_module": 0.0,
+        "common_global_0p25": 0.0,
+        "common_global_0p40": 0.0,
+        "common_global_0p55": 0.0,
+        "common_global_0p70": 0.0,
+        "common_global_0p85": 0.0,
+        "common_global_1p00": 0.0
+      }
+    },
+    "base_model.model.model.layers.7.self_attn.o_proj": {
+      "lora_fro": 1.0084614753723145,
+      "hns_fro": 0.7247084975242615,
+      "per_module_gamma": 0.7186278700828552,
+      "basis": {
+        "basis_offdiag_fraction": 8.795449290450076e-07,
+        "basis_projection_residual_fraction": 0.0,
+        "negative_aligned_fraction": 0.0
+      },
+      "common_lora_source_relative_error": 3.150268041762897e-06,
+      "saved_target_relative_errors": {
+        "common_hns": 0.0,
+        "common_per_module": 0.0,
+        "common_global_0p25": 0.0,
+        "common_global_0p40": 0.0,
+        "common_global_0p55": 0.0,
+        "common_global_0p70": 0.0,
+        "common_global_0p85": 0.0,
+        "common_global_1p00": 0.0
+      }
+    },
+    "base_model.model.model.layers.7.self_attn.q_proj": {
+      "lora_fro": 1.1965652704238892,
+      "hns_fro": 0.8330572247505188,
+      "per_module_gamma": 0.6962071061134338,
+      "basis": {
+        "basis_offdiag_fraction": 8.595511395148916e-07,
+        "basis_projection_residual_fraction": 0.0,
+        "negative_aligned_fraction": 0.0
+      },
+      "common_lora_source_relative_error": 2.8074832402430815e-06,
+      "saved_target_relative_errors": {
+        "common_hns": 0.0,
+        "common_per_module": 0.0,
+        "common_global_0p25": 0.0,
+        "common_global_0p40": 0.0,
+        "common_global_0p55": 0.0,
+        "common_global_0p70": 0.0,
+        "common_global_0p85": 0.0,
+        "common_global_1p00": 0.0
+      }
+    },
+    "base_model.model.model.layers.7.self_attn.v_proj": {
+      "lora_fro": 0.4725358486175537,
+      "hns_fro": 0.30282437801361084,
+      "per_module_gamma": 0.6408495306968689,
+      "basis": {
+        "basis_offdiag_fraction": 7.825699818202046e-07,
+        "basis_projection_residual_fraction": 0.0,
+        "negative_aligned_fraction": 0.0
+      },
+      "common_lora_source_relative_error": 5.399265189532114e-06,
+      "saved_target_relative_errors": {
+        "common_hns": 0.0,
+        "common_per_module": 0.0,
+        "common_global_0p25": 0.0,
+        "common_global_0p40": 0.0,
+        "common_global_0p55": 0.0,
+        "common_global_0p70": 0.0,
+        "common_global_0p85": 0.0,
+        "common_global_1p00": 0.0
+      }
+    },
+    "base_model.model.model.layers.8.mlp.down_proj": {
+      "lora_fro": 1.7353302240371704,
+      "hns_fro": 1.0821359157562256,
+      "per_module_gamma": 0.6235907673835754,
+      "basis": {
+        "basis_offdiag_fraction": 7.285943044675142e-07,
+        "basis_projection_residual_fraction": 0.0,
+        "negative_aligned_fraction": 0.0
+      },
+      "common_lora_source_relative_error": 2.592523974081684e-06,
+      "saved_target_relative_errors": {
+        "common_hns": 0.0,
+        "common_per_module": 0.0,
+        "common_global_0p25": 0.0,
+        "common_global_0p40": 0.0,
+        "common_global_0p55": 0.0,
+        "common_global_0p70": 0.0,
+        "common_global_0p85": 0.0,
+        "common_global_1p00": 0.0
+      }
+    },
+    "base_model.model.model.layers.8.mlp.gate_proj": {
+      "lora_fro": 2.227581262588501,
+      "hns_fro": 1.5178505182266235,
+      "per_module_gamma": 0.6813895106315613,
+      "basis": {
+        "basis_offdiag_fraction": 8.191736529573391e-07,
+        "basis_projection_residual_fraction": 0.0,
+        "negative_aligned_fraction": 0.0
+      },
+      "common_lora_source_relative_error": 2.2084849880033994e-06,
+      "saved_target_relative_errors": {
+        "common_hns": 0.0,
+        "common_per_module": 0.0,
+        "common_global_0p25": 0.0,
+        "common_global_0p40": 0.0,
+        "common_global_0p55": 0.0,
+        "common_global_0p70": 0.0,
+        "common_global_0p85": 0.0,
+        "common_global_1p00": 0.0
+      }
+    },
+    "base_model.model.model.layers.8.mlp.up_proj": {
+      "lora_fro": 1.747517704963684,
+      "hns_fro": 1.3971391916275024,
+      "per_module_gamma": 0.7994993329048157,
+      "basis": {
+        "basis_offdiag_fraction": 8.408701870251532e-07,
+        "basis_projection_residual_fraction": 0.0,
+        "negative_aligned_fraction": 0.0
+      },
+      "common_lora_source_relative_error": 4.463880169262261e-06,
+      "saved_target_relative_errors": {
+        "common_hns": 0.0,
+        "common_per_module": 0.0,
+        "common_global_0p25": 0.0,
+        "common_global_0p40": 0.0,
+        "common_global_0p55": 0.0,
+        "common_global_0p70": 0.0,
+        "common_global_0p85": 0.0,
+        "common_global_1p00": 0.0
+      }
+    },
+    "base_model.model.model.layers.8.self_attn.k_proj": {
+      "lora_fro": 0.6266148090362549,
+      "hns_fro": 0.43667173385620117,
+      "per_module_gamma": 0.6968742609024048,
+      "basis": {
+        "basis_offdiag_fraction": 1.0835749127402775e-06,
+        "basis_projection_residual_fraction": 0.0,
+        "negative_aligned_fraction": 0.0
+      },
+      "common_lora_source_relative_error": 2.0262917598001393e-06,
+      "saved_target_relative_errors": {
+        "common_hns": 0.0,
+        "common_per_module": 0.0,
+        "common_global_0p25": 0.0,
+        "common_global_0p40": 0.0,
+        "common_global_0p55": 0.0,
+        "common_global_0p70": 0.0,
+        "common_global_0p85": 0.0,
+        "common_global_1p00": 0.0
+      }
+    },
+    "base_model.model.model.layers.8.self_attn.o_proj": {
+      "lora_fro": 1.0560728311538696,
+      "hns_fro": 0.7940115928649902,
+      "per_module_gamma": 0.7518530488014221,
+      "basis": {
+        "basis_offdiag_fraction": 8.51867390464459e-07,
+        "basis_projection_residual_fraction": 0.0,
+        "negative_aligned_fraction": 0.0
+      },
+      "common_lora_source_relative_error": 1.8261214078725587e-06,
+      "saved_target_relative_errors": {
+        "common_hns": 0.0,
+        "common_per_module": 0.0,
+        "common_global_0p25": 0.0,
+        "common_global_0p40": 0.0,
+        "common_global_0p55": 0.0,
+        "common_global_0p70": 0.0,
+        "common_global_0p85": 0.0,
+        "common_global_1p00": 0.0
+      }
+    },
+    "base_model.model.model.layers.8.self_attn.q_proj": {
+      "lora_fro": 1.1922849416732788,
+      "hns_fro": 0.856343150138855,
+      "per_module_gamma": 0.7182369828224182,
+      "basis": {
+        "basis_offdiag_fraction": 7.63513987092572e-07,
+        "basis_projection_residual_fraction": 0.0,
+        "negative_aligned_fraction": 0.0
+      },
+      "common_lora_source_relative_error": 1.52436755250527e-06,
+      "saved_target_relative_errors": {
+        "common_hns": 0.0,
+        "common_per_module": 0.0,
+        "common_global_0p25": 0.0,
+        "common_global_0p40": 0.0,
+        "common_global_0p55": 0.0,
+        "common_global_0p70": 0.0,
+        "common_global_0p85": 0.0,
+        "common_global_1p00": 0.0
+      }
+    },
+    "base_model.model.model.layers.8.self_attn.v_proj": {
+      "lora_fro": 0.5199849605560303,
+      "hns_fro": 0.28542929887771606,
+      "per_module_gamma": 0.5489183664321899,
+      "basis": {
+        "basis_offdiag_fraction": 8.334181313983768e-07,
+        "basis_projection_residual_fraction": 0.00028008921370373447,
+        "negative_aligned_fraction": 0.0
+      },
+      "common_lora_source_relative_error": 2.200693203585308e-06,
+      "saved_target_relative_errors": {
+        "common_hns": 0.0,
+        "common_per_module": 0.0,
+        "common_global_0p25": 0.0,
+        "common_global_0p40": 0.0,
+        "common_global_0p55": 0.0,
+        "common_global_0p70": 0.0,
+        "common_global_0p85": 0.0,
+        "common_global_1p00": 0.0
+      }
+    },
+    "base_model.model.model.layers.9.mlp.down_proj": {
+      "lora_fro": 1.7961214780807495,
+      "hns_fro": 1.0282305479049683,
+      "per_module_gamma": 0.5724726915359497,
+      "basis": {
+        "basis_offdiag_fraction": 8.602475454674634e-07,
+        "basis_projection_residual_fraction": 0.0,
+        "negative_aligned_fraction": 0.0
+      },
+      "common_lora_source_relative_error": 5.580731030685163e-06,
+      "saved_target_relative_errors": {
+        "common_hns": 0.0,
+        "common_per_module": 0.0,
+        "common_global_0p25": 0.0,
+        "common_global_0p40": 0.0,
+        "common_global_0p55": 0.0,
+        "common_global_0p70": 0.0,
+        "common_global_0p85": 0.0,
+        "common_global_1p00": 0.0
+      }
+    },
+    "base_model.model.model.layers.9.mlp.gate_proj": {
+      "lora_fro": 2.2957522869110107,
+      "hns_fro": 1.5518391132354736,
+      "per_module_gamma": 0.6759610176086426,
+      "basis": {
+        "basis_offdiag_fraction": 1.0405898366716836e-06,
+        "basis_projection_residual_fraction": 0.0,
+        "negative_aligned_fraction": 0.0
+      },
+      "common_lora_source_relative_error": 1.723284052170486e-06,
+      "saved_target_relative_errors": {
+        "common_hns": 0.0,
+        "common_per_module": 0.0,
+        "common_global_0p25": 0.0,
+        "common_global_0p40": 0.0,
+        "common_global_0p55": 0.0,
+        "common_global_0p70": 0.0,
+        "common_global_0p85": 0.0,
+        "common_global_1p00": 0.0
+      }
+    },
+    "base_model.model.model.layers.9.mlp.up_proj": {
+      "lora_fro": 1.7598909139633179,
+      "hns_fro": 1.404783844947815,
+      "per_module_gamma": 0.7982221245765686,
+      "basis": {
+        "basis_offdiag_fraction": 8.302564269665949e-07,
+        "basis_projection_residual_fraction": 0.0,
+        "negative_aligned_fraction": 0.0
+      },
+      "common_lora_source_relative_error": 2.534214865113022e-06,
+      "saved_target_relative_errors": {
+        "common_hns": 0.0,
+        "common_per_module": 0.0,
+        "common_global_0p25": 0.0,
+        "common_global_0p40": 0.0,
+        "common_global_0p55": 0.0,
+        "common_global_0p70": 0.0,
+        "common_global_0p85": 0.0,
+        "common_global_1p00": 0.0
+      }
+    },
+    "base_model.model.model.layers.9.self_attn.k_proj": {
+      "lora_fro": 0.6351683735847473,
+      "hns_fro": 0.40193861722946167,
+      "per_module_gamma": 0.6328064203262329,
+      "basis": {
+        "basis_offdiag_fraction": 8.772773224614532e-07,
+        "basis_projection_residual_fraction": 0.0,
+        "negative_aligned_fraction": 0.0
+      },
+      "common_lora_source_relative_error": 1.5283464777200216e-06,
+      "saved_target_relative_errors": {
+        "common_hns": 0.0,
+        "common_per_module": 0.0,
+        "common_global_0p25": 0.0,
+        "common_global_0p40": 0.0,
+        "common_global_0p55": 0.0,
+        "common_global_0p70": 0.0,
+        "common_global_0p85": 0.0,
+        "common_global_1p00": 0.0
+      }
+    },
+    "base_model.model.model.layers.9.self_attn.o_proj": {
+      "lora_fro": 1.0312495231628418,
+      "hns_fro": 0.8175715208053589,
+      "per_module_gamma": 0.7927969694137573,
+      "basis": {
+        "basis_offdiag_fraction": 8.486946696240367e-07,
+        "basis_projection_residual_fraction": 0.0,
+        "negative_aligned_fraction": 0.0
+      },
+      "common_lora_source_relative_error": 3.52774003617926e-06,
+      "saved_target_relative_errors": {
+        "common_hns": 0.0,
+        "common_per_module": 0.0,
+        "common_global_0p25": 0.0,
+        "common_global_0p40": 0.0,
+        "common_global_0p55": 0.0,
+        "common_global_0p70": 0.0,
+        "common_global_0p85": 0.0,
+        "common_global_1p00": 0.0
+      }
+    },
+    "base_model.model.model.layers.9.self_attn.q_proj": {
+      "lora_fro": 1.092050313949585,
+      "hns_fro": 0.8864026665687561,
+      "per_module_gamma": 0.811686635017395,
+      "basis": {
+        "basis_offdiag_fraction": 9.170291417951909e-07,
+        "basis_projection_residual_fraction": 0.0,
+        "negative_aligned_fraction": 0.0
+      },
+      "common_lora_source_relative_error": 2.785229977490212e-06,
+      "saved_target_relative_errors": {
+        "common_hns": 0.0,
+        "common_per_module": 0.0,
+        "common_global_0p25": 0.0,
+        "common_global_0p40": 0.0,
+        "common_global_0p55": 0.0,
+        "common_global_0p70": 0.0,
+        "common_global_0p85": 0.0,
+        "common_global_1p00": 0.0
+      }
+    },
+    "base_model.model.model.layers.9.self_attn.v_proj": {
+      "lora_fro": 0.45483309030532837,
+      "hns_fro": 0.2960270941257477,
+      "per_module_gamma": 0.6508477330207825,
+      "basis": {
+        "basis_offdiag_fraction": 7.895045100946307e-07,
+        "basis_projection_residual_fraction": 0.0,
+        "negative_aligned_fraction": 0.0
+      },
+      "common_lora_source_relative_error": 3.628351728153577e-06,
+      "saved_target_relative_errors": {
+        "common_hns": 0.0,
+        "common_per_module": 0.0,
+        "common_global_0p25": 0.0,
+        "common_global_0p40": 0.0,
+        "common_global_0p55": 0.0,
+        "common_global_0p70": 0.0,
+        "common_global_0p85": 0.0,
+        "common_global_1p00": 0.0
+      }
+    }
+  }
+}

@@ -1,0 +1,316 @@
+{
+  "tasks": {
+    "magicoder": {
+      "conditions": 41,
+      "conditions_with_metric_change": 5,
+      "changed_items": 5,
+      "total_items": 656,
+      "min_fraction_stable": 0.9375
+    },
+    "metamath": {
+      "conditions": 41,
+      "conditions_with_metric_change": 7,
+      "changed_items": 9,
+      "total_items": 656,
+      "min_fraction_stable": 0.875
+    },
+    "tulu": {
+      "conditions": 41,
+      "conditions_with_metric_change": 6,
+      "changed_items": 8,
+      "total_items": 656,
+      "min_fraction_stable": 0.875
+    },
+    "commonsense": {
+      "conditions": 41,
+      "conditions_with_metric_change": 9,
+      "changed_items": 10,
+      "total_items": 5248,
+      "min_fraction_stable": 0.984375
+    }
+  },
+  "condition_differences": [
+    {
+      "task": "magicoder",
+      "label": "commonsense__global_0p25",
+      "samples": 16,
+      "metric_field": "normalized_completion",
+      "changed": 1,
+      "fraction_stable": 0.9375
+    },
+    {
+      "task": "magicoder",
+      "label": "metamath__global_0p85",
+      "samples": 16,
+      "metric_field": "normalized_completion",
+      "changed": 1,
+      "fraction_stable": 0.9375
+    },
+    {
+      "task": "magicoder",
+      "label": "tulu__common_hns",
+      "samples": 16,
+      "metric_field": "normalized_completion",
+      "changed": 1,
+      "fraction_stable": 0.9375
+    },
+    {
+      "task": "magicoder",
+      "label": "tulu__global_0p25",
+      "samples": 16,
+      "metric_field": "normalized_completion",
+      "changed": 1,
+      "fraction_stable": 0.9375
+    },
+    {
+      "task": "magicoder",
+      "label": "tulu__original_hns",
+      "samples": 16,
+      "metric_field": "normalized_completion",
+      "changed": 1,
+      "fraction_stable": 0.9375
+    },
+    {
+      "task": "metamath",
+      "label": "base",
+      "samples": 16,
+      "metric_field": "correct_strict",
+      "changed": 1,
+      "fraction_stable": 0.9375,
+      "run1_score": 0.4375,
+      "run2_score": 0.5,
+      "score_delta": 0.0625
+    },
+    {
+      "task": "metamath",
+      "label": "commonsense__global_0p25",
+      "samples": 16,
+      "metric_field": "correct_strict",
+      "changed": 1,
+      "fraction_stable": 0.9375,
+      "run1_score": 0.5625,
+      "run2_score": 0.5,
+      "score_delta": -0.0625
+    },
+    {
+      "task": "metamath",
+      "label": "magicoder__common_per_module",
+      "samples": 16,
+      "metric_field": "correct_strict",
+      "changed": 1,
+      "fraction_stable": 0.9375,
+      "run1_score": 0.4375,
+      "run2_score": 0.5,
+      "score_delta": 0.0625
+    },
+    {
+      "task": "metamath",
+      "label": "metamath__common_hns",
+      "samples": 16,
+      "metric_field": "correct_strict",
+      "changed": 1,
+      "fraction_stable": 0.9375,
+      "run1_score": 0.8125,
+      "run2_score": 0.75,
+      "score_delta": -0.0625
+    },
+    {
+      "task": "metamath",
+      "label": "metamath__global_0p70",
+      "samples": 16,
+      "metric_field": "correct_strict",
+      "changed": 1,
+      "fraction_stable": 0.9375,
+      "run1_score": 0.6875,
+      "run2_score": 0.625,
+      "score_delta": -0.0625
+    },
+    {
+      "task": "metamath",
+      "label": "tulu__common_hns",
+      "samples": 16,
+      "metric_field": "correct_strict",
+      "changed": 2,
+      "fraction_stable": 0.875,
+      "run1_score": 0.5,
+      "run2_score": 0.5,
+      "score_delta": 0.0
+    },
+    {
+      "task": "metamath",
+      "label": "tulu__global_0p40",
+      "samples": 16,
+      "metric_field": "correct_strict",
+      "changed": 2,
+      "fraction_stable": 0.875,
+      "run1_score": 0.375,
+      "run2_score": 0.5,
+      "score_delta": 0.125
+    },
+    {
+      "task": "tulu",
+      "label": "magicoder__original_hns",
+      "samples": 16,
+      "metric_field": "prompt_strict_passed",
+      "changed": 2,
+      "fraction_stable": 0.875,
+      "run1_score": 0.5625,
+      "run2_score": 0.6875,
+      "score_delta": 0.125
+    },
+    {
+      "task": "tulu",
+      "label": "metamath__global_0p85",
+      "samples": 16,
+      "metric_field": "prompt_strict_passed",
+      "changed": 1,
+      "fraction_stable": 0.9375,
+      "run1_score": 0.5625,
+      "run2_score": 0.625,
+      "score_delta": 0.0625
+    },
+    {
+      "task": "tulu",
+      "label": "metamath__original_lora",
+      "samples": 16,
+      "metric_field": "prompt_strict_passed",
+      "changed": 1,
+      "fraction_stable": 0.9375,
+      "run1_score": 0.625,
+      "run2_score": 0.6875,
+      "score_delta": 0.0625
+    },
+    {
+      "task": "tulu",
+      "label": "tulu__global_0p70",
+      "samples": 16,
+      "metric_field": "prompt_strict_passed",
+      "changed": 2,
+      "fraction_stable": 0.875,
+      "run1_score": 0.8125,
+      "run2_score": 0.6875,
+      "score_delta": -0.125
+    },
+    {
+      "task": "tulu",
+      "label": "tulu__original_hns",
+      "samples": 16,
+      "metric_field": "prompt_strict_passed",
+      "changed": 1,
+      "fraction_stable": 0.9375,
+      "run1_score": 0.625,
+      "run2_score": 0.6875,
+      "score_delta": 0.0625
+    },
+    {
+      "task": "tulu",
+      "label": "tulu__original_lora",
+      "samples": 16,
+      "metric_field": "prompt_strict_passed",
+      "changed": 1,
+      "fraction_stable": 0.9375,
+      "run1_score": 0.75,
+      "run2_score": 0.8125,
+      "score_delta": 0.0625
+    },
+    {
+      "task": "commonsense",
+      "label": "commonsense__common_lora",
+      "samples": 128,
+      "metric_field": "correct",
+      "changed": 1,
+      "fraction_stable": 0.9921875,
+      "run1_score": 0.8046875,
+      "run2_score": 0.8125,
+      "score_delta": 0.0078125
+    },
+    {
+      "task": "commonsense",
+      "label": "commonsense__original_lora",
+      "samples": 128,
+      "metric_field": "correct",
+      "changed": 1,
+      "fraction_stable": 0.9921875,
+      "run1_score": 0.796875,
+      "run2_score": 0.8046875,
+      "score_delta": 0.0078125
+    },
+    {
+      "task": "commonsense",
+      "label": "magicoder__global_0p40",
+      "samples": 128,
+      "metric_field": "correct",
+      "changed": 1,
+      "fraction_stable": 0.9921875,
+      "run1_score": 0.671875,
+      "run2_score": 0.6796875,
+      "score_delta": 0.0078125
+    },
+    {
+      "task": "commonsense",
+      "label": "magicoder__global_0p70",
+      "samples": 128,
+      "metric_field": "correct",
+      "changed": 1,
+      "fraction_stable": 0.9921875,
+      "run1_score": 0.6640625,
+      "run2_score": 0.671875,
+      "score_delta": 0.0078125
+    },
+    {
+      "task": "commonsense",
+      "label": "metamath__global_0p40",
+      "samples": 128,
+      "metric_field": "correct",
+      "changed": 2,
+      "fraction_stable": 0.984375,
+      "run1_score": 0.6875,
+      "run2_score": 0.6875,
+      "score_delta": 0.0
+    },
+    {
+      "task": "commonsense",
+      "label": "tulu__common_hns",
+      "samples": 128,
+      "metric_field": "correct",
+      "changed": 1,
+      "fraction_stable": 0.9921875,
+      "run1_score": 0.6484375,
+      "run2_score": 0.65625,
+      "score_delta": 0.0078125
+    },
+    {
+      "task": "commonsense",
+      "label": "tulu__global_0p55",
+      "samples": 128,
+      "metric_field": "correct",
+      "changed": 1,
+      "fraction_stable": 0.9921875,
+      "run1_score": 0.6796875,
+      "run2_score": 0.671875,
+      "score_delta": -0.0078125
+    },
+    {
+      "task": "commonsense",
+      "label": "tulu__global_0p70",
+      "samples": 128,
+      "metric_field": "correct",
+      "changed": 1,
+      "fraction_stable": 0.9921875,
+      "run1_score": 0.65625,
+      "run2_score": 0.6640625,
+      "score_delta": 0.0078125
+    },
+    {
+      "task": "commonsense",
+      "label": "tulu__global_0p85",
+      "samples": 128,
+      "metric_field": "correct",
+      "changed": 1,
+      "fraction_stable": 0.9921875,
+      "run1_score": 0.6328125,
+      "run2_score": 0.640625,
+      "score_delta": 0.0078125
+    }
+  ]
+}

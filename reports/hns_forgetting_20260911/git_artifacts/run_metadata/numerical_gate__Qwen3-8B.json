@@ -1,0 +1,1155 @@
+{
+  "status": "pass",
+  "criterion": "100% exact token IDs for all identical base/adapter conditions",
+  "checks": [
+    {
+      "task": "magicoder",
+      "label": "base",
+      "samples": 16,
+      "exact_token_sequences": 16,
+      "fraction": 1.0
+    },
+    {
+      "task": "magicoder",
+      "label": "magicoder__original_lora",
+      "samples": 16,
+      "exact_token_sequences": 16,
+      "fraction": 1.0
+    },
+    {
+      "task": "magicoder",
+      "label": "magicoder__original_hns",
+      "samples": 16,
+      "exact_token_sequences": 16,
+      "fraction": 1.0
+    },
+    {
+      "task": "magicoder",
+      "label": "magicoder__common_hns",
+      "samples": 16,
+      "exact_token_sequences": 16,
+      "fraction": 1.0
+    },
+    {
+      "task": "magicoder",
+      "label": "magicoder__common_per_module",
+      "samples": 16,
+      "exact_token_sequences": 16,
+      "fraction": 1.0
+    },
+    {
+      "task": "magicoder",
+      "label": "magicoder__global_0p25",
+      "samples": 16,
+      "exact_token_sequences": 16,
+      "fraction": 1.0
+    },
+    {
+      "task": "magicoder",
+      "label": "magicoder__global_0p40",
+      "samples": 16,
+      "exact_token_sequences": 16,
+      "fraction": 1.0
+    },
+    {
+      "task": "magicoder",
+      "label": "magicoder__global_0p55",
+      "samples": 16,
+      "exact_token_sequences": 16,
+      "fraction": 1.0
+    },
+    {
+      "task": "magicoder",
+      "label": "magicoder__global_0p70",
+      "samples": 16,
+      "exact_token_sequences": 16,
+      "fraction": 1.0
+    },
+    {
+      "task": "magicoder",
+      "label": "magicoder__global_0p85",
+      "samples": 16,
+      "exact_token_sequences": 16,
+      "fraction": 1.0
+    },
+    {
+      "task": "magicoder",
+      "label": "magicoder__common_lora",
+      "samples": 16,
+      "exact_token_sequences": 16,
+      "fraction": 1.0
+    },
+    {
+      "task": "magicoder",
+      "label": "metamath__original_lora",
+      "samples": 16,
+      "exact_token_sequences": 16,
+      "fraction": 1.0
+    },
+    {
+      "task": "magicoder",
+      "label": "metamath__original_hns",
+      "samples": 16,
+      "exact_token_sequences": 16,
+      "fraction": 1.0
+    },
+    {
+      "task": "magicoder",
+      "label": "metamath__common_hns",
+      "samples": 16,
+      "exact_token_sequences": 16,
+      "fraction": 1.0
+    },
+    {
+      "task": "magicoder",
+      "label": "metamath__common_per_module",
+      "samples": 16,
+      "exact_token_sequences": 16,
+      "fraction": 1.0
+    },
+    {
+      "task": "magicoder",
+      "label": "metamath__global_0p25",
+      "samples": 16,
+      "exact_token_sequences": 16,
+      "fraction": 1.0
+    },
+    {
+      "task": "magicoder",
+      "label": "metamath__global_0p40",
+      "samples": 16,
+      "exact_token_sequences": 16,
+      "fraction": 1.0
+    },
+    {
+      "task": "magicoder",
+      "label": "metamath__global_0p55",
+      "samples": 16,
+      "exact_token_sequences": 16,
+      "fraction": 1.0
+    },
+    {
+      "task": "magicoder",
+      "label": "metamath__global_0p70",
+      "samples": 16,
+      "exact_token_sequences": 16,
+      "fraction": 1.0
+    },
+    {
+      "task": "magicoder",
+      "label": "metamath__global_0p85",
+      "samples": 16,
+      "exact_token_sequences": 16,
+      "fraction": 1.0
+    },
+    {
+      "task": "magicoder",
+      "label": "metamath__common_lora",
+      "samples": 16,
+      "exact_token_sequences": 16,
+      "fraction": 1.0
+    },
+    {
+      "task": "magicoder",
+      "label": "tulu__original_lora",
+      "samples": 16,
+      "exact_token_sequences": 16,
+      "fraction": 1.0
+    },
+    {
+      "task": "magicoder",
+      "label": "tulu__original_hns",
+      "samples": 16,
+      "exact_token_sequences": 16,
+      "fraction": 1.0
+    },
+    {
+      "task": "magicoder",
+      "label": "tulu__common_hns",
+      "samples": 16,
+      "exact_token_sequences": 16,
+      "fraction": 1.0
+    },
+    {
+      "task": "magicoder",
+      "label": "tulu__common_per_module",
+      "samples": 16,
+      "exact_token_sequences": 16,
+      "fraction": 1.0
+    },
+    {
+      "task": "magicoder",
+      "label": "tulu__global_0p25",
+      "samples": 16,
+      "exact_token_sequences": 16,
+      "fraction": 1.0
+    },
+    {
+      "task": "magicoder",
+      "label": "tulu__global_0p40",
+      "samples": 16,
+      "exact_token_sequences": 16,
+      "fraction": 1.0
+    },
+    {
+      "task": "magicoder",
+      "label": "tulu__global_0p55",
+      "samples": 16,
+      "exact_token_sequences": 16,
+      "fraction": 1.0
+    },
+    {
+      "task": "magicoder",
+      "label": "tulu__global_0p70",
+      "samples": 16,
+      "exact_token_sequences": 16,
+      "fraction": 1.0
+    },
+    {
+      "task": "magicoder",
+      "label": "tulu__global_0p85",
+      "samples": 16,
+      "exact_token_sequences": 16,
+      "fraction": 1.0
+    },
+    {
+      "task": "magicoder",
+      "label": "tulu__common_lora",
+      "samples": 16,
+      "exact_token_sequences": 16,
+      "fraction": 1.0
+    },
+    {
+      "task": "magicoder",
+      "label": "commonsense__original_lora",
+      "samples": 16,
+      "exact_token_sequences": 16,
+      "fraction": 1.0
+    },
+    {
+      "task": "magicoder",
+      "label": "commonsense__original_hns",
+      "samples": 16,
+      "exact_token_sequences": 16,
+      "fraction": 1.0
+    },
+    {
+      "task": "magicoder",
+      "label": "commonsense__common_hns",
+      "samples": 16,
+      "exact_token_sequences": 16,
+      "fraction": 1.0
+    },
+    {
+      "task": "magicoder",
+      "label": "commonsense__common_per_module",
+      "samples": 16,
+      "exact_token_sequences": 16,
+      "fraction": 1.0
+    },
+    {
+      "task": "magicoder",
+      "label": "commonsense__global_0p25",
+      "samples": 16,
+      "exact_token_sequences": 16,
+      "fraction": 1.0
+    },
+    {
+      "task": "magicoder",
+      "label": "commonsense__global_0p40",
+      "samples": 16,
+      "exact_token_sequences": 16,
+      "fraction": 1.0
+    },
+    {
+      "task": "magicoder",
+      "label": "commonsense__global_0p55",
+      "samples": 16,
+      "exact_token_sequences": 16,
+      "fraction": 1.0
+    },
+    {
+      "task": "magicoder",
+      "label": "commonsense__global_0p70",
+      "samples": 16,
+      "exact_token_sequences": 16,
+      "fraction": 1.0
+    },
+    {
+      "task": "magicoder",
+      "label": "commonsense__global_0p85",
+      "samples": 16,
+      "exact_token_sequences": 16,
+      "fraction": 1.0
+    },
+    {
+      "task": "magicoder",
+      "label": "commonsense__common_lora",
+      "samples": 16,
+      "exact_token_sequences": 16,
+      "fraction": 1.0
+    },
+    {
+      "task": "metamath",
+      "label": "base",
+      "samples": 16,
+      "exact_token_sequences": 16,
+      "fraction": 1.0
+    },
+    {
+      "task": "metamath",
+      "label": "magicoder__original_lora",
+      "samples": 16,
+      "exact_token_sequences": 16,
+      "fraction": 1.0
+    },
+    {
+      "task": "metamath",
+      "label": "magicoder__original_hns",
+      "samples": 16,
+      "exact_token_sequences": 16,
+      "fraction": 1.0
+    },
+    {
+      "task": "metamath",
+      "label": "magicoder__common_hns",
+      "samples": 16,
+      "exact_token_sequences": 16,
+      "fraction": 1.0
+    },
+    {
+      "task": "metamath",
+      "label": "magicoder__common_per_module",
+      "samples": 16,
+      "exact_token_sequences": 16,
+      "fraction": 1.0
+    },
+    {
+      "task": "metamath",
+      "label": "magicoder__global_0p25",
+      "samples": 16,
+      "exact_token_sequences": 16,
+      "fraction": 1.0
+    },
+    {
+      "task": "metamath",
+      "label": "magicoder__global_0p40",
+      "samples": 16,
+      "exact_token_sequences": 16,
+      "fraction": 1.0
+    },
+    {
+      "task": "metamath",
+      "label": "magicoder__global_0p55",
+      "samples": 16,
+      "exact_token_sequences": 16,
+      "fraction": 1.0
+    },
+    {
+      "task": "metamath",
+      "label": "magicoder__global_0p70",
+      "samples": 16,
+      "exact_token_sequences": 16,
+      "fraction": 1.0
+    },
+    {
+      "task": "metamath",
+      "label": "magicoder__global_0p85",
+      "samples": 16,
+      "exact_token_sequences": 16,
+      "fraction": 1.0
+    },
+    {
+      "task": "metamath",
+      "label": "magicoder__common_lora",
+      "samples": 16,
+      "exact_token_sequences": 16,
+      "fraction": 1.0
+    },
+    {
+      "task": "metamath",
+      "label": "metamath__original_lora",
+      "samples": 16,
+      "exact_token_sequences": 16,
+      "fraction": 1.0
+    },
+    {
+      "task": "metamath",
+      "label": "metamath__original_hns",
+      "samples": 16,
+      "exact_token_sequences": 16,
+      "fraction": 1.0
+    },
+    {
+      "task": "metamath",
+      "label": "metamath__common_hns",
+      "samples": 16,
+      "exact_token_sequences": 16,
+      "fraction": 1.0
+    },
+    {
+      "task": "metamath",
+      "label": "metamath__common_per_module",
+      "samples": 16,
+      "exact_token_sequences": 16,
+      "fraction": 1.0
+    },
+    {
+      "task": "metamath",
+      "label": "metamath__global_0p25",
+      "samples": 16,
+      "exact_token_sequences": 16,
+      "fraction": 1.0
+    },
+    {
+      "task": "metamath",
+      "label": "metamath__global_0p40",
+      "samples": 16,
+      "exact_token_sequences": 16,
+      "fraction": 1.0
+    },
+    {
+      "task": "metamath",
+      "label": "metamath__global_0p55",
+      "samples": 16,
+      "exact_token_sequences": 16,
+      "fraction": 1.0
+    },
+    {
+      "task": "metamath",
+      "label": "metamath__global_0p70",
+      "samples": 16,
+      "exact_token_sequences": 16,
+      "fraction": 1.0
+    },
+    {
+      "task": "metamath",
+      "label": "metamath__global_0p85",
+      "samples": 16,
+      "exact_token_sequences": 16,
+      "fraction": 1.0
+    },
+    {
+      "task": "metamath",
+      "label": "metamath__common_lora",
+      "samples": 16,
+      "exact_token_sequences": 16,
+      "fraction": 1.0
+    },
+    {
+      "task": "metamath",
+      "label": "tulu__original_lora",
+      "samples": 16,
+      "exact_token_sequences": 16,
+      "fraction": 1.0
+    },
+    {
+      "task": "metamath",
+      "label": "tulu__original_hns",
+      "samples": 16,
+      "exact_token_sequences": 16,
+      "fraction": 1.0
+    },
+    {
+      "task": "metamath",
+      "label": "tulu__common_hns",
+      "samples": 16,
+      "exact_token_sequences": 16,
+      "fraction": 1.0
+    },
+    {
+      "task": "metamath",
+      "label": "tulu__common_per_module",
+      "samples": 16,
+      "exact_token_sequences": 16,
+      "fraction": 1.0
+    },
+    {
+      "task": "metamath",
+      "label": "tulu__global_0p25",
+      "samples": 16,
+      "exact_token_sequences": 16,
+      "fraction": 1.0
+    },
+    {
+      "task": "metamath",
+      "label": "tulu__global_0p40",
+      "samples": 16,
+      "exact_token_sequences": 16,
+      "fraction": 1.0
+    },
+    {
+      "task": "metamath",
+      "label": "tulu__global_0p55",
+      "samples": 16,
+      "exact_token_sequences": 16,
+      "fraction": 1.0
+    },
+    {
+      "task": "metamath",
+      "label": "tulu__global_0p70",
+      "samples": 16,
+      "exact_token_sequences": 16,
+      "fraction": 1.0
+    },
+    {
+      "task": "metamath",
+      "label": "tulu__global_0p85",
+      "samples": 16,
+      "exact_token_sequences": 16,
+      "fraction": 1.0
+    },
+    {
+      "task": "metamath",
+      "label": "tulu__common_lora",
+      "samples": 16,
+      "exact_token_sequences": 16,
+      "fraction": 1.0
+    },
+    {
+      "task": "metamath",
+      "label": "commonsense__original_lora",
+      "samples": 16,
+      "exact_token_sequences": 16,
+      "fraction": 1.0
+    },
+    {
+      "task": "metamath",
+      "label": "commonsense__original_hns",
+      "samples": 16,
+      "exact_token_sequences": 16,
+      "fraction": 1.0
+    },
+    {
+      "task": "metamath",
+      "label": "commonsense__common_hns",
+      "samples": 16,
+      "exact_token_sequences": 16,
+      "fraction": 1.0
+    },
+    {
+      "task": "metamath",
+      "label": "commonsense__common_per_module",
+      "samples": 16,
+      "exact_token_sequences": 16,
+      "fraction": 1.0
+    },
+    {
+      "task": "metamath",
+      "label": "commonsense__global_0p25",
+      "samples": 16,
+      "exact_token_sequences": 16,
+      "fraction": 1.0
+    },
+    {
+      "task": "metamath",
+      "label": "commonsense__global_0p40",
+      "samples": 16,
+      "exact_token_sequences": 16,
+      "fraction": 1.0
+    },
+    {
+      "task": "metamath",
+      "label": "commonsense__global_0p55",
+      "samples": 16,
+      "exact_token_sequences": 16,
+      "fraction": 1.0
+    },
+    {
+      "task": "metamath",
+      "label": "commonsense__global_0p70",
+      "samples": 16,
+      "exact_token_sequences": 16,
+      "fraction": 1.0
+    },
+    {
+      "task": "metamath",
+      "label": "commonsense__global_0p85",
+      "samples": 16,
+      "exact_token_sequences": 16,
+      "fraction": 1.0
+    },
+    {
+      "task": "metamath",
+      "label": "commonsense__common_lora",
+      "samples": 16,
+      "exact_token_sequences": 16,
+      "fraction": 1.0
+    },
+    {
+      "task": "tulu",
+      "label": "base",
+      "samples": 16,
+      "exact_token_sequences": 16,
+      "fraction": 1.0
+    },
+    {
+      "task": "tulu",
+      "label": "magicoder__original_lora",
+      "samples": 16,
+      "exact_token_sequences": 16,
+      "fraction": 1.0
+    },
+    {
+      "task": "tulu",
+      "label": "magicoder__original_hns",
+      "samples": 16,
+      "exact_token_sequences": 16,
+      "fraction": 1.0
+    },
+    {
+      "task": "tulu",
+      "label": "magicoder__common_hns",
+      "samples": 16,
+      "exact_token_sequences": 16,
+      "fraction": 1.0
+    },
+    {
+      "task": "tulu",
+      "label": "magicoder__common_per_module",
+      "samples": 16,
+      "exact_token_sequences": 16,
+      "fraction": 1.0
+    },
+    {
+      "task": "tulu",
+      "label": "magicoder__global_0p25",
+      "samples": 16,
+      "exact_token_sequences": 16,
+      "fraction": 1.0
+    },
+    {
+      "task": "tulu",
+      "label": "magicoder__global_0p40",
+      "samples": 16,
+      "exact_token_sequences": 16,
+      "fraction": 1.0
+    },
+    {
+      "task": "tulu",
+      "label": "magicoder__global_0p55",
+      "samples": 16,
+      "exact_token_sequences": 16,
+      "fraction": 1.0
+    },
+    {
+      "task": "tulu",
+      "label": "magicoder__global_0p70",
+      "samples": 16,
+      "exact_token_sequences": 16,
+      "fraction": 1.0
+    },
+    {
+      "task": "tulu",
+      "label": "magicoder__global_0p85",
+      "samples": 16,
+      "exact_token_sequences": 16,
+      "fraction": 1.0
+    },
+    {
+      "task": "tulu",
+      "label": "magicoder__common_lora",
+      "samples": 16,
+      "exact_token_sequences": 16,
+      "fraction": 1.0
+    },
+    {
+      "task": "tulu",
+      "label": "metamath__original_lora",
+      "samples": 16,
+      "exact_token_sequences": 16,
+      "fraction": 1.0
+    },
+    {
+      "task": "tulu",
+      "label": "metamath__original_hns",
+      "samples": 16,
+      "exact_token_sequences": 16,
+      "fraction": 1.0
+    },
+    {
+      "task": "tulu",
+      "label": "metamath__common_hns",
+      "samples": 16,
+      "exact_token_sequences": 16,
+      "fraction": 1.0
+    },
+    {
+      "task": "tulu",
+      "label": "metamath__common_per_module",
+      "samples": 16,
+      "exact_token_sequences": 16,
+      "fraction": 1.0
+    },
+    {
+      "task": "tulu",
+      "label": "metamath__global_0p25",
+      "samples": 16,
+      "exact_token_sequences": 16,
+      "fraction": 1.0
+    },
+    {
+      "task": "tulu",
+      "label": "metamath__global_0p40",
+      "samples": 16,
+      "exact_token_sequences": 16,
+      "fraction": 1.0
+    },
+    {
+      "task": "tulu",
+      "label": "metamath__global_0p55",
+      "samples": 16,
+      "exact_token_sequences": 16,
+      "fraction": 1.0
+    },
+    {
+      "task": "tulu",
+      "label": "metamath__global_0p70",
+      "samples": 16,
+      "exact_token_sequences": 16,
+      "fraction": 1.0
+    },
+    {
+      "task": "tulu",
+      "label": "metamath__global_0p85",
+      "samples": 16,
+      "exact_token_sequences": 16,
+      "fraction": 1.0
+    },
+    {
+      "task": "tulu",
+      "label": "metamath__common_lora",
+      "samples": 16,
+      "exact_token_sequences": 16,
+      "fraction": 1.0
+    },
+    {
+      "task": "tulu",
+      "label": "tulu__original_lora",
+      "samples": 16,
+      "exact_token_sequences": 16,
+      "fraction": 1.0
+    },
+    {
+      "task": "tulu",
+      "label": "tulu__original_hns",
+      "samples": 16,
+      "exact_token_sequences": 16,
+      "fraction": 1.0
+    },
+    {
+      "task": "tulu",
+      "label": "tulu__common_hns",
+      "samples": 16,
+      "exact_token_sequences": 16,
+      "fraction": 1.0
+    },
+    {
+      "task": "tulu",
+      "label": "tulu__common_per_module",
+      "samples": 16,
+      "exact_token_sequences": 16,
+      "fraction": 1.0
+    },
+    {
+      "task": "tulu",
+      "label": "tulu__global_0p25",
+      "samples": 16,
+      "exact_token_sequences": 16,
+      "fraction": 1.0
+    },
+    {
+      "task": "tulu",
+      "label": "tulu__global_0p40",
+      "samples": 16,
+      "exact_token_sequences": 16,
+      "fraction": 1.0
+    },
+    {
+      "task": "tulu",
+      "label": "tulu__global_0p55",
+      "samples": 16,
+      "exact_token_sequences": 16,
+      "fraction": 1.0
+    },
+    {
+      "task": "tulu",
+      "label": "tulu__global_0p70",
+      "samples": 16,
+      "exact_token_sequences": 16,
+      "fraction": 1.0
+    },
+    {
+      "task": "tulu",
+      "label": "tulu__global_0p85",
+      "samples": 16,
+      "exact_token_sequences": 16,
+      "fraction": 1.0
+    },
+    {
+      "task": "tulu",
+      "label": "tulu__common_lora",
+      "samples": 16,
+      "exact_token_sequences": 16,
+      "fraction": 1.0
+    },
+    {
+      "task": "tulu",
+      "label": "commonsense__original_lora",
+      "samples": 16,
+      "exact_token_sequences": 16,
+      "fraction": 1.0
+    },
+    {
+      "task": "tulu",
+      "label": "commonsense__original_hns",
+      "samples": 16,
+      "exact_token_sequences": 16,
+      "fraction": 1.0
+    },
+    {
+      "task": "tulu",
+      "label": "commonsense__common_hns",
+      "samples": 16,
+      "exact_token_sequences": 16,
+      "fraction": 1.0
+    },
+    {
+      "task": "tulu",
+      "label": "commonsense__common_per_module",
+      "samples": 16,
+      "exact_token_sequences": 16,
+      "fraction": 1.0
+    },
+    {
+      "task": "tulu",
+      "label": "commonsense__global_0p25",
+      "samples": 16,
+      "exact_token_sequences": 16,
+      "fraction": 1.0
+    },
+    {
+      "task": "tulu",
+      "label": "commonsense__global_0p40",
+      "samples": 16,
+      "exact_token_sequences": 16,
+      "fraction": 1.0
+    },
+    {
+      "task": "tulu",
+      "label": "commonsense__global_0p55",
+      "samples": 16,
+      "exact_token_sequences": 16,
+      "fraction": 1.0
+    },
+    {
+      "task": "tulu",
+      "label": "commonsense__global_0p70",
+      "samples": 16,
+      "exact_token_sequences": 16,
+      "fraction": 1.0
+    },
+    {
+      "task": "tulu",
+      "label": "commonsense__global_0p85",
+      "samples": 16,
+      "exact_token_sequences": 16,
+      "fraction": 1.0
+    },
+    {
+      "task": "tulu",
+      "label": "commonsense__common_lora",
+      "samples": 16,
+      "exact_token_sequences": 16,
+      "fraction": 1.0
+    },
+    {
+      "task": "commonsense",
+      "label": "base",
+      "samples": 128,
+      "exact_token_sequences": 128,
+      "fraction": 1.0
+    },
+    {
+      "task": "commonsense",
+      "label": "magicoder__original_lora",
+      "samples": 128,
+      "exact_token_sequences": 128,
+      "fraction": 1.0
+    },
+    {
+      "task": "commonsense",
+      "label": "magicoder__original_hns",
+      "samples": 128,
+      "exact_token_sequences": 128,
+      "fraction": 1.0
+    },
+    {
+      "task": "commonsense",
+      "label": "magicoder__common_hns",
+      "samples": 128,
+      "exact_token_sequences": 128,
+      "fraction": 1.0
+    },
+    {
+      "task": "commonsense",
+      "label": "magicoder__common_per_module",
+      "samples": 128,
+      "exact_token_sequences": 128,
+      "fraction": 1.0
+    },
+    {
+      "task": "commonsense",
+      "label": "magicoder__global_0p25",
+      "samples": 128,
+      "exact_token_sequences": 128,
+      "fraction": 1.0
+    },
+    {
+      "task": "commonsense",
+      "label": "magicoder__global_0p40",
+      "samples": 128,
+      "exact_token_sequences": 128,
+      "fraction": 1.0
+    },
+    {
+      "task": "commonsense",
+      "label": "magicoder__global_0p55",
+      "samples": 128,
+      "exact_token_sequences": 128,
+      "fraction": 1.0
+    },
+    {
+      "task": "commonsense",
+      "label": "magicoder__global_0p70",
+      "samples": 128,
+      "exact_token_sequences": 128,
+      "fraction": 1.0
+    },
+    {
+      "task": "commonsense",
+      "label": "magicoder__global_0p85",
+      "samples": 128,
+      "exact_token_sequences": 128,
+      "fraction": 1.0
+    },
+    {
+      "task": "commonsense",
+      "label": "magicoder__common_lora",
+      "samples": 128,
+      "exact_token_sequences": 128,
+      "fraction": 1.0
+    },
+    {
+      "task": "commonsense",
+      "label": "metamath__original_lora",
+      "samples": 128,
+      "exact_token_sequences": 128,
+      "fraction": 1.0
+    },
+    {
+      "task": "commonsense",
+      "label": "metamath__original_hns",
+      "samples": 128,
+      "exact_token_sequences": 128,
+      "fraction": 1.0
+    },
+    {
+      "task": "commonsense",
+      "label": "metamath__common_hns",
+      "samples": 128,
+      "exact_token_sequences": 128,
+      "fraction": 1.0
+    },
+    {
+      "task": "commonsense",
+      "label": "metamath__common_per_module",
+      "samples": 128,
+      "exact_token_sequences": 128,
+      "fraction": 1.0
+    },
+    {
+      "task": "commonsense",
+      "label": "metamath__global_0p25",
+      "samples": 128,
+      "exact_token_sequences": 128,
+      "fraction": 1.0
+    },
+    {
+      "task": "commonsense",
+      "label": "metamath__global_0p40",
+      "samples": 128,
+      "exact_token_sequences": 128,
+      "fraction": 1.0
+    },
+    {
+      "task": "commonsense",
+      "label": "metamath__global_0p55",
+      "samples": 128,
+      "exact_token_sequences": 128,
+      "fraction": 1.0
+    },
+    {
+      "task": "commonsense",
+      "label": "metamath__global_0p70",
+      "samples": 128,
+      "exact_token_sequences": 128,
+      "fraction": 1.0
+    },
+    {
+      "task": "commonsense",
+      "label": "metamath__global_0p85",
+      "samples": 128,
+      "exact_token_sequences": 128,
+      "fraction": 1.0
+    },
+    {
+      "task": "commonsense",
+      "label": "metamath__common_lora",
+      "samples": 128,
+      "exact_token_sequences": 128,
+      "fraction": 1.0
+    },
+    {
+      "task": "commonsense",
+      "label": "tulu__original_lora",
+      "samples": 128,
+      "exact_token_sequences": 128,
+      "fraction": 1.0
+    },
+    {
+      "task": "commonsense",
+      "label": "tulu__original_hns",
+      "samples": 128,
+      "exact_token_sequences": 128,
+      "fraction": 1.0
+    },
+    {
+      "task": "commonsense",
+      "label": "tulu__common_hns",
+      "samples": 128,
+      "exact_token_sequences": 128,
+      "fraction": 1.0
+    },
+    {
+      "task": "commonsense",
+      "label": "tulu__common_per_module",
+      "samples": 128,
+      "exact_token_sequences": 128,
+      "fraction": 1.0
+    },
+    {
+      "task": "commonsense",
+      "label": "tulu__global_0p25",
+      "samples": 128,
+      "exact_token_sequences": 128,
+      "fraction": 1.0
+    },
+    {
+      "task": "commonsense",
+      "label": "tulu__global_0p40",
+      "samples": 128,
+      "exact_token_sequences": 128,
+      "fraction": 1.0
+    },
+    {
+      "task": "commonsense",
+      "label": "tulu__global_0p55",
+      "samples": 128,
+      "exact_token_sequences": 128,
+      "fraction": 1.0
+    },
+    {
+      "task": "commonsense",
+      "label": "tulu__global_0p70",
+      "samples": 128,
+      "exact_token_sequences": 128,
+      "fraction": 1.0
+    },
+    {
+      "task": "commonsense",
+      "label": "tulu__global_0p85",
+      "samples": 128,
+      "exact_token_sequences": 128,
+      "fraction": 1.0
+    },
+    {
+      "task": "commonsense",
+      "label": "tulu__common_lora",
+      "samples": 128,
+      "exact_token_sequences": 128,
+      "fraction": 1.0
+    },
+    {
+      "task": "commonsense",
+      "label": "commonsense__original_lora",
+      "samples": 128,
+      "exact_token_sequences": 128,
+      "fraction": 1.0
+    },
+    {
+      "task": "commonsense",
+      "label": "commonsense__original_hns",
+      "samples": 128,
+      "exact_token_sequences": 128,
+      "fraction": 1.0
+    },
+    {
+      "task": "commonsense",
+      "label": "commonsense__common_hns",
+      "samples": 128,
+      "exact_token_sequences": 128,
+      "fraction": 1.0
+    },
+    {
+      "task": "commonsense",
+      "label": "commonsense__common_per_module",
+      "samples": 128,
+      "exact_token_sequences": 128,
+      "fraction": 1.0
+    },
+    {
+      "task": "commonsense",
+      "label": "commonsense__global_0p25",
+      "samples": 128,
+      "exact_token_sequences": 128,
+      "fraction": 1.0
+    },
+    {
+      "task": "commonsense",
+      "label": "commonsense__global_0p40",
+      "samples": 128,
+      "exact_token_sequences": 128,
+      "fraction": 1.0
+    },
+    {
+      "task": "commonsense",
+      "label": "commonsense__global_0p55",
+      "samples": 128,
+      "exact_token_sequences": 128,
+      "fraction": 1.0
+    },
+    {
+      "task": "commonsense",
+      "label": "commonsense__global_0p70",
+      "samples": 128,
+      "exact_token_sequences": 128,
+      "fraction": 1.0
+    },
+    {
+      "task": "commonsense",
+      "label": "commonsense__global_0p85",
+      "samples": 128,
+      "exact_token_sequences": 128,
+      "fraction": 1.0
+    },
+    {
+      "task": "commonsense",
+      "label": "commonsense__common_lora",
+      "samples": 128,
+      "exact_token_sequences": 128,
+      "fraction": 1.0
+    }
+  ],
+  "failures": []
+}

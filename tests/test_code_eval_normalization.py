@@ -3,7 +3,10 @@ from __future__ import annotations
 import ast
 import unittest
 
-from finetune.eval.eval_humaneval import normalize_humaneval_completion
+from finetune.eval.eval_humaneval import (
+    format_humaneval_cli_k,
+    normalize_humaneval_completion,
+)
 from finetune.eval.eval_mbpp import normalize_mbpp_completion
 
 
@@ -13,6 +16,13 @@ HUMANEVAL_PROMPT = '''def increment(value: int) -> int:
 
 
 class HumanEvalNormalizationTests(unittest.TestCase):
+    def test_punctuation_only_degenerate_output_has_bounded_normalization(self):
+        text = " :\n\n\n" * 2048
+        self.assertEqual(
+            normalize_humaneval_completion(text, "def answer():\n", "answer"),
+            text.strip("\n"),
+        )
+
     def assert_program_parses(self, completion: str) -> None:
         ast.parse(HUMANEVAL_PROMPT + completion)
 
@@ -50,6 +60,12 @@ class HumanEvalNormalizationTests(unittest.TestCase):
             "increment",
         )
         self.assertEqual(completion, "    return value + 1")
+
+    def test_singleton_cli_k_is_kept_as_a_string_by_fire(self) -> None:
+        self.assertEqual(format_humaneval_cli_k([1]), '"1"')
+
+    def test_multiple_cli_k_values_are_unchanged(self) -> None:
+        self.assertEqual(format_humaneval_cli_k([1, 10]), '"1,10"')
 
 
 class MbppNormalizationTests(unittest.TestCase):

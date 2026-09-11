@@ -1,0 +1,127 @@
+{
+  "experiment": "hns_forgetting_2x4",
+  "date": "2026-09-11",
+  "seed": 42,
+  "bases": {
+    "Qwen3-8B": "/dataset1/zailong/models/Qwen3-8B",
+    "Llama-3.1-8B-Instruct": "/dataset1/zailong/models/Llama-3.1-8B-Instruct"
+  },
+  "checkpoints": [
+    {
+      "base": "Qwen3-8B",
+      "train_task": "magicoder",
+      "lora": "/dataset1/zailong/models/spectral-surgery/Qwen3-8B-Magicoder-50K-LoRA-E1",
+      "hns": "/dataset1/zailong/models/spectral-surgery/Qwen3-8B-Magicoder-50K-SpectralSurgery-HNS4p1-AllMods"
+    },
+    {
+      "base": "Qwen3-8B",
+      "train_task": "metamath",
+      "lora": "/dataset1/zailong/models/spectral-surgery/Qwen3-8B-MetaMathQA-50K-LoRA",
+      "hns": "/dataset1/zailong/models/spectral-surgery/Qwen3-8B-MetaMathQA-50K-Spectral-Surgery-AllModules-4Plus1"
+    },
+    {
+      "base": "Qwen3-8B",
+      "train_task": "tulu",
+      "lora": "/dataset1/zailong/models/spectral-surgery/Qwen3-8B-InstructionFollowing-LoRA",
+      "hns": "/dataset1/zailong/models/spectral-surgery/Qwen3-8B-InstructionFollowing-SpectralSurgery-HNS4p1"
+    },
+    {
+      "base": "Qwen3-8B",
+      "train_task": "commonsense",
+      "lora": "/dataset1/zailong/models/spectral-surgery/Qwen3-8B-CommonSense170K-LoRA",
+      "hns": "/dataset1/zailong/runs/peft-sft-lab/hns-allmodules-scope-20260909/Qwen3-8B/commonsense/hns-allmodules-8plus2"
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "train_task": "magicoder",
+      "lora": "/dataset1/zailong/models/spectral-surgery/Llama-3.1-8B-Instruct-Magicoder-50K-LoRA-E1",
+      "hns": "/dataset1/zailong/models/spectral-surgery/Llama-3.1-8B-Instruct-Magicoder-50K-SpectralSurgery-HNS4p1"
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "train_task": "metamath",
+      "lora": "/dataset1/zailong/models/spectral-surgery/Llama-3.1-8B-Instruct-MetaMathQA-50K-LoRA",
+      "hns": "/dataset1/zailong/models/spectral-surgery/Llama-3.1-8B-Instruct-MetaMathQA-50K-SpectralSurgery-HNS4p1-AllMods"
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "train_task": "tulu",
+      "lora": "/dataset1/zailong/models/spectral-surgery/Llama-3.1-8B-Instruct-InstructionFollowing-LoRA",
+      "hns": "/dataset1/zailong/runs/peft-sft-lab/hns-allmodules-scope-20260909/Llama-3.1-8B-Instruct/tulu/hns-allmodules-8plus2"
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "train_task": "commonsense",
+      "lora": "/dataset1/zailong/models/spectral-surgery/Llama-3.1-8B-Instruct-CommonSense170K-LoRA-GBS64-Final",
+      "hns": "/dataset1/zailong/models/spectral-surgery/Llama-3.1-8B-Instruct-CommonSense170K-Spectral-Surgery-AllModules-8Plus2"
+    }
+  ],
+  "evaluation_tasks": {
+    "magicoder": {
+      "benchmark": "HumanEval",
+      "dataset": "/dataset1/zailong/data/peft-sft-lab/humaneval-test.parquet",
+      "samples": 164,
+      "primary_metric": "pass@1",
+      "max_new_tokens": 512
+    },
+    "metamath": {
+      "benchmark": "GSM8K",
+      "dataset": "/dataset1/zailong/data/peft-sft-lab/cross-task-mechanism/gsm8k-test.jsonl",
+      "samples": 1319,
+      "primary_metric": "strict_accuracy",
+      "secondary_metric": "numeric_accuracy",
+      "max_new_tokens": 512
+    },
+    "tulu": {
+      "benchmark": "IFEval",
+      "dataset": "/dataset1/zailong/data/peft-sft-lab/cross-task-mechanism/ifeval-train.jsonl",
+      "samples": 541,
+      "primary_metric": "prompt_level_strict_accuracy",
+      "max_new_tokens": 2048
+    },
+    "commonsense": {
+      "benchmark": "commonsense-8",
+      "reference_predictions_root": "/dataset1/zailong/runs/peft-sft-lab/Qwen3-8B/hns-cross-task-20260908/commonsense/eval/lora/commonsense",
+      "tasks": [
+        "arc_challenge",
+        "arc_easy",
+        "boolq",
+        "hellaswag",
+        "openbookqa",
+        "piqa",
+        "siqa",
+        "winogrande"
+      ],
+      "samples": "full test sets; 22419 total",
+      "primary_metric": "equal-task macro accuracy",
+      "max_new_tokens": 8
+    }
+  },
+  "common_basis_variants": {
+    "global_scalar_gammas": [0.25, 0.4, 0.55, 0.7, 0.85, 1.0],
+    "include_common_hns": true,
+    "include_per_module_hns_norm_matched_scalar": true,
+    "include_original_factor_lora_and_hns_as_diagnostics": true,
+    "base_is_gamma_zero": true
+  },
+  "inference": {
+    "greedy": true,
+    "batch_invariant": true,
+    "async_scheduling": false,
+    "prefix_caching": false,
+    "gpu_memory_utilization": 0.92,
+    "max_num_seqs_short": 256,
+    "max_num_seqs_long": 128,
+    "max_num_batched_tokens": 65536,
+    "one_engine_per_base": true,
+    "tensor_parallel_size": 1
+  },
+  "statistics": {
+    "bootstrap_draws": 20000,
+    "target_match_tolerance_pp_primary": 1.0,
+    "target_match_tolerance_pp_sensitivity": [0.5, 2.0],
+    "practical_retention_effect_pp": 1.0,
+    "familywise_primary_correction": "Holm",
+    "secondary_correction": "BH-FDR"
+  }
+}

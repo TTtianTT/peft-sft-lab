@@ -42,6 +42,13 @@ def find_parseable_python_segment(text: str, *, prefix: str = "") -> str | None:
     if not text.strip():
         return None
 
+    # Degenerate generations can contain thousands of punctuation-only lines
+    # (for example repeated ``":"``). No such segment can provide an executable
+    # function body, and the quadratic segment search below would otherwise take
+    # minutes. Quotes are retained because a bare string is valid Python.
+    if not re.search(r"[A-Za-z0-9_\"']", text):
+        return None
+
     import ast
 
     lines = text.splitlines(keepends=True)
@@ -88,7 +95,13 @@ def load_eval_tokenizer(
 ):
     from transformers import AutoTokenizer
 
-    tokenizer = AutoTokenizer.from_pretrained(_pick_tokenizer_source(base_model, adapter_dir), use_fast=True)
+    tokenizer_source = _pick_tokenizer_source(base_model, adapter_dir)
+    tokenizer = AutoTokenizer.from_pretrained(tokenizer_source, use_fast=True)
+    # Some historical PEFT checkpoints bundle tokenizer assets without the
+    # tokenizer's chat template.  Such an incomplete copy must not shadow the
+    # compatible instruct tokenizer in the pretrained base directory.
+    if tokenizer_source != base_model and not getattr(tokenizer, "chat_template", None):
+        tokenizer = AutoTokenizer.from_pretrained(base_model, use_fast=True)
     tokenizer.padding_side = "left"
     if tokenizer.pad_token is None:
         tokenizer.pad_token = tokenizer.eos_token

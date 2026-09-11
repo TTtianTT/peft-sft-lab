@@ -1,0 +1,327 @@
+{
+  "status": "complete",
+  "base": "Llama-3.1-8B-Instruct",
+  "base_model": "/dataset1/zailong/models/Llama-3.1-8B-Instruct",
+  "variants": [
+    {
+      "label": "magicoder__original_lora",
+      "path": "/dataset1/zailong/models/spectral-surgery/Llama-3.1-8B-Instruct-Magicoder-50K-LoRA-E1",
+      "train_task": "magicoder",
+      "method": "original_lora",
+      "gamma": null,
+      "adapter_id": 1
+    },
+    {
+      "label": "magicoder__original_hns",
+      "path": "/dataset1/zailong/models/spectral-surgery/Llama-3.1-8B-Instruct-Magicoder-50K-SpectralSurgery-HNS4p1",
+      "train_task": "magicoder",
+      "method": "original_hns",
+      "gamma": null,
+      "adapter_id": 2
+    },
+    {
+      "label": "magicoder__common_hns",
+      "path": "/dataset1/zailong/runs/peft-sft-lab/hns-forgetting-2x4-20260911/adapters/Llama-3.1-8B-Instruct/magicoder/common-hns",
+      "train_task": "magicoder",
+      "method": "common_hns",
+      "gamma": null,
+      "adapter_id": 3
+    },
+    {
+      "label": "magicoder__common_per_module",
+      "path": "/dataset1/zailong/runs/peft-sft-lab/hns-forgetting-2x4-20260911/adapters/Llama-3.1-8B-Instruct/magicoder/common-per-module",
+      "train_task": "magicoder",
+      "method": "common_per_module",
+      "gamma": null,
+      "adapter_id": 4
+    },
+    {
+      "label": "magicoder__global_0p25",
+      "path": "/dataset1/zailong/runs/peft-sft-lab/hns-forgetting-2x4-20260911/adapters/Llama-3.1-8B-Instruct/magicoder/common-global-0p25",
+      "train_task": "magicoder",
+      "method": "global_0p25",
+      "gamma": 0.25,
+      "adapter_id": 5
+    },
+    {
+      "label": "magicoder__global_0p40",
+      "path": "/dataset1/zailong/runs/peft-sft-lab/hns-forgetting-2x4-20260911/adapters/Llama-3.1-8B-Instruct/magicoder/common-global-0p40",
+      "train_task": "magicoder",
+      "method": "global_0p40",
+      "gamma": 0.4,
+      "adapter_id": 6
+    },
+    {
+      "label": "magicoder__global_0p55",
+      "path": "/dataset1/zailong/runs/peft-sft-lab/hns-forgetting-2x4-20260911/adapters/Llama-3.1-8B-Instruct/magicoder/common-global-0p55",
+      "train_task": "magicoder",
+      "method": "global_0p55",
+      "gamma": 0.55,
+      "adapter_id": 7
+    },
+    {
+      "label": "magicoder__global_0p70",
+      "path": "/dataset1/zailong/runs/peft-sft-lab/hns-forgetting-2x4-20260911/adapters/Llama-3.1-8B-Instruct/magicoder/common-global-0p70",
+      "train_task": "magicoder",
+      "method": "global_0p70",
+      "gamma": 0.7,
+      "adapter_id": 8
+    },
+    {
+      "label": "magicoder__global_0p85",
+      "path": "/dataset1/zailong/runs/peft-sft-lab/hns-forgetting-2x4-20260911/adapters/Llama-3.1-8B-Instruct/magicoder/common-global-0p85",
+      "train_task": "magicoder",
+      "method": "global_0p85",
+      "gamma": 0.85,
+      "adapter_id": 9
+    },
+    {
+      "label": "magicoder__common_lora",
+      "path": "/dataset1/zailong/runs/peft-sft-lab/hns-forgetting-2x4-20260911/adapters/Llama-3.1-8B-Instruct/magicoder/common-global-1p00",
+      "train_task": "magicoder",
+      "method": "common_lora",
+      "gamma": 1.0,
+      "adapter_id": 10
+    },
+    {
+      "label": "metamath__original_lora",
+      "path": "/dataset1/zailong/models/spectral-surgery/Llama-3.1-8B-Instruct-MetaMathQA-50K-LoRA",
+      "train_task": "metamath",
+      "method": "original_lora",
+      "gamma": null,
+      "adapter_id": 11
+    },
+    {
+      "label": "metamath__original_hns",
+      "path": "/dataset1/zailong/models/spectral-surgery/Llama-3.1-8B-Instruct-MetaMathQA-50K-SpectralSurgery-HNS4p1-AllMods",
+      "train_task": "metamath",
+      "method": "original_hns",
+      "gamma": null,
+      "adapter_id": 12
+    },
+    {
+      "label": "metamath__common_hns",
+      "path": "/dataset1/zailong/runs/peft-sft-lab/hns-forgetting-2x4-20260911/adapters/Llama-3.1-8B-Instruct/metamath/common-hns",
+      "train_task": "metamath",
+      "method": "common_hns",
+      "gamma": null,
+      "adapter_id": 13
+    },
+    {
+      "label": "metamath__common_per_module",
+      "path": "/dataset1/zailong/runs/peft-sft-lab/hns-forgetting-2x4-20260911/adapters/Llama-3.1-8B-Instruct/metamath/common-per-module",
+      "train_task": "metamath",
+      "method": "common_per_module",
+      "gamma": null,
+      "adapter_id": 14
+    },
+    {
+      "label": "metamath__global_0p25",
+      "path": "/dataset1/zailong/runs/peft-sft-lab/hns-forgetting-2x4-20260911/adapters/Llama-3.1-8B-Instruct/metamath/common-global-0p25",
+      "train_task": "metamath",
+      "method": "global_0p25",
+      "gamma": 0.25,
+      "adapter_id": 15
+    },
+    {
+      "label": "metamath__global_0p40",
+      "path": "/dataset1/zailong/runs/peft-sft-lab/hns-forgetting-2x4-20260911/adapters/Llama-3.1-8B-Instruct/metamath/common-global-0p40",
+      "train_task": "metamath",
+      "method": "global_0p40",
+      "gamma": 0.4,
+      "adapter_id": 16
+    },
+    {
+      "label": "metamath__global_0p55",
+      "path": "/dataset1/zailong/runs/peft-sft-lab/hns-forgetting-2x4-20260911/adapters/Llama-3.1-8B-Instruct/metamath/common-global-0p55",
+      "train_task": "metamath",
+      "method": "global_0p55",
+      "gamma": 0.55,
+      "adapter_id": 17
+    },
+    {
+      "label": "metamath__global_0p70",
+      "path": "/dataset1/zailong/runs/peft-sft-lab/hns-forgetting-2x4-20260911/adapters/Llama-3.1-8B-Instruct/metamath/common-global-0p70",
+      "train_task": "metamath",
+      "method": "global_0p70",
+      "gamma": 0.7,
+      "adapter_id": 18
+    },
+    {
+      "label": "metamath__global_0p85",
+      "path": "/dataset1/zailong/runs/peft-sft-lab/hns-forgetting-2x4-20260911/adapters/Llama-3.1-8B-Instruct/metamath/common-global-0p85",
+      "train_task": "metamath",
+      "method": "global_0p85",
+      "gamma": 0.85,
+      "adapter_id": 19
+    },
+    {
+      "label": "metamath__common_lora",
+      "path": "/dataset1/zailong/runs/peft-sft-lab/hns-forgetting-2x4-20260911/adapters/Llama-3.1-8B-Instruct/metamath/common-global-1p00",
+      "train_task": "metamath",
+      "method": "common_lora",
+      "gamma": 1.0,
+      "adapter_id": 20
+    },
+    {
+      "label": "tulu__original_lora",
+      "path": "/dataset1/zailong/models/spectral-surgery/Llama-3.1-8B-Instruct-InstructionFollowing-LoRA",
+      "train_task": "tulu",
+      "method": "original_lora",
+      "gamma": null,
+      "adapter_id": 21
+    },
+    {
+      "label": "tulu__original_hns",
+      "path": "/dataset1/zailong/runs/peft-sft-lab/hns-allmodules-scope-20260909/Llama-3.1-8B-Instruct/tulu/hns-allmodules-8plus2",
+      "train_task": "tulu",
+      "method": "original_hns",
+      "gamma": null,
+      "adapter_id": 22
+    },
+    {
+      "label": "tulu__common_hns",
+      "path": "/dataset1/zailong/runs/peft-sft-lab/hns-forgetting-2x4-20260911/adapters/Llama-3.1-8B-Instruct/tulu/common-hns",
+      "train_task": "tulu",
+      "method": "common_hns",
+      "gamma": null,
+      "adapter_id": 23
+    },
+    {
+      "label": "tulu__common_per_module",
+      "path": "/dataset1/zailong/runs/peft-sft-lab/hns-forgetting-2x4-20260911/adapters/Llama-3.1-8B-Instruct/tulu/common-per-module",
+      "train_task": "tulu",
+      "method": "common_per_module",
+      "gamma": null,
+      "adapter_id": 24
+    },
+    {
+      "label": "tulu__global_0p25",
+      "path": "/dataset1/zailong/runs/peft-sft-lab/hns-forgetting-2x4-20260911/adapters/Llama-3.1-8B-Instruct/tulu/common-global-0p25",
+      "train_task": "tulu",
+      "method": "global_0p25",
+      "gamma": 0.25,
+      "adapter_id": 25
+    },
+    {
+      "label": "tulu__global_0p40",
+      "path": "/dataset1/zailong/runs/peft-sft-lab/hns-forgetting-2x4-20260911/adapters/Llama-3.1-8B-Instruct/tulu/common-global-0p40",
+      "train_task": "tulu",
+      "method": "global_0p40",
+      "gamma": 0.4,
+      "adapter_id": 26
+    },
+    {
+      "label": "tulu__global_0p55",
+      "path": "/dataset1/zailong/runs/peft-sft-lab/hns-forgetting-2x4-20260911/adapters/Llama-3.1-8B-Instruct/tulu/common-global-0p55",
+      "train_task": "tulu",
+      "method": "global_0p55",
+      "gamma": 0.55,
+      "adapter_id": 27
+    },
+    {
+      "label": "tulu__global_0p70",
+      "path": "/dataset1/zailong/runs/peft-sft-lab/hns-forgetting-2x4-20260911/adapters/Llama-3.1-8B-Instruct/tulu/common-global-0p70",
+      "train_task": "tulu",
+      "method": "global_0p70",
+      "gamma": 0.7,
+      "adapter_id": 28
+    },
+    {
+      "label": "tulu__global_0p85",
+      "path": "/dataset1/zailong/runs/peft-sft-lab/hns-forgetting-2x4-20260911/adapters/Llama-3.1-8B-Instruct/tulu/common-global-0p85",
+      "train_task": "tulu",
+      "method": "global_0p85",
+      "gamma": 0.85,
+      "adapter_id": 29
+    },
+    {
+      "label": "tulu__common_lora",
+      "path": "/dataset1/zailong/runs/peft-sft-lab/hns-forgetting-2x4-20260911/adapters/Llama-3.1-8B-Instruct/tulu/common-global-1p00",
+      "train_task": "tulu",
+      "method": "common_lora",
+      "gamma": 1.0,
+      "adapter_id": 30
+    },
+    {
+      "label": "commonsense__original_lora",
+      "path": "/dataset1/zailong/models/spectral-surgery/Llama-3.1-8B-Instruct-CommonSense170K-LoRA-GBS64-Final",
+      "train_task": "commonsense",
+      "method": "original_lora",
+      "gamma": null,
+      "adapter_id": 31
+    },
+    {
+      "label": "commonsense__original_hns",
+      "path": "/dataset1/zailong/models/spectral-surgery/Llama-3.1-8B-Instruct-CommonSense170K-Spectral-Surgery-AllModules-8Plus2",
+      "train_task": "commonsense",
+      "method": "original_hns",
+      "gamma": null,
+      "adapter_id": 32
+    },
+    {
+      "label": "commonsense__common_hns",
+      "path": "/dataset1/zailong/runs/peft-sft-lab/hns-forgetting-2x4-20260911/adapters/Llama-3.1-8B-Instruct/commonsense/common-hns",
+      "train_task": "commonsense",
+      "method": "common_hns",
+      "gamma": null,
+      "adapter_id": 33
+    },
+    {
+      "label": "commonsense__common_per_module",
+      "path": "/dataset1/zailong/runs/peft-sft-lab/hns-forgetting-2x4-20260911/adapters/Llama-3.1-8B-Instruct/commonsense/common-per-module",
+      "train_task": "commonsense",
+      "method": "common_per_module",
+      "gamma": null,
+      "adapter_id": 34
+    },
+    {
+      "label": "commonsense__global_0p25",
+      "path": "/dataset1/zailong/runs/peft-sft-lab/hns-forgetting-2x4-20260911/adapters/Llama-3.1-8B-Instruct/commonsense/common-global-0p25",
+      "train_task": "commonsense",
+      "method": "global_0p25",
+      "gamma": 0.25,
+      "adapter_id": 35
+    },
+    {
+      "label": "commonsense__global_0p40",
+      "path": "/dataset1/zailong/runs/peft-sft-lab/hns-forgetting-2x4-20260911/adapters/Llama-3.1-8B-Instruct/commonsense/common-global-0p40",
+      "train_task": "commonsense",
+      "method": "global_0p40",
+      "gamma": 0.4,
+      "adapter_id": 36
+    },
+    {
+      "label": "commonsense__global_0p55",
+      "path": "/dataset1/zailong/runs/peft-sft-lab/hns-forgetting-2x4-20260911/adapters/Llama-3.1-8B-Instruct/commonsense/common-global-0p55",
+      "train_task": "commonsense",
+      "method": "global_0p55",
+      "gamma": 0.55,
+      "adapter_id": 37
+    },
+    {
+      "label": "commonsense__global_0p70",
+      "path": "/dataset1/zailong/runs/peft-sft-lab/hns-forgetting-2x4-20260911/adapters/Llama-3.1-8B-Instruct/commonsense/common-global-0p70",
+      "train_task": "commonsense",
+      "method": "global_0p70",
+      "gamma": 0.7,
+      "adapter_id": 38
+    },
+    {
+      "label": "commonsense__global_0p85",
+      "path": "/dataset1/zailong/runs/peft-sft-lab/hns-forgetting-2x4-20260911/adapters/Llama-3.1-8B-Instruct/commonsense/common-global-0p85",
+      "train_task": "commonsense",
+      "method": "global_0p85",
+      "gamma": 0.85,
+      "adapter_id": 39
+    },
+    {
+      "label": "commonsense__common_lora",
+      "path": "/dataset1/zailong/runs/peft-sft-lab/hns-forgetting-2x4-20260911/adapters/Llama-3.1-8B-Instruct/commonsense/common-global-1p00",
+      "train_task": "commonsense",
+      "method": "common_lora",
+      "gamma": 1.0,
+      "adapter_id": 40
+    }
+  ]
+}

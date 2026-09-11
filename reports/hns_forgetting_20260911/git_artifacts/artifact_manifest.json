@@ -1,0 +1,39 @@
+{
+  "source_run_root": "/dataset1/zailong/runs/peft-sft-lab/hns-forgetting-2x4-20260911",
+  "source_total_bytes": 16703243811,
+  "matrices": [
+    {
+      "matrix": "formal_qwen",
+      "source": "/dataset1/zailong/runs/peft-sft-lab/hns-forgetting-2x4-20260911/formal/Qwen3-8B",
+      "compact_file": "per_item_outcomes__formal_qwen.tsv.gz",
+      "rows": 1002163,
+      "compressed_bytes": 5311606
+    },
+    {
+      "matrix": "formal_llama",
+      "source": "/dataset1/zailong/runs/peft-sft-lab/hns-forgetting-2x4-20260911/formal/Llama-3.1-8B-Instruct",
+      "compact_file": "per_item_outcomes__formal_llama.tsv.gz",
+      "rows": 1002163,
+      "compressed_bytes": 5345317
+    },
+    {
+      "matrix": "repeat_llama_core",
+      "source": "/dataset1/zailong/runs/peft-sft-lab/hns-forgetting-2x4-20260911/formal_repeat/Llama-3.1-8B-Instruct",
+      "compact_file": "per_item_outcomes__repeat_llama_core.tsv.gz",
+      "rows": 513303,
+      "compressed_bytes": 2737510
+    }
+  ],
+  "included": [
+    "complete per-item primary outcomes required for paired statistics",
+    "secondary outcomes and compact task-specific evaluator details",
+    "score and generation manifests",
+    "numerical gates, adapter build manifests, variant manifests, config, and protocol"
+  ],
+  "not_in_git": [
+    "derived adapter_model.safetensors files (reconstructible from source checkpoints and scripts)",
+    "full generated response text and token IDs (retained at source_run_root)",
+    "HumanEval temporary execution files"
+  ],
+  "reason": "The complete source run is about 16 GB and Git LFS is unavailable in this checkout."
+}

@@ -1,0 +1,77 @@
+{
+  "status": "generation_complete",
+  "base_model": "/dataset1/zailong/models/Qwen3-8B",
+  "variant_manifest": "/dataset1/zailong/runs/peft-sft-lab/hns-forgetting-2x4-20260911/variant_manifests/Qwen3-8B.json",
+  "variant_order": [
+    "magicoder__original_lora",
+    "magicoder__original_hns",
+    "magicoder__common_hns",
+    "magicoder__common_per_module",
+    "magicoder__global_0p25",
+    "magicoder__global_0p40",
+    "magicoder__global_0p55",
+    "magicoder__global_0p70",
+    "magicoder__global_0p85",
+    "magicoder__common_lora",
+    "metamath__original_lora",
+    "metamath__original_hns",
+    "metamath__common_hns",
+    "metamath__common_per_module",
+    "metamath__global_0p25",
+    "metamath__global_0p40",
+    "metamath__global_0p55",
+    "metamath__global_0p70",
+    "metamath__global_0p85",
+    "metamath__common_lora",
+    "tulu__original_lora",
+    "tulu__original_hns",
+    "tulu__common_hns",
+    "tulu__common_per_module",
+    "tulu__global_0p25",
+    "tulu__global_0p40",
+    "tulu__global_0p55",
+    "tulu__global_0p70",
+    "tulu__global_0p85",
+    "tulu__common_lora",
+    "commonsense__original_lora",
+    "commonsense__original_hns",
+    "commonsense__common_hns",
+    "commonsense__common_per_module",
+    "commonsense__global_0p25",
+    "commonsense__global_0p40",
+    "commonsense__global_0p55",
+    "commonsense__global_0p70",
+    "commonsense__global_0p85",
+    "commonsense__common_lora"
+  ],
+  "tasks": [
+    {
+      "task": "magicoder",
+      "samples": 164,
+      "max_tokens": 512
+    },
+    {
+      "task": "commonsense",
+      "samples": 22419,
+      "max_tokens": 8
+    },
+    {
+      "task": "metamath",
+      "samples": 1319,
+      "max_tokens": 512
+    },
+    {
+      "task": "tulu",
+      "samples": 541,
+      "max_tokens": 2048
+    }
+  ],
+  "configuration": {
+    "vllm_batch_invariant": "1",
+    "gpu_memory_utilization": 0.92,
+    "max_num_seqs": 256,
+    "max_num_batched_tokens": 65536,
+    "adapter_block_size": 8,
+    "seed": 42
+  }
+}
