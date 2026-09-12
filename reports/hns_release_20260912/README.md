@@ -5,6 +5,37 @@ Llama-3.1-8B-Instruct HNS mechanism project. Scores are copied from immutable
 run directories under `/dataset1/zailong/runs/peft-sft-lab`; model checkpoints
 and generated adapters are intentionally not committed.
 
+## Quick lookup
+
+From the repository root:
+
+```bash
+# Read the paper-facing overview and complete method comparison.
+less reports/hns_release_20260912/main/all_methods_main_table.md
+
+# Open the two principal mechanism/forgetting reports.
+less reports/hns_release_20260912/main/mechanism_main_report.md
+less reports/hns_release_20260912/main/forgetting_main_report.md
+
+# Inspect the compact numerical tables.
+column -ts $'\t' reports/hns_release_20260912/main/main_results.tsv | less -S
+column -ts $'\t' reports/hns_release_20260912/main/retention_scores.tsv | less -S
+
+# Verify the copied/compressed release artifacts.
+sha256sum -c reports/hns_release_20260912/MANIFEST.sha256
+```
+
+| Question | Start here |
+|---|---|
+| What belongs in the main paper? | `main/` |
+| What may answer reviewer questions? | `rebuttal/` |
+| Where are spectra and hidden-state modification values? | `data/mechanism/` |
+| Where are FunctionalTop-K and matched-random results? | `data/localization/` |
+| Where are module-level utility/predictor results? | `data/utility/` |
+| Where are Base -> LoRA -> HNS per-item transitions? | `data/forgetting/` |
+| Where are scalar and standardization alternatives? | `data/standardization/` |
+| Where are the original full run outputs? | `/dataset1/zailong/runs/peft-sft-lab/` |
+
 ## Where to start
 
 ### Paper-facing material

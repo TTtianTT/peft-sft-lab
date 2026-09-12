@@ -2,6 +2,31 @@
 
 Minimal, reproducible PEFT SFT lab: **2 base models × 4 tasks × LoRA-family variants**, single-node multi-GPU training via `accelerate`, plus simple sweep utilities.
 
+## HNS experiment results
+
+The complete paper/rebuttal-facing HNS release is indexed at
+[`reports/hns_release_20260912/README.md`](reports/hns_release_20260912/README.md).
+Use the following map when looking for a particular result:
+
+| Need | Location |
+|---|---|
+| Manuscript-ready main tables and reports | [`reports/hns_release_20260912/main/`](reports/hns_release_20260912/main/) |
+| Rebuttal controls, negative results and audits | [`reports/hns_release_20260912/rebuttal/`](reports/hns_release_20260912/rebuttal/) |
+| Machine-readable experiment data | [`reports/hns_release_20260912/data/`](reports/hns_release_20260912/data/) |
+| All-method 2x4 comparison and implementations | [`main/all_methods_main_table.md`](reports/hns_release_20260912/main/all_methods_main_table.md) |
+| Parameter/functional spectra and modification | [`data/mechanism/`](reports/hns_release_20260912/data/mechanism/) |
+| Functional localization and F x C interventions | [`data/localization/`](reports/hns_release_20260912/data/localization/) |
+| Module-utility analyses | [`data/utility/`](reports/hns_release_20260912/data/utility/) |
+| Base -> LoRA -> HNS transitions and forgetting | [`data/forgetting/`](reports/hns_release_20260912/data/forgetting/) |
+| Scalar/standardization alternatives | [`data/standardization/`](reports/hns_release_20260912/data/standardization/) |
+| Artifact checksums | [`MANIFEST.sha256`](reports/hns_release_20260912/MANIFEST.sha256) |
+
+The original uncompressed run directories remain under
+`/dataset1/zailong/runs/peft-sft-lab/`. Model weights, generated adapters,
+full generation dumps and scheduler logs are not stored in Git; the release
+contains the statistics, compressed item/direction-level data, run manifests,
+analysis code and reconstruction scripts needed for the reported results.
+
 ## Quickstart
 
 ### 0) Install
