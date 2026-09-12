@@ -78,10 +78,34 @@ def _first_nonempty(ex: dict, names: Sequence[str]) -> str:
 def _format_commonsense170k_example(ex: dict) -> Tuple[str, str]:
     """Accept the common query/response and instruction/output mirrors."""
     prompt = _first_nonempty(ex, ("query", "question", "instruction", "prompt"))
-    answer = _first_nonempty(ex, ("response", "answer", "output", "solution"))
+    # Prefer the SFT target text over auxiliary short labels (many local
+    # Commonsense170K mirrors contain both ``answer`` and ``output``).
+    answer = _first_nonempty(ex, ("response", "output", "solution", "answer"))
     if not prompt or not answer:
         raise ValueError(
             "Commonsense170K example must contain a prompt and response; "
+            f"got keys={sorted(ex)}"
+        )
+    return prompt, answer
+
+
+def _format_tulu_instruction_following_example(ex: dict) -> Tuple[str, str]:
+    """Format the local two-turn Tulu/personas instruction-following mirror."""
+    prompt = str(ex.get("prompt", "") or "")
+    messages = ex.get("messages") or []
+    answer = ""
+    for message in reversed(messages):
+        if str(message.get("role", "")) == "assistant":
+            answer = str(message.get("content", "") or "")
+            break
+    if not prompt and messages:
+        for message in messages:
+            if str(message.get("role", "")) == "user":
+                prompt = str(message.get("content", "") or "")
+                break
+    if not prompt or not answer:
+        raise ValueError(
+            "Tulu instruction-following example must contain a prompt and assistant response; "
             f"got keys={sorted(ex)}"
         )
     return prompt, answer
@@ -173,6 +197,7 @@ def build_calib_formatter(
          - tatsu-lab/alpaca
          - tau/commonsense_qa
          - commonsense170k (local mirrors with query/response or instruction/output)
+         - tulu_if (local prompt/messages instruction-following mirror)
 
     For other datasets, calib_text_fields must be provided.
     """
@@ -198,6 +223,8 @@ def build_calib_formatter(
         "zwhe99/commonsense_170k",
     }:
         return _format_commonsense170k_example, None
+    if ds in {"tulu_if", "tulu_instruction_following", "tulu-personas-if"}:
+        return _format_tulu_instruction_following_example, None
 
     raise ValueError(
         "calib_text_fields must be provided for non-default datasets. "

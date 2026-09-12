@@ -1,0 +1,112 @@
+{
+  "model_root": "/dataset1/zailong/models/spectral-surgery",
+  "cases": [
+    {
+      "label": "qwen3_magicoder_hns4p1",
+      "lora": "Qwen3-8B-Magicoder-50K-LoRA-E1",
+      "hns": "Qwen3-8B-Magicoder-50K-SpectralSurgery-HNS4p1-AllMods",
+      "metrics": {
+        "lora": [0.6707, 0.7276],
+        "hns": [0.7439, 0.7510],
+        "names": ["HumanEval", "MBPP"]
+      }
+    },
+    {
+      "label": "qwen3_metamath_hns4p1",
+      "lora": "Qwen3-8B-MetaMathQA-50K-LoRA",
+      "hns": "Qwen3-8B-MetaMathQA-50K-Spectral-Surgery-AllModules-4Plus1",
+      "metrics": {"lora": [0.8400303260045489], "hns": [0.8840030326004549], "names": ["GSM8K"]}
+    },
+    {
+      "label": "qwen3_metamath_hns8p2",
+      "lora": "Qwen3-8B-MetaMathQA-50K-LoRA",
+      "hns": "Qwen3-8B-MetaMathQA-50K-Spectral-Surgery-AllModules-8Plus2",
+      "metrics": {"lora": [0.8400303260045489], "hns": [0.8802122820318423], "names": ["GSM8K"]}
+    },
+    {
+      "label": "qwen3_instruction_hns4p1",
+      "lora": "Qwen3-8B-InstructionFollowing-LoRA",
+      "hns": "Qwen3-8B-InstructionFollowing-SpectralSurgery-HNS4p1",
+      "metrics": {
+        "lora": [0.7430683918669131, 0.7837338262476895, 0.8141486810551559, 0.8513189448441247],
+        "hns": [0.7578558225508318, 0.8077634011090573, 0.8321342925659473, 0.8669064748201439],
+        "names": ["IFEval prompt strict", "IFEval prompt loose", "IFEval instruction strict", "IFEval instruction loose"]
+      }
+    },
+    {
+      "label": "qwen3_instruction_hns8p2",
+      "lora": "Qwen3-8B-InstructionFollowing-LoRA",
+      "hns": "Qwen3-8B-InstructionFollowing-SpectralSurgery-HNS8p2",
+      "metrics": {
+        "lora": [0.7430683918669131, 0.7837338262476895, 0.8141486810551559, 0.8513189448441247],
+        "hns": [0.756007393715342, 0.8077634011090573, 0.8309352517985612, 0.8657074340527577],
+        "names": ["IFEval prompt strict", "IFEval prompt loose", "IFEval instruction strict", "IFEval instruction loose"]
+      }
+    },
+    {
+      "label": "qwen25_instruction_hns4p1",
+      "lora": "Qwen2.5-7B-Instruct-InstructionFollowing-LoRA",
+      "hns": "Qwen2.5-7B-Instruct-InstructionFollowing-SpectralSurgery-HNS4p1",
+      "metrics": {
+        "lora": [0.6469500924214417, 0.6931608133086876, 0.7338129496402878, 0.7781774580335732],
+        "hns": [0.6968576709796673, 0.7504621072088724, 0.7793764988009593, 0.8249400479616307],
+        "names": ["IFEval prompt strict", "IFEval prompt loose", "IFEval instruction strict", "IFEval instruction loose"]
+      }
+    },
+    {
+      "label": "qwen25_instruction_hns8p2",
+      "lora": "Qwen2.5-7B-Instruct-InstructionFollowing-LoRA",
+      "hns": "Qwen2.5-7B-Instruct-InstructionFollowing-SpectralSurgery-HNS8p2",
+      "metrics": {
+        "lora": [0.6469500924214417, 0.6931608133086876, 0.7338129496402878, 0.7781774580335732],
+        "hns": [0.6913123844731978, 0.7393715341959335, 0.7769784172661871, 0.8165467625899281],
+        "names": ["IFEval prompt strict", "IFEval prompt loose", "IFEval instruction strict", "IFEval instruction loose"]
+      }
+    },
+    {
+      "label": "llama31_magicoder_hns4p1",
+      "lora": "Llama-3.1-8B-Instruct-Magicoder-50K-LoRA-E1",
+      "hns": "Llama-3.1-8B-Instruct-Magicoder-50K-SpectralSurgery-HNS4p1",
+      "metrics": {"lora": [0.5609756097560976, 0.6070038910505836], "hns": [0.5853658536585366, 0.6536964980544747], "names": ["HumanEval", "MBPP"]}
+    },
+    {
+      "label": "llama31_magicoder_hns8p2",
+      "lora": "Llama-3.1-8B-Instruct-Magicoder-50K-LoRA-E1",
+      "hns": "Llama-3.1-8B-Instruct-Magicoder-50K-SpectralSurgery-HNS8p2",
+      "metrics": {"lora": [0.5609756097560976, 0.6070038910505836], "hns": [0.6097560975609756, 0.6498054474708171], "names": ["HumanEval", "MBPP"]}
+    },
+    {
+      "label": "llama31_metamath_hns4p1",
+      "lora": "Llama-3.1-8B-Instruct-MetaMathQA-50K-LoRA",
+      "hns": "Llama-3.1-8B-Instruct-MetaMathQA-50K-SpectralSurgery-HNS4p1-AllMods",
+      "metrics": {"lora": [0.7718], "hns": [0.7938], "names": ["GSM8K"]}
+    },
+    {
+      "label": "llama31_metamath_hns8p2",
+      "lora": "Llama-3.1-8B-Instruct-MetaMathQA-50K-LoRA",
+      "hns": "Llama-3.1-8B-Instruct-MetaMathQA-50K-SpectralSurgery-HNS8p2-AllMods",
+      "metrics": {"lora": [0.7718], "hns": [0.7938], "names": ["GSM8K"]}
+    },
+    {
+      "label": "llama31_instruction_hns8p2",
+      "lora": "Llama-3.1-8B-Instruct-InstructionFollowing-LoRA",
+      "hns": "Llama-3.1-8B-Instruct-InstructionFollowing-SpectralSurgery-HNS8p2",
+      "metrics": {
+        "lora": [0.6599, 0.7098, 0.7482, 0.7926],
+        "hns": [0.6950, 0.7394, 0.7794, 0.8213],
+        "names": ["IFEval prompt strict", "IFEval prompt loose", "IFEval instruction strict", "IFEval instruction loose"]
+      }
+    },
+    {
+      "label": "llama31_commonsense_allmods_hns8p2_failure",
+      "lora": "Llama-3.1-8B-Instruct-CommonSense170K-LoRA-GBS64-Final",
+      "hns": "Llama-3.1-8B-Instruct-CommonSense170K-Spectral-Surgery-AllModules-8Plus2",
+      "metrics": {"lora": [0.8790117128393726], "hns": [0.8770698639310217], "names": ["Commonsense8 macro"]}
+    },
+    {
+      "label": "qwen3_commonsense_unscored",
+      "lora": "Qwen3-8B-CommonSense170K-LoRA",
+      "hns": "Qwen3-8B-CommonSense170K-Spectral-Surgery"
+    }
+  ]
+}

@@ -52,6 +52,37 @@ class SpectralEditHookTests(unittest.TestCase):
         self.assertTrue(torch.allclose(HOOK_CTX.gsum["linear"], expected, atol=1e-6))
         self.assertIsNone(getattr(module, "__xv_cache", None))
 
+    def test_optional_energy_capture_respects_attention_mask(self):
+        torch.manual_seed(11)
+        module = torch.nn.Linear(3, 4, bias=False)
+        U, _ = torch.linalg.qr(torch.randn(4, 2), mode="reduced")
+        V, _ = torch.linalg.qr(torch.randn(3, 2), mode="reduced")
+        spec = ModuleSpec(
+            module_prefix="linear",
+            module=module,
+            U=U,
+            V=V,
+            Vh=V.t(),
+            sigma0=torch.tensor([2.0, 0.5]),
+            scaling=1.0,
+            adapter=None,
+        )
+        x = torch.randn(2, 3, 3, requires_grad=True)
+        mask = torch.tensor([[1, 1, 0], [1, 0, 0]])
+        projected = (x.detach() * mask.unsqueeze(-1)) @ V
+        expected = projected.square().sum(dim=(0, 1))
+
+        HOOK_CTX.reset()
+        HOOK_CTX.attn_mask = mask
+        handles = register_sigma_hooks({"linear": spec}, capture_energy=True)
+        try:
+            module(x).sum().backward()
+        finally:
+            remove_hooks(handles)
+
+        self.assertEqual(HOOK_CTX.energy_count["linear"], 3)
+        self.assertTrue(torch.allclose(HOOK_CTX.energy_sum["linear"], expected, atol=1e-6))
+
 
 if __name__ == "__main__":
     unittest.main()

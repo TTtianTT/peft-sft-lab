@@ -1,0 +1,205 @@
+base_model	task	label	category	total	strict_acc	loose_acc	dataset	dataset_config	split	accuracy	correct	invalid
+Qwen3-8B	tulu	lora	punctuation	66	0.9393939393939394	0.9696969696969697						
+Qwen3-8B	tulu	lora	detectable_format	157	0.7834394904458599	0.8089171974522293						
+Qwen3-8B	tulu	lora	length_constraints	143	0.7762237762237763	0.8461538461538461						
+Qwen3-8B	tulu	lora	detectable_content	53	0.7735849056603774	0.8490566037735849						
+Qwen3-8B	tulu	lora	combination	65	0.8153846153846154	0.8153846153846154						
+Qwen3-8B	tulu	lora	change_case	89	0.8314606741573034	0.8764044943820225						
+Qwen3-8B	tulu	lora	startend	67	0.9104477611940298	0.9104477611940298						
+Qwen3-8B	tulu	lora	keywords	163	0.754601226993865	0.7975460122699386						
+Qwen3-8B	tulu	lora	language	31	1.0	1.0						
+Qwen3-8B	tulu	scalar_shrink	punctuation	66	0.9696969696969697	0.9696969696969697						
+Qwen3-8B	tulu	scalar_shrink	detectable_format	157	0.7707006369426752	0.7898089171974523						
+Qwen3-8B	tulu	scalar_shrink	length_constraints	143	0.7692307692307693	0.8321678321678322						
+Qwen3-8B	tulu	scalar_shrink	detectable_content	53	0.6981132075471698	0.8113207547169812						
+Qwen3-8B	tulu	scalar_shrink	combination	65	0.8	0.8						
+Qwen3-8B	tulu	scalar_shrink	change_case	89	0.8764044943820225	0.9101123595505618						
+Qwen3-8B	tulu	scalar_shrink	startend	67	0.9253731343283582	0.9253731343283582						
+Qwen3-8B	tulu	scalar_shrink	keywords	163	0.7239263803680982	0.7668711656441718						
+Qwen3-8B	tulu	scalar_shrink	language	31	0.0	0.0						
+Qwen3-8B	tulu	shape_only	punctuation	66	0.9242424242424242	0.9696969696969697						
+Qwen3-8B	tulu	shape_only	detectable_format	157	0.802547770700637	0.821656050955414						
+Qwen3-8B	tulu	shape_only	length_constraints	143	0.7902097902097902	0.8741258741258742						
+Qwen3-8B	tulu	shape_only	detectable_content	53	0.7735849056603774	0.8490566037735849						
+Qwen3-8B	tulu	shape_only	combination	65	0.7846153846153846	0.8						
+Qwen3-8B	tulu	shape_only	change_case	89	0.8876404494382022	0.8876404494382022						
+Qwen3-8B	tulu	shape_only	startend	67	0.9402985074626866	0.9402985074626866						
+Qwen3-8B	tulu	shape_only	keywords	163	0.7607361963190185	0.8098159509202454						
+Qwen3-8B	tulu	shape_only	language	31	0.0	0.0						
+Qwen3-8B	tulu	head_only	punctuation	66	0.9696969696969697	0.9696969696969697						
+Qwen3-8B	tulu	head_only	detectable_format	157	0.802547770700637	0.821656050955414						
+Qwen3-8B	tulu	head_only	length_constraints	143	0.7832167832167832	0.8811188811188811						
+Qwen3-8B	tulu	head_only	detectable_content	53	0.7924528301886793	0.8679245283018868						
+Qwen3-8B	tulu	head_only	combination	65	0.8307692307692308	0.8307692307692308						
+Qwen3-8B	tulu	head_only	change_case	89	0.8876404494382022	0.898876404494382						
+Qwen3-8B	tulu	head_only	startend	67	0.9552238805970149	0.9552238805970149						
+Qwen3-8B	tulu	head_only	keywords	163	0.7730061349693251	0.8159509202453987						
+Qwen3-8B	tulu	head_only	language	31	0.0	0.0						
+Qwen3-8B	tulu	tail_only	punctuation	66	0.9696969696969697	0.9848484848484849						
+Qwen3-8B	tulu	tail_only	detectable_format	157	0.7770700636942676	0.802547770700637						
+Qwen3-8B	tulu	tail_only	length_constraints	143	0.7342657342657343	0.7972027972027972						
+Qwen3-8B	tulu	tail_only	detectable_content	53	0.7169811320754716	0.8113207547169812						
+Qwen3-8B	tulu	tail_only	combination	65	0.8153846153846154	0.8153846153846154						
+Qwen3-8B	tulu	tail_only	change_case	89	0.8089887640449438	0.8314606741573034						
+Qwen3-8B	tulu	tail_only	startend	67	0.8656716417910447	0.8656716417910447						
+Qwen3-8B	tulu	tail_only	keywords	163	0.754601226993865	0.803680981595092						
+Qwen3-8B	tulu	tail_only	language	31	0.0	0.0						
+Qwen3-8B	tulu	hns	punctuation	66	0.9696969696969697	0.9696969696969697						
+Qwen3-8B	tulu	hns	detectable_format	157	0.7961783439490446	0.8152866242038217						
+Qwen3-8B	tulu	hns	length_constraints	143	0.7482517482517482	0.8461538461538461						
+Qwen3-8B	tulu	hns	detectable_content	53	0.7735849056603774	0.8490566037735849						
+Qwen3-8B	tulu	hns	combination	65	0.8307692307692308	0.8461538461538461						
+Qwen3-8B	tulu	hns	change_case	89	0.8764044943820225	0.8876404494382022						
+Qwen3-8B	tulu	hns	startend	67	0.9402985074626866	0.9402985074626866						
+Qwen3-8B	tulu	hns	keywords	163	0.803680981595092	0.8404907975460123						
+Qwen3-8B	tulu	hns	language	31	1.0	1.0						
+Qwen3-8B	boolq	lora	boolq	3270			google/boolq		validation	0.8804281345565749	2879	0
+Qwen3-8B	piqa	lora	piqa	1838			ybisk/piqa		validation	0.9009793253536452	1656	0
+Qwen3-8B	siqa	lora	siqa	1954			allenai/social_i_qa		validation	0.823439099283521	1609	0
+Qwen3-8B	hellaswag	lora	hellaswag	10042			Rowan/hellaswag		validation	0.9425413264289982	9465	0
+Qwen3-8B	winogrande	lora	winogrande	1267			allenai/winogrande	winogrande_xl	validation	0.8950276243093923	1134	1
+Qwen3-8B	arc_easy	lora	arc_easy	2376			allenai/ai2_arc	ARC-Easy	test	0.9713804713804713	2308	0
+Qwen3-8B	arc_challenge	lora	arc_challenge	1172			allenai/ai2_arc	ARC-Challenge	test	0.9146757679180887	1072	0
+Qwen3-8B	openbookqa	lora	openbookqa	500			allenai/openbookqa	main	test	0.934	467	1
+Qwen3-8B	boolq	scalar_shrink	boolq	3270			google/boolq		validation	0.8880733944954129	2904	0
+Qwen3-8B	piqa	scalar_shrink	piqa	1838			ybisk/piqa		validation	0.9080522306855278	1669	0
+Qwen3-8B	siqa	scalar_shrink	siqa	1954			allenai/social_i_qa		validation	0.827021494370522	1616	0
+Qwen3-8B	hellaswag	scalar_shrink	hellaswag	10042			Rowan/hellaswag		validation	0.9407488548097989	9447	0
+Qwen3-8B	winogrande	scalar_shrink	winogrande	1267			allenai/winogrande	winogrande_xl	validation	0.8910812943962115	1129	0
+Qwen3-8B	arc_easy	scalar_shrink	arc_easy	2376			allenai/ai2_arc	ARC-Easy	test	0.9751683501683501	2317	0
+Qwen3-8B	arc_challenge	scalar_shrink	arc_challenge	1172			allenai/ai2_arc	ARC-Challenge	test	0.9197952218430034	1078	0
+Qwen3-8B	openbookqa	scalar_shrink	openbookqa	500			allenai/openbookqa	main	test	0.922	461	1
+Qwen3-8B	boolq	shape_only	boolq	3270			google/boolq		validation	0.8785932721712538	2873	0
+Qwen3-8B	piqa	shape_only	piqa	1838			ybisk/piqa		validation	0.8928182807399347	1641	0
+Qwen3-8B	siqa	shape_only	siqa	1954			allenai/social_i_qa		validation	0.812691914022518	1588	0
+Qwen3-8B	hellaswag	shape_only	hellaswag	10042			Rowan/hellaswag		validation	0.9327823142800239	9367	0
+Qwen3-8B	winogrande	shape_only	winogrande	1267			allenai/winogrande	winogrande_xl	validation	0.877663772691397	1112	1
+Qwen3-8B	arc_easy	shape_only	arc_easy	2376			allenai/ai2_arc	ARC-Easy	test	0.9692760942760943	2303	0
+Qwen3-8B	arc_challenge	shape_only	arc_challenge	1172			allenai/ai2_arc	ARC-Challenge	test	0.8993174061433447	1054	1
+Qwen3-8B	openbookqa	shape_only	openbookqa	500			allenai/openbookqa	main	test	0.914	457	1
+Qwen3-8B	boolq	head_only	boolq	3270			google/boolq		validation	0.8868501529051988	2900	0
+Qwen3-8B	piqa	head_only	piqa	1838			ybisk/piqa		validation	0.9020674646354734	1658	0
+Qwen3-8B	siqa	head_only	siqa	1954			allenai/social_i_qa		validation	0.8229273285568065	1608	0
+Qwen3-8B	hellaswag	head_only	hellaswag	10042			Rowan/hellaswag		validation	0.930691097390958	9346	0
+Qwen3-8B	winogrande	head_only	winogrande	1267			allenai/winogrande	winogrande_xl	validation	0.861878453038674	1092	0
+Qwen3-8B	arc_easy	head_only	arc_easy	2376			allenai/ai2_arc	ARC-Easy	test	0.9768518518518519	2321	0
+Qwen3-8B	arc_challenge	head_only	arc_challenge	1172			allenai/ai2_arc	ARC-Challenge	test	0.9215017064846417	1080	0
+Qwen3-8B	openbookqa	head_only	openbookqa	500			allenai/openbookqa	main	test	0.918	459	2
+Qwen3-8B	boolq	tail_only	boolq	3270			google/boolq		validation	0.8755351681957186	2863	0
+Qwen3-8B	piqa	tail_only	piqa	1838			ybisk/piqa		validation	0.8982589771490751	1651	0
+Qwen3-8B	siqa	tail_only	siqa	1954			allenai/social_i_qa		validation	0.8172978505629478	1597	1
+Qwen3-8B	hellaswag	tail_only	hellaswag	10042			Rowan/hellaswag		validation	0.9371639115714001	9411	0
+Qwen3-8B	winogrande	tail_only	winogrande	1267			allenai/winogrande	winogrande_xl	validation	0.8950276243093923	1134	1
+Qwen3-8B	arc_easy	tail_only	arc_easy	2376			allenai/ai2_arc	ARC-Easy	test	0.9671717171717171	2298	0
+Qwen3-8B	arc_challenge	tail_only	arc_challenge	1172			allenai/ai2_arc	ARC-Challenge	test	0.909556313993174	1066	1
+Qwen3-8B	openbookqa	tail_only	openbookqa	500			allenai/openbookqa	main	test	0.926	463	1
+Qwen3-8B	boolq	hns	boolq	3270			google/boolq		validation	0.8856269113149847	2896	0
+Qwen3-8B	piqa	hns	piqa	1838			ybisk/piqa		validation	0.8998911860718172	1654	0
+Qwen3-8B	siqa	hns	siqa	1954			allenai/social_i_qa		validation	0.8265097236438076	1615	0
+Qwen3-8B	hellaswag	hns	hellaswag	10042			Rowan/hellaswag		validation	0.9337781318462458	9377	0
+Qwen3-8B	winogrande	hns	winogrande	1267			allenai/winogrande	winogrande_xl	validation	0.8792423046566693	1114	0
+Qwen3-8B	arc_easy	hns	arc_easy	2376			allenai/ai2_arc	ARC-Easy	test	0.9755892255892256	2318	0
+Qwen3-8B	arc_challenge	hns	arc_challenge	1172			allenai/ai2_arc	ARC-Challenge	test	0.9104095563139932	1067	0
+Qwen3-8B	openbookqa	hns	openbookqa	500			allenai/openbookqa	main	test	0.916	458	1
+Llama-3.1-8B-Instruct	tulu	lora	punctuation	66	0.9545454545454546	0.9848484848484849						
+Llama-3.1-8B-Instruct	tulu	lora	detectable_format	157	0.7070063694267515	0.7452229299363057						
+Llama-3.1-8B-Instruct	tulu	lora	length_constraints	143	0.6993006993006993	0.7902097902097902						
+Llama-3.1-8B-Instruct	tulu	lora	detectable_content	53	0.660377358490566	0.7358490566037735						
+Llama-3.1-8B-Instruct	tulu	lora	combination	65	0.676923076923077	0.6923076923076923						
+Llama-3.1-8B-Instruct	tulu	lora	change_case	89	0.8651685393258427	0.898876404494382						
+Llama-3.1-8B-Instruct	tulu	lora	startend	67	0.9104477611940298	0.9104477611940298						
+Llama-3.1-8B-Instruct	tulu	lora	keywords	163	0.7239263803680982	0.7791411042944786						
+Llama-3.1-8B-Instruct	tulu	lora	language	31	0.0	0.0						
+Llama-3.1-8B-Instruct	tulu	scalar_shrink	punctuation	66	0.9696969696969697	0.9696969696969697						
+Llama-3.1-8B-Instruct	tulu	scalar_shrink	detectable_format	157	0.7579617834394905	0.7770700636942676						
+Llama-3.1-8B-Instruct	tulu	scalar_shrink	length_constraints	143	0.6503496503496503	0.7692307692307693						
+Llama-3.1-8B-Instruct	tulu	scalar_shrink	detectable_content	53	0.7547169811320755	0.7735849056603774						
+Llama-3.1-8B-Instruct	tulu	scalar_shrink	combination	65	0.7230769230769231	0.7384615384615385						
+Llama-3.1-8B-Instruct	tulu	scalar_shrink	change_case	89	0.8089887640449438	0.8539325842696629						
+Llama-3.1-8B-Instruct	tulu	scalar_shrink	startend	67	0.9253731343283582	0.9402985074626866						
+Llama-3.1-8B-Instruct	tulu	scalar_shrink	keywords	163	0.7484662576687117	0.8159509202453987						
+Llama-3.1-8B-Instruct	tulu	scalar_shrink	language	31	0.0	0.0						
+Llama-3.1-8B-Instruct	tulu	shape_only	punctuation	66	0.9696969696969697	0.9848484848484849						
+Llama-3.1-8B-Instruct	tulu	shape_only	detectable_format	157	0.7515923566878981	0.7898089171974523						
+Llama-3.1-8B-Instruct	tulu	shape_only	length_constraints	143	0.6923076923076923	0.7902097902097902						
+Llama-3.1-8B-Instruct	tulu	shape_only	detectable_content	53	0.7924528301886793	0.8113207547169812						
+Llama-3.1-8B-Instruct	tulu	shape_only	combination	65	0.6923076923076923	0.6923076923076923						
+Llama-3.1-8B-Instruct	tulu	shape_only	change_case	89	0.7865168539325843	0.8539325842696629						
+Llama-3.1-8B-Instruct	tulu	shape_only	startend	67	0.8805970149253731	0.8955223880597015						
+Llama-3.1-8B-Instruct	tulu	shape_only	keywords	163	0.7668711656441718	0.8159509202453987						
+Llama-3.1-8B-Instruct	tulu	shape_only	language	31	0.0	0.0						
+Llama-3.1-8B-Instruct	tulu	head_only	punctuation	66	0.9696969696969697	0.9696969696969697						
+Llama-3.1-8B-Instruct	tulu	head_only	detectable_format	157	0.7579617834394905	0.7834394904458599						
+Llama-3.1-8B-Instruct	tulu	head_only	length_constraints	143	0.7482517482517482	0.8321678321678322						
+Llama-3.1-8B-Instruct	tulu	head_only	detectable_content	53	0.7358490566037735	0.7735849056603774						
+Llama-3.1-8B-Instruct	tulu	head_only	combination	65	0.7076923076923077	0.7230769230769231						
+Llama-3.1-8B-Instruct	tulu	head_only	change_case	89	0.8539325842696629	0.9325842696629213						
+Llama-3.1-8B-Instruct	tulu	head_only	startend	67	0.9253731343283582	0.9253731343283582						
+Llama-3.1-8B-Instruct	tulu	head_only	keywords	163	0.7607361963190185	0.803680981595092						
+Llama-3.1-8B-Instruct	tulu	head_only	language	31	0.0	0.0						
+Llama-3.1-8B-Instruct	tulu	tail_only	punctuation	66	0.9545454545454546	0.9696969696969697						
+Llama-3.1-8B-Instruct	tulu	tail_only	detectable_format	157	0.7197452229299363	0.7452229299363057						
+Llama-3.1-8B-Instruct	tulu	tail_only	length_constraints	143	0.6713286713286714	0.7762237762237763						
+Llama-3.1-8B-Instruct	tulu	tail_only	detectable_content	53	0.7358490566037735	0.7924528301886793						
+Llama-3.1-8B-Instruct	tulu	tail_only	combination	65	0.6615384615384615	0.676923076923077						
+Llama-3.1-8B-Instruct	tulu	tail_only	change_case	89	0.8426966292134831	0.8876404494382022						
+Llama-3.1-8B-Instruct	tulu	tail_only	startend	67	0.9104477611940298	0.9104477611940298						
+Llama-3.1-8B-Instruct	tulu	tail_only	keywords	163	0.6932515337423313	0.754601226993865						
+Llama-3.1-8B-Instruct	tulu	tail_only	language	31	0.0	0.0						
+Llama-3.1-8B-Instruct	tulu	hns	punctuation	66	0.9696969696969697	0.9848484848484849						
+Llama-3.1-8B-Instruct	tulu	hns	detectable_format	157	0.7643312101910829	0.7961783439490446						
+Llama-3.1-8B-Instruct	tulu	hns	length_constraints	143	0.6993006993006993	0.8041958041958042						
+Llama-3.1-8B-Instruct	tulu	hns	detectable_content	53	0.7358490566037735	0.7547169811320755						
+Llama-3.1-8B-Instruct	tulu	hns	combination	65	0.7230769230769231	0.7384615384615385						
+Llama-3.1-8B-Instruct	tulu	hns	change_case	89	0.7528089887640449	0.8202247191011236						
+Llama-3.1-8B-Instruct	tulu	hns	startend	67	0.9253731343283582	0.9253731343283582						
+Llama-3.1-8B-Instruct	tulu	hns	keywords	163	0.7607361963190185	0.8220858895705522						
+Llama-3.1-8B-Instruct	tulu	hns	language	31	0.0	0.0						
+Llama-3.1-8B-Instruct	boolq	lora	boolq	3270			google/boolq		validation	0.8749235474006116	2861	11
+Llama-3.1-8B-Instruct	piqa	lora	piqa	1838			ybisk/piqa		validation	0.8944504896626768	1644	0
+Llama-3.1-8B-Instruct	siqa	lora	siqa	1954			allenai/social_i_qa		validation	0.8039918116683725	1571	0
+Llama-3.1-8B-Instruct	hellaswag	lora	hellaswag	10042			Rowan/hellaswag		validation	0.9236207926707827	9275	0
+Llama-3.1-8B-Instruct	winogrande	lora	winogrande	1267			allenai/winogrande	winogrande_xl	validation	0.8681925808997633	1100	1
+Llama-3.1-8B-Instruct	arc_easy	lora	arc_easy	2376			allenai/ai2_arc	ARC-Easy	test	0.9347643097643098	2221	0
+Llama-3.1-8B-Instruct	arc_challenge	lora	arc_challenge	1172			allenai/ai2_arc	ARC-Challenge	test	0.8421501706484642	987	0
+Llama-3.1-8B-Instruct	openbookqa	lora	openbookqa	500			allenai/openbookqa	main	test	0.89	445	0
+Llama-3.1-8B-Instruct	boolq	scalar_shrink	boolq	3270			google/boolq		validation	0.8840978593272171	2891	0
+Llama-3.1-8B-Instruct	piqa	scalar_shrink	piqa	1838			ybisk/piqa		validation	0.8890097932535365	1634	0
+Llama-3.1-8B-Instruct	siqa	scalar_shrink	siqa	1954			allenai/social_i_qa		validation	0.8060388945752303	1575	0
+Llama-3.1-8B-Instruct	hellaswag	scalar_shrink	hellaswag	10042			Rowan/hellaswag		validation	0.9219279028082056	9258	0
+Llama-3.1-8B-Instruct	winogrande	scalar_shrink	winogrande	1267			allenai/winogrande	winogrande_xl	validation	0.8626677190213102	1093	0
+Llama-3.1-8B-Instruct	arc_easy	scalar_shrink	arc_easy	2376			allenai/ai2_arc	ARC-Easy	test	0.9448653198653199	2245	0
+Llama-3.1-8B-Instruct	arc_challenge	scalar_shrink	arc_challenge	1172			allenai/ai2_arc	ARC-Challenge	test	0.8498293515358362	996	0
+Llama-3.1-8B-Instruct	openbookqa	scalar_shrink	openbookqa	500			allenai/openbookqa	main	test	0.902	451	0
+Llama-3.1-8B-Instruct	boolq	shape_only	boolq	3270			google/boolq		validation	0.8758409785932721	2864	0
+Llama-3.1-8B-Instruct	piqa	shape_only	piqa	1838			ybisk/piqa		validation	0.8868335146898803	1630	0
+Llama-3.1-8B-Instruct	siqa	shape_only	siqa	1954			allenai/social_i_qa		validation	0.8004094165813715	1564	0
+Llama-3.1-8B-Instruct	hellaswag	shape_only	hellaswag	10042			Rowan/hellaswag		validation	0.9097789285002987	9136	0
+Llama-3.1-8B-Instruct	winogrande	shape_only	winogrande	1267			allenai/winogrande	winogrande_xl	validation	0.8595106550907656	1089	0
+Llama-3.1-8B-Instruct	arc_easy	shape_only	arc_easy	2376			allenai/ai2_arc	ARC-Easy	test	0.9347643097643098	2221	0
+Llama-3.1-8B-Instruct	arc_challenge	shape_only	arc_challenge	1172			allenai/ai2_arc	ARC-Challenge	test	0.8319112627986348	975	0
+Llama-3.1-8B-Instruct	openbookqa	shape_only	openbookqa	500			allenai/openbookqa	main	test	0.876	438	0
+Llama-3.1-8B-Instruct	boolq	head_only	boolq	3270			google/boolq		validation	0.8834862385321101	2889	0
+Llama-3.1-8B-Instruct	piqa	head_only	piqa	1838			ybisk/piqa		validation	0.8781284004352558	1614	0
+Llama-3.1-8B-Instruct	siqa	head_only	siqa	1954			allenai/social_i_qa		validation	0.8004094165813715	1564	0
+Llama-3.1-8B-Instruct	hellaswag	head_only	hellaswag	10042			Rowan/hellaswag		validation	0.8985261900019916	9023	0
+Llama-3.1-8B-Instruct	winogrande	head_only	winogrande	1267			allenai/winogrande	winogrande_xl	validation	0.8595106550907656	1089	0
+Llama-3.1-8B-Instruct	arc_easy	head_only	arc_easy	2376			allenai/ai2_arc	ARC-Easy	test	0.944023569023569	2243	0
+Llama-3.1-8B-Instruct	arc_challenge	head_only	arc_challenge	1172			allenai/ai2_arc	ARC-Challenge	test	0.8515358361774744	998	0
+Llama-3.1-8B-Instruct	openbookqa	head_only	openbookqa	500			allenai/openbookqa	main	test	0.892	446	0
+Llama-3.1-8B-Instruct	boolq	tail_only	boolq	3270			google/boolq		validation	0.8535168195718654	2791	69
+Llama-3.1-8B-Instruct	piqa	tail_only	piqa	1838			ybisk/piqa		validation	0.8966267682263329	1648	0
+Llama-3.1-8B-Instruct	siqa	tail_only	siqa	1954			allenai/social_i_qa		validation	0.7968270214943706	1557	0
+Llama-3.1-8B-Instruct	hellaswag	tail_only	hellaswag	10042			Rowan/hellaswag		validation	0.9173471420035849	9212	0
+Llama-3.1-8B-Instruct	winogrande	tail_only	winogrande	1267			allenai/winogrande	winogrande_xl	validation	0.8681925808997633	1100	1
+Llama-3.1-8B-Instruct	arc_easy	tail_only	arc_easy	2376			allenai/ai2_arc	ARC-Easy	test	0.9284511784511784	2206	0
+Llama-3.1-8B-Instruct	arc_challenge	tail_only	arc_challenge	1172			allenai/ai2_arc	ARC-Challenge	test	0.8336177474402731	977	0
+Llama-3.1-8B-Instruct	openbookqa	tail_only	openbookqa	500			allenai/openbookqa	main	test	0.882	441	1
+Llama-3.1-8B-Instruct	boolq	hns	boolq	3270			google/boolq		validation	0.8834862385321101	2889	0
+Llama-3.1-8B-Instruct	piqa	hns	piqa	1838			ybisk/piqa		validation	0.8879216539717084	1632	0
+Llama-3.1-8B-Instruct	siqa	hns	siqa	1954			allenai/social_i_qa		validation	0.8019447287615148	1567	0
+Llama-3.1-8B-Instruct	hellaswag	hns	hellaswag	10042			Rowan/hellaswag		validation	0.9041027683728341	9079	0
+Llama-3.1-8B-Instruct	winogrande	hns	winogrande	1267			allenai/winogrande	winogrande_xl	validation	0.8571428571428571	1086	0
+Llama-3.1-8B-Instruct	arc_easy	hns	arc_easy	2376			allenai/ai2_arc	ARC-Easy	test	0.9381313131313131	2229	0
+Llama-3.1-8B-Instruct	arc_challenge	hns	arc_challenge	1172			allenai/ai2_arc	ARC-Challenge	test	0.8498293515358362	996	0
+Llama-3.1-8B-Instruct	openbookqa	hns	openbookqa	500			allenai/openbookqa	main	test	0.894	447	0

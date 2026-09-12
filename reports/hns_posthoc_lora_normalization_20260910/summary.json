@@ -1,0 +1,17 @@
+{
+  "status": "complete_cpu_only",
+  "modules": 1904,
+  "checkpoints": 8,
+  "positive_scalar_checkpoints": 7,
+  "spearman_scalar_gain_vs_hns_gain": 0.6666666666666669,
+  "spearman_module_gamma_vs_top1_energy": -0.9532694931324674,
+  "spearman_module_gamma_vs_effective_rank": 0.9947516987024945,
+  "spearman_module_gamma_vs_spectral_hhi": -0.9999996731576059,
+  "shuffle_seeds": [
+    20260911,
+    20260912,
+    20260913
+  ],
+  "max_shuffle_total_norm_relative_error": 1.1102230246251565e-16,
+  "warning": "global and shuffled downstream behavior has not yet been evaluated"
+}

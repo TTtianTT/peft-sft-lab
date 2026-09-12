@@ -1,0 +1,6 @@
+{
+  "utility_definition": "held-out paired example NLL improvement from an exact single-module observed-HNS intervention",
+  "model": "ridge(alpha=1) with module type fixed effects; predictive R2 is out-of-fold",
+  "permutations": 10000,
+  "seed": 42
+}

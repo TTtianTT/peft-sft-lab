@@ -1,0 +1,503 @@
+{
+  "run_root": "/dataset1/zailong/runs/peft-sft-lab/hns-signed-gates-20260910/qwen_commonsense_piqa",
+  "scope": "Read-only reanalysis of existing predictions and signal batches; no GPU evaluations run",
+  "split_sizes": {
+    "signal": 128,
+    "dose": 128,
+    "validation": 512
+  },
+  "split_ids_disjoint": true,
+  "splits": {
+    "dose": {
+      "variants_including_baseline": 49,
+      "baseline_correct": 117,
+      "invalid_outputs": 0,
+      "source_vs_current_baseline_changed_ids": [],
+      "directions": {
+        "010": {
+          "variants": 24,
+          "flip_count_histogram": {
+            "0": 23,
+            "1": 1
+          },
+          "unique_changed_questions": 1,
+          "events": [
+            {
+              "id": "c035c97c-b1f4-4578-be2c-5ea82bbac9c1",
+              "question": "To fit the crust to the pie.",
+              "delta": -1,
+              "direction_count": 1
+            }
+          ],
+          "leave_question_out": [
+            {
+              "removed_ids": [],
+              "rho": 0.19579704781213397,
+              "note": "post-hoc sensitivity analysis, not a new validation test"
+            },
+            {
+              "removed_ids": [
+                "c035c97c-b1f4-4578-be2c-5ea82bbac9c1"
+              ],
+              "rho": null,
+              "note": "post-hoc sensitivity analysis, not a new validation test"
+            },
+            {
+              "removed_ids": [
+                "c035c97c-b1f4-4578-be2c-5ea82bbac9c1"
+              ],
+              "rho": null,
+              "note": "post-hoc sensitivity analysis, not a new validation test"
+            }
+          ]
+        },
+        "100": {
+          "variants": 24,
+          "flip_count_histogram": {
+            "0": 23,
+            "1": 1
+          },
+          "unique_changed_questions": 1,
+          "events": [
+            {
+              "id": "c035c97c-b1f4-4578-be2c-5ea82bbac9c1",
+              "question": "To fit the crust to the pie.",
+              "delta": -1,
+              "direction_count": 1
+            }
+          ],
+          "leave_question_out": [
+            {
+              "removed_ids": [],
+              "rho": 0.22591967055246226,
+              "note": "post-hoc sensitivity analysis, not a new validation test"
+            },
+            {
+              "removed_ids": [
+                "c035c97c-b1f4-4578-be2c-5ea82bbac9c1"
+              ],
+              "rho": null,
+              "note": "post-hoc sensitivity analysis, not a new validation test"
+            },
+            {
+              "removed_ids": [
+                "c035c97c-b1f4-4578-be2c-5ea82bbac9c1"
+              ],
+              "rho": null,
+              "note": "post-hoc sensitivity analysis, not a new validation test"
+            }
+          ]
+        }
+      },
+      "non_direction_variants": {
+        "lora": {
+          "n": 128,
+          "correct": 117,
+          "invalid": 0,
+          "changed": []
+        }
+      }
+    },
+    "validation": {
+      "variants_including_baseline": 55,
+      "baseline_correct": 460,
+      "invalid_outputs": 0,
+      "source_vs_current_baseline_changed_ids": [],
+      "directions": {
+        "010": {
+          "variants": 24,
+          "flip_count_histogram": {
+            "0": 13,
+            "1": 11
+          },
+          "unique_changed_questions": 1,
+          "events": [
+            {
+              "id": "40319723-24b8-42ed-9a0d-da25a94e574d",
+              "question": "How do you cut a circle ruffle?",
+              "delta": 1,
+              "direction_count": 11
+            }
+          ],
+          "leave_question_out": [
+            {
+              "removed_ids": [],
+              "rho": -0.38053905533605825,
+              "note": "post-hoc sensitivity analysis, not a new validation test"
+            },
+            {
+              "removed_ids": [
+                "40319723-24b8-42ed-9a0d-da25a94e574d"
+              ],
+              "rho": null,
+              "note": "post-hoc sensitivity analysis, not a new validation test"
+            },
+            {
+              "removed_ids": [
+                "40319723-24b8-42ed-9a0d-da25a94e574d"
+              ],
+              "rho": null,
+              "note": "post-hoc sensitivity analysis, not a new validation test"
+            }
+          ]
+        },
+        "100": {
+          "variants": 24,
+          "flip_count_histogram": {
+            "0": 13,
+            "1": 11
+          },
+          "unique_changed_questions": 2,
+          "events": [
+            {
+              "id": "2fa4c10a-2c27-4a96-b624-e01a14bd0ebb",
+              "question": "How can you  spread butter if it is cool or too hard to spread?",
+              "delta": -1,
+              "direction_count": 2
+            },
+            {
+              "id": "40319723-24b8-42ed-9a0d-da25a94e574d",
+              "question": "How do you cut a circle ruffle?",
+              "delta": 1,
+              "direction_count": 9
+            }
+          ],
+          "leave_question_out": [
+            {
+              "removed_ids": [],
+              "rho": -0.41406462649200726,
+              "note": "post-hoc sensitivity analysis, not a new validation test"
+            },
+            {
+              "removed_ids": [
+                "2fa4c10a-2c27-4a96-b624-e01a14bd0ebb"
+              ],
+              "rho": -0.5035525964497694,
+              "note": "post-hoc sensitivity analysis, not a new validation test"
+            },
+            {
+              "removed_ids": [
+                "40319723-24b8-42ed-9a0d-da25a94e574d"
+              ],
+              "rho": 0.06533586077765649,
+              "note": "post-hoc sensitivity analysis, not a new validation test"
+            },
+            {
+              "removed_ids": [
+                "2fa4c10a-2c27-4a96-b624-e01a14bd0ebb",
+                "40319723-24b8-42ed-9a0d-da25a94e574d"
+              ],
+              "rho": null,
+              "note": "post-hoc sensitivity analysis, not a new validation test"
+            }
+          ]
+        }
+      },
+      "non_direction_variants": {
+        "full_hns": {
+          "n": 512,
+          "correct": 453,
+          "invalid": 0,
+          "changed": [
+            {
+              "id": "77692bdc-b257-4d0e-862d-c0e297d21b7a",
+              "delta": 1,
+              "question": "How to make a payment with a card chip"
+            },
+            {
+              "id": "01fb2dea-26dd-4386-8b9f-08457e657c23",
+              "delta": 1,
+              "question": "To attach the wooden boards the LED lights will be attached to the wall."
+            },
+            {
+              "id": "41c84132-6197-4696-87c2-6514e95f54bf",
+              "delta": 1,
+              "question": "Remove musty smell from room."
+            },
+            {
+              "id": "090e3d56-62dc-4797-89b2-6140b1d3d672",
+              "delta": 1,
+              "question": "How to light a candle with a deep seated wick?"
+            },
+            {
+              "id": "526bb673-7c80-461a-8add-510136ef1e35",
+              "delta": -1,
+              "question": "How do I remove wrinkles from a new leather jacket that has never been worn"
+            },
+            {
+              "id": "8b305887-3427-4b3f-a2d4-95d4af8bff5a",
+              "delta": -1,
+              "question": "Roughen up the smooth surface of a hanger"
+            },
+            {
+              "id": "581644a8-286c-4d97-8370-7d5c4da765a2",
+              "delta": -1,
+              "question": "water"
+            },
+            {
+              "id": "9399efe7-21f2-48fa-9dc7-bc879898a6ef",
+              "delta": -1,
+              "question": "Carry multiple luggage."
+            },
+            {
+              "id": "138ae791-307b-4b7d-9070-cc260e9aef28",
+              "delta": -1,
+              "question": "To help clear out breathing ways when you're congested,"
+            },
+            {
+              "id": "ac01f912-f2a1-44e0-86f4-923dffe7c4df",
+              "delta": -1,
+              "question": "cans"
+            },
+            {
+              "id": "756bd10a-7252-4b3a-b352-7b2300aa2e7a",
+              "delta": 1,
+              "question": "Create a Mask Armature"
+            },
+            {
+              "id": "449bb9ad-c09b-47e8-af3c-ecb317be8975",
+              "delta": -1,
+              "question": "how do you open a wrapped present?"
+            },
+            {
+              "id": "952cb3fc-270a-4fdb-95ad-66cd951907d4",
+              "delta": -1,
+              "question": "hands"
+            },
+            {
+              "id": "6ec67eb3-c82c-4c19-8491-1ac30c17c34e",
+              "delta": -1,
+              "question": "How do I garnish kheer after it has cooked?"
+            },
+            {
+              "id": "aede2e9d-d1f6-45a4-98ac-b9d942109fef",
+              "delta": -1,
+              "question": "gun"
+            },
+            {
+              "id": "48e8be7b-1987-4570-a445-e7590b5ca4c2",
+              "delta": -1,
+              "question": "How can I pull/push my child in the swing while sitting down and resting?"
+            },
+            {
+              "id": "d3961e7d-1190-4578-9918-c51500fbe46e",
+              "delta": -1,
+              "question": "how do you file down a dogs teeth?"
+            },
+            {
+              "id": "81d3beb7-62f9-4927-8361-f32b25c7996d",
+              "delta": 1,
+              "question": "tape"
+            },
+            {
+              "id": "61fe6310-6251-41e9-b761-b686553eb9a5",
+              "delta": -1,
+              "question": "mittens"
+            },
+            {
+              "id": "84c4211c-0f10-4a98-8997-5fb2652b26e3",
+              "delta": 1,
+              "question": "Is there a best way to blow up party balloons?"
+            },
+            {
+              "id": "36df2036-9d49-43a7-9d40-6f3710d03633",
+              "delta": -1,
+              "question": "smoke"
+            },
+            {
+              "id": "ba43c1cc-8586-469c-ab85-8cdde57ccc3b",
+              "delta": -1,
+              "question": "Clean eggs from your chickens."
+            },
+            {
+              "id": "67ff1a5e-3198-4bbf-8fff-4df1f8bff215",
+              "delta": -1,
+              "question": "How to make macaroni and cheese."
+            },
+            {
+              "id": "bd1ef7dc-e234-44fb-9127-638b14e837f5",
+              "delta": 1,
+              "question": "sky writer airplane"
+            },
+            {
+              "id": "587575f4-28bb-481b-b064-a566b826a7f0",
+              "delta": 1,
+              "question": "To keep skunks from coming onto your property."
+            }
+          ]
+        },
+        "lora": {
+          "n": 512,
+          "correct": 460,
+          "invalid": 0,
+          "changed": []
+        },
+        "predicted_retain_block": {
+          "n": 512,
+          "correct": 461,
+          "invalid": 0,
+          "changed": [
+            {
+              "id": "40319723-24b8-42ed-9a0d-da25a94e574d",
+              "delta": 1,
+              "question": "How do you cut a circle ruffle?"
+            }
+          ]
+        },
+        "scalar_global_fro_match": {
+          "n": 512,
+          "correct": 461,
+          "invalid": 0,
+          "changed": [
+            {
+              "id": "40319723-24b8-42ed-9a0d-da25a94e574d",
+              "delta": 1,
+              "question": "How do you cut a circle ruffle?"
+            }
+          ]
+        },
+        "suppress_block_A": {
+          "n": 512,
+          "correct": 460,
+          "invalid": 0,
+          "changed": []
+        },
+        "suppress_block_AB": {
+          "n": 512,
+          "correct": 461,
+          "invalid": 0,
+          "changed": [
+            {
+              "id": "40319723-24b8-42ed-9a0d-da25a94e574d",
+              "delta": 1,
+              "question": "How do you cut a circle ruffle?"
+            }
+          ]
+        },
+        "suppress_block_B": {
+          "n": 512,
+          "correct": 460,
+          "invalid": 0,
+          "changed": []
+        }
+      }
+    }
+  },
+  "signal_half_diagnostic": {
+    "directions": 24,
+    "same_sign": 24,
+    "spearman": 0.9913043478260868,
+    "limitation": "Post-selection internal diagnostic. Both halves contributed to selecting these directions, so this is not independent evidence of generalization."
+  },
+  "signal_diagnostics": {
+    "metadata": {
+      "definition": "N_j = d(correct-vs-incorrect first-token margin)/d multiplicative singular gate s_j at s=1",
+      "finite_path_prediction": "predicted_hns_margin_gain = dJ/dsigma_j * (sigma_hns_j-sigma_j)",
+      "functional_energy": "(LoRA scaling*sigma_j)^2 E[(v_j^T h)^2] on actual LoRA PIQA prompt trajectories",
+      "base_model": "/dataset1/zailong/models/Qwen3-8B",
+      "lora_path": "/dataset1/zailong/models/spectral-surgery/Qwen3-8B-CommonSense170K-LoRA",
+      "hns_path": "/dataset1/zailong/runs/peft-sft-lab/hns-allmodules-scope-20260909/Qwen3-8B/commonsense/hns-allmodules-8plus2",
+      "signal_samples": 128,
+      "batch_size": 2,
+      "letter_token_ids": {
+        "A": 32,
+        "B": 33
+      },
+      "restricted_first_token_parser_agreement": 1.0,
+      "global_first_token_choice_fraction": 1.0,
+      "modules": 252,
+      "directions": 4032
+    },
+    "median_absolute_baseline_margin": 6.8125,
+    "questions_absolute_margin_under_1": 9,
+    "median_absolute_predicted_full_dose_mean_margin_gain": 0.0014546355008286664,
+    "selected_direction_histogram": {
+      "3": 4,
+      "2": 14,
+      "4": 1,
+      "1": 3,
+      "6": 1,
+      "5": 1
+    }
+  },
+  "dose_decision": {
+    "rule": "maximize mean dose-set accuracy gain over the preselected predicted-suppress directions; tie -> smaller strength",
+    "chosen_strength": 0.1,
+    "dose_contrasts": [
+      {
+        "split": "dose",
+        "strength": 0.1,
+        "directions_per_class": 12,
+        "samples": 128,
+        "predicted_suppress_mean_delta_accuracy": 0.0,
+        "predicted_retain_mean_delta_accuracy": -0.0006510416666666666,
+        "matched_contrast_suppress_minus_retain": 0.0006510416666666666,
+        "matched_contrast_ci_low": 0.0,
+        "matched_contrast_ci_high": 0.00390625,
+        "spearman_predicted_margin_gain_vs_accuracy_delta": 0.19579704781213397,
+        "spearman_p": 0.49755024497550243
+      },
+      {
+        "split": "dose",
+        "strength": 1.0,
+        "directions_per_class": 12,
+        "samples": 128,
+        "predicted_suppress_mean_delta_accuracy": 0.0,
+        "predicted_retain_mean_delta_accuracy": -0.0006510416666666666,
+        "matched_contrast_suppress_minus_retain": 0.0006510416666666666,
+        "matched_contrast_ci_low": 0.0,
+        "matched_contrast_ci_high": 0.00390625,
+        "spearman_predicted_margin_gain_vs_accuracy_delta": 0.22591967055246226,
+        "spearman_p": 0.41685831416858316
+      }
+    ]
+  },
+  "scalar_control": {
+    "label": "scalar_global_fro_match",
+    "strength": 0.1,
+    "directions": 0,
+    "global_scale": 0.9998635650157572,
+    "target": "suppress_block_AB total effective LoRA Frobenius norm"
+  },
+  "zero_flip_one_sided_95_upper_discordance_probability": 0.005833955600556329,
+  "stored_adapter_verification": {
+    "status": "PASS",
+    "variants": 48,
+    "max_relative_spectrum_error": 9.050149287759268e-07,
+    "max_basis_offdiag_fraction": 7.649224263927132e-07
+  },
+  "validation_contrasts": [
+    {
+      "split": "validation",
+      "strength": "0.1",
+      "directions_per_class": "12",
+      "samples": "512",
+      "predicted_suppress_mean_delta_accuracy": "0.0006510416666666666",
+      "predicted_retain_mean_delta_accuracy": "0.0011393229166666667",
+      "matched_contrast_suppress_minus_retain": "-0.00048828125",
+      "matched_contrast_ci_low": "-0.00244140625",
+      "matched_contrast_ci_high": "0.0003255208333333333",
+      "spearman_predicted_margin_gain_vs_accuracy_delta": "-0.38053905533605825",
+      "spearman_p": "0.07289271072892711"
+    },
+    {
+      "split": "validation",
+      "strength": "1.0",
+      "directions_per_class": "12",
+      "samples": "512",
+      "predicted_suppress_mean_delta_accuracy": "0.00016276041666666666",
+      "predicted_retain_mean_delta_accuracy": "0.0009765625",
+      "matched_contrast_suppress_minus_retain": "-0.0008138020833333334",
+      "matched_contrast_ci_low": "-0.00341796875",
+      "matched_contrast_ci_high": "0.00048828125",
+      "spearman_predicted_margin_gain_vs_accuracy_delta": "-0.41406462649200726",
+      "spearman_p": "0.044995500449955005"
+    }
+  ],
+  "evidence_limits": [
+    "Finite-intervention output margins were not saved. Existing files cannot separate gradient linearization failure, margin generalization failure, and margin-to-accuracy mismatch.",
+    "No zero-dose SVD reconstruction control or same-path runtime finite-difference validation was found in the run protocol/manifests.",
+    "A percentile bootstrap interval of [0,0] on zero observed flips does not establish population equivalence.",
+    "Stored adapter spectrum verification does not establish absence of inference-time precision or factorization effects."
+  ]
+}

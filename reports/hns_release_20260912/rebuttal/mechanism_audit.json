@@ -1,0 +1,90 @@
+{
+  "status": "PASS",
+  "checks": {
+    "cross_task": {
+      "rows": 8,
+      "functional_top1_exceeds_raw": 8,
+      "hns_p99_ratio_below_one": 8
+    },
+    "spectral_functional_integrity": {
+      "checkpoints": 8,
+      "fixed_samples_each": 256,
+      "basis_checks_passed": 8,
+      "max_basis_offdiag_fraction": 1.3651775392056073e-06
+    },
+    "paired_inference": {
+      "comparisons": 48,
+      "head_fro_restore_comparisons": 8,
+      "category_comparisons": 396,
+      "ci_excludes_zero": 28
+    },
+    "refreshed_point_estimates": [],
+    "functional_localization": {
+      "variants_per_case": {
+        "qwen_magicoder": 16,
+        "qwen_commonsense": 16,
+        "llama_tulu": 16
+      },
+      "paired_comparisons": 54
+    },
+    "module_utility": {
+      "qwen_magicoder": {
+        "modules": 252,
+        "heldout_samples_used": 61
+      },
+      "qwen_commonsense": {
+        "modules": 252,
+        "heldout_samples_used": 64
+      },
+      "llama_tulu": {
+        "modules": 224,
+        "heldout_samples_used": 64
+      },
+      "joined_rows": 728
+    },
+    "utility_analysis": {
+      "model_rows": 20,
+      "correlation_rows": 16
+    },
+    "decisive_followup": {
+      "completion": {
+        "status": "complete",
+        "completed_at_utc": "2026-09-09T21:26:17.930470+00:00",
+        "gpu_policy": "one serial GPU allocation",
+        "head_fro_checkpoints": 8,
+        "fc_cases": [
+          "qwen_magicoder",
+          "qwen_commonsense",
+          "llama_tulu"
+        ],
+        "fc_variants_per_case": 10,
+        "nonadditivity_adapter_sets_per_case": 4
+      },
+      "cases": {
+        "qwen_magicoder": {
+          "modules": 252,
+          "variants": 10,
+          "verified_tensor_mismatches": 0,
+          "nll_sets": 5,
+          "nll_samples": 61
+        },
+        "qwen_commonsense": {
+          "modules": 252,
+          "variants": 10,
+          "verified_tensor_mismatches": 0,
+          "nll_sets": 5,
+          "nll_samples": 64
+        },
+        "llama_tulu": {
+          "modules": 224,
+          "variants": 10,
+          "verified_tensor_mismatches": 0,
+          "nll_sets": 5,
+          "nll_samples": 64
+        }
+      },
+      "paired_comparisons": 60,
+      "nonadditivity_sets": 12
+    }
+  }
+}

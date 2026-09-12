@@ -1,0 +1,67 @@
+{
+  "experiment": "hns_above_base_stochastic_audit",
+  "date": "2026-09-11",
+  "forgetting_config": "/dataset1/zailong/runs/peft-sft-lab/hns-forgetting-2x4-20260911/experiment_config.json",
+  "sampling": {
+    "num_rollouts": 8,
+    "temperature": 0.7,
+    "top_p": 0.95,
+    "seed": 20260911
+  },
+  "bases": {
+    "Qwen3-8B": {
+      "base_model": "/dataset1/zailong/models/Qwen3-8B",
+      "edges": [
+        {
+          "train_task": "magicoder",
+          "eval_task": "metamath",
+          "conditions": [
+            {"label": "original_lora", "path": "/dataset1/zailong/models/spectral-surgery/Qwen3-8B-Magicoder-50K-LoRA-E1"},
+            {"label": "original_hns", "path": "/dataset1/zailong/models/spectral-surgery/Qwen3-8B-Magicoder-50K-SpectralSurgery-HNS4p1-AllMods"},
+            {"label": "common_lora", "path": "/dataset1/zailong/runs/peft-sft-lab/hns-forgetting-2x4-20260911/adapters/Qwen3-8B/magicoder/common-global-1p00"},
+            {"label": "common_hns", "path": "/dataset1/zailong/runs/peft-sft-lab/hns-forgetting-2x4-20260911/adapters/Qwen3-8B/magicoder/common-hns"},
+            {"label": "calibrated_scalar_0p40", "path": "/dataset1/zailong/runs/peft-sft-lab/hns-forgetting-2x4-20260911/adapters/Qwen3-8B/magicoder/common-global-0p40"}
+          ]
+        },
+        {
+          "train_task": "metamath",
+          "eval_task": "magicoder",
+          "conditions": [
+            {"label": "original_lora", "path": "/dataset1/zailong/models/spectral-surgery/Qwen3-8B-MetaMathQA-50K-LoRA"},
+            {"label": "original_hns", "path": "/dataset1/zailong/models/spectral-surgery/Qwen3-8B-MetaMathQA-50K-Spectral-Surgery-AllModules-4Plus1"},
+            {"label": "common_lora", "path": "/dataset1/zailong/runs/peft-sft-lab/hns-forgetting-2x4-20260911/adapters/Qwen3-8B/metamath/common-global-1p00"},
+            {"label": "common_hns", "path": "/dataset1/zailong/runs/peft-sft-lab/hns-forgetting-2x4-20260911/adapters/Qwen3-8B/metamath/common-hns"},
+            {"label": "calibrated_scalar_0p40", "path": "/dataset1/zailong/runs/peft-sft-lab/hns-forgetting-2x4-20260911/adapters/Qwen3-8B/metamath/common-global-0p40"}
+          ]
+        }
+      ]
+    },
+    "Llama-3.1-8B-Instruct": {
+      "base_model": "/dataset1/zailong/models/Llama-3.1-8B-Instruct",
+      "edges": [
+        {
+          "train_task": "magicoder",
+          "eval_task": "metamath",
+          "conditions": [
+            {"label": "original_lora", "path": "/dataset1/zailong/models/spectral-surgery/Llama-3.1-8B-Instruct-Magicoder-50K-LoRA-E1"},
+            {"label": "original_hns", "path": "/dataset1/zailong/models/spectral-surgery/Llama-3.1-8B-Instruct-Magicoder-50K-SpectralSurgery-HNS4p1"},
+            {"label": "common_lora", "path": "/dataset1/zailong/runs/peft-sft-lab/hns-forgetting-2x4-20260911/adapters/Llama-3.1-8B-Instruct/magicoder/common-global-1p00"},
+            {"label": "common_hns", "path": "/dataset1/zailong/runs/peft-sft-lab/hns-forgetting-2x4-20260911/adapters/Llama-3.1-8B-Instruct/magicoder/common-hns"},
+            {"label": "calibrated_scalar_0p25", "path": "/dataset1/zailong/runs/peft-sft-lab/hns-forgetting-2x4-20260911/adapters/Llama-3.1-8B-Instruct/magicoder/common-global-0p25"}
+          ]
+        },
+        {
+          "train_task": "metamath",
+          "eval_task": "magicoder",
+          "conditions": [
+            {"label": "original_lora", "path": "/dataset1/zailong/models/spectral-surgery/Llama-3.1-8B-Instruct-MetaMathQA-50K-LoRA"},
+            {"label": "original_hns", "path": "/dataset1/zailong/models/spectral-surgery/Llama-3.1-8B-Instruct-MetaMathQA-50K-SpectralSurgery-HNS4p1-AllMods"},
+            {"label": "common_lora", "path": "/dataset1/zailong/runs/peft-sft-lab/hns-forgetting-2x4-20260911/adapters/Llama-3.1-8B-Instruct/metamath/common-global-1p00"},
+            {"label": "common_hns", "path": "/dataset1/zailong/runs/peft-sft-lab/hns-forgetting-2x4-20260911/adapters/Llama-3.1-8B-Instruct/metamath/common-hns"},
+            {"label": "calibrated_scalar_0p40", "path": "/dataset1/zailong/runs/peft-sft-lab/hns-forgetting-2x4-20260911/adapters/Llama-3.1-8B-Instruct/metamath/common-global-0p40"}
+          ]
+        }
+      ]
+    }
+  }
+}

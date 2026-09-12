@@ -1,0 +1,17 @@
+scope	feature	target	spearman_rho	n	checkpoints
+pooled	raw_top1_spectral_share	hns_gain	0.3571428571428572	8	Qwen3-8B:magicoder,Qwen3-8B:metamath,Qwen3-8B:tulu,Qwen3-8B:commonsense,Llama-3.1-8B-Instruct:magicoder,Llama-3.1-8B-Instruct:metamath,Llama-3.1-8B-Instruct:tulu,Llama-3.1-8B-Instruct:commonsense
+pooled	functional_top1_share	hns_gain	0.4523809523809524	8	Qwen3-8B:magicoder,Qwen3-8B:metamath,Qwen3-8B:tulu,Qwen3-8B:commonsense,Llama-3.1-8B-Instruct:magicoder,Llama-3.1-8B-Instruct:metamath,Llama-3.1-8B-Instruct:tulu,Llama-3.1-8B-Instruct:commonsense
+pooled	functional_effective_rank	hns_gain	-0.4761904761904762	8	Qwen3-8B:magicoder,Qwen3-8B:metamath,Qwen3-8B:tulu,Qwen3-8B:commonsense,Llama-3.1-8B-Instruct:magicoder,Llama-3.1-8B-Instruct:metamath,Llama-3.1-8B-Instruct:tulu,Llama-3.1-8B-Instruct:commonsense
+pooled	p99_suppression	hns_gain	0.5714285714285715	8	Qwen3-8B:magicoder,Qwen3-8B:metamath,Qwen3-8B:tulu,Qwen3-8B:commonsense,Llama-3.1-8B-Instruct:magicoder,Llama-3.1-8B-Instruct:metamath,Llama-3.1-8B-Instruct:tulu,Llama-3.1-8B-Instruct:commonsense
+full_module_hns	raw_top1_spectral_share	hns_gain	0.3571428571428572	8	Qwen3-8B:magicoder,Qwen3-8B:metamath,Qwen3-8B:tulu,Qwen3-8B:commonsense,Llama-3.1-8B-Instruct:magicoder,Llama-3.1-8B-Instruct:metamath,Llama-3.1-8B-Instruct:tulu,Llama-3.1-8B-Instruct:commonsense
+full_module_hns	functional_top1_share	hns_gain	0.4523809523809524	8	Qwen3-8B:magicoder,Qwen3-8B:metamath,Qwen3-8B:tulu,Qwen3-8B:commonsense,Llama-3.1-8B-Instruct:magicoder,Llama-3.1-8B-Instruct:metamath,Llama-3.1-8B-Instruct:tulu,Llama-3.1-8B-Instruct:commonsense
+full_module_hns	functional_effective_rank	hns_gain	-0.4761904761904762	8	Qwen3-8B:magicoder,Qwen3-8B:metamath,Qwen3-8B:tulu,Qwen3-8B:commonsense,Llama-3.1-8B-Instruct:magicoder,Llama-3.1-8B-Instruct:metamath,Llama-3.1-8B-Instruct:tulu,Llama-3.1-8B-Instruct:commonsense
+full_module_hns	p99_suppression	hns_gain	0.5714285714285715	8	Qwen3-8B:magicoder,Qwen3-8B:metamath,Qwen3-8B:tulu,Qwen3-8B:commonsense,Llama-3.1-8B-Instruct:magicoder,Llama-3.1-8B-Instruct:metamath,Llama-3.1-8B-Instruct:tulu,Llama-3.1-8B-Instruct:commonsense
+Qwen3-8B	raw_top1_spectral_share	hns_gain	0.6000000000000001	4	Qwen3-8B:magicoder,Qwen3-8B:metamath,Qwen3-8B:tulu,Qwen3-8B:commonsense
+Qwen3-8B	functional_top1_share	hns_gain	0.6000000000000001	4	Qwen3-8B:magicoder,Qwen3-8B:metamath,Qwen3-8B:tulu,Qwen3-8B:commonsense
+Qwen3-8B	functional_effective_rank	hns_gain	-0.6000000000000001	4	Qwen3-8B:magicoder,Qwen3-8B:metamath,Qwen3-8B:tulu,Qwen3-8B:commonsense
+Qwen3-8B	p99_suppression	hns_gain	0.7999999999999999	4	Qwen3-8B:magicoder,Qwen3-8B:metamath,Qwen3-8B:tulu,Qwen3-8B:commonsense
+Llama-3.1-8B-Instruct	raw_top1_spectral_share	hns_gain	0.39999999999999997	4	Llama-3.1-8B-Instruct:magicoder,Llama-3.1-8B-Instruct:metamath,Llama-3.1-8B-Instruct:tulu,Llama-3.1-8B-Instruct:commonsense
+Llama-3.1-8B-Instruct	functional_top1_share	hns_gain	0.39999999999999997	4	Llama-3.1-8B-Instruct:magicoder,Llama-3.1-8B-Instruct:metamath,Llama-3.1-8B-Instruct:tulu,Llama-3.1-8B-Instruct:commonsense
+Llama-3.1-8B-Instruct	functional_effective_rank	hns_gain	-0.39999999999999997	4	Llama-3.1-8B-Instruct:magicoder,Llama-3.1-8B-Instruct:metamath,Llama-3.1-8B-Instruct:tulu,Llama-3.1-8B-Instruct:commonsense
+Llama-3.1-8B-Instruct	p99_suppression	hns_gain	0.39999999999999997	4	Llama-3.1-8B-Instruct:magicoder,Llama-3.1-8B-Instruct:metamath,Llama-3.1-8B-Instruct:tulu,Llama-3.1-8B-Instruct:commonsense

@@ -1,0 +1,7 @@
+{
+  "status": "complete",
+  "metric_rows": 24,
+  "comparison_rows": 84,
+  "bootstrap_draws": 20000,
+  "seed": 20260911
+}

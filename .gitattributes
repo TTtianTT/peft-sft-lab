@@ -1,0 +1,4 @@
+# Generated tabular artifacts may end in empty columns represented by trailing
+# delimiters. Preserve them verbatim and do not flag them as whitespace errors.
+reports/**/*.tsv whitespace=-trailing-space
+reports/**/*.csv whitespace=-trailing-space

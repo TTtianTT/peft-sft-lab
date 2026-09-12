@@ -340,6 +340,16 @@ def build_arg_parser() -> argparse.ArgumentParser:
     parser.add_argument("--backend", choices=("vllm", "transformers"), default="vllm")
     parser.add_argument("--chat_template_mode", choices=("auto", "thinking", "non_thinking"), default="auto")
     parser.add_argument("--max_samples", type=int, default=None, help="Optional per-task smoke-test limit.")
+    parser.add_argument(
+        "--sample_manifest",
+        default=None,
+        help="Optional JSON manifest containing split-specific source positions.",
+    )
+    parser.add_argument(
+        "--sample_split",
+        default=None,
+        help="Split name under sample_manifest (for example dose or validation).",
+    )
     parser.add_argument("--max_new_tokens", type=int, default=8)
     parser.add_argument("--request_batch_size", type=int, default=256)
     parser.add_argument("--tensor_parallel_size", type=int, default=1)
@@ -372,6 +382,21 @@ def main() -> None:
         spec = TASKS[task_name]
         print(f"[{task_name}] Loading {spec.dataset_id} {spec.config or ''} split={spec.split}")
         dataset = _load_task_dataset(task_name, spec)
+        if args.sample_manifest is not None:
+            if args.sample_split is None:
+                raise ValueError("--sample_split is required with --sample_manifest")
+            if len(selected_tasks) != 1:
+                raise ValueError("--sample_manifest currently requires exactly one task")
+            manifest = json.loads(Path(args.sample_manifest).read_text())
+            try:
+                positions = manifest["splits"][args.sample_split]["positions"]
+            except KeyError as exc:
+                raise ValueError(
+                    f"split {args.sample_split!r} is absent from {args.sample_manifest}"
+                ) from exc
+            if not positions or min(positions) < 0 or max(positions) >= len(dataset):
+                raise ValueError("sample manifest contains invalid or empty source positions")
+            dataset = dataset.select([int(position) for position in positions])
         if args.max_samples is not None:
             if args.max_samples <= 0:
                 raise ValueError("--max_samples must be > 0")
@@ -497,6 +522,8 @@ def main() -> None:
         "total": total_examples,
         "tasks": task_results,
         "seed": args.seed,
+        "sample_manifest": args.sample_manifest,
+        "sample_split": args.sample_split,
     }
     save_json(output_dir / "summary.json", summary)
     with (output_dir / "summary.csv").open("w", encoding="utf-8", newline="") as handle:

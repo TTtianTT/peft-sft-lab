@@ -1,0 +1,389 @@
+{
+  "status": "complete",
+  "rows": [
+    {
+      "base": "Qwen3-8B",
+      "task": "magicoder",
+      "method": "original_lora",
+      "primary_score": 0.6646341463414634,
+      "gain_vs_lora": 0.0,
+      "difference_vs_hns": -0.08536585365853655
+    },
+    {
+      "base": "Qwen3-8B",
+      "task": "magicoder",
+      "method": "hns",
+      "primary_score": 0.75,
+      "gain_vs_lora": 0.08536585365853655,
+      "difference_vs_hns": 0.0
+    },
+    {
+      "base": "Qwen3-8B",
+      "task": "magicoder",
+      "method": "restore_lora_fro",
+      "primary_score": 0.6524390243902439,
+      "gain_vs_lora": -0.012195121951219523,
+      "difference_vs_hns": -0.09756097560975607
+    },
+    {
+      "base": "Qwen3-8B",
+      "task": "magicoder",
+      "method": "restore_lora_nuclear",
+      "primary_score": 0.6707317073170732,
+      "gain_vs_lora": 0.0060975609756097615,
+      "difference_vs_hns": -0.07926829268292679
+    },
+    {
+      "base": "Qwen3-8B",
+      "task": "magicoder",
+      "method": "restore_hns_fro",
+      "primary_score": 0.7317073170731707,
+      "gain_vs_lora": 0.06707317073170727,
+      "difference_vs_hns": -0.018292682926829285
+    },
+    {
+      "base": "Qwen3-8B",
+      "task": "magicoder",
+      "method": "restore_hns_nuclear",
+      "primary_score": 0.6707317073170732,
+      "gain_vs_lora": 0.0060975609756097615,
+      "difference_vs_hns": -0.07926829268292679
+    },
+    {
+      "base": "Qwen3-8B",
+      "task": "metamath",
+      "method": "original_lora",
+      "primary_score": 0.8415466262319939,
+      "gain_vs_lora": 0.0,
+      "difference_vs_hns": -0.04018195602729335
+    },
+    {
+      "base": "Qwen3-8B",
+      "task": "metamath",
+      "method": "hns",
+      "primary_score": 0.8817285822592873,
+      "gain_vs_lora": 0.04018195602729335,
+      "difference_vs_hns": 0.0
+    },
+    {
+      "base": "Qwen3-8B",
+      "task": "metamath",
+      "method": "restore_lora_fro",
+      "primary_score": 0.8248673237300985,
+      "gain_vs_lora": -0.01667930250189542,
+      "difference_vs_hns": -0.056861258529188774
+    },
+    {
+      "base": "Qwen3-8B",
+      "task": "metamath",
+      "method": "restore_lora_nuclear",
+      "primary_score": 0.8233510235026535,
+      "gain_vs_lora": -0.0181956027293404,
+      "difference_vs_hns": -0.05837755875663375
+    },
+    {
+      "base": "Qwen3-8B",
+      "task": "metamath",
+      "method": "restore_hns_fro",
+      "primary_score": 0.846095526914329,
+      "gain_vs_lora": 0.004548900682335044,
+      "difference_vs_hns": -0.03563305534495831
+    },
+    {
+      "base": "Qwen3-8B",
+      "task": "metamath",
+      "method": "restore_hns_nuclear",
+      "primary_score": 0.8233510235026535,
+      "gain_vs_lora": -0.0181956027293404,
+      "difference_vs_hns": -0.05837755875663375
+    },
+    {
+      "base": "Qwen3-8B",
+      "task": "tulu",
+      "method": "original_lora",
+      "primary_score": 0.6765249537892791,
+      "gain_vs_lora": 0.0,
+      "difference_vs_hns": -0.03512014787430684
+    },
+    {
+      "base": "Qwen3-8B",
+      "task": "tulu",
+      "method": "hns",
+      "primary_score": 0.711645101663586,
+      "gain_vs_lora": 0.03512014787430684,
+      "difference_vs_hns": 0.0
+    },
+    {
+      "base": "Qwen3-8B",
+      "task": "tulu",
+      "method": "restore_lora_fro",
+      "primary_score": 0.6950092421441775,
+      "gain_vs_lora": 0.01848428835489835,
+      "difference_vs_hns": -0.01663585951940849
+    },
+    {
+      "base": "Qwen3-8B",
+      "task": "tulu",
+      "method": "restore_lora_nuclear",
+      "primary_score": 0.6913123844731978,
+      "gain_vs_lora": 0.014787430683918634,
+      "difference_vs_hns": -0.020332717190388205
+    },
+    {
+      "base": "Qwen3-8B",
+      "task": "tulu",
+      "method": "restore_hns_fro",
+      "primary_score": 0.7024029574861368,
+      "gain_vs_lora": 0.025878003696857665,
+      "difference_vs_hns": -0.009242144177449174
+    },
+    {
+      "base": "Qwen3-8B",
+      "task": "tulu",
+      "method": "restore_hns_nuclear",
+      "primary_score": 0.6913123844731978,
+      "gain_vs_lora": 0.014787430683918634,
+      "difference_vs_hns": -0.020332717190388205
+    },
+    {
+      "base": "Qwen3-8B",
+      "task": "commonsense",
+      "method": "original_lora",
+      "primary_score": 0.9078616627399869,
+      "gain_vs_lora": 0.0,
+      "difference_vs_hns": 0.004056204958095555
+    },
+    {
+      "base": "Qwen3-8B",
+      "task": "commonsense",
+      "method": "hns",
+      "primary_score": 0.9038054577818914,
+      "gain_vs_lora": -0.004056204958095555,
+      "difference_vs_hns": 0.0
+    },
+    {
+      "base": "Qwen3-8B",
+      "task": "commonsense",
+      "method": "restore_lora_fro",
+      "primary_score": 0.8864858348369342,
+      "gain_vs_lora": -0.021375827903052702,
+      "difference_vs_hns": -0.017319622944957147
+    },
+    {
+      "base": "Qwen3-8B",
+      "task": "commonsense",
+      "method": "restore_lora_nuclear",
+      "primary_score": 0.8839759607407653,
+      "gain_vs_lora": -0.023885701999221576,
+      "difference_vs_hns": -0.01982949704112602
+    },
+    {
+      "base": "Qwen3-8B",
+      "task": "commonsense",
+      "method": "restore_hns_fro",
+      "primary_score": 0.8842865886018406,
+      "gain_vs_lora": -0.0235750741381463,
+      "difference_vs_hns": -0.019518869180050746
+    },
+    {
+      "base": "Qwen3-8B",
+      "task": "commonsense",
+      "method": "restore_hns_nuclear",
+      "primary_score": 0.8838248651123847,
+      "gain_vs_lora": -0.024036797627602247,
+      "difference_vs_hns": -0.01998059266950669
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "task": "magicoder",
+      "method": "original_lora",
+      "primary_score": 0.5365853658536586,
+      "gain_vs_lora": 0.0,
+      "difference_vs_hns": -0.0060975609756097615
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "task": "magicoder",
+      "method": "hns",
+      "primary_score": 0.5426829268292683,
+      "gain_vs_lora": 0.0060975609756097615,
+      "difference_vs_hns": 0.0
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "task": "magicoder",
+      "method": "restore_lora_fro",
+      "primary_score": 0.5670731707317073,
+      "gain_vs_lora": 0.030487804878048697,
+      "difference_vs_hns": 0.024390243902438935
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "task": "magicoder",
+      "method": "restore_lora_nuclear",
+      "primary_score": 0.5426829268292683,
+      "gain_vs_lora": 0.0060975609756097615,
+      "difference_vs_hns": 0.0
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "task": "magicoder",
+      "method": "restore_hns_fro",
+      "primary_score": 0.5426829268292683,
+      "gain_vs_lora": 0.0060975609756097615,
+      "difference_vs_hns": 0.0
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "task": "magicoder",
+      "method": "restore_hns_nuclear",
+      "primary_score": 0.5304878048780488,
+      "gain_vs_lora": -0.0060975609756097615,
+      "difference_vs_hns": -0.012195121951219523
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "task": "metamath",
+      "method": "original_lora",
+      "primary_score": 0.7710386656557998,
+      "gain_vs_lora": 0.0,
+      "difference_vs_hns": -0.03335860500379073
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "task": "metamath",
+      "method": "hns",
+      "primary_score": 0.8043972706595905,
+      "gain_vs_lora": 0.03335860500379073,
+      "difference_vs_hns": 0.0
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "task": "metamath",
+      "method": "restore_lora_fro",
+      "primary_score": 0.7482941622441244,
+      "gain_vs_lora": -0.022744503411675443,
+      "difference_vs_hns": -0.056103108415466174
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "task": "metamath",
+      "method": "restore_lora_nuclear",
+      "primary_score": 0.7384382107657316,
+      "gain_vs_lora": -0.03260045489006824,
+      "difference_vs_hns": -0.06595905989385897
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "task": "metamath",
+      "method": "restore_hns_fro",
+      "primary_score": 0.7490523123578469,
+      "gain_vs_lora": -0.021986353297952954,
+      "difference_vs_hns": -0.055344958301743685
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "task": "metamath",
+      "method": "restore_hns_nuclear",
+      "primary_score": 0.7452615617892343,
+      "gain_vs_lora": -0.02577710386656551,
+      "difference_vs_hns": -0.05913570887035624
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "task": "tulu",
+      "method": "original_lora",
+      "primary_score": 0.6321626617375231,
+      "gain_vs_lora": 0.0,
+      "difference_vs_hns": -0.011090573012939031
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "task": "tulu",
+      "method": "hns",
+      "primary_score": 0.6432532347504621,
+      "gain_vs_lora": 0.011090573012939031,
+      "difference_vs_hns": 0.0
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "task": "tulu",
+      "method": "restore_lora_fro",
+      "primary_score": 0.634011090573013,
+      "gain_vs_lora": 0.001848428835489857,
+      "difference_vs_hns": -0.009242144177449174
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "task": "tulu",
+      "method": "restore_lora_nuclear",
+      "primary_score": 0.6192236598890942,
+      "gain_vs_lora": -0.012939001848428888,
+      "difference_vs_hns": -0.02402957486136792
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "task": "tulu",
+      "method": "restore_hns_fro",
+      "primary_score": 0.6377079482439926,
+      "gain_vs_lora": 0.00554528650646946,
+      "difference_vs_hns": -0.005545286506469571
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "task": "tulu",
+      "method": "restore_hns_nuclear",
+      "primary_score": 0.6229205175600739,
+      "gain_vs_lora": -0.009242144177449174,
+      "difference_vs_hns": -0.020332717190388205
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "task": "commonsense",
+      "method": "original_lora",
+      "primary_score": 0.8795895457536193,
+      "gain_vs_lora": 0.0,
+      "difference_vs_hns": 0.003733586491741825
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "task": "commonsense",
+      "method": "hns",
+      "primary_score": 0.8758559592618774,
+      "gain_vs_lora": -0.003733586491741825,
+      "difference_vs_hns": 0.0
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "task": "commonsense",
+      "method": "restore_lora_fro",
+      "primary_score": 0.8494016226110102,
+      "gain_vs_lora": -0.030187923142609097,
+      "difference_vs_hns": -0.02645433665086727
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "task": "commonsense",
+      "method": "restore_lora_nuclear",
+      "primary_score": 0.8460221273659445,
+      "gain_vs_lora": -0.03356741838767474,
+      "difference_vs_hns": -0.029833831895932916
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "task": "commonsense",
+      "method": "restore_hns_fro",
+      "primary_score": 0.8466686835543447,
+      "gain_vs_lora": -0.03292086219927459,
+      "difference_vs_hns": -0.029187275707532767
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "task": "commonsense",
+      "method": "restore_hns_nuclear",
+      "primary_score": 0.8467118381306482,
+      "gain_vs_lora": -0.03287770762297104,
+      "difference_vs_hns": -0.029144121131229217
+    }
+  ]
+}

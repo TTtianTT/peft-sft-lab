@@ -1,0 +1,125 @@
+{
+  "run_root": "/dataset1/zailong/runs/peft-sft-lab/hns-signed-gates-20260910/qwen_metamath_reward_paths",
+  "analysis": "post-hoc CPU review; not a new validation test",
+  "paired_contrasts": [
+    {
+      "contrast": "full_hns minus head_only",
+      "mean": -0.0028535852034110576,
+      "ci_low": -0.018749651544203515,
+      "ci_high": 0.012150618172745422,
+      "half_A": 0.0035164428991265595,
+      "half_B": -0.009223613305948675
+    },
+    {
+      "contrast": "full_hns minus scalar_shrink",
+      "mean": 0.025857334054308012,
+      "ci_low": -0.012426511802186723,
+      "ci_high": 0.0681103837843693,
+      "half_A": -0.003626390651334077,
+      "half_B": 0.0553410587599501
+    },
+    {
+      "contrast": "head_only minus scalar_shrink",
+      "mean": 0.02871091925771907,
+      "ci_low": -0.013659842641209253,
+      "ci_high": 0.07553640157566405,
+      "half_A": -0.007142833550460637,
+      "half_B": 0.06456467206589878
+    }
+  ],
+  "bootstrap": {
+    "question_resamples": 20000,
+    "seed": 20260910
+  },
+  "reward_audit": {
+    "strict_correct": 405,
+    "numeric_equivalent_correct": 417,
+    "strict_numeric_format_mismatches": [
+      {
+        "question_id": "gsm8k-test-1083",
+        "rollout_index": 0,
+        "prediction_extracted": "2.00",
+        "gold": "2"
+      },
+      {
+        "question_id": "gsm8k-test-1083",
+        "rollout_index": 1,
+        "prediction_extracted": "2.00",
+        "gold": "2"
+      },
+      {
+        "question_id": "gsm8k-test-1083",
+        "rollout_index": 2,
+        "prediction_extracted": "2.00",
+        "gold": "2"
+      },
+      {
+        "question_id": "gsm8k-test-1083",
+        "rollout_index": 3,
+        "prediction_extracted": "2.00",
+        "gold": "2"
+      },
+      {
+        "question_id": "gsm8k-test-1257",
+        "rollout_index": 0,
+        "prediction_extracted": "14.00",
+        "gold": "14"
+      },
+      {
+        "question_id": "gsm8k-test-1257",
+        "rollout_index": 1,
+        "prediction_extracted": "14.00",
+        "gold": "14"
+      },
+      {
+        "question_id": "gsm8k-test-1257",
+        "rollout_index": 2,
+        "prediction_extracted": "14.00",
+        "gold": "14"
+      },
+      {
+        "question_id": "gsm8k-test-1257",
+        "rollout_index": 3,
+        "prediction_extracted": "14.00",
+        "gold": "14"
+      },
+      {
+        "question_id": "gsm8k-test-1139",
+        "rollout_index": 0,
+        "prediction_extracted": "1.00",
+        "gold": "1"
+      },
+      {
+        "question_id": "gsm8k-test-1139",
+        "rollout_index": 1,
+        "prediction_extracted": "1.00",
+        "gold": "1"
+      },
+      {
+        "question_id": "gsm8k-test-1139",
+        "rollout_index": 2,
+        "prediction_extracted": "1.00",
+        "gold": "1"
+      },
+      {
+        "question_id": "gsm8k-test-1139",
+        "rollout_index": 3,
+        "prediction_extracted": "1.00",
+        "gold": "1"
+      }
+    ],
+    "all_RLOO_advantages_unchanged": true
+  },
+  "logprob_semantics_audit": {
+    "engine": "vLLM V1 v0.25.1",
+    "legacy_vllm_logprobs_mode": "raw_logprobs (default, before temperature)",
+    "teacher_forced_temperature": 0.7,
+    "legacy_difference_measures_pure_precision_gap": false,
+    "legacy_logprobs_valid_importance_denominator": false,
+    "actual_sampling_policy_gap_measured": false,
+    "future_generator_mode": "processed_logprobs with sampling provenance",
+    "legacy_rollouts_preserved": true
+  },
+  "decision": "Close pilot under original stopping rule; do not use these means for direction selection or expansion. A direct finite-dose calibration would require a separate protocol.",
+  "verification": "Both edited scripts compile; eight CPU logprob-comparability checks pass; no new GPU execution."
+}

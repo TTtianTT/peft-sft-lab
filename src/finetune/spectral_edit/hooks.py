@@ -33,18 +33,22 @@ class HookContext:
         self.attn_mask: Optional[torch.Tensor] = None
         self.total_active_tokens: int = 0
         self.gsum: Dict[str, torch.Tensor] = {}
+        self.energy_sum: Dict[str, torch.Tensor] = {}
+        self.energy_count: Dict[str, int] = {}
 
     def reset(self) -> None:
         """Reset all accumulated values."""
         self.attn_mask = None
         self.total_active_tokens = 0
         self.gsum = {}
+        self.energy_sum = {}
+        self.energy_count = {}
 
 
 HOOK_CTX = HookContext()
 
 
-def register_sigma_hooks(specs: Dict[str, ModuleSpec]):
+def register_sigma_hooks(specs: Dict[str, ModuleSpec], *, capture_energy: bool = False):
     """
     Register forward and backward hooks to accumulate g_sigma.
 
@@ -74,6 +78,18 @@ def register_sigma_hooks(specs: Dict[str, ModuleSpec]):
             V = specs[prefix].V
             with torch.no_grad():
                 module.__xv_cache = x.detach() @ V.to(dtype=x.dtype, device=x.device)
+                if capture_energy:
+                    xv = module.__xv_cache.float()
+                    reduce_dims = tuple(range(xv.ndim - 1))
+                    energy = xv.square().sum(dim=reduce_dims).cpu()
+                    if x.dim() == 3 and HOOK_CTX.attn_mask is not None:
+                        count = int(HOOK_CTX.attn_mask.sum().item())
+                    else:
+                        count = int(xv.numel() // xv.shape[-1])
+                    HOOK_CTX.energy_sum[prefix] = HOOK_CTX.energy_sum.get(
+                        prefix, torch.zeros_like(energy)
+                    ) + energy
+                    HOOK_CTX.energy_count[prefix] = HOOK_CTX.energy_count.get(prefix, 0) + count
 
         return _fwd_hook
 

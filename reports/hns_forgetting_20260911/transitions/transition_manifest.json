@@ -1,0 +1,12 @@
+{
+  "status": "complete",
+  "edges": 24,
+  "paired_item_records": 146658,
+  "edge_quadrants": {
+    "forgotten_improve": 16,
+    "transfer_improve": 3,
+    "transfer_worsen": 3,
+    "forgotten_worsen": 2
+  },
+  "per_item_file": "per_item_transitions.tsv.gz"
+}

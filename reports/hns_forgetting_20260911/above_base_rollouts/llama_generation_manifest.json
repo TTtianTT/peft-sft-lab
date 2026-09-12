@@ -1,0 +1,40 @@
+{
+  "status": "generation_complete",
+  "base": "Llama-3.1-8B-Instruct",
+  "base_model": "/dataset1/zailong/models/Llama-3.1-8B-Instruct",
+  "edges": [
+    {
+      "eval_task": "metamath",
+      "train_task": "magicoder",
+      "samples": 1319,
+      "conditions": [
+        "base",
+        "original_lora",
+        "original_hns",
+        "common_lora",
+        "common_hns",
+        "calibrated_scalar_0p25"
+      ]
+    },
+    {
+      "eval_task": "magicoder",
+      "train_task": "metamath",
+      "samples": 164,
+      "conditions": [
+        "base",
+        "original_lora",
+        "original_hns",
+        "common_lora",
+        "common_hns",
+        "calibrated_scalar_0p40"
+      ]
+    }
+  ],
+  "sampling": {
+    "n": 8,
+    "temperature": 0.7,
+    "top_p": 0.95,
+    "seed": 20260911,
+    "vllm_batch_invariant": "1"
+  }
+}
