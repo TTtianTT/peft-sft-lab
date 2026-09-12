@@ -19,6 +19,8 @@ Use the following map when looking for a particular result:
 | Module-utility analyses | [`data/utility/`](reports/hns_release_20260912/data/utility/) |
 | Base -> LoRA -> HNS transitions and forgetting | [`data/forgetting/`](reports/hns_release_20260912/data/forgetting/) |
 | Scalar/standardization alternatives | [`data/standardization/`](reports/hns_release_20260912/data/standardization/) |
+| HNS step-grid (`2/4/8` fast x `0/1/2` stable) | [`rebuttal/hns_step_grid_report.md`](reports/hns_release_20260912/rebuttal/hns_step_grid_report.md) |
+| Step-grid scores, paired CIs and manifests | [`data/step_grid/`](reports/hns_release_20260912/data/step_grid/) |
 | Artifact checksums | [`MANIFEST.sha256`](reports/hns_release_20260912/MANIFEST.sha256) |
 
 The original uncompressed run directories remain under
@@ -26,6 +28,14 @@ The original uncompressed run directories remain under
 full generation dumps and scheduler logs are not stored in Git; the release
 contains the statistics, compressed item/direction-level data, run manifests,
 analysis code and reconstruction scripts needed for the reported results.
+
+Latest update (2026-09-12): the all-module HNS iteration sweep evaluates ten
+common-implementation spectral variants on the full in-domain test set of all
+eight base/task checkpoints. Its descriptive best fixed setting is `4+0`
+(mean +2.60 pp over LoRA), although it is not distinguishable from the `4+1`
+and `8+2` anchors; every nonzero setting hurts the two Commonsense adapters.
+See the [step-grid report](reports/hns_release_20260912/rebuttal/hns_step_grid_report.md)
+for the complete 2x4 table and statistical boundaries.
 
 ## Quickstart
 

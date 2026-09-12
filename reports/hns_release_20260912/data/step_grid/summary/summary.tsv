@@ -1,0 +1,97 @@
+base	task	display_name	variant	method	fast_steps	stable_steps	primary_metric	score	delta_vs_lora_pp	samples
+Llama-3.1-8B-Instruct	magicoder	Base	base	base			pass_at_1	0.524390243902439	-1.2195121951219523	164
+Llama-3.1-8B-Instruct	magicoder	HNS 0+0	magicoder__hns_f0_s0	hns	0	0	pass_at_1	0.5426829268292683	0.6097560975609762	164
+Llama-3.1-8B-Instruct	magicoder	HNS 2+0	magicoder__hns_f2_s0	hns	2	0	pass_at_1	0.5365853658536586	0.0	164
+Llama-3.1-8B-Instruct	magicoder	HNS 2+1	magicoder__hns_f2_s1	hns	2	1	pass_at_1	0.5426829268292683	0.6097560975609762	164
+Llama-3.1-8B-Instruct	magicoder	HNS 2+2	magicoder__hns_f2_s2	hns	2	2	pass_at_1	0.5365853658536586	0.0	164
+Llama-3.1-8B-Instruct	magicoder	HNS 4+0	magicoder__hns_f4_s0	hns	4	0	pass_at_1	0.5365853658536586	0.0	164
+Llama-3.1-8B-Instruct	magicoder	HNS 4+1	magicoder__hns_f4_s1	hns	4	1	pass_at_1	0.5487804878048781	1.2195121951219523	164
+Llama-3.1-8B-Instruct	magicoder	HNS 4+2	magicoder__hns_f4_s2	hns	4	2	pass_at_1	0.5365853658536586	0.0	164
+Llama-3.1-8B-Instruct	magicoder	HNS 8+0	magicoder__hns_f8_s0	hns	8	0	pass_at_1	0.5426829268292683	0.6097560975609762	164
+Llama-3.1-8B-Instruct	magicoder	HNS 8+1	magicoder__hns_f8_s1	hns	8	1	pass_at_1	0.5487804878048781	1.2195121951219523	164
+Llama-3.1-8B-Instruct	magicoder	HNS 8+2	magicoder__hns_f8_s2	hns	8	2	pass_at_1	0.5365853658536586	0.0	164
+Llama-3.1-8B-Instruct	magicoder	LoRA	magicoder__original_lora	original_lora			pass_at_1	0.5365853658536586	0.0	164
+Llama-3.1-8B-Instruct	metamath	Base	base	base			strict_accuracy	0.6239575435936315	-14.708112206216828	1319
+Llama-3.1-8B-Instruct	metamath	HNS 0+0	metamath__hns_f0_s0	hns	0	0	strict_accuracy	0.7733131159969674	0.22744503411675776	1319
+Llama-3.1-8B-Instruct	metamath	HNS 2+0	metamath__hns_f2_s0	hns	2	0	strict_accuracy	0.8089461713419257	3.7907505686125886	1319
+Llama-3.1-8B-Instruct	metamath	HNS 2+1	metamath__hns_f2_s1	hns	2	1	strict_accuracy	0.8081880212282032	3.7149355572403397	1319
+Llama-3.1-8B-Instruct	metamath	HNS 2+2	metamath__hns_f2_s2	hns	2	2	strict_accuracy	0.8028809704321456	3.1842304776345753	1319
+Llama-3.1-8B-Instruct	metamath	HNS 4+0	metamath__hns_f4_s0	hns	4	0	strict_accuracy	0.8089461713419257	3.7907505686125886	1319
+Llama-3.1-8B-Instruct	metamath	HNS 4+1	metamath__hns_f4_s1	hns	4	1	strict_accuracy	0.8066717210007581	3.563305534495831	1319
+Llama-3.1-8B-Instruct	metamath	HNS 4+2	metamath__hns_f4_s2	hns	4	2	strict_accuracy	0.8104624715693708	3.9423805913570975	1319
+Llama-3.1-8B-Instruct	metamath	HNS 8+0	metamath__hns_f8_s0	hns	8	0	strict_accuracy	0.8066717210007581	3.563305534495831	1319
+Llama-3.1-8B-Instruct	metamath	HNS 8+1	metamath__hns_f8_s1	hns	8	1	strict_accuracy	0.8013646702047005	3.0326004548900665	1319
+Llama-3.1-8B-Instruct	metamath	HNS 8+2	metamath__hns_f8_s2	hns	8	2	strict_accuracy	0.8081880212282032	3.7149355572403397	1319
+Llama-3.1-8B-Instruct	metamath	LoRA	metamath__original_lora	original_lora			strict_accuracy	0.7710386656557998	0.0	1319
+Llama-3.1-8B-Instruct	tulu	Base	base	base			prompt_level_strict_accuracy	0.6210720887245841	-1.1090573012939031	541
+Llama-3.1-8B-Instruct	tulu	HNS 0+0	tulu__hns_f0_s0	hns	0	0	prompt_level_strict_accuracy	0.6358595194085028	0.3696857670979714	541
+Llama-3.1-8B-Instruct	tulu	HNS 2+0	tulu__hns_f2_s0	hns	2	0	prompt_level_strict_accuracy	0.6506469500924215	1.8484288354898348	541
+Llama-3.1-8B-Instruct	tulu	HNS 2+1	tulu__hns_f2_s1	hns	2	1	prompt_level_strict_accuracy	0.6506469500924215	1.8484288354898348	541
+Llama-3.1-8B-Instruct	tulu	HNS 2+2	tulu__hns_f2_s2	hns	2	2	prompt_level_strict_accuracy	0.6451016635859519	1.2939001848428777	541
+Llama-3.1-8B-Instruct	tulu	HNS 4+0	tulu__hns_f4_s0	hns	4	0	prompt_level_strict_accuracy	0.6543438077634011	2.218114602587795	541
+Llama-3.1-8B-Instruct	tulu	HNS 4+1	tulu__hns_f4_s1	hns	4	1	prompt_level_strict_accuracy	0.6487985212569316	1.6635859519408491	541
+Llama-3.1-8B-Instruct	tulu	HNS 4+2	tulu__hns_f4_s2	hns	4	2	prompt_level_strict_accuracy	0.6506469500924215	1.8484288354898348	541
+Llama-3.1-8B-Instruct	tulu	HNS 8+0	tulu__hns_f8_s0	hns	8	0	prompt_level_strict_accuracy	0.6469500924214417	1.4787430683918634	541
+Llama-3.1-8B-Instruct	tulu	HNS 8+1	tulu__hns_f8_s1	hns	8	1	prompt_level_strict_accuracy	0.6432532347504621	1.1090573012939031	541
+Llama-3.1-8B-Instruct	tulu	HNS 8+2	tulu__hns_f8_s2	hns	8	2	prompt_level_strict_accuracy	0.6524953789279113	2.0332717190388205	541
+Llama-3.1-8B-Instruct	tulu	LoRA	tulu__original_lora	original_lora			prompt_level_strict_accuracy	0.6321626617375231	0.0	541
+Llama-3.1-8B-Instruct	commonsense	Base	base	base			macro_accuracy	0.713917020346049	-16.56725254075703	22419
+Llama-3.1-8B-Instruct	commonsense	HNS 0+0	commonsense__hns_f0_s0	hns	0	0	macro_accuracy	0.8795057301923921	-0.008381556122716294	22419
+Llama-3.1-8B-Instruct	commonsense	HNS 2+0	commonsense__hns_f2_s0	hns	2	0	macro_accuracy	0.8740533990701237	-0.5536146683495557	22419
+Llama-3.1-8B-Instruct	commonsense	HNS 2+1	commonsense__hns_f2_s1	hns	2	1	macro_accuracy	0.8755883761393761	-0.40011696142431274	22419
+Llama-3.1-8B-Instruct	commonsense	HNS 2+2	commonsense__hns_f2_s2	hns	2	2	macro_accuracy	0.8757569509132993	-0.3832594840319947	22419
+Llama-3.1-8B-Instruct	commonsense	HNS 4+0	commonsense__hns_f4_s0	hns	4	0	macro_accuracy	0.8751635581098801	-0.44259876437391377	22419
+Llama-3.1-8B-Instruct	commonsense	HNS 4+1	commonsense__hns_f4_s1	hns	4	1	macro_accuracy	0.8751690157881425	-0.4420529965476705	22419
+Llama-3.1-8B-Instruct	commonsense	HNS 4+2	commonsense__hns_f4_s2	hns	4	2	macro_accuracy	0.8752974159301568	-0.4292129823462498	22419
+Llama-3.1-8B-Instruct	commonsense	HNS 8+0	commonsense__hns_f8_s0	hns	8	0	macro_accuracy	0.8745873354480586	-0.5002210305560695	22419
+Llama-3.1-8B-Instruct	commonsense	HNS 8+1	commonsense__hns_f8_s1	hns	8	1	macro_accuracy	0.8765734648344385	-0.3016080919180708	22419
+Llama-3.1-8B-Instruct	commonsense	HNS 8+2	commonsense__hns_f8_s2	hns	8	2	macro_accuracy	0.875811262191475	-0.3778283562144269	22419
+Llama-3.1-8B-Instruct	commonsense	LoRA	commonsense__original_lora	original_lora			macro_accuracy	0.8795895457536193	0.0	22419
+Qwen3-8B	magicoder	Base	base	base			pass_at_1	0.6646341463414634	0.0	164
+Qwen3-8B	magicoder	HNS 0+0	magicoder__hns_f0_s0	hns	0	0	pass_at_1	0.676829268292683	1.2195121951219523	164
+Qwen3-8B	magicoder	HNS 2+0	magicoder__hns_f2_s0	hns	2	0	pass_at_1	0.7560975609756098	9.14634146341463	164
+Qwen3-8B	magicoder	HNS 2+1	magicoder__hns_f2_s1	hns	2	1	pass_at_1	0.7439024390243902	7.926829268292678	164
+Qwen3-8B	magicoder	HNS 2+2	magicoder__hns_f2_s2	hns	2	2	pass_at_1	0.7621951219512195	9.756097560975608	164
+Qwen3-8B	magicoder	HNS 4+0	magicoder__hns_f4_s0	hns	4	0	pass_at_1	0.7439024390243902	7.926829268292678	164
+Qwen3-8B	magicoder	HNS 4+1	magicoder__hns_f4_s1	hns	4	1	pass_at_1	0.75	8.536585365853655	164
+Qwen3-8B	magicoder	HNS 4+2	magicoder__hns_f4_s2	hns	4	2	pass_at_1	0.7560975609756098	9.14634146341463	164
+Qwen3-8B	magicoder	HNS 8+0	magicoder__hns_f8_s0	hns	8	0	pass_at_1	0.75	8.536585365853655	164
+Qwen3-8B	magicoder	HNS 8+1	magicoder__hns_f8_s1	hns	8	1	pass_at_1	0.75	8.536585365853655	164
+Qwen3-8B	magicoder	HNS 8+2	magicoder__hns_f8_s2	hns	8	2	pass_at_1	0.7560975609756098	9.14634146341463	164
+Qwen3-8B	magicoder	LoRA	magicoder__original_lora	original_lora			pass_at_1	0.6646341463414634	0.0	164
+Qwen3-8B	metamath	Base	base	base			strict_accuracy	0.8567096285064443	1.5163002274450332	1319
+Qwen3-8B	metamath	HNS 0+0	metamath__hns_f0_s0	hns	0	0	strict_accuracy	0.8453373768006065	0.37907505686125553	1319
+Qwen3-8B	metamath	HNS 2+0	metamath__hns_f2_s0	hns	2	0	strict_accuracy	0.8824867323730099	4.094010614101595	1319
+Qwen3-8B	metamath	HNS 2+1	metamath__hns_f2_s1	hns	2	1	strict_accuracy	0.8824867323730099	4.094010614101595	1319
+Qwen3-8B	metamath	HNS 2+2	metamath__hns_f2_s2	hns	2	2	strict_accuracy	0.8824867323730099	4.094010614101595	1319
+Qwen3-8B	metamath	HNS 4+0	metamath__hns_f4_s0	hns	4	0	strict_accuracy	0.8824867323730099	4.094010614101595	1319
+Qwen3-8B	metamath	HNS 4+1	metamath__hns_f4_s1	hns	4	1	strict_accuracy	0.8802122820318423	3.8665655799848375	1319
+Qwen3-8B	metamath	HNS 4+2	metamath__hns_f4_s2	hns	4	2	strict_accuracy	0.8817285822592873	4.018195602729335	1319
+Qwen3-8B	metamath	HNS 8+0	metamath__hns_f8_s0	hns	8	0	strict_accuracy	0.8840030326004549	4.245640636846093	1319
+Qwen3-8B	metamath	HNS 8+1	metamath__hns_f8_s1	hns	8	1	strict_accuracy	0.8855193328279	4.3972706595906015	1319
+Qwen3-8B	metamath	HNS 8+2	metamath__hns_f8_s2	hns	8	2	strict_accuracy	0.8847611827141774	4.3214556482183415	1319
+Qwen3-8B	metamath	LoRA	metamath__original_lora	original_lora			strict_accuracy	0.8415466262319939	0.0	1319
+Qwen3-8B	tulu	Base	base	base			prompt_level_strict_accuracy	0.7060998151571165	2.957486136783738	541
+Qwen3-8B	tulu	HNS 0+0	tulu__hns_f0_s0	hns	0	0	prompt_level_strict_accuracy	0.6765249537892791	0.0	541
+Qwen3-8B	tulu	HNS 2+0	tulu__hns_f2_s0	hns	2	0	prompt_level_strict_accuracy	0.7005545286506469	2.402957486136781	541
+Qwen3-8B	tulu	HNS 2+1	tulu__hns_f2_s1	hns	2	1	prompt_level_strict_accuracy	0.7079482439926063	3.1423290203327126	541
+Qwen3-8B	tulu	HNS 2+2	tulu__hns_f2_s2	hns	2	2	prompt_level_strict_accuracy	0.7005545286506469	2.402957486136781	541
+Qwen3-8B	tulu	HNS 4+0	tulu__hns_f4_s0	hns	4	0	prompt_level_strict_accuracy	0.7134935304990758	3.6968576709796697	541
+Qwen3-8B	tulu	HNS 4+1	tulu__hns_f4_s1	hns	4	1	prompt_level_strict_accuracy	0.7024029574861368	2.5878003696857665	541
+Qwen3-8B	tulu	HNS 4+2	tulu__hns_f4_s2	hns	4	2	prompt_level_strict_accuracy	0.7042513863216266	2.7726432532347522	541
+Qwen3-8B	tulu	HNS 8+0	tulu__hns_f8_s0	hns	8	0	prompt_level_strict_accuracy	0.7060998151571165	2.957486136783738	541
+Qwen3-8B	tulu	HNS 8+1	tulu__hns_f8_s1	hns	8	1	prompt_level_strict_accuracy	0.7042513863216266	2.7726432532347522	541
+Qwen3-8B	tulu	HNS 8+2	tulu__hns_f8_s2	hns	8	2	prompt_level_strict_accuracy	0.6894639556377079	1.2939001848428777	541
+Qwen3-8B	tulu	LoRA	tulu__original_lora	original_lora			prompt_level_strict_accuracy	0.6765249537892791	0.0	541
+Qwen3-8B	commonsense	Base	base	base			macro_accuracy	0.8269930161201561	-8.086864661983084	22419
+Qwen3-8B	commonsense	HNS 0+0	commonsense__hns_f0_s0	hns	0	0	macro_accuracy	0.9078573390744048	-0.00043236655821177195	22419
+Qwen3-8B	commonsense	HNS 2+0	commonsense__hns_f2_s0	hns	2	0	macro_accuracy	0.9022941644439632	-0.5567498296023765	22419
+Qwen3-8B	commonsense	HNS 2+1	commonsense__hns_f2_s1	hns	2	1	macro_accuracy	0.9030102326905001	-0.4851430049486849	22419
+Qwen3-8B	commonsense	HNS 2+2	commonsense__hns_f2_s2	hns	2	2	macro_accuracy	0.9030474518328525	-0.48142109071344086	22419
+Qwen3-8B	commonsense	HNS 4+0	commonsense__hns_f4_s0	hns	4	0	macro_accuracy	0.903122218966321	-0.47394437736658634	22419
+Qwen3-8B	commonsense	HNS 4+1	commonsense__hns_f4_s1	hns	4	1	macro_accuracy	0.9031809072294537	-0.4680755510533263	22419
+Qwen3-8B	commonsense	HNS 4+2	commonsense__hns_f4_s2	hns	4	2	macro_accuracy	0.9027110430141235	-0.5150619725863392	22419
+Qwen3-8B	commonsense	HNS 8+0	commonsense__hns_f8_s0	hns	8	0	macro_accuracy	0.9029883404886484	-0.4873322251338519	22419
+Qwen3-8B	commonsense	HNS 8+1	commonsense__hns_f8_s1	hns	8	1	macro_accuracy	0.9026106855603447	-0.525097717964218	22419
+Qwen3-8B	commonsense	HNS 8+2	commonsense__hns_f8_s2	hns	8	2	macro_accuracy	0.9026860293509307	-0.5175633389056244	22419
+Qwen3-8B	commonsense	LoRA	commonsense__original_lora	original_lora			macro_accuracy	0.9078616627399869	0.0	22419

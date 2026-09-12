@@ -1,0 +1,401 @@
+{
+  "status": "complete",
+  "base": "Llama-3.1-8B-Instruct",
+  "base_model": "/dataset1/zailong/models/Llama-3.1-8B-Instruct",
+  "task_config": "/dataset1/zailong/workspace/peft-sft-lab/configs/hns_forgetting_2x4_20260911.json",
+  "grid_config": "/dataset1/zailong/workspace/peft-sft-lab/configs/hns_step_grid_2x4_20260912.json",
+  "step_configurations": [
+    [
+      0,
+      0
+    ],
+    [
+      2,
+      0
+    ],
+    [
+      2,
+      1
+    ],
+    [
+      2,
+      2
+    ],
+    [
+      4,
+      0
+    ],
+    [
+      4,
+      1
+    ],
+    [
+      4,
+      2
+    ],
+    [
+      8,
+      0
+    ],
+    [
+      8,
+      1
+    ],
+    [
+      8,
+      2
+    ]
+  ],
+  "task_manifests": [
+    "/dataset1/zailong/runs/peft-sft-lab/hns-step-grid-2x4-20260912/adapters/Llama-3.1-8B-Instruct/magicoder/manifest.json",
+    "/dataset1/zailong/runs/peft-sft-lab/hns-step-grid-2x4-20260912/adapters/Llama-3.1-8B-Instruct/metamath/manifest.json",
+    "/dataset1/zailong/runs/peft-sft-lab/hns-step-grid-2x4-20260912/adapters/Llama-3.1-8B-Instruct/tulu/manifest.json",
+    "/dataset1/zailong/runs/peft-sft-lab/hns-step-grid-2x4-20260912/adapters/Llama-3.1-8B-Instruct/commonsense/manifest.json"
+  ],
+  "variants": [
+    {
+      "label": "magicoder__original_lora",
+      "path": "/dataset1/zailong/models/spectral-surgery/Llama-3.1-8B-Instruct-Magicoder-50K-LoRA-E1",
+      "train_task": "magicoder",
+      "method": "original_lora"
+    },
+    {
+      "label": "magicoder__hns_f0_s0",
+      "path": "/dataset1/zailong/runs/peft-sft-lab/hns-step-grid-2x4-20260912/adapters/Llama-3.1-8B-Instruct/magicoder/hns_f0_s0",
+      "train_task": "magicoder",
+      "method": "hns_f0_s0",
+      "fast_steps": 0,
+      "stable_steps": 0
+    },
+    {
+      "label": "magicoder__hns_f2_s0",
+      "path": "/dataset1/zailong/runs/peft-sft-lab/hns-step-grid-2x4-20260912/adapters/Llama-3.1-8B-Instruct/magicoder/hns_f2_s0",
+      "train_task": "magicoder",
+      "method": "hns_f2_s0",
+      "fast_steps": 2,
+      "stable_steps": 0
+    },
+    {
+      "label": "magicoder__hns_f2_s1",
+      "path": "/dataset1/zailong/runs/peft-sft-lab/hns-step-grid-2x4-20260912/adapters/Llama-3.1-8B-Instruct/magicoder/hns_f2_s1",
+      "train_task": "magicoder",
+      "method": "hns_f2_s1",
+      "fast_steps": 2,
+      "stable_steps": 1
+    },
+    {
+      "label": "magicoder__hns_f2_s2",
+      "path": "/dataset1/zailong/runs/peft-sft-lab/hns-step-grid-2x4-20260912/adapters/Llama-3.1-8B-Instruct/magicoder/hns_f2_s2",
+      "train_task": "magicoder",
+      "method": "hns_f2_s2",
+      "fast_steps": 2,
+      "stable_steps": 2
+    },
+    {
+      "label": "magicoder__hns_f4_s0",
+      "path": "/dataset1/zailong/runs/peft-sft-lab/hns-step-grid-2x4-20260912/adapters/Llama-3.1-8B-Instruct/magicoder/hns_f4_s0",
+      "train_task": "magicoder",
+      "method": "hns_f4_s0",
+      "fast_steps": 4,
+      "stable_steps": 0
+    },
+    {
+      "label": "magicoder__hns_f4_s1",
+      "path": "/dataset1/zailong/runs/peft-sft-lab/hns-step-grid-2x4-20260912/adapters/Llama-3.1-8B-Instruct/magicoder/hns_f4_s1",
+      "train_task": "magicoder",
+      "method": "hns_f4_s1",
+      "fast_steps": 4,
+      "stable_steps": 1
+    },
+    {
+      "label": "magicoder__hns_f4_s2",
+      "path": "/dataset1/zailong/runs/peft-sft-lab/hns-step-grid-2x4-20260912/adapters/Llama-3.1-8B-Instruct/magicoder/hns_f4_s2",
+      "train_task": "magicoder",
+      "method": "hns_f4_s2",
+      "fast_steps": 4,
+      "stable_steps": 2
+    },
+    {
+      "label": "magicoder__hns_f8_s0",
+      "path": "/dataset1/zailong/runs/peft-sft-lab/hns-step-grid-2x4-20260912/adapters/Llama-3.1-8B-Instruct/magicoder/hns_f8_s0",
+      "train_task": "magicoder",
+      "method": "hns_f8_s0",
+      "fast_steps": 8,
+      "stable_steps": 0
+    },
+    {
+      "label": "magicoder__hns_f8_s1",
+      "path": "/dataset1/zailong/runs/peft-sft-lab/hns-step-grid-2x4-20260912/adapters/Llama-3.1-8B-Instruct/magicoder/hns_f8_s1",
+      "train_task": "magicoder",
+      "method": "hns_f8_s1",
+      "fast_steps": 8,
+      "stable_steps": 1
+    },
+    {
+      "label": "magicoder__hns_f8_s2",
+      "path": "/dataset1/zailong/runs/peft-sft-lab/hns-step-grid-2x4-20260912/adapters/Llama-3.1-8B-Instruct/magicoder/hns_f8_s2",
+      "train_task": "magicoder",
+      "method": "hns_f8_s2",
+      "fast_steps": 8,
+      "stable_steps": 2
+    },
+    {
+      "label": "metamath__original_lora",
+      "path": "/dataset1/zailong/models/spectral-surgery/Llama-3.1-8B-Instruct-MetaMathQA-50K-LoRA",
+      "train_task": "metamath",
+      "method": "original_lora"
+    },
+    {
+      "label": "metamath__hns_f0_s0",
+      "path": "/dataset1/zailong/runs/peft-sft-lab/hns-step-grid-2x4-20260912/adapters/Llama-3.1-8B-Instruct/metamath/hns_f0_s0",
+      "train_task": "metamath",
+      "method": "hns_f0_s0",
+      "fast_steps": 0,
+      "stable_steps": 0
+    },
+    {
+      "label": "metamath__hns_f2_s0",
+      "path": "/dataset1/zailong/runs/peft-sft-lab/hns-step-grid-2x4-20260912/adapters/Llama-3.1-8B-Instruct/metamath/hns_f2_s0",
+      "train_task": "metamath",
+      "method": "hns_f2_s0",
+      "fast_steps": 2,
+      "stable_steps": 0
+    },
+    {
+      "label": "metamath__hns_f2_s1",
+      "path": "/dataset1/zailong/runs/peft-sft-lab/hns-step-grid-2x4-20260912/adapters/Llama-3.1-8B-Instruct/metamath/hns_f2_s1",
+      "train_task": "metamath",
+      "method": "hns_f2_s1",
+      "fast_steps": 2,
+      "stable_steps": 1
+    },
+    {
+      "label": "metamath__hns_f2_s2",
+      "path": "/dataset1/zailong/runs/peft-sft-lab/hns-step-grid-2x4-20260912/adapters/Llama-3.1-8B-Instruct/metamath/hns_f2_s2",
+      "train_task": "metamath",
+      "method": "hns_f2_s2",
+      "fast_steps": 2,
+      "stable_steps": 2
+    },
+    {
+      "label": "metamath__hns_f4_s0",
+      "path": "/dataset1/zailong/runs/peft-sft-lab/hns-step-grid-2x4-20260912/adapters/Llama-3.1-8B-Instruct/metamath/hns_f4_s0",
+      "train_task": "metamath",
+      "method": "hns_f4_s0",
+      "fast_steps": 4,
+      "stable_steps": 0
+    },
+    {
+      "label": "metamath__hns_f4_s1",
+      "path": "/dataset1/zailong/runs/peft-sft-lab/hns-step-grid-2x4-20260912/adapters/Llama-3.1-8B-Instruct/metamath/hns_f4_s1",
+      "train_task": "metamath",
+      "method": "hns_f4_s1",
+      "fast_steps": 4,
+      "stable_steps": 1
+    },
+    {
+      "label": "metamath__hns_f4_s2",
+      "path": "/dataset1/zailong/runs/peft-sft-lab/hns-step-grid-2x4-20260912/adapters/Llama-3.1-8B-Instruct/metamath/hns_f4_s2",
+      "train_task": "metamath",
+      "method": "hns_f4_s2",
+      "fast_steps": 4,
+      "stable_steps": 2
+    },
+    {
+      "label": "metamath__hns_f8_s0",
+      "path": "/dataset1/zailong/runs/peft-sft-lab/hns-step-grid-2x4-20260912/adapters/Llama-3.1-8B-Instruct/metamath/hns_f8_s0",
+      "train_task": "metamath",
+      "method": "hns_f8_s0",
+      "fast_steps": 8,
+      "stable_steps": 0
+    },
+    {
+      "label": "metamath__hns_f8_s1",
+      "path": "/dataset1/zailong/runs/peft-sft-lab/hns-step-grid-2x4-20260912/adapters/Llama-3.1-8B-Instruct/metamath/hns_f8_s1",
+      "train_task": "metamath",
+      "method": "hns_f8_s1",
+      "fast_steps": 8,
+      "stable_steps": 1
+    },
+    {
+      "label": "metamath__hns_f8_s2",
+      "path": "/dataset1/zailong/runs/peft-sft-lab/hns-step-grid-2x4-20260912/adapters/Llama-3.1-8B-Instruct/metamath/hns_f8_s2",
+      "train_task": "metamath",
+      "method": "hns_f8_s2",
+      "fast_steps": 8,
+      "stable_steps": 2
+    },
+    {
+      "label": "tulu__original_lora",
+      "path": "/dataset1/zailong/models/spectral-surgery/Llama-3.1-8B-Instruct-InstructionFollowing-LoRA",
+      "train_task": "tulu",
+      "method": "original_lora"
+    },
+    {
+      "label": "tulu__hns_f0_s0",
+      "path": "/dataset1/zailong/runs/peft-sft-lab/hns-step-grid-2x4-20260912/adapters/Llama-3.1-8B-Instruct/tulu/hns_f0_s0",
+      "train_task": "tulu",
+      "method": "hns_f0_s0",
+      "fast_steps": 0,
+      "stable_steps": 0
+    },
+    {
+      "label": "tulu__hns_f2_s0",
+      "path": "/dataset1/zailong/runs/peft-sft-lab/hns-step-grid-2x4-20260912/adapters/Llama-3.1-8B-Instruct/tulu/hns_f2_s0",
+      "train_task": "tulu",
+      "method": "hns_f2_s0",
+      "fast_steps": 2,
+      "stable_steps": 0
+    },
+    {
+      "label": "tulu__hns_f2_s1",
+      "path": "/dataset1/zailong/runs/peft-sft-lab/hns-step-grid-2x4-20260912/adapters/Llama-3.1-8B-Instruct/tulu/hns_f2_s1",
+      "train_task": "tulu",
+      "method": "hns_f2_s1",
+      "fast_steps": 2,
+      "stable_steps": 1
+    },
+    {
+      "label": "tulu__hns_f2_s2",
+      "path": "/dataset1/zailong/runs/peft-sft-lab/hns-step-grid-2x4-20260912/adapters/Llama-3.1-8B-Instruct/tulu/hns_f2_s2",
+      "train_task": "tulu",
+      "method": "hns_f2_s2",
+      "fast_steps": 2,
+      "stable_steps": 2
+    },
+    {
+      "label": "tulu__hns_f4_s0",
+      "path": "/dataset1/zailong/runs/peft-sft-lab/hns-step-grid-2x4-20260912/adapters/Llama-3.1-8B-Instruct/tulu/hns_f4_s0",
+      "train_task": "tulu",
+      "method": "hns_f4_s0",
+      "fast_steps": 4,
+      "stable_steps": 0
+    },
+    {
+      "label": "tulu__hns_f4_s1",
+      "path": "/dataset1/zailong/runs/peft-sft-lab/hns-step-grid-2x4-20260912/adapters/Llama-3.1-8B-Instruct/tulu/hns_f4_s1",
+      "train_task": "tulu",
+      "method": "hns_f4_s1",
+      "fast_steps": 4,
+      "stable_steps": 1
+    },
+    {
+      "label": "tulu__hns_f4_s2",
+      "path": "/dataset1/zailong/runs/peft-sft-lab/hns-step-grid-2x4-20260912/adapters/Llama-3.1-8B-Instruct/tulu/hns_f4_s2",
+      "train_task": "tulu",
+      "method": "hns_f4_s2",
+      "fast_steps": 4,
+      "stable_steps": 2
+    },
+    {
+      "label": "tulu__hns_f8_s0",
+      "path": "/dataset1/zailong/runs/peft-sft-lab/hns-step-grid-2x4-20260912/adapters/Llama-3.1-8B-Instruct/tulu/hns_f8_s0",
+      "train_task": "tulu",
+      "method": "hns_f8_s0",
+      "fast_steps": 8,
+      "stable_steps": 0
+    },
+    {
+      "label": "tulu__hns_f8_s1",
+      "path": "/dataset1/zailong/runs/peft-sft-lab/hns-step-grid-2x4-20260912/adapters/Llama-3.1-8B-Instruct/tulu/hns_f8_s1",
+      "train_task": "tulu",
+      "method": "hns_f8_s1",
+      "fast_steps": 8,
+      "stable_steps": 1
+    },
+    {
+      "label": "tulu__hns_f8_s2",
+      "path": "/dataset1/zailong/runs/peft-sft-lab/hns-step-grid-2x4-20260912/adapters/Llama-3.1-8B-Instruct/tulu/hns_f8_s2",
+      "train_task": "tulu",
+      "method": "hns_f8_s2",
+      "fast_steps": 8,
+      "stable_steps": 2
+    },
+    {
+      "label": "commonsense__original_lora",
+      "path": "/dataset1/zailong/models/spectral-surgery/Llama-3.1-8B-Instruct-CommonSense170K-LoRA-GBS64-Final",
+      "train_task": "commonsense",
+      "method": "original_lora"
+    },
+    {
+      "label": "commonsense__hns_f0_s0",
+      "path": "/dataset1/zailong/runs/peft-sft-lab/hns-step-grid-2x4-20260912/adapters/Llama-3.1-8B-Instruct/commonsense/hns_f0_s0",
+      "train_task": "commonsense",
+      "method": "hns_f0_s0",
+      "fast_steps": 0,
+      "stable_steps": 0
+    },
+    {
+      "label": "commonsense__hns_f2_s0",
+      "path": "/dataset1/zailong/runs/peft-sft-lab/hns-step-grid-2x4-20260912/adapters/Llama-3.1-8B-Instruct/commonsense/hns_f2_s0",
+      "train_task": "commonsense",
+      "method": "hns_f2_s0",
+      "fast_steps": 2,
+      "stable_steps": 0
+    },
+    {
+      "label": "commonsense__hns_f2_s1",
+      "path": "/dataset1/zailong/runs/peft-sft-lab/hns-step-grid-2x4-20260912/adapters/Llama-3.1-8B-Instruct/commonsense/hns_f2_s1",
+      "train_task": "commonsense",
+      "method": "hns_f2_s1",
+      "fast_steps": 2,
+      "stable_steps": 1
+    },
+    {
+      "label": "commonsense__hns_f2_s2",
+      "path": "/dataset1/zailong/runs/peft-sft-lab/hns-step-grid-2x4-20260912/adapters/Llama-3.1-8B-Instruct/commonsense/hns_f2_s2",
+      "train_task": "commonsense",
+      "method": "hns_f2_s2",
+      "fast_steps": 2,
+      "stable_steps": 2
+    },
+    {
+      "label": "commonsense__hns_f4_s0",
+      "path": "/dataset1/zailong/runs/peft-sft-lab/hns-step-grid-2x4-20260912/adapters/Llama-3.1-8B-Instruct/commonsense/hns_f4_s0",
+      "train_task": "commonsense",
+      "method": "hns_f4_s0",
+      "fast_steps": 4,
+      "stable_steps": 0
+    },
+    {
+      "label": "commonsense__hns_f4_s1",
+      "path": "/dataset1/zailong/runs/peft-sft-lab/hns-step-grid-2x4-20260912/adapters/Llama-3.1-8B-Instruct/commonsense/hns_f4_s1",
+      "train_task": "commonsense",
+      "method": "hns_f4_s1",
+      "fast_steps": 4,
+      "stable_steps": 1
+    },
+    {
+      "label": "commonsense__hns_f4_s2",
+      "path": "/dataset1/zailong/runs/peft-sft-lab/hns-step-grid-2x4-20260912/adapters/Llama-3.1-8B-Instruct/commonsense/hns_f4_s2",
+      "train_task": "commonsense",
+      "method": "hns_f4_s2",
+      "fast_steps": 4,
+      "stable_steps": 2
+    },
+    {
+      "label": "commonsense__hns_f8_s0",
+      "path": "/dataset1/zailong/runs/peft-sft-lab/hns-step-grid-2x4-20260912/adapters/Llama-3.1-8B-Instruct/commonsense/hns_f8_s0",
+      "train_task": "commonsense",
+      "method": "hns_f8_s0",
+      "fast_steps": 8,
+      "stable_steps": 0
+    },
+    {
+      "label": "commonsense__hns_f8_s1",
+      "path": "/dataset1/zailong/runs/peft-sft-lab/hns-step-grid-2x4-20260912/adapters/Llama-3.1-8B-Instruct/commonsense/hns_f8_s1",
+      "train_task": "commonsense",
+      "method": "hns_f8_s1",
+      "fast_steps": 8,
+      "stable_steps": 1
+    },
+    {
+      "label": "commonsense__hns_f8_s2",
+      "path": "/dataset1/zailong/runs/peft-sft-lab/hns-step-grid-2x4-20260912/adapters/Llama-3.1-8B-Instruct/commonsense/hns_f8_s2",
+      "train_task": "commonsense",
+      "method": "hns_f8_s2",
+      "fast_steps": 8,
+      "stable_steps": 2
+    }
+  ]
+}

@@ -21,6 +21,10 @@ less reports/hns_release_20260912/main/forgetting_main_report.md
 column -ts $'\t' reports/hns_release_20260912/main/main_results.tsv | less -S
 column -ts $'\t' reports/hns_release_20260912/main/retention_scores.tsv | less -S
 
+# Inspect the later all-module HNS iteration sweep.
+less reports/hns_release_20260912/rebuttal/hns_step_grid_report.md
+column -ts $'\t' reports/hns_release_20260912/data/step_grid/summary/main_table.tsv | less -S
+
 # Verify the copied/compressed release artifacts.
 sha256sum -c reports/hns_release_20260912/MANIFEST.sha256
 ```
@@ -34,6 +38,7 @@ sha256sum -c reports/hns_release_20260912/MANIFEST.sha256
 | Where are module-level utility/predictor results? | `data/utility/` |
 | Where are Base -> LoRA -> HNS per-item transitions? | `data/forgetting/` |
 | Where are scalar and standardization alternatives? | `data/standardization/` |
+| Which HNS iteration count works best? | `rebuttal/hns_step_grid_report.md` and `data/step_grid/` |
 | Where are the original full run outputs? | `/dataset1/zailong/runs/peft-sft-lab/` |
 
 ## Where to start
@@ -60,6 +65,9 @@ sha256sum -c reports/hns_release_20260912/MANIFEST.sha256
 - `rebuttal/direct_dose_*`: HeadOnly dose and matched-scalar control.
 - `rebuttal/common_basis_numeric_*`: factorization-controlled HNS/scalar check.
 - `rebuttal/*standardization_report.md`: direct and norm-restored alternatives.
+- `rebuttal/hns_step_grid_report.md`: full 2x4 all-module sweep over `2/4/8`
+  fast steps and `0/1/2` stable steps, including the `0+0` reconstruction
+  control and paired uncertainty analysis.
 - `rebuttal/llama_metric_stability.json`: run-stability boundary.
 - `rebuttal/above_base_rollout_report.md`: why HNS can exceed Base off-task.
 - `rebuttal/*transition_summary.tsv`: Base -> LoRA -> HNS item transitions.
@@ -75,6 +83,9 @@ sha256sum -c reports/hns_release_20260912/MANIFEST.sha256
   outputs (large per-example tables are gzip compressed).
 - `data/forgetting/`: per-item transition table and rollout-stratified checks.
 - `data/standardization/`: direct/restored standardization and scaling summaries.
+- `data/step_grid/`: full primary-metric tables, 20,000-draw paired bootstrap
+  intervals, exact McNemar-Holm tests, spectral summaries, generation/score
+  manifests, and per-checkpoint adapter-build manifests for the HNS step sweep.
 
 `MANIFEST.sha256` records checksums for every release artifact except itself.
 

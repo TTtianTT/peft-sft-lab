@@ -1,0 +1,81 @@
+{
+  "status": "generation_complete",
+  "base_model": "/dataset1/zailong/models/Qwen3-8B",
+  "variant_manifest": "/dataset1/zailong/runs/peft-sft-lab/hns-step-grid-2x4-20260912/adapters/Qwen3-8B/variant_manifest.json",
+  "variant_order": [
+    "magicoder__original_lora",
+    "magicoder__hns_f0_s0",
+    "magicoder__hns_f2_s0",
+    "magicoder__hns_f2_s1",
+    "magicoder__hns_f2_s2",
+    "magicoder__hns_f4_s0",
+    "magicoder__hns_f4_s1",
+    "magicoder__hns_f4_s2",
+    "magicoder__hns_f8_s0",
+    "magicoder__hns_f8_s1",
+    "magicoder__hns_f8_s2",
+    "metamath__original_lora",
+    "metamath__hns_f0_s0",
+    "metamath__hns_f2_s0",
+    "metamath__hns_f2_s1",
+    "metamath__hns_f2_s2",
+    "metamath__hns_f4_s0",
+    "metamath__hns_f4_s1",
+    "metamath__hns_f4_s2",
+    "metamath__hns_f8_s0",
+    "metamath__hns_f8_s1",
+    "metamath__hns_f8_s2",
+    "tulu__original_lora",
+    "tulu__hns_f0_s0",
+    "tulu__hns_f2_s0",
+    "tulu__hns_f2_s1",
+    "tulu__hns_f2_s2",
+    "tulu__hns_f4_s0",
+    "tulu__hns_f4_s1",
+    "tulu__hns_f4_s2",
+    "tulu__hns_f8_s0",
+    "tulu__hns_f8_s1",
+    "tulu__hns_f8_s2",
+    "commonsense__original_lora",
+    "commonsense__hns_f0_s0",
+    "commonsense__hns_f2_s0",
+    "commonsense__hns_f2_s1",
+    "commonsense__hns_f2_s2",
+    "commonsense__hns_f4_s0",
+    "commonsense__hns_f4_s1",
+    "commonsense__hns_f4_s2",
+    "commonsense__hns_f8_s0",
+    "commonsense__hns_f8_s1",
+    "commonsense__hns_f8_s2"
+  ],
+  "tasks": [
+    {
+      "task": "magicoder",
+      "samples": 164,
+      "max_tokens": 512
+    },
+    {
+      "task": "metamath",
+      "samples": 1319,
+      "max_tokens": 512
+    },
+    {
+      "task": "tulu",
+      "samples": 541,
+      "max_tokens": 2048
+    },
+    {
+      "task": "commonsense",
+      "samples": 22419,
+      "max_tokens": 8
+    }
+  ],
+  "configuration": {
+    "vllm_batch_invariant": "1",
+    "gpu_memory_utilization": 0.94,
+    "max_num_seqs": 512,
+    "max_num_batched_tokens": 65536,
+    "adapter_block_size": 11,
+    "seed": 42
+  }
+}

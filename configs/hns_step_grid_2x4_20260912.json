@@ -1,0 +1,24 @@
+{
+  "experiment": "hns_step_grid_2x4",
+  "date": "2026-09-12",
+  "task_config": "configs/hns_forgetting_2x4_20260911.json",
+  "scope": "all_modules",
+  "preserve_nuclear_norm": true,
+  "hns_strength": 1.0,
+  "fast_steps": [2, 4, 8],
+  "stable_steps": [0, 1, 2],
+  "include_svd_reconstruction_control": true,
+  "evaluation": "diagonal_only_full_test_sets",
+  "anchors": ["4+1", "8+2"],
+  "inference": {
+    "greedy": true,
+    "vllm_batch_invariant": true,
+    "gpu_memory_utilization": 0.94,
+    "max_num_seqs": 512,
+    "max_num_batched_tokens": 65536,
+    "adapter_block_size": 11,
+    "prompt_chunk_short": 2048,
+    "prompt_chunk_long": 128,
+    "seed": 42
+  }
+}
