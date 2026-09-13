@@ -143,9 +143,15 @@ def format_sft_debug_sample(tokenizer: Any, sample: dict[str, Any]) -> str:
 
 
 class CompletionOnlyDataCollator:
-    def __init__(self, tokenizer: Any, label_pad_token_id: int = IGNORE_INDEX) -> None:
+    def __init__(
+        self,
+        tokenizer: Any,
+        label_pad_token_id: int = IGNORE_INDEX,
+        pad_to_multiple_of: int | None = None,
+    ) -> None:
         self.tokenizer = tokenizer
         self.label_pad_token_id = label_pad_token_id
+        self.pad_to_multiple_of = pad_to_multiple_of
 
     def __call__(self, features: list[dict[str, Any]]) -> dict[str, Any]:
         import torch
@@ -159,6 +165,7 @@ class CompletionOnlyDataCollator:
                 for feature in features
             ],
             padding=True,
+            pad_to_multiple_of=self.pad_to_multiple_of,
             return_tensors="pt",
         )
         max_length = int(batch["input_ids"].shape[1])

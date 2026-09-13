@@ -131,6 +131,24 @@ def build_arg_parser() -> argparse.ArgumentParser:
     mp.add_argument("--bf16", action="store_true")
     mp.add_argument("--fp16", action="store_true")
     parser.add_argument("--gradient_checkpointing", action="store_true")
+    parser.add_argument(
+        "--group_by_length",
+        action="store_true",
+        help="Group examples of similar token length to reduce dynamic-padding waste.",
+    )
+    parser.add_argument(
+        "--pad_to_multiple_of",
+        type=int,
+        default=None,
+        help="Optionally pad batch sequence lengths to a hardware-friendly multiple.",
+    )
+    parser.add_argument("--dataloader_num_workers", type=int, default=0)
+    parser.add_argument(
+        "--optim",
+        type=str,
+        default=None,
+        help="Optional Transformers optimizer name, for example adamw_torch_fused.",
+    )
     parser.add_argument("--use_qlora", action="store_true", help="4-bit QLoRA (bitsandbytes).")
     parser.add_argument(
         "--sft_format",
@@ -650,6 +668,21 @@ def main() -> None:
 
     import torch
 
+    # PyTorch 2.11 may route Qwen2 grouped-query attention through cuDNN SDPA
+    # on Blackwell (for example B300 / sm_103), where some training shapes fail
+    # with "No valid execution plans built".  The native Flash/efficient SDPA
+    # backends support these shapes and preserve the same attention operation.
+    # Keep an escape hatch for environments where cuDNN SDPA is preferred.
+    enable_cudnn_sdpa = os.environ.get("PEFT_SFT_ENABLE_CUDNN_SDPA", "0").strip().lower()
+    if enable_cudnn_sdpa not in {"1", "true", "yes", "on"}:
+        enable_cudnn_sdp = getattr(torch.backends.cuda, "enable_cudnn_sdp", None)
+        if enable_cudnn_sdp is not None:
+            enable_cudnn_sdp(False)
+            logger.info(
+                "Disabled cuDNN SDPA; using PyTorch Flash/efficient attention backends "
+                "(set PEFT_SFT_ENABLE_CUDNN_SDPA=1 to override)."
+            )
+
     if args.bf16:
         dtype = torch.bfloat16
     elif args.fp16:
@@ -752,6 +785,8 @@ def main() -> None:
 
     training_kwargs = dict(
         output_dir=output_dir,
+        seed=args.seed,
+        data_seed=args.seed,
         per_device_train_batch_size=args.per_device_train_batch_size,
         gradient_accumulation_steps=args.gradient_accumulation_steps,
         learning_rate=args.lr,
@@ -773,6 +808,9 @@ def main() -> None:
         bf16=args.bf16,
         fp16=args.fp16,
         gradient_checkpointing=args.gradient_checkpointing,
+        group_by_length=args.group_by_length,
+        dataloader_num_workers=args.dataloader_num_workers,
+        dataloader_persistent_workers=args.dataloader_num_workers > 0,
         report_to=[],
         ddp_find_unused_parameters=False,
         remove_unused_columns=False,
@@ -783,6 +821,8 @@ def main() -> None:
         training_kwargs["num_train_epochs"] = args.num_train_epochs
     if args.grad_clip is not None:
         training_kwargs["max_grad_norm"] = args.grad_clip
+    if args.optim is not None:
+        training_kwargs["optim"] = args.optim
     min_lr_kwargs = _resolve_min_lr_kwargs(
         args.lr_scheduler_type,
         args.min_lr_ratio,
@@ -839,7 +879,10 @@ def main() -> None:
         model=model,
         args=training_args,
         train_dataset=train_ds,
-        data_collator=CompletionOnlyDataCollator(tokenizer),
+        data_collator=CompletionOnlyDataCollator(
+            tokenizer,
+            pad_to_multiple_of=args.pad_to_multiple_of,
+        ),
         callbacks=callbacks,
     )
     sig = inspect.signature(Trainer.__init__)

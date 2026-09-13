@@ -113,7 +113,10 @@ def build_checkpoint(
         destination = task_root / name
         if destination.exists():
             raise FileExistsError(f"refusing to overwrite incomplete variant: {destination}")
-        shutil.copytree(source, destination)
+        # Trainer checkpoints contain optimizer/scheduler state and can be much
+        # larger than the final adapter. They are irrelevant to post-hoc HNS
+        # variants and copying them into every grid cell multiplies disk use.
+        shutil.copytree(source, destination, ignore=shutil.ignore_patterns("checkpoint-*"))
         edited_state = dict(state)
         module_stats = {}
         max_saved_error = 0.0
@@ -212,8 +215,8 @@ def main() -> None:
     output = Path(args.output_dir).resolve() / args.base
     output.mkdir(parents=True, exist_ok=True)
     checkpoints = [row for row in task_cfg["checkpoints"] if row["base"] == args.base]
-    if len(checkpoints) != 4:
-        raise RuntimeError(f"expected four checkpoints for {args.base}, got {len(checkpoints)}")
+    if not checkpoints:
+        raise RuntimeError(f"no checkpoints configured for {args.base}")
 
     variants = []
     task_manifests = []

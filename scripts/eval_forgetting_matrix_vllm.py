@@ -55,6 +55,7 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument("--max_num_seqs", type=int, default=128)
     parser.add_argument("--max_num_batched_tokens", type=int, default=65536)
     parser.add_argument("--adapter_block_size", type=int, default=8)
+    parser.add_argument("--max_lora_rank", type=int, default=256)
     parser.add_argument("--prompt_chunk_short", type=int, default=1024)
     parser.add_argument("--prompt_chunk_long", type=int, default=64)
     parser.add_argument("--diagnostic_max_samples", type=int)
@@ -322,7 +323,7 @@ def main() -> None:
         model=args.base_model,
         tensor_parallel_size=1,
         enable_lora=True,
-        max_lora_rank=256,
+        max_lora_rank=args.max_lora_rank,
         max_loras=min(args.adapter_block_size, len(variants)),
         max_cpu_loras=max(args.adapter_block_size, len(variants)),
         max_model_len=args.max_model_len,

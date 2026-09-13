@@ -1,0 +1,6372 @@
+{
+  "aggregates": [
+    {
+      "setting": "LoRA",
+      "target_gain": 0,
+      "off_gain": 0,
+      "off_gain_over_control": 0.18935889578742388,
+      "forgetting_gap": 2.788009135795879,
+      "wins": 0,
+      "ties": 12,
+      "losses": 0
+    },
+    {
+      "setting": "0+0",
+      "target_gain": 0.6786585989641587,
+      "off_gain": -0.18935889578742388,
+      "off_gain_over_control": 0,
+      "forgetting_gap": 2.9466840742954346,
+      "wins": 4,
+      "ties": 0,
+      "losses": 8
+    },
+    {
+      "setting": "2+0",
+      "target_gain": 4.2323276784196615,
+      "off_gain": 3.1762879220536733,
+      "off_gain_over_control": 3.365646817841097,
+      "forgetting_gap": 0.2839329456141139,
+      "wins": 9,
+      "ties": 0,
+      "losses": 3
+    },
+    {
+      "setting": "2+1",
+      "target_gain": 4.081992870087129,
+      "off_gain": 3.2619201504377724,
+      "off_gain_over_control": 3.451279046225196,
+      "forgetting_gap": 0.25159170260833796,
+      "wins": 10,
+      "ties": 0,
+      "losses": 2
+    },
+    {
+      "setting": "2+2",
+      "target_gain": 3.8392631808122335,
+      "off_gain": 3.249085674623746,
+      "off_gain_over_control": 3.43844457041117,
+      "forgetting_gap": 0.33374409529677485,
+      "wins": 10,
+      "ties": 0,
+      "losses": 2
+    },
+    {
+      "setting": "4+0",
+      "target_gain": 4.028412123556673,
+      "off_gain": 3.082572945115694,
+      "off_gain_over_control": 3.2719318409031177,
+      "forgetting_gap": 0.31834052166769333,
+      "wins": 8,
+      "ties": 0,
+      "losses": 4
+    },
+    {
+      "setting": "4+1",
+      "target_gain": 4.19667513753555,
+      "off_gain": 3.275129641606787,
+      "off_gain_over_control": 3.4644885373942107,
+      "forgetting_gap": 0.27212980078044763,
+      "wins": 10,
+      "ties": 0,
+      "losses": 2
+    },
+    {
+      "setting": "4+2",
+      "target_gain": 3.899793537026346,
+      "off_gain": 3.0977068661109572,
+      "off_gain_over_control": 3.287065761898381,
+      "forgetting_gap": 0.29780242349558367,
+      "wins": 8,
+      "ties": 0,
+      "losses": 4
+    },
+    {
+      "setting": "8+0",
+      "target_gain": 4.307986671606384,
+      "off_gain": 3.1224575121222617,
+      "off_gain_over_control": 3.3118164079096855,
+      "forgetting_gap": 0.3388786198398027,
+      "wins": 8,
+      "ties": 0,
+      "losses": 4
+    },
+    {
+      "setting": "8+1",
+      "target_gain": 4.376883903568338,
+      "off_gain": 3.223357841439554,
+      "off_gain_over_control": 3.4127167372269778,
+      "forgetting_gap": 0.3404127155874149,
+      "wins": 11,
+      "ties": 0,
+      "losses": 1
+    },
+    {
+      "setting": "8+2",
+      "target_gain": 4.258527268993764,
+      "off_gain": 3.130497626931474,
+      "off_gain_over_control": 3.3198565227188976,
+      "forgetting_gap": 0.2823988498665021,
+      "wins": 9,
+      "ties": 0,
+      "losses": 3
+    }
+  ],
+  "rows": [
+    {
+      "base": "Qwen3-8B",
+      "seed": 43,
+      "train_task": "magicoder",
+      "setting": "LoRA",
+      "target": 62.80487804878049,
+      "target_gain": 0,
+      "base_off": 79.36919310065531,
+      "off_score": 77.75939775549443,
+      "off_gain": 0,
+      "off_gain_over_control": 0.13569260084952836,
+      "forgetting_gap": 1.985624576956435
+    },
+    {
+      "base": "Qwen3-8B",
+      "seed": 43,
+      "train_task": "magicoder",
+      "setting": "0+0",
+      "target": 64.02439024390245,
+      "target_gain": 1.2195121951219576,
+      "base_off": 79.36919310065531,
+      "off_score": 77.6237051546449,
+      "off_gain": -0.13569260084952836,
+      "off_gain_over_control": 0,
+      "forgetting_gap": 2.086711258786105
+    },
+    {
+      "base": "Qwen3-8B",
+      "seed": 43,
+      "train_task": "magicoder",
+      "setting": "2+0",
+      "target": 74.39024390243902,
+      "target_gain": 11.585365853658537,
+      "base_off": 79.36919310065531,
+      "off_score": 81.03298378044141,
+      "off_gain": 3.2735860249469844,
+      "off_gain_over_control": 3.4092786257965124,
+      "forgetting_gap": 0
+    },
+    {
+      "base": "Qwen3-8B",
+      "seed": 43,
+      "train_task": "magicoder",
+      "setting": "2+1",
+      "target": 75,
+      "target_gain": 12.195121951219512,
+      "base_off": 79.36919310065531,
+      "off_score": 80.7313091293682,
+      "off_gain": 2.971911373873766,
+      "off_gain_over_control": 3.1076039747232946,
+      "forgetting_gap": 0
+    },
+    {
+      "base": "Qwen3-8B",
+      "seed": 43,
+      "train_task": "magicoder",
+      "setting": "2+2",
+      "target": 74.39024390243902,
+      "target_gain": 11.585365853658537,
+      "base_off": 79.36919310065531,
+      "off_score": 80.70626395606367,
+      "off_gain": 2.946866200569237,
+      "off_gain_over_control": 3.0825588014187653,
+      "forgetting_gap": 0
+    },
+    {
+      "base": "Qwen3-8B",
+      "seed": 43,
+      "train_task": "magicoder",
+      "setting": "4+0",
+      "target": 73.78048780487805,
+      "target_gain": 10.975609756097562,
+      "base_off": 79.36919310065531,
+      "off_score": 80.82468032615894,
+      "off_gain": 3.065282570664517,
+      "off_gain_over_control": 3.2009751715140453,
+      "forgetting_gap": 0
+    },
+    {
+      "base": "Qwen3-8B",
+      "seed": 43,
+      "train_task": "magicoder",
+      "setting": "4+1",
+      "target": 74.39024390243902,
+      "target_gain": 11.585365853658537,
+      "base_off": 79.36919310065531,
+      "off_score": 81.19135873586421,
+      "off_gain": 3.43196098036978,
+      "off_gain_over_control": 3.5676535812193086,
+      "forgetting_gap": 0
+    },
+    {
+      "base": "Qwen3-8B",
+      "seed": 43,
+      "train_task": "magicoder",
+      "setting": "4+2",
+      "target": 75.60975609756098,
+      "target_gain": 12.804878048780488,
+      "base_off": 79.36919310065531,
+      "off_score": 80.63186429641408,
+      "off_gain": 2.872466540919651,
+      "off_gain_over_control": 3.008159141769179,
+      "forgetting_gap": 0
+    },
+    {
+      "base": "Qwen3-8B",
+      "seed": 43,
+      "train_task": "magicoder",
+      "setting": "8+0",
+      "target": 73.78048780487805,
+      "target_gain": 10.975609756097562,
+      "base_off": 79.36919310065531,
+      "off_score": 81.494600503414,
+      "off_gain": 3.7352027479195775,
+      "off_gain_over_control": 3.8708953487691056,
+      "forgetting_gap": 0
+    },
+    {
+      "base": "Qwen3-8B",
+      "seed": 43,
+      "train_task": "magicoder",
+      "setting": "8+1",
+      "target": 75.60975609756098,
+      "target_gain": 12.804878048780488,
+      "base_off": 79.36919310065531,
+      "off_score": 80.97446723276326,
+      "off_gain": 3.215069477268836,
+      "off_gain_over_control": 3.3507620781183647,
+      "forgetting_gap": 0
+    },
+    {
+      "base": "Qwen3-8B",
+      "seed": 43,
+      "train_task": "magicoder",
+      "setting": "8+2",
+      "target": 75.60975609756098,
+      "target_gain": 12.804878048780488,
+      "base_off": 79.36919310065531,
+      "off_score": 81.06062559209676,
+      "off_gain": 3.3012278366023318,
+      "off_gain_over_control": 3.4369204374518603,
+      "forgetting_gap": 0
+    },
+    {
+      "base": "Qwen3-8B",
+      "seed": 43,
+      "train_task": "metamath",
+      "setting": "LoRA",
+      "target": 84.00303260045489,
+      "target_gain": 0,
+      "base_off": 72.94140535803187,
+      "off_score": 69.66560169554636,
+      "off_gain": 0,
+      "off_gain_over_control": 0.10150908328256018,
+      "forgetting_gap": 3.5232856949641636
+    },
+    {
+      "base": "Qwen3-8B",
+      "seed": 43,
+      "train_task": "metamath",
+      "setting": "0+0",
+      "target": 83.92721758908263,
+      "target_gain": -0.07581501137225644,
+      "base_off": 72.94140535803187,
+      "off_score": 69.56409261226379,
+      "off_gain": -0.10150908328256018,
+      "off_gain_over_control": 0,
+      "forgetting_gap": 3.6033091384518343
+    },
+    {
+      "base": "Qwen3-8B",
+      "seed": 43,
+      "train_task": "metamath",
+      "setting": "2+0",
+      "target": 87.41470811220621,
+      "target_gain": 3.4116755117513264,
+      "base_off": 72.94140535803187,
+      "off_score": 75.86601648645649,
+      "off_gain": 6.200414790910131,
+      "off_gain_over_control": 6.301923874192691,
+      "forgetting_gap": 0
+    },
+    {
+      "base": "Qwen3-8B",
+      "seed": 43,
+      "train_task": "metamath",
+      "setting": "2+1",
+      "target": 87.71796815769522,
+      "target_gain": 3.714935557240338,
+      "base_off": 72.94140535803187,
+      "off_score": 76.65057324051936,
+      "off_gain": 6.9849715449730025,
+      "off_gain_over_control": 7.086480628255562,
+      "forgetting_gap": 0
+    },
+    {
+      "base": "Qwen3-8B",
+      "seed": 43,
+      "train_task": "metamath",
+      "setting": "2+2",
+      "target": 86.9598180439727,
+      "target_gain": 2.9567854435178162,
+      "base_off": 72.94140535803187,
+      "off_score": 76.84389169767684,
+      "off_gain": 7.178290002130481,
+      "off_gain_over_control": 7.279799085413042,
+      "forgetting_gap": 0
+    },
+    {
+      "base": "Qwen3-8B",
+      "seed": 43,
+      "train_task": "metamath",
+      "setting": "4+0",
+      "target": 87.18726307808946,
+      "target_gain": 3.1842304776345713,
+      "base_off": 72.94140535803187,
+      "off_score": 76.32592333716502,
+      "off_gain": 6.66032164161867,
+      "off_gain_over_control": 6.76183072490123,
+      "forgetting_gap": 0
+    },
+    {
+      "base": "Qwen3-8B",
+      "seed": 43,
+      "train_task": "metamath",
+      "setting": "4+1",
+      "target": 86.8081880212282,
+      "target_gain": 2.8051554207733176,
+      "base_off": 72.94140535803187,
+      "off_score": 76.65042534313297,
+      "off_gain": 6.984823647586609,
+      "off_gain_over_control": 7.086332730869169,
+      "forgetting_gap": 0
+    },
+    {
+      "base": "Qwen3-8B",
+      "seed": 43,
+      "train_task": "metamath",
+      "setting": "4+2",
+      "target": 87.18726307808946,
+      "target_gain": 3.1842304776345713,
+      "base_off": 72.94140535803187,
+      "off_score": 76.83214613400237,
+      "off_gain": 7.166544438456019,
+      "off_gain_over_control": 7.2680535217385795,
+      "forgetting_gap": 0
+    },
+    {
+      "base": "Qwen3-8B",
+      "seed": 43,
+      "train_task": "metamath",
+      "setting": "8+0",
+      "target": 87.11144806671722,
+      "target_gain": 3.108415466262329,
+      "base_off": 72.94140535803187,
+      "off_score": 77.02362801795634,
+      "off_gain": 7.358026322409984,
+      "off_gain_over_control": 7.459535405692544,
+      "forgetting_gap": 0
+    },
+    {
+      "base": "Qwen3-8B",
+      "seed": 43,
+      "train_task": "metamath",
+      "setting": "8+1",
+      "target": 87.18726307808946,
+      "target_gain": 3.1842304776345713,
+      "base_off": 72.94140535803187,
+      "off_score": 76.25524254647605,
+      "off_gain": 6.589640850929702,
+      "off_gain_over_control": 6.6911499342122625,
+      "forgetting_gap": 0
+    },
+    {
+      "base": "Qwen3-8B",
+      "seed": 43,
+      "train_task": "metamath",
+      "setting": "8+2",
+      "target": 87.11144806671722,
+      "target_gain": 3.108415466262329,
+      "base_off": 72.94140535803187,
+      "off_score": 76.53412909234574,
+      "off_gain": 6.868527396799384,
+      "off_gain_over_control": 6.970036480081944,
+      "forgetting_gap": 0
+    },
+    {
+      "base": "Qwen3-8B",
+      "seed": 43,
+      "train_task": "tulu",
+      "setting": "LoRA",
+      "target": 66.17375231053605,
+      "target_gain": 0,
+      "base_off": 78.29507561271518,
+      "off_score": 85.12475605560088,
+      "off_gain": 0,
+      "off_gain_over_control": 0.2119289624210552,
+      "forgetting_gap": 0
+    },
+    {
+      "base": "Qwen3-8B",
+      "seed": 43,
+      "train_task": "tulu",
+      "setting": "0+0",
+      "target": 68.57670979667283,
+      "target_gain": 2.402957486136785,
+      "base_off": 78.29507561271518,
+      "off_score": 84.91282709317983,
+      "off_gain": -0.2119289624210552,
+      "off_gain_over_control": 0,
+      "forgetting_gap": 0
+    },
+    {
+      "base": "Qwen3-8B",
+      "seed": 43,
+      "train_task": "tulu",
+      "setting": "2+0",
+      "target": 72.64325323475046,
+      "target_gain": 6.469500924214415,
+      "base_off": 78.29507561271518,
+      "off_score": 84.94477283636152,
+      "off_gain": -0.1799832192393609,
+      "off_gain_over_control": 0.0319457431816943,
+      "forgetting_gap": 0
+    },
+    {
+      "base": "Qwen3-8B",
+      "seed": 43,
+      "train_task": "tulu",
+      "setting": "2+1",
+      "target": 73.38262476894639,
+      "target_gain": 7.20887245841034,
+      "base_off": 78.29507561271518,
+      "off_score": 84.41937835738433,
+      "off_gain": -0.7053776982165516,
+      "off_gain_over_control": -0.4934487357954964,
+      "forgetting_gap": 0
+    },
+    {
+      "base": "Qwen3-8B",
+      "seed": 43,
+      "train_task": "tulu",
+      "setting": "2+2",
+      "target": 72.45841035120148,
+      "target_gain": 6.284658040665434,
+      "base_off": 78.29507561271518,
+      "off_score": 84.64654528792003,
+      "off_gain": -0.4782107676808541,
+      "off_gain_over_control": -0.2662818052597989,
+      "forgetting_gap": 0
+    },
+    {
+      "base": "Qwen3-8B",
+      "seed": 43,
+      "train_task": "tulu",
+      "setting": "4+0",
+      "target": 72.45841035120148,
+      "target_gain": 6.284658040665434,
+      "base_off": 78.29507561271518,
+      "off_score": 84.83479097241124,
+      "off_gain": -0.28996508318964703,
+      "off_gain_over_control": -0.07803612076859186,
+      "forgetting_gap": 0
+    },
+    {
+      "base": "Qwen3-8B",
+      "seed": 43,
+      "train_task": "tulu",
+      "setting": "4+1",
+      "target": 72.45841035120148,
+      "target_gain": 6.284658040665434,
+      "base_off": 78.29507561271518,
+      "off_score": 84.9537037703178,
+      "off_gain": -0.17105228528308677,
+      "off_gain_over_control": 0.04087667713796842,
+      "forgetting_gap": 0
+    },
+    {
+      "base": "Qwen3-8B",
+      "seed": 43,
+      "train_task": "tulu",
+      "setting": "4+2",
+      "target": 71.71903881700554,
+      "target_gain": 5.545286506469495,
+      "base_off": 78.29507561271518,
+      "off_score": 84.69475658903245,
+      "off_gain": -0.42999946656843235,
+      "off_gain_over_control": -0.21807050414737716,
+      "forgetting_gap": 0
+    },
+    {
+      "base": "Qwen3-8B",
+      "seed": 43,
+      "train_task": "tulu",
+      "setting": "8+0",
+      "target": 71.34935304990758,
+      "target_gain": 5.175600739371532,
+      "base_off": 78.29507561271518,
+      "off_score": 84.6390248436632,
+      "off_gain": -0.48573121193768526,
+      "off_gain_over_control": -0.27380224951663007,
+      "forgetting_gap": 0
+    },
+    {
+      "base": "Qwen3-8B",
+      "seed": 43,
+      "train_task": "tulu",
+      "setting": "8+1",
+      "target": 73.19778188539742,
+      "target_gain": 7.024029574861373,
+      "base_off": 78.29507561271518,
+      "off_score": 85.16469622183654,
+      "off_gain": 0.03994016623565718,
+      "off_gain_over_control": 0.25186912865671235,
+      "forgetting_gap": 0
+    },
+    {
+      "base": "Qwen3-8B",
+      "seed": 43,
+      "train_task": "tulu",
+      "setting": "8+2",
+      "target": 71.90388170055454,
+      "target_gain": 5.73012939001849,
+      "base_off": 78.29507561271518,
+      "off_score": 84.60556469146216,
+      "off_gain": -0.5191913641387202,
+      "off_gain_over_control": -0.30726240171766506,
+      "forgetting_gap": 0
+    },
+    {
+      "base": "Qwen3-8B",
+      "seed": 44,
+      "train_task": "magicoder",
+      "setting": "LoRA",
+      "target": 64.63414634146342,
+      "target_gain": 0,
+      "base_off": 79.36919310065531,
+      "off_score": 78.55305751522032,
+      "off_gain": 0,
+      "off_gain_over_control": 1.163322094259011,
+      "forgetting_gap": 1.1105054007101292
+    },
+    {
+      "base": "Qwen3-8B",
+      "seed": 44,
+      "train_task": "magicoder",
+      "setting": "0+0",
+      "target": 64.63414634146342,
+      "target_gain": 0,
+      "base_off": 79.36919310065531,
+      "off_score": 77.3897354209613,
+      "off_gain": -1.163322094259011,
+      "off_gain_over_control": 0,
+      "forgetting_gap": 2.2732358061732945
+    },
+    {
+      "base": "Qwen3-8B",
+      "seed": 44,
+      "train_task": "magicoder",
+      "setting": "2+0",
+      "target": 72.5609756097561,
+      "target_gain": 7.926829268292678,
+      "base_off": 79.36919310065531,
+      "off_score": 81.33273460563463,
+      "off_gain": 2.779677090414315,
+      "off_gain_over_control": 3.942999184673326,
+      "forgetting_gap": 0
+    },
+    {
+      "base": "Qwen3-8B",
+      "seed": 44,
+      "train_task": "magicoder",
+      "setting": "2+1",
+      "target": 72.5609756097561,
+      "target_gain": 7.926829268292678,
+      "base_off": 79.36919310065531,
+      "off_score": 80.9975029518518,
+      "off_gain": 2.444445436631488,
+      "off_gain_over_control": 3.6077675308904986,
+      "forgetting_gap": 0
+    },
+    {
+      "base": "Qwen3-8B",
+      "seed": 44,
+      "train_task": "magicoder",
+      "setting": "2+2",
+      "target": 73.17073170731707,
+      "target_gain": 8.536585365853654,
+      "base_off": 79.36919310065531,
+      "off_score": 80.63665052259023,
+      "off_gain": 2.0835930073699225,
+      "off_gain_over_control": 3.2469151016289337,
+      "forgetting_gap": 0.061614294516327085
+    },
+    {
+      "base": "Qwen3-8B",
+      "seed": 44,
+      "train_task": "magicoder",
+      "setting": "4+0",
+      "target": 72.5609756097561,
+      "target_gain": 7.926829268292678,
+      "base_off": 79.36919310065531,
+      "off_score": 80.80284563603526,
+      "off_gain": 2.24978812081495,
+      "off_gain_over_control": 3.4131102150739614,
+      "forgetting_gap": 0
+    },
+    {
+      "base": "Qwen3-8B",
+      "seed": 44,
+      "train_task": "magicoder",
+      "setting": "4+1",
+      "target": 74.39024390243902,
+      "target_gain": 9.756097560975604,
+      "base_off": 79.36919310065531,
+      "off_score": 81.25720533758722,
+      "off_gain": 2.704147822366911,
+      "off_gain_over_control": 3.8674699166259217,
+      "forgetting_gap": 0
+    },
+    {
+      "base": "Qwen3-8B",
+      "seed": 44,
+      "train_task": "magicoder",
+      "setting": "4+2",
+      "target": 73.78048780487805,
+      "target_gain": 9.146341463414629,
+      "base_off": 79.36919310065531,
+      "off_score": 80.973295149567,
+      "off_gain": 2.420237634346686,
+      "off_gain_over_control": 3.5835597286056973,
+      "forgetting_gap": 0
+    },
+    {
+      "base": "Qwen3-8B",
+      "seed": 44,
+      "train_task": "magicoder",
+      "setting": "8+0",
+      "target": 76.21951219512195,
+      "target_gain": 11.58536585365853,
+      "base_off": 79.36919310065531,
+      "off_score": 80.65570758118336,
+      "off_gain": 2.1026500659630565,
+      "off_gain_over_control": 3.2659721602220677,
+      "forgetting_gap": 0
+    },
+    {
+      "base": "Qwen3-8B",
+      "seed": 44,
+      "train_task": "magicoder",
+      "setting": "8+1",
+      "target": 73.78048780487805,
+      "target_gain": 9.146341463414629,
+      "base_off": 79.36919310065531,
+      "off_score": 80.6594699917102,
+      "off_gain": 2.1064124764898793,
+      "off_gain_over_control": 3.26973457074889,
+      "forgetting_gap": 0.12322858903265892
+    },
+    {
+      "base": "Qwen3-8B",
+      "seed": 44,
+      "train_task": "magicoder",
+      "setting": "8+2",
+      "target": 75,
+      "target_gain": 10.36585365853658,
+      "base_off": 79.36919310065531,
+      "off_score": 81.07359907135802,
+      "off_gain": 2.520541556137701,
+      "off_gain_over_control": 3.6838636503967117,
+      "forgetting_gap": 0
+    },
+    {
+      "base": "Qwen3-8B",
+      "seed": 44,
+      "train_task": "metamath",
+      "setting": "LoRA",
+      "target": 84.00303260045489,
+      "target_gain": 0,
+      "base_off": 72.94140535803187,
+      "off_score": 63.514518282242925,
+      "off_gain": 0,
+      "off_gain_over_control": -0.3944413951827765,
+      "forgetting_gap": 9.522414078114908
+    },
+    {
+      "base": "Qwen3-8B",
+      "seed": 44,
+      "train_task": "metamath",
+      "setting": "0+0",
+      "target": 84.07884761182714,
+      "target_gain": 0.07581501137225644,
+      "base_off": 72.94140535803187,
+      "off_score": 63.9089596774257,
+      "off_gain": 0.3944413951827765,
+      "off_gain_over_control": 0,
+      "forgetting_gap": 9.134319162045598
+    },
+    {
+      "base": "Qwen3-8B",
+      "seed": 44,
+      "train_task": "metamath",
+      "setting": "2+0",
+      "target": 87.49052312357847,
+      "target_gain": 3.487490523123583,
+      "base_off": 72.94140535803187,
+      "off_score": 75.53414281047682,
+      "off_gain": 12.019624528233892,
+      "off_gain_over_control": 11.625183133051117,
+      "forgetting_gap": 0
+    },
+    {
+      "base": "Qwen3-8B",
+      "seed": 44,
+      "train_task": "metamath",
+      "setting": "2+1",
+      "target": 88.02122820318424,
+      "target_gain": 4.0181956027293495,
+      "base_off": 72.94140535803187,
+      "off_score": 74.4789133619755,
+      "off_gain": 10.964395079732576,
+      "off_gain_over_control": 10.5699536845498,
+      "forgetting_gap": 0
+    },
+    {
+      "base": "Qwen3-8B",
+      "seed": 44,
+      "train_task": "metamath",
+      "setting": "2+2",
+      "target": 87.56633813495071,
+      "target_gain": 3.563305534495825,
+      "base_off": 72.94140535803187,
+      "off_score": 75.14107350004502,
+      "off_gain": 11.6265552178021,
+      "off_gain_over_control": 11.232113822619324,
+      "forgetting_gap": 0
+    },
+    {
+      "base": "Qwen3-8B",
+      "seed": 44,
+      "train_task": "metamath",
+      "setting": "4+0",
+      "target": 87.49052312357847,
+      "target_gain": 3.487490523123583,
+      "base_off": 72.94140535803187,
+      "off_score": 74.61253127932707,
+      "off_gain": 11.098012997084153,
+      "off_gain_over_control": 10.703571601901375,
+      "forgetting_gap": 0
+    },
+    {
+      "base": "Qwen3-8B",
+      "seed": 44,
+      "train_task": "metamath",
+      "setting": "4+1",
+      "target": 87.41470811220621,
+      "target_gain": 3.4116755117513264,
+      "base_off": 72.94140535803187,
+      "off_score": 74.25930305945482,
+      "off_gain": 10.744784777211903,
+      "off_gain_over_control": 10.350343382029125,
+      "forgetting_gap": 0
+    },
+    {
+      "base": "Qwen3-8B",
+      "seed": 44,
+      "train_task": "metamath",
+      "setting": "4+2",
+      "target": 87.26307808946171,
+      "target_gain": 3.260045489006828,
+      "base_off": 72.94140535803187,
+      "off_score": 74.52831461982858,
+      "off_gain": 11.013796337585658,
+      "off_gain_over_control": 10.61935494240288,
+      "forgetting_gap": 0
+    },
+    {
+      "base": "Qwen3-8B",
+      "seed": 44,
+      "train_task": "metamath",
+      "setting": "8+0",
+      "target": 87.71796815769522,
+      "target_gain": 3.714935557240338,
+      "base_off": 72.94140535803187,
+      "off_score": 74.92093539051923,
+      "off_gain": 11.406417108276313,
+      "off_gain_over_control": 11.011975713093536,
+      "forgetting_gap": 0
+    },
+    {
+      "base": "Qwen3-8B",
+      "seed": 44,
+      "train_task": "metamath",
+      "setting": "8+1",
+      "target": 87.86959818043972,
+      "target_gain": 3.8665655799848366,
+      "base_off": 72.94140535803187,
+      "off_score": 74.98360937981268,
+      "off_gain": 11.469091097569757,
+      "off_gain_over_control": 11.07464970238698,
+      "forgetting_gap": 0
+    },
+    {
+      "base": "Qwen3-8B",
+      "seed": 44,
+      "train_task": "metamath",
+      "setting": "8+2",
+      "target": 87.56633813495071,
+      "target_gain": 3.563305534495825,
+      "base_off": 72.94140535803187,
+      "off_score": 74.24662698040001,
+      "off_gain": 10.73210869815709,
+      "off_gain_over_control": 10.337667302974312,
+      "forgetting_gap": 0
+    },
+    {
+      "base": "Qwen3-8B",
+      "seed": 44,
+      "train_task": "tulu",
+      "setting": "LoRA",
+      "target": 66.91312384473198,
+      "target_gain": 0,
+      "base_off": 78.29507561271518,
+      "off_score": 85.73784125127371,
+      "off_gain": 0,
+      "off_gain_over_control": -0.12581506352415298,
+      "forgetting_gap": 0
+    },
+    {
+      "base": "Qwen3-8B",
+      "seed": 44,
+      "train_task": "tulu",
+      "setting": "0+0",
+      "target": 67.8373382624769,
+      "target_gain": 0.9242144177449205,
+      "base_off": 78.29507561271518,
+      "off_score": 85.86365631479786,
+      "off_gain": 0.12581506352415298,
+      "off_gain_over_control": 0,
+      "forgetting_gap": 0
+    },
+    {
+      "base": "Qwen3-8B",
+      "seed": 44,
+      "train_task": "tulu",
+      "setting": "2+0",
+      "target": 71.1645101663586,
+      "target_gain": 4.251386321626612,
+      "base_off": 78.29507561271518,
+      "off_score": 83.92535359873166,
+      "off_gain": -1.8124876525420557,
+      "off_gain_over_control": -1.9383027160662085,
+      "forgetting_gap": 0
+    },
+    {
+      "base": "Qwen3-8B",
+      "seed": 44,
+      "train_task": "tulu",
+      "setting": "2+1",
+      "target": 71.1645101663586,
+      "target_gain": 4.251386321626612,
+      "base_off": 78.29507561271518,
+      "off_score": 84.9569078332478,
+      "off_gain": -0.78093341802591,
+      "off_gain_over_control": -0.9067484815500629,
+      "forgetting_gap": 0
+    },
+    {
+      "base": "Qwen3-8B",
+      "seed": 44,
+      "train_task": "tulu",
+      "setting": "2+2",
+      "target": 71.71903881700554,
+      "target_gain": 4.8059149722735555,
+      "base_off": 78.29507561271518,
+      "off_score": 84.7314570025594,
+      "off_gain": -1.006384248714312,
+      "off_gain_over_control": -1.132199312238465,
+      "forgetting_gap": 0
+    },
+    {
+      "base": "Qwen3-8B",
+      "seed": 44,
+      "train_task": "tulu",
+      "setting": "4+0",
+      "target": 72.45841035120148,
+      "target_gain": 5.545286506469495,
+      "base_off": 78.29507561271518,
+      "off_score": 84.41403056277484,
+      "off_gain": -1.3238106884988763,
+      "off_gain_over_control": -1.4496257520230291,
+      "forgetting_gap": 0
+    },
+    {
+      "base": "Qwen3-8B",
+      "seed": 44,
+      "train_task": "tulu",
+      "setting": "4+1",
+      "target": 70.97966728280961,
+      "target_gain": 4.06654343807763,
+      "base_off": 78.29507561271518,
+      "off_score": 84.47591320563808,
+      "off_gain": -1.2619280456356279,
+      "off_gain_over_control": -1.387743109159781,
+      "forgetting_gap": 0
+    },
+    {
+      "base": "Qwen3-8B",
+      "seed": 44,
+      "train_task": "tulu",
+      "setting": "4+2",
+      "target": 71.53419593345656,
+      "target_gain": 4.621072088724574,
+      "base_off": 78.29507561271518,
+      "off_score": 84.6956867668914,
+      "off_gain": -1.042154484382318,
+      "off_gain_over_control": -1.167969547906471,
+      "forgetting_gap": 0
+    },
+    {
+      "base": "Qwen3-8B",
+      "seed": 44,
+      "train_task": "tulu",
+      "setting": "8+0",
+      "target": 70.42513863216267,
+      "target_gain": 3.5120147874306866,
+      "base_off": 78.29507561271518,
+      "off_score": 84.36528106674395,
+      "off_gain": -1.37256018452977,
+      "off_gain_over_control": -1.4983752480539227,
+      "forgetting_gap": 0
+    },
+    {
+      "base": "Qwen3-8B",
+      "seed": 44,
+      "train_task": "tulu",
+      "setting": "8+1",
+      "target": 72.08872458410352,
+      "target_gain": 5.175600739371532,
+      "base_off": 78.29507561271518,
+      "off_score": 84.67771087602858,
+      "off_gain": -1.0601303752451325,
+      "off_gain_over_control": -1.1859454387692854,
+      "forgetting_gap": 0
+    },
+    {
+      "base": "Qwen3-8B",
+      "seed": 44,
+      "train_task": "tulu",
+      "setting": "8+2",
+      "target": 70.97966728280961,
+      "target_gain": 4.06654343807763,
+      "base_off": 78.29507561271518,
+      "off_score": 83.98486639107367,
+      "off_gain": -1.7529748602000457,
+      "off_gain_over_control": -1.8787899237241987,
+      "forgetting_gap": 0
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "seed": 43,
+      "train_task": "magicoder",
+      "setting": "LoRA",
+      "target": 56.09756097560976,
+      "target_gain": 0,
+      "base_off": 65.29822175547548,
+      "off_score": 60.942754670985146,
+      "off_gain": 0,
+      "off_gain_over_control": -0.0165626449900671,
+      "forgetting_gap": 4.810357152723857
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "seed": 43,
+      "train_task": "magicoder",
+      "setting": "0+0",
+      "target": 54.87804878048781,
+      "target_gain": -1.2195121951219505,
+      "base_off": 65.29822175547548,
+      "off_score": 60.95931731597521,
+      "off_gain": 0.0165626449900671,
+      "off_gain_over_control": 0,
+      "forgetting_gap": 4.667436155446701
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "seed": 43,
+      "train_task": "magicoder",
+      "setting": "2+0",
+      "target": 55.487804878048784,
+      "target_gain": -0.6097560975609753,
+      "base_off": 65.29822175547548,
+      "off_score": 66.79462369155148,
+      "off_gain": 5.851869020566331,
+      "off_gain_over_control": 5.8353063755762635,
+      "forgetting_gap": 0.9242144177449182
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "seed": 43,
+      "train_task": "magicoder",
+      "setting": "2+1",
+      "target": 55.487804878048784,
+      "target_gain": -0.6097560975609753,
+      "base_off": 65.29822175547548,
+      "off_score": 66.1299378815571,
+      "off_gain": 5.187183210571955,
+      "off_gain_over_control": 5.1706205655818875,
+      "forgetting_gap": 1.2939001848428806
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "seed": 43,
+      "train_task": "magicoder",
+      "setting": "2+2",
+      "target": 54.87804878048781,
+      "target_gain": -1.2195121951219505,
+      "base_off": 65.29822175547548,
+      "off_score": 66.17569425509869,
+      "off_gain": 5.232939584113548,
+      "off_gain_over_control": 5.216376939123481,
+      "forgetting_gap": 1.2939001848428806
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "seed": 43,
+      "train_task": "magicoder",
+      "setting": "4+0",
+      "target": 55.487804878048784,
+      "target_gain": -0.6097560975609753,
+      "base_off": 65.29822175547548,
+      "off_score": 66.16679928323818,
+      "off_gain": 5.224044612253034,
+      "off_gain_over_control": 5.207481967262967,
+      "forgetting_gap": 1.4171287738755396
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "seed": 43,
+      "train_task": "magicoder",
+      "setting": "4+1",
+      "target": 55.487804878048784,
+      "target_gain": -0.6097560975609753,
+      "base_off": 65.29822175547548,
+      "off_score": 66.02796070743649,
+      "off_gain": 5.085206036451353,
+      "off_gain_over_control": 5.068643391461286,
+      "forgetting_gap": 1.6019716574245209
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "seed": 43,
+      "train_task": "magicoder",
+      "setting": "4+2",
+      "target": 54.87804878048781,
+      "target_gain": -1.2195121951219505,
+      "base_off": 65.29822175547548,
+      "off_score": 66.26022050834153,
+      "off_gain": 5.317465837356394,
+      "off_gain_over_control": 5.300903192366327,
+      "forgetting_gap": 1.2939001848428806
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "seed": 43,
+      "train_task": "magicoder",
+      "setting": "8+0",
+      "target": 54.87804878048781,
+      "target_gain": -1.2195121951219505,
+      "base_off": 65.29822175547548,
+      "off_score": 66.10877830364691,
+      "off_gain": 5.166023632661776,
+      "off_gain_over_control": 5.149460987671709,
+      "forgetting_gap": 1.4171287738755396
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "seed": 43,
+      "train_task": "magicoder",
+      "setting": "8+1",
+      "target": 56.09756097560976,
+      "target_gain": 0,
+      "base_off": 65.29822175547548,
+      "off_score": 67.10731346974529,
+      "off_gain": 6.164558798760143,
+      "off_gain_over_control": 6.147996153770076,
+      "forgetting_gap": 0.8626001232285887
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "seed": 43,
+      "train_task": "magicoder",
+      "setting": "8+2",
+      "target": 54.268292682926834,
+      "target_gain": -1.8292682926829258,
+      "base_off": 65.29822175547548,
+      "off_score": 66.16739598430335,
+      "off_gain": 5.224641313318213,
+      "off_gain_over_control": 5.208078668328146,
+      "forgetting_gap": 1.04744300677757
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "seed": 43,
+      "train_task": "metamath",
+      "setting": "LoRA",
+      "target": 75.05686125852918,
+      "target_gain": 0,
+      "base_off": 61.97931176576907,
+      "off_score": 58.24453079859881,
+      "off_gain": 0,
+      "off_gain_over_control": 0.417804640319351,
+      "forgetting_gap": 4.1412850322109165
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "seed": 43,
+      "train_task": "metamath",
+      "setting": "0+0",
+      "target": 74.82941622441244,
+      "target_gain": -0.22744503411674089,
+      "base_off": 61.97931176576907,
+      "off_score": 57.826726158279456,
+      "off_gain": -0.417804640319351,
+      "off_gain_over_control": 0,
+      "forgetting_gap": 4.355837640009942
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "seed": 43,
+      "train_task": "metamath",
+      "setting": "2+0",
+      "target": 79.15087187263077,
+      "target_gain": 4.094010614101592,
+      "base_off": 61.97931176576907,
+      "off_score": 61.936353749468715,
+      "off_gain": 3.691822950869908,
+      "off_gain_over_control": 4.109627591189259,
+      "forgetting_gap": 0.38809491606930635
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "seed": 43,
+      "train_task": "metamath",
+      "setting": "2+1",
+      "target": 78.46853677028052,
+      "target_gain": 3.4116755117513407,
+      "base_off": 61.97931176576907,
+      "off_score": 62.256693007895,
+      "off_gain": 4.012162209296193,
+      "off_gain_over_control": 4.4299668496155435,
+      "forgetting_gap": 0.12322858903265417
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "seed": 43,
+      "train_task": "metamath",
+      "setting": "2+2",
+      "target": 77.93783169067476,
+      "target_gain": 2.880970432145574,
+      "base_off": 61.97931176576907,
+      "off_score": 61.72989972467232,
+      "off_gain": 3.4853689260735123,
+      "off_gain_over_control": 3.9031735663928635,
+      "forgetting_gap": 0.8009858287122592
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "seed": 43,
+      "train_task": "metamath",
+      "setting": "4+0",
+      "target": 79.15087187263077,
+      "target_gain": 4.094010614101592,
+      "base_off": 61.97931176576907,
+      "off_score": 61.59896817235552,
+      "off_gain": 3.35443737375671,
+      "off_gain_over_control": 3.772242014076061,
+      "forgetting_gap": 1.04744300677757
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "seed": 43,
+      "train_task": "metamath",
+      "setting": "4+1",
+      "target": 78.39272175890827,
+      "target_gain": 3.335860500379084,
+      "base_off": 61.97931176576907,
+      "off_score": 62.292520501778206,
+      "off_gain": 4.047989703179399,
+      "off_gain_over_control": 4.46579434349875,
+      "forgetting_gap": 0.24645717806531073
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "seed": 43,
+      "train_task": "metamath",
+      "setting": "4+2",
+      "target": 78.62016679302502,
+      "target_gain": 3.5633055344958393,
+      "base_off": 61.97931176576907,
+      "off_score": 61.829786781245296,
+      "off_gain": 3.585255982646487,
+      "off_gain_over_control": 4.003060622965838,
+      "forgetting_gap": 0.49291435613062146
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "seed": 43,
+      "train_task": "metamath",
+      "setting": "8+0",
+      "target": 79.30250189537529,
+      "target_gain": 4.245640636846105,
+      "base_off": 61.97931176576907,
+      "off_score": 61.21420498267524,
+      "off_gain": 2.969674184076434,
+      "off_gain_over_control": 3.387478824395785,
+      "forgetting_gap": 1.2322858903265559
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "seed": 43,
+      "train_task": "metamath",
+      "setting": "8+1",
+      "target": 78.31690674753601,
+      "target_gain": 3.260045489006828,
+      "base_off": 61.97931176576907,
+      "off_score": 61.02288999855531,
+      "off_gain": 2.7783591999564976,
+      "off_gain_over_control": 3.1961638402758488,
+      "forgetting_gap": 1.1274664502652432
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "seed": 43,
+      "train_task": "metamath",
+      "setting": "8+2",
+      "target": 78.31690674753601,
+      "target_gain": 3.260045489006828,
+      "base_off": 61.97931176576907,
+      "off_score": 61.932798513893495,
+      "off_gain": 3.6882677152946877,
+      "off_gain_over_control": 4.106072355614039,
+      "forgetting_gap": 0.6161429451632779
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "seed": 43,
+      "train_task": "tulu",
+      "setting": "LoRA",
+      "target": 62.84658040665434,
+      "target_gain": 0,
+      "base_off": 62.07549359473732,
+      "off_score": 67.56614420728691,
+      "off_gain": 0,
+      "off_gain_over_control": -0.2673334244185905,
+      "forgetting_gap": 0
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "seed": 43,
+      "train_task": "tulu",
+      "setting": "0+0",
+      "target": 63.95563770794824,
+      "target_gain": 1.1090573012939018,
+      "base_off": 62.07549359473732,
+      "off_score": 67.83347763170549,
+      "off_gain": 0.2673334244185905,
+      "off_gain_over_control": 0,
+      "forgetting_gap": 0
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "seed": 43,
+      "train_task": "tulu",
+      "setting": "2+0",
+      "target": 65.24953789279112,
+      "target_gain": 2.402957486136785,
+      "base_off": 62.07549359473732,
+      "off_score": 67.02605451682665,
+      "off_gain": -0.5400896904602609,
+      "off_gain_over_control": -0.8074231148788513,
+      "forgetting_gap": 0
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "seed": 43,
+      "train_task": "tulu",
+      "setting": "2+1",
+      "target": 64.69500924214418,
+      "target_gain": 1.848428835489841,
+      "base_off": 62.07549359473732,
+      "off_score": 67.92754783789279,
+      "off_gain": 0.361403630605885,
+      "off_gain_over_control": 0.09407020618729452,
+      "forgetting_gap": 0
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "seed": 43,
+      "train_task": "tulu",
+      "setting": "2+2",
+      "target": 63.03142329020333,
+      "target_gain": 0.18484288354898837,
+      "base_off": 62.07549359473732,
+      "off_score": 68.10577224116146,
+      "off_gain": 0.5396280338745546,
+      "off_gain_over_control": 0.2722946094559641,
+      "forgetting_gap": 0
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "seed": 43,
+      "train_task": "tulu",
+      "setting": "4+0",
+      "target": 63.03142329020333,
+      "target_gain": 0.18484288354898837,
+      "base_off": 62.07549359473732,
+      "off_score": 67.24787675691006,
+      "off_gain": -0.3182674503768486,
+      "off_gain_over_control": -0.5856008747954391,
+      "forgetting_gap": 0
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "seed": 43,
+      "train_task": "tulu",
+      "setting": "4+1",
+      "target": 65.24953789279112,
+      "target_gain": 2.402957486136785,
+      "base_off": 62.07549359473732,
+      "off_score": 67.68585576500718,
+      "off_gain": 0.11971155772026283,
+      "off_gain_over_control": -0.14762186669832764,
+      "forgetting_gap": 0
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "seed": 43,
+      "train_task": "tulu",
+      "setting": "4+2",
+      "target": 62.10720887245841,
+      "target_gain": -0.7393715341959322,
+      "base_off": 62.07549359473732,
+      "off_score": 67.3669424009278,
+      "off_gain": -0.19920180635911086,
+      "off_gain_over_control": -0.4665352307777013,
+      "forgetting_gap": 0
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "seed": 43,
+      "train_task": "tulu",
+      "setting": "8+0",
+      "target": 63.77079482439926,
+      "target_gain": 0.9242144177449205,
+      "base_off": 62.07549359473732,
+      "off_score": 67.47331461213773,
+      "off_gain": -0.09282959514918095,
+      "off_gain_over_control": -0.3601630195677714,
+      "forgetting_gap": 0
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "seed": 43,
+      "train_task": "tulu",
+      "setting": "8+1",
+      "target": 63.58595194085028,
+      "target_gain": 0.7393715341959393,
+      "base_off": 62.07549359473732,
+      "off_score": 67.94471472164366,
+      "off_gain": 0.3785705143567597,
+      "off_gain_over_control": 0.11123708993816923,
+      "forgetting_gap": 0
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "seed": 43,
+      "train_task": "tulu",
+      "setting": "8+2",
+      "target": 63.58595194085028,
+      "target_gain": 0.7393715341959393,
+      "base_off": 62.07549359473732,
+      "off_score": 67.50596601686514,
+      "off_gain": -0.06017819042176361,
+      "off_gain_over_control": -0.32751161484035407,
+      "forgetting_gap": 0
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "seed": 44,
+      "train_task": "magicoder",
+      "setting": "LoRA",
+      "target": 53.65853658536586,
+      "target_gain": 0,
+      "base_off": 65.29822175547548,
+      "off_score": 62.33265253354855,
+      "off_gain": 0,
+      "off_gain_over_control": 0.4423358700146025,
+      "forgetting_gap": 4.001707710681046
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "seed": 44,
+      "train_task": "magicoder",
+      "setting": "0+0",
+      "target": 54.87804878048781,
+      "target_gain": 1.2195121951219505,
+      "base_off": 65.29822175547548,
+      "off_score": 61.890316663533945,
+      "off_gain": -0.4423358700146025,
+      "off_gain_over_control": 0,
+      "forgetting_gap": 4.671488614812408
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "seed": 44,
+      "train_task": "magicoder",
+      "setting": "2+0",
+      "target": 54.87804878048781,
+      "target_gain": 1.2195121951219505,
+      "base_off": 65.29822175547548,
+      "off_score": 66.29135969173612,
+      "off_gain": 3.958707158187572,
+      "off_gain_over_control": 4.401043028202174,
+      "forgetting_gap": 1.4171287738755396
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "seed": 44,
+      "train_task": "magicoder",
+      "setting": "2+1",
+      "target": 53.65853658536586,
+      "target_gain": 0,
+      "base_off": 65.29822175547548,
+      "off_score": 66.67201118154418,
+      "off_gain": 4.339358647995627,
+      "off_gain_over_control": 4.781694518010229,
+      "forgetting_gap": 1.4787430683918668
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "seed": 44,
+      "train_task": "magicoder",
+      "setting": "2+2",
+      "target": 55.487804878048784,
+      "target_gain": 1.8292682926829258,
+      "base_off": 65.29822175547548,
+      "off_score": 66.61491745899512,
+      "off_gain": 4.28226492544658,
+      "off_gain_over_control": 4.724600795461183,
+      "forgetting_gap": 1.4171287738755396
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "seed": 44,
+      "train_task": "magicoder",
+      "setting": "4+0",
+      "target": 54.268292682926834,
+      "target_gain": 0.6097560975609753,
+      "base_off": 65.29822175547548,
+      "off_score": 66.3779778877123,
+      "off_gain": 4.045325354163761,
+      "off_gain_over_control": 4.487661224178363,
+      "forgetting_gap": 1.3555144793592102
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "seed": 44,
+      "train_task": "magicoder",
+      "setting": "4+1",
+      "target": 53.65853658536586,
+      "target_gain": 0,
+      "base_off": 65.29822175547548,
+      "off_score": 66.58397583306484,
+      "off_gain": 4.251323299516301,
+      "off_gain_over_control": 4.693659169530903,
+      "forgetting_gap": 1.3555144793592102
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "seed": 44,
+      "train_task": "magicoder",
+      "setting": "4+2",
+      "target": 54.87804878048781,
+      "target_gain": 1.2195121951219505,
+      "base_off": 65.29822175547548,
+      "off_score": 66.64146842059311,
+      "off_gain": 4.308815887044562,
+      "off_gain_over_control": 4.751151757059165,
+      "forgetting_gap": 1.2939001848428806
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "seed": 44,
+      "train_task": "magicoder",
+      "setting": "8+0",
+      "target": 56.70731707317073,
+      "target_gain": 3.048780487804869,
+      "base_off": 65.29822175547548,
+      "off_score": 66.65552822207194,
+      "off_gain": 4.322875688523392,
+      "off_gain_over_control": 4.765211558537994,
+      "forgetting_gap": 1.2322858903265559
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "seed": 44,
+      "train_task": "magicoder",
+      "setting": "8+1",
+      "target": 53.65853658536586,
+      "target_gain": 0,
+      "base_off": 65.29822175547548,
+      "off_score": 66.42060276564041,
+      "off_gain": 4.087950232091866,
+      "off_gain_over_control": 4.530286102106468,
+      "forgetting_gap": 1.5403573629081961
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "seed": 44,
+      "train_task": "magicoder",
+      "setting": "8+2",
+      "target": 55.487804878048784,
+      "target_gain": 1.8292682926829258,
+      "base_off": 65.29822175547548,
+      "off_score": 66.44061698177615,
+      "off_gain": 4.107964448227605,
+      "off_gain_over_control": 4.550300318242208,
+      "forgetting_gap": 1.7252002464571774
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "seed": 44,
+      "train_task": "metamath",
+      "setting": "LoRA",
+      "target": 74.45034116755117,
+      "target_gain": 0,
+      "base_off": 61.97931176576907,
+      "off_score": 59.64550876347829,
+      "off_gain": 0,
+      "off_gain_over_control": 0.07950411148216101,
+      "forgetting_gap": 3.3500631648924064
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "seed": 44,
+      "train_task": "metamath",
+      "setting": "0+0",
+      "target": 75.13267626990144,
+      "target_gain": 0.6823351023502653,
+      "base_off": 61.97931176576907,
+      "off_score": 59.56600465199613,
+      "off_gain": -0.07950411148216101,
+      "off_gain_over_control": 0,
+      "forgetting_gap": 3.632819308894893
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "seed": 44,
+      "train_task": "metamath",
+      "setting": "2+0",
+      "target": 79.15087187263077,
+      "target_gain": 4.700530705079601,
+      "base_off": 61.97931176576907,
+      "off_score": 62.20873170882372,
+      "off_gain": 2.563222945345428,
+      "off_gain_over_control": 2.6427270568275887,
+      "forgetting_gap": 0.6777572396796027
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "seed": 44,
+      "train_task": "metamath",
+      "setting": "2+1",
+      "target": 78.54435178165276,
+      "target_gain": 4.094010614101592,
+      "base_off": 61.97931176576907,
+      "off_score": 62.887165243103894,
+      "off_gain": 3.2416564796256018,
+      "off_gain_over_control": 3.3211605911077626,
+      "forgetting_gap": 0.12322858903265417
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "seed": 44,
+      "train_task": "metamath",
+      "setting": "2+2",
+      "target": 77.63457164518574,
+      "target_gain": 3.1842304776345713,
+      "base_off": 61.97931176576907,
+      "off_score": 62.27818443542854,
+      "off_gain": 2.6326756719502526,
+      "off_gain_over_control": 2.7121797834324135,
+      "forgetting_gap": 0.43130006161429196
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "seed": 44,
+      "train_task": "metamath",
+      "setting": "4+0",
+      "target": 79.07505686125853,
+      "target_gain": 4.624715693707358,
+      "base_off": 61.97931176576907,
+      "off_score": 63.00702435433224,
+      "off_gain": 3.3615155908539456,
+      "off_gain_over_control": 3.4410197023361064,
+      "forgetting_gap": 0
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "seed": 44,
+      "train_task": "metamath",
+      "setting": "4+1",
+      "target": 78.99924184988627,
+      "target_gain": 4.548900682335102,
+      "base_off": 61.97931176576907,
+      "off_score": 62.49811306240495,
+      "off_gain": 2.852604298926655,
+      "off_gain_over_control": 2.9321084104088158,
+      "forgetting_gap": 0.06161429451632946
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "seed": 44,
+      "train_task": "metamath",
+      "setting": "4+2",
+      "target": 78.013646702047,
+      "target_gain": 3.563305534495825,
+      "base_off": 61.97931176576907,
+      "off_score": 61.85498749215392,
+      "off_gain": 2.2094787286756223,
+      "off_gain_over_control": 2.2889828401577836,
+      "forgetting_gap": 0.49291435613062146
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "seed": 44,
+      "train_task": "metamath",
+      "setting": "8+0",
+      "target": 79.22668688400303,
+      "target_gain": 4.776345716451857,
+      "base_off": 61.97931176576907,
+      "off_score": 62.30403047807773,
+      "off_gain": 2.658521714599433,
+      "off_gain_over_control": 2.738025826081594,
+      "forgetting_gap": 0.18484288354898126
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "seed": 44,
+      "train_task": "metamath",
+      "setting": "8+1",
+      "target": 78.99924184988627,
+      "target_gain": 4.548900682335102,
+      "base_off": 61.97931176576907,
+      "off_score": 62.33293212523111,
+      "off_gain": 2.6874233617528156,
+      "off_gain_over_control": 2.766927473234977,
+      "forgetting_gap": 0.43130006161429196
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "seed": 44,
+      "train_task": "metamath",
+      "setting": "8+2",
+      "target": 78.77179681576952,
+      "target_gain": 4.321455648218347,
+      "base_off": 61.97931176576907,
+      "off_score": 62.94466646526668,
+      "off_gain": 3.299157701788386,
+      "off_gain_over_control": 3.378661813270547,
+      "forgetting_gap": 0
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "seed": 44,
+      "train_task": "tulu",
+      "setting": "LoRA",
+      "target": 62.10720887245841,
+      "target_gain": 0,
+      "base_off": 62.07549359473732,
+      "off_score": 65.69631520254111,
+      "off_gain": 0,
+      "off_gain_over_control": 0.5243619149364042,
+      "forgetting_gap": 1.0108668182966885
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "seed": 44,
+      "train_task": "tulu",
+      "setting": "0+0",
+      "target": 64.14048059149722,
+      "target_gain": 2.033271719038815,
+      "base_off": 62.07549359473732,
+      "off_score": 65.17195328760471,
+      "off_gain": -0.5243619149364042,
+      "off_gain_over_control": 0,
+      "forgetting_gap": 0.9350518069244368
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "seed": 44,
+      "train_task": "tulu",
+      "setting": "2+0",
+      "target": 63.95563770794824,
+      "target_gain": 1.848428835489834,
+      "base_off": 62.07549359473732,
+      "off_score": 66.0054063199523,
+      "off_gain": 0.3090911174111947,
+      "off_gain_over_control": 0.8334530323475988,
+      "forgetting_gap": 0
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "seed": 44,
+      "train_task": "tulu",
+      "setting": "2+1",
+      "target": 63.03142329020333,
+      "target_gain": 0.9242144177449205,
+      "base_off": 62.07549359473732,
+      "off_score": 65.81818051073074,
+      "off_gain": 0.12186530818963585,
+      "off_gain_over_control": 0.64622722312604,
+      "forgetting_gap": 0
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "seed": 44,
+      "train_task": "tulu",
+      "setting": "2+2",
+      "target": 63.58595194085028,
+      "target_gain": 1.4787430683918714,
+      "base_off": 62.07549359473732,
+      "off_score": 66.16175674509104,
+      "off_gain": 0.4654415425499299,
+      "off_gain_over_control": 0.989803457486334,
+      "forgetting_gap": 0
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "seed": 44,
+      "train_task": "tulu",
+      "setting": "4+0",
+      "target": 64.14048059149722,
+      "target_gain": 2.033271719038815,
+      "base_off": 62.07549359473732,
+      "off_score": 65.56050550478507,
+      "off_gain": -0.13580969775604027,
+      "off_gain_over_control": 0.38855221718036387,
+      "forgetting_gap": 0
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "seed": 44,
+      "train_task": "tulu",
+      "setting": "4+1",
+      "target": 64.87985212569316,
+      "target_gain": 2.7726432532347545,
+      "base_off": 62.07549359473732,
+      "off_score": 66.2082991094121,
+      "off_gain": 0.5119839068709856,
+      "off_gain_over_control": 1.0363458218073898,
+      "forgetting_gap": 0
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "seed": 44,
+      "train_task": "tulu",
+      "setting": "4+2",
+      "target": 63.95563770794824,
+      "target_gain": 1.848428835489834,
+      "base_off": 62.07549359473732,
+      "off_score": 65.64609196615137,
+      "off_gain": -0.050223236389731106,
+      "off_gain_over_control": 0.474138678546673,
+      "forgetting_gap": 0
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "seed": 44,
+      "train_task": "tulu",
+      "setting": "8+0",
+      "target": 63.95563770794824,
+      "target_gain": 1.848428835489834,
+      "base_off": 62.07549359473732,
+      "off_score": 65.39753487519492,
+      "off_gain": -0.29878032734619114,
+      "off_gain_over_control": 0.22558158759021296,
+      "forgetting_gap": 0
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "seed": 44,
+      "train_task": "tulu",
+      "setting": "8+1",
+      "target": 64.87985212569316,
+      "target_gain": 2.7726432532347545,
+      "base_off": 62.07549359473732,
+      "off_score": 65.91972349964897,
+      "off_gain": 0.22340829710786636,
+      "off_gain_over_control": 0.7477702120442705,
+      "forgetting_gap": 0
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "seed": 44,
+      "train_task": "tulu",
+      "setting": "8+2",
+      "target": 65.24953789279112,
+      "target_gain": 3.142329020332717,
+      "base_off": 62.07549359473732,
+      "off_score": 65.85219447415392,
+      "off_gain": 0.15587927161281812,
+      "off_gain_over_control": 0.6802411865492223,
+      "forgetting_gap": 0
+    }
+  ],
+  "matrix": [
+    {
+      "base": "Qwen3-8B",
+      "seed": 43,
+      "train_task": "base",
+      "setting": "Base",
+      "eval_task": "magicoder",
+      "score": 66.46341463414635
+    },
+    {
+      "base": "Qwen3-8B",
+      "seed": 43,
+      "train_task": "base",
+      "setting": "Base",
+      "eval_task": "metamath",
+      "score": 85.74677786201667
+    },
+    {
+      "base": "Qwen3-8B",
+      "seed": 43,
+      "train_task": "base",
+      "setting": "Base",
+      "eval_task": "tulu",
+      "score": 69.68576709796673
+    },
+    {
+      "base": "Qwen3-8B",
+      "seed": 43,
+      "train_task": "base",
+      "setting": "Base",
+      "eval_task": "commonsense",
+      "score": 82.67503434198252
+    },
+    {
+      "base": "Qwen3-8B",
+      "seed": 43,
+      "train_task": "magicoder",
+      "setting": "LoRA",
+      "eval_task": "magicoder",
+      "score": 62.80487804878049
+    },
+    {
+      "base": "Qwen3-8B",
+      "seed": 43,
+      "train_task": "magicoder",
+      "setting": "LoRA",
+      "eval_task": "metamath",
+      "score": 82.56254738438211
+    },
+    {
+      "base": "Qwen3-8B",
+      "seed": 43,
+      "train_task": "magicoder",
+      "setting": "LoRA",
+      "eval_task": "tulu",
+      "score": 66.91312384473198
+    },
+    {
+      "base": "Qwen3-8B",
+      "seed": 43,
+      "train_task": "magicoder",
+      "setting": "LoRA",
+      "eval_task": "commonsense",
+      "score": 83.80252203736919
+    },
+    {
+      "base": "Qwen3-8B",
+      "seed": 43,
+      "train_task": "magicoder",
+      "setting": "0+0",
+      "eval_task": "magicoder",
+      "score": 64.02439024390245
+    },
+    {
+      "base": "Qwen3-8B",
+      "seed": 43,
+      "train_task": "magicoder",
+      "setting": "0+0",
+      "eval_task": "metamath",
+      "score": 82.2592873388931
+    },
+    {
+      "base": "Qwen3-8B",
+      "seed": 43,
+      "train_task": "magicoder",
+      "setting": "0+0",
+      "eval_task": "tulu",
+      "score": 66.91312384473198
+    },
+    {
+      "base": "Qwen3-8B",
+      "seed": 43,
+      "train_task": "magicoder",
+      "setting": "0+0",
+      "eval_task": "commonsense",
+      "score": 83.69870428030961
+    },
+    {
+      "base": "Qwen3-8B",
+      "seed": 43,
+      "train_task": "magicoder",
+      "setting": "2+0",
+      "eval_task": "magicoder",
+      "score": 74.39024390243902
+    },
+    {
+      "base": "Qwen3-8B",
+      "seed": 43,
+      "train_task": "magicoder",
+      "setting": "2+0",
+      "eval_task": "metamath",
+      "score": 88.93100833965126
+    },
+    {
+      "base": "Qwen3-8B",
+      "seed": 43,
+      "train_task": "magicoder",
+      "setting": "2+0",
+      "eval_task": "tulu",
+      "score": 70.60998151571165
+    },
+    {
+      "base": "Qwen3-8B",
+      "seed": 43,
+      "train_task": "magicoder",
+      "setting": "2+0",
+      "eval_task": "commonsense",
+      "score": 83.55796148596133
+    },
+    {
+      "base": "Qwen3-8B",
+      "seed": 43,
+      "train_task": "magicoder",
+      "setting": "2+1",
+      "eval_task": "magicoder",
+      "score": 75
+    },
+    {
+      "base": "Qwen3-8B",
+      "seed": 43,
+      "train_task": "magicoder",
+      "setting": "2+1",
+      "eval_task": "metamath",
+      "score": 88.09704321455648
+    },
+    {
+      "base": "Qwen3-8B",
+      "seed": 43,
+      "train_task": "magicoder",
+      "setting": "2+1",
+      "eval_task": "tulu",
+      "score": 70.60998151571165
+    },
+    {
+      "base": "Qwen3-8B",
+      "seed": 43,
+      "train_task": "magicoder",
+      "setting": "2+1",
+      "eval_task": "commonsense",
+      "score": 83.48690265783645
+    },
+    {
+      "base": "Qwen3-8B",
+      "seed": 43,
+      "train_task": "magicoder",
+      "setting": "2+2",
+      "eval_task": "magicoder",
+      "score": 74.39024390243902
+    },
+    {
+      "base": "Qwen3-8B",
+      "seed": 43,
+      "train_task": "magicoder",
+      "setting": "2+2",
+      "eval_task": "metamath",
+      "score": 88.55193328279
+    },
+    {
+      "base": "Qwen3-8B",
+      "seed": 43,
+      "train_task": "magicoder",
+      "setting": "2+2",
+      "eval_task": "tulu",
+      "score": 70.0554528650647
+    },
+    {
+      "base": "Qwen3-8B",
+      "seed": 43,
+      "train_task": "magicoder",
+      "setting": "2+2",
+      "eval_task": "commonsense",
+      "score": 83.5114057203363
+    },
+    {
+      "base": "Qwen3-8B",
+      "seed": 43,
+      "train_task": "magicoder",
+      "setting": "4+0",
+      "eval_task": "magicoder",
+      "score": 73.78048780487805
+    },
+    {
+      "base": "Qwen3-8B",
+      "seed": 43,
+      "train_task": "magicoder",
+      "setting": "4+0",
+      "eval_task": "metamath",
+      "score": 88.02122820318424
+    },
+    {
+      "base": "Qwen3-8B",
+      "seed": 43,
+      "train_task": "magicoder",
+      "setting": "4+0",
+      "eval_task": "tulu",
+      "score": 70.97966728280961
+    },
+    {
+      "base": "Qwen3-8B",
+      "seed": 43,
+      "train_task": "magicoder",
+      "setting": "4+0",
+      "eval_task": "commonsense",
+      "score": 83.47314549248298
+    },
+    {
+      "base": "Qwen3-8B",
+      "seed": 43,
+      "train_task": "magicoder",
+      "setting": "4+1",
+      "eval_task": "magicoder",
+      "score": 74.39024390243902
+    },
+    {
+      "base": "Qwen3-8B",
+      "seed": 43,
+      "train_task": "magicoder",
+      "setting": "4+1",
+      "eval_task": "metamath",
+      "score": 88.77937831690674
+    },
+    {
+      "base": "Qwen3-8B",
+      "seed": 43,
+      "train_task": "magicoder",
+      "setting": "4+1",
+      "eval_task": "tulu",
+      "score": 71.34935304990758
+    },
+    {
+      "base": "Qwen3-8B",
+      "seed": 43,
+      "train_task": "magicoder",
+      "setting": "4+1",
+      "eval_task": "commonsense",
+      "score": 83.4453448407783
+    },
+    {
+      "base": "Qwen3-8B",
+      "seed": 43,
+      "train_task": "magicoder",
+      "setting": "4+2",
+      "eval_task": "magicoder",
+      "score": 75.60975609756098
+    },
+    {
+      "base": "Qwen3-8B",
+      "seed": 43,
+      "train_task": "magicoder",
+      "setting": "4+2",
+      "eval_task": "metamath",
+      "score": 88.40030326004549
+    },
+    {
+      "base": "Qwen3-8B",
+      "seed": 43,
+      "train_task": "magicoder",
+      "setting": "4+2",
+      "eval_task": "tulu",
+      "score": 70.0554528650647
+    },
+    {
+      "base": "Qwen3-8B",
+      "seed": 43,
+      "train_task": "magicoder",
+      "setting": "4+2",
+      "eval_task": "commonsense",
+      "score": 83.43983676413205
+    },
+    {
+      "base": "Qwen3-8B",
+      "seed": 43,
+      "train_task": "magicoder",
+      "setting": "8+0",
+      "eval_task": "magicoder",
+      "score": 73.78048780487805
+    },
+    {
+      "base": "Qwen3-8B",
+      "seed": 43,
+      "train_task": "magicoder",
+      "setting": "8+0",
+      "eval_task": "metamath",
+      "score": 88.77937831690674
+    },
+    {
+      "base": "Qwen3-8B",
+      "seed": 43,
+      "train_task": "magicoder",
+      "setting": "8+0",
+      "eval_task": "tulu",
+      "score": 72.2735674676525
+    },
+    {
+      "base": "Qwen3-8B",
+      "seed": 43,
+      "train_task": "magicoder",
+      "setting": "8+0",
+      "eval_task": "commonsense",
+      "score": 83.43085572568278
+    },
+    {
+      "base": "Qwen3-8B",
+      "seed": 43,
+      "train_task": "magicoder",
+      "setting": "8+1",
+      "eval_task": "magicoder",
+      "score": 75.60975609756098
+    },
+    {
+      "base": "Qwen3-8B",
+      "seed": 43,
+      "train_task": "magicoder",
+      "setting": "8+1",
+      "eval_task": "metamath",
+      "score": 88.70356330553449
+    },
+    {
+      "base": "Qwen3-8B",
+      "seed": 43,
+      "train_task": "magicoder",
+      "setting": "8+1",
+      "eval_task": "tulu",
+      "score": 70.79482439926062
+    },
+    {
+      "base": "Qwen3-8B",
+      "seed": 43,
+      "train_task": "magicoder",
+      "setting": "8+1",
+      "eval_task": "commonsense",
+      "score": 83.42501399349469
+    },
+    {
+      "base": "Qwen3-8B",
+      "seed": 43,
+      "train_task": "magicoder",
+      "setting": "8+2",
+      "eval_task": "magicoder",
+      "score": 75.60975609756098
+    },
+    {
+      "base": "Qwen3-8B",
+      "seed": 43,
+      "train_task": "magicoder",
+      "setting": "8+2",
+      "eval_task": "metamath",
+      "score": 88.93100833965126
+    },
+    {
+      "base": "Qwen3-8B",
+      "seed": 43,
+      "train_task": "magicoder",
+      "setting": "8+2",
+      "eval_task": "tulu",
+      "score": 70.79482439926062
+    },
+    {
+      "base": "Qwen3-8B",
+      "seed": 43,
+      "train_task": "magicoder",
+      "setting": "8+2",
+      "eval_task": "commonsense",
+      "score": 83.4560440373784
+    },
+    {
+      "base": "Qwen3-8B",
+      "seed": 43,
+      "train_task": "metamath",
+      "setting": "LoRA",
+      "eval_task": "magicoder",
+      "score": 57.92682926829268
+    },
+    {
+      "base": "Qwen3-8B",
+      "seed": 43,
+      "train_task": "metamath",
+      "setting": "LoRA",
+      "eval_task": "metamath",
+      "score": 84.00303260045489
+    },
+    {
+      "base": "Qwen3-8B",
+      "seed": 43,
+      "train_task": "metamath",
+      "setting": "LoRA",
+      "eval_task": "tulu",
+      "score": 67.65249537892791
+    },
+    {
+      "base": "Qwen3-8B",
+      "seed": 43,
+      "train_task": "metamath",
+      "setting": "LoRA",
+      "eval_task": "commonsense",
+      "score": 83.41748043941848
+    },
+    {
+      "base": "Qwen3-8B",
+      "seed": 43,
+      "train_task": "metamath",
+      "setting": "0+0",
+      "eval_task": "magicoder",
+      "score": 57.3170731707317
+    },
+    {
+      "base": "Qwen3-8B",
+      "seed": 43,
+      "train_task": "metamath",
+      "setting": "0+0",
+      "eval_task": "metamath",
+      "score": 83.92721758908263
+    },
+    {
+      "base": "Qwen3-8B",
+      "seed": 43,
+      "train_task": "metamath",
+      "setting": "0+0",
+      "eval_task": "tulu",
+      "score": 68.02218114602587
+    },
+    {
+      "base": "Qwen3-8B",
+      "seed": 43,
+      "train_task": "metamath",
+      "setting": "0+0",
+      "eval_task": "commonsense",
+      "score": 83.35302352003382
+    },
+    {
+      "base": "Qwen3-8B",
+      "seed": 43,
+      "train_task": "metamath",
+      "setting": "2+0",
+      "eval_task": "magicoder",
+      "score": 71.95121951219512
+    },
+    {
+      "base": "Qwen3-8B",
+      "seed": 43,
+      "train_task": "metamath",
+      "setting": "2+0",
+      "eval_task": "metamath",
+      "score": 87.41470811220621
+    },
+    {
+      "base": "Qwen3-8B",
+      "seed": 43,
+      "train_task": "metamath",
+      "setting": "2+0",
+      "eval_task": "tulu",
+      "score": 70.97966728280961
+    },
+    {
+      "base": "Qwen3-8B",
+      "seed": 43,
+      "train_task": "metamath",
+      "setting": "2+0",
+      "eval_task": "commonsense",
+      "score": 84.66716266436472
+    },
+    {
+      "base": "Qwen3-8B",
+      "seed": 43,
+      "train_task": "metamath",
+      "setting": "2+1",
+      "eval_task": "magicoder",
+      "score": 73.78048780487805
+    },
+    {
+      "base": "Qwen3-8B",
+      "seed": 43,
+      "train_task": "metamath",
+      "setting": "2+1",
+      "eval_task": "metamath",
+      "score": 87.71796815769522
+    },
+    {
+      "base": "Qwen3-8B",
+      "seed": 43,
+      "train_task": "metamath",
+      "setting": "2+1",
+      "eval_task": "tulu",
+      "score": 71.53419593345656
+    },
+    {
+      "base": "Qwen3-8B",
+      "seed": 43,
+      "train_task": "metamath",
+      "setting": "2+1",
+      "eval_task": "commonsense",
+      "score": 84.63703598322347
+    },
+    {
+      "base": "Qwen3-8B",
+      "seed": 43,
+      "train_task": "metamath",
+      "setting": "2+2",
+      "eval_task": "magicoder",
+      "score": 73.17073170731707
+    },
+    {
+      "base": "Qwen3-8B",
+      "seed": 43,
+      "train_task": "metamath",
+      "setting": "2+2",
+      "eval_task": "metamath",
+      "score": 86.9598180439727
+    },
+    {
+      "base": "Qwen3-8B",
+      "seed": 43,
+      "train_task": "metamath",
+      "setting": "2+2",
+      "eval_task": "tulu",
+      "score": 72.64325323475046
+    },
+    {
+      "base": "Qwen3-8B",
+      "seed": 43,
+      "train_task": "metamath",
+      "setting": "2+2",
+      "eval_task": "commonsense",
+      "score": 84.71769015096298
+    },
+    {
+      "base": "Qwen3-8B",
+      "seed": 43,
+      "train_task": "metamath",
+      "setting": "4+0",
+      "eval_task": "magicoder",
+      "score": 73.17073170731707
+    },
+    {
+      "base": "Qwen3-8B",
+      "seed": 43,
+      "train_task": "metamath",
+      "setting": "4+0",
+      "eval_task": "metamath",
+      "score": 87.18726307808946
+    },
+    {
+      "base": "Qwen3-8B",
+      "seed": 43,
+      "train_task": "metamath",
+      "setting": "4+0",
+      "eval_task": "tulu",
+      "score": 71.1645101663586
+    },
+    {
+      "base": "Qwen3-8B",
+      "seed": 43,
+      "train_task": "metamath",
+      "setting": "4+0",
+      "eval_task": "commonsense",
+      "score": 84.64252813781941
+    },
+    {
+      "base": "Qwen3-8B",
+      "seed": 43,
+      "train_task": "metamath",
+      "setting": "4+1",
+      "eval_task": "magicoder",
+      "score": 73.17073170731707
+    },
+    {
+      "base": "Qwen3-8B",
+      "seed": 43,
+      "train_task": "metamath",
+      "setting": "4+1",
+      "eval_task": "metamath",
+      "score": 86.8081880212282
+    },
+    {
+      "base": "Qwen3-8B",
+      "seed": 43,
+      "train_task": "metamath",
+      "setting": "4+1",
+      "eval_task": "tulu",
+      "score": 72.08872458410352
+    },
+    {
+      "base": "Qwen3-8B",
+      "seed": 43,
+      "train_task": "metamath",
+      "setting": "4+1",
+      "eval_task": "commonsense",
+      "score": 84.6918197379783
+    },
+    {
+      "base": "Qwen3-8B",
+      "seed": 43,
+      "train_task": "metamath",
+      "setting": "4+2",
+      "eval_task": "magicoder",
+      "score": 73.78048780487805
+    },
+    {
+      "base": "Qwen3-8B",
+      "seed": 43,
+      "train_task": "metamath",
+      "setting": "4+2",
+      "eval_task": "metamath",
+      "score": 87.18726307808946
+    },
+    {
+      "base": "Qwen3-8B",
+      "seed": 43,
+      "train_task": "metamath",
+      "setting": "4+2",
+      "eval_task": "tulu",
+      "score": 72.08872458410352
+    },
+    {
+      "base": "Qwen3-8B",
+      "seed": 43,
+      "train_task": "metamath",
+      "setting": "4+2",
+      "eval_task": "commonsense",
+      "score": 84.62722601302556
+    },
+    {
+      "base": "Qwen3-8B",
+      "seed": 43,
+      "train_task": "metamath",
+      "setting": "8+0",
+      "eval_task": "magicoder",
+      "score": 75
+    },
+    {
+      "base": "Qwen3-8B",
+      "seed": 43,
+      "train_task": "metamath",
+      "setting": "8+0",
+      "eval_task": "metamath",
+      "score": 87.11144806671722
+    },
+    {
+      "base": "Qwen3-8B",
+      "seed": 43,
+      "train_task": "metamath",
+      "setting": "8+0",
+      "eval_task": "tulu",
+      "score": 71.53419593345656
+    },
+    {
+      "base": "Qwen3-8B",
+      "seed": 43,
+      "train_task": "metamath",
+      "setting": "8+0",
+      "eval_task": "commonsense",
+      "score": 84.53668812041246
+    },
+    {
+      "base": "Qwen3-8B",
+      "seed": 43,
+      "train_task": "metamath",
+      "setting": "8+1",
+      "eval_task": "magicoder",
+      "score": 72.5609756097561
+    },
+    {
+      "base": "Qwen3-8B",
+      "seed": 43,
+      "train_task": "metamath",
+      "setting": "8+1",
+      "eval_task": "metamath",
+      "score": 87.18726307808946
+    },
+    {
+      "base": "Qwen3-8B",
+      "seed": 43,
+      "train_task": "metamath",
+      "setting": "8+1",
+      "eval_task": "tulu",
+      "score": 71.53419593345656
+    },
+    {
+      "base": "Qwen3-8B",
+      "seed": 43,
+      "train_task": "metamath",
+      "setting": "8+1",
+      "eval_task": "commonsense",
+      "score": 84.67055609621552
+    },
+    {
+      "base": "Qwen3-8B",
+      "seed": 43,
+      "train_task": "metamath",
+      "setting": "8+2",
+      "eval_task": "magicoder",
+      "score": 73.78048780487805
+    },
+    {
+      "base": "Qwen3-8B",
+      "seed": 43,
+      "train_task": "metamath",
+      "setting": "8+2",
+      "eval_task": "metamath",
+      "score": 87.11144806671722
+    },
+    {
+      "base": "Qwen3-8B",
+      "seed": 43,
+      "train_task": "metamath",
+      "setting": "8+2",
+      "eval_task": "tulu",
+      "score": 71.1645101663586
+    },
+    {
+      "base": "Qwen3-8B",
+      "seed": 43,
+      "train_task": "metamath",
+      "setting": "8+2",
+      "eval_task": "commonsense",
+      "score": 84.65738930580058
+    },
+    {
+      "base": "Qwen3-8B",
+      "seed": 43,
+      "train_task": "tulu",
+      "setting": "LoRA",
+      "eval_task": "magicoder",
+      "score": 81.70731707317073
+    },
+    {
+      "base": "Qwen3-8B",
+      "seed": 43,
+      "train_task": "tulu",
+      "setting": "LoRA",
+      "eval_task": "metamath",
+      "score": 89.15845337376801
+    },
+    {
+      "base": "Qwen3-8B",
+      "seed": 43,
+      "train_task": "tulu",
+      "setting": "LoRA",
+      "eval_task": "tulu",
+      "score": 66.17375231053605
+    },
+    {
+      "base": "Qwen3-8B",
+      "seed": 43,
+      "train_task": "tulu",
+      "setting": "LoRA",
+      "eval_task": "commonsense",
+      "score": 84.50849771986391
+    },
+    {
+      "base": "Qwen3-8B",
+      "seed": 43,
+      "train_task": "tulu",
+      "setting": "0+0",
+      "eval_task": "magicoder",
+      "score": 81.09756097560977
+    },
+    {
+      "base": "Qwen3-8B",
+      "seed": 43,
+      "train_task": "tulu",
+      "setting": "0+0",
+      "eval_task": "metamath",
+      "score": 89.15845337376801
+    },
+    {
+      "base": "Qwen3-8B",
+      "seed": 43,
+      "train_task": "tulu",
+      "setting": "0+0",
+      "eval_task": "tulu",
+      "score": 68.57670979667283
+    },
+    {
+      "base": "Qwen3-8B",
+      "seed": 43,
+      "train_task": "tulu",
+      "setting": "0+0",
+      "eval_task": "commonsense",
+      "score": 84.4824669301617
+    },
+    {
+      "base": "Qwen3-8B",
+      "seed": 43,
+      "train_task": "tulu",
+      "setting": "2+0",
+      "eval_task": "magicoder",
+      "score": 81.09756097560977
+    },
+    {
+      "base": "Qwen3-8B",
+      "seed": 43,
+      "train_task": "tulu",
+      "setting": "2+0",
+      "eval_task": "metamath",
+      "score": 89.15845337376801
+    },
+    {
+      "base": "Qwen3-8B",
+      "seed": 43,
+      "train_task": "tulu",
+      "setting": "2+0",
+      "eval_task": "tulu",
+      "score": 72.64325323475046
+    },
+    {
+      "base": "Qwen3-8B",
+      "seed": 43,
+      "train_task": "tulu",
+      "setting": "2+0",
+      "eval_task": "commonsense",
+      "score": 84.57830415970679
+    },
+    {
+      "base": "Qwen3-8B",
+      "seed": 43,
+      "train_task": "tulu",
+      "setting": "2+1",
+      "eval_task": "magicoder",
+      "score": 79.8780487804878
+    },
+    {
+      "base": "Qwen3-8B",
+      "seed": 43,
+      "train_task": "tulu",
+      "setting": "2+1",
+      "eval_task": "metamath",
+      "score": 88.77937831690674
+    },
+    {
+      "base": "Qwen3-8B",
+      "seed": 43,
+      "train_task": "tulu",
+      "setting": "2+1",
+      "eval_task": "tulu",
+      "score": 73.38262476894639
+    },
+    {
+      "base": "Qwen3-8B",
+      "seed": 43,
+      "train_task": "tulu",
+      "setting": "2+1",
+      "eval_task": "commonsense",
+      "score": 84.60070797475845
+    },
+    {
+      "base": "Qwen3-8B",
+      "seed": 43,
+      "train_task": "tulu",
+      "setting": "2+2",
+      "eval_task": "magicoder",
+      "score": 79.8780487804878
+    },
+    {
+      "base": "Qwen3-8B",
+      "seed": 43,
+      "train_task": "tulu",
+      "setting": "2+2",
+      "eval_task": "metamath",
+      "score": 89.46171341925702
+    },
+    {
+      "base": "Qwen3-8B",
+      "seed": 43,
+      "train_task": "tulu",
+      "setting": "2+2",
+      "eval_task": "tulu",
+      "score": 72.45841035120148
+    },
+    {
+      "base": "Qwen3-8B",
+      "seed": 43,
+      "train_task": "tulu",
+      "setting": "2+2",
+      "eval_task": "commonsense",
+      "score": 84.59987366401526
+    },
+    {
+      "base": "Qwen3-8B",
+      "seed": 43,
+      "train_task": "tulu",
+      "setting": "4+0",
+      "eval_task": "magicoder",
+      "score": 80.48780487804879
+    },
+    {
+      "base": "Qwen3-8B",
+      "seed": 43,
+      "train_task": "tulu",
+      "setting": "4+0",
+      "eval_task": "metamath",
+      "score": 89.38589840788475
+    },
+    {
+      "base": "Qwen3-8B",
+      "seed": 43,
+      "train_task": "tulu",
+      "setting": "4+0",
+      "eval_task": "tulu",
+      "score": 72.45841035120148
+    },
+    {
+      "base": "Qwen3-8B",
+      "seed": 43,
+      "train_task": "tulu",
+      "setting": "4+0",
+      "eval_task": "commonsense",
+      "score": 84.63066963130017
+    },
+    {
+      "base": "Qwen3-8B",
+      "seed": 43,
+      "train_task": "tulu",
+      "setting": "4+1",
+      "eval_task": "magicoder",
+      "score": 80.48780487804879
+    },
+    {
+      "base": "Qwen3-8B",
+      "seed": 43,
+      "train_task": "tulu",
+      "setting": "4+1",
+      "eval_task": "metamath",
+      "score": 89.76497346474602
+    },
+    {
+      "base": "Qwen3-8B",
+      "seed": 43,
+      "train_task": "tulu",
+      "setting": "4+1",
+      "eval_task": "tulu",
+      "score": 72.45841035120148
+    },
+    {
+      "base": "Qwen3-8B",
+      "seed": 43,
+      "train_task": "tulu",
+      "setting": "4+1",
+      "eval_task": "commonsense",
+      "score": 84.60833296815858
+    },
+    {
+      "base": "Qwen3-8B",
+      "seed": 43,
+      "train_task": "tulu",
+      "setting": "4+2",
+      "eval_task": "magicoder",
+      "score": 80.48780487804879
+    },
+    {
+      "base": "Qwen3-8B",
+      "seed": 43,
+      "train_task": "tulu",
+      "setting": "4+2",
+      "eval_task": "metamath",
+      "score": 89.0068233510235
+    },
+    {
+      "base": "Qwen3-8B",
+      "seed": 43,
+      "train_task": "tulu",
+      "setting": "4+2",
+      "eval_task": "tulu",
+      "score": 71.71903881700554
+    },
+    {
+      "base": "Qwen3-8B",
+      "seed": 43,
+      "train_task": "tulu",
+      "setting": "4+2",
+      "eval_task": "commonsense",
+      "score": 84.58964153802506
+    },
+    {
+      "base": "Qwen3-8B",
+      "seed": 43,
+      "train_task": "tulu",
+      "setting": "8+0",
+      "eval_task": "magicoder",
+      "score": 80.48780487804879
+    },
+    {
+      "base": "Qwen3-8B",
+      "seed": 43,
+      "train_task": "tulu",
+      "setting": "8+0",
+      "eval_task": "metamath",
+      "score": 88.855193328279
+    },
+    {
+      "base": "Qwen3-8B",
+      "seed": 43,
+      "train_task": "tulu",
+      "setting": "8+0",
+      "eval_task": "tulu",
+      "score": 71.34935304990758
+    },
+    {
+      "base": "Qwen3-8B",
+      "seed": 43,
+      "train_task": "tulu",
+      "setting": "8+0",
+      "eval_task": "commonsense",
+      "score": 84.5740763246618
+    },
+    {
+      "base": "Qwen3-8B",
+      "seed": 43,
+      "train_task": "tulu",
+      "setting": "8+1",
+      "eval_task": "magicoder",
+      "score": 81.09756097560977
+    },
+    {
+      "base": "Qwen3-8B",
+      "seed": 43,
+      "train_task": "tulu",
+      "setting": "8+1",
+      "eval_task": "metamath",
+      "score": 89.68915845337376
+    },
+    {
+      "base": "Qwen3-8B",
+      "seed": 43,
+      "train_task": "tulu",
+      "setting": "8+1",
+      "eval_task": "tulu",
+      "score": 73.19778188539742
+    },
+    {
+      "base": "Qwen3-8B",
+      "seed": 43,
+      "train_task": "tulu",
+      "setting": "8+1",
+      "eval_task": "commonsense",
+      "score": 84.70736923652609
+    },
+    {
+      "base": "Qwen3-8B",
+      "seed": 43,
+      "train_task": "tulu",
+      "setting": "8+2",
+      "eval_task": "magicoder",
+      "score": 79.8780487804878
+    },
+    {
+      "base": "Qwen3-8B",
+      "seed": 43,
+      "train_task": "tulu",
+      "setting": "8+2",
+      "eval_task": "metamath",
+      "score": 89.31008339651251
+    },
+    {
+      "base": "Qwen3-8B",
+      "seed": 43,
+      "train_task": "tulu",
+      "setting": "8+2",
+      "eval_task": "tulu",
+      "score": 71.90388170055454
+    },
+    {
+      "base": "Qwen3-8B",
+      "seed": 43,
+      "train_task": "tulu",
+      "setting": "8+2",
+      "eval_task": "commonsense",
+      "score": 84.62856189738618
+    },
+    {
+      "base": "Qwen3-8B",
+      "seed": 44,
+      "train_task": "base",
+      "setting": "Base",
+      "eval_task": "magicoder",
+      "score": 66.46341463414635
+    },
+    {
+      "base": "Qwen3-8B",
+      "seed": 44,
+      "train_task": "base",
+      "setting": "Base",
+      "eval_task": "metamath",
+      "score": 85.74677786201667
+    },
+    {
+      "base": "Qwen3-8B",
+      "seed": 44,
+      "train_task": "base",
+      "setting": "Base",
+      "eval_task": "tulu",
+      "score": 69.68576709796673
+    },
+    {
+      "base": "Qwen3-8B",
+      "seed": 44,
+      "train_task": "base",
+      "setting": "Base",
+      "eval_task": "commonsense",
+      "score": 82.67503434198252
+    },
+    {
+      "base": "Qwen3-8B",
+      "seed": 44,
+      "train_task": "magicoder",
+      "setting": "LoRA",
+      "eval_task": "magicoder",
+      "score": 64.63414634146342
+    },
+    {
+      "base": "Qwen3-8B",
+      "seed": 44,
+      "train_task": "magicoder",
+      "setting": "LoRA",
+      "eval_task": "metamath",
+      "score": 84.07884761182714
+    },
+    {
+      "base": "Qwen3-8B",
+      "seed": 44,
+      "train_task": "magicoder",
+      "setting": "LoRA",
+      "eval_task": "tulu",
+      "score": 68.02218114602587
+    },
+    {
+      "base": "Qwen3-8B",
+      "seed": 44,
+      "train_task": "magicoder",
+      "setting": "LoRA",
+      "eval_task": "commonsense",
+      "score": 83.55814378780792
+    },
+    {
+      "base": "Qwen3-8B",
+      "seed": 44,
+      "train_task": "magicoder",
+      "setting": "0+0",
+      "eval_task": "magicoder",
+      "score": 64.63414634146342
+    },
+    {
+      "base": "Qwen3-8B",
+      "seed": 44,
+      "train_task": "magicoder",
+      "setting": "0+0",
+      "eval_task": "metamath",
+      "score": 83.54814253222138
+    },
+    {
+      "base": "Qwen3-8B",
+      "seed": 44,
+      "train_task": "magicoder",
+      "setting": "0+0",
+      "eval_task": "tulu",
+      "score": 65.06469500924214
+    },
+    {
+      "base": "Qwen3-8B",
+      "seed": 44,
+      "train_task": "magicoder",
+      "setting": "0+0",
+      "eval_task": "commonsense",
+      "score": 83.55636872142038
+    },
+    {
+      "base": "Qwen3-8B",
+      "seed": 44,
+      "train_task": "magicoder",
+      "setting": "2+0",
+      "eval_task": "magicoder",
+      "score": 72.5609756097561
+    },
+    {
+      "base": "Qwen3-8B",
+      "seed": 44,
+      "train_task": "magicoder",
+      "setting": "2+0",
+      "eval_task": "metamath",
+      "score": 88.93100833965126
+    },
+    {
+      "base": "Qwen3-8B",
+      "seed": 44,
+      "train_task": "magicoder",
+      "setting": "2+0",
+      "eval_task": "tulu",
+      "score": 71.53419593345656
+    },
+    {
+      "base": "Qwen3-8B",
+      "seed": 44,
+      "train_task": "magicoder",
+      "setting": "2+0",
+      "eval_task": "commonsense",
+      "score": 83.53299954379607
+    },
+    {
+      "base": "Qwen3-8B",
+      "seed": 44,
+      "train_task": "magicoder",
+      "setting": "2+1",
+      "eval_task": "magicoder",
+      "score": 72.5609756097561
+    },
+    {
+      "base": "Qwen3-8B",
+      "seed": 44,
+      "train_task": "magicoder",
+      "setting": "2+1",
+      "eval_task": "metamath",
+      "score": 88.855193328279
+    },
+    {
+      "base": "Qwen3-8B",
+      "seed": 44,
+      "train_task": "magicoder",
+      "setting": "2+1",
+      "eval_task": "tulu",
+      "score": 70.60998151571165
+    },
+    {
+      "base": "Qwen3-8B",
+      "seed": 44,
+      "train_task": "magicoder",
+      "setting": "2+1",
+      "eval_task": "commonsense",
+      "score": 83.52733401156475
+    },
+    {
+      "base": "Qwen3-8B",
+      "seed": 44,
+      "train_task": "magicoder",
+      "setting": "2+2",
+      "eval_task": "magicoder",
+      "score": 73.17073170731707
+    },
+    {
+      "base": "Qwen3-8B",
+      "seed": 44,
+      "train_task": "magicoder",
+      "setting": "2+2",
+      "eval_task": "metamath",
+      "score": 88.855193328279
+    },
+    {
+      "base": "Qwen3-8B",
+      "seed": 44,
+      "train_task": "magicoder",
+      "setting": "2+2",
+      "eval_task": "tulu",
+      "score": 69.50092421441775
+    },
+    {
+      "base": "Qwen3-8B",
+      "seed": 44,
+      "train_task": "magicoder",
+      "setting": "2+2",
+      "eval_task": "commonsense",
+      "score": 83.55383402507395
+    },
+    {
+      "base": "Qwen3-8B",
+      "seed": 44,
+      "train_task": "magicoder",
+      "setting": "4+0",
+      "eval_task": "magicoder",
+      "score": 72.5609756097561
+    },
+    {
+      "base": "Qwen3-8B",
+      "seed": 44,
+      "train_task": "magicoder",
+      "setting": "4+0",
+      "eval_task": "metamath",
+      "score": 88.855193328279
+    },
+    {
+      "base": "Qwen3-8B",
+      "seed": 44,
+      "train_task": "magicoder",
+      "setting": "4+0",
+      "eval_task": "tulu",
+      "score": 70.0554528650647
+    },
+    {
+      "base": "Qwen3-8B",
+      "seed": 44,
+      "train_task": "magicoder",
+      "setting": "4+0",
+      "eval_task": "commonsense",
+      "score": 83.4978907147621
+    },
+    {
+      "base": "Qwen3-8B",
+      "seed": 44,
+      "train_task": "magicoder",
+      "setting": "4+1",
+      "eval_task": "magicoder",
+      "score": 74.39024390243902
+    },
+    {
+      "base": "Qwen3-8B",
+      "seed": 44,
+      "train_task": "magicoder",
+      "setting": "4+1",
+      "eval_task": "metamath",
+      "score": 89.31008339651251
+    },
+    {
+      "base": "Qwen3-8B",
+      "seed": 44,
+      "train_task": "magicoder",
+      "setting": "4+1",
+      "eval_task": "tulu",
+      "score": 70.97966728280961
+    },
+    {
+      "base": "Qwen3-8B",
+      "seed": 44,
+      "train_task": "magicoder",
+      "setting": "4+1",
+      "eval_task": "commonsense",
+      "score": 83.48186533343954
+    },
+    {
+      "base": "Qwen3-8B",
+      "seed": 44,
+      "train_task": "magicoder",
+      "setting": "4+2",
+      "eval_task": "magicoder",
+      "score": 73.78048780487805
+    },
+    {
+      "base": "Qwen3-8B",
+      "seed": 44,
+      "train_task": "magicoder",
+      "setting": "4+2",
+      "eval_task": "metamath",
+      "score": 88.855193328279
+    },
+    {
+      "base": "Qwen3-8B",
+      "seed": 44,
+      "train_task": "magicoder",
+      "setting": "4+2",
+      "eval_task": "tulu",
+      "score": 70.60998151571165
+    },
+    {
+      "base": "Qwen3-8B",
+      "seed": 44,
+      "train_task": "magicoder",
+      "setting": "4+2",
+      "eval_task": "commonsense",
+      "score": 83.45471060471034
+    },
+    {
+      "base": "Qwen3-8B",
+      "seed": 44,
+      "train_task": "magicoder",
+      "setting": "8+0",
+      "eval_task": "magicoder",
+      "score": 76.21951219512195
+    },
+    {
+      "base": "Qwen3-8B",
+      "seed": 44,
+      "train_task": "magicoder",
+      "setting": "8+0",
+      "eval_task": "metamath",
+      "score": 88.62774829416225
+    },
+    {
+      "base": "Qwen3-8B",
+      "seed": 44,
+      "train_task": "magicoder",
+      "setting": "8+0",
+      "eval_task": "tulu",
+      "score": 69.87060998151571
+    },
+    {
+      "base": "Qwen3-8B",
+      "seed": 44,
+      "train_task": "magicoder",
+      "setting": "8+0",
+      "eval_task": "commonsense",
+      "score": 83.46876446787215
+    },
+    {
+      "base": "Qwen3-8B",
+      "seed": 44,
+      "train_task": "magicoder",
+      "setting": "8+1",
+      "eval_task": "magicoder",
+      "score": 73.78048780487805
+    },
+    {
+      "base": "Qwen3-8B",
+      "seed": 44,
+      "train_task": "magicoder",
+      "setting": "8+1",
+      "eval_task": "metamath",
+      "score": 89.15845337376801
+    },
+    {
+      "base": "Qwen3-8B",
+      "seed": 44,
+      "train_task": "magicoder",
+      "setting": "8+1",
+      "eval_task": "tulu",
+      "score": 69.31608133086876
+    },
+    {
+      "base": "Qwen3-8B",
+      "seed": 44,
+      "train_task": "magicoder",
+      "setting": "8+1",
+      "eval_task": "commonsense",
+      "score": 83.50387527049381
+    },
+    {
+      "base": "Qwen3-8B",
+      "seed": 44,
+      "train_task": "magicoder",
+      "setting": "8+2",
+      "eval_task": "magicoder",
+      "score": 75
+    },
+    {
+      "base": "Qwen3-8B",
+      "seed": 44,
+      "train_task": "magicoder",
+      "setting": "8+2",
+      "eval_task": "metamath",
+      "score": 88.55193328279
+    },
+    {
+      "base": "Qwen3-8B",
+      "seed": 44,
+      "train_task": "magicoder",
+      "setting": "8+2",
+      "eval_task": "tulu",
+      "score": 71.1645101663586
+    },
+    {
+      "base": "Qwen3-8B",
+      "seed": 44,
+      "train_task": "magicoder",
+      "setting": "8+2",
+      "eval_task": "commonsense",
+      "score": 83.50435376492544
+    },
+    {
+      "base": "Qwen3-8B",
+      "seed": 44,
+      "train_task": "metamath",
+      "setting": "LoRA",
+      "eval_task": "magicoder",
+      "score": 40.853658536585364
+    },
+    {
+      "base": "Qwen3-8B",
+      "seed": 44,
+      "train_task": "metamath",
+      "setting": "LoRA",
+      "eval_task": "metamath",
+      "score": 84.00303260045489
+    },
+    {
+      "base": "Qwen3-8B",
+      "seed": 44,
+      "train_task": "metamath",
+      "setting": "LoRA",
+      "eval_task": "tulu",
+      "score": 66.72828096118299
+    },
+    {
+      "base": "Qwen3-8B",
+      "seed": 44,
+      "train_task": "metamath",
+      "setting": "LoRA",
+      "eval_task": "commonsense",
+      "score": 82.96161534896042
+    },
+    {
+      "base": "Qwen3-8B",
+      "seed": 44,
+      "train_task": "metamath",
+      "setting": "0+0",
+      "eval_task": "magicoder",
+      "score": 41.46341463414634
+    },
+    {
+      "base": "Qwen3-8B",
+      "seed": 44,
+      "train_task": "metamath",
+      "setting": "0+0",
+      "eval_task": "metamath",
+      "score": 84.07884761182714
+    },
+    {
+      "base": "Qwen3-8B",
+      "seed": 44,
+      "train_task": "metamath",
+      "setting": "0+0",
+      "eval_task": "tulu",
+      "score": 67.28280961182995
+    },
+    {
+      "base": "Qwen3-8B",
+      "seed": 44,
+      "train_task": "metamath",
+      "setting": "0+0",
+      "eval_task": "commonsense",
+      "score": 82.98065478630082
+    },
+    {
+      "base": "Qwen3-8B",
+      "seed": 44,
+      "train_task": "metamath",
+      "setting": "2+0",
+      "eval_task": "magicoder",
+      "score": 70.73170731707317
+    },
+    {
+      "base": "Qwen3-8B",
+      "seed": 44,
+      "train_task": "metamath",
+      "setting": "2+0",
+      "eval_task": "metamath",
+      "score": 87.49052312357847
+    },
+    {
+      "base": "Qwen3-8B",
+      "seed": 44,
+      "train_task": "metamath",
+      "setting": "2+0",
+      "eval_task": "tulu",
+      "score": 71.34935304990758
+    },
+    {
+      "base": "Qwen3-8B",
+      "seed": 44,
+      "train_task": "metamath",
+      "setting": "2+0",
+      "eval_task": "commonsense",
+      "score": 84.5213680644497
+    },
+    {
+      "base": "Qwen3-8B",
+      "seed": 44,
+      "train_task": "metamath",
+      "setting": "2+1",
+      "eval_task": "magicoder",
+      "score": 68.90243902439023
+    },
+    {
+      "base": "Qwen3-8B",
+      "seed": 44,
+      "train_task": "metamath",
+      "setting": "2+1",
+      "eval_task": "metamath",
+      "score": 88.02122820318424
+    },
+    {
+      "base": "Qwen3-8B",
+      "seed": 44,
+      "train_task": "metamath",
+      "setting": "2+1",
+      "eval_task": "tulu",
+      "score": 70.0554528650647
+    },
+    {
+      "base": "Qwen3-8B",
+      "seed": 44,
+      "train_task": "metamath",
+      "setting": "2+1",
+      "eval_task": "commonsense",
+      "score": 84.47884819647157
+    },
+    {
+      "base": "Qwen3-8B",
+      "seed": 44,
+      "train_task": "metamath",
+      "setting": "2+2",
+      "eval_task": "magicoder",
+      "score": 68.29268292682927
+    },
+    {
+      "base": "Qwen3-8B",
+      "seed": 44,
+      "train_task": "metamath",
+      "setting": "2+2",
+      "eval_task": "metamath",
+      "score": 87.56633813495071
+    },
+    {
+      "base": "Qwen3-8B",
+      "seed": 44,
+      "train_task": "metamath",
+      "setting": "2+2",
+      "eval_task": "tulu",
+      "score": 72.64325323475046
+    },
+    {
+      "base": "Qwen3-8B",
+      "seed": 44,
+      "train_task": "metamath",
+      "setting": "2+2",
+      "eval_task": "commonsense",
+      "score": 84.48728433855534
+    },
+    {
+      "base": "Qwen3-8B",
+      "seed": 44,
+      "train_task": "metamath",
+      "setting": "4+0",
+      "eval_task": "magicoder",
+      "score": 69.51219512195121
+    },
+    {
+      "base": "Qwen3-8B",
+      "seed": 44,
+      "train_task": "metamath",
+      "setting": "4+0",
+      "eval_task": "metamath",
+      "score": 87.49052312357847
+    },
+    {
+      "base": "Qwen3-8B",
+      "seed": 44,
+      "train_task": "metamath",
+      "setting": "4+0",
+      "eval_task": "tulu",
+      "score": 69.87060998151571
+    },
+    {
+      "base": "Qwen3-8B",
+      "seed": 44,
+      "train_task": "metamath",
+      "setting": "4+0",
+      "eval_task": "commonsense",
+      "score": 84.45478873451431
+    },
+    {
+      "base": "Qwen3-8B",
+      "seed": 44,
+      "train_task": "metamath",
+      "setting": "4+1",
+      "eval_task": "magicoder",
+      "score": 67.6829268292683
+    },
+    {
+      "base": "Qwen3-8B",
+      "seed": 44,
+      "train_task": "metamath",
+      "setting": "4+1",
+      "eval_task": "metamath",
+      "score": 87.41470811220621
+    },
+    {
+      "base": "Qwen3-8B",
+      "seed": 44,
+      "train_task": "metamath",
+      "setting": "4+1",
+      "eval_task": "tulu",
+      "score": 70.60998151571165
+    },
+    {
+      "base": "Qwen3-8B",
+      "seed": 44,
+      "train_task": "metamath",
+      "setting": "4+1",
+      "eval_task": "commonsense",
+      "score": 84.48500083338453
+    },
+    {
+      "base": "Qwen3-8B",
+      "seed": 44,
+      "train_task": "metamath",
+      "setting": "4+2",
+      "eval_task": "magicoder",
+      "score": 68.90243902439023
+    },
+    {
+      "base": "Qwen3-8B",
+      "seed": 44,
+      "train_task": "metamath",
+      "setting": "4+2",
+      "eval_task": "metamath",
+      "score": 87.26307808946171
+    },
+    {
+      "base": "Qwen3-8B",
+      "seed": 44,
+      "train_task": "metamath",
+      "setting": "4+2",
+      "eval_task": "tulu",
+      "score": 70.24029574861368
+    },
+    {
+      "base": "Qwen3-8B",
+      "seed": 44,
+      "train_task": "metamath",
+      "setting": "4+2",
+      "eval_task": "commonsense",
+      "score": 84.44220908648184
+    },
+    {
+      "base": "Qwen3-8B",
+      "seed": 44,
+      "train_task": "metamath",
+      "setting": "8+0",
+      "eval_task": "magicoder",
+      "score": 69.51219512195121
+    },
+    {
+      "base": "Qwen3-8B",
+      "seed": 44,
+      "train_task": "metamath",
+      "setting": "8+0",
+      "eval_task": "metamath",
+      "score": 87.71796815769522
+    },
+    {
+      "base": "Qwen3-8B",
+      "seed": 44,
+      "train_task": "metamath",
+      "setting": "8+0",
+      "eval_task": "tulu",
+      "score": 70.79482439926062
+    },
+    {
+      "base": "Qwen3-8B",
+      "seed": 44,
+      "train_task": "metamath",
+      "setting": "8+0",
+      "eval_task": "commonsense",
+      "score": 84.45578665034589
+    },
+    {
+      "base": "Qwen3-8B",
+      "seed": 44,
+      "train_task": "metamath",
+      "setting": "8+1",
+      "eval_task": "magicoder",
+      "score": 69.51219512195121
+    },
+    {
+      "base": "Qwen3-8B",
+      "seed": 44,
+      "train_task": "metamath",
+      "setting": "8+1",
+      "eval_task": "metamath",
+      "score": 87.86959818043972
+    },
+    {
+      "base": "Qwen3-8B",
+      "seed": 44,
+      "train_task": "metamath",
+      "setting": "8+1",
+      "eval_task": "tulu",
+      "score": 70.97966728280961
+    },
+    {
+      "base": "Qwen3-8B",
+      "seed": 44,
+      "train_task": "metamath",
+      "setting": "8+1",
+      "eval_task": "commonsense",
+      "score": 84.45896573467722
+    },
+    {
+      "base": "Qwen3-8B",
+      "seed": 44,
+      "train_task": "metamath",
+      "setting": "8+2",
+      "eval_task": "magicoder",
+      "score": 67.6829268292683
+    },
+    {
+      "base": "Qwen3-8B",
+      "seed": 44,
+      "train_task": "metamath",
+      "setting": "8+2",
+      "eval_task": "metamath",
+      "score": 87.56633813495071
+    },
+    {
+      "base": "Qwen3-8B",
+      "seed": 44,
+      "train_task": "metamath",
+      "setting": "8+2",
+      "eval_task": "tulu",
+      "score": 70.60998151571165
+    },
+    {
+      "base": "Qwen3-8B",
+      "seed": 44,
+      "train_task": "metamath",
+      "setting": "8+2",
+      "eval_task": "commonsense",
+      "score": 84.44697259622009
+    },
+    {
+      "base": "Qwen3-8B",
+      "seed": 44,
+      "train_task": "tulu",
+      "setting": "LoRA",
+      "eval_task": "magicoder",
+      "score": 84.14634146341463
+    },
+    {
+      "base": "Qwen3-8B",
+      "seed": 44,
+      "train_task": "tulu",
+      "setting": "LoRA",
+      "eval_task": "metamath",
+      "score": 88.70356330553449
+    },
+    {
+      "base": "Qwen3-8B",
+      "seed": 44,
+      "train_task": "tulu",
+      "setting": "LoRA",
+      "eval_task": "tulu",
+      "score": 66.91312384473198
+    },
+    {
+      "base": "Qwen3-8B",
+      "seed": 44,
+      "train_task": "tulu",
+      "setting": "LoRA",
+      "eval_task": "commonsense",
+      "score": 84.36361898487202
+    },
+    {
+      "base": "Qwen3-8B",
+      "seed": 44,
+      "train_task": "tulu",
+      "setting": "0+0",
+      "eval_task": "magicoder",
+      "score": 84.14634146341463
+    },
+    {
+      "base": "Qwen3-8B",
+      "seed": 44,
+      "train_task": "tulu",
+      "setting": "0+0",
+      "eval_task": "metamath",
+      "score": 89.0068233510235
+    },
+    {
+      "base": "Qwen3-8B",
+      "seed": 44,
+      "train_task": "tulu",
+      "setting": "0+0",
+      "eval_task": "tulu",
+      "score": 67.8373382624769
+    },
+    {
+      "base": "Qwen3-8B",
+      "seed": 44,
+      "train_task": "tulu",
+      "setting": "0+0",
+      "eval_task": "commonsense",
+      "score": 84.43780412995547
+    },
+    {
+      "base": "Qwen3-8B",
+      "seed": 44,
+      "train_task": "tulu",
+      "setting": "2+0",
+      "eval_task": "magicoder",
+      "score": 78.65853658536585
+    },
+    {
+      "base": "Qwen3-8B",
+      "seed": 44,
+      "train_task": "tulu",
+      "setting": "2+0",
+      "eval_task": "metamath",
+      "score": 88.70356330553449
+    },
+    {
+      "base": "Qwen3-8B",
+      "seed": 44,
+      "train_task": "tulu",
+      "setting": "2+0",
+      "eval_task": "tulu",
+      "score": 71.1645101663586
+    },
+    {
+      "base": "Qwen3-8B",
+      "seed": 44,
+      "train_task": "tulu",
+      "setting": "2+0",
+      "eval_task": "commonsense",
+      "score": 84.41396090529463
+    },
+    {
+      "base": "Qwen3-8B",
+      "seed": 44,
+      "train_task": "tulu",
+      "setting": "2+1",
+      "eval_task": "magicoder",
+      "score": 81.09756097560977
+    },
+    {
+      "base": "Qwen3-8B",
+      "seed": 44,
+      "train_task": "tulu",
+      "setting": "2+1",
+      "eval_task": "metamath",
+      "score": 89.31008339651251
+    },
+    {
+      "base": "Qwen3-8B",
+      "seed": 44,
+      "train_task": "tulu",
+      "setting": "2+1",
+      "eval_task": "tulu",
+      "score": 71.1645101663586
+    },
+    {
+      "base": "Qwen3-8B",
+      "seed": 44,
+      "train_task": "tulu",
+      "setting": "2+1",
+      "eval_task": "commonsense",
+      "score": 84.46307912762113
+    },
+    {
+      "base": "Qwen3-8B",
+      "seed": 44,
+      "train_task": "tulu",
+      "setting": "2+2",
+      "eval_task": "magicoder",
+      "score": 80.48780487804879
+    },
+    {
+      "base": "Qwen3-8B",
+      "seed": 44,
+      "train_task": "tulu",
+      "setting": "2+2",
+      "eval_task": "metamath",
+      "score": 89.15845337376801
+    },
+    {
+      "base": "Qwen3-8B",
+      "seed": 44,
+      "train_task": "tulu",
+      "setting": "2+2",
+      "eval_task": "tulu",
+      "score": 71.71903881700554
+    },
+    {
+      "base": "Qwen3-8B",
+      "seed": 44,
+      "train_task": "tulu",
+      "setting": "2+2",
+      "eval_task": "commonsense",
+      "score": 84.5481127558614
+    },
+    {
+      "base": "Qwen3-8B",
+      "seed": 44,
+      "train_task": "tulu",
+      "setting": "4+0",
+      "eval_task": "magicoder",
+      "score": 79.8780487804878
+    },
+    {
+      "base": "Qwen3-8B",
+      "seed": 44,
+      "train_task": "tulu",
+      "setting": "4+0",
+      "eval_task": "metamath",
+      "score": 88.855193328279
+    },
+    {
+      "base": "Qwen3-8B",
+      "seed": 44,
+      "train_task": "tulu",
+      "setting": "4+0",
+      "eval_task": "tulu",
+      "score": 72.45841035120148
+    },
+    {
+      "base": "Qwen3-8B",
+      "seed": 44,
+      "train_task": "tulu",
+      "setting": "4+0",
+      "eval_task": "commonsense",
+      "score": 84.5088495795577
+    },
+    {
+      "base": "Qwen3-8B",
+      "seed": 44,
+      "train_task": "tulu",
+      "setting": "4+1",
+      "eval_task": "magicoder",
+      "score": 80.48780487804879
+    },
+    {
+      "base": "Qwen3-8B",
+      "seed": 44,
+      "train_task": "tulu",
+      "setting": "4+1",
+      "eval_task": "metamath",
+      "score": 88.40030326004549
+    },
+    {
+      "base": "Qwen3-8B",
+      "seed": 44,
+      "train_task": "tulu",
+      "setting": "4+1",
+      "eval_task": "tulu",
+      "score": 70.97966728280961
+    },
+    {
+      "base": "Qwen3-8B",
+      "seed": 44,
+      "train_task": "tulu",
+      "setting": "4+1",
+      "eval_task": "commonsense",
+      "score": 84.53963147881997
+    },
+    {
+      "base": "Qwen3-8B",
+      "seed": 44,
+      "train_task": "tulu",
+      "setting": "4+2",
+      "eval_task": "magicoder",
+      "score": 80.48780487804879
+    },
+    {
+      "base": "Qwen3-8B",
+      "seed": 44,
+      "train_task": "tulu",
+      "setting": "4+2",
+      "eval_task": "metamath",
+      "score": 89.08263836239576
+    },
+    {
+      "base": "Qwen3-8B",
+      "seed": 44,
+      "train_task": "tulu",
+      "setting": "4+2",
+      "eval_task": "tulu",
+      "score": 71.53419593345656
+    },
+    {
+      "base": "Qwen3-8B",
+      "seed": 44,
+      "train_task": "tulu",
+      "setting": "4+2",
+      "eval_task": "commonsense",
+      "score": 84.51661706022963
+    },
+    {
+      "base": "Qwen3-8B",
+      "seed": 44,
+      "train_task": "tulu",
+      "setting": "8+0",
+      "eval_task": "magicoder",
+      "score": 79.26829268292683
+    },
+    {
+      "base": "Qwen3-8B",
+      "seed": 44,
+      "train_task": "tulu",
+      "setting": "8+0",
+      "eval_task": "metamath",
+      "score": 89.31008339651251
+    },
+    {
+      "base": "Qwen3-8B",
+      "seed": 44,
+      "train_task": "tulu",
+      "setting": "8+0",
+      "eval_task": "tulu",
+      "score": 70.42513863216267
+    },
+    {
+      "base": "Qwen3-8B",
+      "seed": 44,
+      "train_task": "tulu",
+      "setting": "8+0",
+      "eval_task": "commonsense",
+      "score": 84.51746712079249
+    },
+    {
+      "base": "Qwen3-8B",
+      "seed": 44,
+      "train_task": "tulu",
+      "setting": "8+1",
+      "eval_task": "magicoder",
+      "score": 80.48780487804879
+    },
+    {
+      "base": "Qwen3-8B",
+      "seed": 44,
+      "train_task": "tulu",
+      "setting": "8+1",
+      "eval_task": "metamath",
+      "score": 88.93100833965126
+    },
+    {
+      "base": "Qwen3-8B",
+      "seed": 44,
+      "train_task": "tulu",
+      "setting": "8+1",
+      "eval_task": "tulu",
+      "score": 72.08872458410352
+    },
+    {
+      "base": "Qwen3-8B",
+      "seed": 44,
+      "train_task": "tulu",
+      "setting": "8+1",
+      "eval_task": "commonsense",
+      "score": 84.61431941038569
+    },
+    {
+      "base": "Qwen3-8B",
+      "seed": 44,
+      "train_task": "tulu",
+      "setting": "8+2",
+      "eval_task": "magicoder",
+      "score": 78.65853658536585
+    },
+    {
+      "base": "Qwen3-8B",
+      "seed": 44,
+      "train_task": "tulu",
+      "setting": "8+2",
+      "eval_task": "metamath",
+      "score": 88.70356330553449
+    },
+    {
+      "base": "Qwen3-8B",
+      "seed": 44,
+      "train_task": "tulu",
+      "setting": "8+2",
+      "eval_task": "tulu",
+      "score": 70.97966728280961
+    },
+    {
+      "base": "Qwen3-8B",
+      "seed": 44,
+      "train_task": "tulu",
+      "setting": "8+2",
+      "eval_task": "commonsense",
+      "score": 84.59249928232066
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "seed": 43,
+      "train_task": "base",
+      "setting": "Base",
+      "eval_task": "magicoder",
+      "score": 52.4390243902439
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "seed": 43,
+      "train_task": "base",
+      "setting": "Base",
+      "eval_task": "metamath",
+      "score": 62.39575435936315
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "seed": 43,
+      "train_task": "base",
+      "setting": "Base",
+      "eval_task": "tulu",
+      "score": 62.10720887245841
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "seed": 43,
+      "train_task": "base",
+      "setting": "Base",
+      "eval_task": "commonsense",
+      "score": 71.3917020346049
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "seed": 43,
+      "train_task": "magicoder",
+      "setting": "LoRA",
+      "eval_task": "magicoder",
+      "score": 56.09756097560976
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "seed": 43,
+      "train_task": "magicoder",
+      "setting": "LoRA",
+      "eval_task": "metamath",
+      "score": 63.76042456406369
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "seed": 43,
+      "train_task": "magicoder",
+      "setting": "LoRA",
+      "eval_task": "tulu",
+      "score": 48.059149722735675
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "seed": 43,
+      "train_task": "magicoder",
+      "setting": "LoRA",
+      "eval_task": "commonsense",
+      "score": 71.00868972615606
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "seed": 43,
+      "train_task": "magicoder",
+      "setting": "0+0",
+      "eval_task": "magicoder",
+      "score": 54.87804878048781
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "seed": 43,
+      "train_task": "magicoder",
+      "setting": "0+0",
+      "eval_task": "metamath",
+      "score": 63.38134950720242
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "seed": 43,
+      "train_task": "magicoder",
+      "setting": "0+0",
+      "eval_task": "tulu",
+      "score": 48.428835489833645
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "seed": 43,
+      "train_task": "magicoder",
+      "setting": "0+0",
+      "eval_task": "commonsense",
+      "score": 71.06776695088956
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "seed": 43,
+      "train_task": "magicoder",
+      "setting": "2+0",
+      "eval_task": "magicoder",
+      "score": 55.487804878048784
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "seed": 43,
+      "train_task": "magicoder",
+      "setting": "2+0",
+      "eval_task": "metamath",
+      "score": 68.7642153146323
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "seed": 43,
+      "train_task": "magicoder",
+      "setting": "2+0",
+      "eval_task": "tulu",
+      "score": 59.33456561922365
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "seed": 43,
+      "train_task": "magicoder",
+      "setting": "2+0",
+      "eval_task": "commonsense",
+      "score": 72.28509014079847
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "seed": 43,
+      "train_task": "magicoder",
+      "setting": "2+1",
+      "eval_task": "magicoder",
+      "score": 55.487804878048784
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "seed": 43,
+      "train_task": "magicoder",
+      "setting": "2+1",
+      "eval_task": "metamath",
+      "score": 68.08188021228203
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "seed": 43,
+      "train_task": "magicoder",
+      "setting": "2+1",
+      "eval_task": "tulu",
+      "score": 58.225508317929766
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "seed": 43,
+      "train_task": "magicoder",
+      "setting": "2+1",
+      "eval_task": "commonsense",
+      "score": 72.0824251144595
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "seed": 43,
+      "train_task": "magicoder",
+      "setting": "2+2",
+      "eval_task": "magicoder",
+      "score": 54.87804878048781
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "seed": 43,
+      "train_task": "magicoder",
+      "setting": "2+2",
+      "eval_task": "metamath",
+      "score": 68.15769522365429
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "seed": 43,
+      "train_task": "magicoder",
+      "setting": "2+2",
+      "eval_task": "tulu",
+      "score": 58.225508317929766
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "seed": 43,
+      "train_task": "magicoder",
+      "setting": "2+2",
+      "eval_task": "commonsense",
+      "score": 72.14387922371202
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "seed": 43,
+      "train_task": "magicoder",
+      "setting": "4+0",
+      "eval_task": "magicoder",
+      "score": 55.487804878048784
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "seed": 43,
+      "train_task": "magicoder",
+      "setting": "4+0",
+      "eval_task": "metamath",
+      "score": 68.46095526914328
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "seed": 43,
+      "train_task": "magicoder",
+      "setting": "4+0",
+      "eval_task": "tulu",
+      "score": 57.85582255083179
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "seed": 43,
+      "train_task": "magicoder",
+      "setting": "4+0",
+      "eval_task": "commonsense",
+      "score": 72.18362002973946
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "seed": 43,
+      "train_task": "magicoder",
+      "setting": "4+1",
+      "eval_task": "magicoder",
+      "score": 55.487804878048784
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "seed": 43,
+      "train_task": "magicoder",
+      "setting": "4+1",
+      "eval_task": "metamath",
+      "score": 68.6125852918878
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "seed": 43,
+      "train_task": "magicoder",
+      "setting": "4+1",
+      "eval_task": "tulu",
+      "score": 57.301293900184845
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "seed": 43,
+      "train_task": "magicoder",
+      "setting": "4+1",
+      "eval_task": "commonsense",
+      "score": 72.17000293023685
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "seed": 43,
+      "train_task": "magicoder",
+      "setting": "4+2",
+      "eval_task": "magicoder",
+      "score": 54.87804878048781
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "seed": 43,
+      "train_task": "magicoder",
+      "setting": "4+2",
+      "eval_task": "metamath",
+      "score": 68.38514025777104
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "seed": 43,
+      "train_task": "magicoder",
+      "setting": "4+2",
+      "eval_task": "tulu",
+      "score": 58.225508317929766
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "seed": 43,
+      "train_task": "magicoder",
+      "setting": "4+2",
+      "eval_task": "commonsense",
+      "score": 72.1700129493238
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "seed": 43,
+      "train_task": "magicoder",
+      "setting": "8+0",
+      "eval_task": "magicoder",
+      "score": 54.87804878048781
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "seed": 43,
+      "train_task": "magicoder",
+      "setting": "8+0",
+      "eval_task": "metamath",
+      "score": 68.23351023502654
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "seed": 43,
+      "train_task": "magicoder",
+      "setting": "8+0",
+      "eval_task": "tulu",
+      "score": 57.85582255083179
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "seed": 43,
+      "train_task": "magicoder",
+      "setting": "8+0",
+      "eval_task": "commonsense",
+      "score": 72.23700212508243
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "seed": 43,
+      "train_task": "magicoder",
+      "setting": "8+1",
+      "eval_task": "magicoder",
+      "score": 56.09756097560976
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "seed": 43,
+      "train_task": "magicoder",
+      "setting": "8+1",
+      "eval_task": "metamath",
+      "score": 69.59818043972706
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "seed": 43,
+      "train_task": "magicoder",
+      "setting": "8+1",
+      "eval_task": "tulu",
+      "score": 59.51940850277264
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "seed": 43,
+      "train_task": "magicoder",
+      "setting": "8+1",
+      "eval_task": "commonsense",
+      "score": 72.20435146673616
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "seed": 43,
+      "train_task": "magicoder",
+      "setting": "8+2",
+      "eval_task": "magicoder",
+      "score": 54.268292682926834
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "seed": 43,
+      "train_task": "magicoder",
+      "setting": "8+2",
+      "eval_task": "metamath",
+      "score": 67.47536012130402
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "seed": 43,
+      "train_task": "magicoder",
+      "setting": "8+2",
+      "eval_task": "tulu",
+      "score": 58.9648798521257
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "seed": 43,
+      "train_task": "magicoder",
+      "setting": "8+2",
+      "eval_task": "commonsense",
+      "score": 72.06194797948035
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "seed": 43,
+      "train_task": "metamath",
+      "setting": "LoRA",
+      "eval_task": "magicoder",
+      "score": 53.65853658536586
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "seed": 43,
+      "train_task": "metamath",
+      "setting": "LoRA",
+      "eval_task": "metamath",
+      "score": 75.05686125852918
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "seed": 43,
+      "train_task": "metamath",
+      "setting": "LoRA",
+      "eval_task": "tulu",
+      "score": 57.301293900184845
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "seed": 43,
+      "train_task": "metamath",
+      "setting": "LoRA",
+      "eval_task": "commonsense",
+      "score": 63.77376191024572
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "seed": 43,
+      "train_task": "metamath",
+      "setting": "0+0",
+      "eval_task": "magicoder",
+      "score": 53.04878048780488
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "seed": 43,
+      "train_task": "metamath",
+      "setting": "0+0",
+      "eval_task": "metamath",
+      "score": 74.82941622441244
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "seed": 43,
+      "train_task": "metamath",
+      "setting": "0+0",
+      "eval_task": "tulu",
+      "score": 56.74676524953789
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "seed": 43,
+      "train_task": "metamath",
+      "setting": "0+0",
+      "eval_task": "commonsense",
+      "score": 63.6846327374956
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "seed": 43,
+      "train_task": "metamath",
+      "setting": "2+0",
+      "eval_task": "magicoder",
+      "score": 51.829268292682926
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "seed": 43,
+      "train_task": "metamath",
+      "setting": "2+0",
+      "eval_task": "metamath",
+      "score": 79.15087187263077
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "seed": 43,
+      "train_task": "metamath",
+      "setting": "2+0",
+      "eval_task": "tulu",
+      "score": 61.552680221811464
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "seed": 43,
+      "train_task": "metamath",
+      "setting": "2+0",
+      "eval_task": "commonsense",
+      "score": 72.42711273391176
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "seed": 43,
+      "train_task": "metamath",
+      "setting": "2+1",
+      "eval_task": "magicoder",
+      "score": 53.04878048780488
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "seed": 43,
+      "train_task": "metamath",
+      "setting": "2+1",
+      "eval_task": "metamath",
+      "score": 78.46853677028052
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "seed": 43,
+      "train_task": "metamath",
+      "setting": "2+1",
+      "eval_task": "tulu",
+      "score": 61.737523105360445
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "seed": 43,
+      "train_task": "metamath",
+      "setting": "2+1",
+      "eval_task": "commonsense",
+      "score": 71.98377543051967
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "seed": 43,
+      "train_task": "metamath",
+      "setting": "2+2",
+      "eval_task": "magicoder",
+      "score": 53.65853658536586
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "seed": 43,
+      "train_task": "metamath",
+      "setting": "2+2",
+      "eval_task": "metamath",
+      "score": 77.93783169067476
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "seed": 43,
+      "train_task": "metamath",
+      "setting": "2+2",
+      "eval_task": "tulu",
+      "score": 59.70425138632163
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "seed": 43,
+      "train_task": "metamath",
+      "setting": "2+2",
+      "eval_task": "commonsense",
+      "score": 71.82691120232947
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "seed": 43,
+      "train_task": "metamath",
+      "setting": "4+0",
+      "eval_task": "magicoder",
+      "score": 53.65853658536586
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "seed": 43,
+      "train_task": "metamath",
+      "setting": "4+0",
+      "eval_task": "metamath",
+      "score": 79.15087187263077
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "seed": 43,
+      "train_task": "metamath",
+      "setting": "4+0",
+      "eval_task": "tulu",
+      "score": 58.9648798521257
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "seed": 43,
+      "train_task": "metamath",
+      "setting": "4+0",
+      "eval_task": "commonsense",
+      "score": 72.173488079575
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "seed": 43,
+      "train_task": "metamath",
+      "setting": "4+1",
+      "eval_task": "magicoder",
+      "score": 53.65853658536586
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "seed": 43,
+      "train_task": "metamath",
+      "setting": "4+1",
+      "eval_task": "metamath",
+      "score": 78.39272175890827
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "seed": 43,
+      "train_task": "metamath",
+      "setting": "4+1",
+      "eval_task": "tulu",
+      "score": 61.367837338262476
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "seed": 43,
+      "train_task": "metamath",
+      "setting": "4+1",
+      "eval_task": "commonsense",
+      "score": 71.85118758170628
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "seed": 43,
+      "train_task": "metamath",
+      "setting": "4+2",
+      "eval_task": "magicoder",
+      "score": 53.04878048780488
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "seed": 43,
+      "train_task": "metamath",
+      "setting": "4+2",
+      "eval_task": "metamath",
+      "score": 78.62016679302502
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "seed": 43,
+      "train_task": "metamath",
+      "setting": "4+2",
+      "eval_task": "tulu",
+      "score": 60.62846580406654
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "seed": 43,
+      "train_task": "metamath",
+      "setting": "4+2",
+      "eval_task": "commonsense",
+      "score": 71.81211405186446
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "seed": 43,
+      "train_task": "metamath",
+      "setting": "8+0",
+      "eval_task": "magicoder",
+      "score": 53.04878048780488
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "seed": 43,
+      "train_task": "metamath",
+      "setting": "8+0",
+      "eval_task": "metamath",
+      "score": 79.30250189537529
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "seed": 43,
+      "train_task": "metamath",
+      "setting": "8+0",
+      "eval_task": "tulu",
+      "score": 58.41035120147874
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "seed": 43,
+      "train_task": "metamath",
+      "setting": "8+0",
+      "eval_task": "commonsense",
+      "score": 72.1834832587421
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "seed": 43,
+      "train_task": "metamath",
+      "setting": "8+1",
+      "eval_task": "magicoder",
+      "score": 51.829268292682926
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "seed": 43,
+      "train_task": "metamath",
+      "setting": "8+1",
+      "eval_task": "metamath",
+      "score": 78.31690674753601
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "seed": 43,
+      "train_task": "metamath",
+      "setting": "8+1",
+      "eval_task": "tulu",
+      "score": 59.33456561922365
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "seed": 43,
+      "train_task": "metamath",
+      "setting": "8+1",
+      "eval_task": "commonsense",
+      "score": 71.90483608375933
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "seed": 43,
+      "train_task": "metamath",
+      "setting": "8+2",
+      "eval_task": "magicoder",
+      "score": 53.65853658536586
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "seed": 43,
+      "train_task": "metamath",
+      "setting": "8+2",
+      "eval_task": "metamath",
+      "score": 78.31690674753601
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "seed": 43,
+      "train_task": "metamath",
+      "setting": "8+2",
+      "eval_task": "tulu",
+      "score": 60.258780036968574
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "seed": 43,
+      "train_task": "metamath",
+      "setting": "8+2",
+      "eval_task": "commonsense",
+      "score": 71.88107891934605
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "seed": 43,
+      "train_task": "tulu",
+      "setting": "LoRA",
+      "eval_task": "magicoder",
+      "score": 64.02439024390245
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "seed": 43,
+      "train_task": "tulu",
+      "setting": "LoRA",
+      "eval_task": "metamath",
+      "score": 64.89764973464746
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "seed": 43,
+      "train_task": "tulu",
+      "setting": "LoRA",
+      "eval_task": "tulu",
+      "score": 62.84658040665434
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "seed": 43,
+      "train_task": "tulu",
+      "setting": "LoRA",
+      "eval_task": "commonsense",
+      "score": 73.77639264331081
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "seed": 43,
+      "train_task": "tulu",
+      "setting": "0+0",
+      "eval_task": "magicoder",
+      "score": 64.02439024390245
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "seed": 43,
+      "train_task": "tulu",
+      "setting": "0+0",
+      "eval_task": "metamath",
+      "score": 65.65579984836998
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "seed": 43,
+      "train_task": "tulu",
+      "setting": "0+0",
+      "eval_task": "tulu",
+      "score": 63.95563770794824
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "seed": 43,
+      "train_task": "tulu",
+      "setting": "0+0",
+      "eval_task": "commonsense",
+      "score": 73.82024280284406
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "seed": 43,
+      "train_task": "tulu",
+      "setting": "2+0",
+      "eval_task": "magicoder",
+      "score": 60.97560975609756
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "seed": 43,
+      "train_task": "tulu",
+      "setting": "2+0",
+      "eval_task": "metamath",
+      "score": 67.93025018953753
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "seed": 43,
+      "train_task": "tulu",
+      "setting": "2+0",
+      "eval_task": "tulu",
+      "score": 65.24953789279112
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "seed": 43,
+      "train_task": "tulu",
+      "setting": "2+0",
+      "eval_task": "commonsense",
+      "score": 72.17230360484484
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "seed": 43,
+      "train_task": "tulu",
+      "setting": "2+1",
+      "eval_task": "magicoder",
+      "score": 63.41463414634146
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "seed": 43,
+      "train_task": "tulu",
+      "setting": "2+1",
+      "eval_task": "metamath",
+      "score": 67.93025018953753
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "seed": 43,
+      "train_task": "tulu",
+      "setting": "2+1",
+      "eval_task": "tulu",
+      "score": 64.69500924214418
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "seed": 43,
+      "train_task": "tulu",
+      "setting": "2+1",
+      "eval_task": "commonsense",
+      "score": 72.43775917779938
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "seed": 43,
+      "train_task": "tulu",
+      "setting": "2+2",
+      "eval_task": "magicoder",
+      "score": 64.02439024390245
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "seed": 43,
+      "train_task": "tulu",
+      "setting": "2+2",
+      "eval_task": "metamath",
+      "score": 67.85443517816528
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "seed": 43,
+      "train_task": "tulu",
+      "setting": "2+2",
+      "eval_task": "tulu",
+      "score": 63.03142329020333
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "seed": 43,
+      "train_task": "tulu",
+      "setting": "2+2",
+      "eval_task": "commonsense",
+      "score": 72.43849130141666
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "seed": 43,
+      "train_task": "tulu",
+      "setting": "4+0",
+      "eval_task": "magicoder",
+      "score": 61.58536585365854
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "seed": 43,
+      "train_task": "tulu",
+      "setting": "4+0",
+      "eval_task": "metamath",
+      "score": 68.00606520090979
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "seed": 43,
+      "train_task": "tulu",
+      "setting": "4+0",
+      "eval_task": "tulu",
+      "score": 63.03142329020333
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "seed": 43,
+      "train_task": "tulu",
+      "setting": "4+0",
+      "eval_task": "commonsense",
+      "score": 72.15219921616185
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "seed": 43,
+      "train_task": "tulu",
+      "setting": "4+1",
+      "eval_task": "magicoder",
+      "score": 63.41463414634146
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "seed": 43,
+      "train_task": "tulu",
+      "setting": "4+1",
+      "eval_task": "metamath",
+      "score": 67.24791508718727
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "seed": 43,
+      "train_task": "tulu",
+      "setting": "4+1",
+      "eval_task": "tulu",
+      "score": 65.24953789279112
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "seed": 43,
+      "train_task": "tulu",
+      "setting": "4+1",
+      "eval_task": "commonsense",
+      "score": 72.39501806149278
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "seed": 43,
+      "train_task": "tulu",
+      "setting": "4+2",
+      "eval_task": "magicoder",
+      "score": 62.80487804878049
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "seed": 43,
+      "train_task": "tulu",
+      "setting": "4+2",
+      "eval_task": "metamath",
+      "score": 66.94465504169825
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "seed": 43,
+      "train_task": "tulu",
+      "setting": "4+2",
+      "eval_task": "tulu",
+      "score": 62.10720887245841
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "seed": 43,
+      "train_task": "tulu",
+      "setting": "4+2",
+      "eval_task": "commonsense",
+      "score": 72.35129411230464
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "seed": 43,
+      "train_task": "tulu",
+      "setting": "8+0",
+      "eval_task": "magicoder",
+      "score": 62.19512195121951
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "seed": 43,
+      "train_task": "tulu",
+      "setting": "8+0",
+      "eval_task": "metamath",
+      "score": 68.08188021228203
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "seed": 43,
+      "train_task": "tulu",
+      "setting": "8+0",
+      "eval_task": "tulu",
+      "score": 63.77079482439926
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "seed": 43,
+      "train_task": "tulu",
+      "setting": "8+0",
+      "eval_task": "commonsense",
+      "score": 72.14294167291163
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "seed": 43,
+      "train_task": "tulu",
+      "setting": "8+1",
+      "eval_task": "magicoder",
+      "score": 63.41463414634146
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "seed": 43,
+      "train_task": "tulu",
+      "setting": "8+1",
+      "eval_task": "metamath",
+      "score": 68.00606520090979
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "seed": 43,
+      "train_task": "tulu",
+      "setting": "8+1",
+      "eval_task": "tulu",
+      "score": 63.58595194085028
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "seed": 43,
+      "train_task": "tulu",
+      "setting": "8+1",
+      "eval_task": "commonsense",
+      "score": 72.41344481767975
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "seed": 43,
+      "train_task": "tulu",
+      "setting": "8+2",
+      "eval_task": "magicoder",
+      "score": 62.80487804878049
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "seed": 43,
+      "train_task": "tulu",
+      "setting": "8+2",
+      "eval_task": "metamath",
+      "score": 67.32373009855952
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "seed": 43,
+      "train_task": "tulu",
+      "setting": "8+2",
+      "eval_task": "tulu",
+      "score": 63.58595194085028
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "seed": 43,
+      "train_task": "tulu",
+      "setting": "8+2",
+      "eval_task": "commonsense",
+      "score": 72.38928990325542
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "seed": 44,
+      "train_task": "base",
+      "setting": "Base",
+      "eval_task": "magicoder",
+      "score": 52.4390243902439
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "seed": 44,
+      "train_task": "base",
+      "setting": "Base",
+      "eval_task": "metamath",
+      "score": 62.39575435936315
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "seed": 44,
+      "train_task": "base",
+      "setting": "Base",
+      "eval_task": "tulu",
+      "score": 62.10720887245841
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "seed": 44,
+      "train_task": "base",
+      "setting": "Base",
+      "eval_task": "commonsense",
+      "score": 71.3917020346049
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "seed": 44,
+      "train_task": "magicoder",
+      "setting": "LoRA",
+      "eval_task": "magicoder",
+      "score": 53.65853658536586
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "seed": 44,
+      "train_task": "magicoder",
+      "setting": "LoRA",
+      "eval_task": "metamath",
+      "score": 65.50416982562547
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "seed": 44,
+      "train_task": "magicoder",
+      "setting": "LoRA",
+      "eval_task": "tulu",
+      "score": 50.27726432532348
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "seed": 44,
+      "train_task": "magicoder",
+      "setting": "LoRA",
+      "eval_task": "commonsense",
+      "score": 71.2165234496967
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "seed": 44,
+      "train_task": "magicoder",
+      "setting": "0+0",
+      "eval_task": "magicoder",
+      "score": 54.87804878048781
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "seed": 44,
+      "train_task": "magicoder",
+      "setting": "0+0",
+      "eval_task": "metamath",
+      "score": 66.18650492797575
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "seed": 44,
+      "train_task": "magicoder",
+      "setting": "0+0",
+      "eval_task": "tulu",
+      "score": 48.24399260628466
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "seed": 44,
+      "train_task": "magicoder",
+      "setting": "0+0",
+      "eval_task": "commonsense",
+      "score": 71.24045245634143
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "seed": 44,
+      "train_task": "magicoder",
+      "setting": "2+0",
+      "eval_task": "magicoder",
+      "score": 54.87804878048781
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "seed": 44,
+      "train_task": "magicoder",
+      "setting": "2+0",
+      "eval_task": "metamath",
+      "score": 68.84003032600455
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "seed": 44,
+      "train_task": "magicoder",
+      "setting": "2+0",
+      "eval_task": "tulu",
+      "score": 57.85582255083179
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "seed": 44,
+      "train_task": "magicoder",
+      "setting": "2+0",
+      "eval_task": "commonsense",
+      "score": 72.17822619837202
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "seed": 44,
+      "train_task": "magicoder",
+      "setting": "2+1",
+      "eval_task": "magicoder",
+      "score": 53.65853658536586
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "seed": 44,
+      "train_task": "magicoder",
+      "setting": "2+1",
+      "eval_task": "metamath",
+      "score": 70.35633055344958
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "seed": 44,
+      "train_task": "magicoder",
+      "setting": "2+1",
+      "eval_task": "tulu",
+      "score": 57.67097966728281
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "seed": 44,
+      "train_task": "magicoder",
+      "setting": "2+1",
+      "eval_task": "commonsense",
+      "score": 71.98872332390013
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "seed": 44,
+      "train_task": "magicoder",
+      "setting": "2+2",
+      "eval_task": "magicoder",
+      "score": 55.487804878048784
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "seed": 44,
+      "train_task": "magicoder",
+      "setting": "2+2",
+      "eval_task": "metamath",
+      "score": 69.97725549658831
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "seed": 44,
+      "train_task": "magicoder",
+      "setting": "2+2",
+      "eval_task": "tulu",
+      "score": 57.85582255083179
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "seed": 44,
+      "train_task": "magicoder",
+      "setting": "2+2",
+      "eval_task": "commonsense",
+      "score": 72.01167432956528
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "seed": 44,
+      "train_task": "magicoder",
+      "setting": "4+0",
+      "eval_task": "magicoder",
+      "score": 54.268292682926834
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "seed": 44,
+      "train_task": "magicoder",
+      "setting": "4+0",
+      "eval_task": "metamath",
+      "score": 68.99166034874905
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "seed": 44,
+      "train_task": "magicoder",
+      "setting": "4+0",
+      "eval_task": "tulu",
+      "score": 58.04066543438078
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "seed": 44,
+      "train_task": "magicoder",
+      "setting": "4+0",
+      "eval_task": "commonsense",
+      "score": 72.1016078800071
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "seed": 44,
+      "train_task": "magicoder",
+      "setting": "4+1",
+      "eval_task": "magicoder",
+      "score": 53.65853658536586
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "seed": 44,
+      "train_task": "magicoder",
+      "setting": "4+1",
+      "eval_task": "metamath",
+      "score": 69.74981046247157
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "seed": 44,
+      "train_task": "magicoder",
+      "setting": "4+1",
+      "eval_task": "tulu",
+      "score": 58.04066543438078
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "seed": 44,
+      "train_task": "magicoder",
+      "setting": "4+1",
+      "eval_task": "commonsense",
+      "score": 71.9614516023422
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "seed": 44,
+      "train_task": "magicoder",
+      "setting": "4+2",
+      "eval_task": "magicoder",
+      "score": 54.87804878048781
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "seed": 44,
+      "train_task": "magicoder",
+      "setting": "4+2",
+      "eval_task": "metamath",
+      "score": 69.67399545109932
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "seed": 44,
+      "train_task": "magicoder",
+      "setting": "4+2",
+      "eval_task": "tulu",
+      "score": 58.225508317929766
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "seed": 44,
+      "train_task": "magicoder",
+      "setting": "4+2",
+      "eval_task": "commonsense",
+      "score": 72.02490149275025
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "seed": 44,
+      "train_task": "magicoder",
+      "setting": "8+0",
+      "eval_task": "magicoder",
+      "score": 56.70731707317073
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "seed": 44,
+      "train_task": "magicoder",
+      "setting": "8+0",
+      "eval_task": "metamath",
+      "score": 69.44655041698256
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "seed": 44,
+      "train_task": "magicoder",
+      "setting": "8+0",
+      "eval_task": "tulu",
+      "score": 58.41035120147874
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "seed": 44,
+      "train_task": "magicoder",
+      "setting": "8+0",
+      "eval_task": "commonsense",
+      "score": 72.10968304775452
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "seed": 44,
+      "train_task": "magicoder",
+      "setting": "8+1",
+      "eval_task": "magicoder",
+      "score": 53.65853658536586
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "seed": 44,
+      "train_task": "magicoder",
+      "setting": "8+1",
+      "eval_task": "metamath",
+      "score": 69.82562547384383
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "seed": 44,
+      "train_task": "magicoder",
+      "setting": "8+1",
+      "eval_task": "tulu",
+      "score": 57.48613678373382
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "seed": 44,
+      "train_task": "magicoder",
+      "setting": "8+1",
+      "eval_task": "commonsense",
+      "score": 71.95004603934359
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "seed": 44,
+      "train_task": "magicoder",
+      "setting": "8+2",
+      "eval_task": "magicoder",
+      "score": 55.487804878048784
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "seed": 44,
+      "train_task": "magicoder",
+      "setting": "8+2",
+      "eval_task": "metamath",
+      "score": 70.43214556482184
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "seed": 44,
+      "train_task": "magicoder",
+      "setting": "8+2",
+      "eval_task": "tulu",
+      "score": 56.931608133086876
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "seed": 44,
+      "train_task": "magicoder",
+      "setting": "8+2",
+      "eval_task": "commonsense",
+      "score": 71.95809724741974
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "seed": 44,
+      "train_task": "metamath",
+      "setting": "LoRA",
+      "eval_task": "magicoder",
+      "score": 55.487804878048784
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "seed": 44,
+      "train_task": "metamath",
+      "setting": "LoRA",
+      "eval_task": "metamath",
+      "score": 74.45034116755117
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "seed": 44,
+      "train_task": "metamath",
+      "setting": "LoRA",
+      "eval_task": "tulu",
+      "score": 59.33456561922365
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "seed": 44,
+      "train_task": "metamath",
+      "setting": "LoRA",
+      "eval_task": "commonsense",
+      "score": 64.11415579316244
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "seed": 44,
+      "train_task": "metamath",
+      "setting": "0+0",
+      "eval_task": "magicoder",
+      "score": 56.09756097560976
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "seed": 44,
+      "train_task": "metamath",
+      "setting": "0+0",
+      "eval_task": "metamath",
+      "score": 75.13267626990144
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "seed": 44,
+      "train_task": "metamath",
+      "setting": "0+0",
+      "eval_task": "tulu",
+      "score": 58.225508317929766
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "seed": 44,
+      "train_task": "metamath",
+      "setting": "0+0",
+      "eval_task": "commonsense",
+      "score": 64.37494466244887
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "seed": 44,
+      "train_task": "metamath",
+      "setting": "2+0",
+      "eval_task": "magicoder",
+      "score": 54.268292682926834
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "seed": 44,
+      "train_task": "metamath",
+      "setting": "2+0",
+      "eval_task": "metamath",
+      "score": 79.15087187263077
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "seed": 44,
+      "train_task": "metamath",
+      "setting": "2+0",
+      "eval_task": "tulu",
+      "score": 60.0739371534196
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "seed": 44,
+      "train_task": "metamath",
+      "setting": "2+0",
+      "eval_task": "commonsense",
+      "score": 72.28396529012473
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "seed": 44,
+      "train_task": "metamath",
+      "setting": "2+1",
+      "eval_task": "magicoder",
+      "score": 54.87804878048781
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "seed": 44,
+      "train_task": "metamath",
+      "setting": "2+1",
+      "eval_task": "metamath",
+      "score": 78.54435178165276
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "seed": 44,
+      "train_task": "metamath",
+      "setting": "2+1",
+      "eval_task": "tulu",
+      "score": 61.737523105360445
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "seed": 44,
+      "train_task": "metamath",
+      "setting": "2+1",
+      "eval_task": "commonsense",
+      "score": 72.04592384346343
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "seed": 44,
+      "train_task": "metamath",
+      "setting": "2+2",
+      "eval_task": "magicoder",
+      "score": 54.268292682926834
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "seed": 44,
+      "train_task": "metamath",
+      "setting": "2+2",
+      "eval_task": "metamath",
+      "score": 77.63457164518574
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "seed": 44,
+      "train_task": "metamath",
+      "setting": "2+2",
+      "eval_task": "tulu",
+      "score": 60.81330868761553
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "seed": 44,
+      "train_task": "metamath",
+      "setting": "2+2",
+      "eval_task": "commonsense",
+      "score": 71.75295193574327
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "seed": 44,
+      "train_task": "metamath",
+      "setting": "4+0",
+      "eval_task": "magicoder",
+      "score": 54.268292682926834
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "seed": 44,
+      "train_task": "metamath",
+      "setting": "4+0",
+      "eval_task": "metamath",
+      "score": 79.07505686125853
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "seed": 44,
+      "train_task": "metamath",
+      "setting": "4+0",
+      "eval_task": "tulu",
+      "score": 62.292051756007396
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "seed": 44,
+      "train_task": "metamath",
+      "setting": "4+0",
+      "eval_task": "commonsense",
+      "score": 72.46072862406248
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "seed": 44,
+      "train_task": "metamath",
+      "setting": "4+1",
+      "eval_task": "magicoder",
+      "score": 53.65853658536586
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "seed": 44,
+      "train_task": "metamath",
+      "setting": "4+1",
+      "eval_task": "metamath",
+      "score": 78.99924184988627
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "seed": 44,
+      "train_task": "metamath",
+      "setting": "4+1",
+      "eval_task": "tulu",
+      "score": 61.92236598890942
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "seed": 44,
+      "train_task": "metamath",
+      "setting": "4+1",
+      "eval_task": "commonsense",
+      "score": 71.91343661293956
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "seed": 44,
+      "train_task": "metamath",
+      "setting": "4+2",
+      "eval_task": "magicoder",
+      "score": 53.04878048780488
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "seed": 44,
+      "train_task": "metamath",
+      "setting": "4+2",
+      "eval_task": "metamath",
+      "score": 78.013646702047
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "seed": 44,
+      "train_task": "metamath",
+      "setting": "4+2",
+      "eval_task": "tulu",
+      "score": 60.62846580406654
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "seed": 44,
+      "train_task": "metamath",
+      "setting": "4+2",
+      "eval_task": "commonsense",
+      "score": 71.88771618459032
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "seed": 44,
+      "train_task": "metamath",
+      "setting": "8+0",
+      "eval_task": "magicoder",
+      "score": 53.04878048780488
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "seed": 44,
+      "train_task": "metamath",
+      "setting": "8+0",
+      "eval_task": "metamath",
+      "score": 79.22668688400303
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "seed": 44,
+      "train_task": "metamath",
+      "setting": "8+0",
+      "eval_task": "tulu",
+      "score": 61.552680221811464
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "seed": 44,
+      "train_task": "metamath",
+      "setting": "8+0",
+      "eval_task": "commonsense",
+      "score": 72.31063072461683
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "seed": 44,
+      "train_task": "metamath",
+      "setting": "8+1",
+      "eval_task": "magicoder",
+      "score": 54.268292682926834
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "seed": 44,
+      "train_task": "metamath",
+      "setting": "8+1",
+      "eval_task": "metamath",
+      "score": 78.99924184988627
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "seed": 44,
+      "train_task": "metamath",
+      "setting": "8+1",
+      "eval_task": "tulu",
+      "score": 60.81330868761553
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "seed": 44,
+      "train_task": "metamath",
+      "setting": "8+1",
+      "eval_task": "commonsense",
+      "score": 71.91719500515096
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "seed": 44,
+      "train_task": "metamath",
+      "setting": "8+2",
+      "eval_task": "magicoder",
+      "score": 54.87804878048781
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "seed": 44,
+      "train_task": "metamath",
+      "setting": "8+2",
+      "eval_task": "metamath",
+      "score": 78.77179681576952
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "seed": 44,
+      "train_task": "metamath",
+      "setting": "8+2",
+      "eval_task": "tulu",
+      "score": 62.10720887245841
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "seed": 44,
+      "train_task": "metamath",
+      "setting": "8+2",
+      "eval_task": "commonsense",
+      "score": 71.84874174285382
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "seed": 44,
+      "train_task": "tulu",
+      "setting": "LoRA",
+      "eval_task": "magicoder",
+      "score": 64.02439024390245
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "seed": 44,
+      "train_task": "tulu",
+      "setting": "LoRA",
+      "eval_task": "metamath",
+      "score": 59.36315390447309
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "seed": 44,
+      "train_task": "tulu",
+      "setting": "LoRA",
+      "eval_task": "tulu",
+      "score": 62.10720887245841
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "seed": 44,
+      "train_task": "tulu",
+      "setting": "LoRA",
+      "eval_task": "commonsense",
+      "score": 73.70140145924779
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "seed": 44,
+      "train_task": "tulu",
+      "setting": "0+0",
+      "eval_task": "magicoder",
+      "score": 62.19512195121951
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "seed": 44,
+      "train_task": "tulu",
+      "setting": "0+0",
+      "eval_task": "metamath",
+      "score": 59.59059893858984
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "seed": 44,
+      "train_task": "tulu",
+      "setting": "0+0",
+      "eval_task": "tulu",
+      "score": 64.14048059149722
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "seed": 44,
+      "train_task": "tulu",
+      "setting": "0+0",
+      "eval_task": "commonsense",
+      "score": 73.73013897300476
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "seed": 44,
+      "train_task": "tulu",
+      "setting": "2+0",
+      "eval_task": "magicoder",
+      "score": 64.02439024390245
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "seed": 44,
+      "train_task": "tulu",
+      "setting": "2+0",
+      "eval_task": "metamath",
+      "score": 62.4715693707354
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "seed": 44,
+      "train_task": "tulu",
+      "setting": "2+0",
+      "eval_task": "tulu",
+      "score": 63.95563770794824
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "seed": 44,
+      "train_task": "tulu",
+      "setting": "2+0",
+      "eval_task": "commonsense",
+      "score": 71.52025934521906
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "seed": 44,
+      "train_task": "tulu",
+      "setting": "2+1",
+      "eval_task": "magicoder",
+      "score": 62.19512195121951
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "seed": 44,
+      "train_task": "tulu",
+      "setting": "2+1",
+      "eval_task": "metamath",
+      "score": 63.68460955269143
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "seed": 44,
+      "train_task": "tulu",
+      "setting": "2+1",
+      "eval_task": "tulu",
+      "score": 63.03142329020333
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "seed": 44,
+      "train_task": "tulu",
+      "setting": "2+1",
+      "eval_task": "commonsense",
+      "score": 71.57481002828129
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "seed": 44,
+      "train_task": "tulu",
+      "setting": "2+2",
+      "eval_task": "magicoder",
+      "score": 62.80487804878049
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "seed": 44,
+      "train_task": "tulu",
+      "setting": "2+2",
+      "eval_task": "metamath",
+      "score": 63.98786959818044
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "seed": 44,
+      "train_task": "tulu",
+      "setting": "2+2",
+      "eval_task": "tulu",
+      "score": 63.58595194085028
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "seed": 44,
+      "train_task": "tulu",
+      "setting": "2+2",
+      "eval_task": "commonsense",
+      "score": 71.69252258831219
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "seed": 44,
+      "train_task": "tulu",
+      "setting": "4+0",
+      "eval_task": "magicoder",
+      "score": 62.19512195121951
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "seed": 44,
+      "train_task": "tulu",
+      "setting": "4+0",
+      "eval_task": "metamath",
+      "score": 62.77482941622441
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "seed": 44,
+      "train_task": "tulu",
+      "setting": "4+0",
+      "eval_task": "tulu",
+      "score": 64.14048059149722
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "seed": 44,
+      "train_task": "tulu",
+      "setting": "4+0",
+      "eval_task": "commonsense",
+      "score": 71.71156514691128
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "seed": 44,
+      "train_task": "tulu",
+      "setting": "4+1",
+      "eval_task": "magicoder",
+      "score": 62.80487804878049
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "seed": 44,
+      "train_task": "tulu",
+      "setting": "4+1",
+      "eval_task": "metamath",
+      "score": 64.0636846095527
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "seed": 44,
+      "train_task": "tulu",
+      "setting": "4+1",
+      "eval_task": "tulu",
+      "score": 64.87985212569316
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "seed": 44,
+      "train_task": "tulu",
+      "setting": "4+1",
+      "eval_task": "commonsense",
+      "score": 71.7563346699031
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "seed": 44,
+      "train_task": "tulu",
+      "setting": "4+2",
+      "eval_task": "magicoder",
+      "score": 61.58536585365854
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "seed": 44,
+      "train_task": "tulu",
+      "setting": "4+2",
+      "eval_task": "metamath",
+      "score": 63.68460955269143
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "seed": 44,
+      "train_task": "tulu",
+      "setting": "4+2",
+      "eval_task": "tulu",
+      "score": 63.95563770794824
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "seed": 44,
+      "train_task": "tulu",
+      "setting": "4+2",
+      "eval_task": "commonsense",
+      "score": 71.66830049210417
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "seed": 44,
+      "train_task": "tulu",
+      "setting": "8+0",
+      "eval_task": "magicoder",
+      "score": 61.58536585365854
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "seed": 44,
+      "train_task": "tulu",
+      "setting": "8+0",
+      "eval_task": "metamath",
+      "score": 62.85064442759667
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "seed": 44,
+      "train_task": "tulu",
+      "setting": "8+0",
+      "eval_task": "tulu",
+      "score": 63.95563770794824
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "seed": 44,
+      "train_task": "tulu",
+      "setting": "8+0",
+      "eval_task": "commonsense",
+      "score": 71.75659434432954
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "seed": 44,
+      "train_task": "tulu",
+      "setting": "8+1",
+      "eval_task": "magicoder",
+      "score": 62.80487804878049
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "seed": 44,
+      "train_task": "tulu",
+      "setting": "8+1",
+      "eval_task": "metamath",
+      "score": 63.30553449583017
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "seed": 44,
+      "train_task": "tulu",
+      "setting": "8+1",
+      "eval_task": "tulu",
+      "score": 64.87985212569316
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "seed": 44,
+      "train_task": "tulu",
+      "setting": "8+1",
+      "eval_task": "commonsense",
+      "score": 71.64875795433626
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "seed": 44,
+      "train_task": "tulu",
+      "setting": "8+2",
+      "eval_task": "magicoder",
+      "score": 62.80487804878049
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "seed": 44,
+      "train_task": "tulu",
+      "setting": "8+2",
+      "eval_task": "metamath",
+      "score": 63.153904473085674
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "seed": 44,
+      "train_task": "tulu",
+      "setting": "8+2",
+      "eval_task": "tulu",
+      "score": 65.24953789279112
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "seed": 44,
+      "train_task": "tulu",
+      "setting": "8+2",
+      "eval_task": "commonsense",
+      "score": 71.59780090059562
+    }
+  ],
+  "diagonal_audit": [
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "seed": 43,
+      "task": "magicoder",
+      "variant": "magicoder__hns_f0_s0",
+      "old": 55.487804878048784,
+      "new": 54.87804878048781
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "seed": 43,
+      "task": "magicoder",
+      "variant": "magicoder__hns_f2_s0",
+      "old": 57.92682926829268,
+      "new": 55.487804878048784
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "seed": 43,
+      "task": "magicoder",
+      "variant": "magicoder__hns_f2_s1",
+      "old": 57.92682926829268,
+      "new": 55.487804878048784
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "seed": 43,
+      "task": "magicoder",
+      "variant": "magicoder__hns_f2_s2",
+      "old": 56.70731707317073,
+      "new": 54.87804878048781
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "seed": 43,
+      "task": "magicoder",
+      "variant": "magicoder__original_lora",
+      "old": 55.487804878048784,
+      "new": 56.09756097560976
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "seed": 43,
+      "task": "metamath",
+      "variant": "metamath__hns_f0_s0",
+      "old": 75.2084912812737,
+      "new": 74.82941622441244
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "seed": 43,
+      "task": "metamath",
+      "variant": "metamath__original_lora",
+      "old": 75.3601213040182,
+      "new": 75.05686125852918
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "seed": 44,
+      "task": "metamath",
+      "variant": "metamath__hns_f0_s0",
+      "old": 75.2084912812737,
+      "new": 75.13267626990144
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "seed": 44,
+      "task": "metamath",
+      "variant": "metamath__hns_f2_s1",
+      "old": 78.84761182714178,
+      "new": 78.54435178165276
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "seed": 44,
+      "task": "metamath",
+      "variant": "metamath__hns_f4_s0",
+      "old": 79.15087187263077,
+      "new": 79.07505686125853
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "seed": 44,
+      "task": "metamath",
+      "variant": "metamath__hns_f4_s1",
+      "old": 79.15087187263077,
+      "new": 78.99924184988627
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "seed": 44,
+      "task": "metamath",
+      "variant": "metamath__hns_f4_s2",
+      "old": 77.93783169067476,
+      "new": 78.013646702047
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "seed": 44,
+      "task": "metamath",
+      "variant": "metamath__hns_f8_s0",
+      "old": 79.30250189537529,
+      "new": 79.22668688400303
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "seed": 44,
+      "task": "metamath",
+      "variant": "metamath__hns_f8_s1",
+      "old": 78.84761182714178,
+      "new": 78.99924184988627
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "seed": 44,
+      "task": "metamath",
+      "variant": "metamath__hns_f8_s2",
+      "old": 78.84761182714178,
+      "new": 78.77179681576952
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "seed": 44,
+      "task": "metamath",
+      "variant": "metamath__original_lora",
+      "old": 74.60197119029569,
+      "new": 74.45034116755117
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "seed": 44,
+      "task": "tulu",
+      "variant": "base",
+      "old": 61.92236598890942,
+      "new": 62.10720887245841
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "seed": 44,
+      "task": "tulu",
+      "variant": "tulu__hns_f0_s0",
+      "old": 65.06469500924214,
+      "new": 64.14048059149722
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "seed": 44,
+      "task": "tulu",
+      "variant": "tulu__hns_f2_s1",
+      "old": 63.58595194085028,
+      "new": 63.03142329020333
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "seed": 44,
+      "task": "tulu",
+      "variant": "tulu__hns_f2_s2",
+      "old": 63.95563770794824,
+      "new": 63.58595194085028
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "seed": 44,
+      "task": "tulu",
+      "variant": "tulu__hns_f8_s0",
+      "old": 64.69500924214418,
+      "new": 63.95563770794824
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "seed": 44,
+      "task": "tulu",
+      "variant": "tulu__hns_f8_s1",
+      "old": 64.51016635859519,
+      "new": 64.87985212569316
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "seed": 44,
+      "task": "tulu",
+      "variant": "tulu__original_lora",
+      "old": 63.03142329020333,
+      "new": 62.10720887245841
+    }
+  ]
+}

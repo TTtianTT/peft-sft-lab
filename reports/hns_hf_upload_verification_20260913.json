@@ -1,0 +1,8 @@
+{
+  "status": "complete",
+  "repositories": 12,
+  "payload_files_verified": 720,
+  "collection_memberships_verified": true,
+  "verified_at_utc": "2026-09-13T08:29:59.801654+00:00",
+  "method": "Every LFS SHA256 and every non-LFS Git blob SHA1 matched the prepared manifest at the uploaded commit."
+}
