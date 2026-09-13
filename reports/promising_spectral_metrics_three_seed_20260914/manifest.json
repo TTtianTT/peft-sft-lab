@@ -1,0 +1,77 @@
+{
+  "status": "complete",
+  "report": "/dataset1/zailong/workspace/peft-sft-lab/reports/promising_spectral_metrics_three_seed_20260914.md",
+  "completed_utc": "2026-09-13T18:15:46.750510+00:00",
+  "source_checkpoints": 18,
+  "unique_adapters": 282,
+  "evaluation_rows": 450,
+  "core_parameter_features": 24,
+  "incomplete_diagnostics": 7,
+  "functional_source_checkpoints": 6,
+  "functional_seed": 42,
+  "gpu_count": 0,
+  "input_hashes": [
+    {
+      "path": "/dataset1/zailong/workspace/peft-sft-lab/reports/spectral_performance_forgetting_three_seed_20260914/manifest.json",
+      "sha256": "5455eaab512fbebc0681b95c0b7f13413407f059a1133c1902151f6d5a0032fb"
+    },
+    {
+      "path": "/dataset1/zailong/workspace/peft-sft-lab/reports/spectral_performance_forgetting_three_seed_20260914/features.json",
+      "sha256": "84956528012cc81bb61a61b7d8a59fac1c8d022ef87f71098461353cc0c75f4c"
+    },
+    {
+      "path": "/dataset1/zailong/workspace/peft-sft-lab/reports/spectral_performance_forgetting_three_seed_20260914/spectrum_audit.json",
+      "sha256": "6c22821acd099dea7d59e5a347c952984695598f2b2d9e0f8a6e422832342c13"
+    },
+    {
+      "path": "/dataset1/zailong/workspace/peft-sft-lab/reports/promising_spectral_metrics_three_seed_20260914/analysis_plan.json",
+      "sha256": "a13a8805a459475ff01ee11fe4f30a1ecff84bd3a25e7687233928973a295b37"
+    },
+    {
+      "path": "/dataset1/zailong/workspace/peft-sft-lab/scripts/analyze_spectral_performance_forgetting_three_seed.py",
+      "sha256": "adc566a65e22441dcba94f53a88b3bfac4cad0716eec5879075923eaf5803804"
+    },
+    {
+      "path": "/dataset1/zailong/workspace/peft-sft-lab/reports/promising_spectral_metrics_three_seed_20260914/base_weight_provenance.json",
+      "sha256": "d3f0594cc5c0c78da16311f432f98c0f493dba3693c8384e3f184dfe45f82d16"
+    }
+  ],
+  "script_sha256": "4a3924d9a8bd79cfbba9691d11b97bf904a862b3a1d7b6e35bdd0516afe802cf",
+  "report_sha256": "1597608ff4a46300b51c84cd17da0fccd3fc38fa85299708d96c9d103efd2668",
+  "result_audit": "pass",
+  "output_hashes": {
+    "progress.json": "7761ea94328518f0421025abbe2a56d287819f821bb0bf7ad409eef3730ec874",
+    "base_features.tsv": "12a4469820ad943daa2617757997a8df361fa06a40b547a052a20155563f6581",
+    "source_correlations.json": "2d8aac707e866d46d73e278c54dc8205fea4cd0be2d0ca21d33a235bbc7db943",
+    "cv_rankings.json": "ffb6366cd2be7e5538219f672f8912f79a5b282fbb90bd88baa168926d7ee86e",
+    "cv_predictions.tsv": "8208f78b1173cc674f05cec8365f05c9f39e5423747b3a2e090c9c272ca93e91",
+    "functional_correlations.json": "157d75601224f4bf7d88fc71d2bd991e7053bd3e9d7719e9048b6db7c1f604d2",
+    "base_stability_audit.json": "dcb3c13ce95b6b5b045ea985f60ce6c87311258339ad61f6ca0345281ec8b74d",
+    "source_cv_predictions.tsv": "261e1735cb6620d3e2d80c338542e354ad3834ad5b9d1a51ea6d5a35387b9a61",
+    "cv_folds.json": "fd9d40033ab8b39f99a002ef2c1e6d17aee5981039e2c6d3709bf64ae020a4cf",
+    "cv_summary.tsv": "976a4c849bf64a2d6fb9942307bdf2645b9f2d3313d3a53807f3e8f7c95e3d3c",
+    "three_seed_mean_sd.tsv": "d3e41a38d96678fa9c80fb69449727bb1a4579d587a80ffe8964863f72ef63cc",
+    "base_weight_provenance.json": "d3f0594cc5c0c78da16311f432f98c0f493dba3693c8384e3f184dfe45f82d16",
+    "features.tsv": "9b5ad141795441f51af902a3ec77c41fef15efa89516b83e58efc024ebc7fd6b",
+    "module_metrics.tsv": "8cbf513b3f09bec6df05077d3f5407ec366e6ca295fe089ad89a10c81b33a958",
+    "edited_only_correlations.json": "7284f4e47f780c2cdcda0622a5ba407adcab4a264ee2cb5479290eda0e556f34",
+    "edited_only_correlations.tsv": "8f16e371fd4a42d80fe326d15e0d51a2adb3bfe45ed47aaa51839243e3b89401",
+    "source_correlations.tsv": "6ce78728c767913e751449d7e019654a0ebdacc764e83bc00e1bad66c51d51e2",
+    "cv_summary.json": "be46fbd6135ff71f4f7a17d5fe31ed3714c5940b61374a150c650e048c8d44c5",
+    "functional_edited_only_correlations.json": "e5e44673d7363d34b8523a8dfd184576b62e2eb98e768b72309cc97c69a571e9",
+    "analysis_plan.json": "a13a8805a459475ff01ee11fe4f30a1ecff84bd3a25e7687233928973a295b37",
+    "functional_features.json": "8a3f3279d1d4e6f49984aa687d4279033b738055698bebc04d9334fde91ab4f0",
+    "functional_audit.json": "69cbee735232b018da95420330f167a3d3b7a9439f2cdf489dcf4af1e8ceb0b9",
+    "base_subspace_audit.json": "68d4bf698a747c087613168356e129275111e1c88de7d4ab835082d3c1d5dde8",
+    "correlations.tsv": "9dad7ee746d7f6ac5f25e2082cd3985e75a8dbf2c0e5bf122e89065402b76606",
+    "source_cv_folds.json": "848814acd4c370b64b7e57b49d82f805fced2266d6208959da85064a60e08294",
+    "functional_edited_only_correlations.tsv": "97ae61ea884136345047393eabbf69c7d234e89b24cd4ce5abaf48a5d8d6e47a",
+    "features.json": "ede289d23fad14db1c98bd8a72ed05e00f2070c97f460c4750d12ae6a71bc4c0",
+    "base_features.json": "87bd46b4faa5adb5045f634286f451f68c35856edb88fe1899d4ad8936011e11",
+    "correlations.json": "1d80306bd1c585b5f9ce2866fe98e1be4bd97e21ea91ea01990d80bbed7f89f4",
+    "functional_features.tsv": "8a974d8fbc7067788147983d99faa0b343cfffa47567cd6e5b10a22562bb9b52",
+    "source_cv_summary.json": "4d7a98a4b7ccae6da9310900d715a01196a597f12168036436593acd4cd1bee5",
+    "functional_correlations.tsv": "29be5b98ebf46e35dce949f660fb5d807bc028d3ef967e499e4a3c1e457900ba",
+    "result_audit.json": "bff2430bfe4dd4c6630ed3e8fe3e9c0c1c27626eb0f7bbcb2dc3109ccb48eb5e"
+  }
+}

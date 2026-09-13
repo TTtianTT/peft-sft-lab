@@ -1,0 +1,2088 @@
+[
+  {
+    "cohort": "joint_flat_hns",
+    "model": "single",
+    "split": "seed",
+    "held_out": 42,
+    "train_clusters": 12,
+    "test_clusters": 6,
+    "features": [
+      "entropy_rank"
+    ],
+    "degree": 2,
+    "ridge": 1.0,
+    "inner_cv_loss": 1.813473698335123,
+    "test_normalized_mse": 0.5153735318354562,
+    "train_feature_rms": [
+      0.24239194326773963,
+      0.07001521540959806
+    ],
+    "train_outcome_sd": [
+      3.3814846705343182,
+      2.5055697925641507
+    ],
+    "normalized_coefficients": [
+      [
+        0.26184906424738,
+        0.999932495844915
+      ],
+      [
+        1.119394260436404,
+        -0.0031603348370665544
+      ]
+    ],
+    "zero_normalized_mse": 1.5232993743594638,
+    "train_mean_normalized_mse": 0.6296413880157506
+  },
+  {
+    "cohort": "joint_flat_hns",
+    "model": "single",
+    "split": "seed",
+    "held_out": 43,
+    "train_clusters": 12,
+    "test_clusters": 6,
+    "features": [
+      "entropy_rank"
+    ],
+    "degree": 2,
+    "ridge": 0.01,
+    "inner_cv_loss": 2.185187956941264,
+    "test_normalized_mse": 0.660461270790301,
+    "train_feature_rms": [
+      0.2542906572430672,
+      0.07925260936842606
+    ],
+    "train_outcome_sd": [
+      3.038215412592436,
+      2.414978888349557
+    ],
+    "normalized_coefficients": [
+      [
+        -0.0012126926937561428,
+        2.198558090350591
+      ],
+      [
+        1.4747660757293573,
+        -1.2702772798470208
+      ]
+    ],
+    "zero_normalized_mse": 2.353408232502753,
+    "train_mean_normalized_mse": 1.0725465843169355
+  },
+  {
+    "cohort": "joint_flat_hns",
+    "model": "single",
+    "split": "seed",
+    "held_out": 44,
+    "train_clusters": 12,
+    "test_clusters": 6,
+    "features": [
+      "entropy_rank"
+    ],
+    "degree": 2,
+    "ridge": 0.01,
+    "inner_cv_loss": 1.044805045433345,
+    "test_normalized_mse": 2.594641868425469,
+    "train_feature_rms": [
+      0.2529734456200668,
+      0.0787130410134994
+    ],
+    "train_outcome_sd": [
+      3.6702850324650784,
+      1.3997036875122717
+    ],
+    "normalized_coefficients": [
+      [
+        -0.14532856231344043,
+        3.237679699630189
+      ],
+      [
+        1.432427734094333,
+        -1.925775845544028
+      ]
+    ],
+    "zero_normalized_mse": 5.364133718069125,
+    "train_mean_normalized_mse": 2.9400617581807293
+  },
+  {
+    "cohort": "joint_flat_hns",
+    "model": "single",
+    "split": "base",
+    "held_out": "Qwen3-8B",
+    "train_clusters": 9,
+    "test_clusters": 9,
+    "features": [
+      "entropy_rank"
+    ],
+    "degree": 2,
+    "ridge": 0.01,
+    "inner_cv_loss": 0.9461833769612011,
+    "test_normalized_mse": 31.21644286239023,
+    "train_feature_rms": [
+      0.17147096720025987,
+      0.03362362496929521
+    ],
+    "train_outcome_sd": [
+      1.5202809320326376,
+      1.2669165907463553
+    ],
+    "normalized_coefficients": [
+      [
+        4.380615054862125,
+        1.3518556364900918
+      ],
+      [
+        -3.381459951557629,
+        0.679942040225589
+      ]
+    ],
+    "zero_normalized_mse": 14.318338143238423,
+    "train_mean_normalized_mse": 8.787215714750845
+  },
+  {
+    "cohort": "joint_flat_hns",
+    "model": "single",
+    "split": "base",
+    "held_out": "Llama-3.1-8B-Instruct",
+    "train_clusters": 9,
+    "test_clusters": 9,
+    "features": [
+      "shape_residual"
+    ],
+    "degree": 1,
+    "ridge": 0.01,
+    "inner_cv_loss": 3.1988777928690513,
+    "test_normalized_mse": 0.6532411342722918,
+    "train_feature_rms": [
+      0.5630225802063558
+    ],
+    "train_outcome_sd": [
+      3.4108297764836224,
+      2.798038593742336
+    ],
+    "normalized_coefficients": [
+      [
+        1.849889344281733,
+        0.8346907220830002
+      ]
+    ],
+    "zero_normalized_mse": 0.7041157935600354,
+    "train_mean_normalized_mse": 0.9631266699486156
+  },
+  {
+    "cohort": "joint_flat_hns",
+    "model": "single",
+    "split": "train_task",
+    "held_out": "magicoder",
+    "train_clusters": 12,
+    "test_clusters": 6,
+    "features": [
+      "energy_entropy_rank"
+    ],
+    "degree": 1,
+    "ridge": 0.01,
+    "inner_cv_loss": 1.8901508944103347,
+    "test_normalized_mse": 6.829863384424867,
+    "train_feature_rms": [
+      0.5631556291115272
+    ],
+    "train_outcome_sd": [
+      1.3499234620895684,
+      2.572075288458458
+    ],
+    "normalized_coefficients": [
+      [
+        2.402171017539737,
+        0.9134217650787587
+      ]
+    ],
+    "zero_normalized_mse": 16.100451805138693,
+    "train_mean_normalized_mse": 8.925511557836876
+  },
+  {
+    "cohort": "joint_flat_hns",
+    "model": "single",
+    "split": "train_task",
+    "held_out": "metamath",
+    "train_clusters": 12,
+    "test_clusters": 6,
+    "features": [
+      "entropy_rank"
+    ],
+    "degree": 2,
+    "ridge": 1.0,
+    "inner_cv_loss": 0.8827881368498828,
+    "test_normalized_mse": 4.064846937487862,
+    "train_feature_rms": [
+      0.250109938843568,
+      0.07816436422607513
+    ],
+    "train_outcome_sd": [
+      4.096134594890228,
+      1.2962421489126457
+    ],
+    "normalized_coefficients": [
+      [
+        0.002059646003945602,
+        1.3889603160661166
+      ],
+      [
+        1.2713697139386617,
+        -0.34670535241921224
+      ]
+    ],
+    "zero_normalized_mse": 7.040983175226662,
+    "train_mean_normalized_mse": 3.897943963070559
+  },
+  {
+    "cohort": "joint_flat_hns",
+    "model": "single",
+    "split": "train_task",
+    "held_out": "tulu",
+    "train_clusters": 12,
+    "test_clusters": 6,
+    "features": [
+      "entropy_rank"
+    ],
+    "degree": 2,
+    "ridge": 0.01,
+    "inner_cv_loss": 2.7303429967042683,
+    "test_normalized_mse": 1.254997728083288,
+    "train_feature_rms": [
+      0.2786782189790463,
+      0.08898460243854477
+    ],
+    "train_outcome_sd": [
+      3.8241843085211578,
+      2.061122392696961
+    ],
+    "normalized_coefficients": [
+      [
+        -0.7089040554137717,
+        4.517592980500054
+      ],
+      [
+        2.089015148803685,
+        -3.1471555364280044
+      ]
+    ],
+    "zero_normalized_mse": 0.4288709902778285,
+    "train_mean_normalized_mse": 1.1829379258803698
+  },
+  {
+    "cohort": "joint_flat_hns",
+    "model": "shape_plus_strength",
+    "split": "seed",
+    "held_out": 42,
+    "train_clusters": 12,
+    "test_clusters": 6,
+    "features": [
+      "entropy_rank",
+      "original_head1_retention"
+    ],
+    "degree": 2,
+    "ridge": 0.01,
+    "inner_cv_loss": 1.7164807503112351,
+    "test_normalized_mse": 0.4908787317190145,
+    "train_feature_rms": [
+      0.24239194326773963,
+      0.9206351408885546,
+      0.07001521540959806,
+      0.8502592367685172
+    ],
+    "train_outcome_sd": [
+      3.3814846705343182,
+      2.5055697925641507
+    ],
+    "normalized_coefficients": [
+      [
+        -3.048800427297839,
+        4.360781173009678
+      ],
+      [
+        -5.703353259332973,
+        5.898138490980158
+      ],
+      [
+        3.336691113734992,
+        -2.26128992721366
+      ],
+      [
+        -4.4419108974234485,
+        4.660334387759577
+      ]
+    ],
+    "zero_normalized_mse": 1.5232993743594638,
+    "train_mean_normalized_mse": 0.6296413880157506
+  },
+  {
+    "cohort": "joint_flat_hns",
+    "model": "shape_plus_strength",
+    "split": "seed",
+    "held_out": 43,
+    "train_clusters": 12,
+    "test_clusters": 6,
+    "features": [
+      "top1_energy",
+      "original_head1_retention"
+    ],
+    "degree": 2,
+    "ridge": 0.01,
+    "inner_cv_loss": 2.1814927924676377,
+    "test_normalized_mse": 0.642516181383575,
+    "train_feature_rms": [
+      0.4807332022979759,
+      0.9200206844700708,
+      0.26577070022385474,
+      0.8500578869218552
+    ],
+    "train_outcome_sd": [
+      3.038215412592436,
+      2.414978888349557
+    ],
+    "normalized_coefficients": [
+      [
+        6.7196913203990825,
+        -3.6038503747105195
+      ],
+      [
+        -6.424226676763774,
+        3.982841897208347
+      ],
+      [
+        5.4994056321878135,
+        -2.14289497893169
+      ],
+      [
+        -3.547783556601385,
+        3.4122783221529147
+      ]
+    ],
+    "zero_normalized_mse": 2.353408232502753,
+    "train_mean_normalized_mse": 1.0725465843169355
+  },
+  {
+    "cohort": "joint_flat_hns",
+    "model": "shape_plus_strength",
+    "split": "seed",
+    "held_out": 44,
+    "train_clusters": 12,
+    "test_clusters": 6,
+    "features": [
+      "entropy_rank",
+      "scalar_fit"
+    ],
+    "degree": 2,
+    "ridge": 1.0,
+    "inner_cv_loss": 0.9652766476610132,
+    "test_normalized_mse": 2.613460620772342,
+    "train_feature_rms": [
+      0.2529734456200668,
+      0.43933695182816873,
+      0.0787130410134994,
+      0.24268865048811838
+    ],
+    "train_outcome_sd": [
+      3.6702850324650784,
+      1.3997036875122717
+    ],
+    "normalized_coefficients": [
+      [
+        0.39656643199291636,
+        0.9033298321187613
+      ],
+      [
+        0.1499862917391412,
+        -1.3603184060247155
+      ],
+      [
+        1.1734631511957256,
+        -0.9127618169078587
+      ],
+      [
+        -0.17179578584213498,
+        0.010715403942465026
+      ]
+    ],
+    "zero_normalized_mse": 5.364133718069125,
+    "train_mean_normalized_mse": 2.9400617581807293
+  },
+  {
+    "cohort": "joint_flat_hns",
+    "model": "shape_plus_strength",
+    "split": "base",
+    "held_out": "Qwen3-8B",
+    "train_clusters": 9,
+    "test_clusters": 9,
+    "features": [
+      "entropy_rank",
+      "original_head1_retention"
+    ],
+    "degree": 2,
+    "ridge": 0.01,
+    "inner_cv_loss": 0.7678572642440303,
+    "test_normalized_mse": 63.16701763479404,
+    "train_feature_rms": [
+      0.17147096720025987,
+      0.9024754847845103,
+      0.03362362496929521,
+      0.8178201728547195
+    ],
+    "train_outcome_sd": [
+      1.5202809320326376,
+      1.2669165907463553
+    ],
+    "normalized_coefficients": [
+      [
+        14.04250512334442,
+        6.9907621077444695
+      ],
+      [
+        6.072449842524054,
+        2.8005480640662483
+      ],
+      [
+        -8.83523144968468,
+        -2.4353273975991803
+      ],
+      [
+        1.5733763671231027,
+        0.11272971110322258
+      ]
+    ],
+    "zero_normalized_mse": 14.318338143238423,
+    "train_mean_normalized_mse": 8.787215714750845
+  },
+  {
+    "cohort": "joint_flat_hns",
+    "model": "shape_plus_strength",
+    "split": "base",
+    "held_out": "Llama-3.1-8B-Instruct",
+    "train_clusters": 9,
+    "test_clusters": 9,
+    "features": [
+      "shape_residual",
+      "original_head1_retention"
+    ],
+    "degree": 2,
+    "ridge": 0.01,
+    "inner_cv_loss": 3.092487791481595,
+    "test_normalized_mse": 0.8629042974588957,
+    "train_feature_rms": [
+      0.5630225802063558,
+      0.9370713287013291,
+      0.34360418949846044,
+      0.8802659779954417
+    ],
+    "train_outcome_sd": [
+      3.4108297764836224,
+      2.798038593742336
+    ],
+    "normalized_coefficients": [
+      [
+        -7.948330140072456,
+        9.341341879176179
+      ],
+      [
+        -4.8349713548463615,
+        6.508689878810646
+      ],
+      [
+        5.981974549710507,
+        -4.5844548006954895
+      ],
+      [
+        -0.840227105599778,
+        2.4223222358193444
+      ]
+    ],
+    "zero_normalized_mse": 0.7041157935600354,
+    "train_mean_normalized_mse": 0.9631266699486156
+  },
+  {
+    "cohort": "joint_flat_hns",
+    "model": "shape_plus_strength",
+    "split": "train_task",
+    "held_out": "magicoder",
+    "train_clusters": 12,
+    "test_clusters": 6,
+    "features": [
+      "top1_energy",
+      "scalar_fit"
+    ],
+    "degree": 1,
+    "ridge": 0.01,
+    "inner_cv_loss": 1.9339696808788014,
+    "test_normalized_mse": 6.193584111500667,
+    "train_feature_rms": [
+      0.4118245357080016,
+      0.3624773240148961
+    ],
+    "train_outcome_sd": [
+      1.3499234620895684,
+      2.572075288458458
+    ],
+    "normalized_coefficients": [
+      [
+        -2.484912748023928,
+        -0.16624518999121626
+      ],
+      [
+        0.10992852497283513,
+        -0.7798109849698329
+      ]
+    ],
+    "zero_normalized_mse": 16.100451805138693,
+    "train_mean_normalized_mse": 8.925511557836876
+  },
+  {
+    "cohort": "joint_flat_hns",
+    "model": "shape_plus_strength",
+    "split": "train_task",
+    "held_out": "metamath",
+    "train_clusters": 12,
+    "test_clusters": 6,
+    "features": [
+      "entropy_rank",
+      "scalar_fit"
+    ],
+    "degree": 2,
+    "ridge": 1.0,
+    "inner_cv_loss": 0.6928598931758517,
+    "test_normalized_mse": 4.138507989547523,
+    "train_feature_rms": [
+      0.250109938843568,
+      0.43889745662347546,
+      0.07816436422607513,
+      0.24149831800450172
+    ],
+    "train_outcome_sd": [
+      4.096134594890228,
+      1.2962421489126457
+    ],
+    "normalized_coefficients": [
+      [
+        0.2699571753029557,
+        0.2092583475256544
+      ],
+      [
+        0.26026207524956135,
+        -1.0465214014040465
+      ],
+      [
+        1.3161561471241572,
+        -0.6343902036686867
+      ],
+      [
+        -0.07321061334347798,
+        0.523647820735266
+      ]
+    ],
+    "zero_normalized_mse": 7.040983175226662,
+    "train_mean_normalized_mse": 3.897943963070559
+  },
+  {
+    "cohort": "joint_flat_hns",
+    "model": "shape_plus_strength",
+    "split": "train_task",
+    "held_out": "tulu",
+    "train_clusters": 12,
+    "test_clusters": 6,
+    "features": [
+      "top1_energy",
+      "scalar_fit"
+    ],
+    "degree": 2,
+    "ridge": 0.01,
+    "inner_cv_loss": 2.736175537086307,
+    "test_normalized_mse": 1.4801230742284082,
+    "train_feature_rms": [
+      0.5250461950258388,
+      0.4895394450682987,
+      0.299339026161223,
+      0.2777405029153915
+    ],
+    "train_outcome_sd": [
+      3.8241843085211578,
+      2.061122392696961
+    ],
+    "normalized_coefficients": [
+      [
+        0.017374373544582638,
+        -2.4322695195358115
+      ],
+      [
+        1.5762336173774005,
+        -2.815579919357736
+      ],
+      [
+        2.442101106534187,
+        -2.444456584363826
+      ],
+      [
+        0.4780767712177154,
+        -1.4113544120636141
+      ]
+    ],
+    "zero_normalized_mse": 0.4288709902778285,
+    "train_mean_normalized_mse": 1.1829379258803698
+  },
+  {
+    "cohort": "hns_grid_target",
+    "model": "single",
+    "split": "seed",
+    "held_out": 42,
+    "train_clusters": 12,
+    "test_clusters": 6,
+    "features": [
+      "entropy_rank"
+    ],
+    "degree": 2,
+    "ridge": 1.0,
+    "inner_cv_loss": 0.767438197870396,
+    "test_normalized_mse": 0.5641662816116573,
+    "train_feature_rms": [
+      0.23648059272027663,
+      0.06694589007867048
+    ],
+    "train_outcome_sd": [
+      3.4166263414729876
+    ],
+    "normalized_coefficients": [
+      [
+        0.17163002162406926
+      ],
+      [
+        1.2458467553531403
+      ]
+    ],
+    "zero_normalized_mse": 1.6810868734272342,
+    "train_mean_normalized_mse": 0.6387627917324011
+  },
+  {
+    "cohort": "hns_grid_target",
+    "model": "single",
+    "split": "seed",
+    "held_out": 43,
+    "train_clusters": 12,
+    "test_clusters": 6,
+    "features": [
+      "entropy_rank"
+    ],
+    "degree": 2,
+    "ridge": 10.0,
+    "inner_cv_loss": 0.6779878364747138,
+    "test_normalized_mse": 1.3257051002592803,
+    "train_feature_rms": [
+      0.24822463064210085,
+      0.07587320662186814
+    ],
+    "train_outcome_sd": [
+      2.7247636577819034
+    ],
+    "normalized_coefficients": [
+      [
+        0.6691766131952972
+      ],
+      [
+        0.8275708621376319
+      ]
+    ],
+    "zero_normalized_mse": 4.637987805320811,
+    "train_mean_normalized_mse": 2.147891649354836
+  },
+  {
+    "cohort": "hns_grid_target",
+    "model": "single",
+    "split": "seed",
+    "held_out": 44,
+    "train_clusters": 12,
+    "test_clusters": 6,
+    "features": [
+      "entropy_rank"
+    ],
+    "degree": 2,
+    "ridge": 10.0,
+    "inner_cv_loss": 0.9649898685240271,
+    "test_normalized_mse": 0.30005549542279375,
+    "train_feature_rms": [
+      0.2468912605709168,
+      0.07533692411241438
+    ],
+    "train_outcome_sd": [
+      3.391460910894341
+    ],
+    "normalized_coefficients": [
+      [
+        0.5343868913982773
+      ],
+      [
+        0.7574980293493281
+      ]
+    ],
+    "zero_normalized_mse": 2.0306728624074806,
+    "train_mean_normalized_mse": 0.6673312312887302
+  },
+  {
+    "cohort": "hns_grid_target",
+    "model": "single",
+    "split": "base",
+    "held_out": "Qwen3-8B",
+    "train_clusters": 9,
+    "test_clusters": 9,
+    "features": [
+      "fro_ratio"
+    ],
+    "degree": 2,
+    "ridge": 0.01,
+    "inner_cv_loss": 0.9526634698154509,
+    "test_normalized_mse": 24.188651867467122,
+    "train_feature_rms": [
+      0.2283654044846375,
+      0.06563895247863422
+    ],
+    "train_outcome_sd": [
+      1.5194338624241468
+    ],
+    "normalized_coefficients": [
+      [
+        -4.25707111958774
+      ],
+      [
+        -3.402332563830068
+      ]
+    ],
+    "zero_normalized_mse": 19.818861666684022,
+    "train_mean_normalized_mse": 11.54947237965729
+  },
+  {
+    "cohort": "hns_grid_target",
+    "model": "single",
+    "split": "base",
+    "held_out": "Llama-3.1-8B-Instruct",
+    "train_clusters": 9,
+    "test_clusters": 9,
+    "features": [
+      "top1_energy"
+    ],
+    "degree": 2,
+    "ridge": 1.0,
+    "inner_cv_loss": 1.0068658993641864,
+    "test_normalized_mse": 0.7303434998950411,
+    "train_feature_rms": [
+      0.5427197723639844,
+      0.31268851736087167
+    ],
+    "train_outcome_sd": [
+      3.102363763744973
+    ],
+    "normalized_coefficients": [
+      [
+        -0.5434012879579548
+      ],
+      [
+        1.48342133070663
+      ]
+    ],
+    "zero_normalized_mse": 0.6082705648686653,
+    "train_mean_normalized_mse": 2.010257386570324
+  },
+  {
+    "cohort": "hns_grid_target",
+    "model": "single",
+    "split": "train_task",
+    "held_out": "magicoder",
+    "train_clusters": 12,
+    "test_clusters": 6,
+    "features": [
+      "entropy_rank"
+    ],
+    "degree": 2,
+    "ridge": 0.01,
+    "inner_cv_loss": 0.9846715577355614,
+    "test_normalized_mse": 12.468386945331723,
+    "train_feature_rms": [
+      0.2114894328001073,
+      0.05518520140692008
+    ],
+    "train_outcome_sd": [
+      1.504843856590943
+    ],
+    "normalized_coefficients": [
+      [
+        4.194005124964662
+      ],
+      [
+        -2.0725459505247814
+      ]
+    ],
+    "zero_normalized_mse": 22.727248565206562,
+    "train_mean_normalized_mse": 12.150320820101276
+  },
+  {
+    "cohort": "hns_grid_target",
+    "model": "single",
+    "split": "train_task",
+    "held_out": "metamath",
+    "train_clusters": 12,
+    "test_clusters": 6,
+    "features": [
+      "entropy_rank"
+    ],
+    "degree": 2,
+    "ridge": 10.0,
+    "inner_cv_loss": 0.5423662437150626,
+    "test_normalized_mse": 0.2909034382379769,
+    "train_feature_rms": [
+      0.2442452540859669,
+      0.07489826470430334
+    ],
+    "train_outcome_sd": [
+      3.8916651759964616
+    ],
+    "normalized_coefficients": [
+      [
+        0.39867094164996536
+      ],
+      [
+        0.8606155391832335
+      ]
+    ],
+    "zero_normalized_mse": 0.8998659327593744,
+    "train_mean_normalized_mse": 0.02990550129029444
+  },
+  {
+    "cohort": "hns_grid_target",
+    "model": "single",
+    "split": "train_task",
+    "held_out": "tulu",
+    "train_clusters": 12,
+    "test_clusters": 6,
+    "features": [
+      "entropy_rank"
+    ],
+    "degree": 2,
+    "ridge": 1.0,
+    "inner_cv_loss": 0.737049354056047,
+    "test_normalized_mse": 0.3242650536062486,
+    "train_feature_rms": [
+      0.27223208519094044,
+      0.08519971423773429
+    ],
+    "train_outcome_sd": [
+      3.5375237923258878
+    ],
+    "normalized_coefficients": [
+      [
+        -0.03913769182229106
+      ],
+      [
+        1.4815131374059227
+      ]
+    ],
+    "zero_normalized_mse": 0.984416586458037,
+    "train_mean_normalized_mse": 0.5186786014463867
+  },
+  {
+    "cohort": "hns_grid_target",
+    "model": "shape_plus_strength",
+    "split": "seed",
+    "held_out": 42,
+    "train_clusters": 12,
+    "test_clusters": 6,
+    "features": [
+      "top1_energy",
+      "log_fro"
+    ],
+    "degree": 2,
+    "ridge": 0.01,
+    "inner_cv_loss": 0.37609367104558816,
+    "test_normalized_mse": 1.9409682171578748,
+    "train_feature_rms": [
+      0.4558648171566833,
+      0.33444688073362744,
+      0.23352427404805975,
+      0.1379714398917988
+    ],
+    "train_outcome_sd": [
+      3.4166263414729876
+    ],
+    "normalized_coefficients": [
+      [
+        -12.694611976818276
+      ],
+      [
+        16.083681874687564
+      ],
+      [
+        -2.450749588885084
+      ],
+      [
+        7.504384662906906
+      ]
+    ],
+    "zero_normalized_mse": 1.6810868734272342,
+    "train_mean_normalized_mse": 0.6387627917324011
+  },
+  {
+    "cohort": "hns_grid_target",
+    "model": "shape_plus_strength",
+    "split": "seed",
+    "held_out": 43,
+    "train_clusters": 12,
+    "test_clusters": 6,
+    "features": [
+      "entropy_rank",
+      "original_head1_retention"
+    ],
+    "degree": 2,
+    "ridge": 0.01,
+    "inner_cv_loss": 0.5374882935060027,
+    "test_normalized_mse": 1.1531684164315517,
+    "train_feature_rms": [
+      0.24822463064210085,
+      0.938461197612386,
+      0.07587320662186814,
+      0.8830404670365353
+    ],
+    "train_outcome_sd": [
+      2.7247636577819034
+    ],
+    "normalized_coefficients": [
+      [
+        -1.758169870645753
+      ],
+      [
+        -10.690185385294928
+      ],
+      [
+        2.8388022914205915
+      ],
+      [
+        -10.009358622100333
+      ]
+    ],
+    "zero_normalized_mse": 4.637987805320811,
+    "train_mean_normalized_mse": 2.147891649354836
+  },
+  {
+    "cohort": "hns_grid_target",
+    "model": "shape_plus_strength",
+    "split": "seed",
+    "held_out": 44,
+    "train_clusters": 12,
+    "test_clusters": 6,
+    "features": [
+      "top1_energy",
+      "scalar_fit"
+    ],
+    "degree": 2,
+    "ridge": 0.01,
+    "inner_cv_loss": 0.7548842033997164,
+    "test_normalized_mse": 0.2112102092940196,
+    "train_feature_rms": [
+      0.46586494797014105,
+      0.4908240555829441,
+      0.25096411967106586,
+      0.28093929142253227
+    ],
+    "train_outcome_sd": [
+      3.391460910894341
+    ],
+    "normalized_coefficients": [
+      [
+        2.493228761655143
+      ],
+      [
+        -2.5462578308104233
+      ],
+      [
+        6.416687036152644
+      ],
+      [
+        -5.1862068548822275
+      ]
+    ],
+    "zero_normalized_mse": 2.0306728624074806,
+    "train_mean_normalized_mse": 0.6673312312887302
+  },
+  {
+    "cohort": "hns_grid_target",
+    "model": "shape_plus_strength",
+    "split": "base",
+    "held_out": "Qwen3-8B",
+    "train_clusters": 9,
+    "test_clusters": 9,
+    "features": [
+      "entropy_rank",
+      "log_fro"
+    ],
+    "degree": 1,
+    "ridge": 0.01,
+    "inner_cv_loss": 0.48021134714491936,
+    "test_normalized_mse": 5.725906547494696,
+    "train_feature_rms": [
+      0.16681384761330684,
+      0.2685454009855106
+    ],
+    "train_outcome_sd": [
+      1.5194338624241468
+    ],
+    "normalized_coefficients": [
+      [
+        6.168020807464044
+      ],
+      [
+        5.124292419883957
+      ]
+    ],
+    "zero_normalized_mse": 19.818861666684022,
+    "train_mean_normalized_mse": 11.54947237965729
+  },
+  {
+    "cohort": "hns_grid_target",
+    "model": "shape_plus_strength",
+    "split": "base",
+    "held_out": "Llama-3.1-8B-Instruct",
+    "train_clusters": 9,
+    "test_clusters": 9,
+    "features": [
+      "top1_energy",
+      "scalar_fit"
+    ],
+    "degree": 2,
+    "ridge": 0.01,
+    "inner_cv_loss": 0.8884435362202815,
+    "test_normalized_mse": 0.3527376740562398,
+    "train_feature_rms": [
+      0.5427197723639844,
+      0.5553285203450675,
+      0.31268851736087167,
+      0.33257381341794395
+    ],
+    "train_outcome_sd": [
+      3.102363763744973
+    ],
+    "normalized_coefficients": [
+      [
+        -0.6489041061210086
+      ],
+      [
+        1.246246838804942
+      ],
+      [
+        5.778339416187188
+      ],
+      [
+        -3.1636649328678543
+      ]
+    ],
+    "zero_normalized_mse": 0.6082705648686653,
+    "train_mean_normalized_mse": 2.010257386570324
+  },
+  {
+    "cohort": "hns_grid_target",
+    "model": "shape_plus_strength",
+    "split": "train_task",
+    "held_out": "magicoder",
+    "train_clusters": 12,
+    "test_clusters": 6,
+    "features": [
+      "entropy_rank",
+      "log_fro"
+    ],
+    "degree": 2,
+    "ridge": 0.01,
+    "inner_cv_loss": 0.7677578393941985,
+    "test_normalized_mse": 9.488274594901567,
+    "train_feature_rms": [
+      0.2114894328001073,
+      0.2760521008091293,
+      0.05518520140692008,
+      0.10279614553042513
+    ],
+    "train_outcome_sd": [
+      1.504843856590943
+    ],
+    "normalized_coefficients": [
+      [
+        18.066483179014778
+      ],
+      [
+        13.738312239287934
+      ],
+      [
+        -9.469306650014872
+      ],
+      [
+        7.551617412328217
+      ]
+    ],
+    "zero_normalized_mse": 22.727248565206562,
+    "train_mean_normalized_mse": 12.150320820101276
+  },
+  {
+    "cohort": "hns_grid_target",
+    "model": "shape_plus_strength",
+    "split": "train_task",
+    "held_out": "metamath",
+    "train_clusters": 12,
+    "test_clusters": 6,
+    "features": [
+      "top1_energy",
+      "scalar_fit"
+    ],
+    "degree": 2,
+    "ridge": 0.01,
+    "inner_cv_loss": 0.4325175287617355,
+    "test_normalized_mse": 0.20103421375960423,
+    "train_feature_rms": [
+      0.4695299614172864,
+      0.49090615123689596,
+      0.2564526594008263,
+      0.2802302586175263
+    ],
+    "train_outcome_sd": [
+      3.8916651759964616
+    ],
+    "normalized_coefficients": [
+      [
+        3.7218344899146385
+      ],
+      [
+        -3.439320918498643
+      ],
+      [
+        6.604010339681443
+      ],
+      [
+        -5.086367007231847
+      ]
+    ],
+    "zero_normalized_mse": 0.8998659327593744,
+    "train_mean_normalized_mse": 0.02990550129029444
+  },
+  {
+    "cohort": "hns_grid_target",
+    "model": "shape_plus_strength",
+    "split": "train_task",
+    "held_out": "tulu",
+    "train_clusters": 12,
+    "test_clusters": 6,
+    "features": [
+      "top1_energy",
+      "scalar_fit"
+    ],
+    "degree": 2,
+    "ridge": 0.01,
+    "inner_cv_loss": 0.4541815111269312,
+    "test_normalized_mse": 0.34759953668029764,
+    "train_feature_rms": [
+      0.5136660796953888,
+      0.5448676452529719,
+      0.28701372023085264,
+      0.32153660933476336
+    ],
+    "train_outcome_sd": [
+      3.5375237923258878
+    ],
+    "normalized_coefficients": [
+      [
+        -0.39967553287531876
+      ],
+      [
+        0.5023060093970023
+      ],
+      [
+        6.005054575820297
+      ],
+      [
+        -4.5141070907227645
+      ]
+    ],
+    "zero_normalized_mse": 0.984416586458037,
+    "train_mean_normalized_mse": 0.5186786014463867
+  },
+  {
+    "cohort": "hns_grid_retention",
+    "model": "single",
+    "split": "seed",
+    "held_out": 43,
+    "train_clusters": 6,
+    "test_clusters": 6,
+    "features": [
+      "entropy_rank"
+    ],
+    "degree": 1,
+    "ridge": 0.01,
+    "inner_cv_loss": 5.142835517365884,
+    "test_normalized_mse": 0.9328973693565908,
+    "train_feature_rms": [
+      0.23787232593230437
+    ],
+    "train_outcome_sd": [
+      2.6636331363570305,
+      3.1443376102537237
+    ],
+    "normalized_coefficients": [
+      [
+        1.6804417085405836,
+        0.9663033774668164
+      ]
+    ],
+    "zero_normalized_mse": 2.7905649570528444,
+    "train_mean_normalized_mse": 1.3789224465385945
+  },
+  {
+    "cohort": "hns_grid_retention",
+    "model": "single",
+    "split": "seed",
+    "held_out": 44,
+    "train_clusters": 6,
+    "test_clusters": 6,
+    "features": [
+      "entropy_rank"
+    ],
+    "degree": 1,
+    "ridge": 0.01,
+    "inner_cv_loss": 1.6911259543387687,
+    "test_normalized_mse": 2.033796784464912,
+    "train_feature_rms": [
+      0.23508062026084203
+    ],
+    "train_outcome_sd": [
+      4.160746047336896,
+      1.585611388574484
+    ],
+    "normalized_coefficients": [
+      [
+        1.166981885191581,
+        1.3801763771849473
+      ]
+    ],
+    "zero_normalized_mse": 4.308602500822112,
+    "train_mean_normalized_mse": 2.295237488798458
+  },
+  {
+    "cohort": "hns_grid_retention",
+    "model": "single",
+    "split": "base",
+    "held_out": "Qwen3-8B",
+    "train_clusters": 6,
+    "test_clusters": 6,
+    "features": [
+      "entropy_rank"
+    ],
+    "degree": 2,
+    "ridge": 1.0,
+    "inner_cv_loss": 1.3129664669120178,
+    "test_normalized_mse": 13.063239624872585,
+    "train_feature_rms": [
+      0.17090490651886572,
+      0.03272236910635976
+    ],
+    "train_outcome_sd": [
+      1.8623905597577028,
+      1.3469335208832764
+    ],
+    "normalized_coefficients": [
+      [
+        2.1678839756283717,
+        0.691859665343278
+      ],
+      [
+        -1.3217275338219727,
+        1.1856349816718088
+      ]
+    ],
+    "zero_normalized_mse": 12.42963707670467,
+    "train_mean_normalized_mse": 7.555845115098527
+  },
+  {
+    "cohort": "hns_grid_retention",
+    "model": "single",
+    "split": "base",
+    "held_out": "Llama-3.1-8B-Instruct",
+    "train_clusters": 6,
+    "test_clusters": 6,
+    "features": [
+      "log_fro"
+    ],
+    "degree": 1,
+    "ridge": 0.01,
+    "inner_cv_loss": 3.8805597228557995,
+    "test_normalized_mse": 0.7327247483026501,
+    "train_feature_rms": [
+      0.39233337166513954
+    ],
+    "train_outcome_sd": [
+      3.2335092781409442,
+      3.2890303909102006
+    ],
+    "normalized_coefficients": [
+      [
+        -2.050079351690984,
+        -0.8794897725729455
+      ]
+    ],
+    "zero_normalized_mse": 0.6540153658022771,
+    "train_mean_normalized_mse": 1.2599426864689045
+  },
+  {
+    "cohort": "hns_grid_retention",
+    "model": "single",
+    "split": "train_task",
+    "held_out": "magicoder",
+    "train_clusters": 8,
+    "test_clusters": 4,
+    "features": [
+      "log_fro"
+    ],
+    "degree": 2,
+    "ridge": 1.0,
+    "inner_cv_loss": 1.9180469801465332,
+    "test_normalized_mse": 9.089565530156626,
+    "train_feature_rms": [
+      0.2655201665306204,
+      0.08936018314654039
+    ],
+    "train_outcome_sd": [
+      1.591789165659099,
+      3.015638013677693
+    ],
+    "normalized_coefficients": [
+      [
+        -3.8164990466112956,
+        0.06821664972727438
+      ],
+      [
+        -1.8154920589463341,
+        1.1953567281883641
+      ]
+    ],
+    "zero_normalized_mse": 11.730715876690436,
+    "train_mean_normalized_mse": 6.48164140816503
+  },
+  {
+    "cohort": "hns_grid_retention",
+    "model": "single",
+    "split": "train_task",
+    "held_out": "metamath",
+    "train_clusters": 8,
+    "test_clusters": 4,
+    "features": [
+      "entropy_rank"
+    ],
+    "degree": 2,
+    "ridge": 10.0,
+    "inner_cv_loss": 1.1560487046716899,
+    "test_normalized_mse": 6.6089471677961535,
+    "train_feature_rms": [
+      0.23456658719090595,
+      0.06862410166667808
+    ],
+    "train_outcome_sd": [
+      4.240905198031001,
+      1.251480008454587
+    ],
+    "normalized_coefficients": [
+      [
+        0.4119154859803987,
+        0.7455372013754641
+      ],
+      [
+        0.8027714720015912,
+        0.2164379172315753
+      ]
+    ],
+    "zero_normalized_mse": 10.340217503540341,
+    "train_mean_normalized_mse": 6.504379242432308
+  },
+  {
+    "cohort": "hns_grid_retention",
+    "model": "single",
+    "split": "train_task",
+    "held_out": "tulu",
+    "train_clusters": 8,
+    "test_clusters": 4,
+    "features": [
+      "log_fro"
+    ],
+    "degree": 2,
+    "ridge": 0.01,
+    "inner_cv_loss": 4.17811033922494,
+    "test_normalized_mse": 1.552938836431988,
+    "train_feature_rms": [
+      0.3877103564777251,
+      0.16692284033832627
+    ],
+    "train_outcome_sd": [
+      3.9450032830397137,
+      2.3871602299922356
+    ],
+    "normalized_coefficients": [
+      [
+        0.9922990755119216,
+        -4.698686196745245
+      ],
+      [
+        2.2682304528625905,
+        -3.3370137245955585
+      ]
+    ],
+    "zero_normalized_mse": 0.5540944011804719,
+    "train_mean_normalized_mse": 1.1894375324072934
+  },
+  {
+    "cohort": "hns_grid_retention",
+    "model": "shape_plus_strength",
+    "split": "seed",
+    "held_out": 43,
+    "train_clusters": 6,
+    "test_clusters": 6,
+    "features": [
+      "top1_energy",
+      "scalar_fit"
+    ],
+    "degree": 1,
+    "ridge": 0.01,
+    "inner_cv_loss": 4.67134459782015,
+    "test_normalized_mse": 0.8110423625622226,
+    "train_feature_rms": [
+      0.4599765402894661,
+      0.47490473695998975
+    ],
+    "train_outcome_sd": [
+      2.6636331363570305,
+      3.1443376102537237
+    ],
+    "normalized_coefficients": [
+      [
+        -7.434816802590779,
+        4.952645572788808
+      ],
+      [
+        5.80437075172992,
+        -5.921541854004209
+      ]
+    ],
+    "zero_normalized_mse": 2.7905649570528444,
+    "train_mean_normalized_mse": 1.3789224465385945
+  },
+  {
+    "cohort": "hns_grid_retention",
+    "model": "shape_plus_strength",
+    "split": "seed",
+    "held_out": 44,
+    "train_clusters": 6,
+    "test_clusters": 6,
+    "features": [
+      "entropy_rank",
+      "scalar_fit"
+    ],
+    "degree": 1,
+    "ridge": 0.01,
+    "inner_cv_loss": 1.190437517673506,
+    "test_normalized_mse": 2.0141559796531445,
+    "train_feature_rms": [
+      0.23508062026084203,
+      0.47138714042430924
+    ],
+    "train_outcome_sd": [
+      4.160746047336896,
+      1.585611388574484
+    ],
+    "normalized_coefficients": [
+      [
+        5.237723397714218,
+        -1.900195614800794
+      ],
+      [
+        4.110119157091908,
+        -3.312104127754627
+      ]
+    ],
+    "zero_normalized_mse": 4.308602500822112,
+    "train_mean_normalized_mse": 2.295237488798458
+  },
+  {
+    "cohort": "hns_grid_retention",
+    "model": "shape_plus_strength",
+    "split": "base",
+    "held_out": "Qwen3-8B",
+    "train_clusters": 6,
+    "test_clusters": 6,
+    "features": [
+      "entropy_rank",
+      "log_fro"
+    ],
+    "degree": 2,
+    "ridge": 0.01,
+    "inner_cv_loss": 0.7080463775643192,
+    "test_normalized_mse": 17.28456037083486,
+    "train_feature_rms": [
+      0.17090490651886572,
+      0.2641665337297098,
+      0.03272236910635976,
+      0.08549662154903453
+    ],
+    "train_outcome_sd": [
+      1.8623905597577028,
+      1.3469335208832764
+    ],
+    "normalized_coefficients": [
+      [
+        4.048663266343103,
+        -0.03269398582394768
+      ],
+      [
+        2.0973498141735916,
+        0.6243495478835541
+      ],
+      [
+        0.574322304656417,
+        3.780628719357157
+      ],
+      [
+        -1.765686771397452,
+        -1.2934020215864717
+      ]
+    ],
+    "zero_normalized_mse": 12.42963707670467,
+    "train_mean_normalized_mse": 7.555845115098527
+  },
+  {
+    "cohort": "hns_grid_retention",
+    "model": "shape_plus_strength",
+    "split": "base",
+    "held_out": "Llama-3.1-8B-Instruct",
+    "train_clusters": 6,
+    "test_clusters": 6,
+    "features": [
+      "top1_energy",
+      "log_fro"
+    ],
+    "degree": 2,
+    "ridge": 0.01,
+    "inner_cv_loss": 2.8508754879529294,
+    "test_normalized_mse": 0.5261508650026557,
+    "train_feature_rms": [
+      0.52228623446805,
+      0.39233337166513954,
+      0.2899036764644821,
+      0.17539260005865026
+    ],
+    "train_outcome_sd": [
+      3.2335092781409442,
+      3.2890303909102006
+    ],
+    "normalized_coefficients": [
+      [
+        -8.49668292176607,
+        6.451259906435249
+      ],
+      [
+        12.501081651049432,
+        -13.555332442630409
+      ],
+      [
+        1.1232319283289958,
+        -2.6739761587160564
+      ],
+      [
+        5.110184121000925,
+        -3.6903815327798455
+      ]
+    ],
+    "zero_normalized_mse": 0.6540153658022771,
+    "train_mean_normalized_mse": 1.2599426864689045
+  },
+  {
+    "cohort": "hns_grid_retention",
+    "model": "shape_plus_strength",
+    "split": "train_task",
+    "held_out": "magicoder",
+    "train_clusters": 8,
+    "test_clusters": 4,
+    "features": [
+      "entropy_rank",
+      "log_fro"
+    ],
+    "degree": 1,
+    "ridge": 0.01,
+    "inner_cv_loss": 1.3910132079080726,
+    "test_normalized_mse": 6.318516762776996,
+    "train_feature_rms": [
+      0.2052721667012413,
+      0.2655201665306204
+    ],
+    "train_outcome_sd": [
+      1.591789165659099,
+      3.015638013677693
+    ],
+    "normalized_coefficients": [
+      [
+        8.292522903061124,
+        -3.1487296642014706
+      ],
+      [
+        6.096035433098221,
+        -4.197731851426388
+      ]
+    ],
+    "zero_normalized_mse": 11.730715876690436,
+    "train_mean_normalized_mse": 6.48164140816503
+  },
+  {
+    "cohort": "hns_grid_retention",
+    "model": "shape_plus_strength",
+    "split": "train_task",
+    "held_out": "metamath",
+    "train_clusters": 8,
+    "test_clusters": 4,
+    "features": [
+      "entropy_rank",
+      "scalar_fit"
+    ],
+    "degree": 2,
+    "ridge": 0.01,
+    "inner_cv_loss": 0.4386234999955419,
+    "test_normalized_mse": 6.480375932965042,
+    "train_feature_rms": [
+      0.23456658719090595,
+      0.4717872032701231,
+      0.06862410166667808,
+      0.2561875785757777
+    ],
+    "train_outcome_sd": [
+      4.240905198031001,
+      1.251480008454587
+    ],
+    "normalized_coefficients": [
+      [
+        -1.0031267884194743,
+        0.7460939877376814
+      ],
+      [
+        -2.108346613641444,
+        1.6991136020312476
+      ],
+      [
+        3.6312838874622435,
+        -3.302217712864065
+      ],
+      [
+        -3.416102751161393,
+        5.298401601684047
+      ]
+    ],
+    "zero_normalized_mse": 10.340217503540341,
+    "train_mean_normalized_mse": 6.504379242432308
+  },
+  {
+    "cohort": "hns_grid_retention",
+    "model": "shape_plus_strength",
+    "split": "train_task",
+    "held_out": "tulu",
+    "train_clusters": 8,
+    "test_clusters": 4,
+    "features": [
+      "stable_rank",
+      "log_fro"
+    ],
+    "degree": 2,
+    "ridge": 0.01,
+    "inner_cv_loss": 3.785975243681905,
+    "test_normalized_mse": 1.1386396081706693,
+    "train_feature_rms": [
+      0.7637563011005758,
+      0.3877103564777251,
+      0.6155146452141858,
+      0.16692284033832627
+    ],
+    "train_outcome_sd": [
+      3.9450032830397137,
+      2.3871602299922356
+    ],
+    "normalized_coefficients": [
+      [
+        14.223153514065558,
+        -6.168468720007479
+      ],
+      [
+        14.991672565400817,
+        -10.863539646671574
+      ],
+      [
+        -8.31997378154265,
+        3.5585691854878547
+      ],
+      [
+        10.545931156753602,
+        -6.975192248143352
+      ]
+    ],
+    "zero_normalized_mse": 0.5540944011804719,
+    "train_mean_normalized_mse": 1.1894375324072934
+  },
+  {
+    "cohort": "scalar_common_basis_seed42",
+    "model": "single",
+    "split": "base",
+    "held_out": "Qwen3-8B",
+    "train_clusters": 3,
+    "test_clusters": 3,
+    "features": [
+      "original_head4_retention"
+    ],
+    "degree": 1,
+    "ridge": 1.0,
+    "inner_cv_loss": 1.736781679422305,
+    "test_normalized_mse": 3.324406055508281,
+    "train_feature_rms": [
+      0.6744930293331782
+    ],
+    "train_outcome_sd": [
+      1.3105562067980143,
+      1.0808747564443733
+    ],
+    "normalized_coefficients": [
+      [
+        -1.2213572139599154,
+        -1.7823714879110992
+      ]
+    ],
+    "zero_normalized_mse": 6.159647790720186,
+    "train_mean_normalized_mse": 3.6767171346258336
+  },
+  {
+    "cohort": "scalar_common_basis_seed42",
+    "model": "single",
+    "split": "base",
+    "held_out": "Llama-3.1-8B-Instruct",
+    "train_clusters": 3,
+    "test_clusters": 3,
+    "features": [
+      "scalar_fit"
+    ],
+    "degree": 2,
+    "ridge": 1.0,
+    "inner_cv_loss": 3.4394096655673727,
+    "test_normalized_mse": 1.6910201265719023,
+    "train_feature_rms": [
+      0.5015983138737135,
+      0.3118979323021641
+    ],
+    "train_outcome_sd": [
+      2.891033769416019,
+      0.8808962698103585
+    ],
+    "normalized_coefficients": [
+      [
+        -0.6112364520947228,
+        -1.1393200349009631
+      ],
+      [
+        0.6620701726669566,
+        0.04252668308488808
+      ]
+    ],
+    "zero_normalized_mse": 3.437637891967127,
+    "train_mean_normalized_mse": 1.4731499583393015
+  },
+  {
+    "cohort": "scalar_common_basis_seed42",
+    "model": "single",
+    "split": "train_task",
+    "held_out": "magicoder",
+    "train_clusters": 4,
+    "test_clusters": 2,
+    "features": [
+      "original_head1_retention"
+    ],
+    "degree": 1,
+    "ridge": 0.01,
+    "inner_cv_loss": 1.9370531000771292,
+    "test_normalized_mse": 4.954732359162786,
+    "train_feature_rms": [
+      0.7025018670844533
+    ],
+    "train_outcome_sd": [
+      1.28448789683813,
+      0.9348917906300359
+    ],
+    "normalized_coefficients": [
+      [
+        -1.6122936662602336,
+        -1.151606019782438
+      ]
+    ],
+    "zero_normalized_mse": 10.856656361321456,
+    "train_mean_normalized_mse": 5.626633191258292
+  },
+  {
+    "cohort": "scalar_common_basis_seed42",
+    "model": "single",
+    "split": "train_task",
+    "held_out": "metamath",
+    "train_clusters": 4,
+    "test_clusters": 2,
+    "features": [
+      "log_fro"
+    ],
+    "degree": 2,
+    "ridge": 0.01,
+    "inner_cv_loss": 3.321507427224865,
+    "test_normalized_mse": 0.450411111118274,
+    "train_feature_rms": [
+      0.7203646750299296,
+      0.8154877389083167
+    ],
+    "train_outcome_sd": [
+      2.665329384001399,
+      1.1588861597507576
+    ],
+    "normalized_coefficients": [
+      [
+        -2.237698266686142,
+        -2.5883123936914223
+      ],
+      [
+        -1.2839745102845603,
+        -1.535127137502503
+      ]
+    ],
+    "zero_normalized_mse": 1.7716182900799375,
+    "train_mean_normalized_mse": 0.49764771401367097
+  },
+  {
+    "cohort": "scalar_common_basis_seed42",
+    "model": "single",
+    "split": "train_task",
+    "held_out": "tulu",
+    "train_clusters": 4,
+    "test_clusters": 2,
+    "features": [
+      "original_head4_retention"
+    ],
+    "degree": 1,
+    "ridge": 0.01,
+    "inner_cv_loss": 2.2223611164916983,
+    "test_normalized_mse": 1.9237248621927494,
+    "train_feature_rms": [
+      0.7064725028568749
+    ],
+    "train_outcome_sd": [
+      2.719013280288954,
+      0.8924632359425592
+    ],
+    "normalized_coefficients": [
+      [
+        -1.1172483364192103,
+        -2.3464185586409263
+      ]
+    ],
+    "zero_normalized_mse": 0.538950702595643,
+    "train_mean_normalized_mse": 1.8792177556596035
+  },
+  {
+    "cohort": "scalar_common_basis_seed42",
+    "model": "shape_plus_strength",
+    "split": "base",
+    "held_out": "Qwen3-8B",
+    "train_clusters": 3,
+    "test_clusters": 3,
+    "features": [
+      "stable_rank",
+      "original_head1_retention"
+    ],
+    "degree": 1,
+    "ridge": 1.0,
+    "inner_cv_loss": 1.874571604083427,
+    "test_normalized_mse": 3.3727462101267167,
+    "train_feature_rms": [
+      0.2978269925564809,
+      0.699729025358082
+    ],
+    "train_outcome_sd": [
+      1.3105562067980143,
+      1.0808747564443733
+    ],
+    "normalized_coefficients": [
+      [
+        -0.2314039831605167,
+        -0.07370417539226973
+      ],
+      [
+        -1.3325824406682678,
+        -1.8075269384458623
+      ]
+    ],
+    "zero_normalized_mse": 6.159647790720186,
+    "train_mean_normalized_mse": 3.6767171346258336
+  },
+  {
+    "cohort": "scalar_common_basis_seed42",
+    "model": "shape_plus_strength",
+    "split": "base",
+    "held_out": "Llama-3.1-8B-Instruct",
+    "train_clusters": 3,
+    "test_clusters": 3,
+    "features": [
+      "entropy_rank",
+      "log_fro"
+    ],
+    "degree": 2,
+    "ridge": 0.01,
+    "inner_cv_loss": 3.055923290138168,
+    "test_normalized_mse": 1.9701353933356482,
+    "train_feature_rms": [
+      0.12717534013359366,
+      0.7339121545317113,
+      0.04487809141919407,
+      0.8200041144549471
+    ],
+    "train_outcome_sd": [
+      2.891033769416019,
+      0.8808962698103585
+    ],
+    "normalized_coefficients": [
+      [
+        -1.7766524124135656,
+        -1.6436923962263081
+      ],
+      [
+        -1.6937927136538509,
+        -2.6244077440439733
+      ],
+      [
+        2.0976477553466406,
+        1.823574128627437
+      ],
+      [
+        -0.5840258821944598,
+        -1.6398185939335097
+      ]
+    ],
+    "zero_normalized_mse": 3.437637891967127,
+    "train_mean_normalized_mse": 1.4731499583393015
+  },
+  {
+    "cohort": "scalar_common_basis_seed42",
+    "model": "shape_plus_strength",
+    "split": "train_task",
+    "held_out": "magicoder",
+    "train_clusters": 4,
+    "test_clusters": 2,
+    "features": [
+      "stable_rank",
+      "original_head1_retention"
+    ],
+    "degree": 1,
+    "ridge": 0.01,
+    "inner_cv_loss": 1.9783767421961291,
+    "test_normalized_mse": 4.933106268077981,
+    "train_feature_rms": [
+      0.30427897324776537,
+      0.7025018670844533
+    ],
+    "train_outcome_sd": [
+      1.28448789683813,
+      0.9348917906300359
+    ],
+    "normalized_coefficients": [
+      [
+        -0.06068997115948491,
+        -0.07897564039204727
+      ],
+      [
+        -1.6421392055025112,
+        -1.190443912262412
+      ]
+    ],
+    "zero_normalized_mse": 10.856656361321456,
+    "train_mean_normalized_mse": 5.626633191258292
+  },
+  {
+    "cohort": "scalar_common_basis_seed42",
+    "model": "shape_plus_strength",
+    "split": "train_task",
+    "held_out": "metamath",
+    "train_clusters": 4,
+    "test_clusters": 2,
+    "features": [
+      "stable_rank",
+      "scalar_fit"
+    ],
+    "degree": 1,
+    "ridge": 0.01,
+    "inner_cv_loss": 3.4829959148187517,
+    "test_normalized_mse": 0.41591020887693225,
+    "train_feature_rms": [
+      0.31243683438759723,
+      0.48317985158959476
+    ],
+    "train_outcome_sd": [
+      2.665329384001399,
+      1.1588861597507576
+    ],
+    "normalized_coefficients": [
+      [
+        -0.03308569304460224,
+        0.05452783329188974
+      ],
+      [
+        -1.0972063786049095,
+        -1.2093917267691596
+      ]
+    ],
+    "zero_normalized_mse": 1.7716182900799375,
+    "train_mean_normalized_mse": 0.49764771401367097
+  },
+  {
+    "cohort": "scalar_common_basis_seed42",
+    "model": "shape_plus_strength",
+    "split": "train_task",
+    "held_out": "tulu",
+    "train_clusters": 4,
+    "test_clusters": 2,
+    "features": [
+      "entropy_rank",
+      "original_head1_retention"
+    ],
+    "degree": 2,
+    "ridge": 0.01,
+    "inner_cv_loss": 2.0254899053438087,
+    "test_normalized_mse": 2.1054942697758627,
+    "train_feature_rms": [
+      0.11012754020096102,
+      0.7241610198779787,
+      0.0380399713153905,
+      0.6043250588352923
+    ],
+    "train_outcome_sd": [
+      2.719013280288954,
+      0.8924632359425592
+    ],
+    "normalized_coefficients": [
+      [
+        -1.892944567796953,
+        0.6095642376103891
+      ],
+      [
+        -0.5422931212710194,
+        -3.179983213045749
+      ],
+      [
+        1.9342808809406888,
+        -0.7315688213822991
+      ],
+      [
+        0.6470009551820733,
+        -0.8236774726718921
+      ]
+    ],
+    "zero_normalized_mse": 0.538950702595643,
+    "train_mean_normalized_mse": 1.8792177556596035
+  }
+]

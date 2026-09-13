@@ -1,0 +1,56 @@
+{
+  "samples": 541,
+  "instructions": 834,
+  "primary_metric": "prompt_level_strict_accuracy",
+  "prompt_level_strict_accuracy": 0.5730129390018485,
+  "prompt_level_loose_accuracy": 0.6395563770794824,
+  "instruction_level_strict_accuracy": 0.6714628297362111,
+  "instruction_level_loose_accuracy": 0.7254196642685852,
+  "per_category": {
+    "change_case": {
+      "total": 89,
+      "strict_accuracy": 0.7752808988764045,
+      "loose_accuracy": 0.8539325842696629
+    },
+    "combination": {
+      "total": 65,
+      "strict_accuracy": 0.5230769230769231,
+      "loose_accuracy": 0.5230769230769231
+    },
+    "detectable_content": {
+      "total": 53,
+      "strict_accuracy": 0.6037735849056604,
+      "loose_accuracy": 0.660377358490566
+    },
+    "detectable_format": {
+      "total": 157,
+      "strict_accuracy": 0.6942675159235668,
+      "loose_accuracy": 0.7707006369426752
+    },
+    "keywords": {
+      "total": 163,
+      "strict_accuracy": 0.6748466257668712,
+      "loose_accuracy": 0.7300613496932515
+    },
+    "language": {
+      "total": 31,
+      "strict_accuracy": 0.0,
+      "loose_accuracy": 0.0
+    },
+    "length_constraints": {
+      "total": 143,
+      "strict_accuracy": 0.6293706293706294,
+      "loose_accuracy": 0.7202797202797203
+    },
+    "punctuation": {
+      "total": 66,
+      "strict_accuracy": 0.8787878787878788,
+      "loose_accuracy": 0.8787878787878788
+    },
+    "startend": {
+      "total": 67,
+      "strict_accuracy": 0.8656716417910447,
+      "loose_accuracy": 0.8805970149253731
+    }
+  }
+}

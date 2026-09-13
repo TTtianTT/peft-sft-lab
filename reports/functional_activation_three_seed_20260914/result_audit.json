@@ -1,0 +1,12 @@
+{
+  "status": "pass",
+  "rows": 450,
+  "unique_adapters": 282,
+  "source_checkpoints": 18,
+  "all_functional_features_finite": "pass",
+  "original_performance_unchanged": "pass",
+  "functional_moment_bounds": "pass",
+  "source_cv_disjointness": "pass",
+  "intervention_cv_disjointness_and_train_scales": "pass",
+  "gpu_limit": 2
+}

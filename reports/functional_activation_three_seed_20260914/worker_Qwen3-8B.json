@@ -1,0 +1,7 @@
+{
+  "status": "complete",
+  "base": "Qwen3-8B",
+  "seconds": 47.06746792793274,
+  "gpu_count": 1,
+  "completed_utc": "2026-09-13T18:29:10.221034+00:00"
+}

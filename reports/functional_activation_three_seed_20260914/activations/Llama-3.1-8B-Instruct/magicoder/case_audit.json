@@ -1,0 +1,40 @@
+{
+  "status": "complete",
+  "base": "Llama-3.1-8B-Instruct",
+  "task": "magicoder",
+  "seeds": [
+    42,
+    43,
+    44
+  ],
+  "samples": 256,
+  "tokens": 103865,
+  "modules_per_seed": 224,
+  "seconds": 13.384846687316895,
+  "pilots": [
+    {
+      "batch_size": 64,
+      "status": "pass",
+      "seconds": 3.0472514629364014,
+      "peak_allocated_gib": 18.75254535675049,
+      "total_gib": 267.68170166015625
+    },
+    {
+      "batch_size": 128,
+      "status": "pass",
+      "seconds": 1.351416826248169,
+      "peak_allocated_gib": 22.40928363800049,
+      "total_gib": 267.68170166015625
+    },
+    {
+      "batch_size": 256,
+      "status": "pass",
+      "seconds": 2.3363099098205566,
+      "peak_allocated_gib": 29.69151020050049,
+      "total_gib": 267.68170166015625
+    }
+  ],
+  "batch_size": 256,
+  "collector_sha256": "14e4e2218dcde749f637432a1692714cbc04970bc61608c7319d5b07ee8f8b4f",
+  "completed_utc": "2026-09-13T18:28:43.348852+00:00"
+}

@@ -1,0 +1,69 @@
+{
+  "created_utc": "2026-09-13T18:00:26.830162+00:00",
+  "proposals": {
+    "shannon_eff_rank": "median module exp(H(s/sum(s))), unnormalized 1..16",
+    "r2_participation": "median module sum(s)^2/sum(s^2)",
+    "stable_rank": "median module sum(s^2)/max(s)^2, unnormalized 1..16",
+    "flatness": "median exp(mean(log(s)))/mean(s)",
+    "gini": "median singular-value Gini; zero is flat",
+    "decay_slope": "median OLS slope of log(s_i) against i=1..16",
+    "erank_energy": "median exp(H(s^2/sum(s^2))), 1..16",
+    "entropy_gap": "median H(p)-H(q)",
+    "hill_tail_contrast": "median mean_{i<=8} log(lambda_i/lambda_9), lambda=s^2; 1/(alpha_hill-1), zero at flat endpoint",
+    "d_flat_l1": "median sum(abs(s-mean(s)))/sum(s)",
+    "soft_rank": "median mean(s)/max(s)",
+    "head_tail": "median log(sum(s[:4])/sum(s[12:16]))",
+    "erank_iqr": "IQR of module shannon effective ranks",
+    "erank_depth_slope": "OLS slope of layer-median erank against raw layer index",
+    "erank_depth_slope_normalized": "same slope against depth layer/(layers-1)",
+    "erank_attn_mlp_gap": "median attention erank minus median MLP erank",
+    "gamma_param": "global sum(w*beta), w=source_s^2/sum(source_s^2); equals previous scalar_fit",
+    "eta_param": "1-gamma^2/sum(w*beta^2); equals previous shape_residual in common U/V",
+    "fro_ratio": "previous aggregate global Frobenius ratio",
+    "original_head1_retention": "previous actual original leading-direction energy retention",
+    "previous_mean_entropy_rank": "previous mean module effective rank/16; aggregation comparator"
+  },
+  "incomplete_diagnostics": {
+    "alpha_hill": "1+8/sum_{i<=8} log(lambda_i/lambda_9); undefined for flat/near-flat modules",
+    "alpha_hill_k4": "same estimator k=4",
+    "alpha_hill_k12": "same estimator k=12",
+    "alpha_weighted_hill": "median alpha_hill*log10(sigma1_scaled^2); Hill-based diagnostic, not official WeightWatcher PL fit",
+    "alpha_iqr": "IQR of module alpha_hill, defined only if every module is nondegenerate",
+    "kurtosis": "median population excess kurtosis of 16 singular values; flat spectrum undefined",
+    "decay_family": "median R2(log(s)~log(i))-R2(log(s)~i); flat spectrum undefined"
+  },
+  "functional": {
+    "functional_participation": "median 1/sum(pi^2), pi=source_response_energy*beta^2 / module total",
+    "functional_erank": "median exp(H(pi))",
+    "functional_top1": "median max(pi)",
+    "functional_erank_iqr": "IQR of module exp(H(pi))",
+    "functional_attn_mlp_gap": "attention median functional erank minus MLP median",
+    "functional_energy_ratio": "sqrt(sum source_response_energy*beta^2 / sum source_response_energy)",
+    "gamma_functional": "sum(wE*beta), wE=source_response_energy/sum(source_response_energy)",
+    "eta_functional": "1-gamma_functional^2/sum(wE*beta^2)"
+  },
+  "selection": "Proposed user metrics evaluated without accepting supplied correlations as evidence; no performance-selected aggregation.",
+  "aggregation": "module medians; IQR separately; attention-MLP gap explicit. Raw parameter and energy weights include original LoRA scaling.",
+  "precision": "singular shape normalized by module maximum; relative spread below 1e-5 treated as flat. Shape features rounded to 1e-5. Hill mean log contrast <=1e-4 is undefined, never capped.",
+  "validation": "same grouped statistics / nested seed-base-task CV as prior study, separate cohorts, edited-only sensitivity. Incomplete alpha/kurtosis/family excluded from complete-case CV.",
+  "functional_scope": "six seed42 source checkpoints; frozen-base training-distribution cache 256 samples, max512 tokens. No fabricated seeds43/44 activations.",
+  "independent_unit": "18 source checkpoints (6 functional); repeated waves not independent replications",
+  "gpu_count": 0,
+  "base_subspace_plan": {
+    "primary_k": 16,
+    "sensitivity_k": [
+      4,
+      32
+    ],
+    "sides": [
+      "left",
+      "right",
+      "bilateral"
+    ],
+    "algorithm": "CPU randomized SVD q96 power12, adaptive q128/power24 or q192/power36; k16 residual <0.01 and k32 residual <0.02",
+    "aggregation": "global adapter parameter-energy fractions; no base-forward inference",
+    "limitation": "approximation; k-boundary degeneracy recorded"
+  },
+  "source_cv_plan": "18 untouched sources, nested leave-seed-out; inner leave-source-out selects one linear spectral covariate and ridge; training-only Base×Task group means as explicit baseline; target + absolute forgetting equal normalized objective",
+  "metric_selection_note": "exploratory user-proposed shortlist; raw source correlations inspected before source-CV implementation; held-out seed results never used to select fold features"
+}

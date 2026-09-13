@@ -1,0 +1,23 @@
+{
+  "updated_sg": "2026-09-14T00:41:12+08:00",
+  "estimated_completion_sg": [
+    "2026-09-14T01:20:00+08:00",
+    "2026-09-14T01:30:00+08:00"
+  ],
+  "cells": 328,
+  "remaining_common_blocks_per_base": 4,
+  "measured_block_minutes": {
+    "qwen": [
+      10.6,
+      10.55,
+      10.64,
+      10.63
+    ],
+    "llama": [
+      11.25,
+      10.48,
+      10.65,
+      11.25
+    ]
+  }
+}

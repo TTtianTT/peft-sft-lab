@@ -1,0 +1,55 @@
+{
+  "samples": 22419,
+  "primary_metric": "macro_accuracy",
+  "macro_accuracy": 0.7188624893526346,
+  "per_task": {
+    "arc_challenge": {
+      "total": 1172,
+      "correct": 842,
+      "invalid": 101,
+      "accuracy": 0.7184300341296929
+    },
+    "arc_easy": {
+      "total": 2376,
+      "correct": 2092,
+      "invalid": 74,
+      "accuracy": 0.8804713804713805
+    },
+    "boolq": {
+      "total": 3270,
+      "correct": 2778,
+      "invalid": 10,
+      "accuracy": 0.8495412844036697
+    },
+    "hellaswag": {
+      "total": 10042,
+      "correct": 5824,
+      "invalid": 40,
+      "accuracy": 0.579964150567616
+    },
+    "openbookqa": {
+      "total": 500,
+      "correct": 356,
+      "invalid": 1,
+      "accuracy": 0.712
+    },
+    "piqa": {
+      "total": 1838,
+      "correct": 1382,
+      "invalid": 6,
+      "accuracy": 0.7519042437431991
+    },
+    "siqa": {
+      "total": 1954,
+      "correct": 1335,
+      "invalid": 4,
+      "accuracy": 0.6832139201637666
+    },
+    "winogrande": {
+      "total": 1267,
+      "correct": 729,
+      "invalid": 0,
+      "accuracy": 0.5753749013417522
+    }
+  }
+}

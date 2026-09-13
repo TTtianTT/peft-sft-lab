@@ -1,0 +1,7 @@
+{
+  "samples": 164,
+  "primary_metric": "pass_at_1",
+  "pass_at_1": 0.5304878048780488,
+  "correct": 87,
+  "results_path": "/dataset1/zailong/workspace/peft-sft-lab/reports/posthoc_flat_dghard_forgetting_three_seed_20260913/eval/Llama-3.1-8B-Instruct/magicoder/magicoder__seed42__flat_fro/samples.jsonl_results.jsonl"
+}

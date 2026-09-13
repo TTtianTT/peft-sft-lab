@@ -1,0 +1,98 @@
+[
+  {
+    "held_seed": 42,
+    "feature": "functional_attn_mlp_gap",
+    "ridge": 0.01,
+    "inner_joint_loss": 26.231030154283502,
+    "train_checkpoints": [
+      "Qwen3-8B/magicoder/seed43",
+      "Qwen3-8B/metamath/seed43",
+      "Qwen3-8B/tulu/seed43",
+      "Qwen3-8B/magicoder/seed44",
+      "Qwen3-8B/metamath/seed44",
+      "Qwen3-8B/tulu/seed44",
+      "Llama-3.1-8B-Instruct/magicoder/seed43",
+      "Llama-3.1-8B-Instruct/metamath/seed43",
+      "Llama-3.1-8B-Instruct/tulu/seed43",
+      "Llama-3.1-8B-Instruct/magicoder/seed44",
+      "Llama-3.1-8B-Instruct/metamath/seed44",
+      "Llama-3.1-8B-Instruct/tulu/seed44"
+    ],
+    "test_checkpoints": [
+      "Qwen3-8B/magicoder/seed42",
+      "Qwen3-8B/metamath/seed42",
+      "Qwen3-8B/tulu/seed42",
+      "Llama-3.1-8B-Instruct/magicoder/seed42",
+      "Llama-3.1-8B-Instruct/metamath/seed42",
+      "Llama-3.1-8B-Instruct/tulu/seed42"
+    ],
+    "train_residual_sd": [
+      0.5524571391351161,
+      1.2700676802495507
+    ]
+  },
+  {
+    "held_seed": 43,
+    "feature": "erank_depth_slope_normalized",
+    "ridge": 0.01,
+    "inner_joint_loss": 31.26364575163768,
+    "train_checkpoints": [
+      "Qwen3-8B/magicoder/seed42",
+      "Qwen3-8B/metamath/seed42",
+      "Qwen3-8B/tulu/seed42",
+      "Qwen3-8B/magicoder/seed44",
+      "Qwen3-8B/metamath/seed44",
+      "Qwen3-8B/tulu/seed44",
+      "Llama-3.1-8B-Instruct/magicoder/seed42",
+      "Llama-3.1-8B-Instruct/metamath/seed42",
+      "Llama-3.1-8B-Instruct/tulu/seed42",
+      "Llama-3.1-8B-Instruct/magicoder/seed44",
+      "Llama-3.1-8B-Instruct/metamath/seed44",
+      "Llama-3.1-8B-Instruct/tulu/seed44"
+    ],
+    "test_checkpoints": [
+      "Qwen3-8B/magicoder/seed43",
+      "Qwen3-8B/metamath/seed43",
+      "Qwen3-8B/tulu/seed43",
+      "Llama-3.1-8B-Instruct/magicoder/seed43",
+      "Llama-3.1-8B-Instruct/metamath/seed43",
+      "Llama-3.1-8B-Instruct/tulu/seed43"
+    ],
+    "train_residual_sd": [
+      0.5889372625706304,
+      1.6284711666103024
+    ]
+  },
+  {
+    "held_seed": 44,
+    "feature": "erank_iqr",
+    "ridge": 1.0,
+    "inner_joint_loss": 4.460032244853673,
+    "train_checkpoints": [
+      "Qwen3-8B/magicoder/seed42",
+      "Qwen3-8B/metamath/seed42",
+      "Qwen3-8B/tulu/seed42",
+      "Qwen3-8B/magicoder/seed43",
+      "Qwen3-8B/metamath/seed43",
+      "Qwen3-8B/tulu/seed43",
+      "Llama-3.1-8B-Instruct/magicoder/seed42",
+      "Llama-3.1-8B-Instruct/metamath/seed42",
+      "Llama-3.1-8B-Instruct/tulu/seed42",
+      "Llama-3.1-8B-Instruct/magicoder/seed43",
+      "Llama-3.1-8B-Instruct/metamath/seed43",
+      "Llama-3.1-8B-Instruct/tulu/seed43"
+    ],
+    "test_checkpoints": [
+      "Qwen3-8B/magicoder/seed44",
+      "Qwen3-8B/metamath/seed44",
+      "Qwen3-8B/tulu/seed44",
+      "Llama-3.1-8B-Instruct/magicoder/seed44",
+      "Llama-3.1-8B-Instruct/metamath/seed44",
+      "Llama-3.1-8B-Instruct/tulu/seed44"
+    ],
+    "train_residual_sd": [
+      0.8653380427678701,
+      0.5253566532777114
+    ]
+  }
+]

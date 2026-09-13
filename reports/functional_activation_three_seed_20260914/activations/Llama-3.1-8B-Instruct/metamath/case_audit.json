@@ -1,0 +1,40 @@
+{
+  "status": "complete",
+  "base": "Llama-3.1-8B-Instruct",
+  "task": "metamath",
+  "seeds": [
+    42,
+    43,
+    44
+  ],
+  "samples": 256,
+  "tokens": 59165,
+  "modules_per_seed": 224,
+  "seconds": 10.250821828842163,
+  "pilots": [
+    {
+      "batch_size": 64,
+      "status": "pass",
+      "seconds": 0.557448148727417,
+      "peak_allocated_gib": 18.76817035675049,
+      "total_gib": 267.68170166015625
+    },
+    {
+      "batch_size": 128,
+      "status": "pass",
+      "seconds": 1.1300692558288574,
+      "peak_allocated_gib": 22.40928363800049,
+      "total_gib": 267.68170166015625
+    },
+    {
+      "batch_size": 256,
+      "status": "pass",
+      "seconds": 2.299328565597534,
+      "peak_allocated_gib": 29.69151020050049,
+      "total_gib": 267.68170166015625
+    }
+  ],
+  "batch_size": 256,
+  "collector_sha256": "14e4e2218dcde749f637432a1692714cbc04970bc61608c7319d5b07ee8f8b4f",
+  "completed_utc": "2026-09-13T18:28:54.245682+00:00"
+}

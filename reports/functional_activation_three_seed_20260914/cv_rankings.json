@@ -1,0 +1,5799 @@
+[
+  {
+    "cohort": "joint_flat_hns",
+    "model": "single",
+    "outcomes": [
+      "target_gain",
+      "forgetting_reduction"
+    ],
+    "ranking": [
+      {
+        "features": [
+          "erank_iqr"
+        ],
+        "degree": 1,
+        "ridge": 0.01,
+        "inner_cv_loss": 1.5939948770487247
+      },
+      {
+        "features": [
+          "erank_iqr"
+        ],
+        "degree": 1,
+        "ridge": 1.0,
+        "inner_cv_loss": 1.599824669018054
+      },
+      {
+        "features": [
+          "erank_iqr"
+        ],
+        "degree": 2,
+        "ridge": 10.0,
+        "inner_cv_loss": 1.6454227245990571
+      },
+      {
+        "features": [
+          "original_head1_retention"
+        ],
+        "degree": 2,
+        "ridge": 0.01,
+        "inner_cv_loss": 1.6635755109035293
+      },
+      {
+        "features": [
+          "functional_energy_ratio"
+        ],
+        "degree": 1,
+        "ridge": 0.01,
+        "inner_cv_loss": 1.6704203928945731
+      },
+      {
+        "features": [
+          "erank_iqr"
+        ],
+        "degree": 2,
+        "ridge": 1.0,
+        "inner_cv_loss": 1.673112349104779
+      },
+      {
+        "features": [
+          "functional_energy_ratio"
+        ],
+        "degree": 1,
+        "ridge": 1.0,
+        "inner_cv_loss": 1.675933820139357
+      },
+      {
+        "features": [
+          "erank_iqr"
+        ],
+        "degree": 1,
+        "ridge": 10.0,
+        "inner_cv_loss": 1.6772155786030507
+      },
+      {
+        "features": [
+          "functional_energy_ratio"
+        ],
+        "degree": 2,
+        "ridge": 1.0,
+        "inner_cv_loss": 1.6945444557140235
+      },
+      {
+        "features": [
+          "functional_energy_ratio"
+        ],
+        "degree": 2,
+        "ridge": 10.0,
+        "inner_cv_loss": 1.7023361787712046
+      },
+      {
+        "features": [
+          "original_head1_retention"
+        ],
+        "degree": 2,
+        "ridge": 1.0,
+        "inner_cv_loss": 1.7113250491848118
+      },
+      {
+        "features": [
+          "original_head1_retention"
+        ],
+        "degree": 1,
+        "ridge": 0.01,
+        "inner_cv_loss": 1.7326377620955207
+      },
+      {
+        "features": [
+          "functional_energy_ratio"
+        ],
+        "degree": 2,
+        "ridge": 0.01,
+        "inner_cv_loss": 1.736925713991263
+      },
+      {
+        "features": [
+          "original_head1_retention"
+        ],
+        "degree": 1,
+        "ridge": 1.0,
+        "inner_cv_loss": 1.7379323132958964
+      },
+      {
+        "features": [
+          "functional_cov_erank"
+        ],
+        "degree": 2,
+        "ridge": 0.01,
+        "inner_cv_loss": 1.738710005337471
+      },
+      {
+        "features": [
+          "erank_iqr"
+        ],
+        "degree": 2,
+        "ridge": 0.01,
+        "inner_cv_loss": 1.7444846778259473
+      },
+      {
+        "features": [
+          "original_head1_retention"
+        ],
+        "degree": 2,
+        "ridge": 10.0,
+        "inner_cv_loss": 1.746805328061384
+      },
+      {
+        "features": [
+          "functional_energy_ratio"
+        ],
+        "degree": 1,
+        "ridge": 10.0,
+        "inner_cv_loss": 1.7494745562917402
+      },
+      {
+        "features": [
+          "functional_participation"
+        ],
+        "degree": 2,
+        "ridge": 0.01,
+        "inner_cv_loss": 1.7566149688532795
+      },
+      {
+        "features": [
+          "original_head1_retention"
+        ],
+        "degree": 1,
+        "ridge": 10.0,
+        "inner_cv_loss": 1.808583574077227
+      },
+      {
+        "features": [
+          "functional_cov_participation"
+        ],
+        "degree": 2,
+        "ridge": 0.01,
+        "inner_cv_loss": 1.864070009133108
+      },
+      {
+        "features": [
+          "functional_cov_erank"
+        ],
+        "degree": 2,
+        "ridge": 1.0,
+        "inner_cv_loss": 1.9251443955782355
+      },
+      {
+        "features": [
+          "functional_erank"
+        ],
+        "degree": 2,
+        "ridge": 0.01,
+        "inner_cv_loss": 1.9263119343980546
+      },
+      {
+        "features": [
+          "functional_participation"
+        ],
+        "degree": 2,
+        "ridge": 1.0,
+        "inner_cv_loss": 1.9678132046237415
+      },
+      {
+        "features": [
+          "functional_erank"
+        ],
+        "degree": 2,
+        "ridge": 1.0,
+        "inner_cv_loss": 1.9894643862829413
+      },
+      {
+        "features": [
+          "functional_cov_participation"
+        ],
+        "degree": 2,
+        "ridge": 1.0,
+        "inner_cv_loss": 2.012142956391982
+      },
+      {
+        "features": [
+          "functional_erank"
+        ],
+        "degree": 1,
+        "ridge": 0.01,
+        "inner_cv_loss": 2.0530639655410776
+      },
+      {
+        "features": [
+          "functional_erank"
+        ],
+        "degree": 1,
+        "ridge": 1.0,
+        "inner_cv_loss": 2.0569312617358175
+      },
+      {
+        "features": [
+          "functional_erank_iqr"
+        ],
+        "degree": 1,
+        "ridge": 0.01,
+        "inner_cv_loss": 2.074773105918595
+      },
+      {
+        "features": [
+          "fro_ratio"
+        ],
+        "degree": 1,
+        "ridge": 0.01,
+        "inner_cv_loss": 2.0772082326898187
+      },
+      {
+        "features": [
+          "fro_ratio"
+        ],
+        "degree": 2,
+        "ridge": 1.0,
+        "inner_cv_loss": 2.077733940831778
+      },
+      {
+        "features": [
+          "functional_erank_iqr"
+        ],
+        "degree": 1,
+        "ridge": 1.0,
+        "inner_cv_loss": 2.0786213591340528
+      },
+      {
+        "features": [
+          "fro_ratio"
+        ],
+        "degree": 2,
+        "ridge": 0.01,
+        "inner_cv_loss": 2.0787709192800468
+      },
+      {
+        "features": [
+          "fro_ratio"
+        ],
+        "degree": 1,
+        "ridge": 1.0,
+        "inner_cv_loss": 2.08105448614477
+      },
+      {
+        "features": [
+          "functional_erank_iqr"
+        ],
+        "degree": 2,
+        "ridge": 10.0,
+        "inner_cv_loss": 2.092007716959697
+      },
+      {
+        "features": [
+          "functional_erank"
+        ],
+        "degree": 1,
+        "ridge": 10.0,
+        "inner_cv_loss": 2.1108014086610116
+      },
+      {
+        "features": [
+          "fro_ratio"
+        ],
+        "degree": 2,
+        "ridge": 10.0,
+        "inner_cv_loss": 2.1177571392024497
+      },
+      {
+        "features": [
+          "functional_erank_iqr"
+        ],
+        "degree": 1,
+        "ridge": 10.0,
+        "inner_cv_loss": 2.1318463533702467
+      },
+      {
+        "features": [
+          "fro_ratio"
+        ],
+        "degree": 1,
+        "ridge": 10.0,
+        "inner_cv_loss": 2.1342079764194675
+      },
+      {
+        "features": [
+          "functional_cov_erank"
+        ],
+        "degree": 1,
+        "ridge": 0.01,
+        "inner_cv_loss": 2.145113452297251
+      },
+      {
+        "features": [
+          "functional_cov_erank"
+        ],
+        "degree": 1,
+        "ridge": 1.0,
+        "inner_cv_loss": 2.148393829040997
+      },
+      {
+        "features": [
+          "functional_erank"
+        ],
+        "degree": 2,
+        "ridge": 10.0,
+        "inner_cv_loss": 2.15722016972995
+      },
+      {
+        "features": [
+          "functional_erank_iqr"
+        ],
+        "degree": 2,
+        "ridge": 1.0,
+        "inner_cv_loss": 2.1670597568614425
+      },
+      {
+        "features": [
+          "functional_cov_erank"
+        ],
+        "degree": 1,
+        "ridge": 10.0,
+        "inner_cv_loss": 2.19632287961997
+      },
+      {
+        "features": [
+          "functional_erank_iqr"
+        ],
+        "degree": 2,
+        "ridge": 0.01,
+        "inner_cv_loss": 2.206319513907331
+      },
+      {
+        "features": [
+          "functional_cov_erank"
+        ],
+        "degree": 2,
+        "ridge": 10.0,
+        "inner_cv_loss": 2.2349232538500505
+      },
+      {
+        "features": [
+          "functional_attn_mlp_gap"
+        ],
+        "degree": 1,
+        "ridge": 0.01,
+        "inner_cv_loss": 2.327687046961531
+      },
+      {
+        "features": [
+          "functional_attn_mlp_gap"
+        ],
+        "degree": 1,
+        "ridge": 1.0,
+        "inner_cv_loss": 2.3298423145319913
+      },
+      {
+        "features": [
+          "functional_attn_mlp_gap"
+        ],
+        "degree": 1,
+        "ridge": 10.0,
+        "inner_cv_loss": 2.3662346317061163
+      },
+      {
+        "features": [
+          "functional_attn_mlp_gap"
+        ],
+        "degree": 2,
+        "ridge": 10.0,
+        "inner_cv_loss": 2.453524938453384
+      },
+      {
+        "features": [
+          "functional_participation"
+        ],
+        "degree": 1,
+        "ridge": 0.01,
+        "inner_cv_loss": 2.4564657065964717
+      },
+      {
+        "features": [
+          "functional_participation"
+        ],
+        "degree": 1,
+        "ridge": 1.0,
+        "inner_cv_loss": 2.4581243549313183
+      },
+      {
+        "features": [
+          "functional_participation"
+        ],
+        "degree": 2,
+        "ridge": 10.0,
+        "inner_cv_loss": 2.475987820276214
+      },
+      {
+        "features": [
+          "functional_participation"
+        ],
+        "degree": 1,
+        "ridge": 10.0,
+        "inner_cv_loss": 2.48825995851216
+      },
+      {
+        "features": [
+          "functional_cov_participation"
+        ],
+        "degree": 2,
+        "ridge": 10.0,
+        "inner_cv_loss": 2.524564070082077
+      },
+      {
+        "features": [
+          "functional_cov_participation"
+        ],
+        "degree": 1,
+        "ridge": 0.01,
+        "inner_cv_loss": 2.5417383326906573
+      },
+      {
+        "features": [
+          "functional_cov_participation"
+        ],
+        "degree": 1,
+        "ridge": 1.0,
+        "inner_cv_loss": 2.542801291641309
+      },
+      {
+        "features": [
+          "functional_cov_participation"
+        ],
+        "degree": 1,
+        "ridge": 10.0,
+        "inner_cv_loss": 2.56710400786835
+      },
+      {
+        "features": [
+          "functional_attn_mlp_gap"
+        ],
+        "degree": 2,
+        "ridge": 1.0,
+        "inner_cv_loss": 2.5783246656074525
+      },
+      {
+        "features": [
+          "functional_attn_mlp_gap"
+        ],
+        "degree": 2,
+        "ridge": 0.01,
+        "inner_cv_loss": 2.6296736442486295
+      },
+      {
+        "features": [
+          "erank_depth_slope"
+        ],
+        "degree": 2,
+        "ridge": 10.0,
+        "inner_cv_loss": 2.9022809313489146
+      },
+      {
+        "features": [
+          "erank_depth_slope"
+        ],
+        "degree": 2,
+        "ridge": 1.0,
+        "inner_cv_loss": 2.9441076077174824
+      },
+      {
+        "features": [
+          "erank_depth_slope"
+        ],
+        "degree": 2,
+        "ridge": 0.01,
+        "inner_cv_loss": 2.9527292459242847
+      },
+      {
+        "features": [
+          "erank_depth_slope"
+        ],
+        "degree": 1,
+        "ridge": 10.0,
+        "inner_cv_loss": 3.6050901671023845
+      },
+      {
+        "features": [
+          "erank_depth_slope"
+        ],
+        "degree": 1,
+        "ridge": 1.0,
+        "inner_cv_loss": 3.6669397436244413
+      },
+      {
+        "features": [
+          "erank_depth_slope"
+        ],
+        "degree": 1,
+        "ridge": 0.01,
+        "inner_cv_loss": 3.6751561723469175
+      }
+    ],
+    "full_fit_feature_rms": [
+      2.1885175919244886
+    ],
+    "full_fit_outcome_sd": [
+      3.3747229694834937,
+      2.1737432278500246
+    ],
+    "full_fit_normalized_coefficients": [
+      [
+        -1.2257231903545154,
+        -1.0800925320005375
+      ]
+    ]
+  },
+  {
+    "cohort": "joint_flat_hns",
+    "model": "shape_plus_strength",
+    "outcomes": [
+      "target_gain",
+      "forgetting_reduction"
+    ],
+    "ranking": [
+      {
+        "features": [
+          "functional_participation",
+          "functional_energy_ratio"
+        ],
+        "degree": 2,
+        "ridge": 0.01,
+        "inner_cv_loss": 1.2892712849160208
+      },
+      {
+        "features": [
+          "functional_cov_erank",
+          "functional_energy_ratio"
+        ],
+        "degree": 2,
+        "ridge": 0.01,
+        "inner_cv_loss": 1.3210187243406666
+      },
+      {
+        "features": [
+          "functional_cov_participation",
+          "functional_energy_ratio"
+        ],
+        "degree": 2,
+        "ridge": 0.01,
+        "inner_cv_loss": 1.5243670185991902
+      },
+      {
+        "features": [
+          "functional_erank",
+          "functional_energy_ratio"
+        ],
+        "degree": 2,
+        "ridge": 0.01,
+        "inner_cv_loss": 1.5605151543661173
+      },
+      {
+        "features": [
+          "functional_participation",
+          "fro_ratio"
+        ],
+        "degree": 2,
+        "ridge": 0.01,
+        "inner_cv_loss": 1.565866925898911
+      },
+      {
+        "features": [
+          "erank_iqr",
+          "fro_ratio"
+        ],
+        "degree": 1,
+        "ridge": 0.01,
+        "inner_cv_loss": 1.596203866308952
+      },
+      {
+        "features": [
+          "erank_iqr",
+          "fro_ratio"
+        ],
+        "degree": 1,
+        "ridge": 1.0,
+        "inner_cv_loss": 1.6009916047599455
+      },
+      {
+        "features": [
+          "erank_iqr",
+          "fro_ratio"
+        ],
+        "degree": 2,
+        "ridge": 10.0,
+        "inner_cv_loss": 1.6410014764521186
+      },
+      {
+        "features": [
+          "erank_iqr",
+          "functional_energy_ratio"
+        ],
+        "degree": 1,
+        "ridge": 10.0,
+        "inner_cv_loss": 1.6474869078317322
+      },
+      {
+        "features": [
+          "erank_iqr",
+          "functional_energy_ratio"
+        ],
+        "degree": 2,
+        "ridge": 10.0,
+        "inner_cv_loss": 1.6485787482688339
+      },
+      {
+        "features": [
+          "erank_iqr",
+          "fro_ratio"
+        ],
+        "degree": 2,
+        "ridge": 1.0,
+        "inner_cv_loss": 1.6548238990376885
+      },
+      {
+        "features": [
+          "erank_iqr",
+          "fro_ratio"
+        ],
+        "degree": 1,
+        "ridge": 10.0,
+        "inner_cv_loss": 1.661614629808727
+      },
+      {
+        "features": [
+          "erank_iqr",
+          "functional_energy_ratio"
+        ],
+        "degree": 1,
+        "ridge": 1.0,
+        "inner_cv_loss": 1.6692834126398632
+      },
+      {
+        "features": [
+          "functional_cov_erank",
+          "fro_ratio"
+        ],
+        "degree": 2,
+        "ridge": 0.01,
+        "inner_cv_loss": 1.6717709589965393
+      },
+      {
+        "features": [
+          "functional_erank_iqr",
+          "functional_energy_ratio"
+        ],
+        "degree": 1,
+        "ridge": 1.0,
+        "inner_cv_loss": 1.6726043543983113
+      },
+      {
+        "features": [
+          "functional_participation",
+          "functional_energy_ratio"
+        ],
+        "degree": 2,
+        "ridge": 1.0,
+        "inner_cv_loss": 1.6736258907361081
+      },
+      {
+        "features": [
+          "functional_erank_iqr",
+          "functional_energy_ratio"
+        ],
+        "degree": 1,
+        "ridge": 0.01,
+        "inner_cv_loss": 1.6743928767872094
+      },
+      {
+        "features": [
+          "functional_cov_participation",
+          "fro_ratio"
+        ],
+        "degree": 2,
+        "ridge": 0.01,
+        "inner_cv_loss": 1.6822836243238395
+      },
+      {
+        "features": [
+          "functional_cov_participation",
+          "functional_energy_ratio"
+        ],
+        "degree": 2,
+        "ridge": 1.0,
+        "inner_cv_loss": 1.6898744804265473
+      },
+      {
+        "features": [
+          "functional_attn_mlp_gap",
+          "functional_energy_ratio"
+        ],
+        "degree": 1,
+        "ridge": 1.0,
+        "inner_cv_loss": 1.6970091795152862
+      },
+      {
+        "features": [
+          "functional_attn_mlp_gap",
+          "functional_energy_ratio"
+        ],
+        "degree": 1,
+        "ridge": 0.01,
+        "inner_cv_loss": 1.698414712812658
+      },
+      {
+        "features": [
+          "functional_erank_iqr",
+          "functional_energy_ratio"
+        ],
+        "degree": 1,
+        "ridge": 10.0,
+        "inner_cv_loss": 1.7006974987092993
+      },
+      {
+        "features": [
+          "erank_iqr",
+          "functional_energy_ratio"
+        ],
+        "degree": 1,
+        "ridge": 0.01,
+        "inner_cv_loss": 1.7034482631240242
+      },
+      {
+        "features": [
+          "functional_cov_erank",
+          "functional_energy_ratio"
+        ],
+        "degree": 1,
+        "ridge": 1.0,
+        "inner_cv_loss": 1.7079668041048466
+      },
+      {
+        "features": [
+          "functional_attn_mlp_gap",
+          "functional_energy_ratio"
+        ],
+        "degree": 2,
+        "ridge": 1.0,
+        "inner_cv_loss": 1.708082884051076
+      },
+      {
+        "features": [
+          "functional_cov_erank",
+          "functional_energy_ratio"
+        ],
+        "degree": 1,
+        "ridge": 0.01,
+        "inner_cv_loss": 1.7083599928345494
+      },
+      {
+        "features": [
+          "functional_cov_participation",
+          "functional_energy_ratio"
+        ],
+        "degree": 1,
+        "ridge": 0.01,
+        "inner_cv_loss": 1.7115953718944317
+      },
+      {
+        "features": [
+          "functional_cov_participation",
+          "functional_energy_ratio"
+        ],
+        "degree": 1,
+        "ridge": 1.0,
+        "inner_cv_loss": 1.7137464083365546
+      },
+      {
+        "features": [
+          "functional_cov_erank",
+          "functional_energy_ratio"
+        ],
+        "degree": 2,
+        "ridge": 1.0,
+        "inner_cv_loss": 1.7150608266107101
+      },
+      {
+        "features": [
+          "functional_attn_mlp_gap",
+          "functional_energy_ratio"
+        ],
+        "degree": 2,
+        "ridge": 0.01,
+        "inner_cv_loss": 1.7180401603756073
+      },
+      {
+        "features": [
+          "erank_iqr",
+          "fro_ratio"
+        ],
+        "degree": 2,
+        "ridge": 0.01,
+        "inner_cv_loss": 1.7278281587306679
+      },
+      {
+        "features": [
+          "functional_attn_mlp_gap",
+          "functional_energy_ratio"
+        ],
+        "degree": 1,
+        "ridge": 10.0,
+        "inner_cv_loss": 1.7345236262543648
+      },
+      {
+        "features": [
+          "functional_participation",
+          "fro_ratio"
+        ],
+        "degree": 2,
+        "ridge": 1.0,
+        "inner_cv_loss": 1.7356756784407896
+      },
+      {
+        "features": [
+          "erank_iqr",
+          "functional_energy_ratio"
+        ],
+        "degree": 2,
+        "ridge": 1.0,
+        "inner_cv_loss": 1.7358649343568961
+      },
+      {
+        "features": [
+          "functional_attn_mlp_gap",
+          "functional_energy_ratio"
+        ],
+        "degree": 2,
+        "ridge": 10.0,
+        "inner_cv_loss": 1.7434957346132813
+      },
+      {
+        "features": [
+          "functional_erank",
+          "functional_energy_ratio"
+        ],
+        "degree": 1,
+        "ridge": 1.0,
+        "inner_cv_loss": 1.744961408469337
+      },
+      {
+        "features": [
+          "functional_participation",
+          "functional_energy_ratio"
+        ],
+        "degree": 1,
+        "ridge": 1.0,
+        "inner_cv_loss": 1.749471849010799
+      },
+      {
+        "features": [
+          "functional_participation",
+          "functional_energy_ratio"
+        ],
+        "degree": 1,
+        "ridge": 0.01,
+        "inner_cv_loss": 1.7504897328776865
+      },
+      {
+        "features": [
+          "functional_erank_iqr",
+          "functional_energy_ratio"
+        ],
+        "degree": 2,
+        "ridge": 10.0,
+        "inner_cv_loss": 1.7527994871020693
+      },
+      {
+        "features": [
+          "functional_erank",
+          "functional_energy_ratio"
+        ],
+        "degree": 1,
+        "ridge": 0.01,
+        "inner_cv_loss": 1.7543373482284519
+      },
+      {
+        "features": [
+          "functional_cov_participation",
+          "functional_energy_ratio"
+        ],
+        "degree": 2,
+        "ridge": 10.0,
+        "inner_cv_loss": 1.7565526604819985
+      },
+      {
+        "features": [
+          "functional_cov_erank",
+          "functional_energy_ratio"
+        ],
+        "degree": 2,
+        "ridge": 10.0,
+        "inner_cv_loss": 1.760032545759767
+      },
+      {
+        "features": [
+          "functional_participation",
+          "functional_energy_ratio"
+        ],
+        "degree": 2,
+        "ridge": 10.0,
+        "inner_cv_loss": 1.769448189910828
+      },
+      {
+        "features": [
+          "functional_cov_erank",
+          "fro_ratio"
+        ],
+        "degree": 2,
+        "ridge": 1.0,
+        "inner_cv_loss": 1.770950189754763
+      },
+      {
+        "features": [
+          "functional_erank",
+          "functional_energy_ratio"
+        ],
+        "degree": 2,
+        "ridge": 1.0,
+        "inner_cv_loss": 1.773637007445778
+      },
+      {
+        "features": [
+          "functional_erank",
+          "functional_energy_ratio"
+        ],
+        "degree": 2,
+        "ridge": 10.0,
+        "inner_cv_loss": 1.775867468377867
+      },
+      {
+        "features": [
+          "functional_cov_participation",
+          "fro_ratio"
+        ],
+        "degree": 2,
+        "ridge": 1.0,
+        "inner_cv_loss": 1.7848571960738557
+      },
+      {
+        "features": [
+          "functional_erank",
+          "functional_energy_ratio"
+        ],
+        "degree": 1,
+        "ridge": 10.0,
+        "inner_cv_loss": 1.7948740945059205
+      },
+      {
+        "features": [
+          "functional_cov_erank",
+          "functional_energy_ratio"
+        ],
+        "degree": 1,
+        "ridge": 10.0,
+        "inner_cv_loss": 1.7987152634996224
+      },
+      {
+        "features": [
+          "functional_cov_participation",
+          "functional_energy_ratio"
+        ],
+        "degree": 1,
+        "ridge": 10.0,
+        "inner_cv_loss": 1.808007370086956
+      },
+      {
+        "features": [
+          "functional_erank",
+          "fro_ratio"
+        ],
+        "degree": 2,
+        "ridge": 1.0,
+        "inner_cv_loss": 1.8105079529344694
+      },
+      {
+        "features": [
+          "erank_depth_slope",
+          "functional_energy_ratio"
+        ],
+        "degree": 2,
+        "ridge": 1.0,
+        "inner_cv_loss": 1.8125820532151853
+      },
+      {
+        "features": [
+          "functional_erank_iqr",
+          "functional_energy_ratio"
+        ],
+        "degree": 2,
+        "ridge": 1.0,
+        "inner_cv_loss": 1.8198436511733758
+      },
+      {
+        "features": [
+          "functional_participation",
+          "functional_energy_ratio"
+        ],
+        "degree": 1,
+        "ridge": 10.0,
+        "inner_cv_loss": 1.8214888363382162
+      },
+      {
+        "features": [
+          "erank_depth_slope",
+          "functional_energy_ratio"
+        ],
+        "degree": 2,
+        "ridge": 10.0,
+        "inner_cv_loss": 1.8288057869092214
+      },
+      {
+        "features": [
+          "functional_erank",
+          "fro_ratio"
+        ],
+        "degree": 2,
+        "ridge": 0.01,
+        "inner_cv_loss": 1.82946794869874
+      },
+      {
+        "features": [
+          "functional_erank",
+          "fro_ratio"
+        ],
+        "degree": 1,
+        "ridge": 0.01,
+        "inner_cv_loss": 1.8651285746079997
+      },
+      {
+        "features": [
+          "functional_erank",
+          "fro_ratio"
+        ],
+        "degree": 1,
+        "ridge": 1.0,
+        "inner_cv_loss": 1.8659357411707065
+      },
+      {
+        "features": [
+          "erank_depth_slope",
+          "functional_energy_ratio"
+        ],
+        "degree": 2,
+        "ridge": 0.01,
+        "inner_cv_loss": 1.868335134049383
+      },
+      {
+        "features": [
+          "functional_erank",
+          "fro_ratio"
+        ],
+        "degree": 2,
+        "ridge": 10.0,
+        "inner_cv_loss": 1.8720560042153958
+      },
+      {
+        "features": [
+          "erank_depth_slope",
+          "functional_energy_ratio"
+        ],
+        "degree": 1,
+        "ridge": 0.01,
+        "inner_cv_loss": 1.8836080858288864
+      },
+      {
+        "features": [
+          "erank_depth_slope",
+          "functional_energy_ratio"
+        ],
+        "degree": 1,
+        "ridge": 1.0,
+        "inner_cv_loss": 1.8848424595284585
+      },
+      {
+        "features": [
+          "functional_erank_iqr",
+          "fro_ratio"
+        ],
+        "degree": 1,
+        "ridge": 1.0,
+        "inner_cv_loss": 1.887093135996658
+      },
+      {
+        "features": [
+          "functional_erank_iqr",
+          "fro_ratio"
+        ],
+        "degree": 1,
+        "ridge": 0.01,
+        "inner_cv_loss": 1.8874980688294076
+      },
+      {
+        "features": [
+          "functional_erank",
+          "fro_ratio"
+        ],
+        "degree": 1,
+        "ridge": 10.0,
+        "inner_cv_loss": 1.890575981609655
+      },
+      {
+        "features": [
+          "functional_erank_iqr",
+          "functional_energy_ratio"
+        ],
+        "degree": 2,
+        "ridge": 0.01,
+        "inner_cv_loss": 1.9011011841131058
+      },
+      {
+        "features": [
+          "functional_cov_erank",
+          "fro_ratio"
+        ],
+        "degree": 2,
+        "ridge": 10.0,
+        "inner_cv_loss": 1.9040945339950979
+      },
+      {
+        "features": [
+          "functional_erank_iqr",
+          "fro_ratio"
+        ],
+        "degree": 1,
+        "ridge": 10.0,
+        "inner_cv_loss": 1.905103884820793
+      },
+      {
+        "features": [
+          "functional_cov_erank",
+          "fro_ratio"
+        ],
+        "degree": 1,
+        "ridge": 0.01,
+        "inner_cv_loss": 1.90551478633619
+      },
+      {
+        "features": [
+          "functional_cov_erank",
+          "fro_ratio"
+        ],
+        "degree": 1,
+        "ridge": 1.0,
+        "inner_cv_loss": 1.9064993743552456
+      },
+      {
+        "features": [
+          "erank_iqr",
+          "functional_energy_ratio"
+        ],
+        "degree": 2,
+        "ridge": 0.01,
+        "inner_cv_loss": 1.9207047360623584
+      },
+      {
+        "features": [
+          "functional_erank_iqr",
+          "fro_ratio"
+        ],
+        "degree": 2,
+        "ridge": 10.0,
+        "inner_cv_loss": 1.9260445244546698
+      },
+      {
+        "features": [
+          "functional_cov_erank",
+          "fro_ratio"
+        ],
+        "degree": 1,
+        "ridge": 10.0,
+        "inner_cv_loss": 1.9311511583400116
+      },
+      {
+        "features": [
+          "erank_depth_slope",
+          "functional_energy_ratio"
+        ],
+        "degree": 1,
+        "ridge": 10.0,
+        "inner_cv_loss": 1.932399438335904
+      },
+      {
+        "features": [
+          "functional_attn_mlp_gap",
+          "fro_ratio"
+        ],
+        "degree": 1,
+        "ridge": 0.01,
+        "inner_cv_loss": 1.9530045236604805
+      },
+      {
+        "features": [
+          "functional_attn_mlp_gap",
+          "fro_ratio"
+        ],
+        "degree": 1,
+        "ridge": 1.0,
+        "inner_cv_loss": 1.9532614251720837
+      },
+      {
+        "features": [
+          "functional_participation",
+          "fro_ratio"
+        ],
+        "degree": 2,
+        "ridge": 10.0,
+        "inner_cv_loss": 1.9659372748039026
+      },
+      {
+        "features": [
+          "functional_attn_mlp_gap",
+          "fro_ratio"
+        ],
+        "degree": 1,
+        "ridge": 10.0,
+        "inner_cv_loss": 1.9755172590278791
+      },
+      {
+        "features": [
+          "functional_erank_iqr",
+          "fro_ratio"
+        ],
+        "degree": 2,
+        "ridge": 1.0,
+        "inner_cv_loss": 1.9849614569094483
+      },
+      {
+        "features": [
+          "functional_cov_participation",
+          "fro_ratio"
+        ],
+        "degree": 2,
+        "ridge": 10.0,
+        "inner_cv_loss": 1.986369513855651
+      },
+      {
+        "features": [
+          "functional_participation",
+          "fro_ratio"
+        ],
+        "degree": 1,
+        "ridge": 0.01,
+        "inner_cv_loss": 1.998829708532884
+      },
+      {
+        "features": [
+          "functional_participation",
+          "fro_ratio"
+        ],
+        "degree": 1,
+        "ridge": 1.0,
+        "inner_cv_loss": 1.9999127407352897
+      },
+      {
+        "features": [
+          "functional_cov_participation",
+          "fro_ratio"
+        ],
+        "degree": 1,
+        "ridge": 0.01,
+        "inner_cv_loss": 2.0185553080879215
+      },
+      {
+        "features": [
+          "functional_cov_participation",
+          "fro_ratio"
+        ],
+        "degree": 1,
+        "ridge": 1.0,
+        "inner_cv_loss": 2.0201601882773943
+      },
+      {
+        "features": [
+          "functional_participation",
+          "fro_ratio"
+        ],
+        "degree": 1,
+        "ridge": 10.0,
+        "inner_cv_loss": 2.0253778762569965
+      },
+      {
+        "features": [
+          "functional_erank_iqr",
+          "fro_ratio"
+        ],
+        "degree": 2,
+        "ridge": 0.01,
+        "inner_cv_loss": 2.0319203936719963
+      },
+      {
+        "features": [
+          "functional_attn_mlp_gap",
+          "fro_ratio"
+        ],
+        "degree": 2,
+        "ridge": 10.0,
+        "inner_cv_loss": 2.0480598948395623
+      },
+      {
+        "features": [
+          "functional_cov_participation",
+          "fro_ratio"
+        ],
+        "degree": 1,
+        "ridge": 10.0,
+        "inner_cv_loss": 2.0492908327519275
+      },
+      {
+        "features": [
+          "functional_attn_mlp_gap",
+          "fro_ratio"
+        ],
+        "degree": 2,
+        "ridge": 1.0,
+        "inner_cv_loss": 2.075347466444644
+      },
+      {
+        "features": [
+          "functional_attn_mlp_gap",
+          "fro_ratio"
+        ],
+        "degree": 2,
+        "ridge": 0.01,
+        "inner_cv_loss": 2.089560456628705
+      },
+      {
+        "features": [
+          "erank_depth_slope",
+          "fro_ratio"
+        ],
+        "degree": 2,
+        "ridge": 10.0,
+        "inner_cv_loss": 2.2663948471890034
+      },
+      {
+        "features": [
+          "erank_depth_slope",
+          "fro_ratio"
+        ],
+        "degree": 2,
+        "ridge": 1.0,
+        "inner_cv_loss": 2.2895544597360225
+      },
+      {
+        "features": [
+          "erank_depth_slope",
+          "fro_ratio"
+        ],
+        "degree": 2,
+        "ridge": 0.01,
+        "inner_cv_loss": 2.3081965470924715
+      },
+      {
+        "features": [
+          "erank_depth_slope",
+          "fro_ratio"
+        ],
+        "degree": 1,
+        "ridge": 0.01,
+        "inner_cv_loss": 2.325883129821827
+      },
+      {
+        "features": [
+          "erank_depth_slope",
+          "fro_ratio"
+        ],
+        "degree": 1,
+        "ridge": 1.0,
+        "inner_cv_loss": 2.3259136793589374
+      },
+      {
+        "features": [
+          "erank_depth_slope",
+          "fro_ratio"
+        ],
+        "degree": 1,
+        "ridge": 10.0,
+        "inner_cv_loss": 2.3513449579718984
+      }
+    ],
+    "full_fit_feature_rms": [
+      5.855651536006175,
+      0.6822073544276588,
+      43.61504153198474,
+      0.4959595208332448
+    ],
+    "full_fit_outcome_sd": [
+      3.3747229694834937,
+      2.1737432278500246
+    ],
+    "full_fit_normalized_coefficients": [
+      [
+        -8.51808395466194,
+        6.844291741975983
+      ],
+      [
+        -8.766169451790983,
+        2.4495105459744257
+      ],
+      [
+        5.685814983336235,
+        -5.321158510468402
+      ],
+      [
+        -4.5740743844283225,
+        1.6083270516540635
+      ]
+    ]
+  },
+  {
+    "cohort": "hns_grid_target",
+    "model": "single",
+    "outcomes": [
+      "target_gain"
+    ],
+    "ranking": [
+      {
+        "features": [
+          "fro_ratio"
+        ],
+        "degree": 2,
+        "ridge": 10.0,
+        "inner_cv_loss": 1.019740920761425
+      },
+      {
+        "features": [
+          "fro_ratio"
+        ],
+        "degree": 1,
+        "ridge": 0.01,
+        "inner_cv_loss": 1.0346861400496854
+      },
+      {
+        "features": [
+          "fro_ratio"
+        ],
+        "degree": 1,
+        "ridge": 1.0,
+        "inner_cv_loss": 1.035494695625057
+      },
+      {
+        "features": [
+          "fro_ratio"
+        ],
+        "degree": 2,
+        "ridge": 1.0,
+        "inner_cv_loss": 1.0483987332476252
+      },
+      {
+        "features": [
+          "fro_ratio"
+        ],
+        "degree": 1,
+        "ridge": 10.0,
+        "inner_cv_loss": 1.0485115121638875
+      },
+      {
+        "features": [
+          "fro_ratio"
+        ],
+        "degree": 2,
+        "ridge": 0.01,
+        "inner_cv_loss": 1.0598775622228187
+      },
+      {
+        "features": [
+          "erank_iqr"
+        ],
+        "degree": 1,
+        "ridge": 0.01,
+        "inner_cv_loss": 1.1802811029615332
+      },
+      {
+        "features": [
+          "erank_iqr"
+        ],
+        "degree": 1,
+        "ridge": 1.0,
+        "inner_cv_loss": 1.18089758949718
+      },
+      {
+        "features": [
+          "erank_iqr"
+        ],
+        "degree": 1,
+        "ridge": 10.0,
+        "inner_cv_loss": 1.191883747934089
+      },
+      {
+        "features": [
+          "erank_iqr"
+        ],
+        "degree": 2,
+        "ridge": 10.0,
+        "inner_cv_loss": 1.209789949068031
+      },
+      {
+        "features": [
+          "erank_iqr"
+        ],
+        "degree": 2,
+        "ridge": 1.0,
+        "inner_cv_loss": 1.2297253262389287
+      },
+      {
+        "features": [
+          "original_head1_retention"
+        ],
+        "degree": 2,
+        "ridge": 0.01,
+        "inner_cv_loss": 1.2426930693250562
+      },
+      {
+        "features": [
+          "erank_iqr"
+        ],
+        "degree": 2,
+        "ridge": 0.01,
+        "inner_cv_loss": 1.24706273700432
+      },
+      {
+        "features": [
+          "original_head1_retention"
+        ],
+        "degree": 2,
+        "ridge": 1.0,
+        "inner_cv_loss": 1.2803574507198043
+      },
+      {
+        "features": [
+          "original_head1_retention"
+        ],
+        "degree": 2,
+        "ridge": 10.0,
+        "inner_cv_loss": 1.2941638167310767
+      },
+      {
+        "features": [
+          "functional_energy_ratio"
+        ],
+        "degree": 1,
+        "ridge": 0.01,
+        "inner_cv_loss": 1.2990235004376012
+      },
+      {
+        "features": [
+          "functional_energy_ratio"
+        ],
+        "degree": 1,
+        "ridge": 1.0,
+        "inner_cv_loss": 1.2995655914906457
+      },
+      {
+        "features": [
+          "original_head1_retention"
+        ],
+        "degree": 1,
+        "ridge": 0.01,
+        "inner_cv_loss": 1.3074428335493258
+      },
+      {
+        "features": [
+          "original_head1_retention"
+        ],
+        "degree": 1,
+        "ridge": 1.0,
+        "inner_cv_loss": 1.3080992962439961
+      },
+      {
+        "features": [
+          "functional_energy_ratio"
+        ],
+        "degree": 1,
+        "ridge": 10.0,
+        "inner_cv_loss": 1.309554213524446
+      },
+      {
+        "features": [
+          "functional_energy_ratio"
+        ],
+        "degree": 2,
+        "ridge": 10.0,
+        "inner_cv_loss": 1.3167213876296953
+      },
+      {
+        "features": [
+          "original_head1_retention"
+        ],
+        "degree": 1,
+        "ridge": 10.0,
+        "inner_cv_loss": 1.31897523964484
+      },
+      {
+        "features": [
+          "functional_cov_erank"
+        ],
+        "degree": 2,
+        "ridge": 0.01,
+        "inner_cv_loss": 1.3624956536779427
+      },
+      {
+        "features": [
+          "functional_energy_ratio"
+        ],
+        "degree": 2,
+        "ridge": 1.0,
+        "inner_cv_loss": 1.385796694364918
+      },
+      {
+        "features": [
+          "functional_cov_erank"
+        ],
+        "degree": 2,
+        "ridge": 1.0,
+        "inner_cv_loss": 1.4525879295640558
+      },
+      {
+        "features": [
+          "functional_energy_ratio"
+        ],
+        "degree": 2,
+        "ridge": 0.01,
+        "inner_cv_loss": 1.4550656104795219
+      },
+      {
+        "features": [
+          "functional_erank_iqr"
+        ],
+        "degree": 2,
+        "ridge": 0.01,
+        "inner_cv_loss": 1.4701203623403485
+      },
+      {
+        "features": [
+          "functional_erank_iqr"
+        ],
+        "degree": 2,
+        "ridge": 1.0,
+        "inner_cv_loss": 1.4713788162362076
+      },
+      {
+        "features": [
+          "functional_erank_iqr"
+        ],
+        "degree": 2,
+        "ridge": 10.0,
+        "inner_cv_loss": 1.485314333716211
+      },
+      {
+        "features": [
+          "functional_erank"
+        ],
+        "degree": 2,
+        "ridge": 0.01,
+        "inner_cv_loss": 1.4939953139714206
+      },
+      {
+        "features": [
+          "functional_erank"
+        ],
+        "degree": 2,
+        "ridge": 1.0,
+        "inner_cv_loss": 1.5507885594873696
+      },
+      {
+        "features": [
+          "functional_erank_iqr"
+        ],
+        "degree": 1,
+        "ridge": 0.01,
+        "inner_cv_loss": 1.7618862024000435
+      },
+      {
+        "features": [
+          "functional_erank_iqr"
+        ],
+        "degree": 1,
+        "ridge": 1.0,
+        "inner_cv_loss": 1.7623360692167624
+      },
+      {
+        "features": [
+          "functional_erank_iqr"
+        ],
+        "degree": 1,
+        "ridge": 10.0,
+        "inner_cv_loss": 1.7700198843274941
+      },
+      {
+        "features": [
+          "functional_erank"
+        ],
+        "degree": 1,
+        "ridge": 0.01,
+        "inner_cv_loss": 1.7903614993167396
+      },
+      {
+        "features": [
+          "functional_erank"
+        ],
+        "degree": 1,
+        "ridge": 1.0,
+        "inner_cv_loss": 1.7906223998451563
+      },
+      {
+        "features": [
+          "functional_erank"
+        ],
+        "degree": 1,
+        "ridge": 10.0,
+        "inner_cv_loss": 1.7966967368090567
+      },
+      {
+        "features": [
+          "functional_erank"
+        ],
+        "degree": 2,
+        "ridge": 10.0,
+        "inner_cv_loss": 1.7969156950990772
+      },
+      {
+        "features": [
+          "functional_cov_erank"
+        ],
+        "degree": 2,
+        "ridge": 10.0,
+        "inner_cv_loss": 1.831814893562105
+      },
+      {
+        "features": [
+          "functional_cov_participation"
+        ],
+        "degree": 2,
+        "ridge": 0.01,
+        "inner_cv_loss": 1.8535576648628347
+      },
+      {
+        "features": [
+          "functional_cov_participation"
+        ],
+        "degree": 2,
+        "ridge": 1.0,
+        "inner_cv_loss": 1.8587058750136396
+      },
+      {
+        "features": [
+          "functional_participation"
+        ],
+        "degree": 2,
+        "ridge": 0.01,
+        "inner_cv_loss": 1.8686465296541732
+      },
+      {
+        "features": [
+          "functional_participation"
+        ],
+        "degree": 2,
+        "ridge": 1.0,
+        "inner_cv_loss": 1.8747845192653807
+      },
+      {
+        "features": [
+          "functional_cov_erank"
+        ],
+        "degree": 1,
+        "ridge": 0.01,
+        "inner_cv_loss": 1.8839883024375605
+      },
+      {
+        "features": [
+          "functional_cov_erank"
+        ],
+        "degree": 1,
+        "ridge": 1.0,
+        "inner_cv_loss": 1.884084050224706
+      },
+      {
+        "features": [
+          "functional_cov_erank"
+        ],
+        "degree": 1,
+        "ridge": 10.0,
+        "inner_cv_loss": 1.888519118261821
+      },
+      {
+        "features": [
+          "functional_attn_mlp_gap"
+        ],
+        "degree": 2,
+        "ridge": 10.0,
+        "inner_cv_loss": 1.9010145145153254
+      },
+      {
+        "features": [
+          "functional_attn_mlp_gap"
+        ],
+        "degree": 2,
+        "ridge": 1.0,
+        "inner_cv_loss": 1.9095464306548378
+      },
+      {
+        "features": [
+          "functional_attn_mlp_gap"
+        ],
+        "degree": 2,
+        "ridge": 0.01,
+        "inner_cv_loss": 1.9117903744394953
+      },
+      {
+        "features": [
+          "functional_cov_participation"
+        ],
+        "degree": 2,
+        "ridge": 10.0,
+        "inner_cv_loss": 2.0714575851313315
+      },
+      {
+        "features": [
+          "functional_participation"
+        ],
+        "degree": 2,
+        "ridge": 10.0,
+        "inner_cv_loss": 2.0724443663387686
+      },
+      {
+        "features": [
+          "functional_attn_mlp_gap"
+        ],
+        "degree": 1,
+        "ridge": 1.0,
+        "inner_cv_loss": 2.085152735895347
+      },
+      {
+        "features": [
+          "functional_attn_mlp_gap"
+        ],
+        "degree": 1,
+        "ridge": 0.01,
+        "inner_cv_loss": 2.0851947795602666
+      },
+      {
+        "features": [
+          "functional_attn_mlp_gap"
+        ],
+        "degree": 1,
+        "ridge": 10.0,
+        "inner_cv_loss": 2.0878035744766836
+      },
+      {
+        "features": [
+          "functional_participation"
+        ],
+        "degree": 1,
+        "ridge": 1.0,
+        "inner_cv_loss": 2.142592354548805
+      },
+      {
+        "features": [
+          "functional_participation"
+        ],
+        "degree": 1,
+        "ridge": 0.01,
+        "inner_cv_loss": 2.142727333795761
+      },
+      {
+        "features": [
+          "functional_participation"
+        ],
+        "degree": 1,
+        "ridge": 10.0,
+        "inner_cv_loss": 2.144304335129349
+      },
+      {
+        "features": [
+          "functional_cov_participation"
+        ],
+        "degree": 1,
+        "ridge": 10.0,
+        "inner_cv_loss": 2.2258196606617955
+      },
+      {
+        "features": [
+          "functional_cov_participation"
+        ],
+        "degree": 1,
+        "ridge": 1.0,
+        "inner_cv_loss": 2.225940543782862
+      },
+      {
+        "features": [
+          "functional_cov_participation"
+        ],
+        "degree": 1,
+        "ridge": 0.01,
+        "inner_cv_loss": 2.226269115015316
+      },
+      {
+        "features": [
+          "erank_depth_slope"
+        ],
+        "degree": 2,
+        "ridge": 10.0,
+        "inner_cv_loss": 2.776950320925204
+      },
+      {
+        "features": [
+          "erank_depth_slope"
+        ],
+        "degree": 2,
+        "ridge": 1.0,
+        "inner_cv_loss": 2.8066140475212524
+      },
+      {
+        "features": [
+          "erank_depth_slope"
+        ],
+        "degree": 2,
+        "ridge": 0.01,
+        "inner_cv_loss": 2.810491570692536
+      },
+      {
+        "features": [
+          "erank_depth_slope"
+        ],
+        "degree": 1,
+        "ridge": 10.0,
+        "inner_cv_loss": 3.1513219266914096
+      },
+      {
+        "features": [
+          "erank_depth_slope"
+        ],
+        "degree": 1,
+        "ridge": 1.0,
+        "inner_cv_loss": 3.162503037223862
+      },
+      {
+        "features": [
+          "erank_depth_slope"
+        ],
+        "degree": 1,
+        "ridge": 0.01,
+        "inner_cv_loss": 3.163816648355212
+      }
+    ],
+    "full_fit_feature_rms": [
+      0.28935893556935,
+      0.10281401644744166
+    ],
+    "full_fit_outcome_sd": [
+      3.1978917594394916
+    ],
+    "full_fit_normalized_coefficients": [
+      [
+        -0.713913634165149
+      ],
+      [
+        0.5869293880458916
+      ]
+    ]
+  },
+  {
+    "cohort": "hns_grid_target",
+    "model": "shape_plus_strength",
+    "outcomes": [
+      "target_gain"
+    ],
+    "ranking": [
+      {
+        "features": [
+          "erank_depth_slope",
+          "fro_ratio"
+        ],
+        "degree": 2,
+        "ridge": 1.0,
+        "inner_cv_loss": 0.6122770596881576
+      },
+      {
+        "features": [
+          "erank_depth_slope",
+          "fro_ratio"
+        ],
+        "degree": 2,
+        "ridge": 0.01,
+        "inner_cv_loss": 0.614552102309119
+      },
+      {
+        "features": [
+          "erank_depth_slope",
+          "fro_ratio"
+        ],
+        "degree": 2,
+        "ridge": 10.0,
+        "inner_cv_loss": 0.6724473185581522
+      },
+      {
+        "features": [
+          "functional_cov_erank",
+          "functional_energy_ratio"
+        ],
+        "degree": 2,
+        "ridge": 0.01,
+        "inner_cv_loss": 0.7802415603480131
+      },
+      {
+        "features": [
+          "functional_erank",
+          "functional_energy_ratio"
+        ],
+        "degree": 2,
+        "ridge": 0.01,
+        "inner_cv_loss": 0.8112411756535167
+      },
+      {
+        "features": [
+          "erank_iqr",
+          "fro_ratio"
+        ],
+        "degree": 2,
+        "ridge": 0.01,
+        "inner_cv_loss": 0.8625119696989763
+      },
+      {
+        "features": [
+          "functional_participation",
+          "functional_energy_ratio"
+        ],
+        "degree": 2,
+        "ridge": 0.01,
+        "inner_cv_loss": 0.9021705559293037
+      },
+      {
+        "features": [
+          "functional_cov_participation",
+          "fro_ratio"
+        ],
+        "degree": 2,
+        "ridge": 0.01,
+        "inner_cv_loss": 0.9387009077847723
+      },
+      {
+        "features": [
+          "functional_cov_participation",
+          "functional_energy_ratio"
+        ],
+        "degree": 2,
+        "ridge": 0.01,
+        "inner_cv_loss": 0.9457751348378426
+      },
+      {
+        "features": [
+          "functional_participation",
+          "fro_ratio"
+        ],
+        "degree": 2,
+        "ridge": 0.01,
+        "inner_cv_loss": 0.9759462019387863
+      },
+      {
+        "features": [
+          "erank_iqr",
+          "fro_ratio"
+        ],
+        "degree": 2,
+        "ridge": 1.0,
+        "inner_cv_loss": 0.9969696084059964
+      },
+      {
+        "features": [
+          "functional_cov_participation",
+          "fro_ratio"
+        ],
+        "degree": 2,
+        "ridge": 1.0,
+        "inner_cv_loss": 1.0138469311595963
+      },
+      {
+        "features": [
+          "functional_participation",
+          "fro_ratio"
+        ],
+        "degree": 2,
+        "ridge": 1.0,
+        "inner_cv_loss": 1.0323690395895597
+      },
+      {
+        "features": [
+          "erank_iqr",
+          "fro_ratio"
+        ],
+        "degree": 2,
+        "ridge": 10.0,
+        "inner_cv_loss": 1.0461625024779755
+      },
+      {
+        "features": [
+          "functional_cov_participation",
+          "fro_ratio"
+        ],
+        "degree": 2,
+        "ridge": 10.0,
+        "inner_cv_loss": 1.0589674314464457
+      },
+      {
+        "features": [
+          "functional_participation",
+          "fro_ratio"
+        ],
+        "degree": 2,
+        "ridge": 10.0,
+        "inner_cv_loss": 1.0704373960778453
+      },
+      {
+        "features": [
+          "erank_iqr",
+          "fro_ratio"
+        ],
+        "degree": 1,
+        "ridge": 1.0,
+        "inner_cv_loss": 1.0715305575225478
+      },
+      {
+        "features": [
+          "functional_cov_erank",
+          "fro_ratio"
+        ],
+        "degree": 1,
+        "ridge": 0.01,
+        "inner_cv_loss": 1.0757635269211878
+      },
+      {
+        "features": [
+          "functional_cov_erank",
+          "fro_ratio"
+        ],
+        "degree": 1,
+        "ridge": 1.0,
+        "inner_cv_loss": 1.0777436163905167
+      },
+      {
+        "features": [
+          "functional_attn_mlp_gap",
+          "fro_ratio"
+        ],
+        "degree": 2,
+        "ridge": 10.0,
+        "inner_cv_loss": 1.081374709473282
+      },
+      {
+        "features": [
+          "erank_depth_slope",
+          "fro_ratio"
+        ],
+        "degree": 1,
+        "ridge": 10.0,
+        "inner_cv_loss": 1.0880850612639932
+      },
+      {
+        "features": [
+          "erank_iqr",
+          "fro_ratio"
+        ],
+        "degree": 1,
+        "ridge": 10.0,
+        "inner_cv_loss": 1.0886889919461376
+      },
+      {
+        "features": [
+          "erank_depth_slope",
+          "fro_ratio"
+        ],
+        "degree": 1,
+        "ridge": 1.0,
+        "inner_cv_loss": 1.0905966342710454
+      },
+      {
+        "features": [
+          "erank_depth_slope",
+          "fro_ratio"
+        ],
+        "degree": 1,
+        "ridge": 0.01,
+        "inner_cv_loss": 1.0919455155873443
+      },
+      {
+        "features": [
+          "erank_iqr",
+          "fro_ratio"
+        ],
+        "degree": 1,
+        "ridge": 0.01,
+        "inner_cv_loss": 1.0929265692042365
+      },
+      {
+        "features": [
+          "functional_erank",
+          "fro_ratio"
+        ],
+        "degree": 1,
+        "ridge": 0.01,
+        "inner_cv_loss": 1.0943712648663595
+      },
+      {
+        "features": [
+          "functional_cov_erank",
+          "fro_ratio"
+        ],
+        "degree": 2,
+        "ridge": 10.0,
+        "inner_cv_loss": 1.0944917037294075
+      },
+      {
+        "features": [
+          "functional_erank_iqr",
+          "fro_ratio"
+        ],
+        "degree": 2,
+        "ridge": 10.0,
+        "inner_cv_loss": 1.0960230460231228
+      },
+      {
+        "features": [
+          "functional_erank",
+          "fro_ratio"
+        ],
+        "degree": 1,
+        "ridge": 1.0,
+        "inner_cv_loss": 1.0960341512795289
+      },
+      {
+        "features": [
+          "functional_cov_participation",
+          "fro_ratio"
+        ],
+        "degree": 1,
+        "ridge": 0.01,
+        "inner_cv_loss": 1.1002953767897399
+      },
+      {
+        "features": [
+          "functional_cov_participation",
+          "fro_ratio"
+        ],
+        "degree": 1,
+        "ridge": 1.0,
+        "inner_cv_loss": 1.101380910532063
+      },
+      {
+        "features": [
+          "functional_erank_iqr",
+          "fro_ratio"
+        ],
+        "degree": 1,
+        "ridge": 1.0,
+        "inner_cv_loss": 1.1042716841005908
+      },
+      {
+        "features": [
+          "functional_cov_erank",
+          "fro_ratio"
+        ],
+        "degree": 2,
+        "ridge": 1.0,
+        "inner_cv_loss": 1.1046593115639662
+      },
+      {
+        "features": [
+          "functional_erank_iqr",
+          "fro_ratio"
+        ],
+        "degree": 1,
+        "ridge": 0.01,
+        "inner_cv_loss": 1.1062645470625962
+      },
+      {
+        "features": [
+          "functional_erank",
+          "fro_ratio"
+        ],
+        "degree": 2,
+        "ridge": 10.0,
+        "inner_cv_loss": 1.1065164983634832
+      },
+      {
+        "features": [
+          "functional_erank_iqr",
+          "fro_ratio"
+        ],
+        "degree": 1,
+        "ridge": 10.0,
+        "inner_cv_loss": 1.111370562949133
+      },
+      {
+        "features": [
+          "functional_cov_erank",
+          "fro_ratio"
+        ],
+        "degree": 1,
+        "ridge": 10.0,
+        "inner_cv_loss": 1.1130088466157475
+      },
+      {
+        "features": [
+          "functional_attn_mlp_gap",
+          "fro_ratio"
+        ],
+        "degree": 1,
+        "ridge": 1.0,
+        "inner_cv_loss": 1.1189677685953554
+      },
+      {
+        "features": [
+          "functional_attn_mlp_gap",
+          "fro_ratio"
+        ],
+        "degree": 1,
+        "ridge": 0.01,
+        "inner_cv_loss": 1.1198871626498146
+      },
+      {
+        "features": [
+          "functional_participation",
+          "fro_ratio"
+        ],
+        "degree": 1,
+        "ridge": 0.01,
+        "inner_cv_loss": 1.1210046244349299
+      },
+      {
+        "features": [
+          "functional_cov_participation",
+          "fro_ratio"
+        ],
+        "degree": 1,
+        "ridge": 10.0,
+        "inner_cv_loss": 1.1212584982509535
+      },
+      {
+        "features": [
+          "functional_participation",
+          "fro_ratio"
+        ],
+        "degree": 1,
+        "ridge": 1.0,
+        "inner_cv_loss": 1.1218509611533667
+      },
+      {
+        "features": [
+          "functional_attn_mlp_gap",
+          "fro_ratio"
+        ],
+        "degree": 2,
+        "ridge": 1.0,
+        "inner_cv_loss": 1.1249042345403673
+      },
+      {
+        "features": [
+          "functional_erank",
+          "fro_ratio"
+        ],
+        "degree": 1,
+        "ridge": 10.0,
+        "inner_cv_loss": 1.1275017983362683
+      },
+      {
+        "features": [
+          "functional_attn_mlp_gap",
+          "fro_ratio"
+        ],
+        "degree": 1,
+        "ridge": 10.0,
+        "inner_cv_loss": 1.127786341358637
+      },
+      {
+        "features": [
+          "functional_erank",
+          "fro_ratio"
+        ],
+        "degree": 2,
+        "ridge": 1.0,
+        "inner_cv_loss": 1.1293181229424258
+      },
+      {
+        "features": [
+          "functional_participation",
+          "fro_ratio"
+        ],
+        "degree": 1,
+        "ridge": 10.0,
+        "inner_cv_loss": 1.1394149760751544
+      },
+      {
+        "features": [
+          "functional_attn_mlp_gap",
+          "fro_ratio"
+        ],
+        "degree": 2,
+        "ridge": 0.01,
+        "inner_cv_loss": 1.1449703839705019
+      },
+      {
+        "features": [
+          "erank_depth_slope",
+          "functional_energy_ratio"
+        ],
+        "degree": 2,
+        "ridge": 10.0,
+        "inner_cv_loss": 1.1463465365858332
+      },
+      {
+        "features": [
+          "erank_depth_slope",
+          "functional_energy_ratio"
+        ],
+        "degree": 2,
+        "ridge": 1.0,
+        "inner_cv_loss": 1.1546649350938154
+      },
+      {
+        "features": [
+          "functional_erank_iqr",
+          "fro_ratio"
+        ],
+        "degree": 2,
+        "ridge": 1.0,
+        "inner_cv_loss": 1.164517773801795
+      },
+      {
+        "features": [
+          "functional_cov_erank",
+          "fro_ratio"
+        ],
+        "degree": 2,
+        "ridge": 0.01,
+        "inner_cv_loss": 1.1692828086329794
+      },
+      {
+        "features": [
+          "functional_erank_iqr",
+          "fro_ratio"
+        ],
+        "degree": 2,
+        "ridge": 0.01,
+        "inner_cv_loss": 1.1877843983325125
+      },
+      {
+        "features": [
+          "functional_erank",
+          "fro_ratio"
+        ],
+        "degree": 2,
+        "ridge": 0.01,
+        "inner_cv_loss": 1.1927495786205022
+      },
+      {
+        "features": [
+          "erank_iqr",
+          "functional_energy_ratio"
+        ],
+        "degree": 1,
+        "ridge": 1.0,
+        "inner_cv_loss": 1.202000465705744
+      },
+      {
+        "features": [
+          "erank_iqr",
+          "functional_energy_ratio"
+        ],
+        "degree": 1,
+        "ridge": 10.0,
+        "inner_cv_loss": 1.2020661946098028
+      },
+      {
+        "features": [
+          "erank_iqr",
+          "functional_energy_ratio"
+        ],
+        "degree": 1,
+        "ridge": 0.01,
+        "inner_cv_loss": 1.2050027866114323
+      },
+      {
+        "features": [
+          "erank_iqr",
+          "functional_energy_ratio"
+        ],
+        "degree": 2,
+        "ridge": 10.0,
+        "inner_cv_loss": 1.2271340870037304
+      },
+      {
+        "features": [
+          "erank_depth_slope",
+          "functional_energy_ratio"
+        ],
+        "degree": 2,
+        "ridge": 0.01,
+        "inner_cv_loss": 1.2413837279447633
+      },
+      {
+        "features": [
+          "functional_cov_erank",
+          "functional_energy_ratio"
+        ],
+        "degree": 2,
+        "ridge": 1.0,
+        "inner_cv_loss": 1.2635080591926764
+      },
+      {
+        "features": [
+          "functional_cov_participation",
+          "functional_energy_ratio"
+        ],
+        "degree": 2,
+        "ridge": 1.0,
+        "inner_cv_loss": 1.274017753475106
+      },
+      {
+        "features": [
+          "functional_cov_erank",
+          "functional_energy_ratio"
+        ],
+        "degree": 1,
+        "ridge": 0.01,
+        "inner_cv_loss": 1.278694981563798
+      },
+      {
+        "features": [
+          "functional_cov_erank",
+          "functional_energy_ratio"
+        ],
+        "degree": 1,
+        "ridge": 1.0,
+        "inner_cv_loss": 1.2802066027613206
+      },
+      {
+        "features": [
+          "functional_participation",
+          "functional_energy_ratio"
+        ],
+        "degree": 2,
+        "ridge": 1.0,
+        "inner_cv_loss": 1.281476848885463
+      },
+      {
+        "features": [
+          "functional_erank_iqr",
+          "functional_energy_ratio"
+        ],
+        "degree": 1,
+        "ridge": 10.0,
+        "inner_cv_loss": 1.30372938375326
+      },
+      {
+        "features": [
+          "erank_iqr",
+          "functional_energy_ratio"
+        ],
+        "degree": 2,
+        "ridge": 1.0,
+        "inner_cv_loss": 1.310614974160685
+      },
+      {
+        "features": [
+          "functional_erank_iqr",
+          "functional_energy_ratio"
+        ],
+        "degree": 1,
+        "ridge": 1.0,
+        "inner_cv_loss": 1.312033092972622
+      },
+      {
+        "features": [
+          "functional_erank_iqr",
+          "functional_energy_ratio"
+        ],
+        "degree": 1,
+        "ridge": 0.01,
+        "inner_cv_loss": 1.3139712918252924
+      },
+      {
+        "features": [
+          "functional_cov_participation",
+          "functional_energy_ratio"
+        ],
+        "degree": 1,
+        "ridge": 0.01,
+        "inner_cv_loss": 1.321325094039961
+      },
+      {
+        "features": [
+          "functional_cov_participation",
+          "functional_energy_ratio"
+        ],
+        "degree": 1,
+        "ridge": 1.0,
+        "inner_cv_loss": 1.321672739342895
+      },
+      {
+        "features": [
+          "erank_depth_slope",
+          "functional_energy_ratio"
+        ],
+        "degree": 1,
+        "ridge": 1.0,
+        "inner_cv_loss": 1.3234321993253255
+      },
+      {
+        "features": [
+          "erank_depth_slope",
+          "functional_energy_ratio"
+        ],
+        "degree": 1,
+        "ridge": 0.01,
+        "inner_cv_loss": 1.3240986693361108
+      },
+      {
+        "features": [
+          "erank_depth_slope",
+          "functional_energy_ratio"
+        ],
+        "degree": 1,
+        "ridge": 10.0,
+        "inner_cv_loss": 1.3253210556094244
+      },
+      {
+        "features": [
+          "functional_cov_erank",
+          "functional_energy_ratio"
+        ],
+        "degree": 1,
+        "ridge": 10.0,
+        "inner_cv_loss": 1.3441364501308983
+      },
+      {
+        "features": [
+          "functional_erank",
+          "functional_energy_ratio"
+        ],
+        "degree": 1,
+        "ridge": 1.0,
+        "inner_cv_loss": 1.3480959949396767
+      },
+      {
+        "features": [
+          "functional_cov_participation",
+          "functional_energy_ratio"
+        ],
+        "degree": 1,
+        "ridge": 10.0,
+        "inner_cv_loss": 1.3495361791592995
+      },
+      {
+        "features": [
+          "functional_erank",
+          "functional_energy_ratio"
+        ],
+        "degree": 1,
+        "ridge": 0.01,
+        "inner_cv_loss": 1.3506277138305545
+      },
+      {
+        "features": [
+          "functional_erank_iqr",
+          "functional_energy_ratio"
+        ],
+        "degree": 2,
+        "ridge": 10.0,
+        "inner_cv_loss": 1.3510378537685894
+      },
+      {
+        "features": [
+          "functional_cov_erank",
+          "functional_energy_ratio"
+        ],
+        "degree": 2,
+        "ridge": 10.0,
+        "inner_cv_loss": 1.3591015053539195
+      },
+      {
+        "features": [
+          "functional_erank",
+          "functional_energy_ratio"
+        ],
+        "degree": 2,
+        "ridge": 1.0,
+        "inner_cv_loss": 1.361414356834862
+      },
+      {
+        "features": [
+          "functional_participation",
+          "functional_energy_ratio"
+        ],
+        "degree": 1,
+        "ridge": 1.0,
+        "inner_cv_loss": 1.3746051031857833
+      },
+      {
+        "features": [
+          "functional_erank_iqr",
+          "functional_energy_ratio"
+        ],
+        "degree": 2,
+        "ridge": 1.0,
+        "inner_cv_loss": 1.3748310434988238
+      },
+      {
+        "features": [
+          "functional_participation",
+          "functional_energy_ratio"
+        ],
+        "degree": 1,
+        "ridge": 0.01,
+        "inner_cv_loss": 1.3756576768106428
+      },
+      {
+        "features": [
+          "functional_cov_participation",
+          "functional_energy_ratio"
+        ],
+        "degree": 2,
+        "ridge": 10.0,
+        "inner_cv_loss": 1.378546950059637
+      },
+      {
+        "features": [
+          "functional_erank_iqr",
+          "functional_energy_ratio"
+        ],
+        "degree": 2,
+        "ridge": 0.01,
+        "inner_cv_loss": 1.3820793647662444
+      },
+      {
+        "features": [
+          "functional_erank",
+          "functional_energy_ratio"
+        ],
+        "degree": 1,
+        "ridge": 10.0,
+        "inner_cv_loss": 1.382184730097197
+      },
+      {
+        "features": [
+          "functional_attn_mlp_gap",
+          "functional_energy_ratio"
+        ],
+        "degree": 1,
+        "ridge": 10.0,
+        "inner_cv_loss": 1.3851009554666434
+      },
+      {
+        "features": [
+          "functional_participation",
+          "functional_energy_ratio"
+        ],
+        "degree": 1,
+        "ridge": 10.0,
+        "inner_cv_loss": 1.3911055309689102
+      },
+      {
+        "features": [
+          "functional_attn_mlp_gap",
+          "functional_energy_ratio"
+        ],
+        "degree": 1,
+        "ridge": 1.0,
+        "inner_cv_loss": 1.3951826708819917
+      },
+      {
+        "features": [
+          "functional_attn_mlp_gap",
+          "functional_energy_ratio"
+        ],
+        "degree": 1,
+        "ridge": 0.01,
+        "inner_cv_loss": 1.3974851913830006
+      },
+      {
+        "features": [
+          "functional_participation",
+          "functional_energy_ratio"
+        ],
+        "degree": 2,
+        "ridge": 10.0,
+        "inner_cv_loss": 1.4115739516859962
+      },
+      {
+        "features": [
+          "functional_erank",
+          "functional_energy_ratio"
+        ],
+        "degree": 2,
+        "ridge": 10.0,
+        "inner_cv_loss": 1.412828152485937
+      },
+      {
+        "features": [
+          "functional_attn_mlp_gap",
+          "functional_energy_ratio"
+        ],
+        "degree": 2,
+        "ridge": 10.0,
+        "inner_cv_loss": 1.435953228381038
+      },
+      {
+        "features": [
+          "functional_attn_mlp_gap",
+          "functional_energy_ratio"
+        ],
+        "degree": 2,
+        "ridge": 1.0,
+        "inner_cv_loss": 1.4872542462843268
+      },
+      {
+        "features": [
+          "functional_attn_mlp_gap",
+          "functional_energy_ratio"
+        ],
+        "degree": 2,
+        "ridge": 0.01,
+        "inner_cv_loss": 1.5412505329711006
+      },
+      {
+        "features": [
+          "erank_iqr",
+          "functional_energy_ratio"
+        ],
+        "degree": 2,
+        "ridge": 0.01,
+        "inner_cv_loss": 1.5493910682664316
+      }
+    ],
+    "full_fit_feature_rms": [
+      0.03275250626542445,
+      0.28935893556935,
+      0.001442470227968892,
+      0.10281401644744166
+    ],
+    "full_fit_outcome_sd": [
+      3.1978917594394916
+    ],
+    "full_fit_normalized_coefficients": [
+      [
+        -0.19930719435460556
+      ],
+      [
+        -1.6535848955807233
+      ],
+      [
+        -0.8672828308820688
+      ],
+      [
+        0.38911764120478787
+      ]
+    ]
+  },
+  {
+    "cohort": "hns_grid_retention",
+    "model": "single",
+    "outcomes": [
+      "target_gain",
+      "forgetting_reduction"
+    ],
+    "ranking": [
+      {
+        "features": [
+          "fro_ratio"
+        ],
+        "degree": 1,
+        "ridge": 0.01,
+        "inner_cv_loss": 1.890135493535728
+      },
+      {
+        "features": [
+          "fro_ratio"
+        ],
+        "degree": 1,
+        "ridge": 1.0,
+        "inner_cv_loss": 1.8943389603540082
+      },
+      {
+        "features": [
+          "fro_ratio"
+        ],
+        "degree": 1,
+        "ridge": 10.0,
+        "inner_cv_loss": 1.9401169831997551
+      },
+      {
+        "features": [
+          "fro_ratio"
+        ],
+        "degree": 2,
+        "ridge": 10.0,
+        "inner_cv_loss": 1.9408191456378567
+      },
+      {
+        "features": [
+          "erank_iqr"
+        ],
+        "degree": 1,
+        "ridge": 0.01,
+        "inner_cv_loss": 1.9889887437611218
+      },
+      {
+        "features": [
+          "erank_iqr"
+        ],
+        "degree": 1,
+        "ridge": 1.0,
+        "inner_cv_loss": 1.992982876119056
+      },
+      {
+        "features": [
+          "fro_ratio"
+        ],
+        "degree": 2,
+        "ridge": 1.0,
+        "inner_cv_loss": 2.005547153948656
+      },
+      {
+        "features": [
+          "original_head1_retention"
+        ],
+        "degree": 2,
+        "ridge": 0.01,
+        "inner_cv_loss": 2.020512547764322
+      },
+      {
+        "features": [
+          "erank_iqr"
+        ],
+        "degree": 2,
+        "ridge": 10.0,
+        "inner_cv_loss": 2.0238981957260775
+      },
+      {
+        "features": [
+          "erank_iqr"
+        ],
+        "degree": 1,
+        "ridge": 10.0,
+        "inner_cv_loss": 2.0364442132402205
+      },
+      {
+        "features": [
+          "fro_ratio"
+        ],
+        "degree": 2,
+        "ridge": 0.01,
+        "inner_cv_loss": 2.053577049416506
+      },
+      {
+        "features": [
+          "erank_iqr"
+        ],
+        "degree": 2,
+        "ridge": 1.0,
+        "inner_cv_loss": 2.1020691055173235
+      },
+      {
+        "features": [
+          "functional_energy_ratio"
+        ],
+        "degree": 1,
+        "ridge": 0.01,
+        "inner_cv_loss": 2.1068951830731413
+      },
+      {
+        "features": [
+          "functional_energy_ratio"
+        ],
+        "degree": 1,
+        "ridge": 1.0,
+        "inner_cv_loss": 2.1106758114954878
+      },
+      {
+        "features": [
+          "functional_energy_ratio"
+        ],
+        "degree": 2,
+        "ridge": 10.0,
+        "inner_cv_loss": 2.123663622566603
+      },
+      {
+        "features": [
+          "functional_cov_participation"
+        ],
+        "degree": 2,
+        "ridge": 0.01,
+        "inner_cv_loss": 2.1257973298747523
+      },
+      {
+        "features": [
+          "original_head1_retention"
+        ],
+        "degree": 2,
+        "ridge": 1.0,
+        "inner_cv_loss": 2.1335571811991056
+      },
+      {
+        "features": [
+          "functional_energy_ratio"
+        ],
+        "degree": 1,
+        "ridge": 10.0,
+        "inner_cv_loss": 2.1516450338329203
+      },
+      {
+        "features": [
+          "original_head1_retention"
+        ],
+        "degree": 2,
+        "ridge": 10.0,
+        "inner_cv_loss": 2.160880822352606
+      },
+      {
+        "features": [
+          "original_head1_retention"
+        ],
+        "degree": 1,
+        "ridge": 0.01,
+        "inner_cv_loss": 2.1615143759868642
+      },
+      {
+        "features": [
+          "original_head1_retention"
+        ],
+        "degree": 1,
+        "ridge": 1.0,
+        "inner_cv_loss": 2.1651580050036903
+      },
+      {
+        "features": [
+          "functional_energy_ratio"
+        ],
+        "degree": 2,
+        "ridge": 1.0,
+        "inner_cv_loss": 2.176725402709572
+      },
+      {
+        "features": [
+          "erank_iqr"
+        ],
+        "degree": 2,
+        "ridge": 0.01,
+        "inner_cv_loss": 2.1855994133974757
+      },
+      {
+        "features": [
+          "original_head1_retention"
+        ],
+        "degree": 1,
+        "ridge": 10.0,
+        "inner_cv_loss": 2.2046873142728516
+      },
+      {
+        "features": [
+          "functional_participation"
+        ],
+        "degree": 2,
+        "ridge": 0.01,
+        "inner_cv_loss": 2.21436972278751
+      },
+      {
+        "features": [
+          "functional_cov_participation"
+        ],
+        "degree": 2,
+        "ridge": 1.0,
+        "inner_cv_loss": 2.223735677410056
+      },
+      {
+        "features": [
+          "functional_cov_erank"
+        ],
+        "degree": 2,
+        "ridge": 0.01,
+        "inner_cv_loss": 2.277103708945448
+      },
+      {
+        "features": [
+          "functional_erank_iqr"
+        ],
+        "degree": 2,
+        "ridge": 10.0,
+        "inner_cv_loss": 2.3056686311808208
+      },
+      {
+        "features": [
+          "functional_energy_ratio"
+        ],
+        "degree": 2,
+        "ridge": 0.01,
+        "inner_cv_loss": 2.3108799407352625
+      },
+      {
+        "features": [
+          "functional_participation"
+        ],
+        "degree": 2,
+        "ridge": 1.0,
+        "inner_cv_loss": 2.312102389560073
+      },
+      {
+        "features": [
+          "functional_erank_iqr"
+        ],
+        "degree": 2,
+        "ridge": 1.0,
+        "inner_cv_loss": 2.314589708976412
+      },
+      {
+        "features": [
+          "functional_erank_iqr"
+        ],
+        "degree": 2,
+        "ridge": 0.01,
+        "inner_cv_loss": 2.3363109260885095
+      },
+      {
+        "features": [
+          "functional_cov_erank"
+        ],
+        "degree": 2,
+        "ridge": 1.0,
+        "inner_cv_loss": 2.353490269679851
+      },
+      {
+        "features": [
+          "functional_erank_iqr"
+        ],
+        "degree": 1,
+        "ridge": 0.01,
+        "inner_cv_loss": 2.370566494696521
+      },
+      {
+        "features": [
+          "functional_erank_iqr"
+        ],
+        "degree": 1,
+        "ridge": 1.0,
+        "inner_cv_loss": 2.37362126426615
+      },
+      {
+        "features": [
+          "functional_erank_iqr"
+        ],
+        "degree": 1,
+        "ridge": 10.0,
+        "inner_cv_loss": 2.4071560521658344
+      },
+      {
+        "features": [
+          "functional_erank"
+        ],
+        "degree": 1,
+        "ridge": 0.01,
+        "inner_cv_loss": 2.4402604957951755
+      },
+      {
+        "features": [
+          "functional_erank"
+        ],
+        "degree": 1,
+        "ridge": 1.0,
+        "inner_cv_loss": 2.4429971002219246
+      },
+      {
+        "features": [
+          "functional_erank"
+        ],
+        "degree": 1,
+        "ridge": 10.0,
+        "inner_cv_loss": 2.473620363594773
+      },
+      {
+        "features": [
+          "functional_erank"
+        ],
+        "degree": 2,
+        "ridge": 1.0,
+        "inner_cv_loss": 2.5158055874878964
+      },
+      {
+        "features": [
+          "functional_erank"
+        ],
+        "degree": 2,
+        "ridge": 10.0,
+        "inner_cv_loss": 2.5493200922878376
+      },
+      {
+        "features": [
+          "functional_erank"
+        ],
+        "degree": 2,
+        "ridge": 0.01,
+        "inner_cv_loss": 2.5618949056802403
+      },
+      {
+        "features": [
+          "functional_cov_erank"
+        ],
+        "degree": 1,
+        "ridge": 0.01,
+        "inner_cv_loss": 2.5714582404051343
+      },
+      {
+        "features": [
+          "functional_cov_erank"
+        ],
+        "degree": 1,
+        "ridge": 1.0,
+        "inner_cv_loss": 2.573562233281057
+      },
+      {
+        "features": [
+          "functional_cov_erank"
+        ],
+        "degree": 1,
+        "ridge": 10.0,
+        "inner_cv_loss": 2.598452293398712
+      },
+      {
+        "features": [
+          "functional_cov_erank"
+        ],
+        "degree": 2,
+        "ridge": 10.0,
+        "inner_cv_loss": 2.630131609170637
+      },
+      {
+        "features": [
+          "functional_cov_participation"
+        ],
+        "degree": 2,
+        "ridge": 10.0,
+        "inner_cv_loss": 2.8045180824798663
+      },
+      {
+        "features": [
+          "functional_participation"
+        ],
+        "degree": 2,
+        "ridge": 10.0,
+        "inner_cv_loss": 2.8068429493458407
+      },
+      {
+        "features": [
+          "functional_attn_mlp_gap"
+        ],
+        "degree": 1,
+        "ridge": 0.01,
+        "inner_cv_loss": 2.875990453611481
+      },
+      {
+        "features": [
+          "functional_attn_mlp_gap"
+        ],
+        "degree": 1,
+        "ridge": 1.0,
+        "inner_cv_loss": 2.877022453527035
+      },
+      {
+        "features": [
+          "functional_attn_mlp_gap"
+        ],
+        "degree": 2,
+        "ridge": 10.0,
+        "inner_cv_loss": 2.8856553948633104
+      },
+      {
+        "features": [
+          "functional_attn_mlp_gap"
+        ],
+        "degree": 1,
+        "ridge": 10.0,
+        "inner_cv_loss": 2.8915751701534895
+      },
+      {
+        "features": [
+          "functional_participation"
+        ],
+        "degree": 1,
+        "ridge": 0.01,
+        "inner_cv_loss": 2.919026075819596
+      },
+      {
+        "features": [
+          "functional_attn_mlp_gap"
+        ],
+        "degree": 2,
+        "ridge": 1.0,
+        "inner_cv_loss": 2.919255560082099
+      },
+      {
+        "features": [
+          "functional_participation"
+        ],
+        "degree": 1,
+        "ridge": 1.0,
+        "inner_cv_loss": 2.9196042920729046
+      },
+      {
+        "features": [
+          "functional_participation"
+        ],
+        "degree": 1,
+        "ridge": 10.0,
+        "inner_cv_loss": 2.9304309901884458
+      },
+      {
+        "features": [
+          "functional_attn_mlp_gap"
+        ],
+        "degree": 2,
+        "ridge": 0.01,
+        "inner_cv_loss": 2.9341058063941237
+      },
+      {
+        "features": [
+          "functional_cov_participation"
+        ],
+        "degree": 1,
+        "ridge": 1.0,
+        "inner_cv_loss": 3.0659463855103457
+      },
+      {
+        "features": [
+          "functional_cov_participation"
+        ],
+        "degree": 1,
+        "ridge": 0.01,
+        "inner_cv_loss": 3.066239192877568
+      },
+      {
+        "features": [
+          "functional_cov_participation"
+        ],
+        "degree": 1,
+        "ridge": 10.0,
+        "inner_cv_loss": 3.0691321862748855
+      },
+      {
+        "features": [
+          "erank_depth_slope"
+        ],
+        "degree": 2,
+        "ridge": 10.0,
+        "inner_cv_loss": 3.627366802558294
+      },
+      {
+        "features": [
+          "erank_depth_slope"
+        ],
+        "degree": 2,
+        "ridge": 1.0,
+        "inner_cv_loss": 3.693008982584703
+      },
+      {
+        "features": [
+          "erank_depth_slope"
+        ],
+        "degree": 2,
+        "ridge": 0.01,
+        "inner_cv_loss": 3.702559347566987
+      },
+      {
+        "features": [
+          "erank_depth_slope"
+        ],
+        "degree": 1,
+        "ridge": 10.0,
+        "inner_cv_loss": 4.293104310106952
+      },
+      {
+        "features": [
+          "erank_depth_slope"
+        ],
+        "degree": 1,
+        "ridge": 1.0,
+        "inner_cv_loss": 4.345421929479664
+      },
+      {
+        "features": [
+          "erank_depth_slope"
+        ],
+        "degree": 1,
+        "ridge": 0.01,
+        "inner_cv_loss": 4.351823474508624
+      }
+    ],
+    "full_fit_feature_rms": [
+      0.27656965845307735
+    ],
+    "full_fit_outcome_sd": [
+      3.4934519756028295,
+      2.521186287055471
+    ],
+    "full_fit_normalized_coefficients": [
+      [
+        -1.2651427849697523,
+        -1.0624809329668674
+      ]
+    ]
+  },
+  {
+    "cohort": "hns_grid_retention",
+    "model": "shape_plus_strength",
+    "outcomes": [
+      "target_gain",
+      "forgetting_reduction"
+    ],
+    "ranking": [
+      {
+        "features": [
+          "erank_iqr",
+          "fro_ratio"
+        ],
+        "degree": 2,
+        "ridge": 0.01,
+        "inner_cv_loss": 1.1981058659474175
+      },
+      {
+        "features": [
+          "functional_participation",
+          "functional_energy_ratio"
+        ],
+        "degree": 2,
+        "ridge": 0.01,
+        "inner_cv_loss": 1.7823145544563708
+      },
+      {
+        "features": [
+          "functional_cov_erank",
+          "functional_energy_ratio"
+        ],
+        "degree": 2,
+        "ridge": 0.01,
+        "inner_cv_loss": 1.7962362663510183
+      },
+      {
+        "features": [
+          "functional_erank",
+          "functional_energy_ratio"
+        ],
+        "degree": 2,
+        "ridge": 0.01,
+        "inner_cv_loss": 1.8177805099776547
+      },
+      {
+        "features": [
+          "functional_cov_participation",
+          "fro_ratio"
+        ],
+        "degree": 2,
+        "ridge": 1.0,
+        "inner_cv_loss": 1.9318926260908966
+      },
+      {
+        "features": [
+          "erank_iqr",
+          "fro_ratio"
+        ],
+        "degree": 1,
+        "ridge": 10.0,
+        "inner_cv_loss": 1.9527844630953217
+      },
+      {
+        "features": [
+          "erank_iqr",
+          "fro_ratio"
+        ],
+        "degree": 2,
+        "ridge": 10.0,
+        "inner_cv_loss": 1.9550198894645343
+      },
+      {
+        "features": [
+          "functional_erank_iqr",
+          "fro_ratio"
+        ],
+        "degree": 1,
+        "ridge": 1.0,
+        "inner_cv_loss": 1.9762670893123346
+      },
+      {
+        "features": [
+          "functional_erank_iqr",
+          "fro_ratio"
+        ],
+        "degree": 1,
+        "ridge": 0.01,
+        "inner_cv_loss": 1.9783532056930582
+      },
+      {
+        "features": [
+          "erank_iqr",
+          "fro_ratio"
+        ],
+        "degree": 1,
+        "ridge": 1.0,
+        "inner_cv_loss": 1.9811576128876263
+      },
+      {
+        "features": [
+          "functional_erank_iqr",
+          "fro_ratio"
+        ],
+        "degree": 2,
+        "ridge": 10.0,
+        "inner_cv_loss": 1.9832390956268224
+      },
+      {
+        "features": [
+          "functional_erank_iqr",
+          "fro_ratio"
+        ],
+        "degree": 1,
+        "ridge": 10.0,
+        "inner_cv_loss": 1.9885342528846859
+      },
+      {
+        "features": [
+          "functional_cov_participation",
+          "functional_energy_ratio"
+        ],
+        "degree": 2,
+        "ridge": 0.01,
+        "inner_cv_loss": 1.9892989870624829
+      },
+      {
+        "features": [
+          "functional_cov_participation",
+          "fro_ratio"
+        ],
+        "degree": 2,
+        "ridge": 10.0,
+        "inner_cv_loss": 1.993239441903259
+      },
+      {
+        "features": [
+          "functional_participation",
+          "fro_ratio"
+        ],
+        "degree": 2,
+        "ridge": 1.0,
+        "inner_cv_loss": 1.995018673917871
+      },
+      {
+        "features": [
+          "functional_participation",
+          "fro_ratio"
+        ],
+        "degree": 2,
+        "ridge": 0.01,
+        "inner_cv_loss": 1.9968076134731216
+      },
+      {
+        "features": [
+          "functional_erank_iqr",
+          "functional_energy_ratio"
+        ],
+        "degree": 2,
+        "ridge": 1.0,
+        "inner_cv_loss": 2.0068434489771305
+      },
+      {
+        "features": [
+          "functional_cov_participation",
+          "fro_ratio"
+        ],
+        "degree": 1,
+        "ridge": 0.01,
+        "inner_cv_loss": 2.0222754841615895
+      },
+      {
+        "features": [
+          "functional_cov_participation",
+          "fro_ratio"
+        ],
+        "degree": 1,
+        "ridge": 1.0,
+        "inner_cv_loss": 2.02308905120737
+      },
+      {
+        "features": [
+          "functional_erank_iqr",
+          "functional_energy_ratio"
+        ],
+        "degree": 2,
+        "ridge": 0.01,
+        "inner_cv_loss": 2.0260649625861515
+      },
+      {
+        "features": [
+          "functional_erank_iqr",
+          "functional_energy_ratio"
+        ],
+        "degree": 2,
+        "ridge": 10.0,
+        "inner_cv_loss": 2.034864309658705
+      },
+      {
+        "features": [
+          "functional_cov_erank",
+          "fro_ratio"
+        ],
+        "degree": 1,
+        "ridge": 1.0,
+        "inner_cv_loss": 2.036257952436371
+      },
+      {
+        "features": [
+          "functional_participation",
+          "fro_ratio"
+        ],
+        "degree": 2,
+        "ridge": 10.0,
+        "inner_cv_loss": 2.036306939361232
+      },
+      {
+        "features": [
+          "functional_cov_erank",
+          "fro_ratio"
+        ],
+        "degree": 1,
+        "ridge": 0.01,
+        "inner_cv_loss": 2.041463058565035
+      },
+      {
+        "features": [
+          "functional_cov_participation",
+          "fro_ratio"
+        ],
+        "degree": 2,
+        "ridge": 0.01,
+        "inner_cv_loss": 2.0516202416250655
+      },
+      {
+        "features": [
+          "functional_cov_erank",
+          "fro_ratio"
+        ],
+        "degree": 1,
+        "ridge": 10.0,
+        "inner_cv_loss": 2.052771094058173
+      },
+      {
+        "features": [
+          "erank_iqr",
+          "fro_ratio"
+        ],
+        "degree": 2,
+        "ridge": 1.0,
+        "inner_cv_loss": 2.0529735041982673
+      },
+      {
+        "features": [
+          "functional_erank",
+          "fro_ratio"
+        ],
+        "degree": 1,
+        "ridge": 10.0,
+        "inner_cv_loss": 2.0530554241153873
+      },
+      {
+        "features": [
+          "functional_cov_participation",
+          "fro_ratio"
+        ],
+        "degree": 1,
+        "ridge": 10.0,
+        "inner_cv_loss": 2.0576301186642367
+      },
+      {
+        "features": [
+          "functional_erank",
+          "fro_ratio"
+        ],
+        "degree": 1,
+        "ridge": 1.0,
+        "inner_cv_loss": 2.0605914009917217
+      },
+      {
+        "features": [
+          "erank_depth_slope",
+          "fro_ratio"
+        ],
+        "degree": 2,
+        "ridge": 10.0,
+        "inner_cv_loss": 2.063186784807756
+      },
+      {
+        "features": [
+          "functional_cov_erank",
+          "fro_ratio"
+        ],
+        "degree": 2,
+        "ridge": 10.0,
+        "inner_cv_loss": 2.0670061069911387
+      },
+      {
+        "features": [
+          "functional_erank",
+          "fro_ratio"
+        ],
+        "degree": 1,
+        "ridge": 0.01,
+        "inner_cv_loss": 2.069598550810489
+      },
+      {
+        "features": [
+          "functional_erank_iqr",
+          "fro_ratio"
+        ],
+        "degree": 2,
+        "ridge": 1.0,
+        "inner_cv_loss": 2.0722905564918164
+      },
+      {
+        "features": [
+          "functional_participation",
+          "fro_ratio"
+        ],
+        "degree": 1,
+        "ridge": 1.0,
+        "inner_cv_loss": 2.0732463494701445
+      },
+      {
+        "features": [
+          "functional_participation",
+          "fro_ratio"
+        ],
+        "degree": 1,
+        "ridge": 0.01,
+        "inner_cv_loss": 2.075369592855911
+      },
+      {
+        "features": [
+          "functional_attn_mlp_gap",
+          "fro_ratio"
+        ],
+        "degree": 1,
+        "ridge": 1.0,
+        "inner_cv_loss": 2.0797019834060597
+      },
+      {
+        "features": [
+          "functional_erank",
+          "fro_ratio"
+        ],
+        "degree": 2,
+        "ridge": 10.0,
+        "inner_cv_loss": 2.079962431397462
+      },
+      {
+        "features": [
+          "functional_attn_mlp_gap",
+          "fro_ratio"
+        ],
+        "degree": 1,
+        "ridge": 0.01,
+        "inner_cv_loss": 2.081994786204371
+      },
+      {
+        "features": [
+          "functional_erank_iqr",
+          "functional_energy_ratio"
+        ],
+        "degree": 1,
+        "ridge": 1.0,
+        "inner_cv_loss": 2.0830056802054986
+      },
+      {
+        "features": [
+          "functional_erank_iqr",
+          "functional_energy_ratio"
+        ],
+        "degree": 1,
+        "ridge": 10.0,
+        "inner_cv_loss": 2.083110122275164
+      },
+      {
+        "features": [
+          "functional_erank_iqr",
+          "functional_energy_ratio"
+        ],
+        "degree": 1,
+        "ridge": 0.01,
+        "inner_cv_loss": 2.084929034623816
+      },
+      {
+        "features": [
+          "functional_participation",
+          "fro_ratio"
+        ],
+        "degree": 1,
+        "ridge": 10.0,
+        "inner_cv_loss": 2.086457400036493
+      },
+      {
+        "features": [
+          "erank_iqr",
+          "functional_energy_ratio"
+        ],
+        "degree": 1,
+        "ridge": 10.0,
+        "inner_cv_loss": 2.0879658022310252
+      },
+      {
+        "features": [
+          "erank_iqr",
+          "fro_ratio"
+        ],
+        "degree": 1,
+        "ridge": 0.01,
+        "inner_cv_loss": 2.0913292936862624
+      },
+      {
+        "features": [
+          "functional_attn_mlp_gap",
+          "fro_ratio"
+        ],
+        "degree": 1,
+        "ridge": 10.0,
+        "inner_cv_loss": 2.092056157858205
+      },
+      {
+        "features": [
+          "functional_attn_mlp_gap",
+          "fro_ratio"
+        ],
+        "degree": 2,
+        "ridge": 10.0,
+        "inner_cv_loss": 2.1229042632724355
+      },
+      {
+        "features": [
+          "erank_iqr",
+          "functional_energy_ratio"
+        ],
+        "degree": 2,
+        "ridge": 10.0,
+        "inner_cv_loss": 2.135320779536373
+      },
+      {
+        "features": [
+          "functional_cov_participation",
+          "functional_energy_ratio"
+        ],
+        "degree": 2,
+        "ridge": 1.0,
+        "inner_cv_loss": 2.1374205170017095
+      },
+      {
+        "features": [
+          "functional_cov_erank",
+          "fro_ratio"
+        ],
+        "degree": 2,
+        "ridge": 1.0,
+        "inner_cv_loss": 2.1407563004584493
+      },
+      {
+        "features": [
+          "functional_erank_iqr",
+          "fro_ratio"
+        ],
+        "degree": 2,
+        "ridge": 0.01,
+        "inner_cv_loss": 2.1497806575898015
+      },
+      {
+        "features": [
+          "functional_attn_mlp_gap",
+          "fro_ratio"
+        ],
+        "degree": 2,
+        "ridge": 1.0,
+        "inner_cv_loss": 2.1517027431664895
+      },
+      {
+        "features": [
+          "erank_depth_slope",
+          "fro_ratio"
+        ],
+        "degree": 2,
+        "ridge": 1.0,
+        "inner_cv_loss": 2.1568605356511754
+      },
+      {
+        "features": [
+          "erank_depth_slope",
+          "fro_ratio"
+        ],
+        "degree": 1,
+        "ridge": 1.0,
+        "inner_cv_loss": 2.1610384408031846
+      },
+      {
+        "features": [
+          "erank_depth_slope",
+          "fro_ratio"
+        ],
+        "degree": 1,
+        "ridge": 0.01,
+        "inner_cv_loss": 2.1613441580683586
+      },
+      {
+        "features": [
+          "erank_depth_slope",
+          "functional_energy_ratio"
+        ],
+        "degree": 2,
+        "ridge": 0.01,
+        "inner_cv_loss": 2.1720179291495576
+      },
+      {
+        "features": [
+          "functional_attn_mlp_gap",
+          "functional_energy_ratio"
+        ],
+        "degree": 2,
+        "ridge": 1.0,
+        "inner_cv_loss": 2.1720701510306033
+      },
+      {
+        "features": [
+          "erank_depth_slope",
+          "fro_ratio"
+        ],
+        "degree": 1,
+        "ridge": 10.0,
+        "inner_cv_loss": 2.174715086315168
+      },
+      {
+        "features": [
+          "erank_iqr",
+          "functional_energy_ratio"
+        ],
+        "degree": 1,
+        "ridge": 1.0,
+        "inner_cv_loss": 2.179046413958644
+      },
+      {
+        "features": [
+          "functional_participation",
+          "functional_energy_ratio"
+        ],
+        "degree": 2,
+        "ridge": 1.0,
+        "inner_cv_loss": 2.1904849520289886
+      },
+      {
+        "features": [
+          "functional_cov_participation",
+          "functional_energy_ratio"
+        ],
+        "degree": 2,
+        "ridge": 10.0,
+        "inner_cv_loss": 2.1960149855627775
+      },
+      {
+        "features": [
+          "erank_depth_slope",
+          "functional_energy_ratio"
+        ],
+        "degree": 2,
+        "ridge": 1.0,
+        "inner_cv_loss": 2.1965798539044745
+      },
+      {
+        "features": [
+          "functional_attn_mlp_gap",
+          "fro_ratio"
+        ],
+        "degree": 2,
+        "ridge": 0.01,
+        "inner_cv_loss": 2.202590185016065
+      },
+      {
+        "features": [
+          "functional_attn_mlp_gap",
+          "functional_energy_ratio"
+        ],
+        "degree": 2,
+        "ridge": 10.0,
+        "inner_cv_loss": 2.2067111207185097
+      },
+      {
+        "features": [
+          "erank_depth_slope",
+          "fro_ratio"
+        ],
+        "degree": 2,
+        "ridge": 0.01,
+        "inner_cv_loss": 2.217807014882373
+      },
+      {
+        "features": [
+          "functional_cov_participation",
+          "functional_energy_ratio"
+        ],
+        "degree": 1,
+        "ridge": 1.0,
+        "inner_cv_loss": 2.2194714788119527
+      },
+      {
+        "features": [
+          "functional_cov_participation",
+          "functional_energy_ratio"
+        ],
+        "degree": 1,
+        "ridge": 0.01,
+        "inner_cv_loss": 2.2204574103330885
+      },
+      {
+        "features": [
+          "erank_iqr",
+          "functional_energy_ratio"
+        ],
+        "degree": 1,
+        "ridge": 0.01,
+        "inner_cv_loss": 2.220728618656172
+      },
+      {
+        "features": [
+          "erank_depth_slope",
+          "functional_energy_ratio"
+        ],
+        "degree": 2,
+        "ridge": 10.0,
+        "inner_cv_loss": 2.240313862664065
+      },
+      {
+        "features": [
+          "functional_erank",
+          "fro_ratio"
+        ],
+        "degree": 2,
+        "ridge": 1.0,
+        "inner_cv_loss": 2.243077965618384
+      },
+      {
+        "features": [
+          "functional_attn_mlp_gap",
+          "functional_energy_ratio"
+        ],
+        "degree": 1,
+        "ridge": 10.0,
+        "inner_cv_loss": 2.250528090071136
+      },
+      {
+        "features": [
+          "functional_attn_mlp_gap",
+          "functional_energy_ratio"
+        ],
+        "degree": 1,
+        "ridge": 1.0,
+        "inner_cv_loss": 2.260378211444371
+      },
+      {
+        "features": [
+          "functional_cov_participation",
+          "functional_energy_ratio"
+        ],
+        "degree": 1,
+        "ridge": 10.0,
+        "inner_cv_loss": 2.2627029586292755
+      },
+      {
+        "features": [
+          "functional_attn_mlp_gap",
+          "functional_energy_ratio"
+        ],
+        "degree": 1,
+        "ridge": 0.01,
+        "inner_cv_loss": 2.264616194259041
+      },
+      {
+        "features": [
+          "functional_cov_erank",
+          "functional_energy_ratio"
+        ],
+        "degree": 1,
+        "ridge": 10.0,
+        "inner_cv_loss": 2.2690431882194453
+      },
+      {
+        "features": [
+          "functional_attn_mlp_gap",
+          "functional_energy_ratio"
+        ],
+        "degree": 2,
+        "ridge": 0.01,
+        "inner_cv_loss": 2.2783444723967863
+      },
+      {
+        "features": [
+          "functional_cov_erank",
+          "functional_energy_ratio"
+        ],
+        "degree": 1,
+        "ridge": 1.0,
+        "inner_cv_loss": 2.280017763389127
+      },
+      {
+        "features": [
+          "erank_iqr",
+          "functional_energy_ratio"
+        ],
+        "degree": 2,
+        "ridge": 1.0,
+        "inner_cv_loss": 2.2805876840633816
+      },
+      {
+        "features": [
+          "functional_erank",
+          "functional_energy_ratio"
+        ],
+        "degree": 1,
+        "ridge": 10.0,
+        "inner_cv_loss": 2.281670668957824
+      },
+      {
+        "features": [
+          "functional_cov_erank",
+          "functional_energy_ratio"
+        ],
+        "degree": 2,
+        "ridge": 10.0,
+        "inner_cv_loss": 2.2860708010652133
+      },
+      {
+        "features": [
+          "functional_cov_erank",
+          "functional_energy_ratio"
+        ],
+        "degree": 2,
+        "ridge": 1.0,
+        "inner_cv_loss": 2.28722090481266
+      },
+      {
+        "features": [
+          "functional_participation",
+          "functional_energy_ratio"
+        ],
+        "degree": 2,
+        "ridge": 10.0,
+        "inner_cv_loss": 2.2902823007203708
+      },
+      {
+        "features": [
+          "erank_iqr",
+          "functional_energy_ratio"
+        ],
+        "degree": 2,
+        "ridge": 0.01,
+        "inner_cv_loss": 2.293283231058302
+      },
+      {
+        "features": [
+          "functional_cov_erank",
+          "fro_ratio"
+        ],
+        "degree": 2,
+        "ridge": 0.01,
+        "inner_cv_loss": 2.299347935966501
+      },
+      {
+        "features": [
+          "functional_cov_erank",
+          "functional_energy_ratio"
+        ],
+        "degree": 1,
+        "ridge": 0.01,
+        "inner_cv_loss": 2.304543352401959
+      },
+      {
+        "features": [
+          "functional_participation",
+          "functional_energy_ratio"
+        ],
+        "degree": 1,
+        "ridge": 10.0,
+        "inner_cv_loss": 2.327847687724829
+      },
+      {
+        "features": [
+          "functional_participation",
+          "functional_energy_ratio"
+        ],
+        "degree": 1,
+        "ridge": 1.0,
+        "inner_cv_loss": 2.3378038724083594
+      },
+      {
+        "features": [
+          "functional_erank",
+          "functional_energy_ratio"
+        ],
+        "degree": 2,
+        "ridge": 10.0,
+        "inner_cv_loss": 2.3400504945463165
+      },
+      {
+        "features": [
+          "erank_depth_slope",
+          "functional_energy_ratio"
+        ],
+        "degree": 1,
+        "ridge": 0.01,
+        "inner_cv_loss": 2.342981515905152
+      },
+      {
+        "features": [
+          "erank_depth_slope",
+          "functional_energy_ratio"
+        ],
+        "degree": 1,
+        "ridge": 1.0,
+        "inner_cv_loss": 2.3434074961590725
+      },
+      {
+        "features": [
+          "functional_participation",
+          "functional_energy_ratio"
+        ],
+        "degree": 1,
+        "ridge": 0.01,
+        "inner_cv_loss": 2.3471434079175233
+      },
+      {
+        "features": [
+          "erank_depth_slope",
+          "functional_energy_ratio"
+        ],
+        "degree": 1,
+        "ridge": 10.0,
+        "inner_cv_loss": 2.36086824407374
+      },
+      {
+        "features": [
+          "functional_erank",
+          "functional_energy_ratio"
+        ],
+        "degree": 2,
+        "ridge": 1.0,
+        "inner_cv_loss": 2.3654780398705326
+      },
+      {
+        "features": [
+          "functional_erank",
+          "functional_energy_ratio"
+        ],
+        "degree": 1,
+        "ridge": 1.0,
+        "inner_cv_loss": 2.366860265702176
+      },
+      {
+        "features": [
+          "functional_erank",
+          "functional_energy_ratio"
+        ],
+        "degree": 1,
+        "ridge": 0.01,
+        "inner_cv_loss": 2.408648714928828
+      },
+      {
+        "features": [
+          "functional_erank",
+          "fro_ratio"
+        ],
+        "degree": 2,
+        "ridge": 0.01,
+        "inner_cv_loss": 2.4811054243700634
+      }
+    ],
+    "full_fit_feature_rms": [
+      2.089089444796287,
+      0.2765696584530773,
+      5.042933866266647,
+      0.09042795518389679
+    ],
+    "full_fit_outcome_sd": [
+      3.4934519756028295,
+      2.521186287055471
+    ],
+    "full_fit_normalized_coefficients": [
+      [
+        -10.865817772289258,
+        16.855313725495076
+      ],
+      [
+        8.500707829791375,
+        -16.035447720041116
+      ],
+      [
+        -7.930692899016181,
+        11.043712207811407
+      ],
+      [
+        6.874879558969076,
+        -9.236246468233908
+      ]
+    ]
+  },
+  {
+    "cohort": "scalar_common_basis_seed42",
+    "model": "single",
+    "outcomes": [
+      "target_gain",
+      "forgetting_reduction"
+    ],
+    "ranking": [
+      {
+        "features": [
+          "functional_energy_ratio"
+        ],
+        "degree": 1,
+        "ridge": 0.01,
+        "inner_cv_loss": 2.004396984972983
+      },
+      {
+        "features": [
+          "functional_energy_ratio"
+        ],
+        "degree": 1,
+        "ridge": 1.0,
+        "inner_cv_loss": 2.014148968763364
+      },
+      {
+        "features": [
+          "fro_ratio"
+        ],
+        "degree": 2,
+        "ridge": 0.01,
+        "inner_cv_loss": 2.018788950376225
+      },
+      {
+        "features": [
+          "original_head1_retention"
+        ],
+        "degree": 1,
+        "ridge": 0.01,
+        "inner_cv_loss": 2.0273038182947727
+      },
+      {
+        "features": [
+          "original_head1_retention"
+        ],
+        "degree": 1,
+        "ridge": 1.0,
+        "inner_cv_loss": 2.035530581375556
+      },
+      {
+        "features": [
+          "fro_ratio"
+        ],
+        "degree": 2,
+        "ridge": 1.0,
+        "inner_cv_loss": 2.0546685839974517
+      },
+      {
+        "features": [
+          "original_head1_retention"
+        ],
+        "degree": 2,
+        "ridge": 1.0,
+        "inner_cv_loss": 2.058115810869343
+      },
+      {
+        "features": [
+          "fro_ratio"
+        ],
+        "degree": 1,
+        "ridge": 0.01,
+        "inner_cv_loss": 2.0806822044793827
+      },
+      {
+        "features": [
+          "original_head1_retention"
+        ],
+        "degree": 2,
+        "ridge": 0.01,
+        "inner_cv_loss": 2.081532183817051
+      },
+      {
+        "features": [
+          "functional_energy_ratio"
+        ],
+        "degree": 2,
+        "ridge": 1.0,
+        "inner_cv_loss": 2.0818821258499836
+      },
+      {
+        "features": [
+          "fro_ratio"
+        ],
+        "degree": 1,
+        "ridge": 1.0,
+        "inner_cv_loss": 2.089986085531829
+      },
+      {
+        "features": [
+          "original_head1_retention"
+        ],
+        "degree": 2,
+        "ridge": 10.0,
+        "inner_cv_loss": 2.114570819595
+      },
+      {
+        "features": [
+          "functional_energy_ratio"
+        ],
+        "degree": 2,
+        "ridge": 10.0,
+        "inner_cv_loss": 2.136953450896407
+      },
+      {
+        "features": [
+          "functional_energy_ratio"
+        ],
+        "degree": 2,
+        "ridge": 0.01,
+        "inner_cv_loss": 2.144444053658704
+      },
+      {
+        "features": [
+          "functional_energy_ratio"
+        ],
+        "degree": 1,
+        "ridge": 10.0,
+        "inner_cv_loss": 2.158931750834064
+      },
+      {
+        "features": [
+          "original_head1_retention"
+        ],
+        "degree": 1,
+        "ridge": 10.0,
+        "inner_cv_loss": 2.1709713681009304
+      },
+      {
+        "features": [
+          "fro_ratio"
+        ],
+        "degree": 1,
+        "ridge": 10.0,
+        "inner_cv_loss": 2.2289359776395696
+      },
+      {
+        "features": [
+          "fro_ratio"
+        ],
+        "degree": 2,
+        "ridge": 10.0,
+        "inner_cv_loss": 2.238851884241494
+      },
+      {
+        "features": [
+          "erank_iqr"
+        ],
+        "degree": 1,
+        "ridge": 0.01,
+        "inner_cv_loss": 3.676351301722406
+      },
+      {
+        "features": [
+          "erank_iqr"
+        ],
+        "degree": 1,
+        "ridge": 1.0,
+        "inner_cv_loss": 3.6775655063275785
+      },
+      {
+        "features": [
+          "erank_iqr"
+        ],
+        "degree": 2,
+        "ridge": 10.0,
+        "inner_cv_loss": 3.6846732629725296
+      },
+      {
+        "features": [
+          "erank_iqr"
+        ],
+        "degree": 1,
+        "ridge": 10.0,
+        "inner_cv_loss": 3.701512765618247
+      },
+      {
+        "features": [
+          "erank_iqr"
+        ],
+        "degree": 2,
+        "ridge": 1.0,
+        "inner_cv_loss": 3.732744122921558
+      },
+      {
+        "features": [
+          "functional_erank"
+        ],
+        "degree": 1,
+        "ridge": 10.0,
+        "inner_cv_loss": 3.849789329254534
+      },
+      {
+        "features": [
+          "functional_erank"
+        ],
+        "degree": 1,
+        "ridge": 1.0,
+        "inner_cv_loss": 3.850001406779766
+      },
+      {
+        "features": [
+          "functional_erank"
+        ],
+        "degree": 1,
+        "ridge": 0.01,
+        "inner_cv_loss": 3.8517863729967874
+      },
+      {
+        "features": [
+          "functional_cov_erank"
+        ],
+        "degree": 1,
+        "ridge": 10.0,
+        "inner_cv_loss": 3.856673893171935
+      },
+      {
+        "features": [
+          "erank_iqr"
+        ],
+        "degree": 2,
+        "ridge": 0.01,
+        "inner_cv_loss": 3.857366343008796
+      },
+      {
+        "features": [
+          "functional_cov_erank"
+        ],
+        "degree": 1,
+        "ridge": 1.0,
+        "inner_cv_loss": 3.8575344916906613
+      },
+      {
+        "features": [
+          "functional_cov_erank"
+        ],
+        "degree": 1,
+        "ridge": 0.01,
+        "inner_cv_loss": 3.85937653148402
+      },
+      {
+        "features": [
+          "functional_cov_erank"
+        ],
+        "degree": 2,
+        "ridge": 0.01,
+        "inner_cv_loss": 3.8724590817902507
+      },
+      {
+        "features": [
+          "functional_cov_erank"
+        ],
+        "degree": 2,
+        "ridge": 1.0,
+        "inner_cv_loss": 3.8771954640878974
+      },
+      {
+        "features": [
+          "functional_erank"
+        ],
+        "degree": 2,
+        "ridge": 1.0,
+        "inner_cv_loss": 3.8779105771296027
+      },
+      {
+        "features": [
+          "functional_erank"
+        ],
+        "degree": 2,
+        "ridge": 10.0,
+        "inner_cv_loss": 3.889384114172772
+      },
+      {
+        "features": [
+          "functional_cov_erank"
+        ],
+        "degree": 2,
+        "ridge": 10.0,
+        "inner_cv_loss": 3.8914151657133433
+      },
+      {
+        "features": [
+          "functional_cov_participation"
+        ],
+        "degree": 1,
+        "ridge": 10.0,
+        "inner_cv_loss": 3.912183938379282
+      },
+      {
+        "features": [
+          "functional_cov_participation"
+        ],
+        "degree": 1,
+        "ridge": 1.0,
+        "inner_cv_loss": 3.913732147713549
+      },
+      {
+        "features": [
+          "functional_cov_participation"
+        ],
+        "degree": 1,
+        "ridge": 0.01,
+        "inner_cv_loss": 3.91524569350689
+      },
+      {
+        "features": [
+          "functional_participation"
+        ],
+        "degree": 1,
+        "ridge": 10.0,
+        "inner_cv_loss": 3.919737484571075
+      },
+      {
+        "features": [
+          "functional_participation"
+        ],
+        "degree": 1,
+        "ridge": 1.0,
+        "inner_cv_loss": 3.923651041893223
+      },
+      {
+        "features": [
+          "functional_participation"
+        ],
+        "degree": 1,
+        "ridge": 0.01,
+        "inner_cv_loss": 3.92551441421344
+      },
+      {
+        "features": [
+          "functional_cov_participation"
+        ],
+        "degree": 2,
+        "ridge": 10.0,
+        "inner_cv_loss": 3.941316330154771
+      },
+      {
+        "features": [
+          "functional_participation"
+        ],
+        "degree": 2,
+        "ridge": 10.0,
+        "inner_cv_loss": 3.948794515999138
+      },
+      {
+        "features": [
+          "functional_erank"
+        ],
+        "degree": 2,
+        "ridge": 0.01,
+        "inner_cv_loss": 3.9489447737148002
+      },
+      {
+        "features": [
+          "functional_participation"
+        ],
+        "degree": 2,
+        "ridge": 1.0,
+        "inner_cv_loss": 3.9548730269346346
+      },
+      {
+        "features": [
+          "functional_cov_participation"
+        ],
+        "degree": 2,
+        "ridge": 1.0,
+        "inner_cv_loss": 3.99170831211481
+      },
+      {
+        "features": [
+          "functional_erank_iqr"
+        ],
+        "degree": 2,
+        "ridge": 10.0,
+        "inner_cv_loss": 4.028413957673068
+      },
+      {
+        "features": [
+          "functional_erank_iqr"
+        ],
+        "degree": 1,
+        "ridge": 10.0,
+        "inner_cv_loss": 4.03499910172607
+      },
+      {
+        "features": [
+          "functional_participation"
+        ],
+        "degree": 2,
+        "ridge": 0.01,
+        "inner_cv_loss": 4.055165473694642
+      },
+      {
+        "features": [
+          "functional_erank_iqr"
+        ],
+        "degree": 1,
+        "ridge": 1.0,
+        "inner_cv_loss": 4.059964810519199
+      },
+      {
+        "features": [
+          "functional_erank_iqr"
+        ],
+        "degree": 1,
+        "ridge": 0.01,
+        "inner_cv_loss": 4.064554143241209
+      },
+      {
+        "features": [
+          "functional_attn_mlp_gap"
+        ],
+        "degree": 1,
+        "ridge": 10.0,
+        "inner_cv_loss": 4.0985997086814905
+      },
+      {
+        "features": [
+          "functional_cov_participation"
+        ],
+        "degree": 2,
+        "ridge": 0.01,
+        "inner_cv_loss": 4.13404771335966
+      },
+      {
+        "features": [
+          "functional_attn_mlp_gap"
+        ],
+        "degree": 1,
+        "ridge": 1.0,
+        "inner_cv_loss": 4.143214408637845
+      },
+      {
+        "features": [
+          "functional_attn_mlp_gap"
+        ],
+        "degree": 1,
+        "ridge": 0.01,
+        "inner_cv_loss": 4.150702872991855
+      },
+      {
+        "features": [
+          "functional_erank_iqr"
+        ],
+        "degree": 2,
+        "ridge": 1.0,
+        "inner_cv_loss": 4.1649819237263
+      },
+      {
+        "features": [
+          "erank_depth_slope"
+        ],
+        "degree": 1,
+        "ridge": 10.0,
+        "inner_cv_loss": 4.18001890430706
+      },
+      {
+        "features": [
+          "erank_depth_slope"
+        ],
+        "degree": 1,
+        "ridge": 1.0,
+        "inner_cv_loss": 4.231405780380084
+      },
+      {
+        "features": [
+          "functional_erank_iqr"
+        ],
+        "degree": 2,
+        "ridge": 0.01,
+        "inner_cv_loss": 4.2346320212694595
+      },
+      {
+        "features": [
+          "erank_depth_slope"
+        ],
+        "degree": 1,
+        "ridge": 0.01,
+        "inner_cv_loss": 4.2394133609064095
+      },
+      {
+        "features": [
+          "erank_depth_slope"
+        ],
+        "degree": 2,
+        "ridge": 10.0,
+        "inner_cv_loss": 4.265052997950455
+      },
+      {
+        "features": [
+          "functional_attn_mlp_gap"
+        ],
+        "degree": 2,
+        "ridge": 10.0,
+        "inner_cv_loss": 4.284438726645972
+      },
+      {
+        "features": [
+          "erank_depth_slope"
+        ],
+        "degree": 2,
+        "ridge": 1.0,
+        "inner_cv_loss": 4.731820636300363
+      },
+      {
+        "features": [
+          "functional_attn_mlp_gap"
+        ],
+        "degree": 2,
+        "ridge": 1.0,
+        "inner_cv_loss": 4.747534596618023
+      },
+      {
+        "features": [
+          "erank_depth_slope"
+        ],
+        "degree": 2,
+        "ridge": 0.01,
+        "inner_cv_loss": 4.832572366847133
+      },
+      {
+        "features": [
+          "functional_attn_mlp_gap"
+        ],
+        "degree": 2,
+        "ridge": 0.01,
+        "inner_cv_loss": 5.083682743801559
+      }
+    ],
+    "full_fit_feature_rms": [
+      0.5208139882434035
+    ],
+    "full_fit_outcome_sd": [
+      2.352942665362653,
+      1.0795734859017954
+    ],
+    "full_fit_normalized_coefficients": [
+      [
+        -1.1269626136113136,
+        -1.4092033207389232
+      ]
+    ]
+  },
+  {
+    "cohort": "scalar_common_basis_seed42",
+    "model": "shape_plus_strength",
+    "outcomes": [
+      "target_gain",
+      "forgetting_reduction"
+    ],
+    "ranking": [
+      {
+        "features": [
+          "functional_erank",
+          "functional_energy_ratio"
+        ],
+        "degree": 1,
+        "ridge": 0.01,
+        "inner_cv_loss": 1.9861375368639511
+      },
+      {
+        "features": [
+          "functional_cov_erank",
+          "functional_energy_ratio"
+        ],
+        "degree": 1,
+        "ridge": 0.01,
+        "inner_cv_loss": 1.9884613681790884
+      },
+      {
+        "features": [
+          "functional_erank",
+          "functional_energy_ratio"
+        ],
+        "degree": 1,
+        "ridge": 1.0,
+        "inner_cv_loss": 1.9996825007244257
+      },
+      {
+        "features": [
+          "functional_cov_erank",
+          "functional_energy_ratio"
+        ],
+        "degree": 1,
+        "ridge": 1.0,
+        "inner_cv_loss": 2.0017828332104157
+      },
+      {
+        "features": [
+          "erank_iqr",
+          "fro_ratio"
+        ],
+        "degree": 1,
+        "ridge": 0.01,
+        "inner_cv_loss": 2.0205255695891458
+      },
+      {
+        "features": [
+          "functional_participation",
+          "functional_energy_ratio"
+        ],
+        "degree": 1,
+        "ridge": 0.01,
+        "inner_cv_loss": 2.025279225221675
+      },
+      {
+        "features": [
+          "erank_iqr",
+          "fro_ratio"
+        ],
+        "degree": 1,
+        "ridge": 1.0,
+        "inner_cv_loss": 2.0279390209882466
+      },
+      {
+        "features": [
+          "functional_participation",
+          "functional_energy_ratio"
+        ],
+        "degree": 1,
+        "ridge": 1.0,
+        "inner_cv_loss": 2.0366051706430004
+      },
+      {
+        "features": [
+          "functional_cov_participation",
+          "functional_energy_ratio"
+        ],
+        "degree": 1,
+        "ridge": 0.01,
+        "inner_cv_loss": 2.0384874411505938
+      },
+      {
+        "features": [
+          "functional_cov_participation",
+          "functional_energy_ratio"
+        ],
+        "degree": 1,
+        "ridge": 1.0,
+        "inner_cv_loss": 2.0481446800487393
+      },
+      {
+        "features": [
+          "erank_iqr",
+          "functional_energy_ratio"
+        ],
+        "degree": 1,
+        "ridge": 0.01,
+        "inner_cv_loss": 2.0568181604330733
+      },
+      {
+        "features": [
+          "erank_iqr",
+          "functional_energy_ratio"
+        ],
+        "degree": 1,
+        "ridge": 1.0,
+        "inner_cv_loss": 2.062584932060214
+      },
+      {
+        "features": [
+          "functional_erank",
+          "fro_ratio"
+        ],
+        "degree": 1,
+        "ridge": 0.01,
+        "inner_cv_loss": 2.0689290840812724
+      },
+      {
+        "features": [
+          "functional_cov_erank",
+          "fro_ratio"
+        ],
+        "degree": 1,
+        "ridge": 0.01,
+        "inner_cv_loss": 2.070239239964495
+      },
+      {
+        "features": [
+          "functional_erank",
+          "fro_ratio"
+        ],
+        "degree": 1,
+        "ridge": 1.0,
+        "inner_cv_loss": 2.076851461197097
+      },
+      {
+        "features": [
+          "functional_cov_erank",
+          "fro_ratio"
+        ],
+        "degree": 1,
+        "ridge": 1.0,
+        "inner_cv_loss": 2.0780397760106983
+      },
+      {
+        "features": [
+          "erank_iqr",
+          "fro_ratio"
+        ],
+        "degree": 2,
+        "ridge": 1.0,
+        "inner_cv_loss": 2.0888120880362613
+      },
+      {
+        "features": [
+          "functional_cov_participation",
+          "fro_ratio"
+        ],
+        "degree": 1,
+        "ridge": 0.01,
+        "inner_cv_loss": 2.09128318858509
+      },
+      {
+        "features": [
+          "functional_cov_participation",
+          "fro_ratio"
+        ],
+        "degree": 1,
+        "ridge": 1.0,
+        "inner_cv_loss": 2.0984648396656347
+      },
+      {
+        "features": [
+          "functional_participation",
+          "fro_ratio"
+        ],
+        "degree": 1,
+        "ridge": 0.01,
+        "inner_cv_loss": 2.100315878794147
+      },
+      {
+        "features": [
+          "functional_erank",
+          "fro_ratio"
+        ],
+        "degree": 2,
+        "ridge": 1.0,
+        "inner_cv_loss": 2.1041799841836153
+      },
+      {
+        "features": [
+          "functional_participation",
+          "fro_ratio"
+        ],
+        "degree": 1,
+        "ridge": 1.0,
+        "inner_cv_loss": 2.107509643073124
+      },
+      {
+        "features": [
+          "functional_erank",
+          "functional_energy_ratio"
+        ],
+        "degree": 2,
+        "ridge": 1.0,
+        "inner_cv_loss": 2.1082903072209693
+      },
+      {
+        "features": [
+          "functional_cov_erank",
+          "functional_energy_ratio"
+        ],
+        "degree": 2,
+        "ridge": 1.0,
+        "inner_cv_loss": 2.113674154562489
+      },
+      {
+        "features": [
+          "functional_cov_erank",
+          "fro_ratio"
+        ],
+        "degree": 2,
+        "ridge": 1.0,
+        "inner_cv_loss": 2.116186537912414
+      },
+      {
+        "features": [
+          "erank_depth_slope",
+          "functional_energy_ratio"
+        ],
+        "degree": 1,
+        "ridge": 1.0,
+        "inner_cv_loss": 2.1337500421275353
+      },
+      {
+        "features": [
+          "erank_depth_slope",
+          "functional_energy_ratio"
+        ],
+        "degree": 1,
+        "ridge": 0.01,
+        "inner_cv_loss": 2.1350187130312075
+      },
+      {
+        "features": [
+          "erank_iqr",
+          "functional_energy_ratio"
+        ],
+        "degree": 2,
+        "ridge": 1.0,
+        "inner_cv_loss": 2.137714409932109
+      },
+      {
+        "features": [
+          "erank_depth_slope",
+          "fro_ratio"
+        ],
+        "degree": 1,
+        "ridge": 0.01,
+        "inner_cv_loss": 2.139819919684898
+      },
+      {
+        "features": [
+          "erank_iqr",
+          "fro_ratio"
+        ],
+        "degree": 2,
+        "ridge": 10.0,
+        "inner_cv_loss": 2.144805086087106
+      },
+      {
+        "features": [
+          "erank_depth_slope",
+          "fro_ratio"
+        ],
+        "degree": 1,
+        "ridge": 1.0,
+        "inner_cv_loss": 2.1473403930094137
+      },
+      {
+        "features": [
+          "erank_iqr",
+          "fro_ratio"
+        ],
+        "degree": 1,
+        "ridge": 10.0,
+        "inner_cv_loss": 2.148674915384076
+      },
+      {
+        "features": [
+          "functional_erank",
+          "functional_energy_ratio"
+        ],
+        "degree": 2,
+        "ridge": 10.0,
+        "inner_cv_loss": 2.1525638743062823
+      },
+      {
+        "features": [
+          "functional_cov_erank",
+          "functional_energy_ratio"
+        ],
+        "degree": 2,
+        "ridge": 10.0,
+        "inner_cv_loss": 2.1580367126757634
+      },
+      {
+        "features": [
+          "functional_participation",
+          "functional_energy_ratio"
+        ],
+        "degree": 2,
+        "ridge": 1.0,
+        "inner_cv_loss": 2.1593720067504294
+      },
+      {
+        "features": [
+          "functional_participation",
+          "fro_ratio"
+        ],
+        "degree": 2,
+        "ridge": 1.0,
+        "inner_cv_loss": 2.159643650290849
+      },
+      {
+        "features": [
+          "functional_cov_participation",
+          "fro_ratio"
+        ],
+        "degree": 2,
+        "ridge": 1.0,
+        "inner_cv_loss": 2.171109810460526
+      },
+      {
+        "features": [
+          "functional_cov_participation",
+          "functional_energy_ratio"
+        ],
+        "degree": 2,
+        "ridge": 1.0,
+        "inner_cv_loss": 2.1732162618280744
+      },
+      {
+        "features": [
+          "functional_erank",
+          "functional_energy_ratio"
+        ],
+        "degree": 1,
+        "ridge": 10.0,
+        "inner_cv_loss": 2.1790476795362763
+      },
+      {
+        "features": [
+          "functional_cov_erank",
+          "functional_energy_ratio"
+        ],
+        "degree": 1,
+        "ridge": 10.0,
+        "inner_cv_loss": 2.1797171513210336
+      },
+      {
+        "features": [
+          "functional_erank_iqr",
+          "functional_energy_ratio"
+        ],
+        "degree": 1,
+        "ridge": 0.01,
+        "inner_cv_loss": 2.1833260423353478
+      },
+      {
+        "features": [
+          "erank_iqr",
+          "functional_energy_ratio"
+        ],
+        "degree": 2,
+        "ridge": 10.0,
+        "inner_cv_loss": 2.184821128210021
+      },
+      {
+        "features": [
+          "functional_erank_iqr",
+          "functional_energy_ratio"
+        ],
+        "degree": 1,
+        "ridge": 1.0,
+        "inner_cv_loss": 2.184842947238655
+      },
+      {
+        "features": [
+          "erank_iqr",
+          "fro_ratio"
+        ],
+        "degree": 2,
+        "ridge": 0.01,
+        "inner_cv_loss": 2.1940405312157405
+      },
+      {
+        "features": [
+          "erank_iqr",
+          "functional_energy_ratio"
+        ],
+        "degree": 1,
+        "ridge": 10.0,
+        "inner_cv_loss": 2.197180636891181
+      },
+      {
+        "features": [
+          "erank_iqr",
+          "functional_energy_ratio"
+        ],
+        "degree": 2,
+        "ridge": 0.01,
+        "inner_cv_loss": 2.200229849611167
+      },
+      {
+        "features": [
+          "functional_erank",
+          "fro_ratio"
+        ],
+        "degree": 1,
+        "ridge": 10.0,
+        "inner_cv_loss": 2.2002670737074017
+      },
+      {
+        "features": [
+          "functional_participation",
+          "functional_energy_ratio"
+        ],
+        "degree": 1,
+        "ridge": 10.0,
+        "inner_cv_loss": 2.2005691048204423
+      },
+      {
+        "features": [
+          "functional_cov_erank",
+          "fro_ratio"
+        ],
+        "degree": 1,
+        "ridge": 10.0,
+        "inner_cv_loss": 2.2009540744236573
+      },
+      {
+        "features": [
+          "functional_cov_participation",
+          "functional_energy_ratio"
+        ],
+        "degree": 1,
+        "ridge": 10.0,
+        "inner_cv_loss": 2.20309199183025
+      },
+      {
+        "features": [
+          "functional_participation",
+          "functional_energy_ratio"
+        ],
+        "degree": 2,
+        "ridge": 10.0,
+        "inner_cv_loss": 2.204209643562882
+      },
+      {
+        "features": [
+          "erank_depth_slope",
+          "functional_energy_ratio"
+        ],
+        "degree": 2,
+        "ridge": 1.0,
+        "inner_cv_loss": 2.2161785395542455
+      },
+      {
+        "features": [
+          "functional_cov_participation",
+          "functional_energy_ratio"
+        ],
+        "degree": 2,
+        "ridge": 10.0,
+        "inner_cv_loss": 2.2164346868554845
+      },
+      {
+        "features": [
+          "functional_cov_participation",
+          "fro_ratio"
+        ],
+        "degree": 1,
+        "ridge": 10.0,
+        "inner_cv_loss": 2.2189733504716695
+      },
+      {
+        "features": [
+          "functional_erank_iqr",
+          "fro_ratio"
+        ],
+        "degree": 1,
+        "ridge": 0.01,
+        "inner_cv_loss": 2.221542150643763
+      },
+      {
+        "features": [
+          "functional_cov_erank",
+          "functional_energy_ratio"
+        ],
+        "degree": 2,
+        "ridge": 0.01,
+        "inner_cv_loss": 2.2217818215898566
+      },
+      {
+        "features": [
+          "erank_depth_slope",
+          "functional_energy_ratio"
+        ],
+        "degree": 1,
+        "ridge": 10.0,
+        "inner_cv_loss": 2.2244150881144735
+      },
+      {
+        "features": [
+          "functional_cov_erank",
+          "fro_ratio"
+        ],
+        "degree": 2,
+        "ridge": 10.0,
+        "inner_cv_loss": 2.2247679964826594
+      },
+      {
+        "features": [
+          "functional_erank",
+          "fro_ratio"
+        ],
+        "degree": 2,
+        "ridge": 10.0,
+        "inner_cv_loss": 2.2254666609355866
+      },
+      {
+        "features": [
+          "functional_erank_iqr",
+          "fro_ratio"
+        ],
+        "degree": 1,
+        "ridge": 1.0,
+        "inner_cv_loss": 2.225509581005648
+      },
+      {
+        "features": [
+          "functional_participation",
+          "fro_ratio"
+        ],
+        "degree": 1,
+        "ridge": 10.0,
+        "inner_cv_loss": 2.2275444439773175
+      },
+      {
+        "features": [
+          "functional_cov_erank",
+          "fro_ratio"
+        ],
+        "degree": 2,
+        "ridge": 0.01,
+        "inner_cv_loss": 2.2358579495883237
+      },
+      {
+        "features": [
+          "functional_attn_mlp_gap",
+          "functional_energy_ratio"
+        ],
+        "degree": 1,
+        "ridge": 1.0,
+        "inner_cv_loss": 2.238376781186124
+      },
+      {
+        "features": [
+          "functional_attn_mlp_gap",
+          "functional_energy_ratio"
+        ],
+        "degree": 1,
+        "ridge": 0.01,
+        "inner_cv_loss": 2.2384125455332473
+      },
+      {
+        "features": [
+          "functional_erank_iqr",
+          "functional_energy_ratio"
+        ],
+        "degree": 2,
+        "ridge": 1.0,
+        "inner_cv_loss": 2.2410656481964804
+      },
+      {
+        "features": [
+          "functional_cov_participation",
+          "fro_ratio"
+        ],
+        "degree": 2,
+        "ridge": 10.0,
+        "inner_cv_loss": 2.2426251846121694
+      },
+      {
+        "features": [
+          "functional_participation",
+          "fro_ratio"
+        ],
+        "degree": 2,
+        "ridge": 10.0,
+        "inner_cv_loss": 2.2523180699810874
+      },
+      {
+        "features": [
+          "functional_cov_participation",
+          "fro_ratio"
+        ],
+        "degree": 2,
+        "ridge": 0.01,
+        "inner_cv_loss": 2.253017576114944
+      },
+      {
+        "features": [
+          "functional_participation",
+          "functional_energy_ratio"
+        ],
+        "degree": 2,
+        "ridge": 0.01,
+        "inner_cv_loss": 2.253540851524291
+      },
+      {
+        "features": [
+          "functional_erank",
+          "fro_ratio"
+        ],
+        "degree": 2,
+        "ridge": 0.01,
+        "inner_cv_loss": 2.254439247919283
+      },
+      {
+        "features": [
+          "erank_depth_slope",
+          "functional_energy_ratio"
+        ],
+        "degree": 2,
+        "ridge": 10.0,
+        "inner_cv_loss": 2.2549777118827925
+      },
+      {
+        "features": [
+          "functional_participation",
+          "fro_ratio"
+        ],
+        "degree": 2,
+        "ridge": 0.01,
+        "inner_cv_loss": 2.2596056630050607
+      },
+      {
+        "features": [
+          "functional_erank_iqr",
+          "functional_energy_ratio"
+        ],
+        "degree": 2,
+        "ridge": 10.0,
+        "inner_cv_loss": 2.266208549185107
+      },
+      {
+        "features": [
+          "erank_depth_slope",
+          "fro_ratio"
+        ],
+        "degree": 1,
+        "ridge": 10.0,
+        "inner_cv_loss": 2.2747349396049286
+      },
+      {
+        "features": [
+          "functional_attn_mlp_gap",
+          "fro_ratio"
+        ],
+        "degree": 1,
+        "ridge": 0.01,
+        "inner_cv_loss": 2.275412064730143
+      },
+      {
+        "features": [
+          "functional_attn_mlp_gap",
+          "fro_ratio"
+        ],
+        "degree": 1,
+        "ridge": 1.0,
+        "inner_cv_loss": 2.277615771752941
+      },
+      {
+        "features": [
+          "functional_cov_participation",
+          "functional_energy_ratio"
+        ],
+        "degree": 2,
+        "ridge": 0.01,
+        "inner_cv_loss": 2.2827225762686747
+      },
+      {
+        "features": [
+          "functional_erank_iqr",
+          "fro_ratio"
+        ],
+        "degree": 2,
+        "ridge": 1.0,
+        "inner_cv_loss": 2.2829088469054803
+      },
+      {
+        "features": [
+          "functional_erank_iqr",
+          "functional_energy_ratio"
+        ],
+        "degree": 1,
+        "ridge": 10.0,
+        "inner_cv_loss": 2.2881708189380308
+      },
+      {
+        "features": [
+          "erank_depth_slope",
+          "functional_energy_ratio"
+        ],
+        "degree": 2,
+        "ridge": 0.01,
+        "inner_cv_loss": 2.2918321314683205
+      },
+      {
+        "features": [
+          "functional_erank",
+          "functional_energy_ratio"
+        ],
+        "degree": 2,
+        "ridge": 0.01,
+        "inner_cv_loss": 2.2964355476272496
+      },
+      {
+        "features": [
+          "functional_attn_mlp_gap",
+          "functional_energy_ratio"
+        ],
+        "degree": 2,
+        "ridge": 1.0,
+        "inner_cv_loss": 2.308819189065462
+      },
+      {
+        "features": [
+          "functional_erank_iqr",
+          "functional_energy_ratio"
+        ],
+        "degree": 2,
+        "ridge": 0.01,
+        "inner_cv_loss": 2.3123269222524967
+      },
+      {
+        "features": [
+          "functional_attn_mlp_gap",
+          "functional_energy_ratio"
+        ],
+        "degree": 2,
+        "ridge": 10.0,
+        "inner_cv_loss": 2.321536475435167
+      },
+      {
+        "features": [
+          "functional_erank_iqr",
+          "fro_ratio"
+        ],
+        "degree": 2,
+        "ridge": 0.01,
+        "inner_cv_loss": 2.3241260275514226
+      },
+      {
+        "features": [
+          "functional_erank_iqr",
+          "fro_ratio"
+        ],
+        "degree": 1,
+        "ridge": 10.0,
+        "inner_cv_loss": 2.3259077418374603
+      },
+      {
+        "features": [
+          "functional_attn_mlp_gap",
+          "functional_energy_ratio"
+        ],
+        "degree": 1,
+        "ridge": 10.0,
+        "inner_cv_loss": 2.328699329718448
+      },
+      {
+        "features": [
+          "functional_erank_iqr",
+          "fro_ratio"
+        ],
+        "degree": 2,
+        "ridge": 10.0,
+        "inner_cv_loss": 2.3369239198595158
+      },
+      {
+        "features": [
+          "functional_attn_mlp_gap",
+          "fro_ratio"
+        ],
+        "degree": 1,
+        "ridge": 10.0,
+        "inner_cv_loss": 2.366123795687883
+      },
+      {
+        "features": [
+          "erank_depth_slope",
+          "fro_ratio"
+        ],
+        "degree": 2,
+        "ridge": 10.0,
+        "inner_cv_loss": 2.461319332392311
+      },
+      {
+        "features": [
+          "functional_attn_mlp_gap",
+          "fro_ratio"
+        ],
+        "degree": 2,
+        "ridge": 10.0,
+        "inner_cv_loss": 2.47465552178032
+      },
+      {
+        "features": [
+          "erank_depth_slope",
+          "fro_ratio"
+        ],
+        "degree": 2,
+        "ridge": 0.01,
+        "inner_cv_loss": 2.517867465832808
+      },
+      {
+        "features": [
+          "functional_attn_mlp_gap",
+          "functional_energy_ratio"
+        ],
+        "degree": 2,
+        "ridge": 0.01,
+        "inner_cv_loss": 2.5252001384622207
+      },
+      {
+        "features": [
+          "erank_depth_slope",
+          "fro_ratio"
+        ],
+        "degree": 2,
+        "ridge": 1.0,
+        "inner_cv_loss": 2.5341307228867347
+      },
+      {
+        "features": [
+          "functional_attn_mlp_gap",
+          "fro_ratio"
+        ],
+        "degree": 2,
+        "ridge": 1.0,
+        "inner_cv_loss": 2.5567698069192484
+      },
+      {
+        "features": [
+          "functional_attn_mlp_gap",
+          "fro_ratio"
+        ],
+        "degree": 2,
+        "ridge": 0.01,
+        "inner_cv_loss": 2.715479281833501
+      }
+    ],
+    "full_fit_feature_rms": [
+      2.8708057862056617,
+      0.5208139882434035
+    ],
+    "full_fit_outcome_sd": [
+      2.352942665362653,
+      1.0795734859017954
+    ],
+    "full_fit_normalized_coefficients": [
+      [
+        -0.18986124289918388,
+        -0.12006390625704015
+      ],
+      [
+        -1.2168360798737499,
+        -1.4660372446275298
+      ]
+    ]
+  }
+]

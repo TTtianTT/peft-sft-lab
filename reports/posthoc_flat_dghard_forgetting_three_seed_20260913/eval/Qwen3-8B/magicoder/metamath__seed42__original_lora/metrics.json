@@ -1,0 +1,7 @@
+{
+  "samples": 164,
+  "primary_metric": "pass_at_1",
+  "pass_at_1": 0.6402439024390244,
+  "correct": 105,
+  "results_path": "/dataset1/zailong/workspace/peft-sft-lab/reports/posthoc_flat_dghard_forgetting_three_seed_20260913/eval/Qwen3-8B/magicoder/metamath__seed42__original_lora/samples.jsonl_results.jsonl"
+}

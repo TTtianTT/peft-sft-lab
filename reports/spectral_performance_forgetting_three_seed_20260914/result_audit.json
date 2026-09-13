@@ -1,0 +1,17 @@
+{
+  "status": "pass",
+  "coverage_rows": 450,
+  "source_checkpoints": 18,
+  "unique_adapters": 282,
+  "benchmark_cells": 1206,
+  "evaluated_examples": 6293220,
+  "unchanged_input_manifests": 52,
+  "source_hash_audit": "pass",
+  "norm_invariants": "pass",
+  "baseline_deltas": "pass",
+  "cv_truth_join": "pass",
+  "cv_source_disjointness": "pass",
+  "cv_train_only_normalization": "pass",
+  "synthetic_checks": "tied ranks / constant correlation / identity / Flat-Fro / Flat-Nuclear passed",
+  "gpu_count": 0
+}

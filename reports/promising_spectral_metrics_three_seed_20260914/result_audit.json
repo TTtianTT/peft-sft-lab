@@ -1,0 +1,14 @@
+{
+  "status": "pass",
+  "rows": 450,
+  "source_checkpoints": 18,
+  "unique_adapters": 282,
+  "prior_performance_unchanged": "pass",
+  "alias_gamma_eta": "pass",
+  "flat_endpoints_and_undefined_diagnostics": "pass",
+  "base_projector_bounds_and_nested_k": "pass",
+  "functional_scope_and_bounds": "pass",
+  "source_cv_seed_disjointness": "pass",
+  "synthetic_shape_scale_invariance": "pass",
+  "gpu_count": 0
+}

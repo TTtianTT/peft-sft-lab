@@ -1,0 +1,17 @@
+{
+  "sources": 18,
+  "design": "nested leave-seed-out; inner leave-source-out; train-only Base×Task means + one centered feature; linear only",
+  "feature_selection": {
+    "shannon_eff_rank": 1,
+    "erank_depth_slope_normalized": 1,
+    "erank_iqr": 1
+  },
+  "target_rmse": 1.8519396927140475,
+  "target_group_mean_rmse": 1.1835818172339712,
+  "target_skill_vs_group_mean": -1.4482575963684208,
+  "target_r2": 0.9623077900579522,
+  "forgetting_gap_rmse": 4.108747799427342,
+  "forgetting_gap_group_mean_rmse": 2.130959846181704,
+  "forgetting_gap_skill_vs_group_mean": -2.7176494503004816,
+  "forgetting_gap_r2": -1.9515423656697193
+}

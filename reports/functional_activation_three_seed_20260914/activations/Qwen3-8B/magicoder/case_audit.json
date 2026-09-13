@@ -1,0 +1,40 @@
+{
+  "status": "complete",
+  "base": "Qwen3-8B",
+  "task": "magicoder",
+  "seeds": [
+    42,
+    43,
+    44
+  ],
+  "samples": 256,
+  "tokens": 104523,
+  "modules_per_seed": 252,
+  "seconds": 16.754066944122314,
+  "pilots": [
+    {
+      "batch_size": 64,
+      "status": "pass",
+      "seconds": 3.9712226390838623,
+      "peak_allocated_gib": 18.696370124816895,
+      "total_gib": 267.68170166015625
+    },
+    {
+      "batch_size": 128,
+      "status": "pass",
+      "seconds": 1.5786700248718262,
+      "peak_allocated_gib": 21.978108406066895,
+      "total_gib": 267.68170166015625
+    },
+    {
+      "batch_size": 256,
+      "status": "pass",
+      "seconds": 2.722548246383667,
+      "peak_allocated_gib": 28.510334968566895,
+      "total_gib": 267.68170166015625
+    }
+  ],
+  "batch_size": 256,
+  "collector_sha256": "14e4e2218dcde749f637432a1692714cbc04970bc61608c7319d5b07ee8f8b4f",
+  "completed_utc": "2026-09-13T18:28:45.987005+00:00"
+}

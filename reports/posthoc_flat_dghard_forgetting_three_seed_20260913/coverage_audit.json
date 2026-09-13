@@ -1,0 +1,2951 @@
+{
+  "status": "pass",
+  "cells": 368,
+  "samples": 2248756,
+  "checks": [
+    {
+      "base": "Qwen3-8B",
+      "eval_task": "magicoder",
+      "label": "base",
+      "samples": 164,
+      "input_records_match_base": true,
+      "unique_ids": true
+    },
+    {
+      "base": "Qwen3-8B",
+      "eval_task": "magicoder",
+      "label": "magicoder__seed42__original_lora",
+      "samples": 164,
+      "input_records_match_base": true,
+      "unique_ids": true
+    },
+    {
+      "base": "Qwen3-8B",
+      "eval_task": "magicoder",
+      "label": "magicoder__seed42__flat_fro",
+      "samples": 164,
+      "input_records_match_base": true,
+      "unique_ids": true
+    },
+    {
+      "base": "Qwen3-8B",
+      "eval_task": "magicoder",
+      "label": "magicoder__seed42__flat_nuclear",
+      "samples": 164,
+      "input_records_match_base": true,
+      "unique_ids": true
+    },
+    {
+      "base": "Qwen3-8B",
+      "eval_task": "magicoder",
+      "label": "magicoder__seed42__dg_hard",
+      "samples": 164,
+      "input_records_match_base": true,
+      "unique_ids": true
+    },
+    {
+      "base": "Qwen3-8B",
+      "eval_task": "magicoder",
+      "label": "magicoder__seed42__hns_f4_s1",
+      "samples": 164,
+      "input_records_match_base": true,
+      "unique_ids": true
+    },
+    {
+      "base": "Qwen3-8B",
+      "eval_task": "magicoder",
+      "label": "metamath__seed42__original_lora",
+      "samples": 164,
+      "input_records_match_base": true,
+      "unique_ids": true
+    },
+    {
+      "base": "Qwen3-8B",
+      "eval_task": "magicoder",
+      "label": "metamath__seed42__flat_fro",
+      "samples": 164,
+      "input_records_match_base": true,
+      "unique_ids": true
+    },
+    {
+      "base": "Qwen3-8B",
+      "eval_task": "magicoder",
+      "label": "metamath__seed42__flat_nuclear",
+      "samples": 164,
+      "input_records_match_base": true,
+      "unique_ids": true
+    },
+    {
+      "base": "Qwen3-8B",
+      "eval_task": "magicoder",
+      "label": "metamath__seed42__dg_hard",
+      "samples": 164,
+      "input_records_match_base": true,
+      "unique_ids": true
+    },
+    {
+      "base": "Qwen3-8B",
+      "eval_task": "magicoder",
+      "label": "metamath__seed42__hns_f4_s1",
+      "samples": 164,
+      "input_records_match_base": true,
+      "unique_ids": true
+    },
+    {
+      "base": "Qwen3-8B",
+      "eval_task": "magicoder",
+      "label": "tulu__seed42__original_lora",
+      "samples": 164,
+      "input_records_match_base": true,
+      "unique_ids": true
+    },
+    {
+      "base": "Qwen3-8B",
+      "eval_task": "magicoder",
+      "label": "tulu__seed42__flat_fro",
+      "samples": 164,
+      "input_records_match_base": true,
+      "unique_ids": true
+    },
+    {
+      "base": "Qwen3-8B",
+      "eval_task": "magicoder",
+      "label": "tulu__seed42__flat_nuclear",
+      "samples": 164,
+      "input_records_match_base": true,
+      "unique_ids": true
+    },
+    {
+      "base": "Qwen3-8B",
+      "eval_task": "magicoder",
+      "label": "tulu__seed42__dg_hard",
+      "samples": 164,
+      "input_records_match_base": true,
+      "unique_ids": true
+    },
+    {
+      "base": "Qwen3-8B",
+      "eval_task": "magicoder",
+      "label": "tulu__seed42__hns_f4_s1",
+      "samples": 164,
+      "input_records_match_base": true,
+      "unique_ids": true
+    },
+    {
+      "base": "Qwen3-8B",
+      "eval_task": "magicoder",
+      "label": "magicoder__seed43__original_lora",
+      "samples": 164,
+      "input_records_match_base": true,
+      "unique_ids": true
+    },
+    {
+      "base": "Qwen3-8B",
+      "eval_task": "magicoder",
+      "label": "magicoder__seed43__flat_fro",
+      "samples": 164,
+      "input_records_match_base": true,
+      "unique_ids": true
+    },
+    {
+      "base": "Qwen3-8B",
+      "eval_task": "magicoder",
+      "label": "magicoder__seed43__flat_nuclear",
+      "samples": 164,
+      "input_records_match_base": true,
+      "unique_ids": true
+    },
+    {
+      "base": "Qwen3-8B",
+      "eval_task": "magicoder",
+      "label": "magicoder__seed43__dg_hard",
+      "samples": 164,
+      "input_records_match_base": true,
+      "unique_ids": true
+    },
+    {
+      "base": "Qwen3-8B",
+      "eval_task": "magicoder",
+      "label": "magicoder__seed43__hns_f4_s1",
+      "samples": 164,
+      "input_records_match_base": true,
+      "unique_ids": true
+    },
+    {
+      "base": "Qwen3-8B",
+      "eval_task": "magicoder",
+      "label": "metamath__seed43__original_lora",
+      "samples": 164,
+      "input_records_match_base": true,
+      "unique_ids": true
+    },
+    {
+      "base": "Qwen3-8B",
+      "eval_task": "magicoder",
+      "label": "metamath__seed43__flat_fro",
+      "samples": 164,
+      "input_records_match_base": true,
+      "unique_ids": true
+    },
+    {
+      "base": "Qwen3-8B",
+      "eval_task": "magicoder",
+      "label": "metamath__seed43__flat_nuclear",
+      "samples": 164,
+      "input_records_match_base": true,
+      "unique_ids": true
+    },
+    {
+      "base": "Qwen3-8B",
+      "eval_task": "magicoder",
+      "label": "metamath__seed43__dg_hard",
+      "samples": 164,
+      "input_records_match_base": true,
+      "unique_ids": true
+    },
+    {
+      "base": "Qwen3-8B",
+      "eval_task": "magicoder",
+      "label": "metamath__seed43__hns_f4_s1",
+      "samples": 164,
+      "input_records_match_base": true,
+      "unique_ids": true
+    },
+    {
+      "base": "Qwen3-8B",
+      "eval_task": "magicoder",
+      "label": "tulu__seed43__original_lora",
+      "samples": 164,
+      "input_records_match_base": true,
+      "unique_ids": true
+    },
+    {
+      "base": "Qwen3-8B",
+      "eval_task": "magicoder",
+      "label": "tulu__seed43__flat_fro",
+      "samples": 164,
+      "input_records_match_base": true,
+      "unique_ids": true
+    },
+    {
+      "base": "Qwen3-8B",
+      "eval_task": "magicoder",
+      "label": "tulu__seed43__flat_nuclear",
+      "samples": 164,
+      "input_records_match_base": true,
+      "unique_ids": true
+    },
+    {
+      "base": "Qwen3-8B",
+      "eval_task": "magicoder",
+      "label": "tulu__seed43__dg_hard",
+      "samples": 164,
+      "input_records_match_base": true,
+      "unique_ids": true
+    },
+    {
+      "base": "Qwen3-8B",
+      "eval_task": "magicoder",
+      "label": "tulu__seed43__hns_f4_s1",
+      "samples": 164,
+      "input_records_match_base": true,
+      "unique_ids": true
+    },
+    {
+      "base": "Qwen3-8B",
+      "eval_task": "magicoder",
+      "label": "magicoder__seed44__original_lora",
+      "samples": 164,
+      "input_records_match_base": true,
+      "unique_ids": true
+    },
+    {
+      "base": "Qwen3-8B",
+      "eval_task": "magicoder",
+      "label": "magicoder__seed44__flat_fro",
+      "samples": 164,
+      "input_records_match_base": true,
+      "unique_ids": true
+    },
+    {
+      "base": "Qwen3-8B",
+      "eval_task": "magicoder",
+      "label": "magicoder__seed44__flat_nuclear",
+      "samples": 164,
+      "input_records_match_base": true,
+      "unique_ids": true
+    },
+    {
+      "base": "Qwen3-8B",
+      "eval_task": "magicoder",
+      "label": "magicoder__seed44__dg_hard",
+      "samples": 164,
+      "input_records_match_base": true,
+      "unique_ids": true
+    },
+    {
+      "base": "Qwen3-8B",
+      "eval_task": "magicoder",
+      "label": "magicoder__seed44__hns_f4_s1",
+      "samples": 164,
+      "input_records_match_base": true,
+      "unique_ids": true
+    },
+    {
+      "base": "Qwen3-8B",
+      "eval_task": "magicoder",
+      "label": "metamath__seed44__original_lora",
+      "samples": 164,
+      "input_records_match_base": true,
+      "unique_ids": true
+    },
+    {
+      "base": "Qwen3-8B",
+      "eval_task": "magicoder",
+      "label": "metamath__seed44__flat_fro",
+      "samples": 164,
+      "input_records_match_base": true,
+      "unique_ids": true
+    },
+    {
+      "base": "Qwen3-8B",
+      "eval_task": "magicoder",
+      "label": "metamath__seed44__flat_nuclear",
+      "samples": 164,
+      "input_records_match_base": true,
+      "unique_ids": true
+    },
+    {
+      "base": "Qwen3-8B",
+      "eval_task": "magicoder",
+      "label": "metamath__seed44__dg_hard",
+      "samples": 164,
+      "input_records_match_base": true,
+      "unique_ids": true
+    },
+    {
+      "base": "Qwen3-8B",
+      "eval_task": "magicoder",
+      "label": "metamath__seed44__hns_f4_s1",
+      "samples": 164,
+      "input_records_match_base": true,
+      "unique_ids": true
+    },
+    {
+      "base": "Qwen3-8B",
+      "eval_task": "magicoder",
+      "label": "tulu__seed44__original_lora",
+      "samples": 164,
+      "input_records_match_base": true,
+      "unique_ids": true
+    },
+    {
+      "base": "Qwen3-8B",
+      "eval_task": "magicoder",
+      "label": "tulu__seed44__flat_fro",
+      "samples": 164,
+      "input_records_match_base": true,
+      "unique_ids": true
+    },
+    {
+      "base": "Qwen3-8B",
+      "eval_task": "magicoder",
+      "label": "tulu__seed44__flat_nuclear",
+      "samples": 164,
+      "input_records_match_base": true,
+      "unique_ids": true
+    },
+    {
+      "base": "Qwen3-8B",
+      "eval_task": "magicoder",
+      "label": "tulu__seed44__dg_hard",
+      "samples": 164,
+      "input_records_match_base": true,
+      "unique_ids": true
+    },
+    {
+      "base": "Qwen3-8B",
+      "eval_task": "magicoder",
+      "label": "tulu__seed44__hns_f4_s1",
+      "samples": 164,
+      "input_records_match_base": true,
+      "unique_ids": true
+    },
+    {
+      "base": "Qwen3-8B",
+      "eval_task": "metamath",
+      "label": "base",
+      "samples": 1319,
+      "input_records_match_base": true,
+      "unique_ids": true
+    },
+    {
+      "base": "Qwen3-8B",
+      "eval_task": "metamath",
+      "label": "magicoder__seed42__original_lora",
+      "samples": 1319,
+      "input_records_match_base": true,
+      "unique_ids": true
+    },
+    {
+      "base": "Qwen3-8B",
+      "eval_task": "metamath",
+      "label": "magicoder__seed42__flat_fro",
+      "samples": 1319,
+      "input_records_match_base": true,
+      "unique_ids": true
+    },
+    {
+      "base": "Qwen3-8B",
+      "eval_task": "metamath",
+      "label": "magicoder__seed42__flat_nuclear",
+      "samples": 1319,
+      "input_records_match_base": true,
+      "unique_ids": true
+    },
+    {
+      "base": "Qwen3-8B",
+      "eval_task": "metamath",
+      "label": "magicoder__seed42__dg_hard",
+      "samples": 1319,
+      "input_records_match_base": true,
+      "unique_ids": true
+    },
+    {
+      "base": "Qwen3-8B",
+      "eval_task": "metamath",
+      "label": "magicoder__seed42__hns_f4_s1",
+      "samples": 1319,
+      "input_records_match_base": true,
+      "unique_ids": true
+    },
+    {
+      "base": "Qwen3-8B",
+      "eval_task": "metamath",
+      "label": "metamath__seed42__original_lora",
+      "samples": 1319,
+      "input_records_match_base": true,
+      "unique_ids": true
+    },
+    {
+      "base": "Qwen3-8B",
+      "eval_task": "metamath",
+      "label": "metamath__seed42__flat_fro",
+      "samples": 1319,
+      "input_records_match_base": true,
+      "unique_ids": true
+    },
+    {
+      "base": "Qwen3-8B",
+      "eval_task": "metamath",
+      "label": "metamath__seed42__flat_nuclear",
+      "samples": 1319,
+      "input_records_match_base": true,
+      "unique_ids": true
+    },
+    {
+      "base": "Qwen3-8B",
+      "eval_task": "metamath",
+      "label": "metamath__seed42__dg_hard",
+      "samples": 1319,
+      "input_records_match_base": true,
+      "unique_ids": true
+    },
+    {
+      "base": "Qwen3-8B",
+      "eval_task": "metamath",
+      "label": "metamath__seed42__hns_f4_s1",
+      "samples": 1319,
+      "input_records_match_base": true,
+      "unique_ids": true
+    },
+    {
+      "base": "Qwen3-8B",
+      "eval_task": "metamath",
+      "label": "tulu__seed42__original_lora",
+      "samples": 1319,
+      "input_records_match_base": true,
+      "unique_ids": true
+    },
+    {
+      "base": "Qwen3-8B",
+      "eval_task": "metamath",
+      "label": "tulu__seed42__flat_fro",
+      "samples": 1319,
+      "input_records_match_base": true,
+      "unique_ids": true
+    },
+    {
+      "base": "Qwen3-8B",
+      "eval_task": "metamath",
+      "label": "tulu__seed42__flat_nuclear",
+      "samples": 1319,
+      "input_records_match_base": true,
+      "unique_ids": true
+    },
+    {
+      "base": "Qwen3-8B",
+      "eval_task": "metamath",
+      "label": "tulu__seed42__dg_hard",
+      "samples": 1319,
+      "input_records_match_base": true,
+      "unique_ids": true
+    },
+    {
+      "base": "Qwen3-8B",
+      "eval_task": "metamath",
+      "label": "tulu__seed42__hns_f4_s1",
+      "samples": 1319,
+      "input_records_match_base": true,
+      "unique_ids": true
+    },
+    {
+      "base": "Qwen3-8B",
+      "eval_task": "metamath",
+      "label": "magicoder__seed43__original_lora",
+      "samples": 1319,
+      "input_records_match_base": true,
+      "unique_ids": true
+    },
+    {
+      "base": "Qwen3-8B",
+      "eval_task": "metamath",
+      "label": "magicoder__seed43__flat_fro",
+      "samples": 1319,
+      "input_records_match_base": true,
+      "unique_ids": true
+    },
+    {
+      "base": "Qwen3-8B",
+      "eval_task": "metamath",
+      "label": "magicoder__seed43__flat_nuclear",
+      "samples": 1319,
+      "input_records_match_base": true,
+      "unique_ids": true
+    },
+    {
+      "base": "Qwen3-8B",
+      "eval_task": "metamath",
+      "label": "magicoder__seed43__dg_hard",
+      "samples": 1319,
+      "input_records_match_base": true,
+      "unique_ids": true
+    },
+    {
+      "base": "Qwen3-8B",
+      "eval_task": "metamath",
+      "label": "magicoder__seed43__hns_f4_s1",
+      "samples": 1319,
+      "input_records_match_base": true,
+      "unique_ids": true
+    },
+    {
+      "base": "Qwen3-8B",
+      "eval_task": "metamath",
+      "label": "metamath__seed43__original_lora",
+      "samples": 1319,
+      "input_records_match_base": true,
+      "unique_ids": true
+    },
+    {
+      "base": "Qwen3-8B",
+      "eval_task": "metamath",
+      "label": "metamath__seed43__flat_fro",
+      "samples": 1319,
+      "input_records_match_base": true,
+      "unique_ids": true
+    },
+    {
+      "base": "Qwen3-8B",
+      "eval_task": "metamath",
+      "label": "metamath__seed43__flat_nuclear",
+      "samples": 1319,
+      "input_records_match_base": true,
+      "unique_ids": true
+    },
+    {
+      "base": "Qwen3-8B",
+      "eval_task": "metamath",
+      "label": "metamath__seed43__dg_hard",
+      "samples": 1319,
+      "input_records_match_base": true,
+      "unique_ids": true
+    },
+    {
+      "base": "Qwen3-8B",
+      "eval_task": "metamath",
+      "label": "metamath__seed43__hns_f4_s1",
+      "samples": 1319,
+      "input_records_match_base": true,
+      "unique_ids": true
+    },
+    {
+      "base": "Qwen3-8B",
+      "eval_task": "metamath",
+      "label": "tulu__seed43__original_lora",
+      "samples": 1319,
+      "input_records_match_base": true,
+      "unique_ids": true
+    },
+    {
+      "base": "Qwen3-8B",
+      "eval_task": "metamath",
+      "label": "tulu__seed43__flat_fro",
+      "samples": 1319,
+      "input_records_match_base": true,
+      "unique_ids": true
+    },
+    {
+      "base": "Qwen3-8B",
+      "eval_task": "metamath",
+      "label": "tulu__seed43__flat_nuclear",
+      "samples": 1319,
+      "input_records_match_base": true,
+      "unique_ids": true
+    },
+    {
+      "base": "Qwen3-8B",
+      "eval_task": "metamath",
+      "label": "tulu__seed43__dg_hard",
+      "samples": 1319,
+      "input_records_match_base": true,
+      "unique_ids": true
+    },
+    {
+      "base": "Qwen3-8B",
+      "eval_task": "metamath",
+      "label": "tulu__seed43__hns_f4_s1",
+      "samples": 1319,
+      "input_records_match_base": true,
+      "unique_ids": true
+    },
+    {
+      "base": "Qwen3-8B",
+      "eval_task": "metamath",
+      "label": "magicoder__seed44__original_lora",
+      "samples": 1319,
+      "input_records_match_base": true,
+      "unique_ids": true
+    },
+    {
+      "base": "Qwen3-8B",
+      "eval_task": "metamath",
+      "label": "magicoder__seed44__flat_fro",
+      "samples": 1319,
+      "input_records_match_base": true,
+      "unique_ids": true
+    },
+    {
+      "base": "Qwen3-8B",
+      "eval_task": "metamath",
+      "label": "magicoder__seed44__flat_nuclear",
+      "samples": 1319,
+      "input_records_match_base": true,
+      "unique_ids": true
+    },
+    {
+      "base": "Qwen3-8B",
+      "eval_task": "metamath",
+      "label": "magicoder__seed44__dg_hard",
+      "samples": 1319,
+      "input_records_match_base": true,
+      "unique_ids": true
+    },
+    {
+      "base": "Qwen3-8B",
+      "eval_task": "metamath",
+      "label": "magicoder__seed44__hns_f4_s1",
+      "samples": 1319,
+      "input_records_match_base": true,
+      "unique_ids": true
+    },
+    {
+      "base": "Qwen3-8B",
+      "eval_task": "metamath",
+      "label": "metamath__seed44__original_lora",
+      "samples": 1319,
+      "input_records_match_base": true,
+      "unique_ids": true
+    },
+    {
+      "base": "Qwen3-8B",
+      "eval_task": "metamath",
+      "label": "metamath__seed44__flat_fro",
+      "samples": 1319,
+      "input_records_match_base": true,
+      "unique_ids": true
+    },
+    {
+      "base": "Qwen3-8B",
+      "eval_task": "metamath",
+      "label": "metamath__seed44__flat_nuclear",
+      "samples": 1319,
+      "input_records_match_base": true,
+      "unique_ids": true
+    },
+    {
+      "base": "Qwen3-8B",
+      "eval_task": "metamath",
+      "label": "metamath__seed44__dg_hard",
+      "samples": 1319,
+      "input_records_match_base": true,
+      "unique_ids": true
+    },
+    {
+      "base": "Qwen3-8B",
+      "eval_task": "metamath",
+      "label": "metamath__seed44__hns_f4_s1",
+      "samples": 1319,
+      "input_records_match_base": true,
+      "unique_ids": true
+    },
+    {
+      "base": "Qwen3-8B",
+      "eval_task": "metamath",
+      "label": "tulu__seed44__original_lora",
+      "samples": 1319,
+      "input_records_match_base": true,
+      "unique_ids": true
+    },
+    {
+      "base": "Qwen3-8B",
+      "eval_task": "metamath",
+      "label": "tulu__seed44__flat_fro",
+      "samples": 1319,
+      "input_records_match_base": true,
+      "unique_ids": true
+    },
+    {
+      "base": "Qwen3-8B",
+      "eval_task": "metamath",
+      "label": "tulu__seed44__flat_nuclear",
+      "samples": 1319,
+      "input_records_match_base": true,
+      "unique_ids": true
+    },
+    {
+      "base": "Qwen3-8B",
+      "eval_task": "metamath",
+      "label": "tulu__seed44__dg_hard",
+      "samples": 1319,
+      "input_records_match_base": true,
+      "unique_ids": true
+    },
+    {
+      "base": "Qwen3-8B",
+      "eval_task": "metamath",
+      "label": "tulu__seed44__hns_f4_s1",
+      "samples": 1319,
+      "input_records_match_base": true,
+      "unique_ids": true
+    },
+    {
+      "base": "Qwen3-8B",
+      "eval_task": "tulu",
+      "label": "base",
+      "samples": 541,
+      "input_records_match_base": true,
+      "unique_ids": true
+    },
+    {
+      "base": "Qwen3-8B",
+      "eval_task": "tulu",
+      "label": "magicoder__seed42__original_lora",
+      "samples": 541,
+      "input_records_match_base": true,
+      "unique_ids": true
+    },
+    {
+      "base": "Qwen3-8B",
+      "eval_task": "tulu",
+      "label": "magicoder__seed42__flat_fro",
+      "samples": 541,
+      "input_records_match_base": true,
+      "unique_ids": true
+    },
+    {
+      "base": "Qwen3-8B",
+      "eval_task": "tulu",
+      "label": "magicoder__seed42__flat_nuclear",
+      "samples": 541,
+      "input_records_match_base": true,
+      "unique_ids": true
+    },
+    {
+      "base": "Qwen3-8B",
+      "eval_task": "tulu",
+      "label": "magicoder__seed42__dg_hard",
+      "samples": 541,
+      "input_records_match_base": true,
+      "unique_ids": true
+    },
+    {
+      "base": "Qwen3-8B",
+      "eval_task": "tulu",
+      "label": "magicoder__seed42__hns_f4_s1",
+      "samples": 541,
+      "input_records_match_base": true,
+      "unique_ids": true
+    },
+    {
+      "base": "Qwen3-8B",
+      "eval_task": "tulu",
+      "label": "metamath__seed42__original_lora",
+      "samples": 541,
+      "input_records_match_base": true,
+      "unique_ids": true
+    },
+    {
+      "base": "Qwen3-8B",
+      "eval_task": "tulu",
+      "label": "metamath__seed42__flat_fro",
+      "samples": 541,
+      "input_records_match_base": true,
+      "unique_ids": true
+    },
+    {
+      "base": "Qwen3-8B",
+      "eval_task": "tulu",
+      "label": "metamath__seed42__flat_nuclear",
+      "samples": 541,
+      "input_records_match_base": true,
+      "unique_ids": true
+    },
+    {
+      "base": "Qwen3-8B",
+      "eval_task": "tulu",
+      "label": "metamath__seed42__dg_hard",
+      "samples": 541,
+      "input_records_match_base": true,
+      "unique_ids": true
+    },
+    {
+      "base": "Qwen3-8B",
+      "eval_task": "tulu",
+      "label": "metamath__seed42__hns_f4_s1",
+      "samples": 541,
+      "input_records_match_base": true,
+      "unique_ids": true
+    },
+    {
+      "base": "Qwen3-8B",
+      "eval_task": "tulu",
+      "label": "tulu__seed42__original_lora",
+      "samples": 541,
+      "input_records_match_base": true,
+      "unique_ids": true
+    },
+    {
+      "base": "Qwen3-8B",
+      "eval_task": "tulu",
+      "label": "tulu__seed42__flat_fro",
+      "samples": 541,
+      "input_records_match_base": true,
+      "unique_ids": true
+    },
+    {
+      "base": "Qwen3-8B",
+      "eval_task": "tulu",
+      "label": "tulu__seed42__flat_nuclear",
+      "samples": 541,
+      "input_records_match_base": true,
+      "unique_ids": true
+    },
+    {
+      "base": "Qwen3-8B",
+      "eval_task": "tulu",
+      "label": "tulu__seed42__dg_hard",
+      "samples": 541,
+      "input_records_match_base": true,
+      "unique_ids": true
+    },
+    {
+      "base": "Qwen3-8B",
+      "eval_task": "tulu",
+      "label": "tulu__seed42__hns_f4_s1",
+      "samples": 541,
+      "input_records_match_base": true,
+      "unique_ids": true
+    },
+    {
+      "base": "Qwen3-8B",
+      "eval_task": "tulu",
+      "label": "magicoder__seed43__original_lora",
+      "samples": 541,
+      "input_records_match_base": true,
+      "unique_ids": true
+    },
+    {
+      "base": "Qwen3-8B",
+      "eval_task": "tulu",
+      "label": "magicoder__seed43__flat_fro",
+      "samples": 541,
+      "input_records_match_base": true,
+      "unique_ids": true
+    },
+    {
+      "base": "Qwen3-8B",
+      "eval_task": "tulu",
+      "label": "magicoder__seed43__flat_nuclear",
+      "samples": 541,
+      "input_records_match_base": true,
+      "unique_ids": true
+    },
+    {
+      "base": "Qwen3-8B",
+      "eval_task": "tulu",
+      "label": "magicoder__seed43__dg_hard",
+      "samples": 541,
+      "input_records_match_base": true,
+      "unique_ids": true
+    },
+    {
+      "base": "Qwen3-8B",
+      "eval_task": "tulu",
+      "label": "magicoder__seed43__hns_f4_s1",
+      "samples": 541,
+      "input_records_match_base": true,
+      "unique_ids": true
+    },
+    {
+      "base": "Qwen3-8B",
+      "eval_task": "tulu",
+      "label": "metamath__seed43__original_lora",
+      "samples": 541,
+      "input_records_match_base": true,
+      "unique_ids": true
+    },
+    {
+      "base": "Qwen3-8B",
+      "eval_task": "tulu",
+      "label": "metamath__seed43__flat_fro",
+      "samples": 541,
+      "input_records_match_base": true,
+      "unique_ids": true
+    },
+    {
+      "base": "Qwen3-8B",
+      "eval_task": "tulu",
+      "label": "metamath__seed43__flat_nuclear",
+      "samples": 541,
+      "input_records_match_base": true,
+      "unique_ids": true
+    },
+    {
+      "base": "Qwen3-8B",
+      "eval_task": "tulu",
+      "label": "metamath__seed43__dg_hard",
+      "samples": 541,
+      "input_records_match_base": true,
+      "unique_ids": true
+    },
+    {
+      "base": "Qwen3-8B",
+      "eval_task": "tulu",
+      "label": "metamath__seed43__hns_f4_s1",
+      "samples": 541,
+      "input_records_match_base": true,
+      "unique_ids": true
+    },
+    {
+      "base": "Qwen3-8B",
+      "eval_task": "tulu",
+      "label": "tulu__seed43__original_lora",
+      "samples": 541,
+      "input_records_match_base": true,
+      "unique_ids": true
+    },
+    {
+      "base": "Qwen3-8B",
+      "eval_task": "tulu",
+      "label": "tulu__seed43__flat_fro",
+      "samples": 541,
+      "input_records_match_base": true,
+      "unique_ids": true
+    },
+    {
+      "base": "Qwen3-8B",
+      "eval_task": "tulu",
+      "label": "tulu__seed43__flat_nuclear",
+      "samples": 541,
+      "input_records_match_base": true,
+      "unique_ids": true
+    },
+    {
+      "base": "Qwen3-8B",
+      "eval_task": "tulu",
+      "label": "tulu__seed43__dg_hard",
+      "samples": 541,
+      "input_records_match_base": true,
+      "unique_ids": true
+    },
+    {
+      "base": "Qwen3-8B",
+      "eval_task": "tulu",
+      "label": "tulu__seed43__hns_f4_s1",
+      "samples": 541,
+      "input_records_match_base": true,
+      "unique_ids": true
+    },
+    {
+      "base": "Qwen3-8B",
+      "eval_task": "tulu",
+      "label": "magicoder__seed44__original_lora",
+      "samples": 541,
+      "input_records_match_base": true,
+      "unique_ids": true
+    },
+    {
+      "base": "Qwen3-8B",
+      "eval_task": "tulu",
+      "label": "magicoder__seed44__flat_fro",
+      "samples": 541,
+      "input_records_match_base": true,
+      "unique_ids": true
+    },
+    {
+      "base": "Qwen3-8B",
+      "eval_task": "tulu",
+      "label": "magicoder__seed44__flat_nuclear",
+      "samples": 541,
+      "input_records_match_base": true,
+      "unique_ids": true
+    },
+    {
+      "base": "Qwen3-8B",
+      "eval_task": "tulu",
+      "label": "magicoder__seed44__dg_hard",
+      "samples": 541,
+      "input_records_match_base": true,
+      "unique_ids": true
+    },
+    {
+      "base": "Qwen3-8B",
+      "eval_task": "tulu",
+      "label": "magicoder__seed44__hns_f4_s1",
+      "samples": 541,
+      "input_records_match_base": true,
+      "unique_ids": true
+    },
+    {
+      "base": "Qwen3-8B",
+      "eval_task": "tulu",
+      "label": "metamath__seed44__original_lora",
+      "samples": 541,
+      "input_records_match_base": true,
+      "unique_ids": true
+    },
+    {
+      "base": "Qwen3-8B",
+      "eval_task": "tulu",
+      "label": "metamath__seed44__flat_fro",
+      "samples": 541,
+      "input_records_match_base": true,
+      "unique_ids": true
+    },
+    {
+      "base": "Qwen3-8B",
+      "eval_task": "tulu",
+      "label": "metamath__seed44__flat_nuclear",
+      "samples": 541,
+      "input_records_match_base": true,
+      "unique_ids": true
+    },
+    {
+      "base": "Qwen3-8B",
+      "eval_task": "tulu",
+      "label": "metamath__seed44__dg_hard",
+      "samples": 541,
+      "input_records_match_base": true,
+      "unique_ids": true
+    },
+    {
+      "base": "Qwen3-8B",
+      "eval_task": "tulu",
+      "label": "metamath__seed44__hns_f4_s1",
+      "samples": 541,
+      "input_records_match_base": true,
+      "unique_ids": true
+    },
+    {
+      "base": "Qwen3-8B",
+      "eval_task": "tulu",
+      "label": "tulu__seed44__original_lora",
+      "samples": 541,
+      "input_records_match_base": true,
+      "unique_ids": true
+    },
+    {
+      "base": "Qwen3-8B",
+      "eval_task": "tulu",
+      "label": "tulu__seed44__flat_fro",
+      "samples": 541,
+      "input_records_match_base": true,
+      "unique_ids": true
+    },
+    {
+      "base": "Qwen3-8B",
+      "eval_task": "tulu",
+      "label": "tulu__seed44__flat_nuclear",
+      "samples": 541,
+      "input_records_match_base": true,
+      "unique_ids": true
+    },
+    {
+      "base": "Qwen3-8B",
+      "eval_task": "tulu",
+      "label": "tulu__seed44__dg_hard",
+      "samples": 541,
+      "input_records_match_base": true,
+      "unique_ids": true
+    },
+    {
+      "base": "Qwen3-8B",
+      "eval_task": "tulu",
+      "label": "tulu__seed44__hns_f4_s1",
+      "samples": 541,
+      "input_records_match_base": true,
+      "unique_ids": true
+    },
+    {
+      "base": "Qwen3-8B",
+      "eval_task": "commonsense",
+      "label": "base",
+      "samples": 22419,
+      "input_records_match_base": true,
+      "unique_ids": true
+    },
+    {
+      "base": "Qwen3-8B",
+      "eval_task": "commonsense",
+      "label": "magicoder__seed42__original_lora",
+      "samples": 22419,
+      "input_records_match_base": true,
+      "unique_ids": true
+    },
+    {
+      "base": "Qwen3-8B",
+      "eval_task": "commonsense",
+      "label": "magicoder__seed42__flat_fro",
+      "samples": 22419,
+      "input_records_match_base": true,
+      "unique_ids": true
+    },
+    {
+      "base": "Qwen3-8B",
+      "eval_task": "commonsense",
+      "label": "magicoder__seed42__flat_nuclear",
+      "samples": 22419,
+      "input_records_match_base": true,
+      "unique_ids": true
+    },
+    {
+      "base": "Qwen3-8B",
+      "eval_task": "commonsense",
+      "label": "magicoder__seed42__dg_hard",
+      "samples": 22419,
+      "input_records_match_base": true,
+      "unique_ids": true
+    },
+    {
+      "base": "Qwen3-8B",
+      "eval_task": "commonsense",
+      "label": "magicoder__seed42__hns_f4_s1",
+      "samples": 22419,
+      "input_records_match_base": true,
+      "unique_ids": true
+    },
+    {
+      "base": "Qwen3-8B",
+      "eval_task": "commonsense",
+      "label": "metamath__seed42__original_lora",
+      "samples": 22419,
+      "input_records_match_base": true,
+      "unique_ids": true
+    },
+    {
+      "base": "Qwen3-8B",
+      "eval_task": "commonsense",
+      "label": "metamath__seed42__flat_fro",
+      "samples": 22419,
+      "input_records_match_base": true,
+      "unique_ids": true
+    },
+    {
+      "base": "Qwen3-8B",
+      "eval_task": "commonsense",
+      "label": "metamath__seed42__flat_nuclear",
+      "samples": 22419,
+      "input_records_match_base": true,
+      "unique_ids": true
+    },
+    {
+      "base": "Qwen3-8B",
+      "eval_task": "commonsense",
+      "label": "metamath__seed42__dg_hard",
+      "samples": 22419,
+      "input_records_match_base": true,
+      "unique_ids": true
+    },
+    {
+      "base": "Qwen3-8B",
+      "eval_task": "commonsense",
+      "label": "metamath__seed42__hns_f4_s1",
+      "samples": 22419,
+      "input_records_match_base": true,
+      "unique_ids": true
+    },
+    {
+      "base": "Qwen3-8B",
+      "eval_task": "commonsense",
+      "label": "tulu__seed42__original_lora",
+      "samples": 22419,
+      "input_records_match_base": true,
+      "unique_ids": true
+    },
+    {
+      "base": "Qwen3-8B",
+      "eval_task": "commonsense",
+      "label": "tulu__seed42__flat_fro",
+      "samples": 22419,
+      "input_records_match_base": true,
+      "unique_ids": true
+    },
+    {
+      "base": "Qwen3-8B",
+      "eval_task": "commonsense",
+      "label": "tulu__seed42__flat_nuclear",
+      "samples": 22419,
+      "input_records_match_base": true,
+      "unique_ids": true
+    },
+    {
+      "base": "Qwen3-8B",
+      "eval_task": "commonsense",
+      "label": "tulu__seed42__dg_hard",
+      "samples": 22419,
+      "input_records_match_base": true,
+      "unique_ids": true
+    },
+    {
+      "base": "Qwen3-8B",
+      "eval_task": "commonsense",
+      "label": "tulu__seed42__hns_f4_s1",
+      "samples": 22419,
+      "input_records_match_base": true,
+      "unique_ids": true
+    },
+    {
+      "base": "Qwen3-8B",
+      "eval_task": "commonsense",
+      "label": "magicoder__seed43__original_lora",
+      "samples": 22419,
+      "input_records_match_base": true,
+      "unique_ids": true
+    },
+    {
+      "base": "Qwen3-8B",
+      "eval_task": "commonsense",
+      "label": "magicoder__seed43__flat_fro",
+      "samples": 22419,
+      "input_records_match_base": true,
+      "unique_ids": true
+    },
+    {
+      "base": "Qwen3-8B",
+      "eval_task": "commonsense",
+      "label": "magicoder__seed43__flat_nuclear",
+      "samples": 22419,
+      "input_records_match_base": true,
+      "unique_ids": true
+    },
+    {
+      "base": "Qwen3-8B",
+      "eval_task": "commonsense",
+      "label": "magicoder__seed43__dg_hard",
+      "samples": 22419,
+      "input_records_match_base": true,
+      "unique_ids": true
+    },
+    {
+      "base": "Qwen3-8B",
+      "eval_task": "commonsense",
+      "label": "magicoder__seed43__hns_f4_s1",
+      "samples": 22419,
+      "input_records_match_base": true,
+      "unique_ids": true
+    },
+    {
+      "base": "Qwen3-8B",
+      "eval_task": "commonsense",
+      "label": "metamath__seed43__original_lora",
+      "samples": 22419,
+      "input_records_match_base": true,
+      "unique_ids": true
+    },
+    {
+      "base": "Qwen3-8B",
+      "eval_task": "commonsense",
+      "label": "metamath__seed43__flat_fro",
+      "samples": 22419,
+      "input_records_match_base": true,
+      "unique_ids": true
+    },
+    {
+      "base": "Qwen3-8B",
+      "eval_task": "commonsense",
+      "label": "metamath__seed43__flat_nuclear",
+      "samples": 22419,
+      "input_records_match_base": true,
+      "unique_ids": true
+    },
+    {
+      "base": "Qwen3-8B",
+      "eval_task": "commonsense",
+      "label": "metamath__seed43__dg_hard",
+      "samples": 22419,
+      "input_records_match_base": true,
+      "unique_ids": true
+    },
+    {
+      "base": "Qwen3-8B",
+      "eval_task": "commonsense",
+      "label": "metamath__seed43__hns_f4_s1",
+      "samples": 22419,
+      "input_records_match_base": true,
+      "unique_ids": true
+    },
+    {
+      "base": "Qwen3-8B",
+      "eval_task": "commonsense",
+      "label": "tulu__seed43__original_lora",
+      "samples": 22419,
+      "input_records_match_base": true,
+      "unique_ids": true
+    },
+    {
+      "base": "Qwen3-8B",
+      "eval_task": "commonsense",
+      "label": "tulu__seed43__flat_fro",
+      "samples": 22419,
+      "input_records_match_base": true,
+      "unique_ids": true
+    },
+    {
+      "base": "Qwen3-8B",
+      "eval_task": "commonsense",
+      "label": "tulu__seed43__flat_nuclear",
+      "samples": 22419,
+      "input_records_match_base": true,
+      "unique_ids": true
+    },
+    {
+      "base": "Qwen3-8B",
+      "eval_task": "commonsense",
+      "label": "tulu__seed43__dg_hard",
+      "samples": 22419,
+      "input_records_match_base": true,
+      "unique_ids": true
+    },
+    {
+      "base": "Qwen3-8B",
+      "eval_task": "commonsense",
+      "label": "tulu__seed43__hns_f4_s1",
+      "samples": 22419,
+      "input_records_match_base": true,
+      "unique_ids": true
+    },
+    {
+      "base": "Qwen3-8B",
+      "eval_task": "commonsense",
+      "label": "magicoder__seed44__original_lora",
+      "samples": 22419,
+      "input_records_match_base": true,
+      "unique_ids": true
+    },
+    {
+      "base": "Qwen3-8B",
+      "eval_task": "commonsense",
+      "label": "magicoder__seed44__flat_fro",
+      "samples": 22419,
+      "input_records_match_base": true,
+      "unique_ids": true
+    },
+    {
+      "base": "Qwen3-8B",
+      "eval_task": "commonsense",
+      "label": "magicoder__seed44__flat_nuclear",
+      "samples": 22419,
+      "input_records_match_base": true,
+      "unique_ids": true
+    },
+    {
+      "base": "Qwen3-8B",
+      "eval_task": "commonsense",
+      "label": "magicoder__seed44__dg_hard",
+      "samples": 22419,
+      "input_records_match_base": true,
+      "unique_ids": true
+    },
+    {
+      "base": "Qwen3-8B",
+      "eval_task": "commonsense",
+      "label": "magicoder__seed44__hns_f4_s1",
+      "samples": 22419,
+      "input_records_match_base": true,
+      "unique_ids": true
+    },
+    {
+      "base": "Qwen3-8B",
+      "eval_task": "commonsense",
+      "label": "metamath__seed44__original_lora",
+      "samples": 22419,
+      "input_records_match_base": true,
+      "unique_ids": true
+    },
+    {
+      "base": "Qwen3-8B",
+      "eval_task": "commonsense",
+      "label": "metamath__seed44__flat_fro",
+      "samples": 22419,
+      "input_records_match_base": true,
+      "unique_ids": true
+    },
+    {
+      "base": "Qwen3-8B",
+      "eval_task": "commonsense",
+      "label": "metamath__seed44__flat_nuclear",
+      "samples": 22419,
+      "input_records_match_base": true,
+      "unique_ids": true
+    },
+    {
+      "base": "Qwen3-8B",
+      "eval_task": "commonsense",
+      "label": "metamath__seed44__dg_hard",
+      "samples": 22419,
+      "input_records_match_base": true,
+      "unique_ids": true
+    },
+    {
+      "base": "Qwen3-8B",
+      "eval_task": "commonsense",
+      "label": "metamath__seed44__hns_f4_s1",
+      "samples": 22419,
+      "input_records_match_base": true,
+      "unique_ids": true
+    },
+    {
+      "base": "Qwen3-8B",
+      "eval_task": "commonsense",
+      "label": "tulu__seed44__original_lora",
+      "samples": 22419,
+      "input_records_match_base": true,
+      "unique_ids": true
+    },
+    {
+      "base": "Qwen3-8B",
+      "eval_task": "commonsense",
+      "label": "tulu__seed44__flat_fro",
+      "samples": 22419,
+      "input_records_match_base": true,
+      "unique_ids": true
+    },
+    {
+      "base": "Qwen3-8B",
+      "eval_task": "commonsense",
+      "label": "tulu__seed44__flat_nuclear",
+      "samples": 22419,
+      "input_records_match_base": true,
+      "unique_ids": true
+    },
+    {
+      "base": "Qwen3-8B",
+      "eval_task": "commonsense",
+      "label": "tulu__seed44__dg_hard",
+      "samples": 22419,
+      "input_records_match_base": true,
+      "unique_ids": true
+    },
+    {
+      "base": "Qwen3-8B",
+      "eval_task": "commonsense",
+      "label": "tulu__seed44__hns_f4_s1",
+      "samples": 22419,
+      "input_records_match_base": true,
+      "unique_ids": true
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "eval_task": "magicoder",
+      "label": "base",
+      "samples": 164,
+      "input_records_match_base": true,
+      "unique_ids": true
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "eval_task": "magicoder",
+      "label": "magicoder__seed42__original_lora",
+      "samples": 164,
+      "input_records_match_base": true,
+      "unique_ids": true
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "eval_task": "magicoder",
+      "label": "magicoder__seed42__flat_fro",
+      "samples": 164,
+      "input_records_match_base": true,
+      "unique_ids": true
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "eval_task": "magicoder",
+      "label": "magicoder__seed42__flat_nuclear",
+      "samples": 164,
+      "input_records_match_base": true,
+      "unique_ids": true
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "eval_task": "magicoder",
+      "label": "magicoder__seed42__dg_hard",
+      "samples": 164,
+      "input_records_match_base": true,
+      "unique_ids": true
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "eval_task": "magicoder",
+      "label": "magicoder__seed42__hns_f4_s1",
+      "samples": 164,
+      "input_records_match_base": true,
+      "unique_ids": true
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "eval_task": "magicoder",
+      "label": "metamath__seed42__original_lora",
+      "samples": 164,
+      "input_records_match_base": true,
+      "unique_ids": true
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "eval_task": "magicoder",
+      "label": "metamath__seed42__flat_fro",
+      "samples": 164,
+      "input_records_match_base": true,
+      "unique_ids": true
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "eval_task": "magicoder",
+      "label": "metamath__seed42__flat_nuclear",
+      "samples": 164,
+      "input_records_match_base": true,
+      "unique_ids": true
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "eval_task": "magicoder",
+      "label": "metamath__seed42__dg_hard",
+      "samples": 164,
+      "input_records_match_base": true,
+      "unique_ids": true
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "eval_task": "magicoder",
+      "label": "metamath__seed42__hns_f4_s1",
+      "samples": 164,
+      "input_records_match_base": true,
+      "unique_ids": true
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "eval_task": "magicoder",
+      "label": "tulu__seed42__original_lora",
+      "samples": 164,
+      "input_records_match_base": true,
+      "unique_ids": true
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "eval_task": "magicoder",
+      "label": "tulu__seed42__flat_fro",
+      "samples": 164,
+      "input_records_match_base": true,
+      "unique_ids": true
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "eval_task": "magicoder",
+      "label": "tulu__seed42__flat_nuclear",
+      "samples": 164,
+      "input_records_match_base": true,
+      "unique_ids": true
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "eval_task": "magicoder",
+      "label": "tulu__seed42__dg_hard",
+      "samples": 164,
+      "input_records_match_base": true,
+      "unique_ids": true
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "eval_task": "magicoder",
+      "label": "tulu__seed42__hns_f4_s1",
+      "samples": 164,
+      "input_records_match_base": true,
+      "unique_ids": true
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "eval_task": "magicoder",
+      "label": "magicoder__seed43__original_lora",
+      "samples": 164,
+      "input_records_match_base": true,
+      "unique_ids": true
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "eval_task": "magicoder",
+      "label": "magicoder__seed43__flat_fro",
+      "samples": 164,
+      "input_records_match_base": true,
+      "unique_ids": true
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "eval_task": "magicoder",
+      "label": "magicoder__seed43__flat_nuclear",
+      "samples": 164,
+      "input_records_match_base": true,
+      "unique_ids": true
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "eval_task": "magicoder",
+      "label": "magicoder__seed43__dg_hard",
+      "samples": 164,
+      "input_records_match_base": true,
+      "unique_ids": true
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "eval_task": "magicoder",
+      "label": "magicoder__seed43__hns_f4_s1",
+      "samples": 164,
+      "input_records_match_base": true,
+      "unique_ids": true
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "eval_task": "magicoder",
+      "label": "metamath__seed43__original_lora",
+      "samples": 164,
+      "input_records_match_base": true,
+      "unique_ids": true
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "eval_task": "magicoder",
+      "label": "metamath__seed43__flat_fro",
+      "samples": 164,
+      "input_records_match_base": true,
+      "unique_ids": true
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "eval_task": "magicoder",
+      "label": "metamath__seed43__flat_nuclear",
+      "samples": 164,
+      "input_records_match_base": true,
+      "unique_ids": true
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "eval_task": "magicoder",
+      "label": "metamath__seed43__dg_hard",
+      "samples": 164,
+      "input_records_match_base": true,
+      "unique_ids": true
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "eval_task": "magicoder",
+      "label": "metamath__seed43__hns_f4_s1",
+      "samples": 164,
+      "input_records_match_base": true,
+      "unique_ids": true
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "eval_task": "magicoder",
+      "label": "tulu__seed43__original_lora",
+      "samples": 164,
+      "input_records_match_base": true,
+      "unique_ids": true
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "eval_task": "magicoder",
+      "label": "tulu__seed43__flat_fro",
+      "samples": 164,
+      "input_records_match_base": true,
+      "unique_ids": true
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "eval_task": "magicoder",
+      "label": "tulu__seed43__flat_nuclear",
+      "samples": 164,
+      "input_records_match_base": true,
+      "unique_ids": true
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "eval_task": "magicoder",
+      "label": "tulu__seed43__dg_hard",
+      "samples": 164,
+      "input_records_match_base": true,
+      "unique_ids": true
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "eval_task": "magicoder",
+      "label": "tulu__seed43__hns_f4_s1",
+      "samples": 164,
+      "input_records_match_base": true,
+      "unique_ids": true
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "eval_task": "magicoder",
+      "label": "magicoder__seed44__original_lora",
+      "samples": 164,
+      "input_records_match_base": true,
+      "unique_ids": true
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "eval_task": "magicoder",
+      "label": "magicoder__seed44__flat_fro",
+      "samples": 164,
+      "input_records_match_base": true,
+      "unique_ids": true
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "eval_task": "magicoder",
+      "label": "magicoder__seed44__flat_nuclear",
+      "samples": 164,
+      "input_records_match_base": true,
+      "unique_ids": true
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "eval_task": "magicoder",
+      "label": "magicoder__seed44__dg_hard",
+      "samples": 164,
+      "input_records_match_base": true,
+      "unique_ids": true
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "eval_task": "magicoder",
+      "label": "magicoder__seed44__hns_f4_s1",
+      "samples": 164,
+      "input_records_match_base": true,
+      "unique_ids": true
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "eval_task": "magicoder",
+      "label": "metamath__seed44__original_lora",
+      "samples": 164,
+      "input_records_match_base": true,
+      "unique_ids": true
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "eval_task": "magicoder",
+      "label": "metamath__seed44__flat_fro",
+      "samples": 164,
+      "input_records_match_base": true,
+      "unique_ids": true
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "eval_task": "magicoder",
+      "label": "metamath__seed44__flat_nuclear",
+      "samples": 164,
+      "input_records_match_base": true,
+      "unique_ids": true
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "eval_task": "magicoder",
+      "label": "metamath__seed44__dg_hard",
+      "samples": 164,
+      "input_records_match_base": true,
+      "unique_ids": true
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "eval_task": "magicoder",
+      "label": "metamath__seed44__hns_f4_s1",
+      "samples": 164,
+      "input_records_match_base": true,
+      "unique_ids": true
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "eval_task": "magicoder",
+      "label": "tulu__seed44__original_lora",
+      "samples": 164,
+      "input_records_match_base": true,
+      "unique_ids": true
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "eval_task": "magicoder",
+      "label": "tulu__seed44__flat_fro",
+      "samples": 164,
+      "input_records_match_base": true,
+      "unique_ids": true
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "eval_task": "magicoder",
+      "label": "tulu__seed44__flat_nuclear",
+      "samples": 164,
+      "input_records_match_base": true,
+      "unique_ids": true
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "eval_task": "magicoder",
+      "label": "tulu__seed44__dg_hard",
+      "samples": 164,
+      "input_records_match_base": true,
+      "unique_ids": true
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "eval_task": "magicoder",
+      "label": "tulu__seed44__hns_f4_s1",
+      "samples": 164,
+      "input_records_match_base": true,
+      "unique_ids": true
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "eval_task": "metamath",
+      "label": "base",
+      "samples": 1319,
+      "input_records_match_base": true,
+      "unique_ids": true
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "eval_task": "metamath",
+      "label": "magicoder__seed42__original_lora",
+      "samples": 1319,
+      "input_records_match_base": true,
+      "unique_ids": true
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "eval_task": "metamath",
+      "label": "magicoder__seed42__flat_fro",
+      "samples": 1319,
+      "input_records_match_base": true,
+      "unique_ids": true
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "eval_task": "metamath",
+      "label": "magicoder__seed42__flat_nuclear",
+      "samples": 1319,
+      "input_records_match_base": true,
+      "unique_ids": true
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "eval_task": "metamath",
+      "label": "magicoder__seed42__dg_hard",
+      "samples": 1319,
+      "input_records_match_base": true,
+      "unique_ids": true
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "eval_task": "metamath",
+      "label": "magicoder__seed42__hns_f4_s1",
+      "samples": 1319,
+      "input_records_match_base": true,
+      "unique_ids": true
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "eval_task": "metamath",
+      "label": "metamath__seed42__original_lora",
+      "samples": 1319,
+      "input_records_match_base": true,
+      "unique_ids": true
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "eval_task": "metamath",
+      "label": "metamath__seed42__flat_fro",
+      "samples": 1319,
+      "input_records_match_base": true,
+      "unique_ids": true
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "eval_task": "metamath",
+      "label": "metamath__seed42__flat_nuclear",
+      "samples": 1319,
+      "input_records_match_base": true,
+      "unique_ids": true
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "eval_task": "metamath",
+      "label": "metamath__seed42__dg_hard",
+      "samples": 1319,
+      "input_records_match_base": true,
+      "unique_ids": true
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "eval_task": "metamath",
+      "label": "metamath__seed42__hns_f4_s1",
+      "samples": 1319,
+      "input_records_match_base": true,
+      "unique_ids": true
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "eval_task": "metamath",
+      "label": "tulu__seed42__original_lora",
+      "samples": 1319,
+      "input_records_match_base": true,
+      "unique_ids": true
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "eval_task": "metamath",
+      "label": "tulu__seed42__flat_fro",
+      "samples": 1319,
+      "input_records_match_base": true,
+      "unique_ids": true
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "eval_task": "metamath",
+      "label": "tulu__seed42__flat_nuclear",
+      "samples": 1319,
+      "input_records_match_base": true,
+      "unique_ids": true
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "eval_task": "metamath",
+      "label": "tulu__seed42__dg_hard",
+      "samples": 1319,
+      "input_records_match_base": true,
+      "unique_ids": true
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "eval_task": "metamath",
+      "label": "tulu__seed42__hns_f4_s1",
+      "samples": 1319,
+      "input_records_match_base": true,
+      "unique_ids": true
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "eval_task": "metamath",
+      "label": "magicoder__seed43__original_lora",
+      "samples": 1319,
+      "input_records_match_base": true,
+      "unique_ids": true
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "eval_task": "metamath",
+      "label": "magicoder__seed43__flat_fro",
+      "samples": 1319,
+      "input_records_match_base": true,
+      "unique_ids": true
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "eval_task": "metamath",
+      "label": "magicoder__seed43__flat_nuclear",
+      "samples": 1319,
+      "input_records_match_base": true,
+      "unique_ids": true
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "eval_task": "metamath",
+      "label": "magicoder__seed43__dg_hard",
+      "samples": 1319,
+      "input_records_match_base": true,
+      "unique_ids": true
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "eval_task": "metamath",
+      "label": "magicoder__seed43__hns_f4_s1",
+      "samples": 1319,
+      "input_records_match_base": true,
+      "unique_ids": true
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "eval_task": "metamath",
+      "label": "metamath__seed43__original_lora",
+      "samples": 1319,
+      "input_records_match_base": true,
+      "unique_ids": true
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "eval_task": "metamath",
+      "label": "metamath__seed43__flat_fro",
+      "samples": 1319,
+      "input_records_match_base": true,
+      "unique_ids": true
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "eval_task": "metamath",
+      "label": "metamath__seed43__flat_nuclear",
+      "samples": 1319,
+      "input_records_match_base": true,
+      "unique_ids": true
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "eval_task": "metamath",
+      "label": "metamath__seed43__dg_hard",
+      "samples": 1319,
+      "input_records_match_base": true,
+      "unique_ids": true
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "eval_task": "metamath",
+      "label": "metamath__seed43__hns_f4_s1",
+      "samples": 1319,
+      "input_records_match_base": true,
+      "unique_ids": true
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "eval_task": "metamath",
+      "label": "tulu__seed43__original_lora",
+      "samples": 1319,
+      "input_records_match_base": true,
+      "unique_ids": true
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "eval_task": "metamath",
+      "label": "tulu__seed43__flat_fro",
+      "samples": 1319,
+      "input_records_match_base": true,
+      "unique_ids": true
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "eval_task": "metamath",
+      "label": "tulu__seed43__flat_nuclear",
+      "samples": 1319,
+      "input_records_match_base": true,
+      "unique_ids": true
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "eval_task": "metamath",
+      "label": "tulu__seed43__dg_hard",
+      "samples": 1319,
+      "input_records_match_base": true,
+      "unique_ids": true
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "eval_task": "metamath",
+      "label": "tulu__seed43__hns_f4_s1",
+      "samples": 1319,
+      "input_records_match_base": true,
+      "unique_ids": true
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "eval_task": "metamath",
+      "label": "magicoder__seed44__original_lora",
+      "samples": 1319,
+      "input_records_match_base": true,
+      "unique_ids": true
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "eval_task": "metamath",
+      "label": "magicoder__seed44__flat_fro",
+      "samples": 1319,
+      "input_records_match_base": true,
+      "unique_ids": true
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "eval_task": "metamath",
+      "label": "magicoder__seed44__flat_nuclear",
+      "samples": 1319,
+      "input_records_match_base": true,
+      "unique_ids": true
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "eval_task": "metamath",
+      "label": "magicoder__seed44__dg_hard",
+      "samples": 1319,
+      "input_records_match_base": true,
+      "unique_ids": true
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "eval_task": "metamath",
+      "label": "magicoder__seed44__hns_f4_s1",
+      "samples": 1319,
+      "input_records_match_base": true,
+      "unique_ids": true
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "eval_task": "metamath",
+      "label": "metamath__seed44__original_lora",
+      "samples": 1319,
+      "input_records_match_base": true,
+      "unique_ids": true
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "eval_task": "metamath",
+      "label": "metamath__seed44__flat_fro",
+      "samples": 1319,
+      "input_records_match_base": true,
+      "unique_ids": true
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "eval_task": "metamath",
+      "label": "metamath__seed44__flat_nuclear",
+      "samples": 1319,
+      "input_records_match_base": true,
+      "unique_ids": true
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "eval_task": "metamath",
+      "label": "metamath__seed44__dg_hard",
+      "samples": 1319,
+      "input_records_match_base": true,
+      "unique_ids": true
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "eval_task": "metamath",
+      "label": "metamath__seed44__hns_f4_s1",
+      "samples": 1319,
+      "input_records_match_base": true,
+      "unique_ids": true
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "eval_task": "metamath",
+      "label": "tulu__seed44__original_lora",
+      "samples": 1319,
+      "input_records_match_base": true,
+      "unique_ids": true
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "eval_task": "metamath",
+      "label": "tulu__seed44__flat_fro",
+      "samples": 1319,
+      "input_records_match_base": true,
+      "unique_ids": true
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "eval_task": "metamath",
+      "label": "tulu__seed44__flat_nuclear",
+      "samples": 1319,
+      "input_records_match_base": true,
+      "unique_ids": true
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "eval_task": "metamath",
+      "label": "tulu__seed44__dg_hard",
+      "samples": 1319,
+      "input_records_match_base": true,
+      "unique_ids": true
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "eval_task": "metamath",
+      "label": "tulu__seed44__hns_f4_s1",
+      "samples": 1319,
+      "input_records_match_base": true,
+      "unique_ids": true
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "eval_task": "tulu",
+      "label": "base",
+      "samples": 541,
+      "input_records_match_base": true,
+      "unique_ids": true
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "eval_task": "tulu",
+      "label": "magicoder__seed42__original_lora",
+      "samples": 541,
+      "input_records_match_base": true,
+      "unique_ids": true
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "eval_task": "tulu",
+      "label": "magicoder__seed42__flat_fro",
+      "samples": 541,
+      "input_records_match_base": true,
+      "unique_ids": true
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "eval_task": "tulu",
+      "label": "magicoder__seed42__flat_nuclear",
+      "samples": 541,
+      "input_records_match_base": true,
+      "unique_ids": true
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "eval_task": "tulu",
+      "label": "magicoder__seed42__dg_hard",
+      "samples": 541,
+      "input_records_match_base": true,
+      "unique_ids": true
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "eval_task": "tulu",
+      "label": "magicoder__seed42__hns_f4_s1",
+      "samples": 541,
+      "input_records_match_base": true,
+      "unique_ids": true
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "eval_task": "tulu",
+      "label": "metamath__seed42__original_lora",
+      "samples": 541,
+      "input_records_match_base": true,
+      "unique_ids": true
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "eval_task": "tulu",
+      "label": "metamath__seed42__flat_fro",
+      "samples": 541,
+      "input_records_match_base": true,
+      "unique_ids": true
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "eval_task": "tulu",
+      "label": "metamath__seed42__flat_nuclear",
+      "samples": 541,
+      "input_records_match_base": true,
+      "unique_ids": true
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "eval_task": "tulu",
+      "label": "metamath__seed42__dg_hard",
+      "samples": 541,
+      "input_records_match_base": true,
+      "unique_ids": true
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "eval_task": "tulu",
+      "label": "metamath__seed42__hns_f4_s1",
+      "samples": 541,
+      "input_records_match_base": true,
+      "unique_ids": true
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "eval_task": "tulu",
+      "label": "tulu__seed42__original_lora",
+      "samples": 541,
+      "input_records_match_base": true,
+      "unique_ids": true
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "eval_task": "tulu",
+      "label": "tulu__seed42__flat_fro",
+      "samples": 541,
+      "input_records_match_base": true,
+      "unique_ids": true
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "eval_task": "tulu",
+      "label": "tulu__seed42__flat_nuclear",
+      "samples": 541,
+      "input_records_match_base": true,
+      "unique_ids": true
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "eval_task": "tulu",
+      "label": "tulu__seed42__dg_hard",
+      "samples": 541,
+      "input_records_match_base": true,
+      "unique_ids": true
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "eval_task": "tulu",
+      "label": "tulu__seed42__hns_f4_s1",
+      "samples": 541,
+      "input_records_match_base": true,
+      "unique_ids": true
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "eval_task": "tulu",
+      "label": "magicoder__seed43__original_lora",
+      "samples": 541,
+      "input_records_match_base": true,
+      "unique_ids": true
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "eval_task": "tulu",
+      "label": "magicoder__seed43__flat_fro",
+      "samples": 541,
+      "input_records_match_base": true,
+      "unique_ids": true
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "eval_task": "tulu",
+      "label": "magicoder__seed43__flat_nuclear",
+      "samples": 541,
+      "input_records_match_base": true,
+      "unique_ids": true
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "eval_task": "tulu",
+      "label": "magicoder__seed43__dg_hard",
+      "samples": 541,
+      "input_records_match_base": true,
+      "unique_ids": true
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "eval_task": "tulu",
+      "label": "magicoder__seed43__hns_f4_s1",
+      "samples": 541,
+      "input_records_match_base": true,
+      "unique_ids": true
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "eval_task": "tulu",
+      "label": "metamath__seed43__original_lora",
+      "samples": 541,
+      "input_records_match_base": true,
+      "unique_ids": true
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "eval_task": "tulu",
+      "label": "metamath__seed43__flat_fro",
+      "samples": 541,
+      "input_records_match_base": true,
+      "unique_ids": true
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "eval_task": "tulu",
+      "label": "metamath__seed43__flat_nuclear",
+      "samples": 541,
+      "input_records_match_base": true,
+      "unique_ids": true
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "eval_task": "tulu",
+      "label": "metamath__seed43__dg_hard",
+      "samples": 541,
+      "input_records_match_base": true,
+      "unique_ids": true
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "eval_task": "tulu",
+      "label": "metamath__seed43__hns_f4_s1",
+      "samples": 541,
+      "input_records_match_base": true,
+      "unique_ids": true
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "eval_task": "tulu",
+      "label": "tulu__seed43__original_lora",
+      "samples": 541,
+      "input_records_match_base": true,
+      "unique_ids": true
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "eval_task": "tulu",
+      "label": "tulu__seed43__flat_fro",
+      "samples": 541,
+      "input_records_match_base": true,
+      "unique_ids": true
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "eval_task": "tulu",
+      "label": "tulu__seed43__flat_nuclear",
+      "samples": 541,
+      "input_records_match_base": true,
+      "unique_ids": true
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "eval_task": "tulu",
+      "label": "tulu__seed43__dg_hard",
+      "samples": 541,
+      "input_records_match_base": true,
+      "unique_ids": true
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "eval_task": "tulu",
+      "label": "tulu__seed43__hns_f4_s1",
+      "samples": 541,
+      "input_records_match_base": true,
+      "unique_ids": true
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "eval_task": "tulu",
+      "label": "magicoder__seed44__original_lora",
+      "samples": 541,
+      "input_records_match_base": true,
+      "unique_ids": true
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "eval_task": "tulu",
+      "label": "magicoder__seed44__flat_fro",
+      "samples": 541,
+      "input_records_match_base": true,
+      "unique_ids": true
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "eval_task": "tulu",
+      "label": "magicoder__seed44__flat_nuclear",
+      "samples": 541,
+      "input_records_match_base": true,
+      "unique_ids": true
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "eval_task": "tulu",
+      "label": "magicoder__seed44__dg_hard",
+      "samples": 541,
+      "input_records_match_base": true,
+      "unique_ids": true
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "eval_task": "tulu",
+      "label": "magicoder__seed44__hns_f4_s1",
+      "samples": 541,
+      "input_records_match_base": true,
+      "unique_ids": true
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "eval_task": "tulu",
+      "label": "metamath__seed44__original_lora",
+      "samples": 541,
+      "input_records_match_base": true,
+      "unique_ids": true
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "eval_task": "tulu",
+      "label": "metamath__seed44__flat_fro",
+      "samples": 541,
+      "input_records_match_base": true,
+      "unique_ids": true
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "eval_task": "tulu",
+      "label": "metamath__seed44__flat_nuclear",
+      "samples": 541,
+      "input_records_match_base": true,
+      "unique_ids": true
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "eval_task": "tulu",
+      "label": "metamath__seed44__dg_hard",
+      "samples": 541,
+      "input_records_match_base": true,
+      "unique_ids": true
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "eval_task": "tulu",
+      "label": "metamath__seed44__hns_f4_s1",
+      "samples": 541,
+      "input_records_match_base": true,
+      "unique_ids": true
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "eval_task": "tulu",
+      "label": "tulu__seed44__original_lora",
+      "samples": 541,
+      "input_records_match_base": true,
+      "unique_ids": true
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "eval_task": "tulu",
+      "label": "tulu__seed44__flat_fro",
+      "samples": 541,
+      "input_records_match_base": true,
+      "unique_ids": true
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "eval_task": "tulu",
+      "label": "tulu__seed44__flat_nuclear",
+      "samples": 541,
+      "input_records_match_base": true,
+      "unique_ids": true
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "eval_task": "tulu",
+      "label": "tulu__seed44__dg_hard",
+      "samples": 541,
+      "input_records_match_base": true,
+      "unique_ids": true
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "eval_task": "tulu",
+      "label": "tulu__seed44__hns_f4_s1",
+      "samples": 541,
+      "input_records_match_base": true,
+      "unique_ids": true
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "eval_task": "commonsense",
+      "label": "base",
+      "samples": 22419,
+      "input_records_match_base": true,
+      "unique_ids": true
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "eval_task": "commonsense",
+      "label": "magicoder__seed42__original_lora",
+      "samples": 22419,
+      "input_records_match_base": true,
+      "unique_ids": true
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "eval_task": "commonsense",
+      "label": "magicoder__seed42__flat_fro",
+      "samples": 22419,
+      "input_records_match_base": true,
+      "unique_ids": true
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "eval_task": "commonsense",
+      "label": "magicoder__seed42__flat_nuclear",
+      "samples": 22419,
+      "input_records_match_base": true,
+      "unique_ids": true
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "eval_task": "commonsense",
+      "label": "magicoder__seed42__dg_hard",
+      "samples": 22419,
+      "input_records_match_base": true,
+      "unique_ids": true
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "eval_task": "commonsense",
+      "label": "magicoder__seed42__hns_f4_s1",
+      "samples": 22419,
+      "input_records_match_base": true,
+      "unique_ids": true
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "eval_task": "commonsense",
+      "label": "metamath__seed42__original_lora",
+      "samples": 22419,
+      "input_records_match_base": true,
+      "unique_ids": true
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "eval_task": "commonsense",
+      "label": "metamath__seed42__flat_fro",
+      "samples": 22419,
+      "input_records_match_base": true,
+      "unique_ids": true
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "eval_task": "commonsense",
+      "label": "metamath__seed42__flat_nuclear",
+      "samples": 22419,
+      "input_records_match_base": true,
+      "unique_ids": true
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "eval_task": "commonsense",
+      "label": "metamath__seed42__dg_hard",
+      "samples": 22419,
+      "input_records_match_base": true,
+      "unique_ids": true
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "eval_task": "commonsense",
+      "label": "metamath__seed42__hns_f4_s1",
+      "samples": 22419,
+      "input_records_match_base": true,
+      "unique_ids": true
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "eval_task": "commonsense",
+      "label": "tulu__seed42__original_lora",
+      "samples": 22419,
+      "input_records_match_base": true,
+      "unique_ids": true
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "eval_task": "commonsense",
+      "label": "tulu__seed42__flat_fro",
+      "samples": 22419,
+      "input_records_match_base": true,
+      "unique_ids": true
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "eval_task": "commonsense",
+      "label": "tulu__seed42__flat_nuclear",
+      "samples": 22419,
+      "input_records_match_base": true,
+      "unique_ids": true
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "eval_task": "commonsense",
+      "label": "tulu__seed42__dg_hard",
+      "samples": 22419,
+      "input_records_match_base": true,
+      "unique_ids": true
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "eval_task": "commonsense",
+      "label": "tulu__seed42__hns_f4_s1",
+      "samples": 22419,
+      "input_records_match_base": true,
+      "unique_ids": true
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "eval_task": "commonsense",
+      "label": "magicoder__seed43__original_lora",
+      "samples": 22419,
+      "input_records_match_base": true,
+      "unique_ids": true
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "eval_task": "commonsense",
+      "label": "magicoder__seed43__flat_fro",
+      "samples": 22419,
+      "input_records_match_base": true,
+      "unique_ids": true
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "eval_task": "commonsense",
+      "label": "magicoder__seed43__flat_nuclear",
+      "samples": 22419,
+      "input_records_match_base": true,
+      "unique_ids": true
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "eval_task": "commonsense",
+      "label": "magicoder__seed43__dg_hard",
+      "samples": 22419,
+      "input_records_match_base": true,
+      "unique_ids": true
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "eval_task": "commonsense",
+      "label": "magicoder__seed43__hns_f4_s1",
+      "samples": 22419,
+      "input_records_match_base": true,
+      "unique_ids": true
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "eval_task": "commonsense",
+      "label": "metamath__seed43__original_lora",
+      "samples": 22419,
+      "input_records_match_base": true,
+      "unique_ids": true
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "eval_task": "commonsense",
+      "label": "metamath__seed43__flat_fro",
+      "samples": 22419,
+      "input_records_match_base": true,
+      "unique_ids": true
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "eval_task": "commonsense",
+      "label": "metamath__seed43__flat_nuclear",
+      "samples": 22419,
+      "input_records_match_base": true,
+      "unique_ids": true
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "eval_task": "commonsense",
+      "label": "metamath__seed43__dg_hard",
+      "samples": 22419,
+      "input_records_match_base": true,
+      "unique_ids": true
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "eval_task": "commonsense",
+      "label": "metamath__seed43__hns_f4_s1",
+      "samples": 22419,
+      "input_records_match_base": true,
+      "unique_ids": true
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "eval_task": "commonsense",
+      "label": "tulu__seed43__original_lora",
+      "samples": 22419,
+      "input_records_match_base": true,
+      "unique_ids": true
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "eval_task": "commonsense",
+      "label": "tulu__seed43__flat_fro",
+      "samples": 22419,
+      "input_records_match_base": true,
+      "unique_ids": true
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "eval_task": "commonsense",
+      "label": "tulu__seed43__flat_nuclear",
+      "samples": 22419,
+      "input_records_match_base": true,
+      "unique_ids": true
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "eval_task": "commonsense",
+      "label": "tulu__seed43__dg_hard",
+      "samples": 22419,
+      "input_records_match_base": true,
+      "unique_ids": true
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "eval_task": "commonsense",
+      "label": "tulu__seed43__hns_f4_s1",
+      "samples": 22419,
+      "input_records_match_base": true,
+      "unique_ids": true
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "eval_task": "commonsense",
+      "label": "magicoder__seed44__original_lora",
+      "samples": 22419,
+      "input_records_match_base": true,
+      "unique_ids": true
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "eval_task": "commonsense",
+      "label": "magicoder__seed44__flat_fro",
+      "samples": 22419,
+      "input_records_match_base": true,
+      "unique_ids": true
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "eval_task": "commonsense",
+      "label": "magicoder__seed44__flat_nuclear",
+      "samples": 22419,
+      "input_records_match_base": true,
+      "unique_ids": true
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "eval_task": "commonsense",
+      "label": "magicoder__seed44__dg_hard",
+      "samples": 22419,
+      "input_records_match_base": true,
+      "unique_ids": true
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "eval_task": "commonsense",
+      "label": "magicoder__seed44__hns_f4_s1",
+      "samples": 22419,
+      "input_records_match_base": true,
+      "unique_ids": true
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "eval_task": "commonsense",
+      "label": "metamath__seed44__original_lora",
+      "samples": 22419,
+      "input_records_match_base": true,
+      "unique_ids": true
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "eval_task": "commonsense",
+      "label": "metamath__seed44__flat_fro",
+      "samples": 22419,
+      "input_records_match_base": true,
+      "unique_ids": true
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "eval_task": "commonsense",
+      "label": "metamath__seed44__flat_nuclear",
+      "samples": 22419,
+      "input_records_match_base": true,
+      "unique_ids": true
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "eval_task": "commonsense",
+      "label": "metamath__seed44__dg_hard",
+      "samples": 22419,
+      "input_records_match_base": true,
+      "unique_ids": true
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "eval_task": "commonsense",
+      "label": "metamath__seed44__hns_f4_s1",
+      "samples": 22419,
+      "input_records_match_base": true,
+      "unique_ids": true
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "eval_task": "commonsense",
+      "label": "tulu__seed44__original_lora",
+      "samples": 22419,
+      "input_records_match_base": true,
+      "unique_ids": true
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "eval_task": "commonsense",
+      "label": "tulu__seed44__flat_fro",
+      "samples": 22419,
+      "input_records_match_base": true,
+      "unique_ids": true
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "eval_task": "commonsense",
+      "label": "tulu__seed44__flat_nuclear",
+      "samples": 22419,
+      "input_records_match_base": true,
+      "unique_ids": true
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "eval_task": "commonsense",
+      "label": "tulu__seed44__dg_hard",
+      "samples": 22419,
+      "input_records_match_base": true,
+      "unique_ids": true
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "eval_task": "commonsense",
+      "label": "tulu__seed44__hns_f4_s1",
+      "samples": 22419,
+      "input_records_match_base": true,
+      "unique_ids": true
+    }
+  ]
+}

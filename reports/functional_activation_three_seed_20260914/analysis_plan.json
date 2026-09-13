@@ -1,0 +1,17 @@
+{
+  "created_utc": "2026-09-13T18:28:53.863709+00:00",
+  "scope": "complete 18 sources, 282 adapters, 450 separate-wave rows; no new training or downstream scoring",
+  "functional_features": 12,
+  "full_second_moments": "source-basis uncentered C and diag(t) C diag(t) eigenvalues supplement the original diagonal response definition",
+  "statistics": "within-source ranks, cluster bootstrap2000, permutation2000, BH per wave/outcome; source quality within Base x Task exact46656 seed permutations; FDR combined parameter and functional pool",
+  "validation": "nested leave seed/base/task; inner leave source; single/paired linear or quadratic ridge .01/1/10; train-only normalization; source quality compared against train-only Base x Task means",
+  "independence": "18 source checkpoints, never tokens/modules/waves; DG identity duplicate excluded",
+  "sampling_seed": 42,
+  "training_seeds": [
+    42,
+    43,
+    44
+  ],
+  "max_gpus": 2,
+  "note": "exploratory follow-up to prior metric study, not preregistered"
+}

@@ -1,0 +1,332 @@
+{
+  "status": "complete",
+  "base_model": "/dataset1/zailong/models/Llama-3.1-8B-Instruct",
+  "task_config": "/dataset1/zailong/workspace/peft-sft-lab/reports/posthoc_flat_dghard_forgetting_three_seed_20260913/Llama-3.1-8B-Instruct_task_config.json",
+  "adapter_block_size": 5,
+  "reason": "Each checkpoint has all five methods in one batch, with exact original LoRA/DG identity controls.",
+  "variants": [
+    {
+      "label": "magicoder__seed42__original_lora",
+      "path": "/dataset1/zailong/models/spectral-surgery/Llama-3.1-8B-Instruct-Magicoder-50K-LoRA-E1",
+      "method": "original_lora",
+      "seed": 42,
+      "train_task": "magicoder"
+    },
+    {
+      "label": "magicoder__seed42__flat_fro",
+      "path": "/dataset1/zailong/workspace/peft-sft-lab/reports/posthoc_flat_dghard_three_seed_20260913/adapters/Llama-3.1-8B-Instruct/seed42/magicoder/flat_fro",
+      "method": "flat_fro",
+      "seed": 42,
+      "train_task": "magicoder"
+    },
+    {
+      "label": "magicoder__seed42__flat_nuclear",
+      "path": "/dataset1/zailong/workspace/peft-sft-lab/reports/posthoc_flat_dghard_three_seed_20260913/adapters/Llama-3.1-8B-Instruct/seed42/magicoder/flat_nuclear",
+      "method": "flat_nuclear",
+      "seed": 42,
+      "train_task": "magicoder"
+    },
+    {
+      "label": "magicoder__seed42__dg_hard",
+      "path": "/dataset1/zailong/workspace/peft-sft-lab/reports/posthoc_flat_dghard_three_seed_20260913/adapters/Llama-3.1-8B-Instruct/seed42/magicoder/dg_hard",
+      "method": "dg_hard",
+      "seed": 42,
+      "train_task": "magicoder"
+    },
+    {
+      "label": "magicoder__seed42__hns_f4_s1",
+      "path": "/dataset1/zailong/runs/peft-sft-lab/hns-step-grid-2x4-20260912/adapters/Llama-3.1-8B-Instruct/magicoder/hns_f4_s1",
+      "method": "hns_f4_s1",
+      "seed": 42,
+      "train_task": "magicoder"
+    },
+    {
+      "label": "metamath__seed42__original_lora",
+      "path": "/dataset1/zailong/models/spectral-surgery/Llama-3.1-8B-Instruct-MetaMathQA-50K-LoRA",
+      "method": "original_lora",
+      "seed": 42,
+      "train_task": "metamath"
+    },
+    {
+      "label": "metamath__seed42__flat_fro",
+      "path": "/dataset1/zailong/workspace/peft-sft-lab/reports/posthoc_flat_dghard_three_seed_20260913/adapters/Llama-3.1-8B-Instruct/seed42/metamath/flat_fro",
+      "method": "flat_fro",
+      "seed": 42,
+      "train_task": "metamath"
+    },
+    {
+      "label": "metamath__seed42__flat_nuclear",
+      "path": "/dataset1/zailong/workspace/peft-sft-lab/reports/posthoc_flat_dghard_three_seed_20260913/adapters/Llama-3.1-8B-Instruct/seed42/metamath/flat_nuclear",
+      "method": "flat_nuclear",
+      "seed": 42,
+      "train_task": "metamath"
+    },
+    {
+      "label": "metamath__seed42__dg_hard",
+      "path": "/dataset1/zailong/workspace/peft-sft-lab/reports/posthoc_flat_dghard_three_seed_20260913/adapters/Llama-3.1-8B-Instruct/seed42/metamath/dg_hard",
+      "method": "dg_hard",
+      "seed": 42,
+      "train_task": "metamath"
+    },
+    {
+      "label": "metamath__seed42__hns_f4_s1",
+      "path": "/dataset1/zailong/runs/peft-sft-lab/hns-step-grid-2x4-20260912/adapters/Llama-3.1-8B-Instruct/metamath/hns_f4_s1",
+      "method": "hns_f4_s1",
+      "seed": 42,
+      "train_task": "metamath"
+    },
+    {
+      "label": "tulu__seed42__original_lora",
+      "path": "/dataset1/zailong/models/spectral-surgery/Llama-3.1-8B-Instruct-InstructionFollowing-LoRA",
+      "method": "original_lora",
+      "seed": 42,
+      "train_task": "tulu"
+    },
+    {
+      "label": "tulu__seed42__flat_fro",
+      "path": "/dataset1/zailong/workspace/peft-sft-lab/reports/posthoc_flat_dghard_three_seed_20260913/adapters/Llama-3.1-8B-Instruct/seed42/tulu/flat_fro",
+      "method": "flat_fro",
+      "seed": 42,
+      "train_task": "tulu"
+    },
+    {
+      "label": "tulu__seed42__flat_nuclear",
+      "path": "/dataset1/zailong/workspace/peft-sft-lab/reports/posthoc_flat_dghard_three_seed_20260913/adapters/Llama-3.1-8B-Instruct/seed42/tulu/flat_nuclear",
+      "method": "flat_nuclear",
+      "seed": 42,
+      "train_task": "tulu"
+    },
+    {
+      "label": "tulu__seed42__dg_hard",
+      "path": "/dataset1/zailong/workspace/peft-sft-lab/reports/posthoc_flat_dghard_three_seed_20260913/adapters/Llama-3.1-8B-Instruct/seed42/tulu/dg_hard",
+      "method": "dg_hard",
+      "seed": 42,
+      "train_task": "tulu"
+    },
+    {
+      "label": "tulu__seed42__hns_f4_s1",
+      "path": "/dataset1/zailong/runs/peft-sft-lab/hns-step-grid-2x4-20260912/adapters/Llama-3.1-8B-Instruct/tulu/hns_f4_s1",
+      "method": "hns_f4_s1",
+      "seed": 42,
+      "train_task": "tulu"
+    },
+    {
+      "label": "magicoder__seed43__original_lora",
+      "path": "/dataset1/zailong/runs/peft-sft-lab/hns-training-seeds-3task-20260912/Llama-3.1-8B-Instruct/seed43/lora/magicoder",
+      "method": "original_lora",
+      "seed": 43,
+      "train_task": "magicoder"
+    },
+    {
+      "label": "magicoder__seed43__flat_fro",
+      "path": "/dataset1/zailong/workspace/peft-sft-lab/reports/posthoc_flat_dghard_three_seed_20260913/adapters/Llama-3.1-8B-Instruct/seed43/magicoder/flat_fro",
+      "method": "flat_fro",
+      "seed": 43,
+      "train_task": "magicoder"
+    },
+    {
+      "label": "magicoder__seed43__flat_nuclear",
+      "path": "/dataset1/zailong/workspace/peft-sft-lab/reports/posthoc_flat_dghard_three_seed_20260913/adapters/Llama-3.1-8B-Instruct/seed43/magicoder/flat_nuclear",
+      "method": "flat_nuclear",
+      "seed": 43,
+      "train_task": "magicoder"
+    },
+    {
+      "label": "magicoder__seed43__dg_hard",
+      "path": "/dataset1/zailong/workspace/peft-sft-lab/reports/posthoc_flat_dghard_three_seed_20260913/adapters/Llama-3.1-8B-Instruct/seed43/magicoder/dg_hard",
+      "method": "dg_hard",
+      "seed": 43,
+      "train_task": "magicoder"
+    },
+    {
+      "label": "magicoder__seed43__hns_f4_s1",
+      "path": "/dataset1/zailong/runs/peft-sft-lab/hns-training-seeds-3task-20260912/Llama-3.1-8B-Instruct/seed43/hns_step_grid/adapters/Llama-3.1-8B-Instruct/magicoder/hns_f4_s1",
+      "method": "hns_f4_s1",
+      "seed": 43,
+      "train_task": "magicoder"
+    },
+    {
+      "label": "metamath__seed43__original_lora",
+      "path": "/dataset1/zailong/runs/peft-sft-lab/hns-training-seeds-3task-20260912/Llama-3.1-8B-Instruct/seed43/lora/metamath",
+      "method": "original_lora",
+      "seed": 43,
+      "train_task": "metamath"
+    },
+    {
+      "label": "metamath__seed43__flat_fro",
+      "path": "/dataset1/zailong/workspace/peft-sft-lab/reports/posthoc_flat_dghard_three_seed_20260913/adapters/Llama-3.1-8B-Instruct/seed43/metamath/flat_fro",
+      "method": "flat_fro",
+      "seed": 43,
+      "train_task": "metamath"
+    },
+    {
+      "label": "metamath__seed43__flat_nuclear",
+      "path": "/dataset1/zailong/workspace/peft-sft-lab/reports/posthoc_flat_dghard_three_seed_20260913/adapters/Llama-3.1-8B-Instruct/seed43/metamath/flat_nuclear",
+      "method": "flat_nuclear",
+      "seed": 43,
+      "train_task": "metamath"
+    },
+    {
+      "label": "metamath__seed43__dg_hard",
+      "path": "/dataset1/zailong/workspace/peft-sft-lab/reports/posthoc_flat_dghard_three_seed_20260913/adapters/Llama-3.1-8B-Instruct/seed43/metamath/dg_hard",
+      "method": "dg_hard",
+      "seed": 43,
+      "train_task": "metamath"
+    },
+    {
+      "label": "metamath__seed43__hns_f4_s1",
+      "path": "/dataset1/zailong/runs/peft-sft-lab/hns-training-seeds-3task-20260912/Llama-3.1-8B-Instruct/seed43/hns_step_grid/adapters/Llama-3.1-8B-Instruct/metamath/hns_f4_s1",
+      "method": "hns_f4_s1",
+      "seed": 43,
+      "train_task": "metamath"
+    },
+    {
+      "label": "tulu__seed43__original_lora",
+      "path": "/dataset1/zailong/runs/peft-sft-lab/hns-training-seeds-3task-20260912/Llama-3.1-8B-Instruct/seed43/lora/tulu",
+      "method": "original_lora",
+      "seed": 43,
+      "train_task": "tulu"
+    },
+    {
+      "label": "tulu__seed43__flat_fro",
+      "path": "/dataset1/zailong/workspace/peft-sft-lab/reports/posthoc_flat_dghard_three_seed_20260913/adapters/Llama-3.1-8B-Instruct/seed43/tulu/flat_fro",
+      "method": "flat_fro",
+      "seed": 43,
+      "train_task": "tulu"
+    },
+    {
+      "label": "tulu__seed43__flat_nuclear",
+      "path": "/dataset1/zailong/workspace/peft-sft-lab/reports/posthoc_flat_dghard_three_seed_20260913/adapters/Llama-3.1-8B-Instruct/seed43/tulu/flat_nuclear",
+      "method": "flat_nuclear",
+      "seed": 43,
+      "train_task": "tulu"
+    },
+    {
+      "label": "tulu__seed43__dg_hard",
+      "path": "/dataset1/zailong/workspace/peft-sft-lab/reports/posthoc_flat_dghard_three_seed_20260913/adapters/Llama-3.1-8B-Instruct/seed43/tulu/dg_hard",
+      "method": "dg_hard",
+      "seed": 43,
+      "train_task": "tulu"
+    },
+    {
+      "label": "tulu__seed43__hns_f4_s1",
+      "path": "/dataset1/zailong/runs/peft-sft-lab/hns-training-seeds-3task-20260912/Llama-3.1-8B-Instruct/seed43/hns_step_grid/adapters/Llama-3.1-8B-Instruct/tulu/hns_f4_s1",
+      "method": "hns_f4_s1",
+      "seed": 43,
+      "train_task": "tulu"
+    },
+    {
+      "label": "magicoder__seed44__original_lora",
+      "path": "/dataset1/zailong/runs/peft-sft-lab/hns-training-seeds-3task-20260912/Llama-3.1-8B-Instruct/seed44/lora/magicoder",
+      "method": "original_lora",
+      "seed": 44,
+      "train_task": "magicoder"
+    },
+    {
+      "label": "magicoder__seed44__flat_fro",
+      "path": "/dataset1/zailong/workspace/peft-sft-lab/reports/posthoc_flat_dghard_three_seed_20260913/adapters/Llama-3.1-8B-Instruct/seed44/magicoder/flat_fro",
+      "method": "flat_fro",
+      "seed": 44,
+      "train_task": "magicoder"
+    },
+    {
+      "label": "magicoder__seed44__flat_nuclear",
+      "path": "/dataset1/zailong/workspace/peft-sft-lab/reports/posthoc_flat_dghard_three_seed_20260913/adapters/Llama-3.1-8B-Instruct/seed44/magicoder/flat_nuclear",
+      "method": "flat_nuclear",
+      "seed": 44,
+      "train_task": "magicoder"
+    },
+    {
+      "label": "magicoder__seed44__dg_hard",
+      "path": "/dataset1/zailong/workspace/peft-sft-lab/reports/posthoc_flat_dghard_three_seed_20260913/adapters/Llama-3.1-8B-Instruct/seed44/magicoder/dg_hard",
+      "method": "dg_hard",
+      "seed": 44,
+      "train_task": "magicoder"
+    },
+    {
+      "label": "magicoder__seed44__hns_f4_s1",
+      "path": "/dataset1/zailong/runs/peft-sft-lab/hns-training-seeds-3task-20260912/Llama-3.1-8B-Instruct/seed44/hns_step_grid/adapters/Llama-3.1-8B-Instruct/magicoder/hns_f4_s1",
+      "method": "hns_f4_s1",
+      "seed": 44,
+      "train_task": "magicoder"
+    },
+    {
+      "label": "metamath__seed44__original_lora",
+      "path": "/dataset1/zailong/runs/peft-sft-lab/hns-training-seeds-3task-20260912/Llama-3.1-8B-Instruct/seed44/lora/metamath",
+      "method": "original_lora",
+      "seed": 44,
+      "train_task": "metamath"
+    },
+    {
+      "label": "metamath__seed44__flat_fro",
+      "path": "/dataset1/zailong/workspace/peft-sft-lab/reports/posthoc_flat_dghard_three_seed_20260913/adapters/Llama-3.1-8B-Instruct/seed44/metamath/flat_fro",
+      "method": "flat_fro",
+      "seed": 44,
+      "train_task": "metamath"
+    },
+    {
+      "label": "metamath__seed44__flat_nuclear",
+      "path": "/dataset1/zailong/workspace/peft-sft-lab/reports/posthoc_flat_dghard_three_seed_20260913/adapters/Llama-3.1-8B-Instruct/seed44/metamath/flat_nuclear",
+      "method": "flat_nuclear",
+      "seed": 44,
+      "train_task": "metamath"
+    },
+    {
+      "label": "metamath__seed44__dg_hard",
+      "path": "/dataset1/zailong/workspace/peft-sft-lab/reports/posthoc_flat_dghard_three_seed_20260913/adapters/Llama-3.1-8B-Instruct/seed44/metamath/dg_hard",
+      "method": "dg_hard",
+      "seed": 44,
+      "train_task": "metamath"
+    },
+    {
+      "label": "metamath__seed44__hns_f4_s1",
+      "path": "/dataset1/zailong/runs/peft-sft-lab/hns-training-seeds-3task-20260912/Llama-3.1-8B-Instruct/seed44/hns_step_grid/adapters/Llama-3.1-8B-Instruct/metamath/hns_f4_s1",
+      "method": "hns_f4_s1",
+      "seed": 44,
+      "train_task": "metamath"
+    },
+    {
+      "label": "tulu__seed44__original_lora",
+      "path": "/dataset1/zailong/runs/peft-sft-lab/hns-training-seeds-3task-20260912/Llama-3.1-8B-Instruct/seed44/lora/tulu",
+      "method": "original_lora",
+      "seed": 44,
+      "train_task": "tulu"
+    },
+    {
+      "label": "tulu__seed44__flat_fro",
+      "path": "/dataset1/zailong/workspace/peft-sft-lab/reports/posthoc_flat_dghard_three_seed_20260913/adapters/Llama-3.1-8B-Instruct/seed44/tulu/flat_fro",
+      "method": "flat_fro",
+      "seed": 44,
+      "train_task": "tulu"
+    },
+    {
+      "label": "tulu__seed44__flat_nuclear",
+      "path": "/dataset1/zailong/workspace/peft-sft-lab/reports/posthoc_flat_dghard_three_seed_20260913/adapters/Llama-3.1-8B-Instruct/seed44/tulu/flat_nuclear",
+      "method": "flat_nuclear",
+      "seed": 44,
+      "train_task": "tulu"
+    },
+    {
+      "label": "tulu__seed44__dg_hard",
+      "path": "/dataset1/zailong/workspace/peft-sft-lab/reports/posthoc_flat_dghard_three_seed_20260913/adapters/Llama-3.1-8B-Instruct/seed44/tulu/dg_hard",
+      "method": "dg_hard",
+      "seed": 44,
+      "train_task": "tulu"
+    },
+    {
+      "label": "tulu__seed44__hns_f4_s1",
+      "path": "/dataset1/zailong/runs/peft-sft-lab/hns-training-seeds-3task-20260912/Llama-3.1-8B-Instruct/seed44/hns_step_grid/adapters/Llama-3.1-8B-Instruct/tulu/hns_f4_s1",
+      "method": "hns_f4_s1",
+      "seed": 44,
+      "train_task": "tulu"
+    }
+  ],
+  "source_variant_manifest": "/dataset1/zailong/workspace/peft-sft-lab/reports/posthoc_flat_dghard_three_seed_20260913/Llama-3.1-8B-Instruct_joint_variant_manifest.json",
+  "evaluation_tasks": [
+    "magicoder",
+    "metamath",
+    "tulu",
+    "commonsense"
+  ],
+  "diagonal_only": false
+}

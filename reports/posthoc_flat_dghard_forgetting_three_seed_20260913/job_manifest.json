@@ -1,0 +1,88 @@
+{
+  "job_id": 992,
+  "command": [
+    "sbatch",
+    "slurm/posthoc_forgetting_three_seed.slurm"
+  ],
+  "gpus_per_worker": 1,
+  "array": "0-1%2",
+  "max_gpus": 2,
+  "submitted_utc": "2026-09-13T14:43:17.211298+00:00",
+  "resource_observations": [
+    {
+      "observed_utc": "2026-09-13T17:08:07.826816+00:00",
+      "command": [
+        "sstat",
+        "-j",
+        "992.batch,993.batch",
+        "--format=JobID,AveCPU,MaxRSS,TRESUsageInAve",
+        "-P"
+      ],
+      "steps": [
+        {
+          "job_step": "992.batch",
+          "gpu_util_percent": 95,
+          "gpu_memory_mib": 265692,
+          "max_rss_kib": 20236936
+        },
+        {
+          "job_step": "993.batch",
+          "gpu_util_percent": 95,
+          "gpu_memory_mib": 266404,
+          "max_rss_kib": 19588092
+        }
+      ]
+    },
+    {
+      "observed_utc": "2026-09-13T17:21:23.071462+00:00",
+      "source": "sacct completed batch steps TRESUsageInAve",
+      "steps": [
+        {
+          "job_step": "992_0.batch",
+          "gpu_util_percent": 97,
+          "gpu_memory_mib": 266404,
+          "max_rss_kib": 19588092
+        },
+        {
+          "job_step": "992_1.batch",
+          "gpu_util_percent": 97,
+          "gpu_memory_mib": 265692,
+          "max_rss_kib": 20236936
+        }
+      ]
+    }
+  ],
+  "completion": {
+    "array_tasks": [
+      {
+        "job_id": "992_0",
+        "base": "Qwen3-8B",
+        "state": "COMPLETED",
+        "exit_code": "0:0",
+        "elapsed": "02:37:43",
+        "end_sg": "2026-09-14T01:20:49+08:00",
+        "gpus": 1
+      },
+      {
+        "job_id": "992_1",
+        "base": "Llama-3.1-8B-Instruct",
+        "state": "COMPLETED",
+        "exit_code": "0:0",
+        "elapsed": "02:32:52",
+        "end_sg": "2026-09-14T01:15:58+08:00",
+        "gpus": 1
+      }
+    ],
+    "all_gpus_released": true
+  },
+  "auxiliary_steps": [
+    {
+      "job_step": "992_1.0",
+      "purpose": "read-only GPU utilization query within existing allocation",
+      "state": "FAILED",
+      "elapsed": "00:00:00",
+      "evaluation_affected": false,
+      "extra_gpus": 0
+    }
+  ]
+}

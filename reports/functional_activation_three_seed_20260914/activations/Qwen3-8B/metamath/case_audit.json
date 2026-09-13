@@ -1,0 +1,40 @@
+{
+  "status": "complete",
+  "base": "Qwen3-8B",
+  "task": "metamath",
+  "seeds": [
+    42,
+    43,
+    44
+  ],
+  "samples": 256,
+  "tokens": 62944,
+  "modules_per_seed": 252,
+  "seconds": 11.327883958816528,
+  "pilots": [
+    {
+      "batch_size": 64,
+      "status": "pass",
+      "seconds": 0.6478936672210693,
+      "peak_allocated_gib": 18.711995124816895,
+      "total_gib": 267.68170166015625
+    },
+    {
+      "batch_size": 128,
+      "status": "pass",
+      "seconds": 1.3197948932647705,
+      "peak_allocated_gib": 21.978108406066895,
+      "total_gib": 267.68170166015625
+    },
+    {
+      "batch_size": 256,
+      "status": "pass",
+      "seconds": 2.698599100112915,
+      "peak_allocated_gib": 28.510334968566895,
+      "total_gib": 267.68170166015625
+    }
+  ],
+  "batch_size": 256,
+  "collector_sha256": "14e4e2218dcde749f637432a1692714cbc04970bc61608c7319d5b07ee8f8b4f",
+  "completed_utc": "2026-09-13T18:28:58.028727+00:00"
+}

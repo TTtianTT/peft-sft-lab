@@ -1,0 +1,6 @@
+{
+  "samples": 1319,
+  "primary_metric": "strict_accuracy",
+  "strict_accuracy": 0.5708870356330553,
+  "numeric_accuracy": 0.5784685367702805
+}

@@ -1,0 +1,7 @@
+{
+  "status": "complete",
+  "base": "Llama-3.1-8B-Instruct",
+  "seconds": 40.76231265068054,
+  "gpu_count": 1,
+  "completed_utc": "2026-09-13T18:29:05.333908+00:00"
+}

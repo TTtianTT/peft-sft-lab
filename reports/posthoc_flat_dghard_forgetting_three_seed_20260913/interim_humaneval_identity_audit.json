@@ -1,0 +1,153 @@
+{
+  "eval_task": "magicoder",
+  "pairs": 18,
+  "samples": 2952,
+  "token_mismatches": 0,
+  "metric_mismatches": 0,
+  "checks": [
+    {
+      "base": "Qwen3-8B",
+      "train_task": "magicoder",
+      "seed": 42,
+      "samples": 164,
+      "token_mismatches": 0,
+      "metric_mismatch": false
+    },
+    {
+      "base": "Qwen3-8B",
+      "train_task": "metamath",
+      "seed": 42,
+      "samples": 164,
+      "token_mismatches": 0,
+      "metric_mismatch": false
+    },
+    {
+      "base": "Qwen3-8B",
+      "train_task": "tulu",
+      "seed": 42,
+      "samples": 164,
+      "token_mismatches": 0,
+      "metric_mismatch": false
+    },
+    {
+      "base": "Qwen3-8B",
+      "train_task": "magicoder",
+      "seed": 43,
+      "samples": 164,
+      "token_mismatches": 0,
+      "metric_mismatch": false
+    },
+    {
+      "base": "Qwen3-8B",
+      "train_task": "metamath",
+      "seed": 43,
+      "samples": 164,
+      "token_mismatches": 0,
+      "metric_mismatch": false
+    },
+    {
+      "base": "Qwen3-8B",
+      "train_task": "tulu",
+      "seed": 43,
+      "samples": 164,
+      "token_mismatches": 0,
+      "metric_mismatch": false
+    },
+    {
+      "base": "Qwen3-8B",
+      "train_task": "magicoder",
+      "seed": 44,
+      "samples": 164,
+      "token_mismatches": 0,
+      "metric_mismatch": false
+    },
+    {
+      "base": "Qwen3-8B",
+      "train_task": "metamath",
+      "seed": 44,
+      "samples": 164,
+      "token_mismatches": 0,
+      "metric_mismatch": false
+    },
+    {
+      "base": "Qwen3-8B",
+      "train_task": "tulu",
+      "seed": 44,
+      "samples": 164,
+      "token_mismatches": 0,
+      "metric_mismatch": false
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "train_task": "magicoder",
+      "seed": 42,
+      "samples": 164,
+      "token_mismatches": 0,
+      "metric_mismatch": false
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "train_task": "metamath",
+      "seed": 42,
+      "samples": 164,
+      "token_mismatches": 0,
+      "metric_mismatch": false
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "train_task": "tulu",
+      "seed": 42,
+      "samples": 164,
+      "token_mismatches": 0,
+      "metric_mismatch": false
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "train_task": "magicoder",
+      "seed": 43,
+      "samples": 164,
+      "token_mismatches": 0,
+      "metric_mismatch": false
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "train_task": "metamath",
+      "seed": 43,
+      "samples": 164,
+      "token_mismatches": 0,
+      "metric_mismatch": false
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "train_task": "tulu",
+      "seed": 43,
+      "samples": 164,
+      "token_mismatches": 0,
+      "metric_mismatch": false
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "train_task": "magicoder",
+      "seed": 44,
+      "samples": 164,
+      "token_mismatches": 0,
+      "metric_mismatch": false
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "train_task": "metamath",
+      "seed": 44,
+      "samples": 164,
+      "token_mismatches": 0,
+      "metric_mismatch": false
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "train_task": "tulu",
+      "seed": 44,
+      "samples": 164,
+      "token_mismatches": 0,
+      "metric_mismatch": false
+    }
+  ]
+}

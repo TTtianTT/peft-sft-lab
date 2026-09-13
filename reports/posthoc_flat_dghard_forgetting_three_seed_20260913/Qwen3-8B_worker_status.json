@@ -1,0 +1,9 @@
+{
+  "base": "Qwen3-8B",
+  "phase": "complete",
+  "updated_utc": "2026-09-13T17:20:46.537283+00:00",
+  "slurm_job_id": "993",
+  "node": "node01",
+  "gpu_count": 1,
+  "cells": 184
+}

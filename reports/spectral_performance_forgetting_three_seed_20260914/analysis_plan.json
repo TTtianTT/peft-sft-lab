@@ -1,0 +1,60 @@
+{
+  "created_utc": "2026-09-13T17:34:03.902266+00:00",
+  "features": {
+    "entropy_rank": "mean exp(-sum p log p)/r; p=s/sum(s)",
+    "energy_entropy_rank": "mean exp(-sum q log q)/r; q=s^2/sum(s^2)",
+    "stable_rank": "mean sum(s^2)/(r*max(s)^2)",
+    "participation_rank": "mean sum(s^2)^2/(r*sum(s^4))",
+    "nuclear_participation_rank": "mean sum(s)^2/(r*sum(s^2))",
+    "top1_energy": "mean max(s)^2/sum(s^2)",
+    "top4_energy": "mean sum(sorted(s)[:4]^2)/sum(s^2)",
+    "log_condition": "mean log(max(s)/min(s))",
+    "log_fro": "log sqrt(sum_modules sum(s^2)); s already includes LoRA scaling",
+    "log_nuclear": "log sum_modules sum(s); s already includes LoRA scaling",
+    "log_head_rss": "log sqrt(sum_modules max(s)^2); not global operator norm",
+    "fro_ratio": "global Frobenius / source global Frobenius",
+    "nuclear_ratio": "global sum nuclear / source global sum nuclear",
+    "head_ratio": "RSS of module operator norms / source RSS",
+    "original_head1_retention": "sum ||U_source[:,:1]^T D_new||_F^2 / sum source_s[:1]^2",
+    "original_head4_retention": "sum ||U_source[:,:4]^T D_new||_F^2 / sum source_s[:4]^2",
+    "scalar_fit": "<D_new,D_source>_F / ||D_source||_F^2",
+    "shape_residual": "1-<D_new,D_source>_F^2/(||D_new||_F^2*||D_source||_F^2)",
+    "displacement": "||D_new-D_source||_F / ||D_source||_F"
+  },
+  "secondary_scopes": [
+    "attention",
+    "mlp",
+    "early",
+    "middle",
+    "late",
+    "q_proj",
+    "k_proj",
+    "v_proj",
+    "o_proj",
+    "gate_proj",
+    "up_proj",
+    "down_proj"
+  ],
+  "secondary_features": [
+    "entropy_rank",
+    "top1_energy",
+    "log_fro",
+    "original_head1_retention"
+  ],
+  "outcomes": [
+    "target_gain",
+    "off_gain",
+    "forgetting_reduction"
+  ],
+  "independent_unit": "18 source checkpoints; modules and repeated evaluations are not independent replicates",
+  "design": "Separate evaluation waves. Baseline differences within checkpoint and cohort. DG identity and 0+0 controls excluded from fits. Shape rounded at 1e-5 to avoid numerical noise becoming rank evidence.",
+  "inference": "Source-cluster bootstrap CI, within-checkpoint permutation p, BH FDR per cohort/outcome/feature family; raw correlations diagnostic only.",
+  "validation": "Nested grouped CV, leave seed/base/task out. Inner source-checkpoint folds select feature, linear/quadratic degree and ridge. Train-only outcome normalization. No target/HNS configuration chosen on held-out results.",
+  "limitations": "Retrospective association, not causality. Original seed42 training recipes differ from replication seeds; two Llama seed42 labels not fully verified.",
+  "command": "/dataset1/zailong/envs/peft-sft-lab/bin/python scripts/analyze_spectral_performance_forgetting_three_seed.py --stage all",
+  "numerical_audit_revision": {
+    "reason": "Observed saved-spectrum errors below 6.3e-6; exact preserved budgets otherwise acquire artificial rank correlations from Float32 roundoff",
+    "precision": "shape and relative dimensionless features rounded to 1e-5; norm ratios within 1e-5 of 1 snapped to exact invariant; log norm set to source log norm for preserved budgets",
+    "scope": "numerical correctness correction before final inference, not selected by predictive performance"
+  }
+}

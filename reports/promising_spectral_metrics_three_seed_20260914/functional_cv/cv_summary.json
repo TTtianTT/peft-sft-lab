@@ -1,0 +1,90 @@
+[
+  {
+    "cohort": "joint_flat_hns",
+    "model": "single",
+    "split": "base",
+    "rows": 18,
+    "clusters": 6,
+    "normalized_mse": 6.856114521237528,
+    "zero_normalized_mse": 9.426089008987148,
+    "train_mean_normalized_mse": 5.992501767813646,
+    "feature_selection": {
+      "original_head1_retention": 1,
+      "erank_attn_mlp_gap": 1
+    },
+    "skill_vs_zero": 0.27264483555155494,
+    "skill_vs_train_mean": -0.14411556089352118,
+    "target_gain_rmse": 6.358398327029223,
+    "target_gain_r2": -2.6057488887899063,
+    "target_gain_pearson": -0.3435447692252665,
+    "forgetting_reduction_rmse": 1.8539731422567092,
+    "forgetting_reduction_r2": -1.29175940393624,
+    "forgetting_reduction_pearson": -0.15051627801965792
+  },
+  {
+    "cohort": "joint_flat_hns",
+    "model": "single",
+    "split": "train_task",
+    "rows": 18,
+    "clusters": 6,
+    "normalized_mse": 6.036401481175549,
+    "zero_normalized_mse": 9.133053424060776,
+    "train_mean_normalized_mse": 5.435764126867517,
+    "feature_selection": {
+      "original_head1_retention": 2,
+      "functional_energy_ratio": 1
+    },
+    "skill_vs_zero": 0.3390598739658287,
+    "skill_vs_train_mean": -0.11049731744967439,
+    "target_gain_rmse": 3.8706525287556235,
+    "target_gain_r2": -0.3361905264928724,
+    "target_gain_pearson": -0.33209419189667155,
+    "forgetting_reduction_rmse": 1.7659023445539692,
+    "forgetting_reduction_r2": -1.0791963859505165,
+    "forgetting_reduction_pearson": -0.7869854457888146
+  },
+  {
+    "cohort": "joint_flat_hns",
+    "model": "shape_plus_strength",
+    "split": "base",
+    "rows": 18,
+    "clusters": 6,
+    "normalized_mse": 7.594658791357922,
+    "zero_normalized_mse": 9.426089008987148,
+    "train_mean_normalized_mse": 5.992501767813646,
+    "feature_selection": {
+      "functional_erank+functional_energy_ratio": 1,
+      "functional_participation+functional_energy_ratio": 1
+    },
+    "skill_vs_zero": 0.19429375384457748,
+    "skill_vs_train_mean": -0.26736029218207813,
+    "target_gain_rmse": 5.048707375189748,
+    "target_gain_r2": -1.2733191750967405,
+    "target_gain_pearson": -0.6250700351986489,
+    "forgetting_reduction_rmse": 2.062933766831624,
+    "forgetting_reduction_r2": -1.8374793820005264,
+    "forgetting_reduction_pearson": -0.205640909531121
+  },
+  {
+    "cohort": "joint_flat_hns",
+    "model": "shape_plus_strength",
+    "split": "train_task",
+    "rows": 18,
+    "clusters": 6,
+    "normalized_mse": 6.650638965070449,
+    "zero_normalized_mse": 9.133053424060776,
+    "train_mean_normalized_mse": 5.435764126867517,
+    "feature_selection": {
+      "functional_erank+functional_energy_ratio": 2,
+      "functional_participation+functional_energy_ratio": 1
+    },
+    "skill_vs_zero": 0.2718055335634493,
+    "skill_vs_train_mean": -0.22349660688883333,
+    "target_gain_rmse": 3.941160127488657,
+    "target_gain_r2": -0.3853138520091568,
+    "target_gain_pearson": -0.31855247280246923,
+    "forgetting_reduction_rmse": 1.9122676289084595,
+    "forgetting_reduction_r2": -1.4381447851250915,
+    "forgetting_reduction_pearson": -0.7419373987138386
+  }
+]

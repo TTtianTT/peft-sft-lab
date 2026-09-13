@@ -1,0 +1,24 @@
+{
+  "job_id": 1016,
+  "workers": 2,
+  "gpus_per_worker": 1,
+  "max_gpus": 2,
+  "status": "complete",
+  "prior_attempts": [
+    {
+      "job_id": 1014,
+      "status": "failed_in_pilot",
+      "reason": "B300 cuDNN SDPA no valid execution plan; no completed activation cases"
+    }
+  ],
+  "command": "sbatch slurm/functional_activation_three_seed.slurm",
+  "worker_elapsed_seconds": {
+    "Qwen3-8B": 73,
+    "Llama-3.1-8B-Instruct": 67
+  },
+  "sacct_states": [
+    "COMPLETED",
+    "COMPLETED"
+  ],
+  "gpus_released": true
+}
