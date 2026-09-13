@@ -1,0 +1,25 @@
+{
+  "status": "complete",
+  "source_sha256": "e74360cc6515aecb214ba48688187f0c013dbca75c72d0ce53d7b55dc62d80df",
+  "source": "/dataset1/zailong/models/spectral-surgery/Llama-3.1-8B-Instruct-Magicoder-50K-LoRA-E1",
+  "variants": [
+    {
+      "label": "magicoder__seed42__flat_fro",
+      "path": "/dataset1/zailong/workspace/peft-sft-lab/reports/posthoc_flat_dghard_three_seed_20260913/adapters/Llama-3.1-8B-Instruct/seed42/magicoder/flat_fro",
+      "train_task": "magicoder",
+      "seed": 42,
+      "method": "flat_fro",
+      "max_budget_relative_error": 1.1654566378638265e-07,
+      "max_saved_budget_relative_error": 3.405259860755905e-07
+    },
+    {
+      "label": "magicoder__seed42__flat_nuclear",
+      "path": "/dataset1/zailong/workspace/peft-sft-lab/reports/posthoc_flat_dghard_three_seed_20260913/adapters/Llama-3.1-8B-Instruct/seed42/magicoder/flat_nuclear",
+      "train_task": "magicoder",
+      "seed": 42,
+      "method": "flat_nuclear",
+      "max_budget_relative_error": 1.4774317946830706e-07,
+      "max_saved_budget_relative_error": 4.289688604330877e-07
+    }
+  ]
+}

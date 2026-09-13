@@ -1,0 +1,57 @@
+{
+  "python": "3.12.3 (main, Nov  6 2024, 18:32:19) [GCC 13.2.0]",
+  "packages": {
+    "torch": "2.11.0+cu128",
+    "vllm": "0.25.1+cu129",
+    "transformers": "5.16.1",
+    "peft": "0.20.0",
+    "numpy": "2.3.5",
+    "safetensors": "0.8.0",
+    "human-eval": "1.0.3"
+  },
+  "code_sha256": {
+    "scripts/eval_forgetting_matrix_vllm.py": "46d57d067d0cdb68f3fda87269cfb9cf0895a1fa82051c5021fdad0da3a7c061",
+    "scripts/score_forgetting_matrix.py": "a172270a8d115d2f06863a0d181a784756412747a45e9dc02dd71d0f95de5bf5",
+    "src/finetune/eval/generation.py": "bba4a24e4e5808f2abe74749a6f571a5aa1c7f27a03b9df2132ec835afbca075",
+    "src/finetune/eval/eval_humaneval.py": "babd571e6eb7af395281506db836e478ac1a32d6fc738a22051222009eea520e",
+    "src/finetune/eval/eval_gsm8k.py": "ed95442c30536ac4ba90b5a2806d764cea8f8eb38c6879af2c0dd7b2c54dd335",
+    "src/finetune/eval/eval_ifeval.py": "1af1ef7f6c8b38d91dd94bbbc4a0b373ed76a3186899197d1f3c046afd987ef0",
+    "src/finetune/spectral_edit/svd.py": "606213fb325cd09d012f02e05adb269b0d8f1f92c6ccfef21fa7a409c82f9ce2",
+    "src/finetune/spectral_edit/io.py": "296712529479318a67588f22052ea8587ed57d55371b6cd76918244d5749c5ea",
+    "src/finetune/spectral_edit/flat.py": "7b393049e02647e464a6575479b1f61ca212f0c80ec130b8c069304da004728f",
+    "src/finetune/spectral_edit/dg_hard.py": "db143d72d176a83a0af9f155d92d406efe478bcd3944ceef29c8e0a4fcf4b28b",
+    "scripts/audit_posthoc_three_seed.py": "ba6968470df0b0dcdb89efda61bd84502a7f7b31e1362180b67c5384bcff55e6",
+    "scripts/run_posthoc_three_seed_eval.py": "4a18366354c5150c6834d2f60bd3056dfad5f97eed08289599b38895303dff18",
+    "scripts/summarize_posthoc_flat_dghard_three_seed.py": "1bcfb722e0c59b19e4f0654f22eb033c60a3522584292b0dba319f4609aec970",
+    "scripts/prepare_posthoc_joint_three_seed.py": "f08066954249740bca20bf66759cd31b2e51c30e15dc753c127d3b9b1b05ea2b"
+  },
+  "source_manifest": "/dataset1/zailong/workspace/peft-sft-lab/reports/posthoc_flat_dghard_three_seed_20260913/source_manifest.json",
+  "flat_build_manifest": "/dataset1/zailong/workspace/peft-sft-lab/reports/posthoc_flat_dghard_three_seed_20260913/flat_build_complete.json",
+  "dg_build_manifest": "/dataset1/zailong/workspace/peft-sft-lab/reports/posthoc_flat_dghard_three_seed_20260913/dg_build_complete.json",
+  "flat_summary": "/dataset1/zailong/workspace/peft-sft-lab/reports/posthoc_flat_dghard_three_seed_20260913/flat_summary.json",
+  "final_summary": "/dataset1/zailong/workspace/peft-sft-lab/reports/posthoc_flat_dghard_three_seed_20260913/final_summary.json",
+  "submission_manifest": "/dataset1/zailong/workspace/peft-sft-lab/reports/posthoc_flat_dghard_three_seed_20260913/submission.json",
+  "gpu_limit": 2,
+  "training_performed": false,
+  "hns_representative": {
+    "fast_steps": 4,
+    "stable_steps": 1,
+    "scope": "all_modules",
+    "strength": 1.0,
+    "preserve_nuclear_norm": true
+  },
+  "joint_variant_manifests": [
+    "/dataset1/zailong/workspace/peft-sft-lab/reports/posthoc_flat_dghard_three_seed_20260913/Qwen3-8B_joint_variant_manifest.json",
+    "/dataset1/zailong/workspace/peft-sft-lab/reports/posthoc_flat_dghard_three_seed_20260913/Llama-3.1-8B-Instruct_joint_variant_manifest.json"
+  ],
+  "initial_DG_summary": "/dataset1/zailong/workspace/peft-sft-lab/reports/posthoc_flat_dghard_three_seed_20260913/dg_initial_summary.json",
+  "legacy_drift_audit": "/dataset1/zailong/workspace/peft-sft-lab/reports/posthoc_flat_dghard_three_seed_20260913/identity_legacy_drift_audit.json",
+  "primary_evaluation": "joint; all five methods/checkpoint in one adapter block",
+  "status": "complete",
+  "gpu_resources_released": true,
+  "numerical_tests": {
+    "flat": 2,
+    "dg_hard": 4,
+    "status": "passed"
+  }
+}

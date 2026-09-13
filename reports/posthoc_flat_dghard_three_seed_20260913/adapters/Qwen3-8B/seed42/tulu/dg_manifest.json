@@ -1,0 +1,31 @@
+{
+  "status": "complete",
+  "base": "Qwen3-8B",
+  "task": "tulu",
+  "seed": 42,
+  "source_sha256": "861b3193a98d36c12da904f7611d71c3b0d416503155e440674493f433816db3",
+  "source": "/dataset1/zailong/models/spectral-surgery/Qwen3-8B-InstructionFollowing-LoRA",
+  "summary": {
+    "modules": 252,
+    "retained_rank_min": 16,
+    "retained_rank_max": 16,
+    "unchanged_module_fraction": 1.0,
+    "threshold_min": 0.0,
+    "threshold_max": 0.0,
+    "fro_before": 24.2385377627776,
+    "fro_retained": 24.2385377627776,
+    "nuclear_before": 1020.3510632514954,
+    "nuclear_retained": 1020.3510632514954,
+    "retained_fro_ratio": 1.0,
+    "retained_nuclear_ratio": 1.0,
+    "identity": true,
+    "source_factors_bytewise_equal": true
+  },
+  "variant": {
+    "label": "tulu__seed42__dg_hard",
+    "path": "/dataset1/zailong/workspace/peft-sft-lab/reports/posthoc_flat_dghard_three_seed_20260913/adapters/Qwen3-8B/seed42/tulu/dg_hard",
+    "train_task": "tulu",
+    "seed": 42,
+    "method": "dg_hard"
+  }
+}

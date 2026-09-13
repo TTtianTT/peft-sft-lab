@@ -1,0 +1,70 @@
+{
+  "status": "complete",
+  "base_model": "/dataset1/zailong/models/Qwen3-8B",
+  "task_config": "/dataset1/zailong/workspace/peft-sft-lab/configs/hns_forgetting_2x4_20260911.json",
+  "variants": [
+    {
+      "label": "magicoder__seed42__dg_hard",
+      "path": "/dataset1/zailong/workspace/peft-sft-lab/reports/posthoc_flat_dghard_three_seed_20260913/adapters/Qwen3-8B/seed42/magicoder/dg_hard",
+      "train_task": "magicoder",
+      "seed": 42,
+      "method": "dg_hard"
+    },
+    {
+      "label": "metamath__seed42__dg_hard",
+      "path": "/dataset1/zailong/workspace/peft-sft-lab/reports/posthoc_flat_dghard_three_seed_20260913/adapters/Qwen3-8B/seed42/metamath/dg_hard",
+      "train_task": "metamath",
+      "seed": 42,
+      "method": "dg_hard"
+    },
+    {
+      "label": "tulu__seed42__dg_hard",
+      "path": "/dataset1/zailong/workspace/peft-sft-lab/reports/posthoc_flat_dghard_three_seed_20260913/adapters/Qwen3-8B/seed42/tulu/dg_hard",
+      "train_task": "tulu",
+      "seed": 42,
+      "method": "dg_hard"
+    },
+    {
+      "label": "magicoder__seed43__dg_hard",
+      "path": "/dataset1/zailong/workspace/peft-sft-lab/reports/posthoc_flat_dghard_three_seed_20260913/adapters/Qwen3-8B/seed43/magicoder/dg_hard",
+      "train_task": "magicoder",
+      "seed": 43,
+      "method": "dg_hard"
+    },
+    {
+      "label": "metamath__seed43__dg_hard",
+      "path": "/dataset1/zailong/workspace/peft-sft-lab/reports/posthoc_flat_dghard_three_seed_20260913/adapters/Qwen3-8B/seed43/metamath/dg_hard",
+      "train_task": "metamath",
+      "seed": 43,
+      "method": "dg_hard"
+    },
+    {
+      "label": "tulu__seed43__dg_hard",
+      "path": "/dataset1/zailong/workspace/peft-sft-lab/reports/posthoc_flat_dghard_three_seed_20260913/adapters/Qwen3-8B/seed43/tulu/dg_hard",
+      "train_task": "tulu",
+      "seed": 43,
+      "method": "dg_hard"
+    },
+    {
+      "label": "magicoder__seed44__dg_hard",
+      "path": "/dataset1/zailong/workspace/peft-sft-lab/reports/posthoc_flat_dghard_three_seed_20260913/adapters/Qwen3-8B/seed44/magicoder/dg_hard",
+      "train_task": "magicoder",
+      "seed": 44,
+      "method": "dg_hard"
+    },
+    {
+      "label": "metamath__seed44__dg_hard",
+      "path": "/dataset1/zailong/workspace/peft-sft-lab/reports/posthoc_flat_dghard_three_seed_20260913/adapters/Qwen3-8B/seed44/metamath/dg_hard",
+      "train_task": "metamath",
+      "seed": 44,
+      "method": "dg_hard"
+    },
+    {
+      "label": "tulu__seed44__dg_hard",
+      "path": "/dataset1/zailong/workspace/peft-sft-lab/reports/posthoc_flat_dghard_three_seed_20260913/adapters/Qwen3-8B/seed44/tulu/dg_hard",
+      "train_task": "tulu",
+      "seed": 44,
+      "method": "dg_hard"
+    }
+  ]
+}

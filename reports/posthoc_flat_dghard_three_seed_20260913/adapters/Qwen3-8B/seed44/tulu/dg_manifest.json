@@ -1,0 +1,31 @@
+{
+  "status": "complete",
+  "base": "Qwen3-8B",
+  "task": "tulu",
+  "seed": 44,
+  "source_sha256": "8c26a920aada7d7a17dfc24e86f07350e3bb3d561f4eaf9c60292d55e127d99d",
+  "source": "/dataset1/zailong/runs/peft-sft-lab/hns-training-seeds-3task-20260912/Qwen3-8B/seed44/lora/tulu",
+  "summary": {
+    "modules": 252,
+    "retained_rank_min": 16,
+    "retained_rank_max": 16,
+    "unchanged_module_fraction": 1.0,
+    "threshold_min": 0.0,
+    "threshold_max": 0.0,
+    "fro_before": 25.81737268355895,
+    "fro_retained": 25.81737268355895,
+    "nuclear_before": 1153.9292477369308,
+    "nuclear_retained": 1153.9292477369308,
+    "retained_fro_ratio": 1.0,
+    "retained_nuclear_ratio": 1.0,
+    "identity": true,
+    "source_factors_bytewise_equal": true
+  },
+  "variant": {
+    "label": "tulu__seed44__dg_hard",
+    "path": "/dataset1/zailong/workspace/peft-sft-lab/reports/posthoc_flat_dghard_three_seed_20260913/adapters/Qwen3-8B/seed44/tulu/dg_hard",
+    "train_task": "tulu",
+    "seed": 44,
+    "method": "dg_hard"
+  }
+}

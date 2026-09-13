@@ -1,0 +1,25 @@
+{
+  "status": "complete",
+  "source_sha256": "69f30b80d8536fa24645fabef3c747334f45d576c8ab1cfb5807d06b3421c5f6",
+  "source": "/dataset1/zailong/runs/peft-sft-lab/hns-training-seeds-3task-20260912/Llama-3.1-8B-Instruct/seed44/lora/tulu",
+  "variants": [
+    {
+      "label": "tulu__seed44__flat_fro",
+      "path": "/dataset1/zailong/workspace/peft-sft-lab/reports/posthoc_flat_dghard_three_seed_20260913/adapters/Llama-3.1-8B-Instruct/seed44/tulu/flat_fro",
+      "train_task": "tulu",
+      "seed": 44,
+      "method": "flat_fro",
+      "max_budget_relative_error": 1.1902606900093815e-07,
+      "max_saved_budget_relative_error": 3.5521392760529125e-07
+    },
+    {
+      "label": "tulu__seed44__flat_nuclear",
+      "path": "/dataset1/zailong/workspace/peft-sft-lab/reports/posthoc_flat_dghard_three_seed_20260913/adapters/Llama-3.1-8B-Instruct/seed44/tulu/flat_nuclear",
+      "train_task": "tulu",
+      "seed": 44,
+      "method": "flat_nuclear",
+      "max_budget_relative_error": 1.463433392245861e-07,
+      "max_saved_budget_relative_error": 3.3831841506071214e-07
+    }
+  ]
+}

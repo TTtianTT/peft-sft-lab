@@ -1,0 +1,564 @@
+{
+  "status": "complete",
+  "checkpoints": 18,
+  "results": [
+    {
+      "status": "complete",
+      "base": "Qwen3-8B",
+      "task": "magicoder",
+      "seed": 42,
+      "source_sha256": "1f40c25e60ac1c115e409a8e30edf6f8696c671a7ef6b251583c7698dce079c3",
+      "source": "/dataset1/zailong/models/spectral-surgery/Qwen3-8B-Magicoder-50K-LoRA-E1",
+      "summary": {
+        "modules": 252,
+        "retained_rank_min": 16,
+        "retained_rank_max": 16,
+        "unchanged_module_fraction": 1.0,
+        "threshold_min": 0.0,
+        "threshold_max": 0.0,
+        "fro_before": 4.186508844439848,
+        "fro_retained": 4.186508844439848,
+        "nuclear_before": 118.24048303067684,
+        "nuclear_retained": 118.24048303067684,
+        "retained_fro_ratio": 1.0,
+        "retained_nuclear_ratio": 1.0,
+        "identity": true,
+        "source_factors_bytewise_equal": true
+      },
+      "variant": {
+        "label": "magicoder__seed42__dg_hard",
+        "path": "/dataset1/zailong/workspace/peft-sft-lab/reports/posthoc_flat_dghard_three_seed_20260913/adapters/Qwen3-8B/seed42/magicoder/dg_hard",
+        "train_task": "magicoder",
+        "seed": 42,
+        "method": "dg_hard"
+      }
+    },
+    {
+      "status": "complete",
+      "base": "Qwen3-8B",
+      "task": "metamath",
+      "seed": 42,
+      "source_sha256": "6cc0464e0797ec6c73cdd6d6ba9ff6ec9fffbd699b4580707bf087fabcc942d0",
+      "source": "/dataset1/zailong/models/spectral-surgery/Qwen3-8B-MetaMathQA-50K-LoRA",
+      "summary": {
+        "modules": 252,
+        "retained_rank_min": 16,
+        "retained_rank_max": 16,
+        "unchanged_module_fraction": 1.0,
+        "threshold_min": 0.0,
+        "threshold_max": 0.0,
+        "fro_before": 18.519928201786243,
+        "fro_retained": 18.519928201786243,
+        "nuclear_before": 627.7127219438553,
+        "nuclear_retained": 627.7127219438553,
+        "retained_fro_ratio": 1.0,
+        "retained_nuclear_ratio": 1.0,
+        "identity": true,
+        "source_factors_bytewise_equal": true
+      },
+      "variant": {
+        "label": "metamath__seed42__dg_hard",
+        "path": "/dataset1/zailong/workspace/peft-sft-lab/reports/posthoc_flat_dghard_three_seed_20260913/adapters/Qwen3-8B/seed42/metamath/dg_hard",
+        "train_task": "metamath",
+        "seed": 42,
+        "method": "dg_hard"
+      }
+    },
+    {
+      "status": "complete",
+      "base": "Qwen3-8B",
+      "task": "tulu",
+      "seed": 42,
+      "source_sha256": "861b3193a98d36c12da904f7611d71c3b0d416503155e440674493f433816db3",
+      "source": "/dataset1/zailong/models/spectral-surgery/Qwen3-8B-InstructionFollowing-LoRA",
+      "summary": {
+        "modules": 252,
+        "retained_rank_min": 16,
+        "retained_rank_max": 16,
+        "unchanged_module_fraction": 1.0,
+        "threshold_min": 0.0,
+        "threshold_max": 0.0,
+        "fro_before": 24.2385377627776,
+        "fro_retained": 24.2385377627776,
+        "nuclear_before": 1020.3510632514954,
+        "nuclear_retained": 1020.3510632514954,
+        "retained_fro_ratio": 1.0,
+        "retained_nuclear_ratio": 1.0,
+        "identity": true,
+        "source_factors_bytewise_equal": true
+      },
+      "variant": {
+        "label": "tulu__seed42__dg_hard",
+        "path": "/dataset1/zailong/workspace/peft-sft-lab/reports/posthoc_flat_dghard_three_seed_20260913/adapters/Qwen3-8B/seed42/tulu/dg_hard",
+        "train_task": "tulu",
+        "seed": 42,
+        "method": "dg_hard"
+      }
+    },
+    {
+      "status": "complete",
+      "base": "Qwen3-8B",
+      "task": "magicoder",
+      "seed": 43,
+      "source_sha256": "161dd620f9c8f2ffd64faf09bde8cf1806fc2ba3259d531fb543278c3b7e42bc",
+      "source": "/dataset1/zailong/runs/peft-sft-lab/hns-training-seeds-3task-20260912/Qwen3-8B/seed43/lora/magicoder",
+      "summary": {
+        "modules": 252,
+        "retained_rank_min": 16,
+        "retained_rank_max": 16,
+        "unchanged_module_fraction": 1.0,
+        "threshold_min": 0.0,
+        "threshold_max": 0.0,
+        "fro_before": 2.9869200248010377,
+        "fro_retained": 2.9869200248010377,
+        "nuclear_before": 100.70723111182451,
+        "nuclear_retained": 100.70723111182451,
+        "retained_fro_ratio": 1.0,
+        "retained_nuclear_ratio": 1.0,
+        "identity": true,
+        "source_factors_bytewise_equal": true
+      },
+      "variant": {
+        "label": "magicoder__seed43__dg_hard",
+        "path": "/dataset1/zailong/workspace/peft-sft-lab/reports/posthoc_flat_dghard_three_seed_20260913/adapters/Qwen3-8B/seed43/magicoder/dg_hard",
+        "train_task": "magicoder",
+        "seed": 43,
+        "method": "dg_hard"
+      }
+    },
+    {
+      "status": "complete",
+      "base": "Qwen3-8B",
+      "task": "metamath",
+      "seed": 43,
+      "source_sha256": "2357aede2caec8a7861b935294eb7f32b35a07bc30694154d8d7a20bc85df10b",
+      "source": "/dataset1/zailong/runs/peft-sft-lab/hns-training-seeds-3task-20260912/Qwen3-8B/seed43/lora/metamath",
+      "summary": {
+        "modules": 252,
+        "retained_rank_min": 16,
+        "retained_rank_max": 16,
+        "unchanged_module_fraction": 1.0,
+        "threshold_min": 0.0,
+        "threshold_max": 0.0,
+        "fro_before": 20.733618826715542,
+        "fro_retained": 20.733618826715542,
+        "nuclear_before": 777.4401733875275,
+        "nuclear_retained": 777.4401733875275,
+        "retained_fro_ratio": 1.0,
+        "retained_nuclear_ratio": 1.0,
+        "identity": true,
+        "source_factors_bytewise_equal": true
+      },
+      "variant": {
+        "label": "metamath__seed43__dg_hard",
+        "path": "/dataset1/zailong/workspace/peft-sft-lab/reports/posthoc_flat_dghard_three_seed_20260913/adapters/Qwen3-8B/seed43/metamath/dg_hard",
+        "train_task": "metamath",
+        "seed": 43,
+        "method": "dg_hard"
+      }
+    },
+    {
+      "status": "complete",
+      "base": "Qwen3-8B",
+      "task": "tulu",
+      "seed": 43,
+      "source_sha256": "f6a02ea38d27963f96eaa6cd11a4daa8a8a709513febc321fefc358a07d002fb",
+      "source": "/dataset1/zailong/runs/peft-sft-lab/hns-training-seeds-3task-20260912/Qwen3-8B/seed43/lora/tulu",
+      "summary": {
+        "modules": 252,
+        "retained_rank_min": 16,
+        "retained_rank_max": 16,
+        "unchanged_module_fraction": 1.0,
+        "threshold_min": 0.0,
+        "threshold_max": 0.0,
+        "fro_before": 25.163665478716965,
+        "fro_retained": 25.163665478716965,
+        "nuclear_before": 1146.8228522539139,
+        "nuclear_retained": 1146.8228522539139,
+        "retained_fro_ratio": 1.0,
+        "retained_nuclear_ratio": 1.0,
+        "identity": true,
+        "source_factors_bytewise_equal": true
+      },
+      "variant": {
+        "label": "tulu__seed43__dg_hard",
+        "path": "/dataset1/zailong/workspace/peft-sft-lab/reports/posthoc_flat_dghard_three_seed_20260913/adapters/Qwen3-8B/seed43/tulu/dg_hard",
+        "train_task": "tulu",
+        "seed": 43,
+        "method": "dg_hard"
+      }
+    },
+    {
+      "status": "complete",
+      "base": "Qwen3-8B",
+      "task": "magicoder",
+      "seed": 44,
+      "source_sha256": "eb3899888d043eb204ac10f9557344a1fabc0bb4d4e82965ae6a615047243932",
+      "source": "/dataset1/zailong/runs/peft-sft-lab/hns-training-seeds-3task-20260912/Qwen3-8B/seed44/lora/magicoder",
+      "summary": {
+        "modules": 252,
+        "retained_rank_min": 16,
+        "retained_rank_max": 16,
+        "unchanged_module_fraction": 1.0,
+        "threshold_min": 0.0,
+        "threshold_max": 0.0,
+        "fro_before": 2.973105788290138,
+        "fro_retained": 2.973105788290138,
+        "nuclear_before": 100.21720783412457,
+        "nuclear_retained": 100.21720783412457,
+        "retained_fro_ratio": 1.0,
+        "retained_nuclear_ratio": 1.0,
+        "identity": true,
+        "source_factors_bytewise_equal": true
+      },
+      "variant": {
+        "label": "magicoder__seed44__dg_hard",
+        "path": "/dataset1/zailong/workspace/peft-sft-lab/reports/posthoc_flat_dghard_three_seed_20260913/adapters/Qwen3-8B/seed44/magicoder/dg_hard",
+        "train_task": "magicoder",
+        "seed": 44,
+        "method": "dg_hard"
+      }
+    },
+    {
+      "status": "complete",
+      "base": "Qwen3-8B",
+      "task": "metamath",
+      "seed": 44,
+      "source_sha256": "f6ac86577814d21d2245e9eb2e0c7b02e45194455ff8245726e1cc43789e29c2",
+      "source": "/dataset1/zailong/runs/peft-sft-lab/hns-training-seeds-3task-20260912/Qwen3-8B/seed44/lora/metamath",
+      "summary": {
+        "modules": 252,
+        "retained_rank_min": 16,
+        "retained_rank_max": 16,
+        "unchanged_module_fraction": 1.0,
+        "threshold_min": 0.0,
+        "threshold_max": 0.0,
+        "fro_before": 20.692625012063225,
+        "fro_retained": 20.692625012063225,
+        "nuclear_before": 777.9093326330185,
+        "nuclear_retained": 777.9093326330185,
+        "retained_fro_ratio": 1.0,
+        "retained_nuclear_ratio": 1.0,
+        "identity": true,
+        "source_factors_bytewise_equal": true
+      },
+      "variant": {
+        "label": "metamath__seed44__dg_hard",
+        "path": "/dataset1/zailong/workspace/peft-sft-lab/reports/posthoc_flat_dghard_three_seed_20260913/adapters/Qwen3-8B/seed44/metamath/dg_hard",
+        "train_task": "metamath",
+        "seed": 44,
+        "method": "dg_hard"
+      }
+    },
+    {
+      "status": "complete",
+      "base": "Qwen3-8B",
+      "task": "tulu",
+      "seed": 44,
+      "source_sha256": "8c26a920aada7d7a17dfc24e86f07350e3bb3d561f4eaf9c60292d55e127d99d",
+      "source": "/dataset1/zailong/runs/peft-sft-lab/hns-training-seeds-3task-20260912/Qwen3-8B/seed44/lora/tulu",
+      "summary": {
+        "modules": 252,
+        "retained_rank_min": 16,
+        "retained_rank_max": 16,
+        "unchanged_module_fraction": 1.0,
+        "threshold_min": 0.0,
+        "threshold_max": 0.0,
+        "fro_before": 25.81737268355895,
+        "fro_retained": 25.81737268355895,
+        "nuclear_before": 1153.9292477369308,
+        "nuclear_retained": 1153.9292477369308,
+        "retained_fro_ratio": 1.0,
+        "retained_nuclear_ratio": 1.0,
+        "identity": true,
+        "source_factors_bytewise_equal": true
+      },
+      "variant": {
+        "label": "tulu__seed44__dg_hard",
+        "path": "/dataset1/zailong/workspace/peft-sft-lab/reports/posthoc_flat_dghard_three_seed_20260913/adapters/Qwen3-8B/seed44/tulu/dg_hard",
+        "train_task": "tulu",
+        "seed": 44,
+        "method": "dg_hard"
+      }
+    },
+    {
+      "status": "complete",
+      "base": "Llama-3.1-8B-Instruct",
+      "task": "magicoder",
+      "seed": 42,
+      "source_sha256": "e74360cc6515aecb214ba48688187f0c013dbca75c72d0ce53d7b55dc62d80df",
+      "source": "/dataset1/zailong/models/spectral-surgery/Llama-3.1-8B-Instruct-Magicoder-50K-LoRA-E1",
+      "summary": {
+        "modules": 224,
+        "retained_rank_min": 16,
+        "retained_rank_max": 16,
+        "unchanged_module_fraction": 1.0,
+        "threshold_min": 0.0,
+        "threshold_max": 0.0,
+        "fro_before": 3.4469414585792664,
+        "fro_retained": 3.4469414585792664,
+        "nuclear_before": 115.01103049516678,
+        "nuclear_retained": 115.01103049516678,
+        "retained_fro_ratio": 1.0,
+        "retained_nuclear_ratio": 1.0,
+        "identity": true,
+        "source_factors_bytewise_equal": true
+      },
+      "variant": {
+        "label": "magicoder__seed42__dg_hard",
+        "path": "/dataset1/zailong/workspace/peft-sft-lab/reports/posthoc_flat_dghard_three_seed_20260913/adapters/Llama-3.1-8B-Instruct/seed42/magicoder/dg_hard",
+        "train_task": "magicoder",
+        "seed": 42,
+        "method": "dg_hard"
+      }
+    },
+    {
+      "status": "complete",
+      "base": "Llama-3.1-8B-Instruct",
+      "task": "metamath",
+      "seed": 42,
+      "source_sha256": "dc1da52d2ead239677080e32106815d9d3353eed71af73cd1784758bf7ecea91",
+      "source": "/dataset1/zailong/models/spectral-surgery/Llama-3.1-8B-Instruct-MetaMathQA-50K-LoRA",
+      "summary": {
+        "modules": 224,
+        "retained_rank_min": 16,
+        "retained_rank_max": 16,
+        "unchanged_module_fraction": 1.0,
+        "threshold_min": 0.0,
+        "threshold_max": 0.0,
+        "fro_before": 14.498295996489777,
+        "fro_retained": 14.498295996489777,
+        "nuclear_before": 673.08876734972,
+        "nuclear_retained": 673.08876734972,
+        "retained_fro_ratio": 1.0,
+        "retained_nuclear_ratio": 1.0,
+        "identity": true,
+        "source_factors_bytewise_equal": true
+      },
+      "variant": {
+        "label": "metamath__seed42__dg_hard",
+        "path": "/dataset1/zailong/workspace/peft-sft-lab/reports/posthoc_flat_dghard_three_seed_20260913/adapters/Llama-3.1-8B-Instruct/seed42/metamath/dg_hard",
+        "train_task": "metamath",
+        "seed": 42,
+        "method": "dg_hard"
+      }
+    },
+    {
+      "status": "complete",
+      "base": "Llama-3.1-8B-Instruct",
+      "task": "tulu",
+      "seed": 42,
+      "source_sha256": "c4ba09406089d4c98b3d78ea8675f208d6418b85821ccf1a34cfdab854722bb4",
+      "source": "/dataset1/zailong/models/spectral-surgery/Llama-3.1-8B-Instruct-InstructionFollowing-LoRA",
+      "summary": {
+        "modules": 224,
+        "retained_rank_min": 16,
+        "retained_rank_max": 16,
+        "unchanged_module_fraction": 1.0,
+        "threshold_min": 0.0,
+        "threshold_max": 0.0,
+        "fro_before": 11.233529686053037,
+        "fro_retained": 11.233529686053037,
+        "nuclear_before": 516.5272219777107,
+        "nuclear_retained": 516.5272219777107,
+        "retained_fro_ratio": 1.0,
+        "retained_nuclear_ratio": 1.0,
+        "identity": true,
+        "source_factors_bytewise_equal": true
+      },
+      "variant": {
+        "label": "tulu__seed42__dg_hard",
+        "path": "/dataset1/zailong/workspace/peft-sft-lab/reports/posthoc_flat_dghard_three_seed_20260913/adapters/Llama-3.1-8B-Instruct/seed42/tulu/dg_hard",
+        "train_task": "tulu",
+        "seed": 42,
+        "method": "dg_hard"
+      }
+    },
+    {
+      "status": "complete",
+      "base": "Llama-3.1-8B-Instruct",
+      "task": "magicoder",
+      "seed": 43,
+      "source_sha256": "739e01ba05383334eff861657fe978ca6cf4bcc45c7f90cc53582b3e88487e97",
+      "source": "/dataset1/zailong/runs/peft-sft-lab/hns-training-seeds-3task-20260912/Llama-3.1-8B-Instruct/seed43/lora/magicoder",
+      "summary": {
+        "modules": 224,
+        "retained_rank_min": 16,
+        "retained_rank_max": 16,
+        "unchanged_module_fraction": 1.0,
+        "threshold_min": 0.0,
+        "threshold_max": 0.0,
+        "fro_before": 2.4761748000522705,
+        "fro_retained": 2.4761748000522705,
+        "nuclear_before": 89.57591336220503,
+        "nuclear_retained": 89.57591336220503,
+        "retained_fro_ratio": 1.0,
+        "retained_nuclear_ratio": 1.0,
+        "identity": true,
+        "source_factors_bytewise_equal": true
+      },
+      "variant": {
+        "label": "magicoder__seed43__dg_hard",
+        "path": "/dataset1/zailong/workspace/peft-sft-lab/reports/posthoc_flat_dghard_three_seed_20260913/adapters/Llama-3.1-8B-Instruct/seed43/magicoder/dg_hard",
+        "train_task": "magicoder",
+        "seed": 43,
+        "method": "dg_hard"
+      }
+    },
+    {
+      "status": "complete",
+      "base": "Llama-3.1-8B-Instruct",
+      "task": "metamath",
+      "seed": 43,
+      "source_sha256": "f84efbad0022df7c9eee9097e76ec1fe9519dff8da704721ddf4ef5121a72e0a",
+      "source": "/dataset1/zailong/runs/peft-sft-lab/hns-training-seeds-3task-20260912/Llama-3.1-8B-Instruct/seed43/lora/metamath",
+      "summary": {
+        "modules": 224,
+        "retained_rank_min": 16,
+        "retained_rank_max": 16,
+        "unchanged_module_fraction": 1.0,
+        "threshold_min": 0.0,
+        "threshold_max": 0.0,
+        "fro_before": 4.653136706289678,
+        "fro_retained": 4.653136706289678,
+        "nuclear_before": 196.48605081439018,
+        "nuclear_retained": 196.48605081439018,
+        "retained_fro_ratio": 1.0,
+        "retained_nuclear_ratio": 1.0,
+        "identity": true,
+        "source_factors_bytewise_equal": true
+      },
+      "variant": {
+        "label": "metamath__seed43__dg_hard",
+        "path": "/dataset1/zailong/workspace/peft-sft-lab/reports/posthoc_flat_dghard_three_seed_20260913/adapters/Llama-3.1-8B-Instruct/seed43/metamath/dg_hard",
+        "train_task": "metamath",
+        "seed": 43,
+        "method": "dg_hard"
+      }
+    },
+    {
+      "status": "complete",
+      "base": "Llama-3.1-8B-Instruct",
+      "task": "tulu",
+      "seed": 43,
+      "source_sha256": "83c8564eda300782288efb89db26a804958a9cc75ff4be347e8fdd679f49a16d",
+      "source": "/dataset1/zailong/runs/peft-sft-lab/hns-training-seeds-3task-20260912/Llama-3.1-8B-Instruct/seed43/lora/tulu",
+      "summary": {
+        "modules": 224,
+        "retained_rank_min": 16,
+        "retained_rank_max": 16,
+        "unchanged_module_fraction": 1.0,
+        "threshold_min": 0.0,
+        "threshold_max": 0.0,
+        "fro_before": 11.3326887142528,
+        "fro_retained": 11.3326887142528,
+        "nuclear_before": 518.8413628339767,
+        "nuclear_retained": 518.8413628339767,
+        "retained_fro_ratio": 1.0,
+        "retained_nuclear_ratio": 1.0,
+        "identity": true,
+        "source_factors_bytewise_equal": true
+      },
+      "variant": {
+        "label": "tulu__seed43__dg_hard",
+        "path": "/dataset1/zailong/workspace/peft-sft-lab/reports/posthoc_flat_dghard_three_seed_20260913/adapters/Llama-3.1-8B-Instruct/seed43/tulu/dg_hard",
+        "train_task": "tulu",
+        "seed": 43,
+        "method": "dg_hard"
+      }
+    },
+    {
+      "status": "complete",
+      "base": "Llama-3.1-8B-Instruct",
+      "task": "magicoder",
+      "seed": 44,
+      "source_sha256": "a096e70ff026f9230db07c4b7be5417dd0e3daadac8a7d12a31f1d7b47c36fe1",
+      "source": "/dataset1/zailong/runs/peft-sft-lab/hns-training-seeds-3task-20260912/Llama-3.1-8B-Instruct/seed44/lora/magicoder",
+      "summary": {
+        "modules": 224,
+        "retained_rank_min": 16,
+        "retained_rank_max": 16,
+        "unchanged_module_fraction": 1.0,
+        "threshold_min": 0.0,
+        "threshold_max": 0.0,
+        "fro_before": 2.4865172802324387,
+        "fro_retained": 2.4865172802324387,
+        "nuclear_before": 89.3397758603096,
+        "nuclear_retained": 89.3397758603096,
+        "retained_fro_ratio": 1.0,
+        "retained_nuclear_ratio": 1.0,
+        "identity": true,
+        "source_factors_bytewise_equal": true
+      },
+      "variant": {
+        "label": "magicoder__seed44__dg_hard",
+        "path": "/dataset1/zailong/workspace/peft-sft-lab/reports/posthoc_flat_dghard_three_seed_20260913/adapters/Llama-3.1-8B-Instruct/seed44/magicoder/dg_hard",
+        "train_task": "magicoder",
+        "seed": 44,
+        "method": "dg_hard"
+      }
+    },
+    {
+      "status": "complete",
+      "base": "Llama-3.1-8B-Instruct",
+      "task": "metamath",
+      "seed": 44,
+      "source_sha256": "f3bbf3507901a381831d578b9406d9b8b85526af2ebcc41f333af78639a7fd7b",
+      "source": "/dataset1/zailong/runs/peft-sft-lab/hns-training-seeds-3task-20260912/Llama-3.1-8B-Instruct/seed44/lora/metamath",
+      "summary": {
+        "modules": 224,
+        "retained_rank_min": 16,
+        "retained_rank_max": 16,
+        "unchanged_module_fraction": 1.0,
+        "threshold_min": 0.0,
+        "threshold_max": 0.0,
+        "fro_before": 4.678183415583531,
+        "fro_retained": 4.678183415583531,
+        "nuclear_before": 198.3217696249485,
+        "nuclear_retained": 198.3217696249485,
+        "retained_fro_ratio": 1.0,
+        "retained_nuclear_ratio": 1.0,
+        "identity": true,
+        "source_factors_bytewise_equal": true
+      },
+      "variant": {
+        "label": "metamath__seed44__dg_hard",
+        "path": "/dataset1/zailong/workspace/peft-sft-lab/reports/posthoc_flat_dghard_three_seed_20260913/adapters/Llama-3.1-8B-Instruct/seed44/metamath/dg_hard",
+        "train_task": "metamath",
+        "seed": 44,
+        "method": "dg_hard"
+      }
+    },
+    {
+      "status": "complete",
+      "base": "Llama-3.1-8B-Instruct",
+      "task": "tulu",
+      "seed": 44,
+      "source_sha256": "69f30b80d8536fa24645fabef3c747334f45d576c8ab1cfb5807d06b3421c5f6",
+      "source": "/dataset1/zailong/runs/peft-sft-lab/hns-training-seeds-3task-20260912/Llama-3.1-8B-Instruct/seed44/lora/tulu",
+      "summary": {
+        "modules": 224,
+        "retained_rank_min": 16,
+        "retained_rank_max": 16,
+        "unchanged_module_fraction": 1.0,
+        "threshold_min": 0.0,
+        "threshold_max": 0.0,
+        "fro_before": 11.343121522035345,
+        "fro_retained": 11.343121522035345,
+        "nuclear_before": 517.9959974884987,
+        "nuclear_retained": 517.9959974884987,
+        "retained_fro_ratio": 1.0,
+        "retained_nuclear_ratio": 1.0,
+        "identity": true,
+        "source_factors_bytewise_equal": true
+      },
+      "variant": {
+        "label": "tulu__seed44__dg_hard",
+        "path": "/dataset1/zailong/workspace/peft-sft-lab/reports/posthoc_flat_dghard_three_seed_20260913/adapters/Llama-3.1-8B-Instruct/seed44/tulu/dg_hard",
+        "train_task": "tulu",
+        "seed": 44,
+        "method": "dg_hard"
+      }
+    }
+  ]
+}

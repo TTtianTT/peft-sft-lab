@@ -1,0 +1,31 @@
+{
+  "status": "complete",
+  "base": "Llama-3.1-8B-Instruct",
+  "task": "magicoder",
+  "seed": 42,
+  "source_sha256": "e74360cc6515aecb214ba48688187f0c013dbca75c72d0ce53d7b55dc62d80df",
+  "source": "/dataset1/zailong/models/spectral-surgery/Llama-3.1-8B-Instruct-Magicoder-50K-LoRA-E1",
+  "summary": {
+    "modules": 224,
+    "retained_rank_min": 16,
+    "retained_rank_max": 16,
+    "unchanged_module_fraction": 1.0,
+    "threshold_min": 0.0,
+    "threshold_max": 0.0,
+    "fro_before": 3.4469414585792664,
+    "fro_retained": 3.4469414585792664,
+    "nuclear_before": 115.01103049516678,
+    "nuclear_retained": 115.01103049516678,
+    "retained_fro_ratio": 1.0,
+    "retained_nuclear_ratio": 1.0,
+    "identity": true,
+    "source_factors_bytewise_equal": true
+  },
+  "variant": {
+    "label": "magicoder__seed42__dg_hard",
+    "path": "/dataset1/zailong/workspace/peft-sft-lab/reports/posthoc_flat_dghard_three_seed_20260913/adapters/Llama-3.1-8B-Instruct/seed42/magicoder/dg_hard",
+    "train_task": "magicoder",
+    "seed": 42,
+    "method": "dg_hard"
+  }
+}

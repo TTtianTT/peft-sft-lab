@@ -10,3 +10,5 @@ runs/
 *.log
 *.jsonl
 
+# Post-hoc evaluation compiler and multiprocessing scratch directories.
+.pf*/

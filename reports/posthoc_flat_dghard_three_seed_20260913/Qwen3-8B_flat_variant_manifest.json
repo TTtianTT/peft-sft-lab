@@ -1,0 +1,169 @@
+{
+  "status": "complete",
+  "base_model": "/dataset1/zailong/models/Qwen3-8B",
+  "task_config": "/dataset1/zailong/workspace/peft-sft-lab/configs/hns_forgetting_2x4_20260911.json",
+  "variants": [
+    {
+      "label": "magicoder__seed42__flat_fro",
+      "path": "/dataset1/zailong/workspace/peft-sft-lab/reports/posthoc_flat_dghard_three_seed_20260913/adapters/Qwen3-8B/seed42/magicoder/flat_fro",
+      "train_task": "magicoder",
+      "seed": 42,
+      "method": "flat_fro",
+      "max_budget_relative_error": 1.1656537424187263e-07,
+      "max_saved_budget_relative_error": 4.525272743194364e-07
+    },
+    {
+      "label": "magicoder__seed42__flat_nuclear",
+      "path": "/dataset1/zailong/workspace/peft-sft-lab/reports/posthoc_flat_dghard_three_seed_20260913/adapters/Qwen3-8B/seed42/magicoder/flat_nuclear",
+      "train_task": "magicoder",
+      "seed": 42,
+      "method": "flat_nuclear",
+      "max_budget_relative_error": 1.48635010077669e-07,
+      "max_saved_budget_relative_error": 3.510056956201879e-07
+    },
+    {
+      "label": "metamath__seed42__flat_fro",
+      "path": "/dataset1/zailong/workspace/peft-sft-lab/reports/posthoc_flat_dghard_three_seed_20260913/adapters/Qwen3-8B/seed42/metamath/flat_fro",
+      "train_task": "metamath",
+      "seed": 42,
+      "method": "flat_fro",
+      "max_budget_relative_error": 1.1788431208969996e-07,
+      "max_saved_budget_relative_error": 3.9059850109879335e-07
+    },
+    {
+      "label": "metamath__seed42__flat_nuclear",
+      "path": "/dataset1/zailong/workspace/peft-sft-lab/reports/posthoc_flat_dghard_three_seed_20260913/adapters/Qwen3-8B/seed42/metamath/flat_nuclear",
+      "train_task": "metamath",
+      "seed": 42,
+      "method": "flat_nuclear",
+      "max_budget_relative_error": 1.4397011227629264e-07,
+      "max_saved_budget_relative_error": 3.7751101444882806e-07
+    },
+    {
+      "label": "tulu__seed42__flat_fro",
+      "path": "/dataset1/zailong/workspace/peft-sft-lab/reports/posthoc_flat_dghard_three_seed_20260913/adapters/Qwen3-8B/seed42/tulu/flat_fro",
+      "train_task": "tulu",
+      "seed": 42,
+      "method": "flat_fro",
+      "max_budget_relative_error": 1.1820922196648098e-07,
+      "max_saved_budget_relative_error": 4.298846931760636e-07
+    },
+    {
+      "label": "tulu__seed42__flat_nuclear",
+      "path": "/dataset1/zailong/workspace/peft-sft-lab/reports/posthoc_flat_dghard_three_seed_20260913/adapters/Qwen3-8B/seed42/tulu/flat_nuclear",
+      "train_task": "tulu",
+      "seed": 42,
+      "method": "flat_nuclear",
+      "max_budget_relative_error": 1.468699224460579e-07,
+      "max_saved_budget_relative_error": 4.6576562340305827e-07
+    },
+    {
+      "label": "magicoder__seed43__flat_fro",
+      "path": "/dataset1/zailong/workspace/peft-sft-lab/reports/posthoc_flat_dghard_three_seed_20260913/adapters/Qwen3-8B/seed43/magicoder/flat_fro",
+      "train_task": "magicoder",
+      "seed": 43,
+      "method": "flat_fro",
+      "max_budget_relative_error": 1.1920904796625109e-07,
+      "max_saved_budget_relative_error": 4.342308557170327e-07
+    },
+    {
+      "label": "magicoder__seed43__flat_nuclear",
+      "path": "/dataset1/zailong/workspace/peft-sft-lab/reports/posthoc_flat_dghard_three_seed_20260913/adapters/Qwen3-8B/seed43/magicoder/flat_nuclear",
+      "train_task": "magicoder",
+      "seed": 43,
+      "method": "flat_nuclear",
+      "max_budget_relative_error": 1.3979409629882866e-07,
+      "max_saved_budget_relative_error": 4.12040094488475e-07
+    },
+    {
+      "label": "metamath__seed43__flat_fro",
+      "path": "/dataset1/zailong/workspace/peft-sft-lab/reports/posthoc_flat_dghard_three_seed_20260913/adapters/Qwen3-8B/seed43/metamath/flat_fro",
+      "train_task": "metamath",
+      "seed": 43,
+      "method": "flat_fro",
+      "max_budget_relative_error": 1.1752821649224643e-07,
+      "max_saved_budget_relative_error": 4.4001501464663306e-07
+    },
+    {
+      "label": "metamath__seed43__flat_nuclear",
+      "path": "/dataset1/zailong/workspace/peft-sft-lab/reports/posthoc_flat_dghard_three_seed_20260913/adapters/Qwen3-8B/seed43/metamath/flat_nuclear",
+      "train_task": "metamath",
+      "seed": 43,
+      "method": "flat_nuclear",
+      "max_budget_relative_error": 1.4529743452840194e-07,
+      "max_saved_budget_relative_error": 3.755472164357343e-07
+    },
+    {
+      "label": "tulu__seed43__flat_fro",
+      "path": "/dataset1/zailong/workspace/peft-sft-lab/reports/posthoc_flat_dghard_three_seed_20260913/adapters/Qwen3-8B/seed43/tulu/flat_fro",
+      "train_task": "tulu",
+      "seed": 43,
+      "method": "flat_fro",
+      "max_budget_relative_error": 1.1457979809392782e-07,
+      "max_saved_budget_relative_error": 4.1744871737137146e-07
+    },
+    {
+      "label": "tulu__seed43__flat_nuclear",
+      "path": "/dataset1/zailong/workspace/peft-sft-lab/reports/posthoc_flat_dghard_three_seed_20260913/adapters/Qwen3-8B/seed43/tulu/flat_nuclear",
+      "train_task": "tulu",
+      "seed": 43,
+      "method": "flat_nuclear",
+      "max_budget_relative_error": 1.413338424072208e-07,
+      "max_saved_budget_relative_error": 4.725033306840487e-07
+    },
+    {
+      "label": "magicoder__seed44__flat_fro",
+      "path": "/dataset1/zailong/workspace/peft-sft-lab/reports/posthoc_flat_dghard_three_seed_20260913/adapters/Qwen3-8B/seed44/magicoder/flat_fro",
+      "train_task": "magicoder",
+      "seed": 44,
+      "method": "flat_fro",
+      "max_budget_relative_error": 1.1904717922561758e-07,
+      "max_saved_budget_relative_error": 4.091523067017988e-07
+    },
+    {
+      "label": "magicoder__seed44__flat_nuclear",
+      "path": "/dataset1/zailong/workspace/peft-sft-lab/reports/posthoc_flat_dghard_three_seed_20260913/adapters/Qwen3-8B/seed44/magicoder/flat_nuclear",
+      "train_task": "magicoder",
+      "seed": 44,
+      "method": "flat_nuclear",
+      "max_budget_relative_error": 1.4831360317657527e-07,
+      "max_saved_budget_relative_error": 4.135510778269236e-07
+    },
+    {
+      "label": "metamath__seed44__flat_fro",
+      "path": "/dataset1/zailong/workspace/peft-sft-lab/reports/posthoc_flat_dghard_three_seed_20260913/adapters/Qwen3-8B/seed44/metamath/flat_fro",
+      "train_task": "metamath",
+      "seed": 44,
+      "method": "flat_fro",
+      "max_budget_relative_error": 1.1802136867800073e-07,
+      "max_saved_budget_relative_error": 3.9339064983323624e-07
+    },
+    {
+      "label": "metamath__seed44__flat_nuclear",
+      "path": "/dataset1/zailong/workspace/peft-sft-lab/reports/posthoc_flat_dghard_three_seed_20260913/adapters/Qwen3-8B/seed44/metamath/flat_nuclear",
+      "train_task": "metamath",
+      "seed": 44,
+      "method": "flat_nuclear",
+      "max_budget_relative_error": 1.4432475836656522e-07,
+      "max_saved_budget_relative_error": 3.8215296171983937e-07
+    },
+    {
+      "label": "tulu__seed44__flat_fro",
+      "path": "/dataset1/zailong/workspace/peft-sft-lab/reports/posthoc_flat_dghard_three_seed_20260913/adapters/Qwen3-8B/seed44/tulu/flat_fro",
+      "train_task": "tulu",
+      "seed": 44,
+      "method": "flat_fro",
+      "max_budget_relative_error": 1.1605473559939128e-07,
+      "max_saved_budget_relative_error": 4.390231538309308e-07
+    },
+    {
+      "label": "tulu__seed44__flat_nuclear",
+      "path": "/dataset1/zailong/workspace/peft-sft-lab/reports/posthoc_flat_dghard_three_seed_20260913/adapters/Qwen3-8B/seed44/tulu/flat_nuclear",
+      "train_task": "tulu",
+      "seed": 44,
+      "method": "flat_nuclear",
+      "max_budget_relative_error": 1.483520577494346e-07,
+      "max_saved_budget_relative_error": 5.180208404453879e-07
+    }
+  ]
+}

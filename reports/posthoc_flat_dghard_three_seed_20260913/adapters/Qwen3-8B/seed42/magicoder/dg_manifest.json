@@ -1,0 +1,31 @@
+{
+  "status": "complete",
+  "base": "Qwen3-8B",
+  "task": "magicoder",
+  "seed": 42,
+  "source_sha256": "1f40c25e60ac1c115e409a8e30edf6f8696c671a7ef6b251583c7698dce079c3",
+  "source": "/dataset1/zailong/models/spectral-surgery/Qwen3-8B-Magicoder-50K-LoRA-E1",
+  "summary": {
+    "modules": 252,
+    "retained_rank_min": 16,
+    "retained_rank_max": 16,
+    "unchanged_module_fraction": 1.0,
+    "threshold_min": 0.0,
+    "threshold_max": 0.0,
+    "fro_before": 4.186508844439848,
+    "fro_retained": 4.186508844439848,
+    "nuclear_before": 118.24048303067684,
+    "nuclear_retained": 118.24048303067684,
+    "retained_fro_ratio": 1.0,
+    "retained_nuclear_ratio": 1.0,
+    "identity": true,
+    "source_factors_bytewise_equal": true
+  },
+  "variant": {
+    "label": "magicoder__seed42__dg_hard",
+    "path": "/dataset1/zailong/workspace/peft-sft-lab/reports/posthoc_flat_dghard_three_seed_20260913/adapters/Qwen3-8B/seed42/magicoder/dg_hard",
+    "train_task": "magicoder",
+    "seed": 42,
+    "method": "dg_hard"
+  }
+}

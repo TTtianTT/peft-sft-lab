@@ -1,0 +1,31 @@
+{
+  "status": "complete",
+  "base": "Llama-3.1-8B-Instruct",
+  "task": "magicoder",
+  "seed": 44,
+  "source_sha256": "a096e70ff026f9230db07c4b7be5417dd0e3daadac8a7d12a31f1d7b47c36fe1",
+  "source": "/dataset1/zailong/runs/peft-sft-lab/hns-training-seeds-3task-20260912/Llama-3.1-8B-Instruct/seed44/lora/magicoder",
+  "summary": {
+    "modules": 224,
+    "retained_rank_min": 16,
+    "retained_rank_max": 16,
+    "unchanged_module_fraction": 1.0,
+    "threshold_min": 0.0,
+    "threshold_max": 0.0,
+    "fro_before": 2.4865172802324387,
+    "fro_retained": 2.4865172802324387,
+    "nuclear_before": 89.3397758603096,
+    "nuclear_retained": 89.3397758603096,
+    "retained_fro_ratio": 1.0,
+    "retained_nuclear_ratio": 1.0,
+    "identity": true,
+    "source_factors_bytewise_equal": true
+  },
+  "variant": {
+    "label": "magicoder__seed44__dg_hard",
+    "path": "/dataset1/zailong/workspace/peft-sft-lab/reports/posthoc_flat_dghard_three_seed_20260913/adapters/Llama-3.1-8B-Instruct/seed44/magicoder/dg_hard",
+    "train_task": "magicoder",
+    "seed": 44,
+    "method": "dg_hard"
+  }
+}

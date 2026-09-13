@@ -1,0 +1,263 @@
+{
+  "status": "complete",
+  "rows": [
+    {
+      "base": "Qwen3-8B",
+      "task": "magicoder",
+      "seed": 42,
+      "LoRA": 66.46341463414635,
+      "HNS": 75.0,
+      "Flat-Fro": 76.82926829268293,
+      "Flat-Nuclear": 75.60975609756098,
+      "DG-Hard": 66.46341463414635
+    },
+    {
+      "base": "Qwen3-8B",
+      "task": "metamath",
+      "seed": 42,
+      "LoRA": 84.1546626231994,
+      "HNS": 88.02122820318424,
+      "Flat-Fro": 87.64215314632298,
+      "Flat-Nuclear": 88.17285822592874,
+      "DG-Hard": 84.1546626231994
+    },
+    {
+      "base": "Qwen3-8B",
+      "task": "tulu",
+      "seed": 42,
+      "LoRA": 67.65249537892791,
+      "HNS": 70.24029574861368,
+      "Flat-Fro": 69.31608133086876,
+      "Flat-Nuclear": 71.1645101663586,
+      "DG-Hard": 67.65249537892791
+    },
+    {
+      "base": "Qwen3-8B",
+      "task": "magicoder",
+      "seed": 43,
+      "LoRA": 62.80487804878049,
+      "HNS": 74.39024390243902,
+      "Flat-Fro": 76.21951219512195,
+      "Flat-Nuclear": 73.17073170731707,
+      "DG-Hard": 62.80487804878049
+    },
+    {
+      "base": "Qwen3-8B",
+      "task": "metamath",
+      "seed": 43,
+      "LoRA": 84.00303260045489,
+      "HNS": 86.8081880212282,
+      "Flat-Fro": 87.26307808946171,
+      "Flat-Nuclear": 87.03563305534496,
+      "DG-Hard": 84.07884761182714
+    },
+    {
+      "base": "Qwen3-8B",
+      "task": "tulu",
+      "seed": 43,
+      "LoRA": 66.17375231053605,
+      "HNS": 72.45841035120148,
+      "Flat-Fro": 71.34935304990758,
+      "Flat-Nuclear": 72.2735674676525,
+      "DG-Hard": 67.8373382624769
+    },
+    {
+      "base": "Qwen3-8B",
+      "task": "magicoder",
+      "seed": 44,
+      "LoRA": 64.63414634146342,
+      "HNS": 74.39024390243902,
+      "Flat-Fro": 72.5609756097561,
+      "Flat-Nuclear": 74.39024390243902,
+      "DG-Hard": 64.63414634146342
+    },
+    {
+      "base": "Qwen3-8B",
+      "task": "metamath",
+      "seed": 44,
+      "LoRA": 84.00303260045489,
+      "HNS": 87.41470811220621,
+      "Flat-Fro": 88.47611827141773,
+      "Flat-Nuclear": 87.41470811220621,
+      "DG-Hard": 84.00303260045489
+    },
+    {
+      "base": "Qwen3-8B",
+      "task": "tulu",
+      "seed": 44,
+      "LoRA": 66.91312384473198,
+      "HNS": 70.97966728280961,
+      "Flat-Fro": 69.31608133086876,
+      "Flat-Nuclear": 71.53419593345656,
+      "DG-Hard": 66.54343807763401
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "task": "magicoder",
+      "seed": 42,
+      "LoRA": 53.65853658536586,
+      "HNS": 54.87804878048781,
+      "Flat-Fro": 53.04878048780488,
+      "Flat-Nuclear": 54.87804878048781,
+      "DG-Hard": 53.65853658536586
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "task": "metamath",
+      "seed": 42,
+      "LoRA": 77.10386656557998,
+      "HNS": 80.66717210007582,
+      "Flat-Fro": 79.98483699772555,
+      "Flat-Nuclear": 80.89461713419257,
+      "DG-Hard": 77.10386656557998
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "task": "tulu",
+      "seed": 42,
+      "LoRA": 63.21626617375231,
+      "HNS": 64.87985212569316,
+      "Flat-Fro": 64.69500924214418,
+      "Flat-Nuclear": 63.21626617375231,
+      "DG-Hard": 63.21626617375231
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "task": "magicoder",
+      "seed": 43,
+      "LoRA": 55.487804878048784,
+      "HNS": 55.487804878048784,
+      "Flat-Fro": 54.87804878048781,
+      "Flat-Nuclear": 54.268292682926834,
+      "DG-Hard": 56.09756097560976
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "task": "metamath",
+      "seed": 43,
+      "LoRA": 75.3601213040182,
+      "HNS": 78.39272175890827,
+      "Flat-Fro": 76.80060652009098,
+      "Flat-Nuclear": 78.77179681576952,
+      "DG-Hard": 75.05686125852918
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "task": "tulu",
+      "seed": 43,
+      "LoRA": 62.84658040665434,
+      "HNS": 65.24953789279112,
+      "Flat-Fro": 64.87985212569316,
+      "Flat-Nuclear": 64.51016635859519,
+      "DG-Hard": 62.84658040665434
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "task": "magicoder",
+      "seed": 44,
+      "LoRA": 53.65853658536586,
+      "HNS": 53.65853658536586,
+      "Flat-Fro": 54.87804878048781,
+      "Flat-Nuclear": 55.487804878048784,
+      "DG-Hard": 53.65853658536586
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "task": "metamath",
+      "seed": 44,
+      "LoRA": 74.60197119029569,
+      "HNS": 79.15087187263077,
+      "Flat-Fro": 78.69598180439728,
+      "Flat-Nuclear": 78.39272175890827,
+      "DG-Hard": 74.45034116755117
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "task": "tulu",
+      "seed": 44,
+      "LoRA": 63.03142329020333,
+      "HNS": 64.87985212569316,
+      "Flat-Fro": 64.32532347504622,
+      "Flat-Nuclear": 65.06469500924214,
+      "DG-Hard": 62.10720887245841
+    }
+  ],
+  "overall": {
+    "LoRA": {
+      "mean": 68.09820252010998,
+      "delta_vs_LoRA_pp": 0.0,
+      "delta_vs_HNS_pp": -3.954429904546474,
+      "vs_LoRA_win_tie_loss": [
+        0,
+        18,
+        0
+      ],
+      "vs_HNS_win_tie_loss": [
+        0,
+        2,
+        16
+      ]
+    },
+    "Flat-Fro": {
+      "mean": 71.73106164057147,
+      "delta_vs_LoRA_pp": 3.632859120461481,
+      "delta_vs_HNS_pp": -0.32157078408499257,
+      "vs_LoRA_win_tie_loss": [
+        16,
+        0,
+        2
+      ],
+      "vs_HNS_win_tie_loss": [
+        5,
+        0,
+        13
+      ]
+    },
+    "Flat-Nuclear": {
+      "mean": 72.01392301445489,
+      "delta_vs_LoRA_pp": 3.9157204943449084,
+      "delta_vs_HNS_pp": -0.03870941020156514,
+      "vs_LoRA_win_tie_loss": [
+        16,
+        1,
+        1
+      ],
+      "vs_HNS_win_tie_loss": [
+        9,
+        3,
+        6
+      ]
+    },
+    "DG-Hard": {
+      "mean": 68.1315562316543,
+      "delta_vs_LoRA_pp": 0.03335371154431499,
+      "delta_vs_HNS_pp": -3.921076193002159,
+      "vs_LoRA_win_tie_loss": [
+        3,
+        11,
+        4
+      ],
+      "vs_HNS_win_tie_loss": [
+        1,
+        1,
+        16
+      ]
+    },
+    "HNS": {
+      "mean": 72.05263242465645,
+      "delta_vs_LoRA_pp": 3.954429904546474,
+      "delta_vs_HNS_pp": 0.0,
+      "vs_LoRA_win_tie_loss": [
+        16,
+        2,
+        0
+      ],
+      "vs_HNS_win_tie_loss": [
+        0,
+        18,
+        0
+      ]
+    }
+  },
+  "note": "Independent initial evaluation; LoRA/HNS historical references. Identity adapters exhibited legacy generation drift. Main final table uses the uniform joint evaluation instead."
+}

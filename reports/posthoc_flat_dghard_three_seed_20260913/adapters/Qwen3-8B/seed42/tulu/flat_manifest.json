@@ -1,0 +1,25 @@
+{
+  "status": "complete",
+  "source_sha256": "861b3193a98d36c12da904f7611d71c3b0d416503155e440674493f433816db3",
+  "source": "/dataset1/zailong/models/spectral-surgery/Qwen3-8B-InstructionFollowing-LoRA",
+  "variants": [
+    {
+      "label": "tulu__seed42__flat_fro",
+      "path": "/dataset1/zailong/workspace/peft-sft-lab/reports/posthoc_flat_dghard_three_seed_20260913/adapters/Qwen3-8B/seed42/tulu/flat_fro",
+      "train_task": "tulu",
+      "seed": 42,
+      "method": "flat_fro",
+      "max_budget_relative_error": 1.1820922196648098e-07,
+      "max_saved_budget_relative_error": 4.298846931760636e-07
+    },
+    {
+      "label": "tulu__seed42__flat_nuclear",
+      "path": "/dataset1/zailong/workspace/peft-sft-lab/reports/posthoc_flat_dghard_three_seed_20260913/adapters/Qwen3-8B/seed42/tulu/flat_nuclear",
+      "train_task": "tulu",
+      "seed": 42,
+      "method": "flat_nuclear",
+      "max_budget_relative_error": 1.468699224460579e-07,
+      "max_saved_budget_relative_error": 4.6576562340305827e-07
+    }
+  ]
+}

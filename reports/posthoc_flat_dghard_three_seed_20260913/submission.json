@@ -1,0 +1,37 @@
+{
+  "flat": {
+    "job_id": 972,
+    "command": [
+      "sbatch",
+      "slurm/posthoc_flat_three_seed.slurm"
+    ],
+    "max_gpus": 2,
+    "gpus_per_worker": 1,
+    "failed_attempts": [
+      {
+        "job_id": 970,
+        "reason": "node01 /tmp full during torch.compile; no predictions generated"
+      }
+    ]
+  },
+  "dg": {
+    "job_id": 979,
+    "command": [
+      "sbatch",
+      "slurm/posthoc_dghard_three_seed.slurm"
+    ],
+    "max_gpus": 2,
+    "gpus_per_worker": 1,
+    "flat_summary_required": true
+  },
+  "joint": {
+    "job_id": 981,
+    "command": [
+      "sbatch",
+      "slurm/posthoc_joint_three_seed.slurm"
+    ],
+    "max_gpus": 2,
+    "gpus_per_worker": 1,
+    "reason": "Observed identity/legacy generation drift; five methods/checkpoint in one batch"
+  }
+}

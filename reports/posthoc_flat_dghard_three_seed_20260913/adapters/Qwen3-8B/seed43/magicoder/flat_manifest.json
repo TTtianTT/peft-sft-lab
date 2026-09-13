@@ -1,0 +1,25 @@
+{
+  "status": "complete",
+  "source_sha256": "161dd620f9c8f2ffd64faf09bde8cf1806fc2ba3259d531fb543278c3b7e42bc",
+  "source": "/dataset1/zailong/runs/peft-sft-lab/hns-training-seeds-3task-20260912/Qwen3-8B/seed43/lora/magicoder",
+  "variants": [
+    {
+      "label": "magicoder__seed43__flat_fro",
+      "path": "/dataset1/zailong/workspace/peft-sft-lab/reports/posthoc_flat_dghard_three_seed_20260913/adapters/Qwen3-8B/seed43/magicoder/flat_fro",
+      "train_task": "magicoder",
+      "seed": 43,
+      "method": "flat_fro",
+      "max_budget_relative_error": 1.1920904796625109e-07,
+      "max_saved_budget_relative_error": 4.342308557170327e-07
+    },
+    {
+      "label": "magicoder__seed43__flat_nuclear",
+      "path": "/dataset1/zailong/workspace/peft-sft-lab/reports/posthoc_flat_dghard_three_seed_20260913/adapters/Qwen3-8B/seed43/magicoder/flat_nuclear",
+      "train_task": "magicoder",
+      "seed": 43,
+      "method": "flat_nuclear",
+      "max_budget_relative_error": 1.3979409629882866e-07,
+      "max_saved_budget_relative_error": 4.12040094488475e-07
+    }
+  ]
+}

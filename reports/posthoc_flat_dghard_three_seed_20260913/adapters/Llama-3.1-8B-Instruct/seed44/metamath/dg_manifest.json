@@ -1,0 +1,31 @@
+{
+  "status": "complete",
+  "base": "Llama-3.1-8B-Instruct",
+  "task": "metamath",
+  "seed": 44,
+  "source_sha256": "f3bbf3507901a381831d578b9406d9b8b85526af2ebcc41f333af78639a7fd7b",
+  "source": "/dataset1/zailong/runs/peft-sft-lab/hns-training-seeds-3task-20260912/Llama-3.1-8B-Instruct/seed44/lora/metamath",
+  "summary": {
+    "modules": 224,
+    "retained_rank_min": 16,
+    "retained_rank_max": 16,
+    "unchanged_module_fraction": 1.0,
+    "threshold_min": 0.0,
+    "threshold_max": 0.0,
+    "fro_before": 4.678183415583531,
+    "fro_retained": 4.678183415583531,
+    "nuclear_before": 198.3217696249485,
+    "nuclear_retained": 198.3217696249485,
+    "retained_fro_ratio": 1.0,
+    "retained_nuclear_ratio": 1.0,
+    "identity": true,
+    "source_factors_bytewise_equal": true
+  },
+  "variant": {
+    "label": "metamath__seed44__dg_hard",
+    "path": "/dataset1/zailong/workspace/peft-sft-lab/reports/posthoc_flat_dghard_three_seed_20260913/adapters/Llama-3.1-8B-Instruct/seed44/metamath/dg_hard",
+    "train_task": "metamath",
+    "seed": 44,
+    "method": "dg_hard"
+  }
+}

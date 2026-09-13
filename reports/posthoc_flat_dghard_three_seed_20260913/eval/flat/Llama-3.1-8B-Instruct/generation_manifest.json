@@ -1,0 +1,50 @@
+{
+  "status": "generation_complete",
+  "base_model": "/dataset1/zailong/models/Llama-3.1-8B-Instruct",
+  "variant_manifest": "/dataset1/zailong/workspace/peft-sft-lab/reports/posthoc_flat_dghard_three_seed_20260913/Llama-3.1-8B-Instruct_flat_variant_manifest.json",
+  "variant_order": [
+    "magicoder__seed42__flat_fro",
+    "magicoder__seed42__flat_nuclear",
+    "metamath__seed42__flat_fro",
+    "metamath__seed42__flat_nuclear",
+    "tulu__seed42__flat_fro",
+    "tulu__seed42__flat_nuclear",
+    "magicoder__seed43__flat_fro",
+    "magicoder__seed43__flat_nuclear",
+    "metamath__seed43__flat_fro",
+    "metamath__seed43__flat_nuclear",
+    "tulu__seed43__flat_fro",
+    "tulu__seed43__flat_nuclear",
+    "magicoder__seed44__flat_fro",
+    "magicoder__seed44__flat_nuclear",
+    "metamath__seed44__flat_fro",
+    "metamath__seed44__flat_nuclear",
+    "tulu__seed44__flat_fro",
+    "tulu__seed44__flat_nuclear"
+  ],
+  "tasks": [
+    {
+      "task": "magicoder",
+      "samples": 164,
+      "max_tokens": 512
+    },
+    {
+      "task": "metamath",
+      "samples": 1319,
+      "max_tokens": 512
+    },
+    {
+      "task": "tulu",
+      "samples": 541,
+      "max_tokens": 2048
+    }
+  ],
+  "configuration": {
+    "vllm_batch_invariant": "1",
+    "gpu_memory_utilization": 0.94,
+    "max_num_seqs": 2048,
+    "max_num_batched_tokens": 65536,
+    "adapter_block_size": 6,
+    "seed": 42
+  }
+}

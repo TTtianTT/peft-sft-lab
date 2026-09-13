@@ -1,0 +1,31 @@
+{
+  "status": "complete",
+  "base": "Qwen3-8B",
+  "task": "metamath",
+  "seed": 42,
+  "source_sha256": "6cc0464e0797ec6c73cdd6d6ba9ff6ec9fffbd699b4580707bf087fabcc942d0",
+  "source": "/dataset1/zailong/models/spectral-surgery/Qwen3-8B-MetaMathQA-50K-LoRA",
+  "summary": {
+    "modules": 252,
+    "retained_rank_min": 16,
+    "retained_rank_max": 16,
+    "unchanged_module_fraction": 1.0,
+    "threshold_min": 0.0,
+    "threshold_max": 0.0,
+    "fro_before": 18.519928201786243,
+    "fro_retained": 18.519928201786243,
+    "nuclear_before": 627.7127219438553,
+    "nuclear_retained": 627.7127219438553,
+    "retained_fro_ratio": 1.0,
+    "retained_nuclear_ratio": 1.0,
+    "identity": true,
+    "source_factors_bytewise_equal": true
+  },
+  "variant": {
+    "label": "metamath__seed42__dg_hard",
+    "path": "/dataset1/zailong/workspace/peft-sft-lab/reports/posthoc_flat_dghard_three_seed_20260913/adapters/Qwen3-8B/seed42/metamath/dg_hard",
+    "train_task": "metamath",
+    "seed": 42,
+    "method": "dg_hard"
+  }
+}

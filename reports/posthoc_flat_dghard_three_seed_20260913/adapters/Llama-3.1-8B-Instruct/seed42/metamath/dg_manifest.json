@@ -1,0 +1,31 @@
+{
+  "status": "complete",
+  "base": "Llama-3.1-8B-Instruct",
+  "task": "metamath",
+  "seed": 42,
+  "source_sha256": "dc1da52d2ead239677080e32106815d9d3353eed71af73cd1784758bf7ecea91",
+  "source": "/dataset1/zailong/models/spectral-surgery/Llama-3.1-8B-Instruct-MetaMathQA-50K-LoRA",
+  "summary": {
+    "modules": 224,
+    "retained_rank_min": 16,
+    "retained_rank_max": 16,
+    "unchanged_module_fraction": 1.0,
+    "threshold_min": 0.0,
+    "threshold_max": 0.0,
+    "fro_before": 14.498295996489777,
+    "fro_retained": 14.498295996489777,
+    "nuclear_before": 673.08876734972,
+    "nuclear_retained": 673.08876734972,
+    "retained_fro_ratio": 1.0,
+    "retained_nuclear_ratio": 1.0,
+    "identity": true,
+    "source_factors_bytewise_equal": true
+  },
+  "variant": {
+    "label": "metamath__seed42__dg_hard",
+    "path": "/dataset1/zailong/workspace/peft-sft-lab/reports/posthoc_flat_dghard_three_seed_20260913/adapters/Llama-3.1-8B-Instruct/seed42/metamath/dg_hard",
+    "train_task": "metamath",
+    "seed": 42,
+    "method": "dg_hard"
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "status": "complete",
+  "source_sha256": "c4ba09406089d4c98b3d78ea8675f208d6418b85821ccf1a34cfdab854722bb4",
+  "source": "/dataset1/zailong/models/spectral-surgery/Llama-3.1-8B-Instruct-InstructionFollowing-LoRA",
+  "variants": [
+    {
+      "label": "tulu__seed42__flat_fro",
+      "path": "/dataset1/zailong/workspace/peft-sft-lab/reports/posthoc_flat_dghard_three_seed_20260913/adapters/Llama-3.1-8B-Instruct/seed42/tulu/flat_fro",
+      "train_task": "tulu",
+      "seed": 42,
+      "method": "flat_fro",
+      "max_budget_relative_error": 1.1895048857013535e-07,
+      "max_saved_budget_relative_error": 4.5315437091630884e-07
+    },
+    {
+      "label": "tulu__seed42__flat_nuclear",
+      "path": "/dataset1/zailong/workspace/peft-sft-lab/reports/posthoc_flat_dghard_three_seed_20260913/adapters/Llama-3.1-8B-Instruct/seed42/tulu/flat_nuclear",
+      "train_task": "tulu",
+      "seed": 42,
+      "method": "flat_nuclear",
+      "max_budget_relative_error": 1.4570407813607744e-07,
+      "max_saved_budget_relative_error": 4.7471857556047325e-07
+    }
+  ]
+}

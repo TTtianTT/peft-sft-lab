@@ -1,0 +1,25 @@
+{
+  "status": "complete",
+  "source_sha256": "f84efbad0022df7c9eee9097e76ec1fe9519dff8da704721ddf4ef5121a72e0a",
+  "source": "/dataset1/zailong/runs/peft-sft-lab/hns-training-seeds-3task-20260912/Llama-3.1-8B-Instruct/seed43/lora/metamath",
+  "variants": [
+    {
+      "label": "metamath__seed43__flat_fro",
+      "path": "/dataset1/zailong/workspace/peft-sft-lab/reports/posthoc_flat_dghard_three_seed_20260913/adapters/Llama-3.1-8B-Instruct/seed43/metamath/flat_fro",
+      "train_task": "metamath",
+      "seed": 43,
+      "method": "flat_fro",
+      "max_budget_relative_error": 1.1863341597972976e-07,
+      "max_saved_budget_relative_error": 4.2486664142415975e-07
+    },
+    {
+      "label": "metamath__seed43__flat_nuclear",
+      "path": "/dataset1/zailong/workspace/peft-sft-lab/reports/posthoc_flat_dghard_three_seed_20260913/adapters/Llama-3.1-8B-Instruct/seed43/metamath/flat_nuclear",
+      "train_task": "metamath",
+      "seed": 43,
+      "method": "flat_nuclear",
+      "max_budget_relative_error": 1.4546067461651546e-07,
+      "max_saved_budget_relative_error": 4.726117595055257e-07
+    }
+  ]
+}

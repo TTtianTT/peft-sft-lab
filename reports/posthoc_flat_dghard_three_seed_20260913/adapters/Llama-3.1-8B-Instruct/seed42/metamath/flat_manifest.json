@@ -1,0 +1,25 @@
+{
+  "status": "complete",
+  "source_sha256": "dc1da52d2ead239677080e32106815d9d3353eed71af73cd1784758bf7ecea91",
+  "source": "/dataset1/zailong/models/spectral-surgery/Llama-3.1-8B-Instruct-MetaMathQA-50K-LoRA",
+  "variants": [
+    {
+      "label": "metamath__seed42__flat_fro",
+      "path": "/dataset1/zailong/workspace/peft-sft-lab/reports/posthoc_flat_dghard_three_seed_20260913/adapters/Llama-3.1-8B-Instruct/seed42/metamath/flat_fro",
+      "train_task": "metamath",
+      "seed": 42,
+      "method": "flat_fro",
+      "max_budget_relative_error": 9.41383788699568e-08,
+      "max_saved_budget_relative_error": 3.999910802576778e-07
+    },
+    {
+      "label": "metamath__seed42__flat_nuclear",
+      "path": "/dataset1/zailong/workspace/peft-sft-lab/reports/posthoc_flat_dghard_three_seed_20260913/adapters/Llama-3.1-8B-Instruct/seed42/metamath/flat_nuclear",
+      "train_task": "metamath",
+      "seed": 42,
+      "method": "flat_nuclear",
+      "max_budget_relative_error": 1.443509205500959e-07,
+      "max_saved_budget_relative_error": 3.5575675383370253e-07
+    }
+  ]
+}

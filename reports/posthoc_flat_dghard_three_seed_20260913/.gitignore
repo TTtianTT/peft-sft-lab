@@ -1,0 +1,5 @@
+# Large adapter weights stay at the recorded local paths; track manifests/audits.
+adapters/**/adapter_model.safetensors
+adapters/**/adapter_model.bin
+# Tokenizers are copied from the source checkpoints; retain configs and templates.
+adapters/**/tokenizer.json
