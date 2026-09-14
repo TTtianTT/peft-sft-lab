@@ -1,0 +1,496 @@
+cohort	kind	feature	outcome	n_checkpoints	n_defined	n_arms	mean_rho	ci_low	ci_high	pr_definition	model	r2	loco_r2	rank	coefficients	delta_r2	delta_loco_r2	delta_r2_ci_low	delta_r2_ci_high	delta_loco_r2_ci_low	delta_loco_r2_ci_high
+A_all_versions	mean_within_checkpoint_spearman	log_energy_ratio	target_gain	18	18	126	-0.3878623546955942	-0.5920760878964929	-0.15732208610480683												
+A_all_versions	mean_within_checkpoint_spearman	raw_fpr	target_gain	18	18	126	0.2983042915834694	0.04773875357193966	0.5097958983328803												
+A_all_versions	mean_within_checkpoint_spearman	full_moment_pr	target_gain	18	18	126	0.31031368943778453	0.07267089968759068	0.5265486322322465												
+A_all_versions	paired_linear_regression		target_gain	18		126				raw_fpr	Energy	0.21202294864885296	0.19268330872176853	1	"{""log_energy_ratio"": -1.036456176757965}"						
+A_all_versions	paired_linear_regression		target_gain	18		126				raw_fpr	FPR	0.01477127052877536	-0.020571916307094762	1	"{""raw_fpr"": 0.27356997774318836}"						
+A_all_versions	paired_linear_regression		target_gain	18		126				raw_fpr	Energy+FPR	0.30042293857860813	0.21274336601062793	2	"{""log_energy_ratio"": -1.7213428535255269, ""raw_fpr"": -0.9575800871927389}"						
+A_all_versions	incremental_fpr_over_energy		target_gain	18		126				raw_fpr						0.08839998992975517	0.0200600572888594	0.0009416863561686862	0.29325789006951736	-0.23439863164256586	0.1289545698894254
+A_all_versions	paired_linear_regression		target_gain	18		126				full_moment_pr	Energy	0.21202294864885296	0.19268330872176853	1	"{""log_energy_ratio"": -1.036456176757965}"						
+A_all_versions	paired_linear_regression		target_gain	18		126				full_moment_pr	FPR	0.007694055898860075	-0.027611304069265596	1	"{""full_moment_pr"": 0.19744092529360732}"						
+A_all_versions	paired_linear_regression		target_gain	18		126				full_moment_pr	Energy+FPR	0.3235089768755063	0.24036404691159763	2	"{""log_energy_ratio"": -1.783282977831972, ""full_moment_pr"": -1.0595322090484456}"						
+A_all_versions	incremental_fpr_over_energy		target_gain	18		126				full_moment_pr						0.11148602822665332	0.0476807381898291	0.002878106867973085	0.31353494166526336	-0.21559493095414334	0.16573384134409555
+A_all_versions	mean_within_checkpoint_spearman	log_energy_ratio	off_gain	18	18	126	-0.008236103518456685	-0.26767336434984207	0.25948873647837556												
+A_all_versions	mean_within_checkpoint_spearman	raw_fpr	off_gain	18	18	126	-0.027028123880866766	-0.2602958485971253	0.22425835008930278												
+A_all_versions	mean_within_checkpoint_spearman	full_moment_pr	off_gain	18	18	126	-0.027028123880866783	-0.2673031399736463	0.21029381941752134												
+A_all_versions	paired_linear_regression		off_gain	18		126				raw_fpr	Energy	0.3911699571012658	0.3532044917573687	1	"{""log_energy_ratio"": -0.9833164798323346}"						
+A_all_versions	paired_linear_regression		off_gain	18		126				raw_fpr	FPR	0.08659425334374893	0.0538507661332055	1	"{""raw_fpr"": 0.4626527068930703}"						
+A_all_versions	paired_linear_regression		off_gain	18		126				raw_fpr	Energy+FPR	0.4391320626203422	0.38594671439666095	2	"{""log_energy_ratio"": -1.335681503197333, ""raw_fpr"": -0.4926621311864708}"						
+A_all_versions	incremental_fpr_over_energy		off_gain	18		126				raw_fpr						0.047962105519076426	0.03274222263929227	0.003240942348527866	0.1812290938355019	-0.04460421168831729	0.1431694443382391
+A_all_versions	paired_linear_regression		off_gain	18		126				full_moment_pr	Energy	0.3911699571012658	0.3532044917573687	1	"{""log_energy_ratio"": -0.9833164798323346}"						
+A_all_versions	paired_linear_regression		off_gain	18		126				full_moment_pr	FPR	0.06467622758162028	0.03639849553146157	1	"{""full_moment_pr"": 0.39983693699513734}"						
+A_all_versions	paired_linear_regression		off_gain	18		126				full_moment_pr	Energy+FPR	0.4603207788843462	0.4090636439340499	2	"{""log_energy_ratio"": -1.394143886792772, ""full_moment_pr"": -0.5828458076336517}"						
+A_all_versions	incremental_fpr_over_energy		off_gain	18		126				full_moment_pr						0.06915082178308041	0.05585915217668125	0.008953407585363057	0.2267829201416936	-0.038684631471216965	0.19761607996842698
+A_all_versions	mean_within_checkpoint_spearman	log_energy_ratio	fg_reduction	18	15	126	-0.47689649466224293	-0.6692270550493282	-0.2311387595311134												
+A_all_versions	mean_within_checkpoint_spearman	raw_fpr	fg_reduction	18	15	126	0.45151710148542196	0.20849673410128264	0.6475864229069666												
+A_all_versions	mean_within_checkpoint_spearman	full_moment_pr	fg_reduction	18	15	126	0.45222348001462576	0.2213328201221334	0.6401383669925168												
+A_all_versions	paired_linear_regression		fg_reduction	18		126				raw_fpr	Energy	0.5170510632968036	0.47295546517177045	1	"{""log_energy_ratio"": -0.8165593018146684}"						
+A_all_versions	paired_linear_regression		fg_reduction	18		126				raw_fpr	FPR	0.17241045890457218	0.15312863039579527	1	"{""raw_fpr"": 0.47152292931257106}"						
+A_all_versions	paired_linear_regression		fg_reduction	18		126				raw_fpr	Energy+FPR	0.5371446279042658	0.48601221024350405	2	"{""log_energy_ratio"": -0.9812930604226414, ""raw_fpr"": -0.23032389486085278}"						
+A_all_versions	incremental_fpr_over_energy		fg_reduction	18		126				raw_fpr						0.020093564607462144	0.0130567450717336	0.0028423503990636597	0.06887469714665381	-0.028861640988410896	0.05625573488866024
+A_all_versions	paired_linear_regression		fg_reduction	18		126				full_moment_pr	Energy	0.5170510632968036	0.47295546517177045	1	"{""log_energy_ratio"": -0.8165593018146684}"						
+A_all_versions	paired_linear_regression		fg_reduction	18		126				full_moment_pr	FPR	0.15260751656344151	0.13678907068175816	1	"{""full_moment_pr"": 0.443617811641472}"						
+A_all_versions	paired_linear_regression		fg_reduction	18		126				full_moment_pr	Energy+FPR	0.5438822041517377	0.4908610369610187	2	"{""log_energy_ratio"": -1.001397082876008, ""full_moment_pr"": -0.26223159399461204}"						
+A_all_versions	incremental_fpr_over_energy		fg_reduction	18		126				full_moment_pr						0.0268311408549341	0.01790557178924823	0.004122194388184298	0.07668586348946106	-0.0474511791043571	0.06560329169310171
+A_all_versions	mean_within_checkpoint_spearman	log_energy_ratio	gain_magicoder	18	18	126	0.19615413054383773	-0.09032214050767526	0.45670646094959655												
+A_all_versions	mean_within_checkpoint_spearman	raw_fpr	gain_magicoder	18	18	126	-0.21944396254006918	-0.47182359882421926	0.05842279485636924												
+A_all_versions	mean_within_checkpoint_spearman	full_moment_pr	gain_magicoder	18	18	126	-0.22048146624847456	-0.481742826763142	0.04856010591752838												
+A_all_versions	paired_linear_regression		gain_magicoder	18		126				raw_fpr	Energy	0.08159763855946012	0.026691935251301202	1	"{""log_energy_ratio"": -0.9992730447034011}"						
+A_all_versions	paired_linear_regression		gain_magicoder	18		126				raw_fpr	FPR	0.0004881485675780617	-0.050296624843201077	1	"{""raw_fpr"": 0.0772896582390821}"						
+A_all_versions	paired_linear_regression		gain_magicoder	18		126				raw_fpr	Energy+FPR	0.14957047763300235	0.06383123750043407	2	"{""log_energy_ratio"": -1.9326265938994807, ""raw_fpr"": -1.3049761418036177}"						
+A_all_versions	incremental_fpr_over_energy		gain_magicoder	18		126				raw_fpr						0.06797283907354223	0.037139302249132866	0.0023299172691526146	0.3421659267234486	-0.08404601045905995	0.23120381946672436
+A_all_versions	paired_linear_regression		gain_magicoder	18		126				full_moment_pr	Energy	0.08159763855946012	0.026691935251301202	1	"{""log_energy_ratio"": -0.9992730447034011}"						
+A_all_versions	paired_linear_regression		gain_magicoder	18		126				full_moment_pr	FPR	0.0004827085277490095	-0.038650374042863866	1	"{""full_moment_pr"": -0.07685778478626674}"						
+A_all_versions	paired_linear_regression		gain_magicoder	18		126				full_moment_pr	Energy+FPR	0.18071134857658666	0.10322550331906277	2	"{""log_energy_ratio"": -2.093638580961481, ""full_moment_pr"": -1.5525896131077754}"						
+A_all_versions	incremental_fpr_over_energy		gain_magicoder	18		126				full_moment_pr						0.09911371001712654	0.07653356806776157	0.012498736976886428	0.3567485561803507	-0.05964141584669128	0.2775823688786123
+A_all_versions	mean_within_checkpoint_spearman	log_energy_ratio	gain_metamath	18	18	126	-0.24482378410339603	-0.4665481530721982	-0.017970950386195422												
+A_all_versions	mean_within_checkpoint_spearman	raw_fpr	gain_metamath	18	18	126	0.19591880832318515	-0.019254994649061247	0.4162651244788168												
+A_all_versions	mean_within_checkpoint_spearman	full_moment_pr	gain_metamath	18	18	126	0.18680978046250865	-0.03494671209604529	0.4193876636265227												
+A_all_versions	paired_linear_regression		gain_metamath	18		126				raw_fpr	Energy	0.41080758397920114	0.38831503592509586	1	"{""log_energy_ratio"": -1.1310536531023103}"						
+A_all_versions	paired_linear_regression		gain_metamath	18		126				raw_fpr	FPR	0.06541116421353965	0.040198451344917285	1	"{""raw_fpr"": 0.4513255498877044}"						
+A_all_versions	paired_linear_regression		gain_metamath	18		126				raw_fpr	Energy+FPR	0.4948945480477547	0.4474297188590288	2	"{""log_energy_ratio"": -1.654728142480499, ""raw_fpr"": -0.7321799068513134}"						
+A_all_versions	incremental_fpr_over_energy		gain_metamath	18		126				raw_fpr						0.08408696406855354	0.05911468293393296	0.01260954018631615	0.23931229398909065	-0.06477314159415593	0.16964837341673109
+A_all_versions	paired_linear_regression		gain_metamath	18		126				full_moment_pr	Energy	0.41080758397920114	0.38831503592509586	1	"{""log_energy_ratio"": -1.1310536531023103}"						
+A_all_versions	paired_linear_regression		gain_metamath	18		126				full_moment_pr	FPR	0.052130692175736515	0.0252864922656717	1	"{""full_moment_pr"": 0.4029124860776296}"						
+A_all_versions	paired_linear_regression		gain_metamath	18		126				full_moment_pr	Energy+FPR	0.5100447813060327	0.4622448335648517	2	"{""log_energy_ratio"": -1.6834507528088596, ""full_moment_pr"": -0.7836924417848193}"						
+A_all_versions	incremental_fpr_over_energy		gain_metamath	18		126				full_moment_pr						0.09923719732683156	0.07392979763975582	0.016772452486975547	0.26381840019640257	-0.06449343963841052	0.19981771814957416
+A_all_versions	mean_within_checkpoint_spearman	log_energy_ratio	gain_tulu	18	18	126	-0.5223957674066919	-0.6521303856946349	-0.38523931069057143												
+A_all_versions	mean_within_checkpoint_spearman	raw_fpr	gain_tulu	18	18	126	0.49078915045258853	0.3494531681866883	0.6251462029961188												
+A_all_versions	mean_within_checkpoint_spearman	full_moment_pr	gain_tulu	18	18	126	0.5069202363126105	0.3635421374836784	0.6355305065698863												
+A_all_versions	paired_linear_regression		gain_tulu	18		126				raw_fpr	Energy	0.6328759091100324	0.60349668104216	1	"{""log_energy_ratio"": -1.503823225823976}"						
+A_all_versions	paired_linear_regression		gain_tulu	18		126				raw_fpr	FPR	0.24488659762279852	0.23203548220908954	1	"{""raw_fpr"": 0.9354487834835772}"						
+A_all_versions	paired_linear_regression		gain_tulu	18		126				raw_fpr	Energy+FPR	0.6441255370383827	0.60613881386877	2	"{""log_energy_ratio"": -1.709005427833133, ""raw_fpr"": -0.2868772273650298}"						
+A_all_versions	incremental_fpr_over_energy		gain_tulu	18		126				raw_fpr						0.01124962792835027	0.0026421328266099664	0.00011855422011393575	0.04940422019757456	-0.027618786553301865	0.025941152399514156
+A_all_versions	paired_linear_regression		gain_tulu	18		126				full_moment_pr	Energy	0.6328759091100324	0.60349668104216	1	"{""log_energy_ratio"": -1.503823225823976}"						
+A_all_versions	paired_linear_regression		gain_tulu	18		126				full_moment_pr	FPR	0.23204761984798983	0.21865650704624862	1	"{""full_moment_pr"": 0.9105966850412134}"						
+A_all_versions	paired_linear_regression		gain_tulu	18		126				full_moment_pr	Energy+FPR	0.6452891974361676	0.6080696193169111	2	"{""log_energy_ratio"": -1.7131048472553885, ""full_moment_pr"": -0.29691036576296054}"						
+A_all_versions	incremental_fpr_over_energy		gain_tulu	18		126				full_moment_pr						0.012413288326135197	0.004572938274751026	0.0001772563809232637	0.04828640884220161	-0.02476120151409513	0.028428271281388626
+A_all_versions	mean_within_checkpoint_spearman	log_energy_ratio	gain_commonsense	18	18	126	0.12354155277685022	-0.189481856571494	0.43656496212519413												
+A_all_versions	mean_within_checkpoint_spearman	raw_fpr	gain_commonsense	18	18	126	-0.1641708265356352	-0.4554739394738659	0.15718856119974448												
+A_all_versions	mean_within_checkpoint_spearman	full_moment_pr	gain_commonsense	18	18	126	-0.14815416053215863	-0.455473939473866	0.16817499303650432												
+A_all_versions	paired_linear_regression		gain_commonsense	18		126				raw_fpr	Energy	0.09555006939666122	0.008766017173301388	1	"{""log_energy_ratio"": -0.3522556926252826}"						
+A_all_versions	paired_linear_regression		gain_commonsense	18		126				raw_fpr	FPR	0.03002557247808979	-0.017048215829142066	1	"{""raw_fpr"": 0.19746410681203405}"						
+A_all_versions	paired_linear_regression		gain_commonsense	18		126				raw_fpr	Energy+FPR	0.10022897571194544	0.002352300943248453	2	"{""log_energy_ratio"": -0.43202719890441604, ""raw_fpr"": -0.11153320473219461}"						
+A_all_versions	incremental_fpr_over_energy		gain_commonsense	18		126				raw_fpr						0.004678906315284226	-0.006413716230052935	3.793063993853947e-05	0.07209043073499877	-0.06055662764567723	0.02869565938574793
+A_all_versions	paired_linear_regression		gain_commonsense	18		126				full_moment_pr	Energy	0.09555006939666122	0.008766017173301388	1	"{""log_energy_ratio"": -0.3522556926252826}"						
+A_all_versions	paired_linear_regression		gain_commonsense	18		126				full_moment_pr	FPR	0.01978718012444669	-0.021747455955987816	1	"{""full_moment_pr"": 0.1603003499464413}"						
+A_all_versions	paired_linear_regression		gain_commonsense	18		126				full_moment_pr	Energy+FPR	0.1073993651467412	0.0044527362231268075	2	"{""log_energy_ratio"": -0.4755204571845608, ""full_moment_pr"": -0.17487721129384914}"						
+A_all_versions	incremental_fpr_over_energy		gain_commonsense	18		126				full_moment_pr						0.01184929575007998	-0.004313280950174581	5.1747945656413444e-05	0.10185414699835003	-0.1014434877839322	0.052411742630500406
+A_all_versions	mean_within_checkpoint_spearman	log_energy_ratio	gain_arc_challenge	18	18	126	0.010139111790991417	-0.3118389946047924	0.3322196144672569												
+A_all_versions	mean_within_checkpoint_spearman	raw_fpr	gain_arc_challenge	18	18	126	-0.005760581300201918	-0.31509668575308125	0.29110556628823153												
+A_all_versions	mean_within_checkpoint_spearman	full_moment_pr	gain_arc_challenge	18	18	126	-0.010811086350706964	-0.32582125274721785	0.28870475904181714												
+A_all_versions	paired_linear_regression		gain_arc_challenge	18		126				raw_fpr	Energy	0.05263680913100288	-0.038550307943851836	1	"{""log_energy_ratio"": -0.5348464323488749}"						
+A_all_versions	paired_linear_regression		gain_arc_challenge	18		126				raw_fpr	FPR	0.03613414314845631	-0.02475567339457574	1	"{""raw_fpr"": 0.44314229898703045}"						
+A_all_versions	paired_linear_regression		gain_arc_challenge	18		126				raw_fpr	Energy+FPR	0.05402050541712056	-0.05883942192964953	2	"{""log_energy_ratio"": -0.4461026745290592, ""raw_fpr"": 0.12407783394471043}"						
+A_all_versions	incremental_fpr_over_energy		gain_arc_challenge	18		126				raw_fpr						0.001383696286117675	-0.02028911398579769	1.1438858196071761e-05	0.053723806607361604	-0.05537011083954629	-0.003313234534984281
+A_all_versions	paired_linear_regression		gain_arc_challenge	18		126				full_moment_pr	Energy	0.05263680913100288	-0.038550307943851836	1	"{""log_energy_ratio"": -0.5348464323488749}"						
+A_all_versions	paired_linear_regression		gain_arc_challenge	18		126				full_moment_pr	FPR	0.025491570696361765	-0.032937473748652524	1	"{""full_moment_pr"": 0.3722053609305048}"						
+A_all_versions	paired_linear_regression		gain_arc_challenge	18		126				full_moment_pr	Energy+FPR	0.05264519613448404	-0.06902019625417966	2	"{""log_energy_ratio"": -0.541555125092453, ""full_moment_pr"": -0.00951770347851525}"						
+A_all_versions	incremental_fpr_over_energy		gain_arc_challenge	18		126				full_moment_pr						8.387003481158395e-06	-0.03046988831032782	1.2438821358903848e-05	0.059943973607315224	-0.08059451093179629	-0.0032105344610331185
+A_all_versions	mean_within_checkpoint_spearman	log_energy_ratio	gain_arc_easy	18	18	126	0.18669194856825197	-0.09741526848126572	0.47104446866094024												
+A_all_versions	mean_within_checkpoint_spearman	raw_fpr	gain_arc_easy	18	18	126	-0.17101693616653296	-0.45418914258279147	0.14378556407891543												
+A_all_versions	mean_within_checkpoint_spearman	full_moment_pr	gain_arc_easy	18	18	126	-0.1770231859178367	-0.4581494687202342	0.12337649865611401												
+A_all_versions	paired_linear_regression		gain_arc_easy	18		126				raw_fpr	Energy	0.038317923911486584	-0.04111366803229033	1	"{""log_energy_ratio"": -0.3215368013182962}"						
+A_all_versions	paired_linear_regression		gain_arc_easy	18		126				raw_fpr	FPR	0.027064375516261063	-0.02602876797703968	1	"{""raw_fpr"": 0.2702269795807351}"						
+A_all_versions	paired_linear_regression		gain_arc_easy	18		126				raw_fpr	Energy+FPR	0.03954753106019193	-0.06295062136028706	2	"{""log_energy_ratio"": -0.26259193427175137, ""raw_fpr"": 0.08241426332366933}"						
+A_all_versions	incremental_fpr_over_energy		gain_arc_easy	18		126				raw_fpr						0.0012296071487053473	-0.021836953327996733	2.7993300562659655e-05	0.06424629936005867	-0.09103146868946929	-0.005494037110938441
+A_all_versions	paired_linear_regression		gain_arc_easy	18		126				full_moment_pr	Energy	0.038317923911486584	-0.04111366803229033	1	"{""log_energy_ratio"": -0.3215368013182962}"						
+A_all_versions	paired_linear_regression		gain_arc_easy	18		126				full_moment_pr	FPR	0.020177818184956897	-0.031224300570063868	1	"{""full_moment_pr"": 0.233327970699224}"						
+A_all_versions	paired_linear_regression		gain_arc_easy	18		126				full_moment_pr	Energy+FPR	0.03835087182227492	-0.07346201996984436	2	"{""log_energy_ratio"": -0.31216778907633225, ""full_moment_pr"": 0.013291930904266513}"						
+A_all_versions	incremental_fpr_over_energy		gain_arc_easy	18		126				full_moment_pr						3.294791078833903e-05	-0.03234835193755403	1.4239732477914293e-05	0.07546151055736064	-0.08074544861149006	-0.007148965058593592
+A_all_versions	mean_within_checkpoint_spearman	log_energy_ratio	gain_boolq	18	18	126	0.11893177474496605	-0.24827084052042592	0.5015962435545348												
+A_all_versions	mean_within_checkpoint_spearman	raw_fpr	gain_boolq	18	18	126	-0.12686192597227966	-0.4848835225946846	0.24836113192127515												
+A_all_versions	mean_within_checkpoint_spearman	full_moment_pr	gain_boolq	18	18	126	-0.1301387383367754	-0.5181397636046031	0.24632408540786807												
+A_all_versions	paired_linear_regression		gain_boolq	18		126				raw_fpr	Energy	0.12247665176104705	0.012766557266138956	1	"{""log_energy_ratio"": -0.22768500735766878}"						
+A_all_versions	paired_linear_regression		gain_boolq	18		126				raw_fpr	FPR	0.018606875987033922	-0.03007072372678654	1	"{""raw_fpr"": 0.08874512654254475}"						
+A_all_versions	paired_linear_regression		gain_boolq	18		126				raw_fpr	Energy+FPR	0.14903580634924862	0.021643345452192264	2	"{""log_energy_ratio"": -0.33618957128706023, ""raw_fpr"": -0.15170657177724484}"						
+A_all_versions	incremental_fpr_over_energy		gain_boolq	18		126				raw_fpr						0.026559154588201572	0.008876788186053308	0.0007578531841977582	0.10308786952820648	-0.0806257769611566	0.06449931543883947
+A_all_versions	paired_linear_regression		gain_boolq	18		126				full_moment_pr	Energy	0.12247665176104705	0.012766557266138956	1	"{""log_energy_ratio"": -0.22768500735766878}"						
+A_all_versions	paired_linear_regression		gain_boolq	18		126				full_moment_pr	FPR	0.019377345120268563	-0.02371249070271153	1	"{""full_moment_pr"": 0.09056385873717326}"						
+A_all_versions	paired_linear_regression		gain_boolq	18		126				full_moment_pr	Energy+FPR	0.14543372771223229	0.018805797453473883	2	"{""log_energy_ratio"": -0.3256376666424648, ""full_moment_pr"": -0.13896662161151482}"						
+A_all_versions	incremental_fpr_over_energy		gain_boolq	18		126				full_moment_pr						0.022957075951185235	0.006039240187334927	0.0003754510494452491	0.0833160945341259	-0.08900905952183588	0.0511123988686562
+A_all_versions	mean_within_checkpoint_spearman	log_energy_ratio	gain_hellaswag	18	18	126	-0.3871341335638288	-0.6610360511995038	-0.09886957871293588												
+A_all_versions	mean_within_checkpoint_spearman	raw_fpr	gain_hellaswag	18	18	126	0.35189783911096967	0.06903518367165717	0.619719902027825												
+A_all_versions	mean_within_checkpoint_spearman	full_moment_pr	gain_hellaswag	18	18	126	0.36190825536314253	0.07548680574020074	0.6166416411338492												
+A_all_versions	paired_linear_regression		gain_hellaswag	18		126				raw_fpr	Energy	0.15985519252278702	0.0779956359359606	1	"{""log_energy_ratio"": -0.96551125940135}"						
+A_all_versions	paired_linear_regression		gain_hellaswag	18		126				raw_fpr	FPR	0.10478644525429925	0.0570487954112574	1	"{""raw_fpr"": 0.7817115388592817}"						
+A_all_versions	paired_linear_regression		gain_hellaswag	18		126				raw_fpr	Energy+FPR	0.16277212307151046	0.0736713169298785	2	"{""log_energy_ratio"": -0.832039275971772, ""raw_fpr"": 0.18661498006283933}"						
+A_all_versions	incremental_fpr_over_energy		gain_hellaswag	18		126				raw_fpr						0.00291693054872344	-0.0043243190060821	4.937474367847173e-06	0.04433704057131111	-0.029208720562049324	0.002707617321057704
+A_all_versions	paired_linear_regression		gain_hellaswag	18		126				full_moment_pr	Energy	0.15985519252278702	0.0779956359359606	1	"{""log_energy_ratio"": -0.96551125940135}"						
+A_all_versions	paired_linear_regression		gain_hellaswag	18		126				full_moment_pr	FPR	0.08953105084849944	0.04700055982667006	1	"{""full_moment_pr"": 0.7225714697514258}"						
+A_all_versions	paired_linear_regression		gain_hellaswag	18		126				full_moment_pr	Energy+FPR	0.1604568441105365	0.0677841357462119	2	"{""log_energy_ratio"": -0.9066517461410328, ""full_moment_pr"": 0.08350470285551603}"						
+A_all_versions	incremental_fpr_over_energy		gain_hellaswag	18		126				full_moment_pr						0.0006016515877494966	-0.010211500189748701	4.643834974515493e-06	0.04695130761634428	-0.033487137369694275	-0.004170546680556635
+A_all_versions	mean_within_checkpoint_spearman	log_energy_ratio	gain_openbookqa	18	18	126	0.2971038342349637	0.04867033449133929	0.5185979301408855												
+A_all_versions	mean_within_checkpoint_spearman	raw_fpr	gain_openbookqa	18	18	126	-0.31211492820201675	-0.5192038637850651	-0.07113474247471176												
+A_all_versions	mean_within_checkpoint_spearman	full_moment_pr	gain_openbookqa	18	18	126	-0.2997101305997785	-0.5091348678307464	-0.062287721659002857												
+A_all_versions	paired_linear_regression		gain_openbookqa	18		126				raw_fpr	Energy	0.001934985927480537	-0.04708329193751126	1	"{""log_energy_ratio"": 0.05531566364846764}"						
+A_all_versions	paired_linear_regression		gain_openbookqa	18		126				raw_fpr	FPR	0.06241591839294125	0.034375076373020175	1	"{""raw_fpr"": -0.3141643519303433}"						
+A_all_versions	paired_linear_regression		gain_openbookqa	18		126				raw_fpr	Energy+FPR	0.09956090844950793	0.029516136689953676	2	"{""log_energy_ratio"": -0.34677584169810566, ""raw_fpr"": -0.5621876316334079}"						
+A_all_versions	incremental_fpr_over_energy		gain_openbookqa	18		126				raw_fpr						0.0976259225220274	0.07659942862746494	0.03409419683058065	0.19482376958655906	-0.05516929284888747	0.15367237054830085
+A_all_versions	paired_linear_regression		gain_openbookqa	18		126				full_moment_pr	Energy	0.001934985927480537	-0.04708329193751126	1	"{""log_energy_ratio"": 0.05531566364846764}"						
+A_all_versions	paired_linear_regression		gain_openbookqa	18		126				full_moment_pr	FPR	0.07723170085610898	0.04591570881245799	1	"{""full_moment_pr"": -0.3494676836636058}"						
+A_all_versions	paired_linear_regression		gain_openbookqa	18		126				full_moment_pr	Energy+FPR	0.12308711328681743	0.04944475285605665	2	"{""log_energy_ratio"": -0.379619887671359, ""full_moment_pr"": -0.6170483234143246}"						
+A_all_versions	incremental_fpr_over_energy		gain_openbookqa	18		126				full_moment_pr						0.12115212735933689	0.09652804479356791	0.04446005506421208	0.231417619557066	-0.059407396860637826	0.18408139355283645
+A_all_versions	mean_within_checkpoint_spearman	log_energy_ratio	gain_piqa	18	18	126	0.021803623335220835	-0.28879987951345554	0.3256226772387475												
+A_all_versions	mean_within_checkpoint_spearman	raw_fpr	gain_piqa	18	18	126	-0.03849270519499653	-0.33098150362751133	0.2830169592120192												
+A_all_versions	mean_within_checkpoint_spearman	full_moment_pr	gain_piqa	18	18	126	-0.028135332784919143	-0.3144528042274781	0.2835835794765065												
+A_all_versions	paired_linear_regression		gain_piqa	18		126				raw_fpr	Energy	0.05398141890142927	-0.06320835899917943	1	"{""log_energy_ratio"": -0.2625939570537308}"						
+A_all_versions	paired_linear_regression		gain_piqa	18		126				raw_fpr	FPR	0.01381295384330039	-0.04000923994883565	1	"{""raw_fpr"": 0.1328329629520454}"						
+A_all_versions	paired_linear_regression		gain_piqa	18		126				raw_fpr	Energy+FPR	0.05882629024929642	-0.06369096863185408	2	"{""log_energy_ratio"": -0.34310154319890585, ""raw_fpr"": -0.11256236100901328}"						
+A_all_versions	incremental_fpr_over_energy		gain_piqa	18		126				raw_fpr						0.004844871347867152	-0.0004826096326746576	6.860687151694715e-05	0.03921035717076289	-0.014706387514423049	0.0163267957150183
+A_all_versions	paired_linear_regression		gain_piqa	18		126				full_moment_pr	Energy	0.05398141890142927	-0.06320835899917943	1	"{""log_energy_ratio"": -0.2625939570537308}"						
+A_all_versions	paired_linear_regression		gain_piqa	18		126				full_moment_pr	FPR	0.003865793932178452	-0.04607744595726704	1	"{""full_moment_pr"": 0.07027193781606443}"						
+A_all_versions	paired_linear_regression		gain_piqa	18		126				full_moment_pr	Energy+FPR	0.07449343381291085	-0.04780482802840491	2	"{""log_energy_ratio"": -0.42344241644282843, ""full_moment_pr"": -0.22819765339632134}"						
+A_all_versions	incremental_fpr_over_energy		gain_piqa	18		126				full_moment_pr						0.02051201491148158	0.015403530970774515	0.006070602718467883	0.07168287690843124	-0.006730867197326316	0.05127448614951108
+A_all_versions	mean_within_checkpoint_spearman	log_energy_ratio	gain_siqa	18	18	126	0.1781747611197929	-0.12859152938140944	0.48231054764468284												
+A_all_versions	mean_within_checkpoint_spearman	raw_fpr	gain_siqa	18	18	126	-0.2309496494347069	-0.5128200308172204	0.07036128358340892												
+A_all_versions	mean_within_checkpoint_spearman	full_moment_pr	gain_siqa	18	18	126	-0.22371367490107133	-0.5320689704422131	0.07911402249037307												
+A_all_versions	paired_linear_regression		gain_siqa	18		126				raw_fpr	Energy	0.0006738875825440527	-0.1240752959550806	1	"{""log_energy_ratio"": 0.0162202713900414}"						
+A_all_versions	paired_linear_regression		gain_siqa	18		126				raw_fpr	FPR	0.0054285796237373285	-0.04760159047260326	1	"{""raw_fpr"": -0.04603705092817325}"						
+A_all_versions	paired_linear_regression		gain_siqa	18		126				raw_fpr	Energy+FPR	0.006892201428690181	-0.12822323817410175	2	"{""log_energy_ratio"": -0.034203324005467294, ""raw_fpr"": -0.07050017544988614}"						
+A_all_versions	incremental_fpr_over_energy		gain_siqa	18		126				raw_fpr						0.0062183138461461285	-0.00414794221902115	1.4280459111487115e-05	0.06236694374668848	-0.024616863246419794	0.01866060482218406
+A_all_versions	paired_linear_regression		gain_siqa	18		126				full_moment_pr	Energy	0.0006738875825440527	-0.1240752959550806	1	"{""log_energy_ratio"": 0.0162202713900414}"						
+A_all_versions	paired_linear_regression		gain_siqa	18		126				full_moment_pr	FPR	0.01587297621704231	-0.03213553136558933	1	"{""full_moment_pr"": -0.07872153832020147}"						
+A_all_versions	paired_linear_regression		gain_siqa	18		126				full_moment_pr	Energy+FPR	0.02372230108538409	-0.11000961590284164	2	"{""log_energy_ratio"": -0.07804138605224431, ""full_moment_pr"": -0.13373015268702956}"						
+A_all_versions	incremental_fpr_over_energy		gain_siqa	18		126				full_moment_pr						0.023048413502840037	0.01406568005223896	0.001338688190021227	0.10433943824185406	-0.025399669176306892	0.061261653705367874
+A_all_versions	mean_within_checkpoint_spearman	log_energy_ratio	gain_winogrande	18	18	126	-0.13725801757492162	-0.4138048335697773	0.1293710784471621												
+A_all_versions	mean_within_checkpoint_spearman	raw_fpr	gain_winogrande	18	18	126	0.0726806466513611	-0.19796980953505222	0.33992897508814635												
+A_all_versions	mean_within_checkpoint_spearman	full_moment_pr	gain_winogrande	18	18	126	0.07871332306136364	-0.18649518630885353	0.348277399345841												
+A_all_versions	paired_linear_regression		gain_winogrande	18		126				raw_fpr	Energy	0.3291607176393583	0.2739394178254867	1	"{""log_energy_ratio"": -0.5774080185608522}"						
+A_all_versions	paired_linear_regression		gain_winogrande	18		126				raw_fpr	FPR	0.04920918027847532	0.01640256266574258	1	"{""raw_fpr"": 0.2232553504331527}"						
+A_all_versions	paired_linear_regression		gain_winogrande	18		126				raw_fpr	Energy+FPR	0.40191483356390056	0.326376177138076	2	"{""log_energy_ratio"": -0.8552134262732125, ""raw_fpr"": -0.3884159753192263}"						
+A_all_versions	incremental_fpr_over_energy		gain_winogrande	18		126				raw_fpr						0.07275411592454228	0.05243675931258929	0.015390086605957231	0.18925068212834723	-0.036256759754012255	0.14349898305745515
+A_all_versions	paired_linear_regression		gain_winogrande	18		126				full_moment_pr	Energy	0.3291607176393583	0.2739394178254867	1	"{""log_energy_ratio"": -0.5774080185608522}"						
+A_all_versions	paired_linear_regression		gain_winogrande	18		126				full_moment_pr	FPR	0.048504656030981974	0.018208303690871896	1	"{""full_moment_pr"": 0.22165142362094642}"						
+A_all_versions	paired_linear_regression		gain_winogrande	18		126				full_moment_pr	Energy+FPR	0.39656445640061366	0.32018645763176024	2	"{""log_energy_ratio"": -0.8370476403577776, ""full_moment_pr"": -0.3683538695228724}"						
+A_all_versions	incremental_fpr_over_energy		gain_winogrande	18		126				full_moment_pr						0.06740373876125538	0.04624703980627354	0.010595599673956055	0.16827055181231565	-0.05555033780901806	0.13004504114160131
+B_edited_only	mean_within_checkpoint_spearman	log_energy_ratio	target_gain	18	18	108	-0.05948916301262538	-0.34851705734037053	0.2586530415838251												
+B_edited_only	mean_within_checkpoint_spearman	raw_fpr	target_gain	18	18	108	0.025932922809061433	-0.2967377882642083	0.30173314872980495												
+B_edited_only	mean_within_checkpoint_spearman	full_moment_pr	target_gain	18	18	108	0.04496732901004249	-0.24740808904929537	0.3253379321800223												
+B_edited_only	paired_linear_regression		target_gain	18		108				raw_fpr	Energy	0.18673328503740882	0.0705872251703441	1	"{""log_energy_ratio"": 0.7068246450399103}"						
+B_edited_only	paired_linear_regression		target_gain	18		108				raw_fpr	FPR	0.10000896633329603	-0.0048682353503386455	1	"{""raw_fpr"": -0.5172735646773761}"						
+B_edited_only	paired_linear_regression		target_gain	18		108				raw_fpr	Energy+FPR	0.20917495471074699	0.08608578934510835	2	"{""log_energy_ratio"": 1.184953113380992, ""raw_fpr"": 0.5372606999637506}"						
+B_edited_only	incremental_fpr_over_energy		target_gain	18		108				raw_fpr						0.02244166967333816	0.015498564174764251	0.00011172902020871187	0.10768245959384432	-0.043907943457925654	0.08649496457729941
+B_edited_only	paired_linear_regression		target_gain	18		108				full_moment_pr	Energy	0.18673328503740882	0.0705872251703441	1	"{""log_energy_ratio"": 0.7068246450399103}"						
+B_edited_only	paired_linear_regression		target_gain	18		108				full_moment_pr	FPR	0.11581733458432963	0.01616205033328455	1	"{""full_moment_pr"": -0.5566569016288094}"						
+B_edited_only	paired_linear_regression		target_gain	18		108				full_moment_pr	Energy+FPR	0.1973231479547073	0.06838404671992326	2	"{""log_energy_ratio"": 1.0429872632166537, ""full_moment_pr"": 0.37594982000058536}"						
+B_edited_only	incremental_fpr_over_energy		target_gain	18		108				full_moment_pr						0.010589862917298465	-0.0022031784504208396	2.5814978384767433e-05	0.08737808796923813	-0.049595988919996954	0.04231532378739915
+B_edited_only	mean_within_checkpoint_spearman	log_energy_ratio	off_gain	18	18	108	0.32382759505008873	0.03373204115105088	0.5871061762340403												
+B_edited_only	mean_within_checkpoint_spearman	raw_fpr	off_gain	18	18	108	-0.2857142857142858	-0.561904761904762	0.015873015873015865												
+B_edited_only	mean_within_checkpoint_spearman	full_moment_pr	off_gain	18	18	108	-0.2857142857142858	-0.5555555555555557	0.0032539682539678336												
+B_edited_only	paired_linear_regression		off_gain	18		108				raw_fpr	Energy	0.06013634136474444	0.02408583485025595	1	"{""log_energy_ratio"": 0.15197398238102897}"						
+B_edited_only	paired_linear_regression		off_gain	18		108				raw_fpr	FPR	0.0077524438186604705	-0.06580671241358993	1	"{""raw_fpr"": -0.05456574091214316}"						
+B_edited_only	paired_linear_regression		off_gain	18		108				raw_fpr	Energy+FPR	0.1416182133479441	0.03324239531357853	2	"{""log_energy_ratio"": 0.4971554308675169, ""raw_fpr"": 0.38787154270859203}"						
+B_edited_only	incremental_fpr_over_energy		off_gain	18		108				raw_fpr						0.08148187198319967	0.009156560463322583	0.00044540174962332034	0.344891718739298	-0.22038975996180024	0.1729150388802932
+B_edited_only	paired_linear_regression		off_gain	18		108				full_moment_pr	Energy	0.06013634136474444	0.02408583485025595	1	"{""log_energy_ratio"": 0.15197398238102897}"						
+B_edited_only	paired_linear_regression		off_gain	18		108				full_moment_pr	FPR	0.0208952630427357	-0.04197778381142547	1	"{""full_moment_pr"": -0.08958280649331969}"						
+B_edited_only	paired_linear_regression		off_gain	18		108				full_moment_pr	Energy+FPR	0.0879892627128187	-0.016070542099363205	2	"{""log_energy_ratio"": 0.35853080885640704, ""full_moment_pr"": 0.23100427452192798}"						
+B_edited_only	incremental_fpr_over_energy		off_gain	18		108				full_moment_pr						0.027852921348074267	-0.040156376949619155	0.00010367660869010158	0.23078446254875037	-0.18343797156229608	0.05630538855086548
+B_edited_only	mean_within_checkpoint_spearman	log_energy_ratio	fg_reduction	18	11	108	-0.1297758630348462	-0.44339040938250573	0.21682870545182892												
+B_edited_only	mean_within_checkpoint_spearman	raw_fpr	fg_reduction	18	11	108	0.22056932719614053	-0.13399127639377043	0.5435622943220648												
+B_edited_only	mean_within_checkpoint_spearman	full_moment_pr	fg_reduction	18	11	108	0.2219219223403992	-0.13972925611055814	0.5455657121783716												
+B_edited_only	paired_linear_regression		fg_reduction	18		108				raw_fpr	Energy	0.10295338120313835	0.05738275449347208	1	"{""log_energy_ratio"": -0.06088277058162683}"						
+B_edited_only	paired_linear_regression		fg_reduction	18		108				raw_fpr	FPR	0.18109716506449158	0.13158575124972438	1	"{""raw_fpr"": 0.08074765639927373}"						
+B_edited_only	paired_linear_regression		fg_reduction	18		108				raw_fpr	Energy+FPR	0.19718805245747129	0.08248346325352507	2	"{""log_energy_ratio"": 0.05277409250109889, ""raw_fpr"": 0.12771330271835774}"						
+B_edited_only	incremental_fpr_over_energy		fg_reduction	18		108				raw_fpr						0.09423467125433294	0.025100708760052992	0.0004785118962866729	0.28915200084676956	-0.2707849369302645	0.13886534461906347
+B_edited_only	paired_linear_regression		fg_reduction	18		108				full_moment_pr	Energy	0.10295338120313835	0.05738275449347208	1	"{""log_energy_ratio"": -0.06088277058162683}"						
+B_edited_only	paired_linear_regression		fg_reduction	18		108				full_moment_pr	FPR	0.16866056657007056	0.11756053765231678	1	"{""full_moment_pr"": 0.0779257297248459}"						
+B_edited_only	paired_linear_regression		fg_reduction	18		108				full_moment_pr	Energy+FPR	0.1793804238221126	0.0709068808492116	2	"{""log_energy_ratio"": 0.043878573339954985, ""full_moment_pr"": 0.1171605831842692}"						
+B_edited_only	incremental_fpr_over_energy		fg_reduction	18		108				full_moment_pr						0.07642704261897426	0.013524126355739519	0.0003980285157207402	0.24499774701963803	-0.21201303872132546	0.10233565304574423
+B_edited_only	mean_within_checkpoint_spearman	log_energy_ratio	gain_magicoder	18	18	108	0.35729495492975044	0.08634353406860444	0.6117900014529121												
+B_edited_only	mean_within_checkpoint_spearman	raw_fpr	gain_magicoder	18	18	108	-0.33440901160001485	-0.5905604975830987	-0.04433177849104582												
+B_edited_only	mean_within_checkpoint_spearman	full_moment_pr	gain_magicoder	18	18	108	-0.33586495103659275	-0.5999596551746266	-0.04261008401923486												
+B_edited_only	paired_linear_regression		gain_magicoder	18		108				raw_fpr	Energy	0.21371774245443897	0.1603405627517146	1	"{""log_energy_ratio"": 0.960599132601577}"						
+B_edited_only	paired_linear_regression		gain_magicoder	18		108				raw_fpr	FPR	0.09436720685052236	0.008081069214981196	1	"{""raw_fpr"": -0.6383111804943232}"						
+B_edited_only	paired_linear_regression		gain_magicoder	18		108				raw_fpr	Energy+FPR	0.2659374301427504	0.1730308277760243	2	"{""log_energy_ratio"": 1.887120077192293, ""raw_fpr"": 1.041107828088538}"						
+B_edited_only	incremental_fpr_over_energy		gain_magicoder	18		108				raw_fpr						0.05221968768831142	0.0126902650243097	0.0002052007128664297	0.22219016897958654	-0.12875845847920517	0.12084747603814991
+B_edited_only	paired_linear_regression		gain_magicoder	18		108				full_moment_pr	Energy	0.21371774245443897	0.1603405627517146	1	"{""log_energy_ratio"": 0.960599132601577}"						
+B_edited_only	paired_linear_regression		gain_magicoder	18		108				full_moment_pr	FPR	0.12132765622939734	0.04849865440177059	1	"{""full_moment_pr"": -0.7237720455277503}"						
+B_edited_only	paired_linear_regression		gain_magicoder	18		108				full_moment_pr	Energy+FPR	0.2348262474972862	0.15385157943996364	2	"{""log_energy_ratio"": 1.563511333749285, ""full_moment_pr"": 0.6742710856043621}"						
+B_edited_only	incremental_fpr_over_energy		gain_magicoder	18		108				full_moment_pr						0.021108505042847225	-0.006488983311750962	7.044928555081951e-05	0.13036342402738782	-0.08071231758297809	0.049301070215822286
+B_edited_only	mean_within_checkpoint_spearman	log_energy_ratio	gain_metamath	18	18	108	0.11880084093824328	-0.22287277925406057	0.45585840392606314												
+B_edited_only	mean_within_checkpoint_spearman	raw_fpr	gain_metamath	18	18	108	-0.09423013144411846	-0.4203589480436496	0.22802142920391455												
+B_edited_only	mean_within_checkpoint_spearman	full_moment_pr	gain_metamath	18	18	108	-0.10877075435889565	-0.43325607360517265	0.22968483184379038												
+B_edited_only	paired_linear_regression		gain_metamath	18		108				raw_fpr	Energy	0.09629824601625803	0.0004744995119092543	1	"{""log_energy_ratio"": 0.3029521486804523}"						
+B_edited_only	paired_linear_regression		gain_metamath	18		108				raw_fpr	FPR	0.05138741138642189	-0.04313014063557907	1	"{""raw_fpr"": -0.22130601552243476}"						
+B_edited_only	paired_linear_regression		gain_metamath	18		108				raw_fpr	Energy+FPR	0.10806678200202546	-0.024543210628570122	2	"{""log_energy_ratio"": 0.5096054147434608, ""raw_fpr"": 0.23221097618392436}"						
+B_edited_only	incremental_fpr_over_energy		gain_metamath	18		108				raw_fpr						0.011768535985767437	-0.025017710140479377	4.559517420677114e-05	0.1367692748657666	-0.09224459265785641	0.0378164710903022
+B_edited_only	paired_linear_regression		gain_metamath	18		108				full_moment_pr	Energy	0.09629824601625803	0.0004744995119092543	1	"{""log_energy_ratio"": 0.3029521486804523}"						
+B_edited_only	paired_linear_regression		gain_metamath	18		108				full_moment_pr	FPR	0.07303720510891665	-0.020009203160603617	1	"{""full_moment_pr"": -0.2638377420154338}"						
+B_edited_only	paired_linear_regression		gain_metamath	18		108				full_moment_pr	Energy+FPR	0.09655858582812271	-0.05267549377309799	2	"{""log_energy_ratio"": 0.3344106895686287, ""full_moment_pr"": 0.035181879676379924}"						
+B_edited_only	incremental_fpr_over_energy		gain_metamath	18		108				full_moment_pr						0.0002603398118646849	-0.053149993285007247	2.4486543333477916e-05	0.11751961816747696	-0.09831965179327078	-0.01426584221981751
+B_edited_only	mean_within_checkpoint_spearman	log_energy_ratio	gain_tulu	18	18	108	-0.21180528009488317	-0.4420917454985655	0.00427441236992239												
+B_edited_only	mean_within_checkpoint_spearman	raw_fpr	gain_tulu	18	18	108	0.2522863058766612	0.0357929189600836	0.45116130763818935												
+B_edited_only	mean_within_checkpoint_spearman	full_moment_pr	gain_tulu	18	18	108	0.2779701285614326	0.07209464875761104	0.4725201765737233												
+B_edited_only	paired_linear_regression		gain_tulu	18		108				raw_fpr	Energy	0.031661824576138864	-0.024859035428389298	1	"{""log_energy_ratio"": -0.13303215257008608}"						
+B_edited_only	paired_linear_regression		gain_tulu	18		108				raw_fpr	FPR	0.06352786820256806	0.0292369444053997	1	"{""raw_fpr"": 0.1884389997139476}"						
+B_edited_only	paired_linear_regression		gain_tulu	18		108				raw_fpr	Energy+FPR	0.07386412445529322	-0.002036280273784996	2	"{""log_energy_ratio"": 0.1666583043383435, ""raw_fpr"": 0.3367544819276857}"						
+B_edited_only	incremental_fpr_over_energy		gain_tulu	18		108				raw_fpr						0.04220229987915436	0.0228227551546043	0.0007191021465949154	0.163701538255652	-0.06318693152721774	0.12056866512308671
+B_edited_only	paired_linear_regression		gain_tulu	18		108				full_moment_pr	Energy	0.031661824576138864	-0.024859035428389298	1	"{""log_energy_ratio"": -0.13303215257008608}"						
+B_edited_only	paired_linear_regression		gain_tulu	18		108				full_moment_pr	FPR	0.06023640443302758	0.025563891315054876	1	"{""full_moment_pr"": 0.1834924373446835}"						
+B_edited_only	paired_linear_regression		gain_tulu	18		108				full_moment_pr	Energy+FPR	0.06883571901648777	-0.005707259658327635	2	"{""log_energy_ratio"": 0.15484759502896794, ""full_moment_pr"": 0.3219523333042797}"						
+B_edited_only	incremental_fpr_over_energy		gain_tulu	18		108				full_moment_pr						0.03717389444034891	0.019151775770061663	0.00037303332686359716	0.14184936208129714	-0.07092545851870097	0.10279898406369124
+B_edited_only	mean_within_checkpoint_spearman	log_energy_ratio	gain_commonsense	18	18	108	0.3811720650068753	0.043851653496366196	0.6847604353663334												
+B_edited_only	mean_within_checkpoint_spearman	raw_fpr	gain_commonsense	18	18	108	-0.37460317460317466	-0.6952380952380953	-0.02539682539682541												
+B_edited_only	mean_within_checkpoint_spearman	full_moment_pr	gain_commonsense	18	18	108	-0.3523809523809524	-0.6793650793650793	-0.0030952380952385173												
+B_edited_only	paired_linear_regression		gain_commonsense	18		108				raw_fpr	Energy	0.008079052025851352	-0.08851163028879916	1	"{""log_energy_ratio"": 0.032227463471055894}"						
+B_edited_only	paired_linear_regression		gain_commonsense	18		108				raw_fpr	FPR	0.000745939142698604	-0.09584428858010474	1	"{""raw_fpr"": -0.009792591110998315}"						
+B_edited_only	paired_linear_regression		gain_commonsense	18		108				raw_fpr	Energy+FPR	0.021419979805349043	-0.13398076994359687	2	"{""log_energy_ratio"": 0.11303560970944274, ""raw_fpr"": 0.09080204188937324}"						
+B_edited_only	incremental_fpr_over_energy		gain_commonsense	18		108				raw_fpr						0.013340927779497691	-0.04546913965479771	5.478484970608435e-05	0.15797762502753365	-0.12244230323614148	-0.0015009138150173938
+B_edited_only	paired_linear_regression		gain_commonsense	18		108				full_moment_pr	Energy	0.008079052025851352	-0.08851163028879916	1	"{""log_energy_ratio"": 0.032227463471055894}"						
+B_edited_only	paired_linear_regression		gain_commonsense	18		108				full_moment_pr	FPR	0.0035251426120661566	-0.08631576796436069	1	"{""full_moment_pr"": -0.0212879709102709}"						
+B_edited_only	paired_linear_regression		gain_commonsense	18		108				full_moment_pr	Energy+FPR	0.010278583231457472	-0.16955541659270335	2	"{""log_energy_ratio"": 0.06581007143899044, ""full_moment_pr"": 0.03755734498134232}"						
+B_edited_only	incremental_fpr_over_energy		gain_commonsense	18		108				full_moment_pr						0.00219953120560612	-0.08104378630390419	2.7078252951838258e-05	0.16868465936462773	-0.1496245802571293	-0.029646902090092804
+B_edited_only	mean_within_checkpoint_spearman	log_energy_ratio	gain_arc_challenge	18	18	108	0.24076511182279628	-0.05698197993299662	0.5305932045594464												
+B_edited_only	mean_within_checkpoint_spearman	raw_fpr	gain_arc_challenge	18	18	108	-0.19098904704372371	-0.4799066667944378	0.13032057252692203												
+B_edited_only	mean_within_checkpoint_spearman	full_moment_pr	gain_arc_challenge	18	18	108	-0.19904142253889662	-0.48585948615186464	0.10544032942326781												
+B_edited_only	paired_linear_regression		gain_arc_challenge	18		108				raw_fpr	Energy	0.0022482786862675352	-0.0745478506948607	1	"{""log_energy_ratio"": 0.047929374178876855}"						
+B_edited_only	paired_linear_regression		gain_arc_challenge	18		108				raw_fpr	FPR	0.005461983450380403	-0.08695116089554955	1	"{""raw_fpr"": 0.07470537956164844}"						
+B_edited_only	paired_linear_regression		gain_arc_challenge	18		108				raw_fpr	Energy+FPR	0.06705151494768735	-0.11329566823552772	2	"{""log_energy_ratio"": 0.5500305509835137, ""raw_fpr"": 0.5641982177690453}"						
+B_edited_only	incremental_fpr_over_energy		gain_arc_challenge	18		108				raw_fpr						0.06480323626141982	-0.03874781754066703	5.507103077874368e-05	0.2838360697267216	-0.2338097081230888	0.0198452650356069
+B_edited_only	paired_linear_regression		gain_arc_challenge	18		108				full_moment_pr	Energy	0.0022482786862675352	-0.0745478506948607	1	"{""log_energy_ratio"": 0.047929374178876855}"						
+B_edited_only	paired_linear_regression		gain_arc_challenge	18		108				full_moment_pr	FPR	0.0019365308425599581	-0.08897885355492163	1	"{""full_moment_pr"": 0.04448247013248584}"						
+B_edited_only	paired_linear_regression		gain_arc_challenge	18		108				full_moment_pr	Energy+FPR	0.03949045593812628	-0.18208478309239506	2	"{""log_energy_ratio"": 0.43751026957496614, ""full_moment_pr"": 0.4356905247055789}"						
+B_edited_only	incremental_fpr_over_energy		gain_arc_challenge	18		108				full_moment_pr						0.037242177251858744	-0.10753693239753437	0.0001578786081460577	0.29600759480262745	-0.2154061188882398	-0.04385092935231905
+B_edited_only	mean_within_checkpoint_spearman	log_energy_ratio	gain_arc_easy	18	18	108	0.39434699183897853	0.06843672576041684	0.7018863985353759												
+B_edited_only	mean_within_checkpoint_spearman	raw_fpr	gain_arc_easy	18	18	108	-0.33237879709965734	-0.6474748191753703	0.0174657974219361												
+B_edited_only	mean_within_checkpoint_spearman	full_moment_pr	gain_arc_easy	18	18	108	-0.3418562596000009	-0.6450255354247083	0.005075569990748147												
+B_edited_only	paired_linear_regression		gain_arc_easy	18		108				raw_fpr	Energy	0.001658000603907639	-0.045138918578379705	1	"{""log_energy_ratio"": 0.02382683405898175}"						
+B_edited_only	paired_linear_regression		gain_arc_easy	18		108				raw_fpr	FPR	0.004074326766119074	-0.07912720365455805	1	"{""raw_fpr"": 0.03735097358154412}"						
+B_edited_only	paired_linear_regression		gain_arc_easy	18		108				raw_fpr	Energy+FPR	0.04979719097059798	-0.14379908800888774	2	"{""log_energy_ratio"": 0.27434521367108655, ""raw_fpr"": 0.281501079513569}"						
+B_edited_only	incremental_fpr_over_energy		gain_arc_easy	18		108				raw_fpr						0.04813919036669034	-0.09866016943050804	5.4895563669367755e-05	0.2674908653848107	-0.394275242225189	-0.047255966511704495
+B_edited_only	paired_linear_regression		gain_arc_easy	18		108				full_moment_pr	Energy	0.001658000603907639	-0.045138918578379705	1	"{""log_energy_ratio"": 0.02382683405898175}"						
+B_edited_only	paired_linear_regression		gain_arc_easy	18		108				full_moment_pr	FPR	0.002004024381987879	-0.08603726570648451	1	"{""full_moment_pr"": 0.026195427992755135}"						
+B_edited_only	paired_linear_regression		gain_arc_easy	18		108				full_moment_pr	Energy+FPR	0.03452944100521427	-0.2056475426912252	2	"{""log_energy_ratio"": 0.23570528973532923, ""full_moment_pr"": 0.23695575583494652}"						
+B_edited_only	incremental_fpr_over_energy		gain_arc_easy	18		108				full_moment_pr						0.03287144040130663	-0.1605086241128455	0.003242404939450594	0.2911264558317202	-0.3193648743440624	-0.12532246248189038
+B_edited_only	mean_within_checkpoint_spearman	log_energy_ratio	gain_boolq	18	18	108	0.1314359289207638	-0.2518586595348526	0.48482639039041214												
+B_edited_only	mean_within_checkpoint_spearman	raw_fpr	gain_boolq	18	18	108	-0.13273858045300996	-0.5081896526689804	0.23012376948728375												
+B_edited_only	mean_within_checkpoint_spearman	full_moment_pr	gain_boolq	18	18	108	-0.1361577891956874	-0.49952512597574233	0.24207307415534962												
+B_edited_only	paired_linear_regression		gain_boolq	18		108				raw_fpr	Energy	6.317172842607022e-07	-0.09585411639316743	1	"{""log_energy_ratio"": 0.0001719092071075881}"						
+B_edited_only	paired_linear_regression		gain_boolq	18		108				raw_fpr	FPR	0.005833817290461285	-0.09876359402361423	1	"{""raw_fpr"": -0.01652015695021157}"						
+B_edited_only	paired_linear_regression		gain_boolq	18		108				raw_fpr	Energy+FPR	0.027529283565622342	-0.13025917341279802	2	"{""log_energy_ratio"": -0.06985201318324966, ""raw_fpr"": -0.07868408607456717}"						
+B_edited_only	incremental_fpr_over_energy		gain_boolq	18		108				raw_fpr						0.02752865184833808	-0.03440505701963059	0.00012294891278382837	0.20345903639085847	-0.21344392173383847	0.09767453704617877
+B_edited_only	paired_linear_regression		gain_boolq	18		108				full_moment_pr	Energy	6.317172842607022e-07	-0.09585411639316743	1	"{""log_energy_ratio"": 0.0001719092071075881}"						
+B_edited_only	paired_linear_regression		gain_boolq	18		108				full_moment_pr	FPR	0.005689892605093783	-0.08588178575884964	1	"{""full_moment_pr"": -0.01631510195257083}"						
+B_edited_only	paired_linear_regression		gain_boolq	18		108				full_moment_pr	Energy+FPR	0.02785218947710777	-0.14447010002779503	2	"{""log_energy_ratio"": -0.07191658201324216, ""full_moment_pr"": -0.08062066938137386}"						
+B_edited_only	incremental_fpr_over_energy		gain_boolq	18		108				full_moment_pr						0.02785155775982351	-0.0486159836346276	9.988035969450268e-05	0.2121333163958357	-0.2834065971805476	0.09306788410673487
+B_edited_only	mean_within_checkpoint_spearman	log_energy_ratio	gain_hellaswag	18	18	108	-0.20872006022109543	-0.5431597277619118	0.15558598421025438												
+B_edited_only	mean_within_checkpoint_spearman	raw_fpr	gain_hellaswag	18	18	108	0.20761207877224605	-0.15111807995791268	0.5523809523809524												
+B_edited_only	mean_within_checkpoint_spearman	full_moment_pr	gain_hellaswag	18	18	108	0.2234850946452619	-0.1340137634724331	0.568285540064544												
+B_edited_only	paired_linear_regression		gain_hellaswag	18		108				raw_fpr	Energy	0.14728670937159138	0.06817372943864874	1	"{""log_energy_ratio"": -0.3899320412564029}"						
+B_edited_only	paired_linear_regression		gain_hellaswag	18		108				raw_fpr	FPR	0.2071048385711396	0.12773053143464097	1	"{""raw_fpr"": 0.46238343418526184}"						
+B_edited_only	paired_linear_regression		gain_hellaswag	18		108				raw_fpr	Energy+FPR	0.20926960056350397	0.08029314475844374	2	"{""log_energy_ratio"": 0.10364990213822155, ""raw_fpr"": 0.5546253736317813}"						
+B_edited_only	incremental_fpr_over_energy		gain_hellaswag	18		108				raw_fpr						0.06198289119191258	0.01211941531979499	0.00029117967880384747	0.22675515156731654	-0.20561865932893827	0.0998552261299224
+B_edited_only	paired_linear_regression		gain_hellaswag	18		108				full_moment_pr	Energy	0.14728670937159138	0.06817372943864874	1	"{""log_energy_ratio"": -0.3899320412564029}"						
+B_edited_only	paired_linear_regression		gain_hellaswag	18		108				full_moment_pr	FPR	0.19772438882897603	0.12200543038668865	1	"{""full_moment_pr"": 0.4517906766883143}"						
+B_edited_only	paired_linear_regression		gain_hellaswag	18		108				full_moment_pr	Energy+FPR	0.1986776320059115	0.05350975407458747	2	"{""log_energy_ratio"": 0.07006367176178015, ""full_moment_pr"": 0.5144394294885664}"						
+B_edited_only	incremental_fpr_over_energy		gain_hellaswag	18		108				full_moment_pr						0.0513909226343201	-0.014663975364061277	0.00018337465651449333	0.2560850231705284	-0.19043421895247767	0.07671498394940039
+B_edited_only	mean_within_checkpoint_spearman	log_energy_ratio	gain_openbookqa	18	18	108	0.5397154727806746	0.24919636251511174	0.7719638539460798												
+B_edited_only	mean_within_checkpoint_spearman	raw_fpr	gain_openbookqa	18	18	108	-0.5099917847993054	-0.7421038390859779	-0.24312842485494732												
+B_edited_only	mean_within_checkpoint_spearman	full_moment_pr	gain_openbookqa	18	18	108	-0.49044675795618975	-0.7177713963828086	-0.2279847364864208												
+B_edited_only	paired_linear_regression		gain_openbookqa	18		108				raw_fpr	Energy	0.1796693969371732	0.1253538484637745	1	"{""log_energy_ratio"": 0.32890533908983816}"						
+B_edited_only	paired_linear_regression		gain_openbookqa	18		108				raw_fpr	FPR	0.2611863832644298	0.20782087108748726	1	"{""raw_fpr"": -0.3965602084314407}"						
+B_edited_only	paired_linear_regression		gain_openbookqa	18		108				raw_fpr	Energy+FPR	0.2657886831930085	0.17804493089760332	2	"{""log_energy_ratio"": -0.11541918492778518, ""raw_fpr"": -0.4992760745099041}"						
+B_edited_only	incremental_fpr_over_energy		gain_openbookqa	18		108				raw_fpr						0.08611928625583531	0.052691082433828806	0.0037187518830839148	0.21927990497867073	-0.14914701810728578	0.15511936889002143
+B_edited_only	paired_linear_regression		gain_openbookqa	18		108				full_moment_pr	Energy	0.1796693969371732	0.1253538484637745	1	"{""log_energy_ratio"": 0.32890533908983816}"						
+B_edited_only	paired_linear_regression		gain_openbookqa	18		108				full_moment_pr	FPR	0.2640277651262194	0.20152668244530536	1	"{""full_moment_pr"": -0.39871141370958074}"						
+B_edited_only	paired_linear_regression		gain_openbookqa	18		108				full_moment_pr	Energy+FPR	0.27034362471710416	0.16774750574219421	2	"{""log_energy_ratio"": -0.13773172877015485, ""full_moment_pr"": -0.5218668352211864}"						
+B_edited_only	incremental_fpr_over_energy		gain_openbookqa	18		108				full_moment_pr						0.09067422777993095	0.042393657278419705	0.0019097836475543027	0.23043415862253636	-0.17364532032661945	0.14562761922066247
+B_edited_only	mean_within_checkpoint_spearman	log_energy_ratio	gain_piqa	18	18	108	0.28896580260085886	-0.04729355369725138	0.6035000633309472												
+B_edited_only	mean_within_checkpoint_spearman	raw_fpr	gain_piqa	18	18	108	-0.25067870308768603	-0.5503123766484084	0.07520974586470527												
+B_edited_only	mean_within_checkpoint_spearman	full_moment_pr	gain_piqa	18	18	108	-0.23716717786713407	-0.528474389899175	0.09228652063859967												
+B_edited_only	paired_linear_regression		gain_piqa	18		108				raw_fpr	Energy	0.04075087692049639	-0.08141480496267173	1	"{""log_energy_ratio"": 0.08689293016764174}"						
+B_edited_only	paired_linear_regression		gain_piqa	18		108				raw_fpr	FPR	0.027077251547481307	-0.06907824664063833	1	"{""raw_fpr"": -0.0708301649132101}"						
+B_edited_only	paired_linear_regression		gain_piqa	18		108				raw_fpr	Energy+FPR	0.041846825068696525	-0.0990402479432666	2	"{""log_energy_ratio"": 0.11469820370371028, ""raw_fpr"": 0.031244072904721833}"						
+B_edited_only	incremental_fpr_over_energy		gain_piqa	18		108				raw_fpr						0.001095948148200132	-0.017625442980594874	1.0359227469867241e-05	0.05005505151933355	-0.0559209556618091	0.006382418270230797
+B_edited_only	paired_linear_regression		gain_piqa	18		108				full_moment_pr	Energy	0.04075087692049639	-0.08141480496267173	1	"{""log_energy_ratio"": 0.08689293016764174}"						
+B_edited_only	paired_linear_regression		gain_piqa	18		108				full_moment_pr	FPR	0.05475688404761414	-0.03600874605359694	1	"{""full_moment_pr"": -0.10072454783173387}"						
+B_edited_only	paired_linear_regression		gain_piqa	18		108				full_moment_pr	Energy+FPR	0.055027749574209195	-0.08768755870851286	2	"{""log_energy_ratio"": -0.01582255914939445, ""full_moment_pr"": -0.11487258734910494}"						
+B_edited_only	incremental_fpr_over_energy		gain_piqa	18		108				full_moment_pr						0.014276872653712802	-0.006272753745841131	4.0025417423349355e-05	0.07487278594481171	-0.0646701321378974	0.021077669526553832
+B_edited_only	mean_within_checkpoint_spearman	log_energy_ratio	gain_siqa	18	18	108	0.2142114604029406	-0.09615913041451854	0.5148995569160347												
+B_edited_only	mean_within_checkpoint_spearman	raw_fpr	gain_siqa	18	18	108	-0.2652376931828239	-0.5495269817972877	0.038365379550923354												
+B_edited_only	mean_within_checkpoint_spearman	full_moment_pr	gain_siqa	18	18	108	-0.2520493845564754	-0.5567074275215634	0.06563373784922726												
+B_edited_only	paired_linear_regression		gain_siqa	18		108				raw_fpr	Energy	0.06258379145876514	-0.0007942927374493536	1	"{""log_energy_ratio"": 0.07036352218171253}"						
+B_edited_only	paired_linear_regression		gain_siqa	18		108				raw_fpr	FPR	0.08471501025552453	0.013436105425728817	1	"{""raw_fpr"": -0.08186472732407835}"						
+B_edited_only	paired_linear_regression		gain_siqa	18		108				raw_fpr	Energy+FPR	0.08509207668378804	-0.0480517335680668	2	"{""log_energy_ratio"": -0.011975185376964433, ""raw_fpr"": -0.09252189439915912}"						
+B_edited_only	incremental_fpr_over_energy		gain_siqa	18		108				raw_fpr						0.022508285225022906	-0.04725744083061745	6.62984086571097e-05	0.17697555941826645	-0.1539426284343937	0.0185572607313848
+B_edited_only	paired_linear_regression		gain_siqa	18		108				full_moment_pr	Energy	0.06258379145876514	-0.0007942927374493536	1	"{""log_energy_ratio"": 0.07036352218171253}"						
+B_edited_only	paired_linear_regression		gain_siqa	18		108				full_moment_pr	FPR	0.11567040921747318	0.04575011179829047	1	"{""full_moment_pr"": -0.09565942625701016}"						
+B_edited_only	paired_linear_regression		gain_siqa	18		108				full_moment_pr	Energy+FPR	0.1301858148783268	-0.002702051713176834	2	"{""log_energy_ratio"": -0.07568592473407987, ""full_moment_pr"": -0.1633354225314508}"						
+B_edited_only	incremental_fpr_over_energy		gain_siqa	18		108				full_moment_pr						0.06760202341956167	-0.0019077589757274804	0.00026924234564852206	0.26646120730553763	-0.20294726019351467	0.08953862188629393
+B_edited_only	mean_within_checkpoint_spearman	log_energy_ratio	gain_winogrande	18	18	108	0.18870392483929654	-0.13077729414315753	0.5106593646637064												
+B_edited_only	mean_within_checkpoint_spearman	raw_fpr	gain_winogrande	18	18	108	-0.20114816669447116	-0.5060138950849005	0.11792051371604859												
+B_edited_only	mean_within_checkpoint_spearman	full_moment_pr	gain_winogrande	18	18	108	-0.1915579731892975	-0.49454031496115536	0.13480981383160207												
+B_edited_only	paired_linear_regression		gain_winogrande	18		108				raw_fpr	Energy	0.03277668141386059	-0.037246992711772675	1	"{""log_energy_ratio"": 0.08966184014069156}"						
+B_edited_only	paired_linear_regression		gain_winogrande	18		108				raw_fpr	FPR	0.03086318121145204	-0.03404088993869503	1	"{""raw_fpr"": -0.08700525859750045}"						
+B_edited_only	paired_linear_regression		gain_winogrande	18		108				raw_fpr	Energy+FPR	0.03379610077593198	-0.06700375202370545	2	"{""log_energy_ratio"": 0.05880739066700763, ""raw_fpr"": -0.034670353720502846}"						
+B_edited_only	incremental_fpr_over_energy		gain_winogrande	18		108				raw_fpr						0.0010194193620713943	-0.02975675931193278	2.106002414373237e-05	0.06980145078981127	-0.06974837856553619	-0.006008099003736077
+B_edited_only	paired_linear_regression		gain_winogrande	18		108				full_moment_pr	Energy	0.03277668141386059	-0.037246992711772675	1	"{""log_energy_ratio"": 0.08966184014069156}"						
+B_edited_only	paired_linear_regression		gain_winogrande	18		108				full_moment_pr	FPR	0.02698928251827959	-0.03827425692240416	1	"{""full_moment_pr"": -0.08136185234482729}"						
+B_edited_only	paired_linear_regression		gain_winogrande	18		108				full_moment_pr	Energy+FPR	0.03280543563068361	-0.06994321307385554	2	"{""log_energy_ratio"": 0.08435813510671764, ""full_moment_pr"": -0.005931435695239463}"						
+B_edited_only	incremental_fpr_over_energy		gain_winogrande	18		108				full_moment_pr						2.8754216823023704e-05	-0.03269622036208286	1.8028517341720977e-05	0.06744249097053179	-0.07623628453802146	-0.007435328796118036
+C_energy_matched	mean_within_checkpoint_spearman	log_energy_ratio	target_gain	18	0	54															
+C_energy_matched	mean_within_checkpoint_spearman	raw_fpr	target_gain	18	18	54	-0.15922363354357993	-0.4925569668769133	0.15935985050379214												
+C_energy_matched	mean_within_checkpoint_spearman	full_moment_pr	target_gain	18	18	54	-0.13144585576580214	-0.4573361559760488	0.1741096997897534												
+C_energy_matched	paired_linear_regression		target_gain	18		54				raw_fpr	Energy	0.0	0.0	0	"{""log_energy_ratio"": 0.0}"						
+C_energy_matched	paired_linear_regression		target_gain	18		54				raw_fpr	FPR	0.00035577444719847584	-0.07672053445834592	1	"{""raw_fpr"": -0.019574465620603353}"						
+C_energy_matched	paired_linear_regression		target_gain	18		54				raw_fpr	Energy+FPR	0.00035577444719858686	-0.07672053445834592	1	"{""log_energy_ratio"": 0.0, ""raw_fpr"": -0.019574465620603342}"						
+C_energy_matched	incremental_fpr_over_energy		target_gain	18		54				raw_fpr						0.00035577444719858686	-0.07672053445834592	3.336101216092922e-05	0.18426230514708458	-0.16485293445668636	-0.036323297786317627
+C_energy_matched	paired_linear_regression		target_gain	18		54				full_moment_pr	Energy	0.0	0.0	0	"{""log_energy_ratio"": 0.0}"						
+C_energy_matched	paired_linear_regression		target_gain	18		54				full_moment_pr	FPR	0.001928383177934978	-0.08263843738977372	1	"{""full_moment_pr"": -0.04557211720172499}"						
+C_energy_matched	paired_linear_regression		target_gain	18		54				full_moment_pr	Energy+FPR	0.001928383177934978	-0.08263843738977372	1	"{""log_energy_ratio"": 0.0, ""full_moment_pr"": -0.04557211720172495}"						
+C_energy_matched	incremental_fpr_over_energy		target_gain	18		54				full_moment_pr						0.001928383177934978	-0.08263843738977372	3.321680276964556e-05	0.19004508380016125	-0.19814408119884958	-0.030009859080741177
+C_energy_matched	mean_within_checkpoint_spearman	log_energy_ratio	off_gain	18	0	54															
+C_energy_matched	mean_within_checkpoint_spearman	raw_fpr	off_gain	18	18	54	0.027777777777777776	-0.3333333333333333	0.3888888888888889												
+C_energy_matched	mean_within_checkpoint_spearman	full_moment_pr	off_gain	18	18	54	0.05555555555555555	-0.3055555555555556	0.4166666666666667												
+C_energy_matched	paired_linear_regression		off_gain	18		54				raw_fpr	Energy	0.0	0.0	0	"{""log_energy_ratio"": 0.0}"						
+C_energy_matched	paired_linear_regression		off_gain	18		54				raw_fpr	FPR	0.10629905391360328	-0.031866565568518856	1	"{""raw_fpr"": 0.16675673187089077}"						
+C_energy_matched	paired_linear_regression		off_gain	18		54				raw_fpr	Energy+FPR	0.10629905391360339	-0.031866565568518856	1	"{""log_energy_ratio"": 0.0, ""raw_fpr"": 0.16675673187089082}"						
+C_energy_matched	incremental_fpr_over_energy		off_gain	18		54				raw_fpr						0.10629905391360339	-0.031866565568518856	0.0002721337138710172	0.4637612143171967	-0.547033542496754	0.199206626509776
+C_energy_matched	paired_linear_regression		off_gain	18		54				full_moment_pr	Energy	0.0	0.0	0	"{""log_energy_ratio"": 0.0}"						
+C_energy_matched	paired_linear_regression		off_gain	18		54				full_moment_pr	FPR	0.09632423897344466	-0.04262215736128372	1	"{""full_moment_pr"": 0.15874003392510372}"						
+C_energy_matched	paired_linear_regression		off_gain	18		54				full_moment_pr	Energy+FPR	0.09632423897344466	-0.04262215736128372	1	"{""log_energy_ratio"": 0.0, ""full_moment_pr"": 0.15874003392510375}"						
+C_energy_matched	incremental_fpr_over_energy		off_gain	18		54				full_moment_pr						0.09632423897344466	-0.04262215736128372	0.0004058546229204813	0.42111103360805324	-0.5516689548746824	0.17328779746345482
+C_energy_matched	mean_within_checkpoint_spearman	log_energy_ratio	fg_reduction	18	0	54															
+C_energy_matched	mean_within_checkpoint_spearman	raw_fpr	fg_reduction	18	9	54	0.37400282264271545	-0.1111111111111111	0.7886751345948129												
+C_energy_matched	mean_within_checkpoint_spearman	full_moment_pr	fg_reduction	18	9	54	0.37400282264271545	-0.1368945341743197	0.8184472670871599												
+C_energy_matched	paired_linear_regression		fg_reduction	18		54				raw_fpr	Energy	0.0	0.0	0	"{""log_energy_ratio"": 0.0}"						
+C_energy_matched	paired_linear_regression		fg_reduction	18		54				raw_fpr	FPR	0.2132800824586707	0.12067128301508945	1	"{""raw_fpr"": 0.08048799687681865}"						
+C_energy_matched	paired_linear_regression		fg_reduction	18		54				raw_fpr	Energy+FPR	0.2132800824586707	0.12067128301508934	1	"{""log_energy_ratio"": 0.0, ""raw_fpr"": 0.08048799687681864}"						
+C_energy_matched	incremental_fpr_over_energy		fg_reduction	18		54				raw_fpr						0.2132800824586707	0.12067128301508934	0.029985575525546853	0.4225598850248783	-0.6019184027408144	0.2670883014140978
+C_energy_matched	paired_linear_regression		fg_reduction	18		54				full_moment_pr	Energy	0.0	0.0	0	"{""log_energy_ratio"": 0.0}"						
+C_energy_matched	paired_linear_regression		fg_reduction	18		54				full_moment_pr	FPR	0.1956241370791829	0.10887170611068664	1	"{""full_moment_pr"": 0.07708452289483894}"						
+C_energy_matched	paired_linear_regression		fg_reduction	18		54				full_moment_pr	Energy+FPR	0.1956241370791829	0.10887170611068664	1	"{""log_energy_ratio"": 0.0, ""full_moment_pr"": 0.07708452289483896}"						
+C_energy_matched	incremental_fpr_over_energy		fg_reduction	18		54				full_moment_pr						0.1956241370791829	0.10887170611068664	0.02690666666326044	0.4147288099291988	-0.5220488980491754	0.26535548241977835
+C_energy_matched	mean_within_checkpoint_spearman	log_energy_ratio	gain_magicoder	18	0	54															
+C_energy_matched	mean_within_checkpoint_spearman	raw_fpr	gain_magicoder	18	18	54	-0.06844726708715984	-0.44249994859773956	0.32589030021024656												
+C_energy_matched	mean_within_checkpoint_spearman	full_moment_pr	gain_magicoder	18	18	54	-0.040669489309382065	-0.41272781610539255	0.3333333333333333												
+C_energy_matched	paired_linear_regression		gain_magicoder	18		54				raw_fpr	Energy	1.1102230246251565e-16	1.1102230246251565e-16	0	"{""log_energy_ratio"": 0.0}"						
+C_energy_matched	paired_linear_regression		gain_magicoder	18		54				raw_fpr	FPR	0.045859288366412176	-0.04490801665466271	1	"{""raw_fpr"": 0.32344876143806495}"						
+C_energy_matched	paired_linear_regression		gain_magicoder	18		54				raw_fpr	Energy+FPR	0.045859288366412176	-0.04490801665466271	1	"{""log_energy_ratio"": 0.0, ""raw_fpr"": 0.32344876143806484}"						
+C_energy_matched	incremental_fpr_over_energy		gain_magicoder	18		54				raw_fpr						0.045859288366412065	-0.04490801665466282	0.0001578595377545473	0.34633540573372334	-0.23593904723142667	0.10607551128143014
+C_energy_matched	paired_linear_regression		gain_magicoder	18		54				full_moment_pr	Energy	1.1102230246251565e-16	1.1102230246251565e-16	0	"{""log_energy_ratio"": 0.0}"						
+C_energy_matched	paired_linear_regression		gain_magicoder	18		54				full_moment_pr	FPR	0.04024326642718801	-0.04634709068564469	1	"{""full_moment_pr"": 0.30299708391935753}"						
+C_energy_matched	paired_linear_regression		gain_magicoder	18		54				full_moment_pr	Energy+FPR	0.04024326642718812	-0.04634709068564469	1	"{""log_energy_ratio"": 0.0, ""full_moment_pr"": 0.3029970839193577}"						
+C_energy_matched	incremental_fpr_over_energy		gain_magicoder	18		54				full_moment_pr						0.04024326642718801	-0.0463470906856448	0.00011988297325371136	0.28919818316416374	-0.21456572204209787	0.08004961632207507
+C_energy_matched	mean_within_checkpoint_spearman	log_energy_ratio	gain_metamath	18	0	54															
+C_energy_matched	mean_within_checkpoint_spearman	raw_fpr	gain_metamath	18	18	54	0.05555555555555555	-0.2777777777777778	0.3611111111111111												
+C_energy_matched	mean_within_checkpoint_spearman	full_moment_pr	gain_metamath	18	18	54	0.027777777777777776	-0.2777777777777778	0.3611111111111111												
+C_energy_matched	paired_linear_regression		gain_metamath	18		54				raw_fpr	Energy	0.0	0.0	0	"{""log_energy_ratio"": 0.0}"						
+C_energy_matched	paired_linear_regression		gain_metamath	18		54				raw_fpr	FPR	7.285240776755408e-06	-0.1634888458416075	1	"{""raw_fpr"": 0.001708007113197339}"						
+C_energy_matched	paired_linear_regression		gain_metamath	18		54				raw_fpr	Energy+FPR	7.285240776755408e-06	-0.1634888458416075	1	"{""log_energy_ratio"": 0.0, ""raw_fpr"": 0.001708007113197385}"						
+C_energy_matched	incremental_fpr_over_energy		gain_metamath	18		54				raw_fpr						7.285240776755408e-06	-0.1634888458416075	6.423316986768885e-05	0.33421749873843937	-0.20861102754465186	-0.0852927439948444
+C_energy_matched	paired_linear_regression		gain_metamath	18		54				full_moment_pr	Energy	0.0	0.0	0	"{""log_energy_ratio"": 0.0}"						
+C_energy_matched	paired_linear_regression		gain_metamath	18		54				full_moment_pr	FPR	0.0006225495178692197	-0.17645854701862618	1	"{""full_moment_pr"": -0.015789001671360273}"						
+C_energy_matched	paired_linear_regression		gain_metamath	18		54				full_moment_pr	Energy+FPR	0.0006225495178692197	-0.17645854701862618	1	"{""log_energy_ratio"": 0.0, ""full_moment_pr"": -0.015789001671360266}"						
+C_energy_matched	incremental_fpr_over_energy		gain_metamath	18		54				full_moment_pr						0.0006225495178692197	-0.17645854701862618	7.602514498452298e-05	0.31881719359878097	-0.2642275089956739	-0.07583992978265247
+C_energy_matched	mean_within_checkpoint_spearman	log_energy_ratio	gain_tulu	18	0	54															
+C_energy_matched	mean_within_checkpoint_spearman	raw_fpr	gain_tulu	18	18	54	0.16666666666666666	-0.1593598505037929	0.4851139337538266												
+C_energy_matched	mean_within_checkpoint_spearman	full_moment_pr	gain_tulu	18	18	54	0.19444444444444445	-0.12418889847079258	0.5												
+C_energy_matched	paired_linear_regression		gain_tulu	18		54				raw_fpr	Energy	0.0	0.0	0	"{""log_energy_ratio"": 0.0}"						
+C_energy_matched	paired_linear_regression		gain_tulu	18		54				raw_fpr	FPR	0.007073374555778722	-0.10542877776314707	1	"{""raw_fpr"": 0.05349126357596985}"						
+C_energy_matched	paired_linear_regression		gain_tulu	18		54				raw_fpr	Energy+FPR	0.007073374555778722	-0.10542877776314685	1	"{""log_energy_ratio"": 0.0, ""raw_fpr"": 0.05349126357596985}"						
+C_energy_matched	incremental_fpr_over_energy		gain_tulu	18		54				raw_fpr						0.007073374555778722	-0.10542877776314685	7.226352687106938e-05	0.25673486731304584	-0.22483020457909067	0.029453803237879342
+C_energy_matched	paired_linear_regression		gain_tulu	18		54				full_moment_pr	Energy	0.0	0.0	0	"{""log_energy_ratio"": 0.0}"						
+C_energy_matched	paired_linear_regression		gain_tulu	18		54				full_moment_pr	FPR	0.003447988648259126	-0.10696359081392859	1	"{""full_moment_pr"": 0.03734671802876155}"						
+C_energy_matched	paired_linear_regression		gain_tulu	18		54				full_moment_pr	Energy+FPR	0.003447988648259126	-0.10696359081392881	1	"{""log_energy_ratio"": 0.0, ""full_moment_pr"": 0.03734671802876152}"						
+C_energy_matched	incremental_fpr_over_energy		gain_tulu	18		54				full_moment_pr						0.003447988648259126	-0.10696359081392881	9.929746316476463e-05	0.25762559603311636	-0.2092552295013639	0.008595313442474245
+C_energy_matched	mean_within_checkpoint_spearman	log_energy_ratio	gain_commonsense	18	0	54															
+C_energy_matched	mean_within_checkpoint_spearman	raw_fpr	gain_commonsense	18	18	54	-0.1111111111111111	-0.4444444444444444	0.19444444444444445												
+C_energy_matched	mean_within_checkpoint_spearman	full_moment_pr	gain_commonsense	18	18	54	-0.08333333333333333	-0.3888888888888889	0.2222222222222222												
+C_energy_matched	paired_linear_regression		gain_commonsense	18		54				raw_fpr	Energy	1.1102230246251565e-16	1.1102230246251565e-16	0	"{""log_energy_ratio"": 0.0}"						
+C_energy_matched	paired_linear_regression		gain_commonsense	18		54				raw_fpr	FPR	0.14912288407274432	-0.013645482146899424	1	"{""raw_fpr"": 0.10204769786483316}"						
+C_energy_matched	paired_linear_regression		gain_commonsense	18		54				raw_fpr	Energy+FPR	0.1491228840727442	-0.013645482146899646	1	"{""log_energy_ratio"": 0.0, ""raw_fpr"": 0.10204769786483311}"						
+C_energy_matched	incremental_fpr_over_energy		gain_commonsense	18		54				raw_fpr						0.1491228840727441	-0.013645482146899757	0.001549429480860834	0.48203910002880307	-0.9765770105977252	0.18346395558464967
+C_energy_matched	paired_linear_regression		gain_commonsense	18		54				full_moment_pr	Energy	1.1102230246251565e-16	1.1102230246251565e-16	0	"{""log_energy_ratio"": 0.0}"						
+C_energy_matched	paired_linear_regression		gain_commonsense	18		54				full_moment_pr	FPR	0.1611806267336937	-0.02289078920433507	1	"{""full_moment_pr"": 0.10609318429682393}"						
+C_energy_matched	paired_linear_regression		gain_commonsense	18		54				full_moment_pr	Energy+FPR	0.1611806267336936	-0.02289078920433507	1	"{""log_energy_ratio"": 0.0, ""full_moment_pr"": 0.10609318429682396}"						
+C_energy_matched	incremental_fpr_over_energy		gain_commonsense	18		54				full_moment_pr						0.1611806267336935	-0.022890789204335182	0.0008658208752372887	0.4832499187029221	-1.200357742971096	0.18471771337287604
+C_energy_matched	mean_within_checkpoint_spearman	log_energy_ratio	gain_arc_challenge	18	0	54															
+C_energy_matched	mean_within_checkpoint_spearman	raw_fpr	gain_arc_challenge	18	17	54	0.1607088710334634	-0.1980542860827056	0.5057691889031363												
+C_energy_matched	mean_within_checkpoint_spearman	full_moment_pr	gain_arc_challenge	18	17	54	0.19012063573934573	-0.14157809407143232	0.5036575192053572												
+C_energy_matched	paired_linear_regression		gain_arc_challenge	18		54				raw_fpr	Energy	0.0	0.0	0	"{""log_energy_ratio"": 0.0}"						
+C_energy_matched	paired_linear_regression		gain_arc_challenge	18		54				raw_fpr	FPR	0.18447175475904698	-0.017125411399282475	1	"{""raw_fpr"": 0.3555615103802659}"						
+C_energy_matched	paired_linear_regression		gain_arc_challenge	18		54				raw_fpr	Energy+FPR	0.18447175475904698	-0.017125411399282253	1	"{""log_energy_ratio"": 0.0, ""raw_fpr"": 0.35556151038026584}"						
+C_energy_matched	incremental_fpr_over_energy		gain_arc_challenge	18		54				raw_fpr						0.18447175475904698	-0.017125411399282253	0.004672318618536834	0.4449797089521827	-2.133804854860352	0.15150479564983646
+C_energy_matched	paired_linear_regression		gain_arc_challenge	18		54				full_moment_pr	Energy	0.0	0.0	0	"{""log_energy_ratio"": 0.0}"						
+C_energy_matched	paired_linear_regression		gain_arc_challenge	18		54				full_moment_pr	FPR	0.19782957899459164	-0.049154583964159615	1	"{""full_moment_pr"": 0.3682098619659366}"						
+C_energy_matched	paired_linear_regression		gain_arc_challenge	18		54				full_moment_pr	Energy+FPR	0.19782957899459153	-0.04915458396415939	1	"{""log_energy_ratio"": 0.0, ""full_moment_pr"": 0.36820986196593664}"						
+C_energy_matched	incremental_fpr_over_energy		gain_arc_challenge	18		54				full_moment_pr						0.19782957899459153	-0.04915458396415939	0.0018413854010380507	0.48109664031811045	-2.594739904339879	0.10553653472233407
+C_energy_matched	mean_within_checkpoint_spearman	log_energy_ratio	gain_arc_easy	18	0	54															
+C_energy_matched	mean_within_checkpoint_spearman	raw_fpr	gain_arc_easy	18	18	54	0.2981125224324688	-0.040855565137459256	0.6016737232734553												
+C_energy_matched	mean_within_checkpoint_spearman	full_moment_pr	gain_arc_easy	18	18	54	0.32589030021024656	-0.027913994737990715	0.629501359919097												
+C_energy_matched	paired_linear_regression		gain_arc_easy	18		54				raw_fpr	Energy	0.0	0.0	0	"{""log_energy_ratio"": 0.0}"						
+C_energy_matched	paired_linear_regression		gain_arc_easy	18		54				raw_fpr	FPR	0.1437122710883867	-0.0804446687945477	1	"{""raw_fpr"": 0.19989368956034465}"						
+C_energy_matched	paired_linear_regression		gain_arc_easy	18		54				raw_fpr	Energy+FPR	0.1437122710883867	-0.0804446687945477	1	"{""log_energy_ratio"": 0.0, ""raw_fpr"": 0.19989368956034465}"						
+C_energy_matched	incremental_fpr_over_energy		gain_arc_easy	18		54				raw_fpr						0.1437122710883867	-0.0804446687945477	0.00150426709678539	0.39507696611373716	-4.979887974009372	0.02023808461869603
+C_energy_matched	paired_linear_regression		gain_arc_easy	18		54				full_moment_pr	Energy	0.0	0.0	0	"{""log_energy_ratio"": 0.0}"						
+C_energy_matched	paired_linear_regression		gain_arc_easy	18		54				full_moment_pr	FPR	0.16875317760787456	-0.10670286725539557	1	"{""full_moment_pr"": 0.21660981799954862}"						
+C_energy_matched	paired_linear_regression		gain_arc_easy	18		54				full_moment_pr	Energy+FPR	0.16875317760787445	-0.10670286725539557	1	"{""log_energy_ratio"": 0.0, ""full_moment_pr"": 0.21660981799954873}"						
+C_energy_matched	incremental_fpr_over_energy		gain_arc_easy	18		54				full_moment_pr						0.16875317760787445	-0.10670286725539557	0.0007523613330629173	0.4299694486015217	-6.754094798010209	0.00885366889577586
+C_energy_matched	mean_within_checkpoint_spearman	log_energy_ratio	gain_boolq	18	0	54															
+C_energy_matched	mean_within_checkpoint_spearman	raw_fpr	gain_boolq	18	18	54	-0.03522081090086451	-0.3943874261652707	0.31645291237259066												
+C_energy_matched	mean_within_checkpoint_spearman	full_moment_pr	gain_boolq	18	18	54	-0.007443033123086739	-0.32602651717045955	0.3165027712404546												
+C_energy_matched	paired_linear_regression		gain_boolq	18		54				raw_fpr	Energy	-2.220446049250313e-16	-2.220446049250313e-16	0	"{""log_energy_ratio"": 0.0}"						
+C_energy_matched	paired_linear_regression		gain_boolq	18		54				raw_fpr	FPR	0.0013247381387262447	-0.1234691682464133	1	"{""raw_fpr"": -0.0038676234532746263}"						
+C_energy_matched	paired_linear_regression		gain_boolq	18		54				raw_fpr	Energy+FPR	0.0013247381387262447	-0.1234691682464133	1	"{""log_energy_ratio"": 0.0, ""raw_fpr"": -0.003867623453274624}"						
+C_energy_matched	incremental_fpr_over_energy		gain_boolq	18		54				raw_fpr						0.0013247381387264667	-0.12346916824641307	5.836936383349885e-05	0.2570636376576176	-0.22517155080794093	-0.03628953972918462
+C_energy_matched	paired_linear_regression		gain_boolq	18		54				full_moment_pr	Energy	-2.220446049250313e-16	-2.220446049250313e-16	0	"{""log_energy_ratio"": 0.0}"						
+C_energy_matched	paired_linear_regression		gain_boolq	18		54				full_moment_pr	FPR	0.00016795960597559834	-0.14109469778631345	1	"{""full_moment_pr"": -0.0013771510857967574}"						
+C_energy_matched	paired_linear_regression		gain_boolq	18		54				full_moment_pr	Energy+FPR	0.00016795960597559834	-0.14109469778631345	1	"{""log_energy_ratio"": 0.0, ""full_moment_pr"": -0.0013771510857967548}"						
+C_energy_matched	incremental_fpr_over_energy		gain_boolq	18		54				full_moment_pr						0.00016795960597582038	-0.14109469778631323	6.947205403601049e-05	0.2676498856711091	-0.25513224044709776	-0.036265755918138395
+C_energy_matched	mean_within_checkpoint_spearman	log_energy_ratio	gain_hellaswag	18	0	54															
+C_energy_matched	mean_within_checkpoint_spearman	raw_fpr	gain_hellaswag	18	18	54	0.2703347446546911	-0.09077636645642007	0.5964111206930138												
+C_energy_matched	mean_within_checkpoint_spearman	full_moment_pr	gain_hellaswag	18	18	54	0.2425569668769133	-0.09077636645642007	0.5758903002102467												
+C_energy_matched	paired_linear_regression		gain_hellaswag	18		54				raw_fpr	Energy	0.0	0.0	0	"{""log_energy_ratio"": 0.0}"						
+C_energy_matched	paired_linear_regression		gain_hellaswag	18		54				raw_fpr	FPR	0.24241977229757827	0.09939907743634224	1	"{""raw_fpr"": 0.3571834906070663}"						
+C_energy_matched	paired_linear_regression		gain_hellaswag	18		54				raw_fpr	Energy+FPR	0.24241977229757827	0.09939907743634224	1	"{""log_energy_ratio"": 0.0, ""raw_fpr"": 0.35718349060706617}"						
+C_energy_matched	incremental_fpr_over_energy		gain_hellaswag	18		54				raw_fpr						0.24241977229757827	0.09939907743634224	0.021127618512100644	0.5153269425192639	-0.998485882013847	0.298202291109773
+C_energy_matched	paired_linear_regression		gain_hellaswag	18		54				full_moment_pr	Energy	0.0	0.0	0	"{""log_energy_ratio"": 0.0}"						
+C_energy_matched	paired_linear_regression		gain_hellaswag	18		54				full_moment_pr	FPR	0.26733977516932594	0.11924937026106897	1	"{""full_moment_pr"": 0.3750931619294684}"						
+C_energy_matched	paired_linear_regression		gain_hellaswag	18		54				full_moment_pr	Energy+FPR	0.26733977516932594	0.11924937026106874	1	"{""log_energy_ratio"": 0.0, ""full_moment_pr"": 0.3750931619294685}"						
+C_energy_matched	incremental_fpr_over_energy		gain_hellaswag	18		54				full_moment_pr						0.26733977516932594	0.11924937026106874	0.01952652779078682	0.5452518983466643	-1.0467076220305043	0.30987404377840116
+C_energy_matched	mean_within_checkpoint_spearman	log_energy_ratio	gain_openbookqa	18	0	54															
+C_energy_matched	mean_within_checkpoint_spearman	raw_fpr	gain_openbookqa	18	17	54	-0.16858972963437877	-0.5194192364071879	0.2116515418443127												
+C_energy_matched	mean_within_checkpoint_spearman	full_moment_pr	gain_openbookqa	18	17	54	-0.11764705882352941	-0.49000747170130543	0.26053533469982715												
+C_energy_matched	paired_linear_regression		gain_openbookqa	18		54				raw_fpr	Energy	0.0	0.0	0	"{""log_energy_ratio"": 0.0}"						
+C_energy_matched	paired_linear_regression		gain_openbookqa	18		54				raw_fpr	FPR	0.07075182786686984	-0.09040305797967774	1	"{""raw_fpr"": -0.09622308027515933}"						
+C_energy_matched	paired_linear_regression		gain_openbookqa	18		54				raw_fpr	Energy+FPR	0.07075182786686984	-0.09040305797967774	1	"{""log_energy_ratio"": 0.0, ""raw_fpr"": -0.09622308027515933}"						
+C_energy_matched	incremental_fpr_over_energy		gain_openbookqa	18		54				raw_fpr						0.07075182786686984	-0.09040305797967774	0.0001360557783560418	0.5303272368004853	-0.4302072978539766	0.22677693883048702
+C_energy_matched	paired_linear_regression		gain_openbookqa	18		54				full_moment_pr	Energy	0.0	0.0	0	"{""log_energy_ratio"": 0.0}"						
+C_energy_matched	paired_linear_regression		gain_openbookqa	18		54				full_moment_pr	FPR	0.062262567529696056	-0.12055731016825533	1	"{""full_moment_pr"": -0.09026594560511132}"						
+C_energy_matched	paired_linear_regression		gain_openbookqa	18		54				full_moment_pr	Energy+FPR	0.06226256752969617	-0.12055731016825555	1	"{""log_energy_ratio"": 0.0, ""full_moment_pr"": -0.09026594560511132}"						
+C_energy_matched	incremental_fpr_over_energy		gain_openbookqa	18		54				full_moment_pr						0.06226256752969617	-0.12055731016825555	0.00015603230705629054	0.5279125254391469	-0.48763245561697344	0.19444862935658475
+C_energy_matched	mean_within_checkpoint_spearman	log_energy_ratio	gain_piqa	18	0	54															
+C_energy_matched	mean_within_checkpoint_spearman	raw_fpr	gain_piqa	18	18	54	0.17955837819827097	-0.048298598260545986	0.41467231195209747												
+C_energy_matched	mean_within_checkpoint_spearman	full_moment_pr	gain_piqa	18	18	54	0.12400282264271542	-0.1388888888888889	0.36655978951962864												
+C_energy_matched	paired_linear_regression		gain_piqa	18		54				raw_fpr	Energy	-2.220446049250313e-16	-2.220446049250313e-16	0	"{""log_energy_ratio"": 0.0}"						
+C_energy_matched	paired_linear_regression		gain_piqa	18		54				raw_fpr	FPR	1.3649398073578567e-05	-0.10289841153222823	1	"{""raw_fpr"": 0.0006781631601910043}"						
+C_energy_matched	paired_linear_regression		gain_piqa	18		54				raw_fpr	Energy+FPR	1.3649398073578567e-05	-0.102898411532228	1	"{""log_energy_ratio"": 0.0, ""raw_fpr"": 0.0006781631601909932}"						
+C_energy_matched	incremental_fpr_over_energy		gain_piqa	18		54				raw_fpr						1.3649398073800612e-05	-0.10289841153222778	2.7711817659072228e-05	0.19335719706559917	-0.19212871655830205	-0.03506484462042154
+C_energy_matched	paired_linear_regression		gain_piqa	18		54				full_moment_pr	Energy	-2.220446049250313e-16	-2.220446049250313e-16	0	"{""log_energy_ratio"": 0.0}"						
+C_energy_matched	paired_linear_regression		gain_piqa	18		54				full_moment_pr	FPR	7.293110625494759e-05	-0.12137423495207833	1	"{""full_moment_pr"": -0.0015675949099689624}"						
+C_energy_matched	paired_linear_regression		gain_piqa	18		54				full_moment_pr	Energy+FPR	7.293110625494759e-05	-0.12137423495207833	1	"{""log_energy_ratio"": 0.0, ""full_moment_pr"": -0.0015675949099689655}"						
+C_energy_matched	incremental_fpr_over_energy		gain_piqa	18		54				full_moment_pr						7.293110625516963e-05	-0.12137423495207811	7.364171481050497e-05	0.21335638916338318	-0.22274711778394685	-0.04290322017153749
+C_energy_matched	mean_within_checkpoint_spearman	log_energy_ratio	gain_siqa	18	0	54															
+C_energy_matched	mean_within_checkpoint_spearman	raw_fpr	gain_siqa	18	18	54	-0.25	-0.6240028226427154	0.1165597895196287												
+C_energy_matched	mean_within_checkpoint_spearman	full_moment_pr	gain_siqa	18	18	54	-0.2222222222222222	-0.5610042339640731	0.15183045928835717												
+C_energy_matched	paired_linear_regression		gain_siqa	18		54				raw_fpr	Energy	0.0	0.0	0	"{""log_energy_ratio"": 0.0}"						
+C_energy_matched	paired_linear_regression		gain_siqa	18		54				raw_fpr	FPR	0.05025240023507027	-0.07946391784969897	1	"{""raw_fpr"": -0.0479162053132467}"						
+C_energy_matched	paired_linear_regression		gain_siqa	18		54				raw_fpr	Energy+FPR	0.05025240023507027	-0.07946391784969897	1	"{""log_energy_ratio"": 0.0, ""raw_fpr"": -0.047916205313246724}"						
+C_energy_matched	incremental_fpr_over_energy		gain_siqa	18		54				raw_fpr						0.05025240023507027	-0.07946391784969897	0.0002041746599571263	0.43703203352521613	-0.3414991170050273	0.16569110654062952
+C_energy_matched	paired_linear_regression		gain_siqa	18		54				full_moment_pr	Energy	0.0	0.0	0	"{""log_energy_ratio"": 0.0}"						
+C_energy_matched	paired_linear_regression		gain_siqa	18		54				full_moment_pr	FPR	0.07081422733753873	-0.07507155854835124	1	"{""full_moment_pr"": -0.05688061357872964}"						
+C_energy_matched	paired_linear_regression		gain_siqa	18		54				full_moment_pr	Energy+FPR	0.07081422733753884	-0.07507155854835146	1	"{""log_energy_ratio"": 0.0, ""full_moment_pr"": -0.056880613578729665}"						
+C_energy_matched	incremental_fpr_over_energy		gain_siqa	18		54				full_moment_pr						0.07081422733753884	-0.07507155854835146	0.00014437618508028109	0.504492326191444	-0.41032395434853497	0.23812299086880437
+C_energy_matched	mean_within_checkpoint_spearman	log_energy_ratio	gain_winogrande	18	0	54															
+C_energy_matched	mean_within_checkpoint_spearman	raw_fpr	gain_winogrande	18	18	54	-0.17211534507518425	-0.5034543236939484	0.1538613132274106												
+C_energy_matched	mean_within_checkpoint_spearman	full_moment_pr	gain_winogrande	18	18	54	-0.14433756729740646	-0.45534180126147955	0.18168894987305234												
+C_energy_matched	paired_linear_regression		gain_winogrande	18		54				raw_fpr	Energy	-2.220446049250313e-16	-2.220446049250313e-16	0	"{""log_energy_ratio"": 0.0}"						
+C_energy_matched	paired_linear_regression		gain_winogrande	18		54				raw_fpr	FPR	0.01776609166763432	-0.042237642196658376	1	"{""raw_fpr"": 0.05107163825247329}"						
+C_energy_matched	paired_linear_regression		gain_winogrande	18		54				raw_fpr	Energy+FPR	0.01776609166763443	-0.042237642196658376	1	"{""log_energy_ratio"": 0.0, ""raw_fpr"": 0.05107163825247328}"						
+C_energy_matched	incremental_fpr_over_energy		gain_winogrande	18		54				raw_fpr						0.017766091667634654	-0.042237642196658154	5.768642436930678e-05	0.16792868267521996	-0.24437798204030411	0.02586753435159849
+C_energy_matched	paired_linear_regression		gain_winogrande	18		54				full_moment_pr	Energy	-2.220446049250313e-16	-2.220446049250313e-16	0	"{""log_energy_ratio"": 0.0}"						
+C_energy_matched	paired_linear_regression		gain_winogrande	18		54				full_moment_pr	FPR	0.01031967112015264	-0.04219821084138653	1	"{""full_moment_pr"": 0.038923937659240175}"						
+C_energy_matched	paired_linear_regression		gain_winogrande	18		54				full_moment_pr	Energy+FPR	0.01031967112015264	-0.04219821084138653	1	"{""log_energy_ratio"": 0.0, ""full_moment_pr"": 0.0389239376592402}"						
+C_energy_matched	incremental_fpr_over_energy		gain_winogrande	18		54				full_moment_pr						0.010319671120152862	-0.04219821084138631	4.444748260989438e-05	0.14522860556604006	-0.19806335501378558	0.010478887023164038

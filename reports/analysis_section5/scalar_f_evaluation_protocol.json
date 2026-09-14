@@ -1,0 +1,9 @@
+{
+  "reference_protocol": "/dataset1/zailong/workspace/peft-sft-lab/reports/functional_hns_three_seed_20260914",
+  "main_arguments": "unchanged long2048/CS4096, block5, maxrank16, tokens4096/512/2048/8 as task-config, greedy seed42",
+  "reuse_probe": "reuse passed job1070 v2 environment compatibility and recheck all reference hashes; no new full inference for cached arms",
+  "new_inference_cells": 72,
+  "no_training": true,
+  "artifact_directory": "/dataset1/zailong/workspace/peft-sft-lab/reports/analysis_section5/runtime",
+  "max_gpus": 2
+}

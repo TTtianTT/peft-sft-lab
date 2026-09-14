@@ -1,0 +1,21 @@
+{
+  "status": "complete",
+  "source_bits": "/dataset1/zailong/workspace/peft-sft-lab/reports/hns_energy_matched_20260914/recovery_retention_sample_bits.tsv.gz",
+  "source_bits_sha256": "a31606bde3dc026b6c23d979d9b5adb0c50b480c22865b01d5f027a8a764633d",
+  "transitions": "n_BLE: three binary correctness bits; all eight cells explicitly stored, including zero counts",
+  "recovery": "n_101/(n_100+n_101)",
+  "retention": "n_011/(n_010+n_011)",
+  "new_success": "n_001",
+  "new_damage": "n_110",
+  "zero_denominator": "NA, not zero; defined counts reported",
+  "macro": "equal CS subbenchmarks, equal four families, equal 18 checkpoints; target/off separately",
+  "checkpoint_bootstrap": "existing protocol: resample paired source checkpoints; fixed test set; not iid training claims",
+  "sample_bootstrap": "2000 multinomial draws of the joint 32 states B,L,H,S,F per atomic benchmark and checkpoint; edits share each draw. Benchmarks independently resampled for each checkpoint macro. No aggregate sample CI across checkpoints: test questions are shared across runs.",
+  "sample_bootstrap_baseline": "each draw recomputes opportunity-set denominators; undefined draw omitted, coverage output",
+  "seed": 20260914,
+  "resamples": 2000,
+  "new_inference_calls": 0,
+  "atomic_rows": 594,
+  "conditional_ci_rows": 3888,
+  "supplemental_prevalences": "new_success_rate=n_001/n_samples; new_damage_rate=n_110/n_samples, not conditional opportunity rates"
+}

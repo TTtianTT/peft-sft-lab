@@ -1,0 +1,21 @@
+{
+  "status": "pass",
+  "expected": {
+    "torch": "2.11.0+cu128",
+    "vllm": "0.25.1+cu129",
+    "transformers": "5.16.1",
+    "peft": "0.20.0",
+    "safetensors": "0.8.0",
+    "human-eval": "1.0.3"
+  },
+  "actual": {
+    "torch": "2.11.0+cu128",
+    "vllm": "0.25.1+cu129",
+    "transformers": "5.16.1",
+    "peft": "0.20.0",
+    "safetensors": "0.8.0",
+    "human-eval": "1.0.3"
+  },
+  "all_hns_targets": "all_modules 4+1 strength1 nuclear-preserving",
+  "job_id": "1074"
+}

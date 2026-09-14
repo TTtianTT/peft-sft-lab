@@ -1,0 +1,139 @@
+{
+  "status": "pass",
+  "source_job": 1070,
+  "source_report": "/dataset1/zailong/workspace/peft-sft-lab/reports/hns_energy_matched_20260914.md",
+  "source_report_sha256": "b4da9547e2e2009b414bc2e159f7e56122c26709f25bb2ef991118bf3df0b078",
+  "reused": [
+    {
+      "output": "energy_matched_checkpoint_results.tsv",
+      "source": "/dataset1/zailong/workspace/peft-sft-lab/reports/hns_energy_matched_20260914/energy_matched_checkpoint_results.tsv",
+      "sha256": "8721c67ec5492a8b9a6d6b58f2f9f80b1524e5e09db5f6a0ad1c0a79386162c7",
+      "operation": "reused unchanged"
+    },
+    {
+      "output": "energy_matched_grouped_results.tsv",
+      "source": "/dataset1/zailong/workspace/peft-sft-lab/reports/hns_energy_matched_20260914/energy_matched_grouped_results.tsv",
+      "sha256": "89b4500ec7dfd5870ac4a2e3bcc714f627ecfa625d0a8f6b16bf7a12e86e9067",
+      "operation": "reused unchanged"
+    },
+    {
+      "output": "energy_matched_paired_statistics.tsv",
+      "source": "/dataset1/zailong/workspace/peft-sft-lab/reports/hns_energy_matched_20260914/energy_matched_paired_statistics.tsv",
+      "sha256": "c3b7881996ad5e98627ef7a11071808b9954e6c1950d084eb25bedb4b75d4609",
+      "operation": "reused unchanged"
+    },
+    {
+      "output": "raw_results.tsv",
+      "source": "/dataset1/zailong/workspace/peft-sft-lab/reports/hns_energy_matched_20260914/raw_results.tsv",
+      "sha256": "b0a9d06b39e0f9f7c8243fbaae005ea92944acd5c5260d8e6cb28148ba247539",
+      "operation": "reused unchanged"
+    },
+    {
+      "output": "raw_results.json",
+      "source": "/dataset1/zailong/workspace/peft-sft-lab/reports/hns_energy_matched_20260914/raw_results.json",
+      "sha256": "921368027c98a8132740511b6be91d858235a7d7462e75b744496a86bfb92f31",
+      "operation": "reused unchanged"
+    },
+    {
+      "output": "fpr_statistics.tsv",
+      "source": "/dataset1/zailong/workspace/peft-sft-lab/reports/hns_energy_matched_20260914/fpr_statistics.tsv",
+      "sha256": "677475a26d5afbf277aa8946d2ccc6c44863a7e792ea1a4ba685c27d76385da6",
+      "operation": "reused unchanged"
+    },
+    {
+      "output": "fpr_statistics.json",
+      "source": "/dataset1/zailong/workspace/peft-sft-lab/reports/hns_energy_matched_20260914/fpr_statistics.json",
+      "sha256": "8d35049ba30e859d4f558aeba67bca6eaa25aa275ae677e751e1d1ed55601389",
+      "operation": "reused unchanged"
+    },
+    {
+      "output": "fpr_checkpoint_spearman.tsv",
+      "source": "/dataset1/zailong/workspace/peft-sft-lab/reports/hns_energy_matched_20260914/fpr_checkpoint_spearman.tsv",
+      "sha256": "0b3df41ee986d5150e91894106c96f8d30eee3c00a507bfd3ed484b61afb796a",
+      "operation": "reused unchanged"
+    },
+    {
+      "output": "fpr_grouped_checkpoint_spearman.tsv",
+      "source": "/dataset1/zailong/workspace/peft-sft-lab/reports/hns_energy_matched_20260914/fpr_grouped_checkpoint_spearman.tsv",
+      "sha256": "8b7a7b15dd29413b1d390eaaa60b57b0bd480a55557d90dc3de33b498eec74a9",
+      "operation": "reused unchanged"
+    },
+    {
+      "output": "fpr_regression_design.tsv",
+      "source": "/dataset1/zailong/workspace/peft-sft-lab/reports/hns_energy_matched_20260914/fpr_regression_design.tsv",
+      "sha256": "e8680028bfde3a00d50c9b9b63079f9db3032a51ab2d321d1b0294738a654319",
+      "operation": "reused unchanged"
+    },
+    {
+      "output": "fpr_regression_predictions.tsv",
+      "source": "/dataset1/zailong/workspace/peft-sft-lab/reports/hns_energy_matched_20260914/fpr_regression_predictions.tsv",
+      "sha256": "1186793de8c43f000b19b6029dfd9f9a9407871af4821ba52cc3ed5f8c01566e",
+      "operation": "reused unchanged"
+    },
+    {
+      "output": "functional_boundary_summary.tsv",
+      "source": "/dataset1/zailong/workspace/peft-sft-lab/reports/hns_energy_matched_20260914/functional_boundary_summary.tsv",
+      "sha256": "e979c166b05fd8f7119e1ff178b108d683e0735ff2df25a8093b0c5965f58a1a",
+      "operation": "reused unchanged"
+    },
+    {
+      "output": "functional_boundary_counterexamples.tsv",
+      "source": "/dataset1/zailong/workspace/peft-sft-lab/reports/hns_energy_matched_20260914/functional_boundary_counterexamples.tsv",
+      "sha256": "50c4f80b205cc4ed5212246a61eb6ed21e0af5bf3866718e7e20ee676207b2b0",
+      "operation": "reused unchanged"
+    },
+    {
+      "output": "recovery_retention_by_checkpoint_benchmark.tsv",
+      "source": "/dataset1/zailong/workspace/peft-sft-lab/reports/hns_energy_matched_20260914/recovery_retention_by_checkpoint_benchmark.tsv",
+      "sha256": "2ce1c498552be5d6cdeaf7359a61b6172fc91f39524a43c1c0e5f6fd18521dfd",
+      "operation": "reused unchanged"
+    },
+    {
+      "output": "recovery_retention_by_checkpoint_family.tsv",
+      "source": "/dataset1/zailong/workspace/peft-sft-lab/reports/hns_energy_matched_20260914/recovery_retention_by_checkpoint_family.tsv",
+      "sha256": "ca4474ee73a37672de9c14799460245c9974567ef4175b62ca9be1c5b12a1687",
+      "operation": "reused unchanged"
+    },
+    {
+      "output": "recovery_retention_scatter_data.tsv",
+      "source": "/dataset1/zailong/workspace/peft-sft-lab/reports/hns_energy_matched_20260914/recovery_retention_scatter_data.tsv",
+      "sha256": "223012e698c07322b9d0de759eb5019a2c768bc8cb49faad1b1f27e0d7db98e6",
+      "operation": "reused unchanged"
+    },
+    {
+      "output": "recovery_retention_summary.tsv",
+      "source": "/dataset1/zailong/workspace/peft-sft-lab/reports/hns_energy_matched_20260914/recovery_retention_summary.tsv",
+      "sha256": "c0a47ea2b7bbb7ae93df160c151b2cddfa984df48d112ff8eef7a3d62d47dc3f",
+      "operation": "reused unchanged"
+    },
+    {
+      "output": "recovery_retention_paired_statistics.tsv",
+      "source": "/dataset1/zailong/workspace/peft-sft-lab/reports/hns_energy_matched_20260914/recovery_retention_paired_statistics.tsv",
+      "sha256": "2ea91d0023a997ea84ce71d09bb69496e2be9442c9eca85249a0df7b81576af8",
+      "operation": "reused unchanged"
+    },
+    {
+      "output": "old_scalar_energy_audit.tsv",
+      "source": "/dataset1/zailong/workspace/peft-sft-lab/reports/hns_energy_matched_20260914/old_scalar_energy_audit.tsv",
+      "sha256": "4c0a10885f2350ae2e65d9660010fbbe66f83aa739f4ab3bd67899d8051a0a6f",
+      "operation": "reused unchanged"
+    }
+  ],
+  "reference_protocol": "/dataset1/zailong/workspace/peft-sft-lab/reports/functional_hns_three_seed_20260914",
+  "evaluation_code_sha256": {
+    "scripts/eval_forgetting_matrix_vllm.py": "46d57d067d0cdb68f3fda87269cfb9cf0895a1fa82051c5021fdad0da3a7c061",
+    "scripts/score_forgetting_matrix.py": "a172270a8d115d2f06863a0d181a784756412747a45e9dc02dd71d0f95de5bf5",
+    "scripts/eval_commonsense_8tasks.py": "0eb3dfbbccabdc97e4cdcc7c575756f5eb5db963ea0cf9427a1ff3e25c15334e",
+    "src/finetune/eval/eval_humaneval.py": "babd571e6eb7af395281506db836e478ac1a32d6fc738a22051222009eea520e",
+    "src/finetune/eval/eval_gsm8k.py": "ed95442c30536ac4ba90b5a2806d764cea8f8eb38c6879af2c0dd7b2c54dd335",
+    "src/finetune/eval/eval_ifeval.py": "1af1ef7f6c8b38d91dd94bbbc4a0b373ed76a3186899197d1f3c046afd987ef0",
+    "src/finetune/eval/generation.py": "bba4a24e4e5808f2abe74749a6f571a5aa1c7f27a03b9df2132ec835afbca075"
+  },
+  "cache_cells_verified": 296,
+  "ordered_input_audit": "pass",
+  "module_rows": 8568,
+  "max_analytic_energy_error": 8.881784197001252e-16,
+  "max_saved_energy_error": 7.519320270099605e-06,
+  "scope": "2 bases x 3 tasks x seeds42/43/44",
+  "training": false
+}

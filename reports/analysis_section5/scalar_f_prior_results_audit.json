@@ -1,0 +1,76 @@
+{
+  "status": "incomplete under required protocol",
+  "sources": [
+    {
+      "generation_manifest": "/dataset1/zailong/workspace/peft-sft-lab/reports/hns_forgetting_20260911/git_artifacts/run_metadata/generation_manifest__formal_qwen.json",
+      "variant_manifest": "/dataset1/zailong/runs/peft-sft-lab/hns-forgetting-2x4-20260911/variant_manifests/Qwen3-8B.json",
+      "generation_manifest_sha256": "7e7b28ef5434cb386ba1accbf432c3b6601476a1b0f034fdafd2c55571ce21bb",
+      "matching": "actual HNS aligned spectrum, not ideal ExactFlat",
+      "historical_configuration": {
+        "vllm_batch_invariant": "1",
+        "gpu_memory_utilization": 0.92,
+        "max_num_seqs": 256,
+        "max_num_batched_tokens": 65536,
+        "adapter_block_size": 8,
+        "seed": 42
+      },
+      "canonical_configuration": {
+        "gpu_memory_utilization": 0.94,
+        "long_max_num_seqs": 2048,
+        "cs_max_num_seqs": 4096,
+        "adapter_block_size": 5
+      },
+      "candidate_labels": [
+        "magicoder__common_per_module",
+        "metamath__common_per_module",
+        "tulu__common_per_module",
+        "commonsense__common_per_module"
+      ],
+      "training_seeds": [
+        42
+      ],
+      "eligible_for_unified_18_checkpoint_results": false,
+      "reason": "only three relevant seed42 tasks per base; historical memory .92/maxseq256/block8 differ from final .94/2048-or-4096/block5; old Llama cache not final uniform wave"
+    },
+    {
+      "generation_manifest": "/dataset1/zailong/workspace/peft-sft-lab/reports/hns_forgetting_20260911/git_artifacts/run_metadata/generation_manifest__formal_llama.json",
+      "variant_manifest": "/dataset1/zailong/runs/peft-sft-lab/hns-forgetting-2x4-20260911/variant_manifests/Llama-3p1-8B-Instruct.json",
+      "generation_manifest_sha256": "b90ca549607676dd9afbe1ecc94696711df74044f909f5818efcac0a8258d994",
+      "matching": "actual HNS aligned spectrum, not ideal ExactFlat",
+      "historical_configuration": {
+        "vllm_batch_invariant": "1",
+        "gpu_memory_utilization": 0.92,
+        "max_num_seqs": 256,
+        "max_num_batched_tokens": 65536,
+        "adapter_block_size": 8,
+        "seed": 42
+      },
+      "canonical_configuration": {
+        "gpu_memory_utilization": 0.94,
+        "long_max_num_seqs": 2048,
+        "cs_max_num_seqs": 4096,
+        "adapter_block_size": 5
+      },
+      "candidate_labels": [
+        "magicoder__common_per_module",
+        "metamath__common_per_module",
+        "tulu__common_per_module",
+        "commonsense__common_per_module"
+      ],
+      "training_seeds": [
+        42
+      ],
+      "eligible_for_unified_18_checkpoint_results": false,
+      "reason": "only three relevant seed42 tasks per base; historical memory .92/maxseq256/block8 differ from final .94/2048-or-4096/block5; old Llama cache not final uniform wave"
+    }
+  ],
+  "exactflat_warning": "src/finetune/spectral_edit/ablations.py scalar_shrink matches ideal nuclear-preserving ExactFlat; not Scalar-F here",
+  "accepted_definition": "gamma_F = norm(actual HNS 4+1 t)/norm(source sigma), per module; keep source spectrum ratios and LoRA scaling",
+  "branch_search": [
+    "current untracked workspace and actual report paths",
+    "main",
+    "origin/archive/rebuttal-analysis-suite"
+  ],
+  "required_new_cells": 72,
+  "priority": "last, after all CPU cache-only work"
+}

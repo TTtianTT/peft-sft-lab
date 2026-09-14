@@ -1,0 +1,14 @@
+{
+  "reference": "actual HNS 4+1, all_modules, strength1, nuclear norm preserved",
+  "q": "raw diagonal frozen Base source-direction second moment; no floor",
+  "energy": "c^2 * sum(s_i^2*q_i), c is unchanged original LoRA scaling",
+  "scalar_e": "sigma_i * sqrt(sum(t_H^2*q)/sum(sigma^2*q)); no nuclear restoration",
+  "flat_e": "sqrt(sum(t_H^2*q)/sum(q)) on all source rank directions; no nuclear restoration",
+  "scalar_f": "sigma_i * norm(actual t_H)/norm(sigma), modulewise; no nuclear restoration; not energy-matched",
+  "raw_fpr": "sum(s^2*q)^2 / sum((s^2*q)^2)",
+  "full_moment_pr": "trace(G)^2 / sum(G^2), G=diag(s)*M*diag(s), M=raw frozen Base coordinate second moment",
+  "predictor_aggregation": "module median PR; sum module functional energies; log edited/source energy ratio",
+  "performance": "Target source family; Off mean of other three families; eight CS benchmarks equal within CS",
+  "fg": "mean max(Base_family - Edited_family,0) on three off families, percentage points",
+  "scope": "all 18 source checkpoints, including seeds42/43/44; no training or indicator search"
+}

@@ -1,0 +1,23 @@
+{
+  "seed": 20260914,
+  "resamples": 2000,
+  "estimator": "equal-checkpoint mean paired method difference; fixed benchmark/family weights",
+  "unit": "source checkpoint, with all edited variants kept together",
+  "resampling": "existing protocol: checkpoints sampled with replacement within each reported group; not additionally stratified by seed/base/task",
+  "groups": [
+    "overall",
+    "base/Qwen3-8B",
+    "base/Llama-3.1-8B-Instruct",
+    "source/magicoder",
+    "source/metamath",
+    "source/tulu",
+    "base_source/Qwen3-8B/magicoder",
+    "base_source/Qwen3-8B/metamath",
+    "base_source/Qwen3-8B/tulu",
+    "base_source/Llama-3.1-8B-Instruct/magicoder",
+    "base_source/Llama-3.1-8B-Instruct/metamath",
+    "base_source/Llama-3.1-8B-Instruct/tulu"
+  ],
+  "interval": "percentile 2.5/97.5; subgroup intervals unadjusted descriptive",
+  "uncertainty": "fixed test set, source-checkpoint heterogeneity; not token/module replication or combined test-and-training uncertainty"
+}

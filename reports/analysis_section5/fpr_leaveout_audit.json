@@ -1,0 +1,9 @@
+{
+  "status": "pass",
+  "folds": 54,
+  "predictions_checked": 25920,
+  "max_train_only_scaling_prediction_error": 4.440892098500626e-15,
+  "overlapping_source_checkpoints": 0,
+  "baseline": "conditional within-checkpoint zero deviation; test outcome/group centering disclosed, not absolute deployment prediction",
+  "note": "train-only scaling independently reproduces the existing unregularized linear LOCO predictions; no new model/metric selection"
+}
