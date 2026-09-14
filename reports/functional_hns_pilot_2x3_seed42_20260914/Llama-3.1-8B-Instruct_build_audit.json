@@ -1,0 +1,5386 @@
+{
+  "status": "pass",
+  "modules": 672,
+  "source_checkpoints": 3,
+  "adapters_new": 9,
+  "module_audit": [
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "task": "magicoder",
+      "module": "base_model.model.model.layers.0.mlp.down_proj",
+      "cached_basis_exact": true,
+      "cached_spectrum_relative_error": 0.0,
+      "hns_alpha0_reference_error": 2.3897594675528647e-08
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "task": "magicoder",
+      "module": "base_model.model.model.layers.0.mlp.gate_proj",
+      "cached_basis_exact": true,
+      "cached_spectrum_relative_error": 0.0,
+      "hns_alpha0_reference_error": 2.2934396679917654e-08
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "task": "magicoder",
+      "module": "base_model.model.model.layers.0.mlp.up_proj",
+      "cached_basis_exact": true,
+      "cached_spectrum_relative_error": 0.0,
+      "hns_alpha0_reference_error": 2.0861682640132732e-08
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "task": "magicoder",
+      "module": "base_model.model.model.layers.0.self_attn.k_proj",
+      "cached_basis_exact": true,
+      "cached_spectrum_relative_error": 0.0,
+      "hns_alpha0_reference_error": 1.980530492129817e-08
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "task": "magicoder",
+      "module": "base_model.model.model.layers.0.self_attn.o_proj",
+      "cached_basis_exact": true,
+      "cached_spectrum_relative_error": 0.0,
+      "hns_alpha0_reference_error": 2.1165617301352908e-08
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "task": "magicoder",
+      "module": "base_model.model.model.layers.0.self_attn.q_proj",
+      "cached_basis_exact": true,
+      "cached_spectrum_relative_error": 0.0,
+      "hns_alpha0_reference_error": 2.4739882567033012e-08
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "task": "magicoder",
+      "module": "base_model.model.model.layers.0.self_attn.v_proj",
+      "cached_basis_exact": true,
+      "cached_spectrum_relative_error": 0.0,
+      "hns_alpha0_reference_error": 2.4182762284565674e-08
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "task": "magicoder",
+      "module": "base_model.model.model.layers.1.mlp.down_proj",
+      "cached_basis_exact": true,
+      "cached_spectrum_relative_error": 0.0,
+      "hns_alpha0_reference_error": 2.659256817468383e-08
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "task": "magicoder",
+      "module": "base_model.model.model.layers.1.mlp.gate_proj",
+      "cached_basis_exact": true,
+      "cached_spectrum_relative_error": 0.0,
+      "hns_alpha0_reference_error": 1.9147101283251896e-08
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "task": "magicoder",
+      "module": "base_model.model.model.layers.1.mlp.up_proj",
+      "cached_basis_exact": true,
+      "cached_spectrum_relative_error": 0.0,
+      "hns_alpha0_reference_error": 2.0943962145897547e-08
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "task": "magicoder",
+      "module": "base_model.model.model.layers.1.self_attn.k_proj",
+      "cached_basis_exact": true,
+      "cached_spectrum_relative_error": 0.0,
+      "hns_alpha0_reference_error": 2.3541849536680573e-08
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "task": "magicoder",
+      "module": "base_model.model.model.layers.1.self_attn.o_proj",
+      "cached_basis_exact": true,
+      "cached_spectrum_relative_error": 0.0,
+      "hns_alpha0_reference_error": 1.8194615058483656e-08
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "task": "magicoder",
+      "module": "base_model.model.model.layers.1.self_attn.q_proj",
+      "cached_basis_exact": true,
+      "cached_spectrum_relative_error": 0.0,
+      "hns_alpha0_reference_error": 3.058642264587225e-08
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "task": "magicoder",
+      "module": "base_model.model.model.layers.1.self_attn.v_proj",
+      "cached_basis_exact": true,
+      "cached_spectrum_relative_error": 0.0,
+      "hns_alpha0_reference_error": 2.1698940685647702e-08
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "task": "magicoder",
+      "module": "base_model.model.model.layers.10.mlp.down_proj",
+      "cached_basis_exact": true,
+      "cached_spectrum_relative_error": 0.0,
+      "hns_alpha0_reference_error": 2.3264271317154258e-08
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "task": "magicoder",
+      "module": "base_model.model.model.layers.10.mlp.gate_proj",
+      "cached_basis_exact": true,
+      "cached_spectrum_relative_error": 0.0,
+      "hns_alpha0_reference_error": 2.198981706775806e-08
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "task": "magicoder",
+      "module": "base_model.model.model.layers.10.mlp.up_proj",
+      "cached_basis_exact": true,
+      "cached_spectrum_relative_error": 0.0,
+      "hns_alpha0_reference_error": 2.3677796808375293e-08
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "task": "magicoder",
+      "module": "base_model.model.model.layers.10.self_attn.k_proj",
+      "cached_basis_exact": true,
+      "cached_spectrum_relative_error": 0.0,
+      "hns_alpha0_reference_error": 2.162318908046466e-08
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "task": "magicoder",
+      "module": "base_model.model.model.layers.10.self_attn.o_proj",
+      "cached_basis_exact": true,
+      "cached_spectrum_relative_error": 0.0,
+      "hns_alpha0_reference_error": 1.817244940924853e-08
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "task": "magicoder",
+      "module": "base_model.model.model.layers.10.self_attn.q_proj",
+      "cached_basis_exact": true,
+      "cached_spectrum_relative_error": 0.0,
+      "hns_alpha0_reference_error": 2.3960497012016433e-08
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "task": "magicoder",
+      "module": "base_model.model.model.layers.10.self_attn.v_proj",
+      "cached_basis_exact": true,
+      "cached_spectrum_relative_error": 0.0,
+      "hns_alpha0_reference_error": 1.767987682207808e-08
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "task": "magicoder",
+      "module": "base_model.model.model.layers.11.mlp.down_proj",
+      "cached_basis_exact": true,
+      "cached_spectrum_relative_error": 0.0,
+      "hns_alpha0_reference_error": 1.976627751720284e-08
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "task": "magicoder",
+      "module": "base_model.model.model.layers.11.mlp.gate_proj",
+      "cached_basis_exact": true,
+      "cached_spectrum_relative_error": 0.0,
+      "hns_alpha0_reference_error": 3.074381196697942e-08
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "task": "magicoder",
+      "module": "base_model.model.model.layers.11.mlp.up_proj",
+      "cached_basis_exact": true,
+      "cached_spectrum_relative_error": 0.0,
+      "hns_alpha0_reference_error": 2.4346651021318533e-08
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "task": "magicoder",
+      "module": "base_model.model.model.layers.11.self_attn.k_proj",
+      "cached_basis_exact": true,
+      "cached_spectrum_relative_error": 0.0,
+      "hns_alpha0_reference_error": 1.9067472684904945e-08
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "task": "magicoder",
+      "module": "base_model.model.model.layers.11.self_attn.o_proj",
+      "cached_basis_exact": true,
+      "cached_spectrum_relative_error": 0.0,
+      "hns_alpha0_reference_error": 1.8945716411954965e-08
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "task": "magicoder",
+      "module": "base_model.model.model.layers.11.self_attn.q_proj",
+      "cached_basis_exact": true,
+      "cached_spectrum_relative_error": 0.0,
+      "hns_alpha0_reference_error": 2.345116177586334e-08
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "task": "magicoder",
+      "module": "base_model.model.model.layers.11.self_attn.v_proj",
+      "cached_basis_exact": true,
+      "cached_spectrum_relative_error": 0.0,
+      "hns_alpha0_reference_error": 2.3695017743114264e-08
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "task": "magicoder",
+      "module": "base_model.model.model.layers.12.mlp.down_proj",
+      "cached_basis_exact": true,
+      "cached_spectrum_relative_error": 0.0,
+      "hns_alpha0_reference_error": 1.872398475198761e-08
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "task": "magicoder",
+      "module": "base_model.model.model.layers.12.mlp.gate_proj",
+      "cached_basis_exact": true,
+      "cached_spectrum_relative_error": 0.0,
+      "hns_alpha0_reference_error": 1.9675763599058683e-08
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "task": "magicoder",
+      "module": "base_model.model.model.layers.12.mlp.up_proj",
+      "cached_basis_exact": true,
+      "cached_spectrum_relative_error": 0.0,
+      "hns_alpha0_reference_error": 2.2460193029525086e-08
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "task": "magicoder",
+      "module": "base_model.model.model.layers.12.self_attn.k_proj",
+      "cached_basis_exact": true,
+      "cached_spectrum_relative_error": 0.0,
+      "hns_alpha0_reference_error": 1.4203851850411674e-08
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "task": "magicoder",
+      "module": "base_model.model.model.layers.12.self_attn.o_proj",
+      "cached_basis_exact": true,
+      "cached_spectrum_relative_error": 0.0,
+      "hns_alpha0_reference_error": 3.479874647264413e-08
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "task": "magicoder",
+      "module": "base_model.model.model.layers.12.self_attn.q_proj",
+      "cached_basis_exact": true,
+      "cached_spectrum_relative_error": 0.0,
+      "hns_alpha0_reference_error": 1.917921828813528e-08
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "task": "magicoder",
+      "module": "base_model.model.model.layers.12.self_attn.v_proj",
+      "cached_basis_exact": true,
+      "cached_spectrum_relative_error": 0.0,
+      "hns_alpha0_reference_error": 2.431964996138138e-08
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "task": "magicoder",
+      "module": "base_model.model.model.layers.13.mlp.down_proj",
+      "cached_basis_exact": true,
+      "cached_spectrum_relative_error": 0.0,
+      "hns_alpha0_reference_error": 2.274919015147999e-08
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "task": "magicoder",
+      "module": "base_model.model.model.layers.13.mlp.gate_proj",
+      "cached_basis_exact": true,
+      "cached_spectrum_relative_error": 0.0,
+      "hns_alpha0_reference_error": 1.5204891946544057e-08
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "task": "magicoder",
+      "module": "base_model.model.model.layers.13.mlp.up_proj",
+      "cached_basis_exact": true,
+      "cached_spectrum_relative_error": 0.0,
+      "hns_alpha0_reference_error": 2.2751842498824254e-08
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "task": "magicoder",
+      "module": "base_model.model.model.layers.13.self_attn.k_proj",
+      "cached_basis_exact": true,
+      "cached_spectrum_relative_error": 0.0,
+      "hns_alpha0_reference_error": 1.7834815817510866e-08
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "task": "magicoder",
+      "module": "base_model.model.model.layers.13.self_attn.o_proj",
+      "cached_basis_exact": true,
+      "cached_spectrum_relative_error": 0.0,
+      "hns_alpha0_reference_error": 1.8393655323943044e-08
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "task": "magicoder",
+      "module": "base_model.model.model.layers.13.self_attn.q_proj",
+      "cached_basis_exact": true,
+      "cached_spectrum_relative_error": 0.0,
+      "hns_alpha0_reference_error": 2.146849782908088e-08
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "task": "magicoder",
+      "module": "base_model.model.model.layers.13.self_attn.v_proj",
+      "cached_basis_exact": true,
+      "cached_spectrum_relative_error": 0.0,
+      "hns_alpha0_reference_error": 2.7527122417581034e-08
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "task": "magicoder",
+      "module": "base_model.model.model.layers.14.mlp.down_proj",
+      "cached_basis_exact": true,
+      "cached_spectrum_relative_error": 0.0,
+      "hns_alpha0_reference_error": 1.902407992791286e-08
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "task": "magicoder",
+      "module": "base_model.model.model.layers.14.mlp.gate_proj",
+      "cached_basis_exact": true,
+      "cached_spectrum_relative_error": 0.0,
+      "hns_alpha0_reference_error": 1.924785061476479e-08
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "task": "magicoder",
+      "module": "base_model.model.model.layers.14.mlp.up_proj",
+      "cached_basis_exact": true,
+      "cached_spectrum_relative_error": 0.0,
+      "hns_alpha0_reference_error": 2.1146924213302692e-08
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "task": "magicoder",
+      "module": "base_model.model.model.layers.14.self_attn.k_proj",
+      "cached_basis_exact": true,
+      "cached_spectrum_relative_error": 0.0,
+      "hns_alpha0_reference_error": 1.7199162920065266e-08
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "task": "magicoder",
+      "module": "base_model.model.model.layers.14.self_attn.o_proj",
+      "cached_basis_exact": true,
+      "cached_spectrum_relative_error": 0.0,
+      "hns_alpha0_reference_error": 3.088381829221147e-08
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "task": "magicoder",
+      "module": "base_model.model.model.layers.14.self_attn.q_proj",
+      "cached_basis_exact": true,
+      "cached_spectrum_relative_error": 0.0,
+      "hns_alpha0_reference_error": 2.0642381524066924e-08
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "task": "magicoder",
+      "module": "base_model.model.model.layers.14.self_attn.v_proj",
+      "cached_basis_exact": true,
+      "cached_spectrum_relative_error": 0.0,
+      "hns_alpha0_reference_error": 1.764432954735288e-08
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "task": "magicoder",
+      "module": "base_model.model.model.layers.15.mlp.down_proj",
+      "cached_basis_exact": true,
+      "cached_spectrum_relative_error": 0.0,
+      "hns_alpha0_reference_error": 2.1379322132275096e-08
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "task": "magicoder",
+      "module": "base_model.model.model.layers.15.mlp.gate_proj",
+      "cached_basis_exact": true,
+      "cached_spectrum_relative_error": 0.0,
+      "hns_alpha0_reference_error": 1.553682599567097e-08
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "task": "magicoder",
+      "module": "base_model.model.model.layers.15.mlp.up_proj",
+      "cached_basis_exact": true,
+      "cached_spectrum_relative_error": 0.0,
+      "hns_alpha0_reference_error": 1.7143572883416004e-08
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "task": "magicoder",
+      "module": "base_model.model.model.layers.15.self_attn.k_proj",
+      "cached_basis_exact": true,
+      "cached_spectrum_relative_error": 0.0,
+      "hns_alpha0_reference_error": 2.2753879823554522e-08
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "task": "magicoder",
+      "module": "base_model.model.model.layers.15.self_attn.o_proj",
+      "cached_basis_exact": true,
+      "cached_spectrum_relative_error": 0.0,
+      "hns_alpha0_reference_error": 2.6589522863159242e-08
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "task": "magicoder",
+      "module": "base_model.model.model.layers.15.self_attn.q_proj",
+      "cached_basis_exact": true,
+      "cached_spectrum_relative_error": 0.0,
+      "hns_alpha0_reference_error": 2.202032319373422e-08
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "task": "magicoder",
+      "module": "base_model.model.model.layers.15.self_attn.v_proj",
+      "cached_basis_exact": true,
+      "cached_spectrum_relative_error": 0.0,
+      "hns_alpha0_reference_error": 2.3362278009984934e-08
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "task": "magicoder",
+      "module": "base_model.model.model.layers.16.mlp.down_proj",
+      "cached_basis_exact": true,
+      "cached_spectrum_relative_error": 0.0,
+      "hns_alpha0_reference_error": 1.805538865934412e-08
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "task": "magicoder",
+      "module": "base_model.model.model.layers.16.mlp.gate_proj",
+      "cached_basis_exact": true,
+      "cached_spectrum_relative_error": 0.0,
+      "hns_alpha0_reference_error": 2.0064630332584177e-08
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "task": "magicoder",
+      "module": "base_model.model.model.layers.16.mlp.up_proj",
+      "cached_basis_exact": true,
+      "cached_spectrum_relative_error": 0.0,
+      "hns_alpha0_reference_error": 1.9950855754777e-08
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "task": "magicoder",
+      "module": "base_model.model.model.layers.16.self_attn.k_proj",
+      "cached_basis_exact": true,
+      "cached_spectrum_relative_error": 0.0,
+      "hns_alpha0_reference_error": 1.8117574460464015e-08
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "task": "magicoder",
+      "module": "base_model.model.model.layers.16.self_attn.o_proj",
+      "cached_basis_exact": true,
+      "cached_spectrum_relative_error": 0.0,
+      "hns_alpha0_reference_error": 1.8223050500366e-08
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "task": "magicoder",
+      "module": "base_model.model.model.layers.16.self_attn.q_proj",
+      "cached_basis_exact": true,
+      "cached_spectrum_relative_error": 0.0,
+      "hns_alpha0_reference_error": 1.5658533549956243e-08
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "task": "magicoder",
+      "module": "base_model.model.model.layers.16.self_attn.v_proj",
+      "cached_basis_exact": true,
+      "cached_spectrum_relative_error": 0.0,
+      "hns_alpha0_reference_error": 2.294530889270369e-08
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "task": "magicoder",
+      "module": "base_model.model.model.layers.17.mlp.down_proj",
+      "cached_basis_exact": true,
+      "cached_spectrum_relative_error": 0.0,
+      "hns_alpha0_reference_error": 2.4670180466346873e-08
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "task": "magicoder",
+      "module": "base_model.model.model.layers.17.mlp.gate_proj",
+      "cached_basis_exact": true,
+      "cached_spectrum_relative_error": 0.0,
+      "hns_alpha0_reference_error": 2.204574737616476e-08
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "task": "magicoder",
+      "module": "base_model.model.model.layers.17.mlp.up_proj",
+      "cached_basis_exact": true,
+      "cached_spectrum_relative_error": 0.0,
+      "hns_alpha0_reference_error": 1.985484890746e-08
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "task": "magicoder",
+      "module": "base_model.model.model.layers.17.self_attn.k_proj",
+      "cached_basis_exact": true,
+      "cached_spectrum_relative_error": 0.0,
+      "hns_alpha0_reference_error": 3.585580210555082e-08
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "task": "magicoder",
+      "module": "base_model.model.model.layers.17.self_attn.o_proj",
+      "cached_basis_exact": true,
+      "cached_spectrum_relative_error": 0.0,
+      "hns_alpha0_reference_error": 1.928738346213801e-08
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "task": "magicoder",
+      "module": "base_model.model.model.layers.17.self_attn.q_proj",
+      "cached_basis_exact": true,
+      "cached_spectrum_relative_error": 0.0,
+      "hns_alpha0_reference_error": 2.4035501967409594e-08
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "task": "magicoder",
+      "module": "base_model.model.model.layers.17.self_attn.v_proj",
+      "cached_basis_exact": true,
+      "cached_spectrum_relative_error": 0.0,
+      "hns_alpha0_reference_error": 2.0208120294853304e-08
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "task": "magicoder",
+      "module": "base_model.model.model.layers.18.mlp.down_proj",
+      "cached_basis_exact": true,
+      "cached_spectrum_relative_error": 0.0,
+      "hns_alpha0_reference_error": 2.440144048960144e-08
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "task": "magicoder",
+      "module": "base_model.model.model.layers.18.mlp.gate_proj",
+      "cached_basis_exact": true,
+      "cached_spectrum_relative_error": 0.0,
+      "hns_alpha0_reference_error": 3.02429893131789e-08
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "task": "magicoder",
+      "module": "base_model.model.model.layers.18.mlp.up_proj",
+      "cached_basis_exact": true,
+      "cached_spectrum_relative_error": 0.0,
+      "hns_alpha0_reference_error": 2.2019208892571824e-08
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "task": "magicoder",
+      "module": "base_model.model.model.layers.18.self_attn.k_proj",
+      "cached_basis_exact": true,
+      "cached_spectrum_relative_error": 0.0,
+      "hns_alpha0_reference_error": 1.6412861010546392e-08
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "task": "magicoder",
+      "module": "base_model.model.model.layers.18.self_attn.o_proj",
+      "cached_basis_exact": true,
+      "cached_spectrum_relative_error": 0.0,
+      "hns_alpha0_reference_error": 1.8011599563422163e-08
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "task": "magicoder",
+      "module": "base_model.model.model.layers.18.self_attn.q_proj",
+      "cached_basis_exact": true,
+      "cached_spectrum_relative_error": 0.0,
+      "hns_alpha0_reference_error": 1.9848153076154816e-08
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "task": "magicoder",
+      "module": "base_model.model.model.layers.18.self_attn.v_proj",
+      "cached_basis_exact": true,
+      "cached_spectrum_relative_error": 0.0,
+      "hns_alpha0_reference_error": 2.288080807021499e-08
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "task": "magicoder",
+      "module": "base_model.model.model.layers.19.mlp.down_proj",
+      "cached_basis_exact": true,
+      "cached_spectrum_relative_error": 0.0,
+      "hns_alpha0_reference_error": 1.7989382626215394e-08
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "task": "magicoder",
+      "module": "base_model.model.model.layers.19.mlp.gate_proj",
+      "cached_basis_exact": true,
+      "cached_spectrum_relative_error": 0.0,
+      "hns_alpha0_reference_error": 2.9209102044078777e-08
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "task": "magicoder",
+      "module": "base_model.model.model.layers.19.mlp.up_proj",
+      "cached_basis_exact": true,
+      "cached_spectrum_relative_error": 0.0,
+      "hns_alpha0_reference_error": 1.7118150258131745e-08
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "task": "magicoder",
+      "module": "base_model.model.model.layers.19.self_attn.k_proj",
+      "cached_basis_exact": true,
+      "cached_spectrum_relative_error": 0.0,
+      "hns_alpha0_reference_error": 1.4206276379923668e-08
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "task": "magicoder",
+      "module": "base_model.model.model.layers.19.self_attn.o_proj",
+      "cached_basis_exact": true,
+      "cached_spectrum_relative_error": 0.0,
+      "hns_alpha0_reference_error": 3.172012546655262e-08
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "task": "magicoder",
+      "module": "base_model.model.model.layers.19.self_attn.q_proj",
+      "cached_basis_exact": true,
+      "cached_spectrum_relative_error": 0.0,
+      "hns_alpha0_reference_error": 1.9999991151065038e-08
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "task": "magicoder",
+      "module": "base_model.model.model.layers.19.self_attn.v_proj",
+      "cached_basis_exact": true,
+      "cached_spectrum_relative_error": 0.0,
+      "hns_alpha0_reference_error": 1.4605250825014242e-08
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "task": "magicoder",
+      "module": "base_model.model.model.layers.2.mlp.down_proj",
+      "cached_basis_exact": true,
+      "cached_spectrum_relative_error": 0.0,
+      "hns_alpha0_reference_error": 2.5007564887045773e-08
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "task": "magicoder",
+      "module": "base_model.model.model.layers.2.mlp.gate_proj",
+      "cached_basis_exact": true,
+      "cached_spectrum_relative_error": 0.0,
+      "hns_alpha0_reference_error": 2.3285869984898633e-08
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "task": "magicoder",
+      "module": "base_model.model.model.layers.2.mlp.up_proj",
+      "cached_basis_exact": true,
+      "cached_spectrum_relative_error": 0.0,
+      "hns_alpha0_reference_error": 2.0636308048843486e-08
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "task": "magicoder",
+      "module": "base_model.model.model.layers.2.self_attn.k_proj",
+      "cached_basis_exact": true,
+      "cached_spectrum_relative_error": 0.0,
+      "hns_alpha0_reference_error": 2.0640042821942887e-08
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "task": "magicoder",
+      "module": "base_model.model.model.layers.2.self_attn.o_proj",
+      "cached_basis_exact": true,
+      "cached_spectrum_relative_error": 0.0,
+      "hns_alpha0_reference_error": 2.0113951842810844e-08
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "task": "magicoder",
+      "module": "base_model.model.model.layers.2.self_attn.q_proj",
+      "cached_basis_exact": true,
+      "cached_spectrum_relative_error": 0.0,
+      "hns_alpha0_reference_error": 2.8300088583208026e-08
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "task": "magicoder",
+      "module": "base_model.model.model.layers.2.self_attn.v_proj",
+      "cached_basis_exact": true,
+      "cached_spectrum_relative_error": 0.0,
+      "hns_alpha0_reference_error": 2.6208772431080872e-08
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "task": "magicoder",
+      "module": "base_model.model.model.layers.20.mlp.down_proj",
+      "cached_basis_exact": true,
+      "cached_spectrum_relative_error": 0.0,
+      "hns_alpha0_reference_error": 1.8379217569052115e-08
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "task": "magicoder",
+      "module": "base_model.model.model.layers.20.mlp.gate_proj",
+      "cached_basis_exact": true,
+      "cached_spectrum_relative_error": 0.0,
+      "hns_alpha0_reference_error": 3.8489912965269814e-08
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "task": "magicoder",
+      "module": "base_model.model.model.layers.20.mlp.up_proj",
+      "cached_basis_exact": true,
+      "cached_spectrum_relative_error": 0.0,
+      "hns_alpha0_reference_error": 1.9132795575873545e-08
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "task": "magicoder",
+      "module": "base_model.model.model.layers.20.self_attn.k_proj",
+      "cached_basis_exact": true,
+      "cached_spectrum_relative_error": 0.0,
+      "hns_alpha0_reference_error": 2.1851166027891073e-08
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "task": "magicoder",
+      "module": "base_model.model.model.layers.20.self_attn.o_proj",
+      "cached_basis_exact": true,
+      "cached_spectrum_relative_error": 0.0,
+      "hns_alpha0_reference_error": 3.768740085042575e-08
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "task": "magicoder",
+      "module": "base_model.model.model.layers.20.self_attn.q_proj",
+      "cached_basis_exact": true,
+      "cached_spectrum_relative_error": 0.0,
+      "hns_alpha0_reference_error": 1.9151797619081313e-08
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "task": "magicoder",
+      "module": "base_model.model.model.layers.20.self_attn.v_proj",
+      "cached_basis_exact": true,
+      "cached_spectrum_relative_error": 0.0,
+      "hns_alpha0_reference_error": 2.2876423034887826e-08
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "task": "magicoder",
+      "module": "base_model.model.model.layers.21.mlp.down_proj",
+      "cached_basis_exact": true,
+      "cached_spectrum_relative_error": 0.0,
+      "hns_alpha0_reference_error": 2.1199022944758696e-08
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "task": "magicoder",
+      "module": "base_model.model.model.layers.21.mlp.gate_proj",
+      "cached_basis_exact": true,
+      "cached_spectrum_relative_error": 0.0,
+      "hns_alpha0_reference_error": 3.1931102456881183e-08
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "task": "magicoder",
+      "module": "base_model.model.model.layers.21.mlp.up_proj",
+      "cached_basis_exact": true,
+      "cached_spectrum_relative_error": 0.0,
+      "hns_alpha0_reference_error": 1.8222594552547653e-08
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "task": "magicoder",
+      "module": "base_model.model.model.layers.21.self_attn.k_proj",
+      "cached_basis_exact": true,
+      "cached_spectrum_relative_error": 0.0,
+      "hns_alpha0_reference_error": 2.0647419783075922e-08
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "task": "magicoder",
+      "module": "base_model.model.model.layers.21.self_attn.o_proj",
+      "cached_basis_exact": true,
+      "cached_spectrum_relative_error": 0.0,
+      "hns_alpha0_reference_error": 3.127028252503122e-08
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "task": "magicoder",
+      "module": "base_model.model.model.layers.21.self_attn.q_proj",
+      "cached_basis_exact": true,
+      "cached_spectrum_relative_error": 0.0,
+      "hns_alpha0_reference_error": 2.1054006169855735e-08
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "task": "magicoder",
+      "module": "base_model.model.model.layers.21.self_attn.v_proj",
+      "cached_basis_exact": true,
+      "cached_spectrum_relative_error": 0.0,
+      "hns_alpha0_reference_error": 1.7103341440761387e-08
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "task": "magicoder",
+      "module": "base_model.model.model.layers.22.mlp.down_proj",
+      "cached_basis_exact": true,
+      "cached_spectrum_relative_error": 0.0,
+      "hns_alpha0_reference_error": 1.692324336062142e-08
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "task": "magicoder",
+      "module": "base_model.model.model.layers.22.mlp.gate_proj",
+      "cached_basis_exact": true,
+      "cached_spectrum_relative_error": 0.0,
+      "hns_alpha0_reference_error": 3.388192216267365e-08
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "task": "magicoder",
+      "module": "base_model.model.model.layers.22.mlp.up_proj",
+      "cached_basis_exact": true,
+      "cached_spectrum_relative_error": 0.0,
+      "hns_alpha0_reference_error": 3.557084311752827e-08
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "task": "magicoder",
+      "module": "base_model.model.model.layers.22.self_attn.k_proj",
+      "cached_basis_exact": true,
+      "cached_spectrum_relative_error": 0.0,
+      "hns_alpha0_reference_error": 1.4591991073170365e-08
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "task": "magicoder",
+      "module": "base_model.model.model.layers.22.self_attn.o_proj",
+      "cached_basis_exact": true,
+      "cached_spectrum_relative_error": 0.0,
+      "hns_alpha0_reference_error": 3.9527525024295895e-08
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "task": "magicoder",
+      "module": "base_model.model.model.layers.22.self_attn.q_proj",
+      "cached_basis_exact": true,
+      "cached_spectrum_relative_error": 0.0,
+      "hns_alpha0_reference_error": 1.9424649184847276e-08
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "task": "magicoder",
+      "module": "base_model.model.model.layers.22.self_attn.v_proj",
+      "cached_basis_exact": true,
+      "cached_spectrum_relative_error": 0.0,
+      "hns_alpha0_reference_error": 1.7844003827172223e-08
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "task": "magicoder",
+      "module": "base_model.model.model.layers.23.mlp.down_proj",
+      "cached_basis_exact": true,
+      "cached_spectrum_relative_error": 0.0,
+      "hns_alpha0_reference_error": 1.9005246965985046e-08
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "task": "magicoder",
+      "module": "base_model.model.model.layers.23.mlp.gate_proj",
+      "cached_basis_exact": true,
+      "cached_spectrum_relative_error": 0.0,
+      "hns_alpha0_reference_error": 2.3795099307421434e-08
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "task": "magicoder",
+      "module": "base_model.model.model.layers.23.mlp.up_proj",
+      "cached_basis_exact": true,
+      "cached_spectrum_relative_error": 0.0,
+      "hns_alpha0_reference_error": 2.5347392783568595e-08
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "task": "magicoder",
+      "module": "base_model.model.model.layers.23.self_attn.k_proj",
+      "cached_basis_exact": true,
+      "cached_spectrum_relative_error": 0.0,
+      "hns_alpha0_reference_error": 1.872343467561373e-08
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "task": "magicoder",
+      "module": "base_model.model.model.layers.23.self_attn.o_proj",
+      "cached_basis_exact": true,
+      "cached_spectrum_relative_error": 0.0,
+      "hns_alpha0_reference_error": 2.930959891438397e-08
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "task": "magicoder",
+      "module": "base_model.model.model.layers.23.self_attn.q_proj",
+      "cached_basis_exact": true,
+      "cached_spectrum_relative_error": 0.0,
+      "hns_alpha0_reference_error": 2.2248284160623992e-08
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "task": "magicoder",
+      "module": "base_model.model.model.layers.23.self_attn.v_proj",
+      "cached_basis_exact": true,
+      "cached_spectrum_relative_error": 0.0,
+      "hns_alpha0_reference_error": 2.554597552800239e-08
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "task": "magicoder",
+      "module": "base_model.model.model.layers.24.mlp.down_proj",
+      "cached_basis_exact": true,
+      "cached_spectrum_relative_error": 0.0,
+      "hns_alpha0_reference_error": 2.00609296857013e-08
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "task": "magicoder",
+      "module": "base_model.model.model.layers.24.mlp.gate_proj",
+      "cached_basis_exact": true,
+      "cached_spectrum_relative_error": 0.0,
+      "hns_alpha0_reference_error": 2.7812069785489843e-08
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "task": "magicoder",
+      "module": "base_model.model.model.layers.24.mlp.up_proj",
+      "cached_basis_exact": true,
+      "cached_spectrum_relative_error": 0.0,
+      "hns_alpha0_reference_error": 1.556539019761772e-08
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "task": "magicoder",
+      "module": "base_model.model.model.layers.24.self_attn.k_proj",
+      "cached_basis_exact": true,
+      "cached_spectrum_relative_error": 0.0,
+      "hns_alpha0_reference_error": 2.6745883135418988e-08
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "task": "magicoder",
+      "module": "base_model.model.model.layers.24.self_attn.o_proj",
+      "cached_basis_exact": true,
+      "cached_spectrum_relative_error": 0.0,
+      "hns_alpha0_reference_error": 3.8551499113480666e-08
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "task": "magicoder",
+      "module": "base_model.model.model.layers.24.self_attn.q_proj",
+      "cached_basis_exact": true,
+      "cached_spectrum_relative_error": 0.0,
+      "hns_alpha0_reference_error": 1.6516812564994095e-08
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "task": "magicoder",
+      "module": "base_model.model.model.layers.24.self_attn.v_proj",
+      "cached_basis_exact": true,
+      "cached_spectrum_relative_error": 0.0,
+      "hns_alpha0_reference_error": 1.9940055104631124e-08
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "task": "magicoder",
+      "module": "base_model.model.model.layers.25.mlp.down_proj",
+      "cached_basis_exact": true,
+      "cached_spectrum_relative_error": 0.0,
+      "hns_alpha0_reference_error": 1.635662407359407e-08
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "task": "magicoder",
+      "module": "base_model.model.model.layers.25.mlp.gate_proj",
+      "cached_basis_exact": true,
+      "cached_spectrum_relative_error": 0.0,
+      "hns_alpha0_reference_error": 3.460205716202693e-08
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "task": "magicoder",
+      "module": "base_model.model.model.layers.25.mlp.up_proj",
+      "cached_basis_exact": true,
+      "cached_spectrum_relative_error": 0.0,
+      "hns_alpha0_reference_error": 2.7338777151107385e-08
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "task": "magicoder",
+      "module": "base_model.model.model.layers.25.self_attn.k_proj",
+      "cached_basis_exact": true,
+      "cached_spectrum_relative_error": 0.0,
+      "hns_alpha0_reference_error": 3.301364323434002e-08
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "task": "magicoder",
+      "module": "base_model.model.model.layers.25.self_attn.o_proj",
+      "cached_basis_exact": true,
+      "cached_spectrum_relative_error": 0.0,
+      "hns_alpha0_reference_error": 2.7727418809209503e-08
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "task": "magicoder",
+      "module": "base_model.model.model.layers.25.self_attn.q_proj",
+      "cached_basis_exact": true,
+      "cached_spectrum_relative_error": 0.0,
+      "hns_alpha0_reference_error": 1.5738164700070207e-08
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "task": "magicoder",
+      "module": "base_model.model.model.layers.25.self_attn.v_proj",
+      "cached_basis_exact": true,
+      "cached_spectrum_relative_error": 0.0,
+      "hns_alpha0_reference_error": 2.3982935737699952e-08
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "task": "magicoder",
+      "module": "base_model.model.model.layers.26.mlp.down_proj",
+      "cached_basis_exact": true,
+      "cached_spectrum_relative_error": 0.0,
+      "hns_alpha0_reference_error": 2.2978405038523782e-08
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "task": "magicoder",
+      "module": "base_model.model.model.layers.26.mlp.gate_proj",
+      "cached_basis_exact": true,
+      "cached_spectrum_relative_error": 0.0,
+      "hns_alpha0_reference_error": 3.3885209975069156e-08
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "task": "magicoder",
+      "module": "base_model.model.model.layers.26.mlp.up_proj",
+      "cached_basis_exact": true,
+      "cached_spectrum_relative_error": 0.0,
+      "hns_alpha0_reference_error": 2.5663597417260584e-08
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "task": "magicoder",
+      "module": "base_model.model.model.layers.26.self_attn.k_proj",
+      "cached_basis_exact": true,
+      "cached_spectrum_relative_error": 0.0,
+      "hns_alpha0_reference_error": 1.843287283941634e-08
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "task": "magicoder",
+      "module": "base_model.model.model.layers.26.self_attn.o_proj",
+      "cached_basis_exact": true,
+      "cached_spectrum_relative_error": 0.0,
+      "hns_alpha0_reference_error": 1.8267147706570742e-08
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "task": "magicoder",
+      "module": "base_model.model.model.layers.26.self_attn.q_proj",
+      "cached_basis_exact": true,
+      "cached_spectrum_relative_error": 0.0,
+      "hns_alpha0_reference_error": 1.7822567993832854e-08
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "task": "magicoder",
+      "module": "base_model.model.model.layers.26.self_attn.v_proj",
+      "cached_basis_exact": true,
+      "cached_spectrum_relative_error": 0.0,
+      "hns_alpha0_reference_error": 1.9353502126249853e-08
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "task": "magicoder",
+      "module": "base_model.model.model.layers.27.mlp.down_proj",
+      "cached_basis_exact": true,
+      "cached_spectrum_relative_error": 0.0,
+      "hns_alpha0_reference_error": 2.2437889055654336e-08
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "task": "magicoder",
+      "module": "base_model.model.model.layers.27.mlp.gate_proj",
+      "cached_basis_exact": true,
+      "cached_spectrum_relative_error": 0.0,
+      "hns_alpha0_reference_error": 3.5127921778577194e-08
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "task": "magicoder",
+      "module": "base_model.model.model.layers.27.mlp.up_proj",
+      "cached_basis_exact": true,
+      "cached_spectrum_relative_error": 0.0,
+      "hns_alpha0_reference_error": 1.91099772371124e-08
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "task": "magicoder",
+      "module": "base_model.model.model.layers.27.self_attn.k_proj",
+      "cached_basis_exact": true,
+      "cached_spectrum_relative_error": 0.0,
+      "hns_alpha0_reference_error": 1.4230158255917176e-08
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "task": "magicoder",
+      "module": "base_model.model.model.layers.27.self_attn.o_proj",
+      "cached_basis_exact": true,
+      "cached_spectrum_relative_error": 0.0,
+      "hns_alpha0_reference_error": 2.062378803287461e-08
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "task": "magicoder",
+      "module": "base_model.model.model.layers.27.self_attn.q_proj",
+      "cached_basis_exact": true,
+      "cached_spectrum_relative_error": 0.0,
+      "hns_alpha0_reference_error": 1.7864697428764932e-08
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "task": "magicoder",
+      "module": "base_model.model.model.layers.27.self_attn.v_proj",
+      "cached_basis_exact": true,
+      "cached_spectrum_relative_error": 0.0,
+      "hns_alpha0_reference_error": 2.1897987619300398e-08
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "task": "magicoder",
+      "module": "base_model.model.model.layers.28.mlp.down_proj",
+      "cached_basis_exact": true,
+      "cached_spectrum_relative_error": 0.0,
+      "hns_alpha0_reference_error": 2.2052585213920777e-08
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "task": "magicoder",
+      "module": "base_model.model.model.layers.28.mlp.gate_proj",
+      "cached_basis_exact": true,
+      "cached_spectrum_relative_error": 0.0,
+      "hns_alpha0_reference_error": 3.041946439874207e-08
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "task": "magicoder",
+      "module": "base_model.model.model.layers.28.mlp.up_proj",
+      "cached_basis_exact": true,
+      "cached_spectrum_relative_error": 0.0,
+      "hns_alpha0_reference_error": 1.8527366237299085e-08
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "task": "magicoder",
+      "module": "base_model.model.model.layers.28.self_attn.k_proj",
+      "cached_basis_exact": true,
+      "cached_spectrum_relative_error": 0.0,
+      "hns_alpha0_reference_error": 1.642478238410161e-08
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "task": "magicoder",
+      "module": "base_model.model.model.layers.28.self_attn.o_proj",
+      "cached_basis_exact": true,
+      "cached_spectrum_relative_error": 0.0,
+      "hns_alpha0_reference_error": 3.474225714894471e-08
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "task": "magicoder",
+      "module": "base_model.model.model.layers.28.self_attn.q_proj",
+      "cached_basis_exact": true,
+      "cached_spectrum_relative_error": 0.0,
+      "hns_alpha0_reference_error": 1.6600896965084638e-08
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "task": "magicoder",
+      "module": "base_model.model.model.layers.28.self_attn.v_proj",
+      "cached_basis_exact": true,
+      "cached_spectrum_relative_error": 0.0,
+      "hns_alpha0_reference_error": 2.1952952491538956e-08
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "task": "magicoder",
+      "module": "base_model.model.model.layers.29.mlp.down_proj",
+      "cached_basis_exact": true,
+      "cached_spectrum_relative_error": 0.0,
+      "hns_alpha0_reference_error": 2.0694047614381367e-08
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "task": "magicoder",
+      "module": "base_model.model.model.layers.29.mlp.gate_proj",
+      "cached_basis_exact": true,
+      "cached_spectrum_relative_error": 0.0,
+      "hns_alpha0_reference_error": 3.383171250515942e-08
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "task": "magicoder",
+      "module": "base_model.model.model.layers.29.mlp.up_proj",
+      "cached_basis_exact": true,
+      "cached_spectrum_relative_error": 0.0,
+      "hns_alpha0_reference_error": 1.738089484287034e-08
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "task": "magicoder",
+      "module": "base_model.model.model.layers.29.self_attn.k_proj",
+      "cached_basis_exact": true,
+      "cached_spectrum_relative_error": 0.0,
+      "hns_alpha0_reference_error": 1.9642460113439403e-08
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "task": "magicoder",
+      "module": "base_model.model.model.layers.29.self_attn.o_proj",
+      "cached_basis_exact": true,
+      "cached_spectrum_relative_error": 0.0,
+      "hns_alpha0_reference_error": 1.6046870980293808e-08
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "task": "magicoder",
+      "module": "base_model.model.model.layers.29.self_attn.q_proj",
+      "cached_basis_exact": true,
+      "cached_spectrum_relative_error": 0.0,
+      "hns_alpha0_reference_error": 2.359021271652946e-08
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "task": "magicoder",
+      "module": "base_model.model.model.layers.29.self_attn.v_proj",
+      "cached_basis_exact": true,
+      "cached_spectrum_relative_error": 0.0,
+      "hns_alpha0_reference_error": 2.602147862234804e-08
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "task": "magicoder",
+      "module": "base_model.model.model.layers.3.mlp.down_proj",
+      "cached_basis_exact": true,
+      "cached_spectrum_relative_error": 0.0,
+      "hns_alpha0_reference_error": 2.4251713542815385e-08
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "task": "magicoder",
+      "module": "base_model.model.model.layers.3.mlp.gate_proj",
+      "cached_basis_exact": true,
+      "cached_spectrum_relative_error": 0.0,
+      "hns_alpha0_reference_error": 1.896247793246628e-08
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "task": "magicoder",
+      "module": "base_model.model.model.layers.3.mlp.up_proj",
+      "cached_basis_exact": true,
+      "cached_spectrum_relative_error": 0.0,
+      "hns_alpha0_reference_error": 1.8410153739464372e-08
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "task": "magicoder",
+      "module": "base_model.model.model.layers.3.self_attn.k_proj",
+      "cached_basis_exact": true,
+      "cached_spectrum_relative_error": 0.0,
+      "hns_alpha0_reference_error": 2.0099177359551967e-08
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "task": "magicoder",
+      "module": "base_model.model.model.layers.3.self_attn.o_proj",
+      "cached_basis_exact": true,
+      "cached_spectrum_relative_error": 0.0,
+      "hns_alpha0_reference_error": 1.4814449077523248e-08
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "task": "magicoder",
+      "module": "base_model.model.model.layers.3.self_attn.q_proj",
+      "cached_basis_exact": true,
+      "cached_spectrum_relative_error": 0.0,
+      "hns_alpha0_reference_error": 1.6745379692178616e-08
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "task": "magicoder",
+      "module": "base_model.model.model.layers.3.self_attn.v_proj",
+      "cached_basis_exact": true,
+      "cached_spectrum_relative_error": 0.0,
+      "hns_alpha0_reference_error": 2.705528733409976e-08
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "task": "magicoder",
+      "module": "base_model.model.model.layers.30.mlp.down_proj",
+      "cached_basis_exact": true,
+      "cached_spectrum_relative_error": 0.0,
+      "hns_alpha0_reference_error": 2.5729963344620633e-08
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "task": "magicoder",
+      "module": "base_model.model.model.layers.30.mlp.gate_proj",
+      "cached_basis_exact": true,
+      "cached_spectrum_relative_error": 0.0,
+      "hns_alpha0_reference_error": 1.641407968642593e-08
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "task": "magicoder",
+      "module": "base_model.model.model.layers.30.mlp.up_proj",
+      "cached_basis_exact": true,
+      "cached_spectrum_relative_error": 0.0,
+      "hns_alpha0_reference_error": 1.92814436893394e-08
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "task": "magicoder",
+      "module": "base_model.model.model.layers.30.self_attn.k_proj",
+      "cached_basis_exact": true,
+      "cached_spectrum_relative_error": 0.0,
+      "hns_alpha0_reference_error": 2.5996796822064317e-08
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "task": "magicoder",
+      "module": "base_model.model.model.layers.30.self_attn.o_proj",
+      "cached_basis_exact": true,
+      "cached_spectrum_relative_error": 0.0,
+      "hns_alpha0_reference_error": 1.8717045722448303e-08
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "task": "magicoder",
+      "module": "base_model.model.model.layers.30.self_attn.q_proj",
+      "cached_basis_exact": true,
+      "cached_spectrum_relative_error": 0.0,
+      "hns_alpha0_reference_error": 2.3111885443765347e-08
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "task": "magicoder",
+      "module": "base_model.model.model.layers.30.self_attn.v_proj",
+      "cached_basis_exact": true,
+      "cached_spectrum_relative_error": 0.0,
+      "hns_alpha0_reference_error": 2.0722295531877068e-08
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "task": "magicoder",
+      "module": "base_model.model.model.layers.31.mlp.down_proj",
+      "cached_basis_exact": true,
+      "cached_spectrum_relative_error": 0.0,
+      "hns_alpha0_reference_error": 2.193916817447636e-08
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "task": "magicoder",
+      "module": "base_model.model.model.layers.31.mlp.gate_proj",
+      "cached_basis_exact": true,
+      "cached_spectrum_relative_error": 0.0,
+      "hns_alpha0_reference_error": 1.718822411570169e-08
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "task": "magicoder",
+      "module": "base_model.model.model.layers.31.mlp.up_proj",
+      "cached_basis_exact": true,
+      "cached_spectrum_relative_error": 0.0,
+      "hns_alpha0_reference_error": 2.142295760663099e-08
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "task": "magicoder",
+      "module": "base_model.model.model.layers.31.self_attn.k_proj",
+      "cached_basis_exact": true,
+      "cached_spectrum_relative_error": 0.0,
+      "hns_alpha0_reference_error": 2.0671469556564334e-08
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "task": "magicoder",
+      "module": "base_model.model.model.layers.31.self_attn.o_proj",
+      "cached_basis_exact": true,
+      "cached_spectrum_relative_error": 0.0,
+      "hns_alpha0_reference_error": 2.0508314028046133e-08
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "task": "magicoder",
+      "module": "base_model.model.model.layers.31.self_attn.q_proj",
+      "cached_basis_exact": true,
+      "cached_spectrum_relative_error": 0.0,
+      "hns_alpha0_reference_error": 1.9125428354935917e-08
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "task": "magicoder",
+      "module": "base_model.model.model.layers.31.self_attn.v_proj",
+      "cached_basis_exact": true,
+      "cached_spectrum_relative_error": 0.0,
+      "hns_alpha0_reference_error": 2.1488236053868085e-08
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "task": "magicoder",
+      "module": "base_model.model.model.layers.4.mlp.down_proj",
+      "cached_basis_exact": true,
+      "cached_spectrum_relative_error": 0.0,
+      "hns_alpha0_reference_error": 2.027621373918813e-08
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "task": "magicoder",
+      "module": "base_model.model.model.layers.4.mlp.gate_proj",
+      "cached_basis_exact": true,
+      "cached_spectrum_relative_error": 0.0,
+      "hns_alpha0_reference_error": 1.768947001144536e-08
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "task": "magicoder",
+      "module": "base_model.model.model.layers.4.mlp.up_proj",
+      "cached_basis_exact": true,
+      "cached_spectrum_relative_error": 0.0,
+      "hns_alpha0_reference_error": 2.1320166338130637e-08
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "task": "magicoder",
+      "module": "base_model.model.model.layers.4.self_attn.k_proj",
+      "cached_basis_exact": true,
+      "cached_spectrum_relative_error": 0.0,
+      "hns_alpha0_reference_error": 1.6607104640006823e-08
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "task": "magicoder",
+      "module": "base_model.model.model.layers.4.self_attn.o_proj",
+      "cached_basis_exact": true,
+      "cached_spectrum_relative_error": 0.0,
+      "hns_alpha0_reference_error": 1.5255167802892747e-08
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "task": "magicoder",
+      "module": "base_model.model.model.layers.4.self_attn.q_proj",
+      "cached_basis_exact": true,
+      "cached_spectrum_relative_error": 0.0,
+      "hns_alpha0_reference_error": 2.2869920657536834e-08
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "task": "magicoder",
+      "module": "base_model.model.model.layers.4.self_attn.v_proj",
+      "cached_basis_exact": true,
+      "cached_spectrum_relative_error": 0.0,
+      "hns_alpha0_reference_error": 2.6285230646497315e-08
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "task": "magicoder",
+      "module": "base_model.model.model.layers.5.mlp.down_proj",
+      "cached_basis_exact": true,
+      "cached_spectrum_relative_error": 0.0,
+      "hns_alpha0_reference_error": 1.896379755275137e-08
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "task": "magicoder",
+      "module": "base_model.model.model.layers.5.mlp.gate_proj",
+      "cached_basis_exact": true,
+      "cached_spectrum_relative_error": 0.0,
+      "hns_alpha0_reference_error": 1.9520863336345748e-08
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "task": "magicoder",
+      "module": "base_model.model.model.layers.5.mlp.up_proj",
+      "cached_basis_exact": true,
+      "cached_spectrum_relative_error": 0.0,
+      "hns_alpha0_reference_error": 2.0482304181379296e-08
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "task": "magicoder",
+      "module": "base_model.model.model.layers.5.self_attn.k_proj",
+      "cached_basis_exact": true,
+      "cached_spectrum_relative_error": 0.0,
+      "hns_alpha0_reference_error": 1.798511816356374e-08
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "task": "magicoder",
+      "module": "base_model.model.model.layers.5.self_attn.o_proj",
+      "cached_basis_exact": true,
+      "cached_spectrum_relative_error": 0.0,
+      "hns_alpha0_reference_error": 1.698198101281521e-08
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "task": "magicoder",
+      "module": "base_model.model.model.layers.5.self_attn.q_proj",
+      "cached_basis_exact": true,
+      "cached_spectrum_relative_error": 0.0,
+      "hns_alpha0_reference_error": 1.8505861072531652e-08
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "task": "magicoder",
+      "module": "base_model.model.model.layers.5.self_attn.v_proj",
+      "cached_basis_exact": true,
+      "cached_spectrum_relative_error": 0.0,
+      "hns_alpha0_reference_error": 1.7359615552035662e-08
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "task": "magicoder",
+      "module": "base_model.model.model.layers.6.mlp.down_proj",
+      "cached_basis_exact": true,
+      "cached_spectrum_relative_error": 0.0,
+      "hns_alpha0_reference_error": 2.1948793461616605e-08
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "task": "magicoder",
+      "module": "base_model.model.model.layers.6.mlp.gate_proj",
+      "cached_basis_exact": true,
+      "cached_spectrum_relative_error": 0.0,
+      "hns_alpha0_reference_error": 1.7766288819748816e-08
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "task": "magicoder",
+      "module": "base_model.model.model.layers.6.mlp.up_proj",
+      "cached_basis_exact": true,
+      "cached_spectrum_relative_error": 0.0,
+      "hns_alpha0_reference_error": 1.6172886525773526e-08
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "task": "magicoder",
+      "module": "base_model.model.model.layers.6.self_attn.k_proj",
+      "cached_basis_exact": true,
+      "cached_spectrum_relative_error": 0.0,
+      "hns_alpha0_reference_error": 1.9456895206493593e-08
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "task": "magicoder",
+      "module": "base_model.model.model.layers.6.self_attn.o_proj",
+      "cached_basis_exact": true,
+      "cached_spectrum_relative_error": 0.0,
+      "hns_alpha0_reference_error": 1.6057761903422413e-08
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "task": "magicoder",
+      "module": "base_model.model.model.layers.6.self_attn.q_proj",
+      "cached_basis_exact": true,
+      "cached_spectrum_relative_error": 0.0,
+      "hns_alpha0_reference_error": 1.798711958660547e-08
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "task": "magicoder",
+      "module": "base_model.model.model.layers.6.self_attn.v_proj",
+      "cached_basis_exact": true,
+      "cached_spectrum_relative_error": 0.0,
+      "hns_alpha0_reference_error": 2.8180516375724255e-08
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "task": "magicoder",
+      "module": "base_model.model.model.layers.7.mlp.down_proj",
+      "cached_basis_exact": true,
+      "cached_spectrum_relative_error": 0.0,
+      "hns_alpha0_reference_error": 2.052253623684966e-08
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "task": "magicoder",
+      "module": "base_model.model.model.layers.7.mlp.gate_proj",
+      "cached_basis_exact": true,
+      "cached_spectrum_relative_error": 0.0,
+      "hns_alpha0_reference_error": 1.88100143550455e-08
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "task": "magicoder",
+      "module": "base_model.model.model.layers.7.mlp.up_proj",
+      "cached_basis_exact": true,
+      "cached_spectrum_relative_error": 0.0,
+      "hns_alpha0_reference_error": 2.0047585059068046e-08
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "task": "magicoder",
+      "module": "base_model.model.model.layers.7.self_attn.k_proj",
+      "cached_basis_exact": true,
+      "cached_spectrum_relative_error": 0.0,
+      "hns_alpha0_reference_error": 2.3957269271730486e-08
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "task": "magicoder",
+      "module": "base_model.model.model.layers.7.self_attn.o_proj",
+      "cached_basis_exact": true,
+      "cached_spectrum_relative_error": 0.0,
+      "hns_alpha0_reference_error": 1.7979515926895317e-08
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "task": "magicoder",
+      "module": "base_model.model.model.layers.7.self_attn.q_proj",
+      "cached_basis_exact": true,
+      "cached_spectrum_relative_error": 0.0,
+      "hns_alpha0_reference_error": 2.350642569000225e-08
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "task": "magicoder",
+      "module": "base_model.model.model.layers.7.self_attn.v_proj",
+      "cached_basis_exact": true,
+      "cached_spectrum_relative_error": 0.0,
+      "hns_alpha0_reference_error": 3.062993768262133e-08
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "task": "magicoder",
+      "module": "base_model.model.model.layers.8.mlp.down_proj",
+      "cached_basis_exact": true,
+      "cached_spectrum_relative_error": 0.0,
+      "hns_alpha0_reference_error": 2.1235595694849375e-08
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "task": "magicoder",
+      "module": "base_model.model.model.layers.8.mlp.gate_proj",
+      "cached_basis_exact": true,
+      "cached_spectrum_relative_error": 0.0,
+      "hns_alpha0_reference_error": 1.9367196421380128e-08
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "task": "magicoder",
+      "module": "base_model.model.model.layers.8.mlp.up_proj",
+      "cached_basis_exact": true,
+      "cached_spectrum_relative_error": 0.0,
+      "hns_alpha0_reference_error": 2.0602866784291466e-08
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "task": "magicoder",
+      "module": "base_model.model.model.layers.8.self_attn.k_proj",
+      "cached_basis_exact": true,
+      "cached_spectrum_relative_error": 0.0,
+      "hns_alpha0_reference_error": 1.67287578440211e-08
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "task": "magicoder",
+      "module": "base_model.model.model.layers.8.self_attn.o_proj",
+      "cached_basis_exact": true,
+      "cached_spectrum_relative_error": 0.0,
+      "hns_alpha0_reference_error": 3.2052845239734514e-08
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "task": "magicoder",
+      "module": "base_model.model.model.layers.8.self_attn.q_proj",
+      "cached_basis_exact": true,
+      "cached_spectrum_relative_error": 0.0,
+      "hns_alpha0_reference_error": 2.3889239896401604e-08
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "task": "magicoder",
+      "module": "base_model.model.model.layers.8.self_attn.v_proj",
+      "cached_basis_exact": true,
+      "cached_spectrum_relative_error": 0.0,
+      "hns_alpha0_reference_error": 2.6515305442567417e-08
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "task": "magicoder",
+      "module": "base_model.model.model.layers.9.mlp.down_proj",
+      "cached_basis_exact": true,
+      "cached_spectrum_relative_error": 0.0,
+      "hns_alpha0_reference_error": 2.0606092974883292e-08
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "task": "magicoder",
+      "module": "base_model.model.model.layers.9.mlp.gate_proj",
+      "cached_basis_exact": true,
+      "cached_spectrum_relative_error": 0.0,
+      "hns_alpha0_reference_error": 1.851186818984768e-08
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "task": "magicoder",
+      "module": "base_model.model.model.layers.9.mlp.up_proj",
+      "cached_basis_exact": true,
+      "cached_spectrum_relative_error": 0.0,
+      "hns_alpha0_reference_error": 2.3904969116759397e-08
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "task": "magicoder",
+      "module": "base_model.model.model.layers.9.self_attn.k_proj",
+      "cached_basis_exact": true,
+      "cached_spectrum_relative_error": 0.0,
+      "hns_alpha0_reference_error": 2.2133418354007234e-08
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "task": "magicoder",
+      "module": "base_model.model.model.layers.9.self_attn.o_proj",
+      "cached_basis_exact": true,
+      "cached_spectrum_relative_error": 0.0,
+      "hns_alpha0_reference_error": 2.272078778988717e-08
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "task": "magicoder",
+      "module": "base_model.model.model.layers.9.self_attn.q_proj",
+      "cached_basis_exact": true,
+      "cached_spectrum_relative_error": 0.0,
+      "hns_alpha0_reference_error": 2.198953229982657e-08
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "task": "magicoder",
+      "module": "base_model.model.model.layers.9.self_attn.v_proj",
+      "cached_basis_exact": true,
+      "cached_spectrum_relative_error": 0.0,
+      "hns_alpha0_reference_error": 2.1778083125053554e-08
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "task": "metamath",
+      "module": "base_model.model.model.layers.0.mlp.down_proj",
+      "cached_basis_exact": true,
+      "cached_spectrum_relative_error": 0.0,
+      "hns_alpha0_reference_error": 1.610520703584214e-08
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "task": "metamath",
+      "module": "base_model.model.model.layers.0.mlp.gate_proj",
+      "cached_basis_exact": true,
+      "cached_spectrum_relative_error": 0.0,
+      "hns_alpha0_reference_error": 2.2250918889336865e-08
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "task": "metamath",
+      "module": "base_model.model.model.layers.0.mlp.up_proj",
+      "cached_basis_exact": true,
+      "cached_spectrum_relative_error": 0.0,
+      "hns_alpha0_reference_error": 2.6928288323018814e-08
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "task": "metamath",
+      "module": "base_model.model.model.layers.0.self_attn.k_proj",
+      "cached_basis_exact": true,
+      "cached_spectrum_relative_error": 0.0,
+      "hns_alpha0_reference_error": 2.5829011649405228e-08
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "task": "metamath",
+      "module": "base_model.model.model.layers.0.self_attn.o_proj",
+      "cached_basis_exact": true,
+      "cached_spectrum_relative_error": 0.0,
+      "hns_alpha0_reference_error": 2.4404399817969036e-08
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "task": "metamath",
+      "module": "base_model.model.model.layers.0.self_attn.q_proj",
+      "cached_basis_exact": true,
+      "cached_spectrum_relative_error": 0.0,
+      "hns_alpha0_reference_error": 2.3914895517296695e-08
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "task": "metamath",
+      "module": "base_model.model.model.layers.0.self_attn.v_proj",
+      "cached_basis_exact": true,
+      "cached_spectrum_relative_error": 0.0,
+      "hns_alpha0_reference_error": 3.125394553968972e-08
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "task": "metamath",
+      "module": "base_model.model.model.layers.1.mlp.down_proj",
+      "cached_basis_exact": true,
+      "cached_spectrum_relative_error": 0.0,
+      "hns_alpha0_reference_error": 1.6904001124276324e-08
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "task": "metamath",
+      "module": "base_model.model.model.layers.1.mlp.gate_proj",
+      "cached_basis_exact": true,
+      "cached_spectrum_relative_error": 0.0,
+      "hns_alpha0_reference_error": 2.431115938317263e-08
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "task": "metamath",
+      "module": "base_model.model.model.layers.1.mlp.up_proj",
+      "cached_basis_exact": true,
+      "cached_spectrum_relative_error": 0.0,
+      "hns_alpha0_reference_error": 2.2706545180129395e-08
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "task": "metamath",
+      "module": "base_model.model.model.layers.1.self_attn.k_proj",
+      "cached_basis_exact": true,
+      "cached_spectrum_relative_error": 0.0,
+      "hns_alpha0_reference_error": 1.7391407659406915e-08
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "task": "metamath",
+      "module": "base_model.model.model.layers.1.self_attn.o_proj",
+      "cached_basis_exact": true,
+      "cached_spectrum_relative_error": 0.0,
+      "hns_alpha0_reference_error": 3.1904751814203846e-08
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "task": "metamath",
+      "module": "base_model.model.model.layers.1.self_attn.q_proj",
+      "cached_basis_exact": true,
+      "cached_spectrum_relative_error": 0.0,
+      "hns_alpha0_reference_error": 2.297920554823993e-08
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "task": "metamath",
+      "module": "base_model.model.model.layers.1.self_attn.v_proj",
+      "cached_basis_exact": true,
+      "cached_spectrum_relative_error": 0.0,
+      "hns_alpha0_reference_error": 2.934639400958694e-08
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "task": "metamath",
+      "module": "base_model.model.model.layers.10.mlp.down_proj",
+      "cached_basis_exact": true,
+      "cached_spectrum_relative_error": 0.0,
+      "hns_alpha0_reference_error": 2.480517775039046e-08
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "task": "metamath",
+      "module": "base_model.model.model.layers.10.mlp.gate_proj",
+      "cached_basis_exact": true,
+      "cached_spectrum_relative_error": 0.0,
+      "hns_alpha0_reference_error": 1.9376543078612362e-08
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "task": "metamath",
+      "module": "base_model.model.model.layers.10.mlp.up_proj",
+      "cached_basis_exact": true,
+      "cached_spectrum_relative_error": 0.0,
+      "hns_alpha0_reference_error": 2.5756261890450053e-08
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "task": "metamath",
+      "module": "base_model.model.model.layers.10.self_attn.k_proj",
+      "cached_basis_exact": true,
+      "cached_spectrum_relative_error": 0.0,
+      "hns_alpha0_reference_error": 2.872635913907547e-08
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "task": "metamath",
+      "module": "base_model.model.model.layers.10.self_attn.o_proj",
+      "cached_basis_exact": true,
+      "cached_spectrum_relative_error": 0.0,
+      "hns_alpha0_reference_error": 2.7201183517105847e-08
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "task": "metamath",
+      "module": "base_model.model.model.layers.10.self_attn.q_proj",
+      "cached_basis_exact": true,
+      "cached_spectrum_relative_error": 0.0,
+      "hns_alpha0_reference_error": 2.598467645890223e-08
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "task": "metamath",
+      "module": "base_model.model.model.layers.10.self_attn.v_proj",
+      "cached_basis_exact": true,
+      "cached_spectrum_relative_error": 0.0,
+      "hns_alpha0_reference_error": 3.243713406016984e-08
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "task": "metamath",
+      "module": "base_model.model.model.layers.11.mlp.down_proj",
+      "cached_basis_exact": true,
+      "cached_spectrum_relative_error": 0.0,
+      "hns_alpha0_reference_error": 2.5212090753421675e-08
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "task": "metamath",
+      "module": "base_model.model.model.layers.11.mlp.gate_proj",
+      "cached_basis_exact": true,
+      "cached_spectrum_relative_error": 0.0,
+      "hns_alpha0_reference_error": 2.253275535202039e-08
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "task": "metamath",
+      "module": "base_model.model.model.layers.11.mlp.up_proj",
+      "cached_basis_exact": true,
+      "cached_spectrum_relative_error": 0.0,
+      "hns_alpha0_reference_error": 2.248628027875949e-08
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "task": "metamath",
+      "module": "base_model.model.model.layers.11.self_attn.k_proj",
+      "cached_basis_exact": true,
+      "cached_spectrum_relative_error": 0.0,
+      "hns_alpha0_reference_error": 2.349944311061137e-08
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "task": "metamath",
+      "module": "base_model.model.model.layers.11.self_attn.o_proj",
+      "cached_basis_exact": true,
+      "cached_spectrum_relative_error": 0.0,
+      "hns_alpha0_reference_error": 3.463259564978604e-08
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "task": "metamath",
+      "module": "base_model.model.model.layers.11.self_attn.q_proj",
+      "cached_basis_exact": true,
+      "cached_spectrum_relative_error": 0.0,
+      "hns_alpha0_reference_error": 2.4046812633196343e-08
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "task": "metamath",
+      "module": "base_model.model.model.layers.11.self_attn.v_proj",
+      "cached_basis_exact": true,
+      "cached_spectrum_relative_error": 0.0,
+      "hns_alpha0_reference_error": 2.4997560806914617e-08
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "task": "metamath",
+      "module": "base_model.model.model.layers.12.mlp.down_proj",
+      "cached_basis_exact": true,
+      "cached_spectrum_relative_error": 0.0,
+      "hns_alpha0_reference_error": 2.5409215756615494e-08
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "task": "metamath",
+      "module": "base_model.model.model.layers.12.mlp.gate_proj",
+      "cached_basis_exact": true,
+      "cached_spectrum_relative_error": 0.0,
+      "hns_alpha0_reference_error": 2.6457896503499678e-08
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "task": "metamath",
+      "module": "base_model.model.model.layers.12.mlp.up_proj",
+      "cached_basis_exact": true,
+      "cached_spectrum_relative_error": 0.0,
+      "hns_alpha0_reference_error": 2.5974322287995105e-08
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "task": "metamath",
+      "module": "base_model.model.model.layers.12.self_attn.k_proj",
+      "cached_basis_exact": true,
+      "cached_spectrum_relative_error": 0.0,
+      "hns_alpha0_reference_error": 2.0637595905641654e-08
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "task": "metamath",
+      "module": "base_model.model.model.layers.12.self_attn.o_proj",
+      "cached_basis_exact": true,
+      "cached_spectrum_relative_error": 0.0,
+      "hns_alpha0_reference_error": 2.8384663001300167e-08
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "task": "metamath",
+      "module": "base_model.model.model.layers.12.self_attn.q_proj",
+      "cached_basis_exact": true,
+      "cached_spectrum_relative_error": 0.0,
+      "hns_alpha0_reference_error": 2.0988672701434983e-08
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "task": "metamath",
+      "module": "base_model.model.model.layers.12.self_attn.v_proj",
+      "cached_basis_exact": true,
+      "cached_spectrum_relative_error": 0.0,
+      "hns_alpha0_reference_error": 2.8182559462337254e-08
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "task": "metamath",
+      "module": "base_model.model.model.layers.13.mlp.down_proj",
+      "cached_basis_exact": true,
+      "cached_spectrum_relative_error": 0.0,
+      "hns_alpha0_reference_error": 2.4145292376210864e-08
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "task": "metamath",
+      "module": "base_model.model.model.layers.13.mlp.gate_proj",
+      "cached_basis_exact": true,
+      "cached_spectrum_relative_error": 0.0,
+      "hns_alpha0_reference_error": 2.5943197410644775e-08
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "task": "metamath",
+      "module": "base_model.model.model.layers.13.mlp.up_proj",
+      "cached_basis_exact": true,
+      "cached_spectrum_relative_error": 0.0,
+      "hns_alpha0_reference_error": 3.1156001492498865e-08
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "task": "metamath",
+      "module": "base_model.model.model.layers.13.self_attn.k_proj",
+      "cached_basis_exact": true,
+      "cached_spectrum_relative_error": 0.0,
+      "hns_alpha0_reference_error": 2.4585634142511833e-08
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "task": "metamath",
+      "module": "base_model.model.model.layers.13.self_attn.o_proj",
+      "cached_basis_exact": true,
+      "cached_spectrum_relative_error": 0.0,
+      "hns_alpha0_reference_error": 2.7037416369382174e-08
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "task": "metamath",
+      "module": "base_model.model.model.layers.13.self_attn.q_proj",
+      "cached_basis_exact": true,
+      "cached_spectrum_relative_error": 0.0,
+      "hns_alpha0_reference_error": 2.665176480848774e-08
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "task": "metamath",
+      "module": "base_model.model.model.layers.13.self_attn.v_proj",
+      "cached_basis_exact": true,
+      "cached_spectrum_relative_error": 0.0,
+      "hns_alpha0_reference_error": 3.026811822746244e-08
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "task": "metamath",
+      "module": "base_model.model.model.layers.14.mlp.down_proj",
+      "cached_basis_exact": true,
+      "cached_spectrum_relative_error": 0.0,
+      "hns_alpha0_reference_error": 2.329851632183239e-08
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "task": "metamath",
+      "module": "base_model.model.model.layers.14.mlp.gate_proj",
+      "cached_basis_exact": true,
+      "cached_spectrum_relative_error": 0.0,
+      "hns_alpha0_reference_error": 2.2626267340310587e-08
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "task": "metamath",
+      "module": "base_model.model.model.layers.14.mlp.up_proj",
+      "cached_basis_exact": true,
+      "cached_spectrum_relative_error": 0.0,
+      "hns_alpha0_reference_error": 2.6712370492144208e-08
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "task": "metamath",
+      "module": "base_model.model.model.layers.14.self_attn.k_proj",
+      "cached_basis_exact": true,
+      "cached_spectrum_relative_error": 0.0,
+      "hns_alpha0_reference_error": 2.6526272118657867e-08
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "task": "metamath",
+      "module": "base_model.model.model.layers.14.self_attn.o_proj",
+      "cached_basis_exact": true,
+      "cached_spectrum_relative_error": 0.0,
+      "hns_alpha0_reference_error": 1.9895962935123132e-08
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "task": "metamath",
+      "module": "base_model.model.model.layers.14.self_attn.q_proj",
+      "cached_basis_exact": true,
+      "cached_spectrum_relative_error": 0.0,
+      "hns_alpha0_reference_error": 2.6126080686670864e-08
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "task": "metamath",
+      "module": "base_model.model.model.layers.14.self_attn.v_proj",
+      "cached_basis_exact": true,
+      "cached_spectrum_relative_error": 0.0,
+      "hns_alpha0_reference_error": 3.081392393796843e-08
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "task": "metamath",
+      "module": "base_model.model.model.layers.15.mlp.down_proj",
+      "cached_basis_exact": true,
+      "cached_spectrum_relative_error": 0.0,
+      "hns_alpha0_reference_error": 2.2399897144158598e-08
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "task": "metamath",
+      "module": "base_model.model.model.layers.15.mlp.gate_proj",
+      "cached_basis_exact": true,
+      "cached_spectrum_relative_error": 0.0,
+      "hns_alpha0_reference_error": 2.6710515533456808e-08
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "task": "metamath",
+      "module": "base_model.model.model.layers.15.mlp.up_proj",
+      "cached_basis_exact": true,
+      "cached_spectrum_relative_error": 0.0,
+      "hns_alpha0_reference_error": 3.052779776472533e-08
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "task": "metamath",
+      "module": "base_model.model.model.layers.15.self_attn.k_proj",
+      "cached_basis_exact": true,
+      "cached_spectrum_relative_error": 0.0,
+      "hns_alpha0_reference_error": 2.161649990279264e-08
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "task": "metamath",
+      "module": "base_model.model.model.layers.15.self_attn.o_proj",
+      "cached_basis_exact": true,
+      "cached_spectrum_relative_error": 0.0,
+      "hns_alpha0_reference_error": 2.535613105317993e-08
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "task": "metamath",
+      "module": "base_model.model.model.layers.15.self_attn.q_proj",
+      "cached_basis_exact": true,
+      "cached_spectrum_relative_error": 0.0,
+      "hns_alpha0_reference_error": 2.469854938644862e-08
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "task": "metamath",
+      "module": "base_model.model.model.layers.15.self_attn.v_proj",
+      "cached_basis_exact": true,
+      "cached_spectrum_relative_error": 0.0,
+      "hns_alpha0_reference_error": 2.9758790602477897e-08
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "task": "metamath",
+      "module": "base_model.model.model.layers.16.mlp.down_proj",
+      "cached_basis_exact": true,
+      "cached_spectrum_relative_error": 0.0,
+      "hns_alpha0_reference_error": 2.740951757455992e-08
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "task": "metamath",
+      "module": "base_model.model.model.layers.16.mlp.gate_proj",
+      "cached_basis_exact": true,
+      "cached_spectrum_relative_error": 0.0,
+      "hns_alpha0_reference_error": 2.4267882617462803e-08
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "task": "metamath",
+      "module": "base_model.model.model.layers.16.mlp.up_proj",
+      "cached_basis_exact": true,
+      "cached_spectrum_relative_error": 0.0,
+      "hns_alpha0_reference_error": 2.0931572658043467e-08
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "task": "metamath",
+      "module": "base_model.model.model.layers.16.self_attn.k_proj",
+      "cached_basis_exact": true,
+      "cached_spectrum_relative_error": 0.0,
+      "hns_alpha0_reference_error": 2.6950682096896545e-08
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "task": "metamath",
+      "module": "base_model.model.model.layers.16.self_attn.o_proj",
+      "cached_basis_exact": true,
+      "cached_spectrum_relative_error": 0.0,
+      "hns_alpha0_reference_error": 2.3412533126172416e-08
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "task": "metamath",
+      "module": "base_model.model.model.layers.16.self_attn.q_proj",
+      "cached_basis_exact": true,
+      "cached_spectrum_relative_error": 0.0,
+      "hns_alpha0_reference_error": 2.3470360642591732e-08
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "task": "metamath",
+      "module": "base_model.model.model.layers.16.self_attn.v_proj",
+      "cached_basis_exact": true,
+      "cached_spectrum_relative_error": 0.0,
+      "hns_alpha0_reference_error": 3.0484080993290625e-08
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "task": "metamath",
+      "module": "base_model.model.model.layers.17.mlp.down_proj",
+      "cached_basis_exact": true,
+      "cached_spectrum_relative_error": 0.0,
+      "hns_alpha0_reference_error": 2.3123265460001044e-08
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "task": "metamath",
+      "module": "base_model.model.model.layers.17.mlp.gate_proj",
+      "cached_basis_exact": true,
+      "cached_spectrum_relative_error": 0.0,
+      "hns_alpha0_reference_error": 2.2463022259602384e-08
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "task": "metamath",
+      "module": "base_model.model.model.layers.17.mlp.up_proj",
+      "cached_basis_exact": true,
+      "cached_spectrum_relative_error": 0.0,
+      "hns_alpha0_reference_error": 2.9789280781478877e-08
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "task": "metamath",
+      "module": "base_model.model.model.layers.17.self_attn.k_proj",
+      "cached_basis_exact": true,
+      "cached_spectrum_relative_error": 0.0,
+      "hns_alpha0_reference_error": 2.764510742440117e-08
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "task": "metamath",
+      "module": "base_model.model.model.layers.17.self_attn.o_proj",
+      "cached_basis_exact": true,
+      "cached_spectrum_relative_error": 0.0,
+      "hns_alpha0_reference_error": 2.4139845331091713e-08
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "task": "metamath",
+      "module": "base_model.model.model.layers.17.self_attn.q_proj",
+      "cached_basis_exact": true,
+      "cached_spectrum_relative_error": 0.0,
+      "hns_alpha0_reference_error": 1.7270458000708936e-08
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "task": "metamath",
+      "module": "base_model.model.model.layers.17.self_attn.v_proj",
+      "cached_basis_exact": true,
+      "cached_spectrum_relative_error": 0.0,
+      "hns_alpha0_reference_error": 3.1077865967594504e-08
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "task": "metamath",
+      "module": "base_model.model.model.layers.18.mlp.down_proj",
+      "cached_basis_exact": true,
+      "cached_spectrum_relative_error": 0.0,
+      "hns_alpha0_reference_error": 2.758331789968324e-08
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "task": "metamath",
+      "module": "base_model.model.model.layers.18.mlp.gate_proj",
+      "cached_basis_exact": true,
+      "cached_spectrum_relative_error": 0.0,
+      "hns_alpha0_reference_error": 2.3295936004793785e-08
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "task": "metamath",
+      "module": "base_model.model.model.layers.18.mlp.up_proj",
+      "cached_basis_exact": true,
+      "cached_spectrum_relative_error": 0.0,
+      "hns_alpha0_reference_error": 2.9038130333237052e-08
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "task": "metamath",
+      "module": "base_model.model.model.layers.18.self_attn.k_proj",
+      "cached_basis_exact": true,
+      "cached_spectrum_relative_error": 0.0,
+      "hns_alpha0_reference_error": 2.8053320854256867e-08
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "task": "metamath",
+      "module": "base_model.model.model.layers.18.self_attn.o_proj",
+      "cached_basis_exact": true,
+      "cached_spectrum_relative_error": 0.0,
+      "hns_alpha0_reference_error": 2.4311266116244767e-08
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "task": "metamath",
+      "module": "base_model.model.model.layers.18.self_attn.q_proj",
+      "cached_basis_exact": true,
+      "cached_spectrum_relative_error": 0.0,
+      "hns_alpha0_reference_error": 2.6258846357074926e-08
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "task": "metamath",
+      "module": "base_model.model.model.layers.18.self_attn.v_proj",
+      "cached_basis_exact": true,
+      "cached_spectrum_relative_error": 0.0,
+      "hns_alpha0_reference_error": 3.3771405140606316e-08
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "task": "metamath",
+      "module": "base_model.model.model.layers.19.mlp.down_proj",
+      "cached_basis_exact": true,
+      "cached_spectrum_relative_error": 0.0,
+      "hns_alpha0_reference_error": 2.1445600804626074e-08
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "task": "metamath",
+      "module": "base_model.model.model.layers.19.mlp.gate_proj",
+      "cached_basis_exact": true,
+      "cached_spectrum_relative_error": 0.0,
+      "hns_alpha0_reference_error": 2.3923153385002786e-08
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "task": "metamath",
+      "module": "base_model.model.model.layers.19.mlp.up_proj",
+      "cached_basis_exact": true,
+      "cached_spectrum_relative_error": 0.0,
+      "hns_alpha0_reference_error": 2.7902413348774283e-08
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "task": "metamath",
+      "module": "base_model.model.model.layers.19.self_attn.k_proj",
+      "cached_basis_exact": true,
+      "cached_spectrum_relative_error": 0.0,
+      "hns_alpha0_reference_error": 2.581932748931733e-08
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "task": "metamath",
+      "module": "base_model.model.model.layers.19.self_attn.o_proj",
+      "cached_basis_exact": true,
+      "cached_spectrum_relative_error": 0.0,
+      "hns_alpha0_reference_error": 2.316167672559473e-08
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "task": "metamath",
+      "module": "base_model.model.model.layers.19.self_attn.q_proj",
+      "cached_basis_exact": true,
+      "cached_spectrum_relative_error": 0.0,
+      "hns_alpha0_reference_error": 2.5659797077455734e-08
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "task": "metamath",
+      "module": "base_model.model.model.layers.19.self_attn.v_proj",
+      "cached_basis_exact": true,
+      "cached_spectrum_relative_error": 0.0,
+      "hns_alpha0_reference_error": 3.0248433569548874e-08
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "task": "metamath",
+      "module": "base_model.model.model.layers.2.mlp.down_proj",
+      "cached_basis_exact": true,
+      "cached_spectrum_relative_error": 0.0,
+      "hns_alpha0_reference_error": 1.8158215534977687e-08
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "task": "metamath",
+      "module": "base_model.model.model.layers.2.mlp.gate_proj",
+      "cached_basis_exact": true,
+      "cached_spectrum_relative_error": 0.0,
+      "hns_alpha0_reference_error": 2.8577703086727982e-08
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "task": "metamath",
+      "module": "base_model.model.model.layers.2.mlp.up_proj",
+      "cached_basis_exact": true,
+      "cached_spectrum_relative_error": 0.0,
+      "hns_alpha0_reference_error": 3.002842614160721e-08
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "task": "metamath",
+      "module": "base_model.model.model.layers.2.self_attn.k_proj",
+      "cached_basis_exact": true,
+      "cached_spectrum_relative_error": 0.0,
+      "hns_alpha0_reference_error": 2.9153913027970004e-08
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "task": "metamath",
+      "module": "base_model.model.model.layers.2.self_attn.o_proj",
+      "cached_basis_exact": true,
+      "cached_spectrum_relative_error": 0.0,
+      "hns_alpha0_reference_error": 2.4377990845983012e-08
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "task": "metamath",
+      "module": "base_model.model.model.layers.2.self_attn.q_proj",
+      "cached_basis_exact": true,
+      "cached_spectrum_relative_error": 0.0,
+      "hns_alpha0_reference_error": 2.6853003774348904e-08
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "task": "metamath",
+      "module": "base_model.model.model.layers.2.self_attn.v_proj",
+      "cached_basis_exact": true,
+      "cached_spectrum_relative_error": 0.0,
+      "hns_alpha0_reference_error": 2.7803191967363257e-08
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "task": "metamath",
+      "module": "base_model.model.model.layers.20.mlp.down_proj",
+      "cached_basis_exact": true,
+      "cached_spectrum_relative_error": 0.0,
+      "hns_alpha0_reference_error": 2.2495040909606616e-08
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "task": "metamath",
+      "module": "base_model.model.model.layers.20.mlp.gate_proj",
+      "cached_basis_exact": true,
+      "cached_spectrum_relative_error": 0.0,
+      "hns_alpha0_reference_error": 1.8829509016536974e-08
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "task": "metamath",
+      "module": "base_model.model.model.layers.20.mlp.up_proj",
+      "cached_basis_exact": true,
+      "cached_spectrum_relative_error": 0.0,
+      "hns_alpha0_reference_error": 2.5802541956957074e-08
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "task": "metamath",
+      "module": "base_model.model.model.layers.20.self_attn.k_proj",
+      "cached_basis_exact": true,
+      "cached_spectrum_relative_error": 0.0,
+      "hns_alpha0_reference_error": 2.818280070786042e-08
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "task": "metamath",
+      "module": "base_model.model.model.layers.20.self_attn.o_proj",
+      "cached_basis_exact": true,
+      "cached_spectrum_relative_error": 0.0,
+      "hns_alpha0_reference_error": 2.780083999702417e-08
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "task": "metamath",
+      "module": "base_model.model.model.layers.20.self_attn.q_proj",
+      "cached_basis_exact": true,
+      "cached_spectrum_relative_error": 0.0,
+      "hns_alpha0_reference_error": 2.5306755804388595e-08
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "task": "metamath",
+      "module": "base_model.model.model.layers.20.self_attn.v_proj",
+      "cached_basis_exact": true,
+      "cached_spectrum_relative_error": 0.0,
+      "hns_alpha0_reference_error": 3.222673822426209e-08
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "task": "metamath",
+      "module": "base_model.model.model.layers.21.mlp.down_proj",
+      "cached_basis_exact": true,
+      "cached_spectrum_relative_error": 0.0,
+      "hns_alpha0_reference_error": 2.1857133446153758e-08
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "task": "metamath",
+      "module": "base_model.model.model.layers.21.mlp.gate_proj",
+      "cached_basis_exact": true,
+      "cached_spectrum_relative_error": 0.0,
+      "hns_alpha0_reference_error": 2.6561685288917524e-08
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "task": "metamath",
+      "module": "base_model.model.model.layers.21.mlp.up_proj",
+      "cached_basis_exact": true,
+      "cached_spectrum_relative_error": 0.0,
+      "hns_alpha0_reference_error": 2.5897987872789198e-08
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "task": "metamath",
+      "module": "base_model.model.model.layers.21.self_attn.k_proj",
+      "cached_basis_exact": true,
+      "cached_spectrum_relative_error": 0.0,
+      "hns_alpha0_reference_error": 2.5418224133066965e-08
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "task": "metamath",
+      "module": "base_model.model.model.layers.21.self_attn.o_proj",
+      "cached_basis_exact": true,
+      "cached_spectrum_relative_error": 0.0,
+      "hns_alpha0_reference_error": 2.4821864888779884e-08
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "task": "metamath",
+      "module": "base_model.model.model.layers.21.self_attn.q_proj",
+      "cached_basis_exact": true,
+      "cached_spectrum_relative_error": 0.0,
+      "hns_alpha0_reference_error": 2.5369157980776122e-08
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "task": "metamath",
+      "module": "base_model.model.model.layers.21.self_attn.v_proj",
+      "cached_basis_exact": true,
+      "cached_spectrum_relative_error": 0.0,
+      "hns_alpha0_reference_error": 3.35890274486108e-08
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "task": "metamath",
+      "module": "base_model.model.model.layers.22.mlp.down_proj",
+      "cached_basis_exact": true,
+      "cached_spectrum_relative_error": 0.0,
+      "hns_alpha0_reference_error": 2.557517437269358e-08
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "task": "metamath",
+      "module": "base_model.model.model.layers.22.mlp.gate_proj",
+      "cached_basis_exact": true,
+      "cached_spectrum_relative_error": 0.0,
+      "hns_alpha0_reference_error": 2.4562630510223177e-08
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "task": "metamath",
+      "module": "base_model.model.model.layers.22.mlp.up_proj",
+      "cached_basis_exact": true,
+      "cached_spectrum_relative_error": 0.0,
+      "hns_alpha0_reference_error": 2.9589769333948167e-08
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "task": "metamath",
+      "module": "base_model.model.model.layers.22.self_attn.k_proj",
+      "cached_basis_exact": true,
+      "cached_spectrum_relative_error": 0.0,
+      "hns_alpha0_reference_error": 2.0659603949440673e-08
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "task": "metamath",
+      "module": "base_model.model.model.layers.22.self_attn.o_proj",
+      "cached_basis_exact": true,
+      "cached_spectrum_relative_error": 0.0,
+      "hns_alpha0_reference_error": 2.1413232108356427e-08
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "task": "metamath",
+      "module": "base_model.model.model.layers.22.self_attn.q_proj",
+      "cached_basis_exact": true,
+      "cached_spectrum_relative_error": 0.0,
+      "hns_alpha0_reference_error": 1.8277418407558515e-08
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "task": "metamath",
+      "module": "base_model.model.model.layers.22.self_attn.v_proj",
+      "cached_basis_exact": true,
+      "cached_spectrum_relative_error": 0.0,
+      "hns_alpha0_reference_error": 2.4543326190184958e-08
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "task": "metamath",
+      "module": "base_model.model.model.layers.23.mlp.down_proj",
+      "cached_basis_exact": true,
+      "cached_spectrum_relative_error": 0.0,
+      "hns_alpha0_reference_error": 2.376672817252972e-08
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "task": "metamath",
+      "module": "base_model.model.model.layers.23.mlp.gate_proj",
+      "cached_basis_exact": true,
+      "cached_spectrum_relative_error": 0.0,
+      "hns_alpha0_reference_error": 2.3893386262594383e-08
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "task": "metamath",
+      "module": "base_model.model.model.layers.23.mlp.up_proj",
+      "cached_basis_exact": true,
+      "cached_spectrum_relative_error": 0.0,
+      "hns_alpha0_reference_error": 2.453058286334285e-08
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "task": "metamath",
+      "module": "base_model.model.model.layers.23.self_attn.k_proj",
+      "cached_basis_exact": true,
+      "cached_spectrum_relative_error": 0.0,
+      "hns_alpha0_reference_error": 2.1743246861901265e-08
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "task": "metamath",
+      "module": "base_model.model.model.layers.23.self_attn.o_proj",
+      "cached_basis_exact": true,
+      "cached_spectrum_relative_error": 0.0,
+      "hns_alpha0_reference_error": 2.1447664495269184e-08
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "task": "metamath",
+      "module": "base_model.model.model.layers.23.self_attn.q_proj",
+      "cached_basis_exact": true,
+      "cached_spectrum_relative_error": 0.0,
+      "hns_alpha0_reference_error": 2.6242425060340345e-08
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "task": "metamath",
+      "module": "base_model.model.model.layers.23.self_attn.v_proj",
+      "cached_basis_exact": true,
+      "cached_spectrum_relative_error": 0.0,
+      "hns_alpha0_reference_error": 3.6916794623302687e-08
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "task": "metamath",
+      "module": "base_model.model.model.layers.24.mlp.down_proj",
+      "cached_basis_exact": true,
+      "cached_spectrum_relative_error": 0.0,
+      "hns_alpha0_reference_error": 2.6308102385797467e-08
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "task": "metamath",
+      "module": "base_model.model.model.layers.24.mlp.gate_proj",
+      "cached_basis_exact": true,
+      "cached_spectrum_relative_error": 0.0,
+      "hns_alpha0_reference_error": 2.8052941822267577e-08
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "task": "metamath",
+      "module": "base_model.model.model.layers.24.mlp.up_proj",
+      "cached_basis_exact": true,
+      "cached_spectrum_relative_error": 0.0,
+      "hns_alpha0_reference_error": 2.2873906427032633e-08
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "task": "metamath",
+      "module": "base_model.model.model.layers.24.self_attn.k_proj",
+      "cached_basis_exact": true,
+      "cached_spectrum_relative_error": 0.0,
+      "hns_alpha0_reference_error": 2.4339469627713404e-08
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "task": "metamath",
+      "module": "base_model.model.model.layers.24.self_attn.o_proj",
+      "cached_basis_exact": true,
+      "cached_spectrum_relative_error": 0.0,
+      "hns_alpha0_reference_error": 2.9894816860572324e-08
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "task": "metamath",
+      "module": "base_model.model.model.layers.24.self_attn.q_proj",
+      "cached_basis_exact": true,
+      "cached_spectrum_relative_error": 0.0,
+      "hns_alpha0_reference_error": 2.7980939100715607e-08
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "task": "metamath",
+      "module": "base_model.model.model.layers.24.self_attn.v_proj",
+      "cached_basis_exact": true,
+      "cached_spectrum_relative_error": 0.0,
+      "hns_alpha0_reference_error": 2.4727166649553234e-08
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "task": "metamath",
+      "module": "base_model.model.model.layers.25.mlp.down_proj",
+      "cached_basis_exact": true,
+      "cached_spectrum_relative_error": 0.0,
+      "hns_alpha0_reference_error": 1.477703624657789e-08
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "task": "metamath",
+      "module": "base_model.model.model.layers.25.mlp.gate_proj",
+      "cached_basis_exact": true,
+      "cached_spectrum_relative_error": 0.0,
+      "hns_alpha0_reference_error": 2.5915004855111582e-08
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "task": "metamath",
+      "module": "base_model.model.model.layers.25.mlp.up_proj",
+      "cached_basis_exact": true,
+      "cached_spectrum_relative_error": 0.0,
+      "hns_alpha0_reference_error": 2.9720386058108973e-08
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "task": "metamath",
+      "module": "base_model.model.model.layers.25.self_attn.k_proj",
+      "cached_basis_exact": true,
+      "cached_spectrum_relative_error": 0.0,
+      "hns_alpha0_reference_error": 2.8434468772727805e-08
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "task": "metamath",
+      "module": "base_model.model.model.layers.25.self_attn.o_proj",
+      "cached_basis_exact": true,
+      "cached_spectrum_relative_error": 0.0,
+      "hns_alpha0_reference_error": 3.056280684969106e-08
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "task": "metamath",
+      "module": "base_model.model.model.layers.25.self_attn.q_proj",
+      "cached_basis_exact": true,
+      "cached_spectrum_relative_error": 0.0,
+      "hns_alpha0_reference_error": 2.9229153329231296e-08
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "task": "metamath",
+      "module": "base_model.model.model.layers.25.self_attn.v_proj",
+      "cached_basis_exact": true,
+      "cached_spectrum_relative_error": 0.0,
+      "hns_alpha0_reference_error": 3.531995910547382e-08
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "task": "metamath",
+      "module": "base_model.model.model.layers.26.mlp.down_proj",
+      "cached_basis_exact": true,
+      "cached_spectrum_relative_error": 0.0,
+      "hns_alpha0_reference_error": 2.394379085089388e-08
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "task": "metamath",
+      "module": "base_model.model.model.layers.26.mlp.gate_proj",
+      "cached_basis_exact": true,
+      "cached_spectrum_relative_error": 0.0,
+      "hns_alpha0_reference_error": 3.046786560212029e-08
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "task": "metamath",
+      "module": "base_model.model.model.layers.26.mlp.up_proj",
+      "cached_basis_exact": true,
+      "cached_spectrum_relative_error": 0.0,
+      "hns_alpha0_reference_error": 2.7571430112080638e-08
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "task": "metamath",
+      "module": "base_model.model.model.layers.26.self_attn.k_proj",
+      "cached_basis_exact": true,
+      "cached_spectrum_relative_error": 0.0,
+      "hns_alpha0_reference_error": 3.384954445597643e-08
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "task": "metamath",
+      "module": "base_model.model.model.layers.26.self_attn.o_proj",
+      "cached_basis_exact": true,
+      "cached_spectrum_relative_error": 0.0,
+      "hns_alpha0_reference_error": 2.4484783133848812e-08
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "task": "metamath",
+      "module": "base_model.model.model.layers.26.self_attn.q_proj",
+      "cached_basis_exact": true,
+      "cached_spectrum_relative_error": 0.0,
+      "hns_alpha0_reference_error": 2.4033620437864524e-08
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "task": "metamath",
+      "module": "base_model.model.model.layers.26.self_attn.v_proj",
+      "cached_basis_exact": true,
+      "cached_spectrum_relative_error": 0.0,
+      "hns_alpha0_reference_error": 3.065182916378263e-08
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "task": "metamath",
+      "module": "base_model.model.model.layers.27.mlp.down_proj",
+      "cached_basis_exact": true,
+      "cached_spectrum_relative_error": 0.0,
+      "hns_alpha0_reference_error": 2.8403551166429996e-08
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "task": "metamath",
+      "module": "base_model.model.model.layers.27.mlp.gate_proj",
+      "cached_basis_exact": true,
+      "cached_spectrum_relative_error": 0.0,
+      "hns_alpha0_reference_error": 2.4881131205582938e-08
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "task": "metamath",
+      "module": "base_model.model.model.layers.27.mlp.up_proj",
+      "cached_basis_exact": true,
+      "cached_spectrum_relative_error": 0.0,
+      "hns_alpha0_reference_error": 3.345835044521885e-08
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "task": "metamath",
+      "module": "base_model.model.model.layers.27.self_attn.k_proj",
+      "cached_basis_exact": true,
+      "cached_spectrum_relative_error": 0.0,
+      "hns_alpha0_reference_error": 1.927894631054824e-08
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "task": "metamath",
+      "module": "base_model.model.model.layers.27.self_attn.o_proj",
+      "cached_basis_exact": true,
+      "cached_spectrum_relative_error": 0.0,
+      "hns_alpha0_reference_error": 2.6344776696251706e-08
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "task": "metamath",
+      "module": "base_model.model.model.layers.27.self_attn.q_proj",
+      "cached_basis_exact": true,
+      "cached_spectrum_relative_error": 0.0,
+      "hns_alpha0_reference_error": 1.4706185504517143e-08
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "task": "metamath",
+      "module": "base_model.model.model.layers.27.self_attn.v_proj",
+      "cached_basis_exact": true,
+      "cached_spectrum_relative_error": 0.0,
+      "hns_alpha0_reference_error": 2.654538191173167e-08
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "task": "metamath",
+      "module": "base_model.model.model.layers.28.mlp.down_proj",
+      "cached_basis_exact": true,
+      "cached_spectrum_relative_error": 0.0,
+      "hns_alpha0_reference_error": 2.1761752922662938e-08
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "task": "metamath",
+      "module": "base_model.model.model.layers.28.mlp.gate_proj",
+      "cached_basis_exact": true,
+      "cached_spectrum_relative_error": 0.0,
+      "hns_alpha0_reference_error": 2.1950917190746962e-08
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "task": "metamath",
+      "module": "base_model.model.model.layers.28.mlp.up_proj",
+      "cached_basis_exact": true,
+      "cached_spectrum_relative_error": 0.0,
+      "hns_alpha0_reference_error": 2.7408660000113352e-08
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "task": "metamath",
+      "module": "base_model.model.model.layers.28.self_attn.k_proj",
+      "cached_basis_exact": true,
+      "cached_spectrum_relative_error": 0.0,
+      "hns_alpha0_reference_error": 2.7018154495684277e-08
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "task": "metamath",
+      "module": "base_model.model.model.layers.28.self_attn.o_proj",
+      "cached_basis_exact": true,
+      "cached_spectrum_relative_error": 0.0,
+      "hns_alpha0_reference_error": 2.4721391702624774e-08
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "task": "metamath",
+      "module": "base_model.model.model.layers.28.self_attn.q_proj",
+      "cached_basis_exact": true,
+      "cached_spectrum_relative_error": 0.0,
+      "hns_alpha0_reference_error": 2.566002823444366e-08
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "task": "metamath",
+      "module": "base_model.model.model.layers.28.self_attn.v_proj",
+      "cached_basis_exact": true,
+      "cached_spectrum_relative_error": 0.0,
+      "hns_alpha0_reference_error": 2.8484949256947448e-08
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "task": "metamath",
+      "module": "base_model.model.model.layers.29.mlp.down_proj",
+      "cached_basis_exact": true,
+      "cached_spectrum_relative_error": 0.0,
+      "hns_alpha0_reference_error": 3.077095675803024e-08
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "task": "metamath",
+      "module": "base_model.model.model.layers.29.mlp.gate_proj",
+      "cached_basis_exact": true,
+      "cached_spectrum_relative_error": 0.0,
+      "hns_alpha0_reference_error": 1.9905861214860517e-08
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "task": "metamath",
+      "module": "base_model.model.model.layers.29.mlp.up_proj",
+      "cached_basis_exact": true,
+      "cached_spectrum_relative_error": 0.0,
+      "hns_alpha0_reference_error": 2.3408642804821252e-08
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "task": "metamath",
+      "module": "base_model.model.model.layers.29.self_attn.k_proj",
+      "cached_basis_exact": true,
+      "cached_spectrum_relative_error": 0.0,
+      "hns_alpha0_reference_error": 2.1475404161148976e-08
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "task": "metamath",
+      "module": "base_model.model.model.layers.29.self_attn.o_proj",
+      "cached_basis_exact": true,
+      "cached_spectrum_relative_error": 0.0,
+      "hns_alpha0_reference_error": 2.4250755045779763e-08
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "task": "metamath",
+      "module": "base_model.model.model.layers.29.self_attn.q_proj",
+      "cached_basis_exact": true,
+      "cached_spectrum_relative_error": 0.0,
+      "hns_alpha0_reference_error": 3.0133107356604617e-08
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "task": "metamath",
+      "module": "base_model.model.model.layers.29.self_attn.v_proj",
+      "cached_basis_exact": true,
+      "cached_spectrum_relative_error": 0.0,
+      "hns_alpha0_reference_error": 3.410787283535453e-08
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "task": "metamath",
+      "module": "base_model.model.model.layers.3.mlp.down_proj",
+      "cached_basis_exact": true,
+      "cached_spectrum_relative_error": 0.0,
+      "hns_alpha0_reference_error": 1.738247875037598e-08
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "task": "metamath",
+      "module": "base_model.model.model.layers.3.mlp.gate_proj",
+      "cached_basis_exact": true,
+      "cached_spectrum_relative_error": 0.0,
+      "hns_alpha0_reference_error": 2.8121085954608773e-08
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "task": "metamath",
+      "module": "base_model.model.model.layers.3.mlp.up_proj",
+      "cached_basis_exact": true,
+      "cached_spectrum_relative_error": 0.0,
+      "hns_alpha0_reference_error": 3.390164229094333e-08
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "task": "metamath",
+      "module": "base_model.model.model.layers.3.self_attn.k_proj",
+      "cached_basis_exact": true,
+      "cached_spectrum_relative_error": 0.0,
+      "hns_alpha0_reference_error": 3.009202431960435e-08
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "task": "metamath",
+      "module": "base_model.model.model.layers.3.self_attn.o_proj",
+      "cached_basis_exact": true,
+      "cached_spectrum_relative_error": 0.0,
+      "hns_alpha0_reference_error": 2.9088724043708503e-08
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "task": "metamath",
+      "module": "base_model.model.model.layers.3.self_attn.q_proj",
+      "cached_basis_exact": true,
+      "cached_spectrum_relative_error": 0.0,
+      "hns_alpha0_reference_error": 3.107577127786597e-08
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "task": "metamath",
+      "module": "base_model.model.model.layers.3.self_attn.v_proj",
+      "cached_basis_exact": true,
+      "cached_spectrum_relative_error": 0.0,
+      "hns_alpha0_reference_error": 3.1626641145686885e-08
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "task": "metamath",
+      "module": "base_model.model.model.layers.30.mlp.down_proj",
+      "cached_basis_exact": true,
+      "cached_spectrum_relative_error": 0.0,
+      "hns_alpha0_reference_error": 3.1785784192119025e-08
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "task": "metamath",
+      "module": "base_model.model.model.layers.30.mlp.gate_proj",
+      "cached_basis_exact": true,
+      "cached_spectrum_relative_error": 0.0,
+      "hns_alpha0_reference_error": 2.7225164725458275e-08
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "task": "metamath",
+      "module": "base_model.model.model.layers.30.mlp.up_proj",
+      "cached_basis_exact": true,
+      "cached_spectrum_relative_error": 0.0,
+      "hns_alpha0_reference_error": 2.1223988865536115e-08
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "task": "metamath",
+      "module": "base_model.model.model.layers.30.self_attn.k_proj",
+      "cached_basis_exact": true,
+      "cached_spectrum_relative_error": 0.0,
+      "hns_alpha0_reference_error": 2.1578765677581877e-08
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "task": "metamath",
+      "module": "base_model.model.model.layers.30.self_attn.o_proj",
+      "cached_basis_exact": true,
+      "cached_spectrum_relative_error": 0.0,
+      "hns_alpha0_reference_error": 2.2018556801246013e-08
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "task": "metamath",
+      "module": "base_model.model.model.layers.30.self_attn.q_proj",
+      "cached_basis_exact": true,
+      "cached_spectrum_relative_error": 0.0,
+      "hns_alpha0_reference_error": 2.849435120058581e-08
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "task": "metamath",
+      "module": "base_model.model.model.layers.30.self_attn.v_proj",
+      "cached_basis_exact": true,
+      "cached_spectrum_relative_error": 0.0,
+      "hns_alpha0_reference_error": 2.767479640962824e-08
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "task": "metamath",
+      "module": "base_model.model.model.layers.31.mlp.down_proj",
+      "cached_basis_exact": true,
+      "cached_spectrum_relative_error": 0.0,
+      "hns_alpha0_reference_error": 2.0091716226503367e-08
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "task": "metamath",
+      "module": "base_model.model.model.layers.31.mlp.gate_proj",
+      "cached_basis_exact": true,
+      "cached_spectrum_relative_error": 0.0,
+      "hns_alpha0_reference_error": 2.5455814948015008e-08
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "task": "metamath",
+      "module": "base_model.model.model.layers.31.mlp.up_proj",
+      "cached_basis_exact": true,
+      "cached_spectrum_relative_error": 0.0,
+      "hns_alpha0_reference_error": 2.8746606872338536e-08
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "task": "metamath",
+      "module": "base_model.model.model.layers.31.self_attn.k_proj",
+      "cached_basis_exact": true,
+      "cached_spectrum_relative_error": 0.0,
+      "hns_alpha0_reference_error": 2.755480515046254e-08
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "task": "metamath",
+      "module": "base_model.model.model.layers.31.self_attn.o_proj",
+      "cached_basis_exact": true,
+      "cached_spectrum_relative_error": 0.0,
+      "hns_alpha0_reference_error": 3.3821218310325514e-08
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "task": "metamath",
+      "module": "base_model.model.model.layers.31.self_attn.q_proj",
+      "cached_basis_exact": true,
+      "cached_spectrum_relative_error": 0.0,
+      "hns_alpha0_reference_error": 3.398900444256106e-08
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "task": "metamath",
+      "module": "base_model.model.model.layers.31.self_attn.v_proj",
+      "cached_basis_exact": true,
+      "cached_spectrum_relative_error": 0.0,
+      "hns_alpha0_reference_error": 3.5003730502698444e-08
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "task": "metamath",
+      "module": "base_model.model.model.layers.4.mlp.down_proj",
+      "cached_basis_exact": true,
+      "cached_spectrum_relative_error": 0.0,
+      "hns_alpha0_reference_error": 2.0083323288049362e-08
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "task": "metamath",
+      "module": "base_model.model.model.layers.4.mlp.gate_proj",
+      "cached_basis_exact": true,
+      "cached_spectrum_relative_error": 0.0,
+      "hns_alpha0_reference_error": 3.110749100219306e-08
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "task": "metamath",
+      "module": "base_model.model.model.layers.4.mlp.up_proj",
+      "cached_basis_exact": true,
+      "cached_spectrum_relative_error": 0.0,
+      "hns_alpha0_reference_error": 2.238976222658476e-08
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "task": "metamath",
+      "module": "base_model.model.model.layers.4.self_attn.k_proj",
+      "cached_basis_exact": true,
+      "cached_spectrum_relative_error": 0.0,
+      "hns_alpha0_reference_error": 2.82219151621057e-08
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "task": "metamath",
+      "module": "base_model.model.model.layers.4.self_attn.o_proj",
+      "cached_basis_exact": true,
+      "cached_spectrum_relative_error": 0.0,
+      "hns_alpha0_reference_error": 2.7554215218245327e-08
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "task": "metamath",
+      "module": "base_model.model.model.layers.4.self_attn.q_proj",
+      "cached_basis_exact": true,
+      "cached_spectrum_relative_error": 0.0,
+      "hns_alpha0_reference_error": 3.226565140960955e-08
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "task": "metamath",
+      "module": "base_model.model.model.layers.4.self_attn.v_proj",
+      "cached_basis_exact": true,
+      "cached_spectrum_relative_error": 0.0,
+      "hns_alpha0_reference_error": 1.6225359403543046e-08
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "task": "metamath",
+      "module": "base_model.model.model.layers.5.mlp.down_proj",
+      "cached_basis_exact": true,
+      "cached_spectrum_relative_error": 0.0,
+      "hns_alpha0_reference_error": 2.1289524303768754e-08
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "task": "metamath",
+      "module": "base_model.model.model.layers.5.mlp.gate_proj",
+      "cached_basis_exact": true,
+      "cached_spectrum_relative_error": 0.0,
+      "hns_alpha0_reference_error": 2.2066473668376784e-08
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "task": "metamath",
+      "module": "base_model.model.model.layers.5.mlp.up_proj",
+      "cached_basis_exact": true,
+      "cached_spectrum_relative_error": 0.0,
+      "hns_alpha0_reference_error": 3.2529162868067156e-08
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "task": "metamath",
+      "module": "base_model.model.model.layers.5.self_attn.k_proj",
+      "cached_basis_exact": true,
+      "cached_spectrum_relative_error": 0.0,
+      "hns_alpha0_reference_error": 2.623129661150774e-08
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "task": "metamath",
+      "module": "base_model.model.model.layers.5.self_attn.o_proj",
+      "cached_basis_exact": true,
+      "cached_spectrum_relative_error": 0.0,
+      "hns_alpha0_reference_error": 3.4481336762660244e-08
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "task": "metamath",
+      "module": "base_model.model.model.layers.5.self_attn.q_proj",
+      "cached_basis_exact": true,
+      "cached_spectrum_relative_error": 0.0,
+      "hns_alpha0_reference_error": 2.6817784329179307e-08
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "task": "metamath",
+      "module": "base_model.model.model.layers.5.self_attn.v_proj",
+      "cached_basis_exact": true,
+      "cached_spectrum_relative_error": 0.0,
+      "hns_alpha0_reference_error": 2.636946681306135e-08
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "task": "metamath",
+      "module": "base_model.model.model.layers.6.mlp.down_proj",
+      "cached_basis_exact": true,
+      "cached_spectrum_relative_error": 0.0,
+      "hns_alpha0_reference_error": 2.2819467416540294e-08
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "task": "metamath",
+      "module": "base_model.model.model.layers.6.mlp.gate_proj",
+      "cached_basis_exact": true,
+      "cached_spectrum_relative_error": 0.0,
+      "hns_alpha0_reference_error": 2.6524124048701545e-08
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "task": "metamath",
+      "module": "base_model.model.model.layers.6.mlp.up_proj",
+      "cached_basis_exact": true,
+      "cached_spectrum_relative_error": 0.0,
+      "hns_alpha0_reference_error": 2.918065408170914e-08
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "task": "metamath",
+      "module": "base_model.model.model.layers.6.self_attn.k_proj",
+      "cached_basis_exact": true,
+      "cached_spectrum_relative_error": 0.0,
+      "hns_alpha0_reference_error": 2.9804190187156537e-08
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "task": "metamath",
+      "module": "base_model.model.model.layers.6.self_attn.o_proj",
+      "cached_basis_exact": true,
+      "cached_spectrum_relative_error": 0.0,
+      "hns_alpha0_reference_error": 3.067764669923073e-08
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "task": "metamath",
+      "module": "base_model.model.model.layers.6.self_attn.q_proj",
+      "cached_basis_exact": true,
+      "cached_spectrum_relative_error": 0.0,
+      "hns_alpha0_reference_error": 2.2659965289867884e-08
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "task": "metamath",
+      "module": "base_model.model.model.layers.6.self_attn.v_proj",
+      "cached_basis_exact": true,
+      "cached_spectrum_relative_error": 0.0,
+      "hns_alpha0_reference_error": 3.12602434299127e-08
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "task": "metamath",
+      "module": "base_model.model.model.layers.7.mlp.down_proj",
+      "cached_basis_exact": true,
+      "cached_spectrum_relative_error": 0.0,
+      "hns_alpha0_reference_error": 2.2754184015923848e-08
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "task": "metamath",
+      "module": "base_model.model.model.layers.7.mlp.gate_proj",
+      "cached_basis_exact": true,
+      "cached_spectrum_relative_error": 0.0,
+      "hns_alpha0_reference_error": 2.6439155123513808e-08
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "task": "metamath",
+      "module": "base_model.model.model.layers.7.mlp.up_proj",
+      "cached_basis_exact": true,
+      "cached_spectrum_relative_error": 0.0,
+      "hns_alpha0_reference_error": 2.779932164918018e-08
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "task": "metamath",
+      "module": "base_model.model.model.layers.7.self_attn.k_proj",
+      "cached_basis_exact": true,
+      "cached_spectrum_relative_error": 0.0,
+      "hns_alpha0_reference_error": 3.421954694747542e-08
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "task": "metamath",
+      "module": "base_model.model.model.layers.7.self_attn.o_proj",
+      "cached_basis_exact": true,
+      "cached_spectrum_relative_error": 0.0,
+      "hns_alpha0_reference_error": 2.6186152641367083e-08
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "task": "metamath",
+      "module": "base_model.model.model.layers.7.self_attn.q_proj",
+      "cached_basis_exact": true,
+      "cached_spectrum_relative_error": 0.0,
+      "hns_alpha0_reference_error": 2.643035978828892e-08
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "task": "metamath",
+      "module": "base_model.model.model.layers.7.self_attn.v_proj",
+      "cached_basis_exact": true,
+      "cached_spectrum_relative_error": 0.0,
+      "hns_alpha0_reference_error": 3.327857953870932e-08
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "task": "metamath",
+      "module": "base_model.model.model.layers.8.mlp.down_proj",
+      "cached_basis_exact": true,
+      "cached_spectrum_relative_error": 0.0,
+      "hns_alpha0_reference_error": 1.7088280952700126e-08
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "task": "metamath",
+      "module": "base_model.model.model.layers.8.mlp.gate_proj",
+      "cached_basis_exact": true,
+      "cached_spectrum_relative_error": 0.0,
+      "hns_alpha0_reference_error": 2.106115041205155e-08
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "task": "metamath",
+      "module": "base_model.model.model.layers.8.mlp.up_proj",
+      "cached_basis_exact": true,
+      "cached_spectrum_relative_error": 0.0,
+      "hns_alpha0_reference_error": 2.8035727770372137e-08
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "task": "metamath",
+      "module": "base_model.model.model.layers.8.self_attn.k_proj",
+      "cached_basis_exact": true,
+      "cached_spectrum_relative_error": 0.0,
+      "hns_alpha0_reference_error": 2.548949678391302e-08
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "task": "metamath",
+      "module": "base_model.model.model.layers.8.self_attn.o_proj",
+      "cached_basis_exact": true,
+      "cached_spectrum_relative_error": 0.0,
+      "hns_alpha0_reference_error": 2.9166097470676736e-08
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "task": "metamath",
+      "module": "base_model.model.model.layers.8.self_attn.q_proj",
+      "cached_basis_exact": true,
+      "cached_spectrum_relative_error": 0.0,
+      "hns_alpha0_reference_error": 2.5046255522295653e-08
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "task": "metamath",
+      "module": "base_model.model.model.layers.8.self_attn.v_proj",
+      "cached_basis_exact": true,
+      "cached_spectrum_relative_error": 0.0,
+      "hns_alpha0_reference_error": 2.8384013014665875e-08
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "task": "metamath",
+      "module": "base_model.model.model.layers.9.mlp.down_proj",
+      "cached_basis_exact": true,
+      "cached_spectrum_relative_error": 0.0,
+      "hns_alpha0_reference_error": 2.7886438839646952e-08
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "task": "metamath",
+      "module": "base_model.model.model.layers.9.mlp.gate_proj",
+      "cached_basis_exact": true,
+      "cached_spectrum_relative_error": 0.0,
+      "hns_alpha0_reference_error": 2.209353196571238e-08
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "task": "metamath",
+      "module": "base_model.model.model.layers.9.mlp.up_proj",
+      "cached_basis_exact": true,
+      "cached_spectrum_relative_error": 0.0,
+      "hns_alpha0_reference_error": 1.8109529738205995e-08
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "task": "metamath",
+      "module": "base_model.model.model.layers.9.self_attn.k_proj",
+      "cached_basis_exact": true,
+      "cached_spectrum_relative_error": 0.0,
+      "hns_alpha0_reference_error": 3.1111510395950584e-08
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "task": "metamath",
+      "module": "base_model.model.model.layers.9.self_attn.o_proj",
+      "cached_basis_exact": true,
+      "cached_spectrum_relative_error": 0.0,
+      "hns_alpha0_reference_error": 2.33407953214108e-08
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "task": "metamath",
+      "module": "base_model.model.model.layers.9.self_attn.q_proj",
+      "cached_basis_exact": true,
+      "cached_spectrum_relative_error": 0.0,
+      "hns_alpha0_reference_error": 2.9001079198863905e-08
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "task": "metamath",
+      "module": "base_model.model.model.layers.9.self_attn.v_proj",
+      "cached_basis_exact": true,
+      "cached_spectrum_relative_error": 0.0,
+      "hns_alpha0_reference_error": 3.254643443590857e-08
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "task": "tulu",
+      "module": "base_model.model.model.layers.0.mlp.down_proj",
+      "cached_basis_exact": true,
+      "cached_spectrum_relative_error": 0.0,
+      "hns_alpha0_reference_error": 3.594781379114717e-08
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "task": "tulu",
+      "module": "base_model.model.model.layers.0.mlp.gate_proj",
+      "cached_basis_exact": true,
+      "cached_spectrum_relative_error": 0.0,
+      "hns_alpha0_reference_error": 3.2786904399362194e-08
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "task": "tulu",
+      "module": "base_model.model.model.layers.0.mlp.up_proj",
+      "cached_basis_exact": true,
+      "cached_spectrum_relative_error": 0.0,
+      "hns_alpha0_reference_error": 2.6558199982991323e-08
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "task": "tulu",
+      "module": "base_model.model.model.layers.0.self_attn.k_proj",
+      "cached_basis_exact": true,
+      "cached_spectrum_relative_error": 0.0,
+      "hns_alpha0_reference_error": 1.946469507043402e-08
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "task": "tulu",
+      "module": "base_model.model.model.layers.0.self_attn.o_proj",
+      "cached_basis_exact": true,
+      "cached_spectrum_relative_error": 0.0,
+      "hns_alpha0_reference_error": 2.23955897645104e-08
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "task": "tulu",
+      "module": "base_model.model.model.layers.0.self_attn.q_proj",
+      "cached_basis_exact": true,
+      "cached_spectrum_relative_error": 0.0,
+      "hns_alpha0_reference_error": 1.983263672400788e-08
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "task": "tulu",
+      "module": "base_model.model.model.layers.0.self_attn.v_proj",
+      "cached_basis_exact": true,
+      "cached_spectrum_relative_error": 0.0,
+      "hns_alpha0_reference_error": 2.3318459353337708e-08
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "task": "tulu",
+      "module": "base_model.model.model.layers.1.mlp.down_proj",
+      "cached_basis_exact": true,
+      "cached_spectrum_relative_error": 0.0,
+      "hns_alpha0_reference_error": 1.9683020341071456e-08
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "task": "tulu",
+      "module": "base_model.model.model.layers.1.mlp.gate_proj",
+      "cached_basis_exact": true,
+      "cached_spectrum_relative_error": 0.0,
+      "hns_alpha0_reference_error": 1.4022244637293163e-08
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "task": "tulu",
+      "module": "base_model.model.model.layers.1.mlp.up_proj",
+      "cached_basis_exact": true,
+      "cached_spectrum_relative_error": 0.0,
+      "hns_alpha0_reference_error": 1.8041267581039517e-08
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "task": "tulu",
+      "module": "base_model.model.model.layers.1.self_attn.k_proj",
+      "cached_basis_exact": true,
+      "cached_spectrum_relative_error": 0.0,
+      "hns_alpha0_reference_error": 1.8895109413159057e-08
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "task": "tulu",
+      "module": "base_model.model.model.layers.1.self_attn.o_proj",
+      "cached_basis_exact": true,
+      "cached_spectrum_relative_error": 0.0,
+      "hns_alpha0_reference_error": 1.599684739425589e-08
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "task": "tulu",
+      "module": "base_model.model.model.layers.1.self_attn.q_proj",
+      "cached_basis_exact": true,
+      "cached_spectrum_relative_error": 0.0,
+      "hns_alpha0_reference_error": 2.2569664050419922e-08
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "task": "tulu",
+      "module": "base_model.model.model.layers.1.self_attn.v_proj",
+      "cached_basis_exact": true,
+      "cached_spectrum_relative_error": 0.0,
+      "hns_alpha0_reference_error": 2.3689057924192265e-08
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "task": "tulu",
+      "module": "base_model.model.model.layers.10.mlp.down_proj",
+      "cached_basis_exact": true,
+      "cached_spectrum_relative_error": 0.0,
+      "hns_alpha0_reference_error": 3.354003034381522e-08
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "task": "tulu",
+      "module": "base_model.model.model.layers.10.mlp.gate_proj",
+      "cached_basis_exact": true,
+      "cached_spectrum_relative_error": 0.0,
+      "hns_alpha0_reference_error": 2.016545504285982e-08
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "task": "tulu",
+      "module": "base_model.model.model.layers.10.mlp.up_proj",
+      "cached_basis_exact": true,
+      "cached_spectrum_relative_error": 0.0,
+      "hns_alpha0_reference_error": 1.639677278867136e-08
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "task": "tulu",
+      "module": "base_model.model.model.layers.10.self_attn.k_proj",
+      "cached_basis_exact": true,
+      "cached_spectrum_relative_error": 0.0,
+      "hns_alpha0_reference_error": 1.7994197324940558e-08
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "task": "tulu",
+      "module": "base_model.model.model.layers.10.self_attn.o_proj",
+      "cached_basis_exact": true,
+      "cached_spectrum_relative_error": 0.0,
+      "hns_alpha0_reference_error": 1.844469820161374e-08
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "task": "tulu",
+      "module": "base_model.model.model.layers.10.self_attn.q_proj",
+      "cached_basis_exact": true,
+      "cached_spectrum_relative_error": 0.0,
+      "hns_alpha0_reference_error": 1.5886700266351564e-08
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "task": "tulu",
+      "module": "base_model.model.model.layers.10.self_attn.v_proj",
+      "cached_basis_exact": true,
+      "cached_spectrum_relative_error": 0.0,
+      "hns_alpha0_reference_error": 1.7838727958574118e-08
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "task": "tulu",
+      "module": "base_model.model.model.layers.11.mlp.down_proj",
+      "cached_basis_exact": true,
+      "cached_spectrum_relative_error": 0.0,
+      "hns_alpha0_reference_error": 2.5986008404358237e-08
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "task": "tulu",
+      "module": "base_model.model.model.layers.11.mlp.gate_proj",
+      "cached_basis_exact": true,
+      "cached_spectrum_relative_error": 0.0,
+      "hns_alpha0_reference_error": 1.9556705883664713e-08
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "task": "tulu",
+      "module": "base_model.model.model.layers.11.mlp.up_proj",
+      "cached_basis_exact": true,
+      "cached_spectrum_relative_error": 0.0,
+      "hns_alpha0_reference_error": 2.363635077507339e-08
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "task": "tulu",
+      "module": "base_model.model.model.layers.11.self_attn.k_proj",
+      "cached_basis_exact": true,
+      "cached_spectrum_relative_error": 0.0,
+      "hns_alpha0_reference_error": 1.57405782930696e-08
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "task": "tulu",
+      "module": "base_model.model.model.layers.11.self_attn.o_proj",
+      "cached_basis_exact": true,
+      "cached_spectrum_relative_error": 0.0,
+      "hns_alpha0_reference_error": 1.7477461247697868e-08
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "task": "tulu",
+      "module": "base_model.model.model.layers.11.self_attn.q_proj",
+      "cached_basis_exact": true,
+      "cached_spectrum_relative_error": 0.0,
+      "hns_alpha0_reference_error": 1.3974928817685383e-08
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "task": "tulu",
+      "module": "base_model.model.model.layers.11.self_attn.v_proj",
+      "cached_basis_exact": true,
+      "cached_spectrum_relative_error": 0.0,
+      "hns_alpha0_reference_error": 2.274721231757302e-08
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "task": "tulu",
+      "module": "base_model.model.model.layers.12.mlp.down_proj",
+      "cached_basis_exact": true,
+      "cached_spectrum_relative_error": 0.0,
+      "hns_alpha0_reference_error": 2.8570276740400683e-08
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "task": "tulu",
+      "module": "base_model.model.model.layers.12.mlp.gate_proj",
+      "cached_basis_exact": true,
+      "cached_spectrum_relative_error": 0.0,
+      "hns_alpha0_reference_error": 1.748211869813812e-08
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "task": "tulu",
+      "module": "base_model.model.model.layers.12.mlp.up_proj",
+      "cached_basis_exact": true,
+      "cached_spectrum_relative_error": 0.0,
+      "hns_alpha0_reference_error": 1.9937867563252194e-08
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "task": "tulu",
+      "module": "base_model.model.model.layers.12.self_attn.k_proj",
+      "cached_basis_exact": true,
+      "cached_spectrum_relative_error": 0.0,
+      "hns_alpha0_reference_error": 1.730673274399346e-08
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "task": "tulu",
+      "module": "base_model.model.model.layers.12.self_attn.o_proj",
+      "cached_basis_exact": true,
+      "cached_spectrum_relative_error": 0.0,
+      "hns_alpha0_reference_error": 1.7996034202433783e-08
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "task": "tulu",
+      "module": "base_model.model.model.layers.12.self_attn.q_proj",
+      "cached_basis_exact": true,
+      "cached_spectrum_relative_error": 0.0,
+      "hns_alpha0_reference_error": 1.71884094518121e-08
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "task": "tulu",
+      "module": "base_model.model.model.layers.12.self_attn.v_proj",
+      "cached_basis_exact": true,
+      "cached_spectrum_relative_error": 0.0,
+      "hns_alpha0_reference_error": 1.6922991080473026e-08
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "task": "tulu",
+      "module": "base_model.model.model.layers.13.mlp.down_proj",
+      "cached_basis_exact": true,
+      "cached_spectrum_relative_error": 0.0,
+      "hns_alpha0_reference_error": 2.8337482619674685e-08
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "task": "tulu",
+      "module": "base_model.model.model.layers.13.mlp.gate_proj",
+      "cached_basis_exact": true,
+      "cached_spectrum_relative_error": 0.0,
+      "hns_alpha0_reference_error": 2.0088826188166208e-08
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "task": "tulu",
+      "module": "base_model.model.model.layers.13.mlp.up_proj",
+      "cached_basis_exact": true,
+      "cached_spectrum_relative_error": 0.0,
+      "hns_alpha0_reference_error": 1.3776420095693225e-08
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "task": "tulu",
+      "module": "base_model.model.model.layers.13.self_attn.k_proj",
+      "cached_basis_exact": true,
+      "cached_spectrum_relative_error": 0.0,
+      "hns_alpha0_reference_error": 2.9538045665466234e-08
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "task": "tulu",
+      "module": "base_model.model.model.layers.13.self_attn.o_proj",
+      "cached_basis_exact": true,
+      "cached_spectrum_relative_error": 0.0,
+      "hns_alpha0_reference_error": 1.606488246703694e-08
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "task": "tulu",
+      "module": "base_model.model.model.layers.13.self_attn.q_proj",
+      "cached_basis_exact": true,
+      "cached_spectrum_relative_error": 0.0,
+      "hns_alpha0_reference_error": 1.7156044095304755e-08
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "task": "tulu",
+      "module": "base_model.model.model.layers.13.self_attn.v_proj",
+      "cached_basis_exact": true,
+      "cached_spectrum_relative_error": 0.0,
+      "hns_alpha0_reference_error": 1.8606971248527427e-08
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "task": "tulu",
+      "module": "base_model.model.model.layers.14.mlp.down_proj",
+      "cached_basis_exact": true,
+      "cached_spectrum_relative_error": 0.0,
+      "hns_alpha0_reference_error": 3.3372414194793096e-08
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "task": "tulu",
+      "module": "base_model.model.model.layers.14.mlp.gate_proj",
+      "cached_basis_exact": true,
+      "cached_spectrum_relative_error": 0.0,
+      "hns_alpha0_reference_error": 1.9046602111075435e-08
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "task": "tulu",
+      "module": "base_model.model.model.layers.14.mlp.up_proj",
+      "cached_basis_exact": true,
+      "cached_spectrum_relative_error": 0.0,
+      "hns_alpha0_reference_error": 2.1007949886264776e-08
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "task": "tulu",
+      "module": "base_model.model.model.layers.14.self_attn.k_proj",
+      "cached_basis_exact": true,
+      "cached_spectrum_relative_error": 0.0,
+      "hns_alpha0_reference_error": 3.104154545037386e-08
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "task": "tulu",
+      "module": "base_model.model.model.layers.14.self_attn.o_proj",
+      "cached_basis_exact": true,
+      "cached_spectrum_relative_error": 0.0,
+      "hns_alpha0_reference_error": 2.0781006372044655e-08
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "task": "tulu",
+      "module": "base_model.model.model.layers.14.self_attn.q_proj",
+      "cached_basis_exact": true,
+      "cached_spectrum_relative_error": 0.0,
+      "hns_alpha0_reference_error": 1.9721354336411955e-08
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "task": "tulu",
+      "module": "base_model.model.model.layers.14.self_attn.v_proj",
+      "cached_basis_exact": true,
+      "cached_spectrum_relative_error": 0.0,
+      "hns_alpha0_reference_error": 2.3730927088358896e-08
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "task": "tulu",
+      "module": "base_model.model.model.layers.15.mlp.down_proj",
+      "cached_basis_exact": true,
+      "cached_spectrum_relative_error": 0.0,
+      "hns_alpha0_reference_error": 3.406078021077621e-08
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "task": "tulu",
+      "module": "base_model.model.model.layers.15.mlp.gate_proj",
+      "cached_basis_exact": true,
+      "cached_spectrum_relative_error": 0.0,
+      "hns_alpha0_reference_error": 1.6889449285932863e-08
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "task": "tulu",
+      "module": "base_model.model.model.layers.15.mlp.up_proj",
+      "cached_basis_exact": true,
+      "cached_spectrum_relative_error": 0.0,
+      "hns_alpha0_reference_error": 1.8385820777347724e-08
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "task": "tulu",
+      "module": "base_model.model.model.layers.15.self_attn.k_proj",
+      "cached_basis_exact": true,
+      "cached_spectrum_relative_error": 0.0,
+      "hns_alpha0_reference_error": 3.463938286417231e-08
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "task": "tulu",
+      "module": "base_model.model.model.layers.15.self_attn.o_proj",
+      "cached_basis_exact": true,
+      "cached_spectrum_relative_error": 0.0,
+      "hns_alpha0_reference_error": 3.6813646885242525e-08
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "task": "tulu",
+      "module": "base_model.model.model.layers.15.self_attn.q_proj",
+      "cached_basis_exact": true,
+      "cached_spectrum_relative_error": 0.0,
+      "hns_alpha0_reference_error": 1.7309379380737738e-08
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "task": "tulu",
+      "module": "base_model.model.model.layers.15.self_attn.v_proj",
+      "cached_basis_exact": true,
+      "cached_spectrum_relative_error": 0.0,
+      "hns_alpha0_reference_error": 1.8506182953547174e-08
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "task": "tulu",
+      "module": "base_model.model.model.layers.16.mlp.down_proj",
+      "cached_basis_exact": true,
+      "cached_spectrum_relative_error": 0.0,
+      "hns_alpha0_reference_error": 2.3023459714745344e-08
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "task": "tulu",
+      "module": "base_model.model.model.layers.16.mlp.gate_proj",
+      "cached_basis_exact": true,
+      "cached_spectrum_relative_error": 0.0,
+      "hns_alpha0_reference_error": 2.0181316704193707e-08
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "task": "tulu",
+      "module": "base_model.model.model.layers.16.mlp.up_proj",
+      "cached_basis_exact": true,
+      "cached_spectrum_relative_error": 0.0,
+      "hns_alpha0_reference_error": 2.0859716131758597e-08
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "task": "tulu",
+      "module": "base_model.model.model.layers.16.self_attn.k_proj",
+      "cached_basis_exact": true,
+      "cached_spectrum_relative_error": 0.0,
+      "hns_alpha0_reference_error": 3.085053787087175e-08
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "task": "tulu",
+      "module": "base_model.model.model.layers.16.self_attn.o_proj",
+      "cached_basis_exact": true,
+      "cached_spectrum_relative_error": 0.0,
+      "hns_alpha0_reference_error": 3.369694963089585e-08
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "task": "tulu",
+      "module": "base_model.model.model.layers.16.self_attn.q_proj",
+      "cached_basis_exact": true,
+      "cached_spectrum_relative_error": 0.0,
+      "hns_alpha0_reference_error": 3.2814320170805565e-08
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "task": "tulu",
+      "module": "base_model.model.model.layers.16.self_attn.v_proj",
+      "cached_basis_exact": true,
+      "cached_spectrum_relative_error": 0.0,
+      "hns_alpha0_reference_error": 1.6892960567371753e-08
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "task": "tulu",
+      "module": "base_model.model.model.layers.17.mlp.down_proj",
+      "cached_basis_exact": true,
+      "cached_spectrum_relative_error": 0.0,
+      "hns_alpha0_reference_error": 2.518118817774103e-08
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "task": "tulu",
+      "module": "base_model.model.model.layers.17.mlp.gate_proj",
+      "cached_basis_exact": true,
+      "cached_spectrum_relative_error": 0.0,
+      "hns_alpha0_reference_error": 1.767393960198416e-08
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "task": "tulu",
+      "module": "base_model.model.model.layers.17.mlp.up_proj",
+      "cached_basis_exact": true,
+      "cached_spectrum_relative_error": 0.0,
+      "hns_alpha0_reference_error": 2.4670527290734683e-08
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "task": "tulu",
+      "module": "base_model.model.model.layers.17.self_attn.k_proj",
+      "cached_basis_exact": true,
+      "cached_spectrum_relative_error": 0.0,
+      "hns_alpha0_reference_error": 3.577275646758052e-08
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "task": "tulu",
+      "module": "base_model.model.model.layers.17.self_attn.o_proj",
+      "cached_basis_exact": true,
+      "cached_spectrum_relative_error": 0.0,
+      "hns_alpha0_reference_error": 3.472000116496808e-08
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "task": "tulu",
+      "module": "base_model.model.model.layers.17.self_attn.q_proj",
+      "cached_basis_exact": true,
+      "cached_spectrum_relative_error": 0.0,
+      "hns_alpha0_reference_error": 1.95548821694427e-08
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "task": "tulu",
+      "module": "base_model.model.model.layers.17.self_attn.v_proj",
+      "cached_basis_exact": true,
+      "cached_spectrum_relative_error": 0.0,
+      "hns_alpha0_reference_error": 1.9589221263366312e-08
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "task": "tulu",
+      "module": "base_model.model.model.layers.18.mlp.down_proj",
+      "cached_basis_exact": true,
+      "cached_spectrum_relative_error": 0.0,
+      "hns_alpha0_reference_error": 2.973333161729957e-08
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "task": "tulu",
+      "module": "base_model.model.model.layers.18.mlp.gate_proj",
+      "cached_basis_exact": true,
+      "cached_spectrum_relative_error": 0.0,
+      "hns_alpha0_reference_error": 2.281067662203636e-08
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "task": "tulu",
+      "module": "base_model.model.model.layers.18.mlp.up_proj",
+      "cached_basis_exact": true,
+      "cached_spectrum_relative_error": 0.0,
+      "hns_alpha0_reference_error": 3.576537608417096e-08
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "task": "tulu",
+      "module": "base_model.model.model.layers.18.self_attn.k_proj",
+      "cached_basis_exact": true,
+      "cached_spectrum_relative_error": 0.0,
+      "hns_alpha0_reference_error": 2.9663883453481656e-08
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "task": "tulu",
+      "module": "base_model.model.model.layers.18.self_attn.o_proj",
+      "cached_basis_exact": true,
+      "cached_spectrum_relative_error": 0.0,
+      "hns_alpha0_reference_error": 2.4594019687716874e-08
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "task": "tulu",
+      "module": "base_model.model.model.layers.18.self_attn.q_proj",
+      "cached_basis_exact": true,
+      "cached_spectrum_relative_error": 0.0,
+      "hns_alpha0_reference_error": 1.8259561360526708e-08
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "task": "tulu",
+      "module": "base_model.model.model.layers.18.self_attn.v_proj",
+      "cached_basis_exact": true,
+      "cached_spectrum_relative_error": 0.0,
+      "hns_alpha0_reference_error": 1.9849498159434333e-08
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "task": "tulu",
+      "module": "base_model.model.model.layers.19.mlp.down_proj",
+      "cached_basis_exact": true,
+      "cached_spectrum_relative_error": 0.0,
+      "hns_alpha0_reference_error": 2.6457564744534534e-08
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "task": "tulu",
+      "module": "base_model.model.model.layers.19.mlp.gate_proj",
+      "cached_basis_exact": true,
+      "cached_spectrum_relative_error": 0.0,
+      "hns_alpha0_reference_error": 3.292900244192957e-08
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "task": "tulu",
+      "module": "base_model.model.model.layers.19.mlp.up_proj",
+      "cached_basis_exact": true,
+      "cached_spectrum_relative_error": 0.0,
+      "hns_alpha0_reference_error": 3.5633626149392385e-08
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "task": "tulu",
+      "module": "base_model.model.model.layers.19.self_attn.k_proj",
+      "cached_basis_exact": true,
+      "cached_spectrum_relative_error": 0.0,
+      "hns_alpha0_reference_error": 2.8155144041868153e-08
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "task": "tulu",
+      "module": "base_model.model.model.layers.19.self_attn.o_proj",
+      "cached_basis_exact": true,
+      "cached_spectrum_relative_error": 0.0,
+      "hns_alpha0_reference_error": 3.259709086827517e-08
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "task": "tulu",
+      "module": "base_model.model.model.layers.19.self_attn.q_proj",
+      "cached_basis_exact": true,
+      "cached_spectrum_relative_error": 0.0,
+      "hns_alpha0_reference_error": 3.249514822329404e-08
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "task": "tulu",
+      "module": "base_model.model.model.layers.19.self_attn.v_proj",
+      "cached_basis_exact": true,
+      "cached_spectrum_relative_error": 0.0,
+      "hns_alpha0_reference_error": 1.9229665277006832e-08
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "task": "tulu",
+      "module": "base_model.model.model.layers.2.mlp.down_proj",
+      "cached_basis_exact": true,
+      "cached_spectrum_relative_error": 0.0,
+      "hns_alpha0_reference_error": 3.1624338858124276e-08
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "task": "tulu",
+      "module": "base_model.model.model.layers.2.mlp.gate_proj",
+      "cached_basis_exact": true,
+      "cached_spectrum_relative_error": 0.0,
+      "hns_alpha0_reference_error": 1.8210849903186766e-08
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "task": "tulu",
+      "module": "base_model.model.model.layers.2.mlp.up_proj",
+      "cached_basis_exact": true,
+      "cached_spectrum_relative_error": 0.0,
+      "hns_alpha0_reference_error": 1.95997924374928e-08
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "task": "tulu",
+      "module": "base_model.model.model.layers.2.self_attn.k_proj",
+      "cached_basis_exact": true,
+      "cached_spectrum_relative_error": 0.0,
+      "hns_alpha0_reference_error": 1.7526039241977725e-08
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "task": "tulu",
+      "module": "base_model.model.model.layers.2.self_attn.o_proj",
+      "cached_basis_exact": true,
+      "cached_spectrum_relative_error": 0.0,
+      "hns_alpha0_reference_error": 1.9142407343980025e-08
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "task": "tulu",
+      "module": "base_model.model.model.layers.2.self_attn.q_proj",
+      "cached_basis_exact": true,
+      "cached_spectrum_relative_error": 0.0,
+      "hns_alpha0_reference_error": 1.9805617761510746e-08
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "task": "tulu",
+      "module": "base_model.model.model.layers.2.self_attn.v_proj",
+      "cached_basis_exact": true,
+      "cached_spectrum_relative_error": 0.0,
+      "hns_alpha0_reference_error": 2.220259388777984e-08
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "task": "tulu",
+      "module": "base_model.model.model.layers.20.mlp.down_proj",
+      "cached_basis_exact": true,
+      "cached_spectrum_relative_error": 0.0,
+      "hns_alpha0_reference_error": 2.7387571010887463e-08
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "task": "tulu",
+      "module": "base_model.model.model.layers.20.mlp.gate_proj",
+      "cached_basis_exact": true,
+      "cached_spectrum_relative_error": 0.0,
+      "hns_alpha0_reference_error": 3.284910248497892e-08
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "task": "tulu",
+      "module": "base_model.model.model.layers.20.mlp.up_proj",
+      "cached_basis_exact": true,
+      "cached_spectrum_relative_error": 0.0,
+      "hns_alpha0_reference_error": 3.0275915653343063e-08
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "task": "tulu",
+      "module": "base_model.model.model.layers.20.self_attn.k_proj",
+      "cached_basis_exact": true,
+      "cached_spectrum_relative_error": 0.0,
+      "hns_alpha0_reference_error": 2.8013034718327073e-08
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "task": "tulu",
+      "module": "base_model.model.model.layers.20.self_attn.o_proj",
+      "cached_basis_exact": true,
+      "cached_spectrum_relative_error": 0.0,
+      "hns_alpha0_reference_error": 3.314564920643578e-08
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "task": "tulu",
+      "module": "base_model.model.model.layers.20.self_attn.q_proj",
+      "cached_basis_exact": true,
+      "cached_spectrum_relative_error": 0.0,
+      "hns_alpha0_reference_error": 2.886188264381012e-08
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "task": "tulu",
+      "module": "base_model.model.model.layers.20.self_attn.v_proj",
+      "cached_basis_exact": true,
+      "cached_spectrum_relative_error": 0.0,
+      "hns_alpha0_reference_error": 1.8774721369438917e-08
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "task": "tulu",
+      "module": "base_model.model.model.layers.21.mlp.down_proj",
+      "cached_basis_exact": true,
+      "cached_spectrum_relative_error": 0.0,
+      "hns_alpha0_reference_error": 2.599685895140622e-08
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "task": "tulu",
+      "module": "base_model.model.model.layers.21.mlp.gate_proj",
+      "cached_basis_exact": true,
+      "cached_spectrum_relative_error": 0.0,
+      "hns_alpha0_reference_error": 3.0622005604373254e-08
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "task": "tulu",
+      "module": "base_model.model.model.layers.21.mlp.up_proj",
+      "cached_basis_exact": true,
+      "cached_spectrum_relative_error": 0.0,
+      "hns_alpha0_reference_error": 3.4614763787697995e-08
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "task": "tulu",
+      "module": "base_model.model.model.layers.21.self_attn.k_proj",
+      "cached_basis_exact": true,
+      "cached_spectrum_relative_error": 0.0,
+      "hns_alpha0_reference_error": 2.820887754567571e-08
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "task": "tulu",
+      "module": "base_model.model.model.layers.21.self_attn.o_proj",
+      "cached_basis_exact": true,
+      "cached_spectrum_relative_error": 0.0,
+      "hns_alpha0_reference_error": 3.3294938618277997e-08
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "task": "tulu",
+      "module": "base_model.model.model.layers.21.self_attn.q_proj",
+      "cached_basis_exact": true,
+      "cached_spectrum_relative_error": 0.0,
+      "hns_alpha0_reference_error": 2.8587046646126633e-08
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "task": "tulu",
+      "module": "base_model.model.model.layers.21.self_attn.v_proj",
+      "cached_basis_exact": true,
+      "cached_spectrum_relative_error": 0.0,
+      "hns_alpha0_reference_error": 2.9675578358324846e-08
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "task": "tulu",
+      "module": "base_model.model.model.layers.22.mlp.down_proj",
+      "cached_basis_exact": true,
+      "cached_spectrum_relative_error": 0.0,
+      "hns_alpha0_reference_error": 2.3487023488525072e-08
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "task": "tulu",
+      "module": "base_model.model.model.layers.22.mlp.gate_proj",
+      "cached_basis_exact": true,
+      "cached_spectrum_relative_error": 0.0,
+      "hns_alpha0_reference_error": 3.262302100973704e-08
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "task": "tulu",
+      "module": "base_model.model.model.layers.22.mlp.up_proj",
+      "cached_basis_exact": true,
+      "cached_spectrum_relative_error": 0.0,
+      "hns_alpha0_reference_error": 2.868868481163256e-08
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "task": "tulu",
+      "module": "base_model.model.model.layers.22.self_attn.k_proj",
+      "cached_basis_exact": true,
+      "cached_spectrum_relative_error": 0.0,
+      "hns_alpha0_reference_error": 2.5141750262973423e-08
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "task": "tulu",
+      "module": "base_model.model.model.layers.22.self_attn.o_proj",
+      "cached_basis_exact": true,
+      "cached_spectrum_relative_error": 0.0,
+      "hns_alpha0_reference_error": 2.7536338424658087e-08
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "task": "tulu",
+      "module": "base_model.model.model.layers.22.self_attn.q_proj",
+      "cached_basis_exact": true,
+      "cached_spectrum_relative_error": 0.0,
+      "hns_alpha0_reference_error": 2.869087096260764e-08
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "task": "tulu",
+      "module": "base_model.model.model.layers.22.self_attn.v_proj",
+      "cached_basis_exact": true,
+      "cached_spectrum_relative_error": 0.0,
+      "hns_alpha0_reference_error": 1.8417270566661636e-08
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "task": "tulu",
+      "module": "base_model.model.model.layers.23.mlp.down_proj",
+      "cached_basis_exact": true,
+      "cached_spectrum_relative_error": 0.0,
+      "hns_alpha0_reference_error": 2.5867825164909808e-08
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "task": "tulu",
+      "module": "base_model.model.model.layers.23.mlp.gate_proj",
+      "cached_basis_exact": true,
+      "cached_spectrum_relative_error": 0.0,
+      "hns_alpha0_reference_error": 2.7061453880797846e-08
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "task": "tulu",
+      "module": "base_model.model.model.layers.23.mlp.up_proj",
+      "cached_basis_exact": true,
+      "cached_spectrum_relative_error": 0.0,
+      "hns_alpha0_reference_error": 3.376918511850742e-08
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "task": "tulu",
+      "module": "base_model.model.model.layers.23.self_attn.k_proj",
+      "cached_basis_exact": true,
+      "cached_spectrum_relative_error": 0.0,
+      "hns_alpha0_reference_error": 3.55844791656633e-08
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "task": "tulu",
+      "module": "base_model.model.model.layers.23.self_attn.o_proj",
+      "cached_basis_exact": true,
+      "cached_spectrum_relative_error": 0.0,
+      "hns_alpha0_reference_error": 2.6484022355781222e-08
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "task": "tulu",
+      "module": "base_model.model.model.layers.23.self_attn.q_proj",
+      "cached_basis_exact": true,
+      "cached_spectrum_relative_error": 0.0,
+      "hns_alpha0_reference_error": 2.7672920648577585e-08
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "task": "tulu",
+      "module": "base_model.model.model.layers.23.self_attn.v_proj",
+      "cached_basis_exact": true,
+      "cached_spectrum_relative_error": 0.0,
+      "hns_alpha0_reference_error": 1.83967397007395e-08
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "task": "tulu",
+      "module": "base_model.model.model.layers.24.mlp.down_proj",
+      "cached_basis_exact": true,
+      "cached_spectrum_relative_error": 0.0,
+      "hns_alpha0_reference_error": 2.1869329878974845e-08
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "task": "tulu",
+      "module": "base_model.model.model.layers.24.mlp.gate_proj",
+      "cached_basis_exact": true,
+      "cached_spectrum_relative_error": 0.0,
+      "hns_alpha0_reference_error": 3.516078882166301e-08
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "task": "tulu",
+      "module": "base_model.model.model.layers.24.mlp.up_proj",
+      "cached_basis_exact": true,
+      "cached_spectrum_relative_error": 0.0,
+      "hns_alpha0_reference_error": 3.831262318663551e-08
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "task": "tulu",
+      "module": "base_model.model.model.layers.24.self_attn.k_proj",
+      "cached_basis_exact": true,
+      "cached_spectrum_relative_error": 0.0,
+      "hns_alpha0_reference_error": 3.394030795227175e-08
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "task": "tulu",
+      "module": "base_model.model.model.layers.24.self_attn.o_proj",
+      "cached_basis_exact": true,
+      "cached_spectrum_relative_error": 0.0,
+      "hns_alpha0_reference_error": 3.321850918862437e-08
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "task": "tulu",
+      "module": "base_model.model.model.layers.24.self_attn.q_proj",
+      "cached_basis_exact": true,
+      "cached_spectrum_relative_error": 0.0,
+      "hns_alpha0_reference_error": 3.597284125674005e-08
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "task": "tulu",
+      "module": "base_model.model.model.layers.24.self_attn.v_proj",
+      "cached_basis_exact": true,
+      "cached_spectrum_relative_error": 0.0,
+      "hns_alpha0_reference_error": 1.7528403341033582e-08
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "task": "tulu",
+      "module": "base_model.model.model.layers.25.mlp.down_proj",
+      "cached_basis_exact": true,
+      "cached_spectrum_relative_error": 0.0,
+      "hns_alpha0_reference_error": 2.1894957539659145e-08
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "task": "tulu",
+      "module": "base_model.model.model.layers.25.mlp.gate_proj",
+      "cached_basis_exact": true,
+      "cached_spectrum_relative_error": 0.0,
+      "hns_alpha0_reference_error": 2.4568975030003854e-08
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "task": "tulu",
+      "module": "base_model.model.model.layers.25.mlp.up_proj",
+      "cached_basis_exact": true,
+      "cached_spectrum_relative_error": 0.0,
+      "hns_alpha0_reference_error": 3.8472676750182074e-08
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "task": "tulu",
+      "module": "base_model.model.model.layers.25.self_attn.k_proj",
+      "cached_basis_exact": true,
+      "cached_spectrum_relative_error": 0.0,
+      "hns_alpha0_reference_error": 3.7158115404199604e-08
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "task": "tulu",
+      "module": "base_model.model.model.layers.25.self_attn.o_proj",
+      "cached_basis_exact": true,
+      "cached_spectrum_relative_error": 0.0,
+      "hns_alpha0_reference_error": 3.602597760173819e-08
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "task": "tulu",
+      "module": "base_model.model.model.layers.25.self_attn.q_proj",
+      "cached_basis_exact": true,
+      "cached_spectrum_relative_error": 0.0,
+      "hns_alpha0_reference_error": 2.5898776779255823e-08
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "task": "tulu",
+      "module": "base_model.model.model.layers.25.self_attn.v_proj",
+      "cached_basis_exact": true,
+      "cached_spectrum_relative_error": 0.0,
+      "hns_alpha0_reference_error": 2.4456602940199154e-08
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "task": "tulu",
+      "module": "base_model.model.model.layers.26.mlp.down_proj",
+      "cached_basis_exact": true,
+      "cached_spectrum_relative_error": 0.0,
+      "hns_alpha0_reference_error": 2.6375050454363996e-08
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "task": "tulu",
+      "module": "base_model.model.model.layers.26.mlp.gate_proj",
+      "cached_basis_exact": true,
+      "cached_spectrum_relative_error": 0.0,
+      "hns_alpha0_reference_error": 3.0683378576226514e-08
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "task": "tulu",
+      "module": "base_model.model.model.layers.26.mlp.up_proj",
+      "cached_basis_exact": true,
+      "cached_spectrum_relative_error": 0.0,
+      "hns_alpha0_reference_error": 3.148584151794945e-08
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "task": "tulu",
+      "module": "base_model.model.model.layers.26.self_attn.k_proj",
+      "cached_basis_exact": true,
+      "cached_spectrum_relative_error": 0.0,
+      "hns_alpha0_reference_error": 3.145816371590846e-08
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "task": "tulu",
+      "module": "base_model.model.model.layers.26.self_attn.o_proj",
+      "cached_basis_exact": true,
+      "cached_spectrum_relative_error": 0.0,
+      "hns_alpha0_reference_error": 2.9071300288118762e-08
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "task": "tulu",
+      "module": "base_model.model.model.layers.26.self_attn.q_proj",
+      "cached_basis_exact": true,
+      "cached_spectrum_relative_error": 0.0,
+      "hns_alpha0_reference_error": 3.7161673938725624e-08
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "task": "tulu",
+      "module": "base_model.model.model.layers.26.self_attn.v_proj",
+      "cached_basis_exact": true,
+      "cached_spectrum_relative_error": 0.0,
+      "hns_alpha0_reference_error": 1.9610785836151942e-08
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "task": "tulu",
+      "module": "base_model.model.model.layers.27.mlp.down_proj",
+      "cached_basis_exact": true,
+      "cached_spectrum_relative_error": 0.0,
+      "hns_alpha0_reference_error": 3.13695635363348e-08
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "task": "tulu",
+      "module": "base_model.model.model.layers.27.mlp.gate_proj",
+      "cached_basis_exact": true,
+      "cached_spectrum_relative_error": 0.0,
+      "hns_alpha0_reference_error": 2.2598536664747616e-08
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "task": "tulu",
+      "module": "base_model.model.model.layers.27.mlp.up_proj",
+      "cached_basis_exact": true,
+      "cached_spectrum_relative_error": 0.0,
+      "hns_alpha0_reference_error": 3.222388033827739e-08
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "task": "tulu",
+      "module": "base_model.model.model.layers.27.self_attn.k_proj",
+      "cached_basis_exact": true,
+      "cached_spectrum_relative_error": 0.0,
+      "hns_alpha0_reference_error": 2.453940175551315e-08
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "task": "tulu",
+      "module": "base_model.model.model.layers.27.self_attn.o_proj",
+      "cached_basis_exact": true,
+      "cached_spectrum_relative_error": 0.0,
+      "hns_alpha0_reference_error": 3.503779878131784e-08
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "task": "tulu",
+      "module": "base_model.model.model.layers.27.self_attn.q_proj",
+      "cached_basis_exact": true,
+      "cached_spectrum_relative_error": 0.0,
+      "hns_alpha0_reference_error": 3.3550127258307915e-08
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "task": "tulu",
+      "module": "base_model.model.model.layers.27.self_attn.v_proj",
+      "cached_basis_exact": true,
+      "cached_spectrum_relative_error": 0.0,
+      "hns_alpha0_reference_error": 2.2006135305606336e-08
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "task": "tulu",
+      "module": "base_model.model.model.layers.28.mlp.down_proj",
+      "cached_basis_exact": true,
+      "cached_spectrum_relative_error": 0.0,
+      "hns_alpha0_reference_error": 2.749464431704872e-08
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "task": "tulu",
+      "module": "base_model.model.model.layers.28.mlp.gate_proj",
+      "cached_basis_exact": true,
+      "cached_spectrum_relative_error": 0.0,
+      "hns_alpha0_reference_error": 3.014426138531141e-08
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "task": "tulu",
+      "module": "base_model.model.model.layers.28.mlp.up_proj",
+      "cached_basis_exact": true,
+      "cached_spectrum_relative_error": 0.0,
+      "hns_alpha0_reference_error": 3.4900169861009546e-08
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "task": "tulu",
+      "module": "base_model.model.model.layers.28.self_attn.k_proj",
+      "cached_basis_exact": true,
+      "cached_spectrum_relative_error": 0.0,
+      "hns_alpha0_reference_error": 2.8506496238794615e-08
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "task": "tulu",
+      "module": "base_model.model.model.layers.28.self_attn.o_proj",
+      "cached_basis_exact": true,
+      "cached_spectrum_relative_error": 0.0,
+      "hns_alpha0_reference_error": 2.971124263964126e-08
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "task": "tulu",
+      "module": "base_model.model.model.layers.28.self_attn.q_proj",
+      "cached_basis_exact": true,
+      "cached_spectrum_relative_error": 0.0,
+      "hns_alpha0_reference_error": 2.213002285943842e-08
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "task": "tulu",
+      "module": "base_model.model.model.layers.28.self_attn.v_proj",
+      "cached_basis_exact": true,
+      "cached_spectrum_relative_error": 0.0,
+      "hns_alpha0_reference_error": 2.2095815187240854e-08
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "task": "tulu",
+      "module": "base_model.model.model.layers.29.mlp.down_proj",
+      "cached_basis_exact": true,
+      "cached_spectrum_relative_error": 0.0,
+      "hns_alpha0_reference_error": 3.058106121727632e-08
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "task": "tulu",
+      "module": "base_model.model.model.layers.29.mlp.gate_proj",
+      "cached_basis_exact": true,
+      "cached_spectrum_relative_error": 0.0,
+      "hns_alpha0_reference_error": 3.398150738460978e-08
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "task": "tulu",
+      "module": "base_model.model.model.layers.29.mlp.up_proj",
+      "cached_basis_exact": true,
+      "cached_spectrum_relative_error": 0.0,
+      "hns_alpha0_reference_error": 2.66476856351396e-08
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "task": "tulu",
+      "module": "base_model.model.model.layers.29.self_attn.k_proj",
+      "cached_basis_exact": true,
+      "cached_spectrum_relative_error": 0.0,
+      "hns_alpha0_reference_error": 3.255822488601462e-08
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "task": "tulu",
+      "module": "base_model.model.model.layers.29.self_attn.o_proj",
+      "cached_basis_exact": true,
+      "cached_spectrum_relative_error": 0.0,
+      "hns_alpha0_reference_error": 3.186095585603121e-08
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "task": "tulu",
+      "module": "base_model.model.model.layers.29.self_attn.q_proj",
+      "cached_basis_exact": true,
+      "cached_spectrum_relative_error": 0.0,
+      "hns_alpha0_reference_error": 1.2490474867751995e-08
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "task": "tulu",
+      "module": "base_model.model.model.layers.29.self_attn.v_proj",
+      "cached_basis_exact": true,
+      "cached_spectrum_relative_error": 0.0,
+      "hns_alpha0_reference_error": 1.4602429708548207e-08
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "task": "tulu",
+      "module": "base_model.model.model.layers.3.mlp.down_proj",
+      "cached_basis_exact": true,
+      "cached_spectrum_relative_error": 0.0,
+      "hns_alpha0_reference_error": 2.943492474736104e-08
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "task": "tulu",
+      "module": "base_model.model.model.layers.3.mlp.gate_proj",
+      "cached_basis_exact": true,
+      "cached_spectrum_relative_error": 0.0,
+      "hns_alpha0_reference_error": 2.0653137911586444e-08
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "task": "tulu",
+      "module": "base_model.model.model.layers.3.mlp.up_proj",
+      "cached_basis_exact": true,
+      "cached_spectrum_relative_error": 0.0,
+      "hns_alpha0_reference_error": 1.8075927108212157e-08
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "task": "tulu",
+      "module": "base_model.model.model.layers.3.self_attn.k_proj",
+      "cached_basis_exact": true,
+      "cached_spectrum_relative_error": 0.0,
+      "hns_alpha0_reference_error": 1.6474678757148696e-08
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "task": "tulu",
+      "module": "base_model.model.model.layers.3.self_attn.o_proj",
+      "cached_basis_exact": true,
+      "cached_spectrum_relative_error": 0.0,
+      "hns_alpha0_reference_error": 1.3018523770062965e-08
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "task": "tulu",
+      "module": "base_model.model.model.layers.3.self_attn.q_proj",
+      "cached_basis_exact": true,
+      "cached_spectrum_relative_error": 0.0,
+      "hns_alpha0_reference_error": 1.8492577663277123e-08
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "task": "tulu",
+      "module": "base_model.model.model.layers.3.self_attn.v_proj",
+      "cached_basis_exact": true,
+      "cached_spectrum_relative_error": 0.0,
+      "hns_alpha0_reference_error": 1.718651960257716e-08
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "task": "tulu",
+      "module": "base_model.model.model.layers.30.mlp.down_proj",
+      "cached_basis_exact": true,
+      "cached_spectrum_relative_error": 0.0,
+      "hns_alpha0_reference_error": 2.8099433171643476e-08
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "task": "tulu",
+      "module": "base_model.model.model.layers.30.mlp.gate_proj",
+      "cached_basis_exact": true,
+      "cached_spectrum_relative_error": 0.0,
+      "hns_alpha0_reference_error": 1.963314684171553e-08
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "task": "tulu",
+      "module": "base_model.model.model.layers.30.mlp.up_proj",
+      "cached_basis_exact": true,
+      "cached_spectrum_relative_error": 0.0,
+      "hns_alpha0_reference_error": 2.719086058599773e-08
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "task": "tulu",
+      "module": "base_model.model.model.layers.30.self_attn.k_proj",
+      "cached_basis_exact": true,
+      "cached_spectrum_relative_error": 0.0,
+      "hns_alpha0_reference_error": 1.8340643078327543e-08
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "task": "tulu",
+      "module": "base_model.model.model.layers.30.self_attn.o_proj",
+      "cached_basis_exact": true,
+      "cached_spectrum_relative_error": 0.0,
+      "hns_alpha0_reference_error": 2.9892510813311e-08
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "task": "tulu",
+      "module": "base_model.model.model.layers.30.self_attn.q_proj",
+      "cached_basis_exact": true,
+      "cached_spectrum_relative_error": 0.0,
+      "hns_alpha0_reference_error": 3.046341489210461e-08
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "task": "tulu",
+      "module": "base_model.model.model.layers.30.self_attn.v_proj",
+      "cached_basis_exact": true,
+      "cached_spectrum_relative_error": 0.0,
+      "hns_alpha0_reference_error": 1.7539374789897113e-08
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "task": "tulu",
+      "module": "base_model.model.model.layers.31.mlp.down_proj",
+      "cached_basis_exact": true,
+      "cached_spectrum_relative_error": 0.0,
+      "hns_alpha0_reference_error": 3.08478375542994e-08
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "task": "tulu",
+      "module": "base_model.model.model.layers.31.mlp.gate_proj",
+      "cached_basis_exact": true,
+      "cached_spectrum_relative_error": 0.0,
+      "hns_alpha0_reference_error": 2.03368379879825e-08
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "task": "tulu",
+      "module": "base_model.model.model.layers.31.mlp.up_proj",
+      "cached_basis_exact": true,
+      "cached_spectrum_relative_error": 0.0,
+      "hns_alpha0_reference_error": 1.51416131746257e-08
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "task": "tulu",
+      "module": "base_model.model.model.layers.31.self_attn.k_proj",
+      "cached_basis_exact": true,
+      "cached_spectrum_relative_error": 0.0,
+      "hns_alpha0_reference_error": 3.459526445473491e-08
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "task": "tulu",
+      "module": "base_model.model.model.layers.31.self_attn.o_proj",
+      "cached_basis_exact": true,
+      "cached_spectrum_relative_error": 0.0,
+      "hns_alpha0_reference_error": 3.412983244531217e-08
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "task": "tulu",
+      "module": "base_model.model.model.layers.31.self_attn.q_proj",
+      "cached_basis_exact": true,
+      "cached_spectrum_relative_error": 0.0,
+      "hns_alpha0_reference_error": 3.339891660661158e-08
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "task": "tulu",
+      "module": "base_model.model.model.layers.31.self_attn.v_proj",
+      "cached_basis_exact": true,
+      "cached_spectrum_relative_error": 0.0,
+      "hns_alpha0_reference_error": 3.374771196271264e-08
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "task": "tulu",
+      "module": "base_model.model.model.layers.4.mlp.down_proj",
+      "cached_basis_exact": true,
+      "cached_spectrum_relative_error": 0.0,
+      "hns_alpha0_reference_error": 3.0919705536104666e-08
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "task": "tulu",
+      "module": "base_model.model.model.layers.4.mlp.gate_proj",
+      "cached_basis_exact": true,
+      "cached_spectrum_relative_error": 0.0,
+      "hns_alpha0_reference_error": 1.6571208523916745e-08
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "task": "tulu",
+      "module": "base_model.model.model.layers.4.mlp.up_proj",
+      "cached_basis_exact": true,
+      "cached_spectrum_relative_error": 0.0,
+      "hns_alpha0_reference_error": 1.9699935673531036e-08
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "task": "tulu",
+      "module": "base_model.model.model.layers.4.self_attn.k_proj",
+      "cached_basis_exact": true,
+      "cached_spectrum_relative_error": 0.0,
+      "hns_alpha0_reference_error": 1.833444734504167e-08
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "task": "tulu",
+      "module": "base_model.model.model.layers.4.self_attn.o_proj",
+      "cached_basis_exact": true,
+      "cached_spectrum_relative_error": 0.0,
+      "hns_alpha0_reference_error": 1.830678505042697e-08
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "task": "tulu",
+      "module": "base_model.model.model.layers.4.self_attn.q_proj",
+      "cached_basis_exact": true,
+      "cached_spectrum_relative_error": 0.0,
+      "hns_alpha0_reference_error": 1.643794972799971e-08
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "task": "tulu",
+      "module": "base_model.model.model.layers.4.self_attn.v_proj",
+      "cached_basis_exact": true,
+      "cached_spectrum_relative_error": 0.0,
+      "hns_alpha0_reference_error": 2.1521071179891786e-08
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "task": "tulu",
+      "module": "base_model.model.model.layers.5.mlp.down_proj",
+      "cached_basis_exact": true,
+      "cached_spectrum_relative_error": 0.0,
+      "hns_alpha0_reference_error": 2.8431429882028715e-08
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "task": "tulu",
+      "module": "base_model.model.model.layers.5.mlp.gate_proj",
+      "cached_basis_exact": true,
+      "cached_spectrum_relative_error": 0.0,
+      "hns_alpha0_reference_error": 1.8077238209083214e-08
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "task": "tulu",
+      "module": "base_model.model.model.layers.5.mlp.up_proj",
+      "cached_basis_exact": true,
+      "cached_spectrum_relative_error": 0.0,
+      "hns_alpha0_reference_error": 1.5729097227406716e-08
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "task": "tulu",
+      "module": "base_model.model.model.layers.5.self_attn.k_proj",
+      "cached_basis_exact": true,
+      "cached_spectrum_relative_error": 0.0,
+      "hns_alpha0_reference_error": 1.7927822505883588e-08
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "task": "tulu",
+      "module": "base_model.model.model.layers.5.self_attn.o_proj",
+      "cached_basis_exact": true,
+      "cached_spectrum_relative_error": 0.0,
+      "hns_alpha0_reference_error": 1.8073590570539647e-08
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "task": "tulu",
+      "module": "base_model.model.model.layers.5.self_attn.q_proj",
+      "cached_basis_exact": true,
+      "cached_spectrum_relative_error": 0.0,
+      "hns_alpha0_reference_error": 1.7977485902823247e-08
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "task": "tulu",
+      "module": "base_model.model.model.layers.5.self_attn.v_proj",
+      "cached_basis_exact": true,
+      "cached_spectrum_relative_error": 0.0,
+      "hns_alpha0_reference_error": 2.1204457705469002e-08
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "task": "tulu",
+      "module": "base_model.model.model.layers.6.mlp.down_proj",
+      "cached_basis_exact": true,
+      "cached_spectrum_relative_error": 0.0,
+      "hns_alpha0_reference_error": 3.646648876905789e-08
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "task": "tulu",
+      "module": "base_model.model.model.layers.6.mlp.gate_proj",
+      "cached_basis_exact": true,
+      "cached_spectrum_relative_error": 0.0,
+      "hns_alpha0_reference_error": 1.7913657118382857e-08
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "task": "tulu",
+      "module": "base_model.model.model.layers.6.mlp.up_proj",
+      "cached_basis_exact": true,
+      "cached_spectrum_relative_error": 0.0,
+      "hns_alpha0_reference_error": 1.6830810710813604e-08
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "task": "tulu",
+      "module": "base_model.model.model.layers.6.self_attn.k_proj",
+      "cached_basis_exact": true,
+      "cached_spectrum_relative_error": 0.0,
+      "hns_alpha0_reference_error": 1.5185025432388404e-08
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "task": "tulu",
+      "module": "base_model.model.model.layers.6.self_attn.o_proj",
+      "cached_basis_exact": true,
+      "cached_spectrum_relative_error": 0.0,
+      "hns_alpha0_reference_error": 1.780124994128195e-08
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "task": "tulu",
+      "module": "base_model.model.model.layers.6.self_attn.q_proj",
+      "cached_basis_exact": true,
+      "cached_spectrum_relative_error": 0.0,
+      "hns_alpha0_reference_error": 1.2194702912024517e-08
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "task": "tulu",
+      "module": "base_model.model.model.layers.6.self_attn.v_proj",
+      "cached_basis_exact": true,
+      "cached_spectrum_relative_error": 0.0,
+      "hns_alpha0_reference_error": 1.957874674050195e-08
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "task": "tulu",
+      "module": "base_model.model.model.layers.7.mlp.down_proj",
+      "cached_basis_exact": true,
+      "cached_spectrum_relative_error": 0.0,
+      "hns_alpha0_reference_error": 2.6856566847847992e-08
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "task": "tulu",
+      "module": "base_model.model.model.layers.7.mlp.gate_proj",
+      "cached_basis_exact": true,
+      "cached_spectrum_relative_error": 0.0,
+      "hns_alpha0_reference_error": 1.7326179064893355e-08
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "task": "tulu",
+      "module": "base_model.model.model.layers.7.mlp.up_proj",
+      "cached_basis_exact": true,
+      "cached_spectrum_relative_error": 0.0,
+      "hns_alpha0_reference_error": 2.0824027447298188e-08
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "task": "tulu",
+      "module": "base_model.model.model.layers.7.self_attn.k_proj",
+      "cached_basis_exact": true,
+      "cached_spectrum_relative_error": 0.0,
+      "hns_alpha0_reference_error": 1.9370569187321442e-08
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "task": "tulu",
+      "module": "base_model.model.model.layers.7.self_attn.o_proj",
+      "cached_basis_exact": true,
+      "cached_spectrum_relative_error": 0.0,
+      "hns_alpha0_reference_error": 1.6680188217847628e-08
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "task": "tulu",
+      "module": "base_model.model.model.layers.7.self_attn.q_proj",
+      "cached_basis_exact": true,
+      "cached_spectrum_relative_error": 0.0,
+      "hns_alpha0_reference_error": 1.912726984567914e-08
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "task": "tulu",
+      "module": "base_model.model.model.layers.7.self_attn.v_proj",
+      "cached_basis_exact": true,
+      "cached_spectrum_relative_error": 0.0,
+      "hns_alpha0_reference_error": 1.9990063172963207e-08
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "task": "tulu",
+      "module": "base_model.model.model.layers.8.mlp.down_proj",
+      "cached_basis_exact": true,
+      "cached_spectrum_relative_error": 0.0,
+      "hns_alpha0_reference_error": 3.7017225588483746e-08
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "task": "tulu",
+      "module": "base_model.model.model.layers.8.mlp.gate_proj",
+      "cached_basis_exact": true,
+      "cached_spectrum_relative_error": 0.0,
+      "hns_alpha0_reference_error": 2.126085624384054e-08
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "task": "tulu",
+      "module": "base_model.model.model.layers.8.mlp.up_proj",
+      "cached_basis_exact": true,
+      "cached_spectrum_relative_error": 0.0,
+      "hns_alpha0_reference_error": 1.726809886918228e-08
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "task": "tulu",
+      "module": "base_model.model.model.layers.8.self_attn.k_proj",
+      "cached_basis_exact": true,
+      "cached_spectrum_relative_error": 0.0,
+      "hns_alpha0_reference_error": 1.6875832094411316e-08
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "task": "tulu",
+      "module": "base_model.model.model.layers.8.self_attn.o_proj",
+      "cached_basis_exact": true,
+      "cached_spectrum_relative_error": 0.0,
+      "hns_alpha0_reference_error": 1.8719290781751413e-08
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "task": "tulu",
+      "module": "base_model.model.model.layers.8.self_attn.q_proj",
+      "cached_basis_exact": true,
+      "cached_spectrum_relative_error": 0.0,
+      "hns_alpha0_reference_error": 1.537088729320242e-08
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "task": "tulu",
+      "module": "base_model.model.model.layers.8.self_attn.v_proj",
+      "cached_basis_exact": true,
+      "cached_spectrum_relative_error": 0.0,
+      "hns_alpha0_reference_error": 1.8485481129392542e-08
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "task": "tulu",
+      "module": "base_model.model.model.layers.9.mlp.down_proj",
+      "cached_basis_exact": true,
+      "cached_spectrum_relative_error": 0.0,
+      "hns_alpha0_reference_error": 3.4357735418174476e-08
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "task": "tulu",
+      "module": "base_model.model.model.layers.9.mlp.gate_proj",
+      "cached_basis_exact": true,
+      "cached_spectrum_relative_error": 0.0,
+      "hns_alpha0_reference_error": 2.190646127228611e-08
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "task": "tulu",
+      "module": "base_model.model.model.layers.9.mlp.up_proj",
+      "cached_basis_exact": true,
+      "cached_spectrum_relative_error": 0.0,
+      "hns_alpha0_reference_error": 1.8740123008544588e-08
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "task": "tulu",
+      "module": "base_model.model.model.layers.9.self_attn.k_proj",
+      "cached_basis_exact": true,
+      "cached_spectrum_relative_error": 0.0,
+      "hns_alpha0_reference_error": 1.755647974478395e-08
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "task": "tulu",
+      "module": "base_model.model.model.layers.9.self_attn.o_proj",
+      "cached_basis_exact": true,
+      "cached_spectrum_relative_error": 0.0,
+      "hns_alpha0_reference_error": 1.991109417257827e-08
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "task": "tulu",
+      "module": "base_model.model.model.layers.9.self_attn.q_proj",
+      "cached_basis_exact": true,
+      "cached_spectrum_relative_error": 0.0,
+      "hns_alpha0_reference_error": 1.7039061612052572e-08
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "task": "tulu",
+      "module": "base_model.model.model.layers.9.self_attn.v_proj",
+      "cached_basis_exact": true,
+      "cached_spectrum_relative_error": 0.0,
+      "hns_alpha0_reference_error": 1.3673145724003146e-08
+    }
+  ],
+  "builder_sha256": "2a194547dc5c28e1095b45f14495888226b981834bd048927a1d5f2d92ce1571",
+  "functional_api_sha256": "84529e4248de9ad90cd3ba1f3573cf44d3d816c24fe5e9f09a487e7b95875403"
+}

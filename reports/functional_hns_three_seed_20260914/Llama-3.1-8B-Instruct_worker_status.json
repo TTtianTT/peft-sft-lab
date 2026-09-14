@@ -1,0 +1,8 @@
+{
+  "base": "Llama-3.1-8B-Instruct",
+  "phase": "complete",
+  "updated_utc": "2026-09-14T04:35:10.809726+00:00",
+  "gpu_count": 1,
+  "job_id": "1023",
+  "cells": 184
+}

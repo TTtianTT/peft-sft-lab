@@ -1,0 +1,1042 @@
+[
+  {
+    "base": "Qwen3-8B",
+    "task": "magicoder",
+    "label": "base",
+    "path": "/dataset1/zailong/workspace/peft-sft-lab/reports/posthoc_flat_dghard_forgetting_three_seed_20260913/eval/Qwen3-8B/magicoder/base",
+    "metrics_sha256": "d21c154319de2d2b38f18910283ec26ba2cf21f0ce79b488b39ca66fd85a9731",
+    "predictions_sha256": "6ee620ee7e296a46d2bfbfcb2dcdc0b2a0942541e8ba299ee08db3c898586cbd",
+    "samples": 164,
+    "score": 0.6646341463414634
+  },
+  {
+    "base": "Qwen3-8B",
+    "task": "magicoder",
+    "label": "magicoder__seed43__original_lora",
+    "path": "/dataset1/zailong/workspace/peft-sft-lab/reports/posthoc_flat_dghard_forgetting_three_seed_20260913/eval/Qwen3-8B/magicoder/magicoder__seed43__original_lora",
+    "metrics_sha256": "ba8701eb1ff08eda0ec09ba79cc613ea51be2b4bbc9561f928e2ada5f6dd2d7a",
+    "predictions_sha256": "0019345b187160d1d351e618b4be20f948dc405610d75fa2fb03a1d1dd8fa5d1",
+    "samples": 164,
+    "score": 0.6280487804878049
+  },
+  {
+    "base": "Qwen3-8B",
+    "task": "magicoder",
+    "label": "magicoder__seed43__hns_f4_s1",
+    "path": "/dataset1/zailong/workspace/peft-sft-lab/reports/posthoc_flat_dghard_forgetting_three_seed_20260913/eval/Qwen3-8B/magicoder/magicoder__seed43__hns_f4_s1",
+    "metrics_sha256": "6244e0c6c36b1a26aba178f077c5325d972bc072eb3399eec620c318d3f4282c",
+    "predictions_sha256": "8e35e54f20f5eba522aad235a5772135ce87db5fba523bb09bbc2fdebca10e28",
+    "samples": 164,
+    "score": 0.7439024390243902
+  },
+  {
+    "base": "Qwen3-8B",
+    "task": "magicoder",
+    "label": "metamath__seed43__original_lora",
+    "path": "/dataset1/zailong/workspace/peft-sft-lab/reports/posthoc_flat_dghard_forgetting_three_seed_20260913/eval/Qwen3-8B/magicoder/metamath__seed43__original_lora",
+    "metrics_sha256": "3cd9d05e1ddb31c2b7194d420f538e83507675f628011bf3f697a480d0aacbf6",
+    "predictions_sha256": "d601b47d987917ebdfce1e090f7e5d5ab67be65f1285c5039974f35f5db37f2d",
+    "samples": 164,
+    "score": 0.5792682926829268
+  },
+  {
+    "base": "Qwen3-8B",
+    "task": "magicoder",
+    "label": "metamath__seed43__hns_f4_s1",
+    "path": "/dataset1/zailong/workspace/peft-sft-lab/reports/posthoc_flat_dghard_forgetting_three_seed_20260913/eval/Qwen3-8B/magicoder/metamath__seed43__hns_f4_s1",
+    "metrics_sha256": "049c74713a773c56172aa9eaf470b06fb88ec426b709002a15fd1afbbf606c13",
+    "predictions_sha256": "8457b20422c21a33ea3441cb9f1d226f1830fd754618e752a7ad5ad261dec478",
+    "samples": 164,
+    "score": 0.7317073170731707
+  },
+  {
+    "base": "Qwen3-8B",
+    "task": "magicoder",
+    "label": "tulu__seed43__original_lora",
+    "path": "/dataset1/zailong/workspace/peft-sft-lab/reports/posthoc_flat_dghard_forgetting_three_seed_20260913/eval/Qwen3-8B/magicoder/tulu__seed43__original_lora",
+    "metrics_sha256": "416bce4ab037c3c5dbec5ea9d35c17cced82516c79fe47eb9e1d15089267dbd9",
+    "predictions_sha256": "8abefa4f9ab7c386a691611e6bc9b23dda30ce05bb4b83c32a94183dd5de0cbb",
+    "samples": 164,
+    "score": 0.8170731707317073
+  },
+  {
+    "base": "Qwen3-8B",
+    "task": "magicoder",
+    "label": "tulu__seed43__hns_f4_s1",
+    "path": "/dataset1/zailong/workspace/peft-sft-lab/reports/posthoc_flat_dghard_forgetting_three_seed_20260913/eval/Qwen3-8B/magicoder/tulu__seed43__hns_f4_s1",
+    "metrics_sha256": "8e9ba4860b5cf313fc8c594e9800b1a65589d359d9ada43d187d8799b514f4ba",
+    "predictions_sha256": "93d9c62acf9a48aadcb2d9ae2dff33debc1e3e1932a02bbdfefdbf2ef7cde7e3",
+    "samples": 164,
+    "score": 0.8048780487804879
+  },
+  {
+    "base": "Qwen3-8B",
+    "task": "magicoder",
+    "label": "magicoder__seed44__original_lora",
+    "path": "/dataset1/zailong/workspace/peft-sft-lab/reports/posthoc_flat_dghard_forgetting_three_seed_20260913/eval/Qwen3-8B/magicoder/magicoder__seed44__original_lora",
+    "metrics_sha256": "edba4a2edfdad503488fb89b288d00f607733dff8552be1449d91886f72b5519",
+    "predictions_sha256": "14c4785d6934ab768239ffe37f3754a95c5ed13650b6dbe2e12c6ba487c73f00",
+    "samples": 164,
+    "score": 0.6463414634146342
+  },
+  {
+    "base": "Qwen3-8B",
+    "task": "magicoder",
+    "label": "magicoder__seed44__hns_f4_s1",
+    "path": "/dataset1/zailong/workspace/peft-sft-lab/reports/posthoc_flat_dghard_forgetting_three_seed_20260913/eval/Qwen3-8B/magicoder/magicoder__seed44__hns_f4_s1",
+    "metrics_sha256": "3ff7745de7eb3301b532e6e0c6d4059c1b7c5f0de91ba0be311be61dbac52e50",
+    "predictions_sha256": "7752df6b94fa8c96ba710ddac58fa91b966b307a9b1e4032b87466355dee08f8",
+    "samples": 164,
+    "score": 0.7439024390243902
+  },
+  {
+    "base": "Qwen3-8B",
+    "task": "magicoder",
+    "label": "metamath__seed44__original_lora",
+    "path": "/dataset1/zailong/workspace/peft-sft-lab/reports/posthoc_flat_dghard_forgetting_three_seed_20260913/eval/Qwen3-8B/magicoder/metamath__seed44__original_lora",
+    "metrics_sha256": "0e4a51dff6aeb7df1afc03f8d07faa4a8a325836ee2dc8c5f7d03d8e2d6e7039",
+    "predictions_sha256": "c2d71e4c983f4db2d1aaebd4fdf5ee0e2ccb488b6e7f898f0720bf30d3f3068f",
+    "samples": 164,
+    "score": 0.40853658536585363
+  },
+  {
+    "base": "Qwen3-8B",
+    "task": "magicoder",
+    "label": "metamath__seed44__hns_f4_s1",
+    "path": "/dataset1/zailong/workspace/peft-sft-lab/reports/posthoc_flat_dghard_forgetting_three_seed_20260913/eval/Qwen3-8B/magicoder/metamath__seed44__hns_f4_s1",
+    "metrics_sha256": "a225851adf1d376bf83170e9c360a9faefa38603ca52c530443ed9405f6a3b15",
+    "predictions_sha256": "1e50a39516c2a040d48610defda8c3afa89ea2cbbb121d9eb61c1f3d0cf6e548",
+    "samples": 164,
+    "score": 0.676829268292683
+  },
+  {
+    "base": "Qwen3-8B",
+    "task": "magicoder",
+    "label": "tulu__seed44__original_lora",
+    "path": "/dataset1/zailong/workspace/peft-sft-lab/reports/posthoc_flat_dghard_forgetting_three_seed_20260913/eval/Qwen3-8B/magicoder/tulu__seed44__original_lora",
+    "metrics_sha256": "7702be52a1488fe4d78a5e77c57f0e12ac52765bc2e5d54a7b35e87686b4b3a3",
+    "predictions_sha256": "4c60bf12db163fabb0962c2e2856daa384ce2b2db491671f23617244967593bf",
+    "samples": 164,
+    "score": 0.8414634146341463
+  },
+  {
+    "base": "Qwen3-8B",
+    "task": "magicoder",
+    "label": "tulu__seed44__hns_f4_s1",
+    "path": "/dataset1/zailong/workspace/peft-sft-lab/reports/posthoc_flat_dghard_forgetting_three_seed_20260913/eval/Qwen3-8B/magicoder/tulu__seed44__hns_f4_s1",
+    "metrics_sha256": "532daeefc8384a05c8816ea25480385242dbd5f2f6e4f2c7cf5133c4fc9348bf",
+    "predictions_sha256": "1015a50d01928c58865010b97d7465674bc3c0ed28dc57e460771d349d692304",
+    "samples": 164,
+    "score": 0.8048780487804879
+  },
+  {
+    "base": "Qwen3-8B",
+    "task": "metamath",
+    "label": "base",
+    "path": "/dataset1/zailong/workspace/peft-sft-lab/reports/posthoc_flat_dghard_forgetting_three_seed_20260913/eval/Qwen3-8B/metamath/base",
+    "metrics_sha256": "5725cdb9b4678a5bce2a8f96e8187ce679f2cf50aa7babd19cf1f55f671fa9c0",
+    "predictions_sha256": "485ff7454ab21560206476c46d55a706c9099179a421624c2d5653c09b223d21",
+    "samples": 1319,
+    "score": 0.8574677786201668
+  },
+  {
+    "base": "Qwen3-8B",
+    "task": "metamath",
+    "label": "magicoder__seed43__original_lora",
+    "path": "/dataset1/zailong/workspace/peft-sft-lab/reports/posthoc_flat_dghard_forgetting_three_seed_20260913/eval/Qwen3-8B/metamath/magicoder__seed43__original_lora",
+    "metrics_sha256": "62bd5815c37e7d4eff0f303f1f70dbc074edad5cf4521769207956cb2cae2eef",
+    "predictions_sha256": "507a817f78641e933d095397f85a91107c7cfbfef3d496517eba999dac3ab6e3",
+    "samples": 1319,
+    "score": 0.8256254738438211
+  },
+  {
+    "base": "Qwen3-8B",
+    "task": "metamath",
+    "label": "magicoder__seed43__hns_f4_s1",
+    "path": "/dataset1/zailong/workspace/peft-sft-lab/reports/posthoc_flat_dghard_forgetting_three_seed_20260913/eval/Qwen3-8B/metamath/magicoder__seed43__hns_f4_s1",
+    "metrics_sha256": "0b9ccf53793bad517dceed4f232343bcdacfa62787ed3ac83837a7738f2c65d3",
+    "predictions_sha256": "fee02ecf271128e78e581a1ae0d91da703cd812c384895580f735a7bb0e020dc",
+    "samples": 1319,
+    "score": 0.8877937831690674
+  },
+  {
+    "base": "Qwen3-8B",
+    "task": "metamath",
+    "label": "metamath__seed43__original_lora",
+    "path": "/dataset1/zailong/workspace/peft-sft-lab/reports/posthoc_flat_dghard_forgetting_three_seed_20260913/eval/Qwen3-8B/metamath/metamath__seed43__original_lora",
+    "metrics_sha256": "965d53c17d66125ca83d691992e265f9b8fda2a991f77ea456792291e7cec591",
+    "predictions_sha256": "fcc5b47b102213a4e273f0e46eced387a94d0cfdcc0b8eba5beda159aae7d37a",
+    "samples": 1319,
+    "score": 0.8400303260045489
+  },
+  {
+    "base": "Qwen3-8B",
+    "task": "metamath",
+    "label": "metamath__seed43__hns_f4_s1",
+    "path": "/dataset1/zailong/workspace/peft-sft-lab/reports/posthoc_flat_dghard_forgetting_three_seed_20260913/eval/Qwen3-8B/metamath/metamath__seed43__hns_f4_s1",
+    "metrics_sha256": "71e3e59bee22a359fe6f2cd3635b429ca5ae2117965f02c09d5ee408ae800e37",
+    "predictions_sha256": "668ead75bd52619fe08798d45ad8fec75ca110645042fe97fa2ef7bb4d0600a5",
+    "samples": 1319,
+    "score": 0.868081880212282
+  },
+  {
+    "base": "Qwen3-8B",
+    "task": "metamath",
+    "label": "tulu__seed43__original_lora",
+    "path": "/dataset1/zailong/workspace/peft-sft-lab/reports/posthoc_flat_dghard_forgetting_three_seed_20260913/eval/Qwen3-8B/metamath/tulu__seed43__original_lora",
+    "metrics_sha256": "7dd3ebf7c25d5da5fac1a827196e0af58ea0d6cc259e4f618b52f1ad265a5372",
+    "predictions_sha256": "0c1eace06982f41b418e9b343fdb5b405c7e694389c6c7b6e26b2a80c1c59f0a",
+    "samples": 1319,
+    "score": 0.8915845337376801
+  },
+  {
+    "base": "Qwen3-8B",
+    "task": "metamath",
+    "label": "tulu__seed43__hns_f4_s1",
+    "path": "/dataset1/zailong/workspace/peft-sft-lab/reports/posthoc_flat_dghard_forgetting_three_seed_20260913/eval/Qwen3-8B/metamath/tulu__seed43__hns_f4_s1",
+    "metrics_sha256": "fee27f5d6f34a8648b3f16f6d30cbd9c55e0edc13aae30ded7873acbeb899af9",
+    "predictions_sha256": "592bc12bc296bcb079eebc6cc8225a56dea652c13c0daad537abea494691e9d1",
+    "samples": 1319,
+    "score": 0.8976497346474602
+  },
+  {
+    "base": "Qwen3-8B",
+    "task": "metamath",
+    "label": "magicoder__seed44__original_lora",
+    "path": "/dataset1/zailong/workspace/peft-sft-lab/reports/posthoc_flat_dghard_forgetting_three_seed_20260913/eval/Qwen3-8B/metamath/magicoder__seed44__original_lora",
+    "metrics_sha256": "9b9d641e83d3539f404197ec1d5d7f227fd0ed4c8e5d5300f362a539d47a48f8",
+    "predictions_sha256": "735aefec39930d229a618bd606f7821a3e2278527d51ac22562602c6b69b515f",
+    "samples": 1319,
+    "score": 0.8407884761182715
+  },
+  {
+    "base": "Qwen3-8B",
+    "task": "metamath",
+    "label": "magicoder__seed44__hns_f4_s1",
+    "path": "/dataset1/zailong/workspace/peft-sft-lab/reports/posthoc_flat_dghard_forgetting_three_seed_20260913/eval/Qwen3-8B/metamath/magicoder__seed44__hns_f4_s1",
+    "metrics_sha256": "c77e3df73d437bc2103af01efd496dddbc9c122b0b6f9e6deb274c6d0c0f7c26",
+    "predictions_sha256": "7138beeb119d77d7cc2bf0de9d718a6a9b933a74922f46356e6edb49fdcc21a7",
+    "samples": 1319,
+    "score": 0.8931008339651251
+  },
+  {
+    "base": "Qwen3-8B",
+    "task": "metamath",
+    "label": "metamath__seed44__original_lora",
+    "path": "/dataset1/zailong/workspace/peft-sft-lab/reports/posthoc_flat_dghard_forgetting_three_seed_20260913/eval/Qwen3-8B/metamath/metamath__seed44__original_lora",
+    "metrics_sha256": "bde8215d8d7b1d448bfa8c0d62287f98d263a4f678dd65ea1089de2bb49f49a2",
+    "predictions_sha256": "a7855f32ea430e7dc540014b288a256d3a9ea36d820506abcc1d5f91d153494e",
+    "samples": 1319,
+    "score": 0.8400303260045489
+  },
+  {
+    "base": "Qwen3-8B",
+    "task": "metamath",
+    "label": "metamath__seed44__hns_f4_s1",
+    "path": "/dataset1/zailong/workspace/peft-sft-lab/reports/posthoc_flat_dghard_forgetting_three_seed_20260913/eval/Qwen3-8B/metamath/metamath__seed44__hns_f4_s1",
+    "metrics_sha256": "2872dd1b5f68058e6ccb30da1817618b92f4eafe04d27cfdf8ffe305f570036d",
+    "predictions_sha256": "f685a017b844ec8403be605b6b7afe6661e6074dda89fe2895cbe90ab627dce6",
+    "samples": 1319,
+    "score": 0.8741470811220622
+  },
+  {
+    "base": "Qwen3-8B",
+    "task": "metamath",
+    "label": "tulu__seed44__original_lora",
+    "path": "/dataset1/zailong/workspace/peft-sft-lab/reports/posthoc_flat_dghard_forgetting_three_seed_20260913/eval/Qwen3-8B/metamath/tulu__seed44__original_lora",
+    "metrics_sha256": "f04d22b153b5545fc1c66d8f37564c6c548824fd7bc12550b452035021f1414b",
+    "predictions_sha256": "a3efd7acefe50b052ad2b52c759b3c4960f448eb0f6984f623b44d2472ff9640",
+    "samples": 1319,
+    "score": 0.8870356330553449
+  },
+  {
+    "base": "Qwen3-8B",
+    "task": "metamath",
+    "label": "tulu__seed44__hns_f4_s1",
+    "path": "/dataset1/zailong/workspace/peft-sft-lab/reports/posthoc_flat_dghard_forgetting_three_seed_20260913/eval/Qwen3-8B/metamath/tulu__seed44__hns_f4_s1",
+    "metrics_sha256": "73d63f3f75272f0576038bd116b23276ecdd063241f5b4fd53ef958db15252fa",
+    "predictions_sha256": "bf7bafe321f68a9ac424ad57e772da845c1400d936a731e803bcf969332dc953",
+    "samples": 1319,
+    "score": 0.8840030326004549
+  },
+  {
+    "base": "Qwen3-8B",
+    "task": "tulu",
+    "label": "base",
+    "path": "/dataset1/zailong/workspace/peft-sft-lab/reports/posthoc_flat_dghard_forgetting_three_seed_20260913/eval/Qwen3-8B/tulu/base",
+    "metrics_sha256": "33da0e76ec453d77c153d34fa1b6c386b14263c905f3c9b3b35e63df4e999f1a",
+    "predictions_sha256": "a9f1cb17033ccbb9e34cb0d3220606792e3a03b4d838e8f890aa69eb9e6b2f57",
+    "samples": 541,
+    "score": 0.6968576709796673
+  },
+  {
+    "base": "Qwen3-8B",
+    "task": "tulu",
+    "label": "magicoder__seed43__original_lora",
+    "path": "/dataset1/zailong/workspace/peft-sft-lab/reports/posthoc_flat_dghard_forgetting_three_seed_20260913/eval/Qwen3-8B/tulu/magicoder__seed43__original_lora",
+    "metrics_sha256": "92367a5bccd8dd97370cd31daaad15fb144679673fe21d3f02104a9c43710249",
+    "predictions_sha256": "e99e86d133d2f163cb46fd4dfe7c2f209e71ca6ce093c3299f2a9915d2616434",
+    "samples": 541,
+    "score": 0.6691312384473198
+  },
+  {
+    "base": "Qwen3-8B",
+    "task": "tulu",
+    "label": "magicoder__seed43__hns_f4_s1",
+    "path": "/dataset1/zailong/workspace/peft-sft-lab/reports/posthoc_flat_dghard_forgetting_three_seed_20260913/eval/Qwen3-8B/tulu/magicoder__seed43__hns_f4_s1",
+    "metrics_sha256": "d176c74b2c81b707554524be1ca83999596dbe94befa307ca565ccda56407a3b",
+    "predictions_sha256": "5544fdf41e8ca4fd056489eadfe7e54c72f43143aceffbfbd02e84bcb7c2bedc",
+    "samples": 541,
+    "score": 0.7134935304990758
+  },
+  {
+    "base": "Qwen3-8B",
+    "task": "tulu",
+    "label": "metamath__seed43__original_lora",
+    "path": "/dataset1/zailong/workspace/peft-sft-lab/reports/posthoc_flat_dghard_forgetting_three_seed_20260913/eval/Qwen3-8B/tulu/metamath__seed43__original_lora",
+    "metrics_sha256": "d14e4b0982b074319960832e4f153acf1c627c2017e35be88ff142fd7b5027e1",
+    "predictions_sha256": "64f4a496402c03d9eb7992a01d3c90f9326e4e315bfe150c2b05173c8b82af6e",
+    "samples": 541,
+    "score": 0.6765249537892791
+  },
+  {
+    "base": "Qwen3-8B",
+    "task": "tulu",
+    "label": "metamath__seed43__hns_f4_s1",
+    "path": "/dataset1/zailong/workspace/peft-sft-lab/reports/posthoc_flat_dghard_forgetting_three_seed_20260913/eval/Qwen3-8B/tulu/metamath__seed43__hns_f4_s1",
+    "metrics_sha256": "f5c3c3803a9fdd88ec7652a56fd58979031c0682d04d3922d6fda176b0921a99",
+    "predictions_sha256": "af2e5c45ac3efe862a92df7e581e1b676e1b8b26c4e362bda474e2f66bcc788a",
+    "samples": 541,
+    "score": 0.7208872458410351
+  },
+  {
+    "base": "Qwen3-8B",
+    "task": "tulu",
+    "label": "tulu__seed43__original_lora",
+    "path": "/dataset1/zailong/workspace/peft-sft-lab/reports/posthoc_flat_dghard_forgetting_three_seed_20260913/eval/Qwen3-8B/tulu/tulu__seed43__original_lora",
+    "metrics_sha256": "56e8ba53e0b2ae34126c3032acaef00b3747658b0d69cdc0527f6bc6c270c99c",
+    "predictions_sha256": "c1c6d18a7cea7e7a1e7c236984b3891669647d538e3dc667b02d118e7a285b15",
+    "samples": 541,
+    "score": 0.6617375231053605
+  },
+  {
+    "base": "Qwen3-8B",
+    "task": "tulu",
+    "label": "tulu__seed43__hns_f4_s1",
+    "path": "/dataset1/zailong/workspace/peft-sft-lab/reports/posthoc_flat_dghard_forgetting_three_seed_20260913/eval/Qwen3-8B/tulu/tulu__seed43__hns_f4_s1",
+    "metrics_sha256": "a5e042d2f0e48638126beb795c9d1efe49f0974e5cb49069f902185d0477580d",
+    "predictions_sha256": "5ee867b0b246091d1d4f766acfdc4e7d90ce40501fe84bf04e3d0fdbfb3006a0",
+    "samples": 541,
+    "score": 0.7245841035120147
+  },
+  {
+    "base": "Qwen3-8B",
+    "task": "tulu",
+    "label": "magicoder__seed44__original_lora",
+    "path": "/dataset1/zailong/workspace/peft-sft-lab/reports/posthoc_flat_dghard_forgetting_three_seed_20260913/eval/Qwen3-8B/tulu/magicoder__seed44__original_lora",
+    "metrics_sha256": "2e9511a2bdb6342970b6ca64a129ff5fc150efac26a8dbcfda62b18f11944bb0",
+    "predictions_sha256": "a27ecf9070eca9a057caec715efcc320f559fdc5ce4354ebbfb1a10e8fd5eccc",
+    "samples": 541,
+    "score": 0.6802218114602587
+  },
+  {
+    "base": "Qwen3-8B",
+    "task": "tulu",
+    "label": "magicoder__seed44__hns_f4_s1",
+    "path": "/dataset1/zailong/workspace/peft-sft-lab/reports/posthoc_flat_dghard_forgetting_three_seed_20260913/eval/Qwen3-8B/tulu/magicoder__seed44__hns_f4_s1",
+    "metrics_sha256": "8800ac34a5b4e18dac66273574080999099bad4cd7de63291aa3990b7dda4f2b",
+    "predictions_sha256": "93fa0a407450209a5af434cc9556c88a6f5600c08ae1bdfbc7f557f6468d069b",
+    "samples": 541,
+    "score": 0.7097966728280961
+  },
+  {
+    "base": "Qwen3-8B",
+    "task": "tulu",
+    "label": "metamath__seed44__original_lora",
+    "path": "/dataset1/zailong/workspace/peft-sft-lab/reports/posthoc_flat_dghard_forgetting_three_seed_20260913/eval/Qwen3-8B/tulu/metamath__seed44__original_lora",
+    "metrics_sha256": "fcfb05c70e4bc58f77222367b5b1e75e28c6bff6b21c4dd04d622de3ccbc4773",
+    "predictions_sha256": "0b31ed63c89a5f0bb911bdc7ea9ead9c65c38a0e01e7d3f421682367ff37bd8d",
+    "samples": 541,
+    "score": 0.66728280961183
+  },
+  {
+    "base": "Qwen3-8B",
+    "task": "tulu",
+    "label": "metamath__seed44__hns_f4_s1",
+    "path": "/dataset1/zailong/workspace/peft-sft-lab/reports/posthoc_flat_dghard_forgetting_three_seed_20260913/eval/Qwen3-8B/tulu/metamath__seed44__hns_f4_s1",
+    "metrics_sha256": "28ad1bee99d28c5d6525dda9c79124352c2a6cded30520ed4dcdba90bce551b2",
+    "predictions_sha256": "3f48cf3e2fbef80ae6169b0f205363cf457195122c3dfcd28d916b6372c96aef",
+    "samples": 541,
+    "score": 0.7060998151571165
+  },
+  {
+    "base": "Qwen3-8B",
+    "task": "tulu",
+    "label": "tulu__seed44__original_lora",
+    "path": "/dataset1/zailong/workspace/peft-sft-lab/reports/posthoc_flat_dghard_forgetting_three_seed_20260913/eval/Qwen3-8B/tulu/tulu__seed44__original_lora",
+    "metrics_sha256": "c1e22439f74761111cdbd189002bb69905ef867f754175360b608877ff21cd25",
+    "predictions_sha256": "5aca875640d0bbe587f817df4aff85439f706bcb138f7e7612881eb20813ab18",
+    "samples": 541,
+    "score": 0.6691312384473198
+  },
+  {
+    "base": "Qwen3-8B",
+    "task": "tulu",
+    "label": "tulu__seed44__hns_f4_s1",
+    "path": "/dataset1/zailong/workspace/peft-sft-lab/reports/posthoc_flat_dghard_forgetting_three_seed_20260913/eval/Qwen3-8B/tulu/tulu__seed44__hns_f4_s1",
+    "metrics_sha256": "9655711e367355951837ddf8b7d2bc07a21c904cafb0a73c31e3b114791bb26d",
+    "predictions_sha256": "beba4ef61bcf2c87264b8eff2c274c0fe9e098e25b70b806d38d80923295ab1a",
+    "samples": 541,
+    "score": 0.7097966728280961
+  },
+  {
+    "base": "Qwen3-8B",
+    "task": "commonsense",
+    "label": "base",
+    "path": "/dataset1/zailong/workspace/peft-sft-lab/reports/posthoc_flat_dghard_forgetting_three_seed_20260913/eval/Qwen3-8B/commonsense/base",
+    "metrics_sha256": "c48cbf42503649dcd50fb3d78824d099f89596d4839a1e29dff0724ff946dcad",
+    "predictions_sha256": "66ade054a0cb741a8f5406d26185e7edbea8070cdb1ae4463546d7c1aad7fd4a",
+    "samples": 22419,
+    "score": 0.8267503434198252
+  },
+  {
+    "base": "Qwen3-8B",
+    "task": "commonsense",
+    "label": "magicoder__seed43__original_lora",
+    "path": "/dataset1/zailong/workspace/peft-sft-lab/reports/posthoc_flat_dghard_forgetting_three_seed_20260913/eval/Qwen3-8B/commonsense/magicoder__seed43__original_lora",
+    "metrics_sha256": "0903c25e0b06eb78a367e6b527ad966e4a00c109a474639732c20c14656adf6c",
+    "predictions_sha256": "da3c05f00931f1c03b4b8eae00095fa4d21ad43eea708c03ac5dd906684ce526",
+    "samples": 22419,
+    "score": 0.8380252203736919
+  },
+  {
+    "base": "Qwen3-8B",
+    "task": "commonsense",
+    "label": "magicoder__seed43__hns_f4_s1",
+    "path": "/dataset1/zailong/workspace/peft-sft-lab/reports/posthoc_flat_dghard_forgetting_three_seed_20260913/eval/Qwen3-8B/commonsense/magicoder__seed43__hns_f4_s1",
+    "metrics_sha256": "df0996b528de3070da7d1f41e8703e7d2c255e5ae5797793c4e07fd919bac968",
+    "predictions_sha256": "f3026057542be58c797ea605f9d83a09c8b97a17c0591e1637bf956651664699",
+    "samples": 22419,
+    "score": 0.834453448407783
+  },
+  {
+    "base": "Qwen3-8B",
+    "task": "commonsense",
+    "label": "metamath__seed43__original_lora",
+    "path": "/dataset1/zailong/workspace/peft-sft-lab/reports/posthoc_flat_dghard_forgetting_three_seed_20260913/eval/Qwen3-8B/commonsense/metamath__seed43__original_lora",
+    "metrics_sha256": "6ea67ce434c2240c9623715385d73591a1114e37300918c4354aafc40589502f",
+    "predictions_sha256": "4ff4c530ed224acb15dbc18cde647c0dd346fecd458589b482760b9a195fa4f0",
+    "samples": 22419,
+    "score": 0.8341748043941848
+  },
+  {
+    "base": "Qwen3-8B",
+    "task": "commonsense",
+    "label": "metamath__seed43__hns_f4_s1",
+    "path": "/dataset1/zailong/workspace/peft-sft-lab/reports/posthoc_flat_dghard_forgetting_three_seed_20260913/eval/Qwen3-8B/commonsense/metamath__seed43__hns_f4_s1",
+    "metrics_sha256": "b95997cc4ec2358a1fefe1594a84a9da40cd67c43d4e32724aef45a493a79964",
+    "predictions_sha256": "5f8aa1eaa07feb3925b70a034b42b4983ddd440c094132f3f615fd082a0e4b84",
+    "samples": 22419,
+    "score": 0.846918197379783
+  },
+  {
+    "base": "Qwen3-8B",
+    "task": "commonsense",
+    "label": "tulu__seed43__original_lora",
+    "path": "/dataset1/zailong/workspace/peft-sft-lab/reports/posthoc_flat_dghard_forgetting_three_seed_20260913/eval/Qwen3-8B/commonsense/tulu__seed43__original_lora",
+    "metrics_sha256": "8811415c5411d2636de6c6751935ba81cdcaf8725850b6fcb37e8ba7a34816a4",
+    "predictions_sha256": "0231a4efca4c3c3aa62a56ddd98dd63522edd16fa6e5dbd04eb715272e5dd0ce",
+    "samples": 22419,
+    "score": 0.8450849771986392
+  },
+  {
+    "base": "Qwen3-8B",
+    "task": "commonsense",
+    "label": "tulu__seed43__hns_f4_s1",
+    "path": "/dataset1/zailong/workspace/peft-sft-lab/reports/posthoc_flat_dghard_forgetting_three_seed_20260913/eval/Qwen3-8B/commonsense/tulu__seed43__hns_f4_s1",
+    "metrics_sha256": "ec83955879de3e559be8d2a485072b7b35cd2039564ffe1a0475938f19a9f8ee",
+    "predictions_sha256": "418ae063ba9eaf5c9c6e3c8aa6c973de5f4a4702f8e51a2907784414c82f0dbe",
+    "samples": 22419,
+    "score": 0.8460833296815858
+  },
+  {
+    "base": "Qwen3-8B",
+    "task": "commonsense",
+    "label": "magicoder__seed44__original_lora",
+    "path": "/dataset1/zailong/workspace/peft-sft-lab/reports/posthoc_flat_dghard_forgetting_three_seed_20260913/eval/Qwen3-8B/commonsense/magicoder__seed44__original_lora",
+    "metrics_sha256": "fd12919d83bf0bdf4c79d96a5c141f39523d8f491d206627f14f7cf9d42fb0d8",
+    "predictions_sha256": "09b943cd2c59e04fb9722530bac2d11ef6dc5a3bc9b759ec6d3117ada35901bc",
+    "samples": 22419,
+    "score": 0.8355814378780791
+  },
+  {
+    "base": "Qwen3-8B",
+    "task": "commonsense",
+    "label": "magicoder__seed44__hns_f4_s1",
+    "path": "/dataset1/zailong/workspace/peft-sft-lab/reports/posthoc_flat_dghard_forgetting_three_seed_20260913/eval/Qwen3-8B/commonsense/magicoder__seed44__hns_f4_s1",
+    "metrics_sha256": "e2e8c6332c578f5261147179db960057f9b15a70f9c7def75172ddbd091cb780",
+    "predictions_sha256": "cfcbddae65deed91564c874b860fbb6f8c9929433559d8874be37ca8c8fe5164",
+    "samples": 22419,
+    "score": 0.8348186533343954
+  },
+  {
+    "base": "Qwen3-8B",
+    "task": "commonsense",
+    "label": "metamath__seed44__original_lora",
+    "path": "/dataset1/zailong/workspace/peft-sft-lab/reports/posthoc_flat_dghard_forgetting_three_seed_20260913/eval/Qwen3-8B/commonsense/metamath__seed44__original_lora",
+    "metrics_sha256": "58b3fc03df20ed180adf238e613f9160e71a352175623f9d73a27b2d3f776fb5",
+    "predictions_sha256": "ae617d6667b150f202f8765879939c46e4cff4f731f4600053c742c8e0896262",
+    "samples": 22419,
+    "score": 0.8296161534896043
+  },
+  {
+    "base": "Qwen3-8B",
+    "task": "commonsense",
+    "label": "metamath__seed44__hns_f4_s1",
+    "path": "/dataset1/zailong/workspace/peft-sft-lab/reports/posthoc_flat_dghard_forgetting_three_seed_20260913/eval/Qwen3-8B/commonsense/metamath__seed44__hns_f4_s1",
+    "metrics_sha256": "80c58b5c34e05b0d53c6aa33a381476b742cecbbc7941f79404454a2caf206ac",
+    "predictions_sha256": "8b1ac942a6aa095ae28d5ec058da4ae90a66cfa8812a87d03ca26ae0087bf115",
+    "samples": 22419,
+    "score": 0.8448500083338453
+  },
+  {
+    "base": "Qwen3-8B",
+    "task": "commonsense",
+    "label": "tulu__seed44__original_lora",
+    "path": "/dataset1/zailong/workspace/peft-sft-lab/reports/posthoc_flat_dghard_forgetting_three_seed_20260913/eval/Qwen3-8B/commonsense/tulu__seed44__original_lora",
+    "metrics_sha256": "4f59b7f274cf8671c7e119d6f60e660ba8b5e1ad7cf3fcb61df8b307ec51aee5",
+    "predictions_sha256": "92ab58a72295c3b36a5af3caea05f9d40693ddcba551c24b187201b12095625b",
+    "samples": 22419,
+    "score": 0.8436361898487202
+  },
+  {
+    "base": "Qwen3-8B",
+    "task": "commonsense",
+    "label": "tulu__seed44__hns_f4_s1",
+    "path": "/dataset1/zailong/workspace/peft-sft-lab/reports/posthoc_flat_dghard_forgetting_three_seed_20260913/eval/Qwen3-8B/commonsense/tulu__seed44__hns_f4_s1",
+    "metrics_sha256": "4d40a38771d83b0f244124a27b2caabb245c19c76bd6bbcefc6b9fa4c78a8e63",
+    "predictions_sha256": "6d2036af9a31c53c7d256f558db7d6ce7b5042f33eaf7d9a7ffef273f96326ed",
+    "samples": 22419,
+    "score": 0.8453963147881998
+  },
+  {
+    "base": "Llama-3.1-8B-Instruct",
+    "task": "magicoder",
+    "label": "base",
+    "path": "/dataset1/zailong/workspace/peft-sft-lab/reports/posthoc_flat_dghard_forgetting_three_seed_20260913/eval/Llama-3.1-8B-Instruct/magicoder/base",
+    "metrics_sha256": "e3b96f5e9b4bd1862074f8b9fed696ce7deafe75b93910520ac1b77cb8ac6c00",
+    "predictions_sha256": "adab6e51623f64fea96048abaac1824b9ec419175b33723af946393d212d8be7",
+    "samples": 164,
+    "score": 0.524390243902439
+  },
+  {
+    "base": "Llama-3.1-8B-Instruct",
+    "task": "magicoder",
+    "label": "magicoder__seed43__original_lora",
+    "path": "/dataset1/zailong/workspace/peft-sft-lab/reports/posthoc_flat_dghard_forgetting_three_seed_20260913/eval/Llama-3.1-8B-Instruct/magicoder/magicoder__seed43__original_lora",
+    "metrics_sha256": "d37b425f08100b8067447f4d3a81cf242196c017776e8f65fb959575f20333b6",
+    "predictions_sha256": "4343573c541892b168f7cbeead92cf00e12d59ac8681e5cb11f8589cccad4aad",
+    "samples": 164,
+    "score": 0.5548780487804879
+  },
+  {
+    "base": "Llama-3.1-8B-Instruct",
+    "task": "magicoder",
+    "label": "magicoder__seed43__hns_f4_s1",
+    "path": "/dataset1/zailong/workspace/peft-sft-lab/reports/posthoc_flat_dghard_forgetting_three_seed_20260913/eval/Llama-3.1-8B-Instruct/magicoder/magicoder__seed43__hns_f4_s1",
+    "metrics_sha256": "cbbb745efc63a96fa55b24e53c174d84fcf3ed7e5f2064d0707567d6a0aec685",
+    "predictions_sha256": "ad1e5a113655d7dcb06ee204daf0b37a1d0f9a25bb3943ad1f3eabfef87c4be1",
+    "samples": 164,
+    "score": 0.5609756097560976
+  },
+  {
+    "base": "Llama-3.1-8B-Instruct",
+    "task": "magicoder",
+    "label": "metamath__seed43__original_lora",
+    "path": "/dataset1/zailong/workspace/peft-sft-lab/reports/posthoc_flat_dghard_forgetting_three_seed_20260913/eval/Llama-3.1-8B-Instruct/magicoder/metamath__seed43__original_lora",
+    "metrics_sha256": "000862bb1b0ff364ac2bed7070670d7b90ac538014e98f4a1df452347d4b6bca",
+    "predictions_sha256": "f0c0d0dd285e3afc82583e29f5cf2b35fd2854379713a5c665bd78b13aea29b1",
+    "samples": 164,
+    "score": 0.5426829268292683
+  },
+  {
+    "base": "Llama-3.1-8B-Instruct",
+    "task": "magicoder",
+    "label": "metamath__seed43__hns_f4_s1",
+    "path": "/dataset1/zailong/workspace/peft-sft-lab/reports/posthoc_flat_dghard_forgetting_three_seed_20260913/eval/Llama-3.1-8B-Instruct/magicoder/metamath__seed43__hns_f4_s1",
+    "metrics_sha256": "a19d4d3de904f703936e473fa6380dbb2d259ee457d689a54fd5007ffc72d7b3",
+    "predictions_sha256": "3ffd8cb3a5ae9dbbaffc5a405c4ac522e4fb3367071295deb1dccbc23be1e9e9",
+    "samples": 164,
+    "score": 0.5365853658536586
+  },
+  {
+    "base": "Llama-3.1-8B-Instruct",
+    "task": "magicoder",
+    "label": "tulu__seed43__original_lora",
+    "path": "/dataset1/zailong/workspace/peft-sft-lab/reports/posthoc_flat_dghard_forgetting_three_seed_20260913/eval/Llama-3.1-8B-Instruct/magicoder/tulu__seed43__original_lora",
+    "metrics_sha256": "a76d1071bc2e77cec069923f07f0ad0eaa545b6b721f1a6eb714d9cd98a582ed",
+    "predictions_sha256": "dd3ad0da6827832146532d300f0b0f35de3dd44f288015f7e5528a99def5196b",
+    "samples": 164,
+    "score": 0.6402439024390244
+  },
+  {
+    "base": "Llama-3.1-8B-Instruct",
+    "task": "magicoder",
+    "label": "tulu__seed43__hns_f4_s1",
+    "path": "/dataset1/zailong/workspace/peft-sft-lab/reports/posthoc_flat_dghard_forgetting_three_seed_20260913/eval/Llama-3.1-8B-Instruct/magicoder/tulu__seed43__hns_f4_s1",
+    "metrics_sha256": "36798eb024f9291400f4a34062c37656eb10f9e82e541350ca6593c95bbc0f6a",
+    "predictions_sha256": "147958fc49132076bed6fc2a2671fca1f6725d8034e1fe1fecc943a399a4c425",
+    "samples": 164,
+    "score": 0.6341463414634146
+  },
+  {
+    "base": "Llama-3.1-8B-Instruct",
+    "task": "magicoder",
+    "label": "magicoder__seed44__original_lora",
+    "path": "/dataset1/zailong/workspace/peft-sft-lab/reports/posthoc_flat_dghard_forgetting_three_seed_20260913/eval/Llama-3.1-8B-Instruct/magicoder/magicoder__seed44__original_lora",
+    "metrics_sha256": "158426054ef074742c40e39c83a7c71be4f18400664fb2bc0a7babfdb695ccb6",
+    "predictions_sha256": "d626b1ae06c3ba3ca8a0edbadda64cf98b44c797f97b893002aacf7f1db8a447",
+    "samples": 164,
+    "score": 0.5365853658536586
+  },
+  {
+    "base": "Llama-3.1-8B-Instruct",
+    "task": "magicoder",
+    "label": "magicoder__seed44__hns_f4_s1",
+    "path": "/dataset1/zailong/workspace/peft-sft-lab/reports/posthoc_flat_dghard_forgetting_three_seed_20260913/eval/Llama-3.1-8B-Instruct/magicoder/magicoder__seed44__hns_f4_s1",
+    "metrics_sha256": "eaae032fa28c0ffe03fc457abd22088bd64b2cb54d6f45e661383b540aa82d40",
+    "predictions_sha256": "11e6fdabf158a8a93aa9f831c7b69d1e29ebbd404c51eb1782388ba1231e6887",
+    "samples": 164,
+    "score": 0.5365853658536586
+  },
+  {
+    "base": "Llama-3.1-8B-Instruct",
+    "task": "magicoder",
+    "label": "metamath__seed44__original_lora",
+    "path": "/dataset1/zailong/workspace/peft-sft-lab/reports/posthoc_flat_dghard_forgetting_three_seed_20260913/eval/Llama-3.1-8B-Instruct/magicoder/metamath__seed44__original_lora",
+    "metrics_sha256": "bc9cf06989795c5c2591eff24b7f71792bc7c36a10ba19915cf17c41d9f4a5dd",
+    "predictions_sha256": "67a9f0c0ed24423baf36e933dc43ef581548decb627031eff3810b2ad77e7294",
+    "samples": 164,
+    "score": 0.5548780487804879
+  },
+  {
+    "base": "Llama-3.1-8B-Instruct",
+    "task": "magicoder",
+    "label": "metamath__seed44__hns_f4_s1",
+    "path": "/dataset1/zailong/workspace/peft-sft-lab/reports/posthoc_flat_dghard_forgetting_three_seed_20260913/eval/Llama-3.1-8B-Instruct/magicoder/metamath__seed44__hns_f4_s1",
+    "metrics_sha256": "139049b0dd9a69f72cd5a17389fb8cfe8991ee09645b6c47a7e55ea21f91cafd",
+    "predictions_sha256": "ebe7b551736af1574dd3e46772b9c72fbf109544e28895bdfcd6784b28599127",
+    "samples": 164,
+    "score": 0.5365853658536586
+  },
+  {
+    "base": "Llama-3.1-8B-Instruct",
+    "task": "magicoder",
+    "label": "tulu__seed44__original_lora",
+    "path": "/dataset1/zailong/workspace/peft-sft-lab/reports/posthoc_flat_dghard_forgetting_three_seed_20260913/eval/Llama-3.1-8B-Instruct/magicoder/tulu__seed44__original_lora",
+    "metrics_sha256": "dadc631441a45ea0f21793adf6d8c8297a5baacde32a5031750a1e6f5cb16f44",
+    "predictions_sha256": "f41b6535fe338e7c868432f6a2b06f95be27d54ba286e5503ca54ebf7b349583",
+    "samples": 164,
+    "score": 0.6402439024390244
+  },
+  {
+    "base": "Llama-3.1-8B-Instruct",
+    "task": "magicoder",
+    "label": "tulu__seed44__hns_f4_s1",
+    "path": "/dataset1/zailong/workspace/peft-sft-lab/reports/posthoc_flat_dghard_forgetting_three_seed_20260913/eval/Llama-3.1-8B-Instruct/magicoder/tulu__seed44__hns_f4_s1",
+    "metrics_sha256": "6a451d2e7d1d8700fa26a7be8d4e71e8ac7dfbbc111e56dab3c9dc1004d12e86",
+    "predictions_sha256": "7457795ba7ef5a64cbf68ae29ae53f3e1a29192f0317d73b523f387782816221",
+    "samples": 164,
+    "score": 0.6219512195121951
+  },
+  {
+    "base": "Llama-3.1-8B-Instruct",
+    "task": "metamath",
+    "label": "base",
+    "path": "/dataset1/zailong/workspace/peft-sft-lab/reports/posthoc_flat_dghard_forgetting_three_seed_20260913/eval/Llama-3.1-8B-Instruct/metamath/base",
+    "metrics_sha256": "9fa87de480bdc6e461d69a1bbf533c39134830e92b033bac6a309c575a8bf3e5",
+    "predictions_sha256": "32fe4567551d93e058fc36ef4e074b2031e1493d9ae6dcb09c8e5ed3b623e4e2",
+    "samples": 1319,
+    "score": 0.6239575435936315
+  },
+  {
+    "base": "Llama-3.1-8B-Instruct",
+    "task": "metamath",
+    "label": "magicoder__seed43__original_lora",
+    "path": "/dataset1/zailong/workspace/peft-sft-lab/reports/posthoc_flat_dghard_forgetting_three_seed_20260913/eval/Llama-3.1-8B-Instruct/metamath/magicoder__seed43__original_lora",
+    "metrics_sha256": "5ac34184a95b3a79ffae20fa47625b685b6d0fef3e9b824f9bb7a2b12f0f9a53",
+    "predictions_sha256": "78a3c4cdec08b848afbcb283b234af75fe36dbeac61f00f63093c6a40c05bff7",
+    "samples": 1319,
+    "score": 0.6398786959818044
+  },
+  {
+    "base": "Llama-3.1-8B-Instruct",
+    "task": "metamath",
+    "label": "magicoder__seed43__hns_f4_s1",
+    "path": "/dataset1/zailong/workspace/peft-sft-lab/reports/posthoc_flat_dghard_forgetting_three_seed_20260913/eval/Llama-3.1-8B-Instruct/metamath/magicoder__seed43__hns_f4_s1",
+    "metrics_sha256": "0fd7a0abdab864b4c6b0465459379a6e23e22884ae9424fada54eb12adf3b6de",
+    "predictions_sha256": "b5fb94ea5c484a447059cd88facc8c9feb648f8d381d9ed888e98c79d110f055",
+    "samples": 1319,
+    "score": 0.689158453373768
+  },
+  {
+    "base": "Llama-3.1-8B-Instruct",
+    "task": "metamath",
+    "label": "metamath__seed43__original_lora",
+    "path": "/dataset1/zailong/workspace/peft-sft-lab/reports/posthoc_flat_dghard_forgetting_three_seed_20260913/eval/Llama-3.1-8B-Instruct/metamath/metamath__seed43__original_lora",
+    "metrics_sha256": "ca39dab723eec7a07ef4f95687b3dea99d46a02d5e6e4c9c724903dfbcba87a6",
+    "predictions_sha256": "b8e4707d06a8f9ade725771e9710f556ac9d2323fc48c158d83dc9cc30399cca",
+    "samples": 1319,
+    "score": 0.7482941622441244
+  },
+  {
+    "base": "Llama-3.1-8B-Instruct",
+    "task": "metamath",
+    "label": "metamath__seed43__hns_f4_s1",
+    "path": "/dataset1/zailong/workspace/peft-sft-lab/reports/posthoc_flat_dghard_forgetting_three_seed_20260913/eval/Llama-3.1-8B-Instruct/metamath/metamath__seed43__hns_f4_s1",
+    "metrics_sha256": "8916c2d77400176e92478bd40d9e2a9598a622a6ec0fd41e2ea18b7ae883f16c",
+    "predictions_sha256": "b0115d78e3735ad8b7074cbb85307c4035099f25e86f5525c4e8a7f1ec2ad74b",
+    "samples": 1319,
+    "score": 0.7839272175890827
+  },
+  {
+    "base": "Llama-3.1-8B-Instruct",
+    "task": "metamath",
+    "label": "tulu__seed43__original_lora",
+    "path": "/dataset1/zailong/workspace/peft-sft-lab/reports/posthoc_flat_dghard_forgetting_three_seed_20260913/eval/Llama-3.1-8B-Instruct/metamath/tulu__seed43__original_lora",
+    "metrics_sha256": "5ffbbcd29e396e13fb19279312d0402f93130915cc9561654ee2946b61c1199f",
+    "predictions_sha256": "e5e55e4fc57456c01627c4a0f4dceaae37e8d21bee135f872b026976cbe08a32",
+    "samples": 1319,
+    "score": 0.6489764973464746
+  },
+  {
+    "base": "Llama-3.1-8B-Instruct",
+    "task": "metamath",
+    "label": "tulu__seed43__hns_f4_s1",
+    "path": "/dataset1/zailong/workspace/peft-sft-lab/reports/posthoc_flat_dghard_forgetting_three_seed_20260913/eval/Llama-3.1-8B-Instruct/metamath/tulu__seed43__hns_f4_s1",
+    "metrics_sha256": "8c807d7352bdf26f583d0f49063fb6e85ef1503afe1509073736af6cffdda3ac",
+    "predictions_sha256": "6e2f41457fede173c4fd013c0894ba6393e28d670b187c38a2ba0c27dad8c5a1",
+    "samples": 1319,
+    "score": 0.6739954510993177
+  },
+  {
+    "base": "Llama-3.1-8B-Instruct",
+    "task": "metamath",
+    "label": "magicoder__seed44__original_lora",
+    "path": "/dataset1/zailong/workspace/peft-sft-lab/reports/posthoc_flat_dghard_forgetting_three_seed_20260913/eval/Llama-3.1-8B-Instruct/metamath/magicoder__seed44__original_lora",
+    "metrics_sha256": "4aaad181f0ab29481d5c1c65035656e282d4f1779231d499c1458220a0e7541a",
+    "predictions_sha256": "231725a41c2d003288030cda4b0cb5a0f6eb1f7ab6ff2f22efd01c9f94b94312",
+    "samples": 1319,
+    "score": 0.6557998483699773
+  },
+  {
+    "base": "Llama-3.1-8B-Instruct",
+    "task": "metamath",
+    "label": "magicoder__seed44__hns_f4_s1",
+    "path": "/dataset1/zailong/workspace/peft-sft-lab/reports/posthoc_flat_dghard_forgetting_three_seed_20260913/eval/Llama-3.1-8B-Instruct/metamath/magicoder__seed44__hns_f4_s1",
+    "metrics_sha256": "24058a92d6e186ccc2973303858e03f53d6b9d8efc97801023469548aaaa6810",
+    "predictions_sha256": "6548c8d7705226d7c7c3cc7a15f25be0d1bd65b15f22873f5ec4984b3460dca5",
+    "samples": 1319,
+    "score": 0.6967399545109931
+  },
+  {
+    "base": "Llama-3.1-8B-Instruct",
+    "task": "metamath",
+    "label": "metamath__seed44__original_lora",
+    "path": "/dataset1/zailong/workspace/peft-sft-lab/reports/posthoc_flat_dghard_forgetting_three_seed_20260913/eval/Llama-3.1-8B-Instruct/metamath/metamath__seed44__original_lora",
+    "metrics_sha256": "f32d1de30c0d978051eeaeb109bc9b2ebda7d7f86717f403f86b5843ce061c7a",
+    "predictions_sha256": "ddd6938396c6212b76b3f3620b9c0c0eb6c57e1bff96888431388c692aa65c2a",
+    "samples": 1319,
+    "score": 0.7460197119029568
+  },
+  {
+    "base": "Llama-3.1-8B-Instruct",
+    "task": "metamath",
+    "label": "metamath__seed44__hns_f4_s1",
+    "path": "/dataset1/zailong/workspace/peft-sft-lab/reports/posthoc_flat_dghard_forgetting_three_seed_20260913/eval/Llama-3.1-8B-Instruct/metamath/metamath__seed44__hns_f4_s1",
+    "metrics_sha256": "a5100f8c5f2146850599cf5738d2d3314817c7a115a5afbbd7b2b11badd7d8e4",
+    "predictions_sha256": "381d7c74ff6ebac35e260cda1c3677ffd4efa56044fae5123e93ace9c4c141e4",
+    "samples": 1319,
+    "score": 0.7915087187263078
+  },
+  {
+    "base": "Llama-3.1-8B-Instruct",
+    "task": "metamath",
+    "label": "tulu__seed44__original_lora",
+    "path": "/dataset1/zailong/workspace/peft-sft-lab/reports/posthoc_flat_dghard_forgetting_three_seed_20260913/eval/Llama-3.1-8B-Instruct/metamath/tulu__seed44__original_lora",
+    "metrics_sha256": "3201d217b2d0e612e57120274b0db064216005f27a60801defcec86762648445",
+    "predictions_sha256": "d88096f810c1a78200cdecdf6e795f194c50161d125891d8186bfbdf78b5d06e",
+    "samples": 1319,
+    "score": 0.5951478392721758
+  },
+  {
+    "base": "Llama-3.1-8B-Instruct",
+    "task": "metamath",
+    "label": "tulu__seed44__hns_f4_s1",
+    "path": "/dataset1/zailong/workspace/peft-sft-lab/reports/posthoc_flat_dghard_forgetting_three_seed_20260913/eval/Llama-3.1-8B-Instruct/metamath/tulu__seed44__hns_f4_s1",
+    "metrics_sha256": "02b8a3df0b214db6147e8706cb3d169b85de6e2ce5e4a7367f95b0637eee9bf0",
+    "predictions_sha256": "69d1f75e09b4077e9fe8b90e60e14079085f82a6d0314661bd73353adf38f186",
+    "samples": 1319,
+    "score": 0.640636846095527
+  },
+  {
+    "base": "Llama-3.1-8B-Instruct",
+    "task": "tulu",
+    "label": "base",
+    "path": "/dataset1/zailong/workspace/peft-sft-lab/reports/posthoc_flat_dghard_forgetting_three_seed_20260913/eval/Llama-3.1-8B-Instruct/tulu/base",
+    "metrics_sha256": "d29cd0ccc3fb36dbbb56aaff80b3197d803a738a592914143e877607602fa36c",
+    "predictions_sha256": "c55850ffa75734057ccbc1f6ecd8315a7a184a866044d5442e3f316fdd07578b",
+    "samples": 541,
+    "score": 0.6192236598890942
+  },
+  {
+    "base": "Llama-3.1-8B-Instruct",
+    "task": "tulu",
+    "label": "magicoder__seed43__original_lora",
+    "path": "/dataset1/zailong/workspace/peft-sft-lab/reports/posthoc_flat_dghard_forgetting_three_seed_20260913/eval/Llama-3.1-8B-Instruct/tulu/magicoder__seed43__original_lora",
+    "metrics_sha256": "ef661601f6097c0524f876cf635c81b7d1ff7c957e630778efcd7740851e3362",
+    "predictions_sha256": "18437fc0bcc5929e9a9b2f0be86d3e6c2d92159ba61cd0b8e141183f7f1cf695",
+    "samples": 541,
+    "score": 0.4824399260628466
+  },
+  {
+    "base": "Llama-3.1-8B-Instruct",
+    "task": "tulu",
+    "label": "magicoder__seed43__hns_f4_s1",
+    "path": "/dataset1/zailong/workspace/peft-sft-lab/reports/posthoc_flat_dghard_forgetting_three_seed_20260913/eval/Llama-3.1-8B-Instruct/tulu/magicoder__seed43__hns_f4_s1",
+    "metrics_sha256": "83f477db49e5e3852cae6fcf7a0fa78b211330f2a490ea50bd09024531457d1e",
+    "predictions_sha256": "8226dad91907a08a7861f73ddf9a285eea7b84bf3caefa7ff53177b5a6e260a7",
+    "samples": 541,
+    "score": 0.5674676524953789
+  },
+  {
+    "base": "Llama-3.1-8B-Instruct",
+    "task": "tulu",
+    "label": "metamath__seed43__original_lora",
+    "path": "/dataset1/zailong/workspace/peft-sft-lab/reports/posthoc_flat_dghard_forgetting_three_seed_20260913/eval/Llama-3.1-8B-Instruct/tulu/metamath__seed43__original_lora",
+    "metrics_sha256": "d0f64f6b8ddbc658c7cdba1b8d61de41ff87cbd2c40feee9847395231535d3f8",
+    "predictions_sha256": "1b96c838236718b78a4e29460bba4bc4cb28fb698ff962c80e7a282cb0cdfa4c",
+    "samples": 541,
+    "score": 0.5693160813308688
+  },
+  {
+    "base": "Llama-3.1-8B-Instruct",
+    "task": "tulu",
+    "label": "metamath__seed43__hns_f4_s1",
+    "path": "/dataset1/zailong/workspace/peft-sft-lab/reports/posthoc_flat_dghard_forgetting_three_seed_20260913/eval/Llama-3.1-8B-Instruct/tulu/metamath__seed43__hns_f4_s1",
+    "metrics_sha256": "647b06b2cb47657f66d1f40f2c8e16a6adf8189e21d7707ad7045e82dca8af92",
+    "predictions_sha256": "53abc5b323bd0900e125a9d27f867654a65802c3dca9ecad93162a2c13fb6ba1",
+    "samples": 541,
+    "score": 0.6081330868761553
+  },
+  {
+    "base": "Llama-3.1-8B-Instruct",
+    "task": "tulu",
+    "label": "tulu__seed43__original_lora",
+    "path": "/dataset1/zailong/workspace/peft-sft-lab/reports/posthoc_flat_dghard_forgetting_three_seed_20260913/eval/Llama-3.1-8B-Instruct/tulu/tulu__seed43__original_lora",
+    "metrics_sha256": "3e1356d4cdfef95f6a4938f093b1158e7a999b7396390da2fbf5f54925acc35a",
+    "predictions_sha256": "13e4feb2414bcd384381d69bcf664595c28ecce2a1f46d323898405445ac805e",
+    "samples": 541,
+    "score": 0.6321626617375231
+  },
+  {
+    "base": "Llama-3.1-8B-Instruct",
+    "task": "tulu",
+    "label": "tulu__seed43__hns_f4_s1",
+    "path": "/dataset1/zailong/workspace/peft-sft-lab/reports/posthoc_flat_dghard_forgetting_three_seed_20260913/eval/Llama-3.1-8B-Instruct/tulu/tulu__seed43__hns_f4_s1",
+    "metrics_sha256": "e0be981997abd503c6d09cf89147c313bf5307a42f9e730d415d96dbd74372ef",
+    "predictions_sha256": "ece36db831020a645e35a3c1dfce36bb1a6c06fae19ee4f32a094fe1363d804e",
+    "samples": 541,
+    "score": 0.6524953789279113
+  },
+  {
+    "base": "Llama-3.1-8B-Instruct",
+    "task": "tulu",
+    "label": "magicoder__seed44__original_lora",
+    "path": "/dataset1/zailong/workspace/peft-sft-lab/reports/posthoc_flat_dghard_forgetting_three_seed_20260913/eval/Llama-3.1-8B-Instruct/tulu/magicoder__seed44__original_lora",
+    "metrics_sha256": "1bdb52d11798d3b0287c246b73dff9a22455c8003a4bd71de1fadebf31295d85",
+    "predictions_sha256": "e281fff675fd255716715da519b4c151dd84935f491fb7b5ca1ee9a4cbc44911",
+    "samples": 541,
+    "score": 0.49722735674676527
+  },
+  {
+    "base": "Llama-3.1-8B-Instruct",
+    "task": "tulu",
+    "label": "magicoder__seed44__hns_f4_s1",
+    "path": "/dataset1/zailong/workspace/peft-sft-lab/reports/posthoc_flat_dghard_forgetting_three_seed_20260913/eval/Llama-3.1-8B-Instruct/tulu/magicoder__seed44__hns_f4_s1",
+    "metrics_sha256": "1219eabf5be5cf6588e641ccf97c5b17fd32635cec4a4e12b18ee8800519f1a8",
+    "predictions_sha256": "a492dd4f108e6eea8ee53a20d14326767e7d5d1c6190371d8481757ee24ea3a4",
+    "samples": 541,
+    "score": 0.5730129390018485
+  },
+  {
+    "base": "Llama-3.1-8B-Instruct",
+    "task": "tulu",
+    "label": "metamath__seed44__original_lora",
+    "path": "/dataset1/zailong/workspace/peft-sft-lab/reports/posthoc_flat_dghard_forgetting_three_seed_20260913/eval/Llama-3.1-8B-Instruct/tulu/metamath__seed44__original_lora",
+    "metrics_sha256": "3fbbccb87b3ba9af941bc3621bd01ff4f20e4cae34e910970cfe096e004af3af",
+    "predictions_sha256": "e84534827a795621363f1d41ca391718f224462838252831fb07d1c5699cf08a",
+    "samples": 541,
+    "score": 0.5914972273567468
+  },
+  {
+    "base": "Llama-3.1-8B-Instruct",
+    "task": "tulu",
+    "label": "metamath__seed44__hns_f4_s1",
+    "path": "/dataset1/zailong/workspace/peft-sft-lab/reports/posthoc_flat_dghard_forgetting_three_seed_20260913/eval/Llama-3.1-8B-Instruct/tulu/metamath__seed44__hns_f4_s1",
+    "metrics_sha256": "c785218e4fd7a8c4e39790dac89b33b98df02df2b78dd93d108ff626b13f1233",
+    "predictions_sha256": "885425a0a257c4c7c100804a22ab016422bf4ee5032a96956973ff5be0a677e1",
+    "samples": 541,
+    "score": 0.6210720887245841
+  },
+  {
+    "base": "Llama-3.1-8B-Instruct",
+    "task": "tulu",
+    "label": "tulu__seed44__original_lora",
+    "path": "/dataset1/zailong/workspace/peft-sft-lab/reports/posthoc_flat_dghard_forgetting_three_seed_20260913/eval/Llama-3.1-8B-Instruct/tulu/tulu__seed44__original_lora",
+    "metrics_sha256": "b2b8695c48ba1078cf3ce775c22689b432fad9f191ea2ef669b5d4c58c15d54e",
+    "predictions_sha256": "21e10c012f4855268c8336abb70f7670474a5839258dfa412dc81baa58f4f13e",
+    "samples": 541,
+    "score": 0.6303142329020333
+  },
+  {
+    "base": "Llama-3.1-8B-Instruct",
+    "task": "tulu",
+    "label": "tulu__seed44__hns_f4_s1",
+    "path": "/dataset1/zailong/workspace/peft-sft-lab/reports/posthoc_flat_dghard_forgetting_three_seed_20260913/eval/Llama-3.1-8B-Instruct/tulu/tulu__seed44__hns_f4_s1",
+    "metrics_sha256": "54a2d5d32c1761f7634f01f1c2151eab8fcba3b42bbf3871cf1bd6530b5df294",
+    "predictions_sha256": "b38b2c7c6a5fcf5e47075c1328e9dc89ec5a67ec43560872c1a193f5dd6d4660",
+    "samples": 541,
+    "score": 0.6487985212569316
+  },
+  {
+    "base": "Llama-3.1-8B-Instruct",
+    "task": "commonsense",
+    "label": "base",
+    "path": "/dataset1/zailong/workspace/peft-sft-lab/reports/posthoc_flat_dghard_forgetting_three_seed_20260913/eval/Llama-3.1-8B-Instruct/commonsense/base",
+    "metrics_sha256": "ab0ed99b22b3ba0b0a004c4df666ad86ab1e5fd73deb6d14ea6635ec82fd6a01",
+    "predictions_sha256": "7a5aa0443cc21a071b9b23b51586e291dbe429459576ce6e30a2727d3596202b",
+    "samples": 22419,
+    "score": 0.7140397244310445
+  },
+  {
+    "base": "Llama-3.1-8B-Instruct",
+    "task": "commonsense",
+    "label": "magicoder__seed43__original_lora",
+    "path": "/dataset1/zailong/workspace/peft-sft-lab/reports/posthoc_flat_dghard_forgetting_three_seed_20260913/eval/Llama-3.1-8B-Instruct/commonsense/magicoder__seed43__original_lora",
+    "metrics_sha256": "c17a509ecc228463f6d43d4bfb7a9c29bb664a522530bc583d00e2fd839a5ceb",
+    "predictions_sha256": "2ea010537dc203223fe1019a96d67afcc762e81e04d3349ae25cba54594a914f",
+    "samples": 22419,
+    "score": 0.7102317788513571
+  },
+  {
+    "base": "Llama-3.1-8B-Instruct",
+    "task": "commonsense",
+    "label": "magicoder__seed43__hns_f4_s1",
+    "path": "/dataset1/zailong/workspace/peft-sft-lab/reports/posthoc_flat_dghard_forgetting_three_seed_20260913/eval/Llama-3.1-8B-Instruct/commonsense/magicoder__seed43__hns_f4_s1",
+    "metrics_sha256": "07a0ab2189d6d68cadf11224fbe9cfdb96fdbd7571ba1f8ea03b392036397aec",
+    "predictions_sha256": "4ecff5cf67a194658791c028ec8d41058b0a80edb74b7bc038b7eff9833137e4",
+    "samples": 22419,
+    "score": 0.7215173982130725
+  },
+  {
+    "base": "Llama-3.1-8B-Instruct",
+    "task": "commonsense",
+    "label": "metamath__seed43__original_lora",
+    "path": "/dataset1/zailong/workspace/peft-sft-lab/reports/posthoc_flat_dghard_forgetting_three_seed_20260913/eval/Llama-3.1-8B-Instruct/commonsense/metamath__seed43__original_lora",
+    "metrics_sha256": "2b49debb8bbe14b0692ebd2880d6cd7f20e8e484b88287ccd4fce86217df5c28",
+    "predictions_sha256": "5d1811bbdb1690539aac88fb799045865b10361fa5b493fe9bfe2c7277e9c54a",
+    "samples": 22419,
+    "score": 0.6375031147733561
+  },
+  {
+    "base": "Llama-3.1-8B-Instruct",
+    "task": "commonsense",
+    "label": "metamath__seed43__hns_f4_s1",
+    "path": "/dataset1/zailong/workspace/peft-sft-lab/reports/posthoc_flat_dghard_forgetting_three_seed_20260913/eval/Llama-3.1-8B-Instruct/commonsense/metamath__seed43__hns_f4_s1",
+    "metrics_sha256": "83619977e5e9d3cebb33e65a4611bb902668ab2fa84587ff33f2448b7a72b012",
+    "predictions_sha256": "c015a91ad3867628977cee54bf793d0eff8e91797b11846331a19b3137d2c937",
+    "samples": 22419,
+    "score": 0.718053022886427
+  },
+  {
+    "base": "Llama-3.1-8B-Instruct",
+    "task": "commonsense",
+    "label": "tulu__seed43__original_lora",
+    "path": "/dataset1/zailong/workspace/peft-sft-lab/reports/posthoc_flat_dghard_forgetting_three_seed_20260913/eval/Llama-3.1-8B-Instruct/commonsense/tulu__seed43__original_lora",
+    "metrics_sha256": "164e24611a40752d0d5f4aa750f6a15c1ba710005e46c97621187dee64aafa98",
+    "predictions_sha256": "f2ef1b91238e9b1d905797f2ef8de1ac8fdaf491fe7598b833c1115a91b0b85c",
+    "samples": 22419,
+    "score": 0.7379171099509362
+  },
+  {
+    "base": "Llama-3.1-8B-Instruct",
+    "task": "commonsense",
+    "label": "tulu__seed43__hns_f4_s1",
+    "path": "/dataset1/zailong/workspace/peft-sft-lab/reports/posthoc_flat_dghard_forgetting_three_seed_20260913/eval/Llama-3.1-8B-Instruct/commonsense/tulu__seed43__hns_f4_s1",
+    "metrics_sha256": "64ea9a60248182c3fb73e63b86f6e64047a134f61ab7fbcf130a1818369bb9a9",
+    "predictions_sha256": "2a24a82ff66291471055c8b571981153e1f9a83500eeb6998fdd6f5db8bed04d",
+    "samples": 22419,
+    "score": 0.7241952908979491
+  },
+  {
+    "base": "Llama-3.1-8B-Instruct",
+    "task": "commonsense",
+    "label": "magicoder__seed44__original_lora",
+    "path": "/dataset1/zailong/workspace/peft-sft-lab/reports/posthoc_flat_dghard_forgetting_three_seed_20260913/eval/Llama-3.1-8B-Instruct/commonsense/magicoder__seed44__original_lora",
+    "metrics_sha256": "7049dd753a1880835346c9457aef474f7d82c05c59b14968253cb5c68951d03f",
+    "predictions_sha256": "6a881158a9392e124c39e18fc11f3b4588a07104fbbfa68655ab0225afded014",
+    "samples": 22419,
+    "score": 0.7118807679605977
+  },
+  {
+    "base": "Llama-3.1-8B-Instruct",
+    "task": "commonsense",
+    "label": "magicoder__seed44__hns_f4_s1",
+    "path": "/dataset1/zailong/workspace/peft-sft-lab/reports/posthoc_flat_dghard_forgetting_three_seed_20260913/eval/Llama-3.1-8B-Instruct/commonsense/magicoder__seed44__hns_f4_s1",
+    "metrics_sha256": "33705bbb102718622344f39187b0b12748be8467ce382061eaed8fcafa952a54",
+    "predictions_sha256": "d1be65177f0030edb6602ff82f76a454f4cd92173625585d442e6c050aaa02c4",
+    "samples": 22419,
+    "score": 0.7194134696938637
+  },
+  {
+    "base": "Llama-3.1-8B-Instruct",
+    "task": "commonsense",
+    "label": "metamath__seed44__original_lora",
+    "path": "/dataset1/zailong/workspace/peft-sft-lab/reports/posthoc_flat_dghard_forgetting_three_seed_20260913/eval/Llama-3.1-8B-Instruct/commonsense/metamath__seed44__original_lora",
+    "metrics_sha256": "babe88c6b3ee4946de598abf1d10a21db1973a2f60531a325c96872bdc3cd93d",
+    "predictions_sha256": "21910fa582e83cc5c569a11ef7ea7fb3608aa5110c04365645ab1820df2ba374",
+    "samples": 22419,
+    "score": 0.6410583420798457
+  },
+  {
+    "base": "Llama-3.1-8B-Instruct",
+    "task": "commonsense",
+    "label": "metamath__seed44__hns_f4_s1",
+    "path": "/dataset1/zailong/workspace/peft-sft-lab/reports/posthoc_flat_dghard_forgetting_three_seed_20260913/eval/Llama-3.1-8B-Instruct/commonsense/metamath__seed44__hns_f4_s1",
+    "metrics_sha256": "c7c60446fbf286045f9a2aa5958ed959c6bfd0445c8c0f1524fd88ad12bc6a9b",
+    "predictions_sha256": "66ce87ba20aa8d64bb130e46e5b9880ad8f1a9c51585893ee61f0e03339d95f9",
+    "samples": 22419,
+    "score": 0.7188624893526346
+  },
+  {
+    "base": "Llama-3.1-8B-Instruct",
+    "task": "commonsense",
+    "label": "tulu__seed44__original_lora",
+    "path": "/dataset1/zailong/workspace/peft-sft-lab/reports/posthoc_flat_dghard_forgetting_three_seed_20260913/eval/Llama-3.1-8B-Instruct/commonsense/tulu__seed44__original_lora",
+    "metrics_sha256": "e7c7e6b6aebbc4c7f03a64eb21f4dbc562cdac75b7c5a1b54a6ec25d9805be04",
+    "predictions_sha256": "396855564e560388573d9cdfa6684777597cc4455cf5e2be353438fe6ab04364",
+    "samples": 22419,
+    "score": 0.7373041763005095
+  },
+  {
+    "base": "Llama-3.1-8B-Instruct",
+    "task": "commonsense",
+    "label": "tulu__seed44__hns_f4_s1",
+    "path": "/dataset1/zailong/workspace/peft-sft-lab/reports/posthoc_flat_dghard_forgetting_three_seed_20260913/eval/Llama-3.1-8B-Instruct/commonsense/tulu__seed44__hns_f4_s1",
+    "metrics_sha256": "b4ba05cb36b390cc8088cea5bbd3f7d5ff913b79d15faa98e9e160a0808f9872",
+    "predictions_sha256": "41d1663ff82816a083286bc01fd3e1b12353944b6e6ccb40aeb7b88c2f9cf4d3",
+    "samples": 22419,
+    "score": 0.7175189300068174
+  }
+]

@@ -1,0 +1,14 @@
+{
+  "job_id": 1018,
+  "array_workers": 2,
+  "gpus_per_worker": 1,
+  "max_gpus": 2,
+  "command": "sbatch slurm/functional_hns_pilot.slurm",
+  "status": "complete",
+  "submitted_utc": "2026-09-13T19:14:53.539009+00:00",
+  "scheduler_states": [
+    {"job_id": "1018_0", "state": "COMPLETED", "exit_code": "0:0", "elapsed": "00:43:35", "allocated_gpus": 1},
+    {"job_id": "1018_1", "state": "COMPLETED", "exit_code": "0:0", "elapsed": "00:41:02", "allocated_gpus": 1}
+  ],
+  "all_gpus_released": true
+}

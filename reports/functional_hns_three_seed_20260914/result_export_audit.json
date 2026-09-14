@@ -1,0 +1,15 @@
+{
+  "status": "pass",
+  "checkpoints": 18,
+  "arms": 90,
+  "evaluation_cells": 368,
+  "module_records": 21420,
+  "max_checkpoint_metric_difference": 0.0,
+  "collector_sha256": "14e4e2218dcde749f637432a1692714cbc04970bc61608c7319d5b07ee8f8b4f",
+  "export_script_sha256": "26848562c883b1774f8d916e70c90983764e272a3c99b879fadc5128fef737cf",
+  "output_hashes": {
+    "functional_pr_module_results.tsv.gz": "3002f694300d371373bf24033d7d909bb176ace3803599098852f48716671325",
+    "evaluation_metrics_snapshot.json.gz": "778fcc6bab0740bc39cd7153f863c6cfc398c7f87d353eefa3215e722c473506",
+    "evaluation_commands.json": "a094ee465256c8372a25c1713d54c43b2a0bc6680a863a4d9274a11f34c74431"
+  }
+}

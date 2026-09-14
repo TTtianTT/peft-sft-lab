@@ -1,0 +1,983 @@
+{
+  "Qwen3-8B": [
+    {
+      "phase": "build",
+      "argv": [
+        "/dataset1/zailong/envs/peft-sft-lab/bin/python",
+        "/dataset1/zailong/workspace/peft-sft-lab/scripts/prepare_functional_hns_seed_extension.py",
+        "--base",
+        "Qwen3-8B",
+        "--device",
+        "cuda"
+      ],
+      "log": "/dataset1/zailong/workspace/peft-sft-lab/reports/functional_hns_three_seed_20260914/eval/Qwen3-8B/build.log",
+      "started_utc": "2026-09-13T20:09:01.204533+00:00",
+      "status": "complete",
+      "returncode": 0,
+      "finished_utc": "2026-09-13T20:10:07.556691+00:00"
+    },
+    {
+      "phase": "batch_and_reuse_probe",
+      "argv": [
+        "/dataset1/zailong/envs/peft-sft-lab/bin/python",
+        "/dataset1/zailong/workspace/peft-sft-lab/scripts/eval_forgetting_matrix_vllm.py",
+        "--base_model",
+        "/dataset1/zailong/models/Qwen3-8B",
+        "--variant_manifest",
+        "/dataset1/zailong/workspace/peft-sft-lab/reports/functional_hns_three_seed_20260914/Qwen3-8B_variant_manifest.json",
+        "--config",
+        "/dataset1/zailong/workspace/peft-sft-lab/reports/functional_hns_three_seed_20260914/Qwen3-8B_task_config.json",
+        "--output_dir",
+        "/dataset1/zailong/workspace/peft-sft-lab/reports/functional_hns_three_seed_20260914/batch_probe/Qwen3-8B/seqs4096",
+        "--tasks",
+        "magicoder",
+        "metamath",
+        "tulu",
+        "commonsense",
+        "--max_model_len",
+        "4096",
+        "--gpu_memory_utilization",
+        "0.94",
+        "--max_num_seqs",
+        "4096",
+        "--max_num_batched_tokens",
+        "65536",
+        "--adapter_block_size",
+        "5",
+        "--max_lora_rank",
+        "16",
+        "--prompt_chunk_short",
+        "4096",
+        "--prompt_chunk_long",
+        "1024",
+        "--seed",
+        "42",
+        "--diagnostic_max_samples",
+        "32"
+      ],
+      "log": "/dataset1/zailong/workspace/peft-sft-lab/reports/functional_hns_three_seed_20260914/batch_probe/Qwen3-8B/seqs4096/batch_and_reuse_probe.seqs4096.log",
+      "started_utc": "2026-09-13T20:10:12.881541+00:00",
+      "status": "complete",
+      "returncode": 0,
+      "finished_utc": "2026-09-13T20:24:42.919137+00:00"
+    },
+    {
+      "phase": "long",
+      "argv": [
+        "/dataset1/zailong/envs/peft-sft-lab/bin/python",
+        "/dataset1/zailong/workspace/peft-sft-lab/scripts/eval_forgetting_matrix_vllm.py",
+        "--base_model",
+        "/dataset1/zailong/models/Qwen3-8B",
+        "--variant_manifest",
+        "/dataset1/zailong/workspace/peft-sft-lab/reports/functional_hns_three_seed_20260914/Qwen3-8B_variant_manifest.json",
+        "--config",
+        "/dataset1/zailong/workspace/peft-sft-lab/reports/functional_hns_three_seed_20260914/Qwen3-8B_task_config.json",
+        "--output_dir",
+        "/dataset1/zailong/workspace/peft-sft-lab/reports/functional_hns_three_seed_20260914/eval/Qwen3-8B",
+        "--tasks",
+        "magicoder",
+        "metamath",
+        "tulu",
+        "--max_model_len",
+        "4096",
+        "--gpu_memory_utilization",
+        "0.94",
+        "--max_num_seqs",
+        "2048",
+        "--max_num_batched_tokens",
+        "65536",
+        "--adapter_block_size",
+        "5",
+        "--max_lora_rank",
+        "16",
+        "--prompt_chunk_short",
+        "4096",
+        "--prompt_chunk_long",
+        "1024",
+        "--seed",
+        "42"
+      ],
+      "log": "/dataset1/zailong/workspace/peft-sft-lab/reports/functional_hns_three_seed_20260914/eval/Qwen3-8B/long.seqs2048.log",
+      "started_utc": "2026-09-13T20:24:48.893218+00:00",
+      "status": "complete",
+      "returncode": 0,
+      "finished_utc": "2026-09-13T20:47:41.465416+00:00"
+    },
+    {
+      "phase": "score",
+      "argv": [
+        "/dataset1/zailong/envs/peft-sft-lab/bin/python",
+        "/dataset1/zailong/workspace/peft-sft-lab/scripts/score_forgetting_matrix.py",
+        "--matrix_dir",
+        "/dataset1/zailong/workspace/peft-sft-lab/reports/functional_hns_three_seed_20260914/eval/Qwen3-8B",
+        "--workers",
+        "32"
+      ],
+      "log": "/dataset1/zailong/workspace/peft-sft-lab/reports/functional_hns_three_seed_20260914/eval/Qwen3-8B/score1.log",
+      "started_utc": "2026-09-13T20:24:48.942826+00:00",
+      "status": "complete",
+      "returncode": 0,
+      "finished_utc": "2026-09-13T20:25:22.931789+00:00"
+    },
+    {
+      "phase": "score",
+      "argv": [
+        "/dataset1/zailong/envs/peft-sft-lab/bin/python",
+        "/dataset1/zailong/workspace/peft-sft-lab/scripts/score_forgetting_matrix.py",
+        "--matrix_dir",
+        "/dataset1/zailong/workspace/peft-sft-lab/reports/functional_hns_three_seed_20260914/eval/Qwen3-8B",
+        "--workers",
+        "32"
+      ],
+      "log": "/dataset1/zailong/workspace/peft-sft-lab/reports/functional_hns_three_seed_20260914/eval/Qwen3-8B/score2.log",
+      "started_utc": "2026-09-13T20:26:43.059128+00:00",
+      "status": "complete",
+      "returncode": 0,
+      "finished_utc": "2026-09-13T20:28:45.985869+00:00"
+    },
+    {
+      "phase": "score",
+      "argv": [
+        "/dataset1/zailong/envs/peft-sft-lab/bin/python",
+        "/dataset1/zailong/workspace/peft-sft-lab/scripts/score_forgetting_matrix.py",
+        "--matrix_dir",
+        "/dataset1/zailong/workspace/peft-sft-lab/reports/functional_hns_three_seed_20260914/eval/Qwen3-8B",
+        "--workers",
+        "32"
+      ],
+      "log": "/dataset1/zailong/workspace/peft-sft-lab/reports/functional_hns_three_seed_20260914/eval/Qwen3-8B/score3.log",
+      "started_utc": "2026-09-13T20:28:50.052091+00:00",
+      "status": "complete",
+      "returncode": 0,
+      "finished_utc": "2026-09-13T20:29:45.384142+00:00"
+    },
+    {
+      "phase": "score",
+      "argv": [
+        "/dataset1/zailong/envs/peft-sft-lab/bin/python",
+        "/dataset1/zailong/workspace/peft-sft-lab/scripts/score_forgetting_matrix.py",
+        "--matrix_dir",
+        "/dataset1/zailong/workspace/peft-sft-lab/reports/functional_hns_three_seed_20260914/eval/Qwen3-8B",
+        "--workers",
+        "32"
+      ],
+      "log": "/dataset1/zailong/workspace/peft-sft-lab/reports/functional_hns_three_seed_20260914/eval/Qwen3-8B/score4.log",
+      "started_utc": "2026-09-13T20:30:42.302247+00:00",
+      "status": "complete",
+      "returncode": 0,
+      "finished_utc": "2026-09-13T20:31:16.139271+00:00"
+    },
+    {
+      "phase": "score",
+      "argv": [
+        "/dataset1/zailong/envs/peft-sft-lab/bin/python",
+        "/dataset1/zailong/workspace/peft-sft-lab/scripts/score_forgetting_matrix.py",
+        "--matrix_dir",
+        "/dataset1/zailong/workspace/peft-sft-lab/reports/functional_hns_three_seed_20260914/eval/Qwen3-8B",
+        "--workers",
+        "32"
+      ],
+      "log": "/dataset1/zailong/workspace/peft-sft-lab/reports/functional_hns_three_seed_20260914/eval/Qwen3-8B/score5.log",
+      "started_utc": "2026-09-13T20:33:46.920752+00:00",
+      "status": "complete",
+      "returncode": 0,
+      "finished_utc": "2026-09-13T20:34:20.751597+00:00"
+    },
+    {
+      "phase": "score",
+      "argv": [
+        "/dataset1/zailong/envs/peft-sft-lab/bin/python",
+        "/dataset1/zailong/workspace/peft-sft-lab/scripts/score_forgetting_matrix.py",
+        "--matrix_dir",
+        "/dataset1/zailong/workspace/peft-sft-lab/reports/functional_hns_three_seed_20260914/eval/Qwen3-8B",
+        "--workers",
+        "32"
+      ],
+      "log": "/dataset1/zailong/workspace/peft-sft-lab/reports/functional_hns_three_seed_20260914/eval/Qwen3-8B/score6.log",
+      "started_utc": "2026-09-13T20:36:36.312964+00:00",
+      "status": "complete",
+      "returncode": 0,
+      "finished_utc": "2026-09-13T20:37:10.503580+00:00"
+    },
+    {
+      "phase": "score",
+      "argv": [
+        "/dataset1/zailong/envs/peft-sft-lab/bin/python",
+        "/dataset1/zailong/workspace/peft-sft-lab/scripts/score_forgetting_matrix.py",
+        "--matrix_dir",
+        "/dataset1/zailong/workspace/peft-sft-lab/reports/functional_hns_three_seed_20260914/eval/Qwen3-8B",
+        "--workers",
+        "32"
+      ],
+      "log": "/dataset1/zailong/workspace/peft-sft-lab/reports/functional_hns_three_seed_20260914/eval/Qwen3-8B/score7.log",
+      "started_utc": "2026-09-13T20:38:32.329489+00:00",
+      "status": "complete",
+      "returncode": 0,
+      "finished_utc": "2026-09-13T20:39:06.689926+00:00"
+    },
+    {
+      "phase": "score",
+      "argv": [
+        "/dataset1/zailong/envs/peft-sft-lab/bin/python",
+        "/dataset1/zailong/workspace/peft-sft-lab/scripts/score_forgetting_matrix.py",
+        "--matrix_dir",
+        "/dataset1/zailong/workspace/peft-sft-lab/reports/functional_hns_three_seed_20260914/eval/Qwen3-8B",
+        "--workers",
+        "32"
+      ],
+      "log": "/dataset1/zailong/workspace/peft-sft-lab/reports/functional_hns_three_seed_20260914/eval/Qwen3-8B/score8.log",
+      "started_utc": "2026-09-13T20:41:01.179905+00:00",
+      "status": "complete",
+      "returncode": 0,
+      "finished_utc": "2026-09-13T20:41:35.000235+00:00"
+    },
+    {
+      "phase": "score",
+      "argv": [
+        "/dataset1/zailong/envs/peft-sft-lab/bin/python",
+        "/dataset1/zailong/workspace/peft-sft-lab/scripts/score_forgetting_matrix.py",
+        "--matrix_dir",
+        "/dataset1/zailong/workspace/peft-sft-lab/reports/functional_hns_three_seed_20260914/eval/Qwen3-8B",
+        "--workers",
+        "32"
+      ],
+      "log": "/dataset1/zailong/workspace/peft-sft-lab/reports/functional_hns_three_seed_20260914/eval/Qwen3-8B/score9.log",
+      "started_utc": "2026-09-13T20:43:30.670947+00:00",
+      "status": "complete",
+      "returncode": 0,
+      "finished_utc": "2026-09-13T20:44:04.528575+00:00"
+    },
+    {
+      "phase": "score",
+      "argv": [
+        "/dataset1/zailong/envs/peft-sft-lab/bin/python",
+        "/dataset1/zailong/workspace/peft-sft-lab/scripts/score_forgetting_matrix.py",
+        "--matrix_dir",
+        "/dataset1/zailong/workspace/peft-sft-lab/reports/functional_hns_three_seed_20260914/eval/Qwen3-8B",
+        "--workers",
+        "32"
+      ],
+      "log": "/dataset1/zailong/workspace/peft-sft-lab/reports/functional_hns_three_seed_20260914/eval/Qwen3-8B/score10.log",
+      "started_utc": "2026-09-13T20:45:59.940542+00:00",
+      "status": "complete",
+      "returncode": 0,
+      "finished_utc": "2026-09-13T20:46:34.226881+00:00"
+    },
+    {
+      "phase": "score",
+      "argv": [
+        "/dataset1/zailong/envs/peft-sft-lab/bin/python",
+        "/dataset1/zailong/workspace/peft-sft-lab/scripts/score_forgetting_matrix.py",
+        "--matrix_dir",
+        "/dataset1/zailong/workspace/peft-sft-lab/reports/functional_hns_three_seed_20260914/eval/Qwen3-8B",
+        "--workers",
+        "32"
+      ],
+      "log": "/dataset1/zailong/workspace/peft-sft-lab/reports/functional_hns_three_seed_20260914/eval/Qwen3-8B/score11.log",
+      "started_utc": "2026-09-13T20:47:31.450837+00:00",
+      "status": "complete",
+      "returncode": 0,
+      "finished_utc": "2026-09-13T20:48:04.513477+00:00"
+    },
+    {
+      "phase": "commonsense",
+      "argv": [
+        "/dataset1/zailong/envs/peft-sft-lab/bin/python",
+        "/dataset1/zailong/workspace/peft-sft-lab/scripts/eval_forgetting_matrix_vllm.py",
+        "--base_model",
+        "/dataset1/zailong/models/Qwen3-8B",
+        "--variant_manifest",
+        "/dataset1/zailong/workspace/peft-sft-lab/reports/functional_hns_three_seed_20260914/Qwen3-8B_variant_manifest.json",
+        "--config",
+        "/dataset1/zailong/workspace/peft-sft-lab/reports/functional_hns_three_seed_20260914/Qwen3-8B_task_config.json",
+        "--output_dir",
+        "/dataset1/zailong/workspace/peft-sft-lab/reports/functional_hns_three_seed_20260914/eval/Qwen3-8B",
+        "--tasks",
+        "commonsense",
+        "--max_model_len",
+        "4096",
+        "--gpu_memory_utilization",
+        "0.94",
+        "--max_num_seqs",
+        "4096",
+        "--max_num_batched_tokens",
+        "65536",
+        "--adapter_block_size",
+        "5",
+        "--max_lora_rank",
+        "16",
+        "--prompt_chunk_short",
+        "4096",
+        "--prompt_chunk_long",
+        "1024",
+        "--seed",
+        "42"
+      ],
+      "log": "/dataset1/zailong/workspace/peft-sft-lab/reports/functional_hns_three_seed_20260914/eval/Qwen3-8B/commonsense.seqs4096.log",
+      "started_utc": "2026-09-13T20:47:41.494928+00:00",
+      "status": "complete",
+      "returncode": 0,
+      "finished_utc": "2026-09-13T21:27:47.508548+00:00"
+    },
+    {
+      "phase": "score",
+      "argv": [
+        "/dataset1/zailong/envs/peft-sft-lab/bin/python",
+        "/dataset1/zailong/workspace/peft-sft-lab/scripts/score_forgetting_matrix.py",
+        "--matrix_dir",
+        "/dataset1/zailong/workspace/peft-sft-lab/reports/functional_hns_three_seed_20260914/eval/Qwen3-8B",
+        "--workers",
+        "32"
+      ],
+      "log": "/dataset1/zailong/workspace/peft-sft-lab/reports/functional_hns_three_seed_20260914/eval/Qwen3-8B/score12.log",
+      "started_utc": "2026-09-13T20:59:50.953915+00:00",
+      "status": "complete",
+      "returncode": 0,
+      "finished_utc": "2026-09-13T21:00:25.091246+00:00"
+    },
+    {
+      "phase": "score",
+      "argv": [
+        "/dataset1/zailong/envs/peft-sft-lab/bin/python",
+        "/dataset1/zailong/workspace/peft-sft-lab/scripts/score_forgetting_matrix.py",
+        "--matrix_dir",
+        "/dataset1/zailong/workspace/peft-sft-lab/reports/functional_hns_three_seed_20260914/eval/Qwen3-8B",
+        "--workers",
+        "32"
+      ],
+      "log": "/dataset1/zailong/workspace/peft-sft-lab/reports/functional_hns_three_seed_20260914/eval/Qwen3-8B/score13.log",
+      "started_utc": "2026-09-13T21:10:28.733302+00:00",
+      "status": "complete",
+      "returncode": 0,
+      "finished_utc": "2026-09-13T21:11:02.524594+00:00"
+    },
+    {
+      "phase": "score",
+      "argv": [
+        "/dataset1/zailong/envs/peft-sft-lab/bin/python",
+        "/dataset1/zailong/workspace/peft-sft-lab/scripts/score_forgetting_matrix.py",
+        "--matrix_dir",
+        "/dataset1/zailong/workspace/peft-sft-lab/reports/functional_hns_three_seed_20260914/eval/Qwen3-8B",
+        "--workers",
+        "32"
+      ],
+      "log": "/dataset1/zailong/workspace/peft-sft-lab/reports/functional_hns_three_seed_20260914/eval/Qwen3-8B/score14.log",
+      "started_utc": "2026-09-13T21:21:07.384617+00:00",
+      "status": "complete",
+      "returncode": 0,
+      "finished_utc": "2026-09-13T21:21:41.778192+00:00"
+    },
+    {
+      "phase": "score",
+      "argv": [
+        "/dataset1/zailong/envs/peft-sft-lab/bin/python",
+        "/dataset1/zailong/workspace/peft-sft-lab/scripts/score_forgetting_matrix.py",
+        "--matrix_dir",
+        "/dataset1/zailong/workspace/peft-sft-lab/reports/functional_hns_three_seed_20260914/eval/Qwen3-8B",
+        "--workers",
+        "32"
+      ],
+      "log": "/dataset1/zailong/workspace/peft-sft-lab/reports/functional_hns_three_seed_20260914/eval/Qwen3-8B/score15.log",
+      "started_utc": "2026-09-13T21:27:37.497170+00:00",
+      "status": "complete",
+      "returncode": 0,
+      "finished_utc": "2026-09-13T21:28:11.486440+00:00"
+    },
+    {
+      "phase": "score",
+      "argv": [
+        "/dataset1/zailong/envs/peft-sft-lab/bin/python",
+        "/dataset1/zailong/workspace/peft-sft-lab/scripts/score_forgetting_matrix.py",
+        "--matrix_dir",
+        "/dataset1/zailong/workspace/peft-sft-lab/reports/functional_hns_three_seed_20260914/eval/Qwen3-8B",
+        "--workers",
+        "32"
+      ],
+      "log": "/dataset1/zailong/workspace/peft-sft-lab/reports/functional_hns_three_seed_20260914/eval/Qwen3-8B/score16.log",
+      "started_utc": "2026-09-14T02:04:07.459607+00:00",
+      "status": "complete",
+      "returncode": 0,
+      "finished_utc": "2026-09-14T02:04:51.230672+00:00"
+    }
+  ],
+  "Llama-3.1-8B-Instruct": [
+    {
+      "phase": "long",
+      "argv": [
+        "/dataset1/zailong/envs/peft-sft-lab/bin/python",
+        "/dataset1/zailong/workspace/peft-sft-lab/scripts/eval_forgetting_matrix_vllm.py",
+        "--base_model",
+        "/dataset1/zailong/models/Llama-3.1-8B-Instruct",
+        "--variant_manifest",
+        "/dataset1/zailong/workspace/peft-sft-lab/reports/functional_hns_three_seed_20260914/Llama-3.1-8B-Instruct_variant_manifest.json",
+        "--config",
+        "/dataset1/zailong/workspace/peft-sft-lab/reports/functional_hns_three_seed_20260914/Llama-3.1-8B-Instruct_task_config.json",
+        "--output_dir",
+        "/dataset1/zailong/workspace/peft-sft-lab/reports/functional_hns_three_seed_20260914/eval/Llama-3.1-8B-Instruct",
+        "--tasks",
+        "magicoder",
+        "metamath",
+        "tulu",
+        "--max_model_len",
+        "4096",
+        "--gpu_memory_utilization",
+        "0.94",
+        "--max_num_seqs",
+        "2048",
+        "--max_num_batched_tokens",
+        "65536",
+        "--adapter_block_size",
+        "5",
+        "--max_lora_rank",
+        "16",
+        "--prompt_chunk_short",
+        "4096",
+        "--prompt_chunk_long",
+        "1024",
+        "--seed",
+        "42"
+      ],
+      "log": "/dataset1/zailong/workspace/peft-sft-lab/reports/functional_hns_three_seed_20260914/eval/Llama-3.1-8B-Instruct/long.seqs2048.log",
+      "started_utc": "2026-09-14T02:05:05.594035+00:00",
+      "status": "complete",
+      "returncode": 0,
+      "finished_utc": "2026-09-14T02:55:06.221246+00:00"
+    },
+    {
+      "phase": "score",
+      "argv": [
+        "/dataset1/zailong/envs/peft-sft-lab/bin/python",
+        "/dataset1/zailong/workspace/peft-sft-lab/scripts/score_forgetting_matrix.py",
+        "--matrix_dir",
+        "/dataset1/zailong/workspace/peft-sft-lab/reports/functional_hns_three_seed_20260914/eval/Llama-3.1-8B-Instruct",
+        "--workers",
+        "32"
+      ],
+      "log": "/dataset1/zailong/workspace/peft-sft-lab/reports/functional_hns_three_seed_20260914/eval/Llama-3.1-8B-Instruct/score1.log",
+      "started_utc": "2026-09-14T02:08:12.909357+00:00",
+      "status": "complete",
+      "returncode": 0,
+      "finished_utc": "2026-09-14T02:10:05.052516+00:00"
+    },
+    {
+      "phase": "score",
+      "argv": [
+        "/dataset1/zailong/envs/peft-sft-lab/bin/python",
+        "/dataset1/zailong/workspace/peft-sft-lab/scripts/score_forgetting_matrix.py",
+        "--matrix_dir",
+        "/dataset1/zailong/workspace/peft-sft-lab/reports/functional_hns_three_seed_20260914/eval/Llama-3.1-8B-Instruct",
+        "--workers",
+        "32"
+      ],
+      "log": "/dataset1/zailong/workspace/peft-sft-lab/reports/functional_hns_three_seed_20260914/eval/Llama-3.1-8B-Instruct/score2.log",
+      "started_utc": "2026-09-14T02:10:09.090530+00:00",
+      "status": "complete",
+      "returncode": 0,
+      "finished_utc": "2026-09-14T02:14:21.654626+00:00"
+    },
+    {
+      "phase": "score",
+      "argv": [
+        "/dataset1/zailong/envs/peft-sft-lab/bin/python",
+        "/dataset1/zailong/workspace/peft-sft-lab/scripts/score_forgetting_matrix.py",
+        "--matrix_dir",
+        "/dataset1/zailong/workspace/peft-sft-lab/reports/functional_hns_three_seed_20260914/eval/Llama-3.1-8B-Instruct",
+        "--workers",
+        "32"
+      ],
+      "log": "/dataset1/zailong/workspace/peft-sft-lab/reports/functional_hns_three_seed_20260914/eval/Llama-3.1-8B-Instruct/score3.log",
+      "started_utc": "2026-09-14T02:14:25.263976+00:00",
+      "status": "complete",
+      "returncode": 0,
+      "finished_utc": "2026-09-14T02:15:44.358901+00:00"
+    },
+    {
+      "phase": "score",
+      "argv": [
+        "/dataset1/zailong/envs/peft-sft-lab/bin/python",
+        "/dataset1/zailong/workspace/peft-sft-lab/scripts/score_forgetting_matrix.py",
+        "--matrix_dir",
+        "/dataset1/zailong/workspace/peft-sft-lab/reports/functional_hns_three_seed_20260914/eval/Llama-3.1-8B-Instruct",
+        "--workers",
+        "32"
+      ],
+      "log": "/dataset1/zailong/workspace/peft-sft-lab/reports/functional_hns_three_seed_20260914/eval/Llama-3.1-8B-Instruct/score4.log",
+      "started_utc": "2026-09-14T02:16:32.089386+00:00",
+      "status": "complete",
+      "returncode": 0,
+      "finished_utc": "2026-09-14T02:17:05.281320+00:00"
+    },
+    {
+      "phase": "score",
+      "argv": [
+        "/dataset1/zailong/envs/peft-sft-lab/bin/python",
+        "/dataset1/zailong/workspace/peft-sft-lab/scripts/score_forgetting_matrix.py",
+        "--matrix_dir",
+        "/dataset1/zailong/workspace/peft-sft-lab/reports/functional_hns_three_seed_20260914/eval/Llama-3.1-8B-Instruct",
+        "--workers",
+        "32"
+      ],
+      "log": "/dataset1/zailong/workspace/peft-sft-lab/reports/functional_hns_three_seed_20260914/eval/Llama-3.1-8B-Instruct/score5.log",
+      "started_utc": "2026-09-14T02:19:01.960212+00:00",
+      "status": "complete",
+      "returncode": 0,
+      "finished_utc": "2026-09-14T02:19:35.573675+00:00"
+    },
+    {
+      "phase": "score",
+      "argv": [
+        "/dataset1/zailong/envs/peft-sft-lab/bin/python",
+        "/dataset1/zailong/workspace/peft-sft-lab/scripts/score_forgetting_matrix.py",
+        "--matrix_dir",
+        "/dataset1/zailong/workspace/peft-sft-lab/reports/functional_hns_three_seed_20260914/eval/Llama-3.1-8B-Instruct",
+        "--workers",
+        "32"
+      ],
+      "log": "/dataset1/zailong/workspace/peft-sft-lab/reports/functional_hns_three_seed_20260914/eval/Llama-3.1-8B-Instruct/score6.log",
+      "started_utc": "2026-09-14T02:21:31.492788+00:00",
+      "status": "complete",
+      "returncode": 0,
+      "finished_utc": "2026-09-14T02:22:05.299447+00:00"
+    },
+    {
+      "phase": "score",
+      "argv": [
+        "/dataset1/zailong/envs/peft-sft-lab/bin/python",
+        "/dataset1/zailong/workspace/peft-sft-lab/scripts/score_forgetting_matrix.py",
+        "--matrix_dir",
+        "/dataset1/zailong/workspace/peft-sft-lab/reports/functional_hns_three_seed_20260914/eval/Llama-3.1-8B-Instruct",
+        "--workers",
+        "32"
+      ],
+      "log": "/dataset1/zailong/workspace/peft-sft-lab/reports/functional_hns_three_seed_20260914/eval/Llama-3.1-8B-Instruct/score7.log",
+      "started_utc": "2026-09-14T02:23:47.736682+00:00",
+      "status": "complete",
+      "returncode": 0,
+      "finished_utc": "2026-09-14T02:24:22.087869+00:00"
+    },
+    {
+      "phase": "score",
+      "argv": [
+        "/dataset1/zailong/envs/peft-sft-lab/bin/python",
+        "/dataset1/zailong/workspace/peft-sft-lab/scripts/score_forgetting_matrix.py",
+        "--matrix_dir",
+        "/dataset1/zailong/workspace/peft-sft-lab/reports/functional_hns_three_seed_20260914/eval/Llama-3.1-8B-Instruct",
+        "--workers",
+        "32"
+      ],
+      "log": "/dataset1/zailong/workspace/peft-sft-lab/reports/functional_hns_three_seed_20260914/eval/Llama-3.1-8B-Instruct/score8.log",
+      "started_utc": "2026-09-14T02:26:19.275197+00:00",
+      "status": "complete",
+      "returncode": 0,
+      "finished_utc": "2026-09-14T02:26:52.753067+00:00"
+    },
+    {
+      "phase": "score",
+      "argv": [
+        "/dataset1/zailong/envs/peft-sft-lab/bin/python",
+        "/dataset1/zailong/workspace/peft-sft-lab/scripts/score_forgetting_matrix.py",
+        "--matrix_dir",
+        "/dataset1/zailong/workspace/peft-sft-lab/reports/functional_hns_three_seed_20260914/eval/Llama-3.1-8B-Instruct",
+        "--workers",
+        "32"
+      ],
+      "log": "/dataset1/zailong/workspace/peft-sft-lab/reports/functional_hns_three_seed_20260914/eval/Llama-3.1-8B-Instruct/score9.log",
+      "started_utc": "2026-09-14T02:28:35.451224+00:00",
+      "status": "complete",
+      "returncode": 0,
+      "finished_utc": "2026-09-14T02:29:09.916976+00:00"
+    },
+    {
+      "phase": "score",
+      "argv": [
+        "/dataset1/zailong/envs/peft-sft-lab/bin/python",
+        "/dataset1/zailong/workspace/peft-sft-lab/scripts/score_forgetting_matrix.py",
+        "--matrix_dir",
+        "/dataset1/zailong/workspace/peft-sft-lab/reports/functional_hns_three_seed_20260914/eval/Llama-3.1-8B-Instruct",
+        "--workers",
+        "32"
+      ],
+      "log": "/dataset1/zailong/workspace/peft-sft-lab/reports/functional_hns_three_seed_20260914/eval/Llama-3.1-8B-Instruct/score10.log",
+      "started_utc": "2026-09-14T02:30:41.586367+00:00",
+      "status": "complete",
+      "returncode": 0,
+      "finished_utc": "2026-09-14T02:31:15.358468+00:00"
+    },
+    {
+      "phase": "score",
+      "argv": [
+        "/dataset1/zailong/envs/peft-sft-lab/bin/python",
+        "/dataset1/zailong/workspace/peft-sft-lab/scripts/score_forgetting_matrix.py",
+        "--matrix_dir",
+        "/dataset1/zailong/workspace/peft-sft-lab/reports/functional_hns_three_seed_20260914/eval/Llama-3.1-8B-Instruct",
+        "--workers",
+        "32"
+      ],
+      "log": "/dataset1/zailong/workspace/peft-sft-lab/reports/functional_hns_three_seed_20260914/eval/Llama-3.1-8B-Instruct/score11.log",
+      "started_utc": "2026-09-14T02:33:12.053146+00:00",
+      "status": "complete",
+      "returncode": 0,
+      "finished_utc": "2026-09-14T02:33:45.995450+00:00"
+    },
+    {
+      "phase": "score",
+      "argv": [
+        "/dataset1/zailong/envs/peft-sft-lab/bin/python",
+        "/dataset1/zailong/workspace/peft-sft-lab/scripts/score_forgetting_matrix.py",
+        "--matrix_dir",
+        "/dataset1/zailong/workspace/peft-sft-lab/reports/functional_hns_three_seed_20260914/eval/Llama-3.1-8B-Instruct",
+        "--workers",
+        "32"
+      ],
+      "log": "/dataset1/zailong/workspace/peft-sft-lab/reports/functional_hns_three_seed_20260914/eval/Llama-3.1-8B-Instruct/score12.log",
+      "started_utc": "2026-09-14T02:33:59.260556+00:00",
+      "status": "complete",
+      "returncode": 0,
+      "finished_utc": "2026-09-14T02:34:19.314432+00:00"
+    },
+    {
+      "phase": "score",
+      "argv": [
+        "/dataset1/zailong/envs/peft-sft-lab/bin/python",
+        "/dataset1/zailong/workspace/peft-sft-lab/scripts/score_forgetting_matrix.py",
+        "--matrix_dir",
+        "/dataset1/zailong/workspace/peft-sft-lab/reports/functional_hns_three_seed_20260914/eval/Llama-3.1-8B-Instruct",
+        "--workers",
+        "32"
+      ],
+      "log": "/dataset1/zailong/workspace/peft-sft-lab/reports/functional_hns_three_seed_20260914/eval/Llama-3.1-8B-Instruct/score13.log",
+      "started_utc": "2026-09-14T02:36:15.257474+00:00",
+      "status": "complete",
+      "returncode": 0,
+      "finished_utc": "2026-09-14T02:36:48.829658+00:00"
+    },
+    {
+      "phase": "score",
+      "argv": [
+        "/dataset1/zailong/envs/peft-sft-lab/bin/python",
+        "/dataset1/zailong/workspace/peft-sft-lab/scripts/score_forgetting_matrix.py",
+        "--matrix_dir",
+        "/dataset1/zailong/workspace/peft-sft-lab/reports/functional_hns_three_seed_20260914/eval/Llama-3.1-8B-Instruct",
+        "--workers",
+        "32"
+      ],
+      "log": "/dataset1/zailong/workspace/peft-sft-lab/reports/functional_hns_three_seed_20260914/eval/Llama-3.1-8B-Instruct/score14.log",
+      "started_utc": "2026-09-14T02:38:55.397548+00:00",
+      "status": "complete",
+      "returncode": 0,
+      "finished_utc": "2026-09-14T02:39:28.655322+00:00"
+    },
+    {
+      "phase": "score",
+      "argv": [
+        "/dataset1/zailong/envs/peft-sft-lab/bin/python",
+        "/dataset1/zailong/workspace/peft-sft-lab/scripts/score_forgetting_matrix.py",
+        "--matrix_dir",
+        "/dataset1/zailong/workspace/peft-sft-lab/reports/functional_hns_three_seed_20260914/eval/Llama-3.1-8B-Instruct",
+        "--workers",
+        "32"
+      ],
+      "log": "/dataset1/zailong/workspace/peft-sft-lab/reports/functional_hns_three_seed_20260914/eval/Llama-3.1-8B-Instruct/score15.log",
+      "started_utc": "2026-09-14T02:41:01.033528+00:00",
+      "status": "complete",
+      "returncode": 0,
+      "finished_utc": "2026-09-14T02:41:35.606455+00:00"
+    },
+    {
+      "phase": "score",
+      "argv": [
+        "/dataset1/zailong/envs/peft-sft-lab/bin/python",
+        "/dataset1/zailong/workspace/peft-sft-lab/scripts/score_forgetting_matrix.py",
+        "--matrix_dir",
+        "/dataset1/zailong/workspace/peft-sft-lab/reports/functional_hns_three_seed_20260914/eval/Llama-3.1-8B-Instruct",
+        "--workers",
+        "32"
+      ],
+      "log": "/dataset1/zailong/workspace/peft-sft-lab/reports/functional_hns_three_seed_20260914/eval/Llama-3.1-8B-Instruct/score16.log",
+      "started_utc": "2026-09-14T02:43:17.138608+00:00",
+      "status": "complete",
+      "returncode": 0,
+      "finished_utc": "2026-09-14T02:43:50.468259+00:00"
+    },
+    {
+      "phase": "score",
+      "argv": [
+        "/dataset1/zailong/envs/peft-sft-lab/bin/python",
+        "/dataset1/zailong/workspace/peft-sft-lab/scripts/score_forgetting_matrix.py",
+        "--matrix_dir",
+        "/dataset1/zailong/workspace/peft-sft-lab/reports/functional_hns_three_seed_20260914/eval/Llama-3.1-8B-Instruct",
+        "--workers",
+        "32"
+      ],
+      "log": "/dataset1/zailong/workspace/peft-sft-lab/reports/functional_hns_three_seed_20260914/eval/Llama-3.1-8B-Instruct/score17.log",
+      "started_utc": "2026-09-14T02:45:46.980959+00:00",
+      "status": "complete",
+      "returncode": 0,
+      "finished_utc": "2026-09-14T02:46:21.136677+00:00"
+    },
+    {
+      "phase": "score",
+      "argv": [
+        "/dataset1/zailong/envs/peft-sft-lab/bin/python",
+        "/dataset1/zailong/workspace/peft-sft-lab/scripts/score_forgetting_matrix.py",
+        "--matrix_dir",
+        "/dataset1/zailong/workspace/peft-sft-lab/reports/functional_hns_three_seed_20260914/eval/Llama-3.1-8B-Instruct",
+        "--workers",
+        "32"
+      ],
+      "log": "/dataset1/zailong/workspace/peft-sft-lab/reports/functional_hns_three_seed_20260914/eval/Llama-3.1-8B-Instruct/score18.log",
+      "started_utc": "2026-09-14T02:47:53.918285+00:00",
+      "status": "complete",
+      "returncode": 0,
+      "finished_utc": "2026-09-14T02:48:27.646987+00:00"
+    },
+    {
+      "phase": "score",
+      "argv": [
+        "/dataset1/zailong/envs/peft-sft-lab/bin/python",
+        "/dataset1/zailong/workspace/peft-sft-lab/scripts/score_forgetting_matrix.py",
+        "--matrix_dir",
+        "/dataset1/zailong/workspace/peft-sft-lab/reports/functional_hns_three_seed_20260914/eval/Llama-3.1-8B-Instruct",
+        "--workers",
+        "32"
+      ],
+      "log": "/dataset1/zailong/workspace/peft-sft-lab/reports/functional_hns_three_seed_20260914/eval/Llama-3.1-8B-Instruct/score19.log",
+      "started_utc": "2026-09-14T02:50:10.230515+00:00",
+      "status": "complete",
+      "returncode": 0,
+      "finished_utc": "2026-09-14T02:50:44.358933+00:00"
+    },
+    {
+      "phase": "score",
+      "argv": [
+        "/dataset1/zailong/envs/peft-sft-lab/bin/python",
+        "/dataset1/zailong/workspace/peft-sft-lab/scripts/score_forgetting_matrix.py",
+        "--matrix_dir",
+        "/dataset1/zailong/workspace/peft-sft-lab/reports/functional_hns_three_seed_20260914/eval/Llama-3.1-8B-Instruct",
+        "--workers",
+        "32"
+      ],
+      "log": "/dataset1/zailong/workspace/peft-sft-lab/reports/functional_hns_three_seed_20260914/eval/Llama-3.1-8B-Instruct/score20.log",
+      "started_utc": "2026-09-14T02:52:50.526649+00:00",
+      "status": "complete",
+      "returncode": 0,
+      "finished_utc": "2026-09-14T02:53:24.361826+00:00"
+    },
+    {
+      "phase": "score",
+      "argv": [
+        "/dataset1/zailong/envs/peft-sft-lab/bin/python",
+        "/dataset1/zailong/workspace/peft-sft-lab/scripts/score_forgetting_matrix.py",
+        "--matrix_dir",
+        "/dataset1/zailong/workspace/peft-sft-lab/reports/functional_hns_three_seed_20260914/eval/Llama-3.1-8B-Instruct",
+        "--workers",
+        "32"
+      ],
+      "log": "/dataset1/zailong/workspace/peft-sft-lab/reports/functional_hns_three_seed_20260914/eval/Llama-3.1-8B-Instruct/score21.log",
+      "started_utc": "2026-09-14T02:54:56.208548+00:00",
+      "status": "complete",
+      "returncode": 0,
+      "finished_utc": "2026-09-14T02:55:29.882756+00:00"
+    },
+    {
+      "phase": "commonsense",
+      "argv": [
+        "/dataset1/zailong/envs/peft-sft-lab/bin/python",
+        "/dataset1/zailong/workspace/peft-sft-lab/scripts/eval_forgetting_matrix_vllm.py",
+        "--base_model",
+        "/dataset1/zailong/models/Llama-3.1-8B-Instruct",
+        "--variant_manifest",
+        "/dataset1/zailong/workspace/peft-sft-lab/reports/functional_hns_three_seed_20260914/Llama-3.1-8B-Instruct_variant_manifest.json",
+        "--config",
+        "/dataset1/zailong/workspace/peft-sft-lab/reports/functional_hns_three_seed_20260914/Llama-3.1-8B-Instruct_task_config.json",
+        "--output_dir",
+        "/dataset1/zailong/workspace/peft-sft-lab/reports/functional_hns_three_seed_20260914/eval/Llama-3.1-8B-Instruct",
+        "--tasks",
+        "commonsense",
+        "--max_model_len",
+        "4096",
+        "--gpu_memory_utilization",
+        "0.94",
+        "--max_num_seqs",
+        "4096",
+        "--max_num_batched_tokens",
+        "65536",
+        "--adapter_block_size",
+        "5",
+        "--max_lora_rank",
+        "16",
+        "--prompt_chunk_short",
+        "4096",
+        "--prompt_chunk_long",
+        "1024",
+        "--seed",
+        "42"
+      ],
+      "log": "/dataset1/zailong/workspace/peft-sft-lab/reports/functional_hns_three_seed_20260914/eval/Llama-3.1-8B-Instruct/commonsense.seqs4096.log",
+      "started_utc": "2026-09-14T02:55:06.243023+00:00",
+      "status": "complete",
+      "returncode": 0,
+      "finished_utc": "2026-09-14T04:34:43.960250+00:00"
+    },
+    {
+      "phase": "score",
+      "argv": [
+        "/dataset1/zailong/envs/peft-sft-lab/bin/python",
+        "/dataset1/zailong/workspace/peft-sft-lab/scripts/score_forgetting_matrix.py",
+        "--matrix_dir",
+        "/dataset1/zailong/workspace/peft-sft-lab/reports/functional_hns_three_seed_20260914/eval/Llama-3.1-8B-Instruct",
+        "--workers",
+        "32"
+      ],
+      "log": "/dataset1/zailong/workspace/peft-sft-lab/reports/functional_hns_three_seed_20260914/eval/Llama-3.1-8B-Instruct/score22.log",
+      "started_utc": "2026-09-14T02:57:59.215109+00:00",
+      "status": "complete",
+      "returncode": 0,
+      "finished_utc": "2026-09-14T02:58:33.484596+00:00"
+    },
+    {
+      "phase": "score",
+      "argv": [
+        "/dataset1/zailong/envs/peft-sft-lab/bin/python",
+        "/dataset1/zailong/workspace/peft-sft-lab/scripts/score_forgetting_matrix.py",
+        "--matrix_dir",
+        "/dataset1/zailong/workspace/peft-sft-lab/reports/functional_hns_three_seed_20260914/eval/Llama-3.1-8B-Instruct",
+        "--workers",
+        "32"
+      ],
+      "log": "/dataset1/zailong/workspace/peft-sft-lab/reports/functional_hns_three_seed_20260914/eval/Llama-3.1-8B-Instruct/score23.log",
+      "started_utc": "2026-09-14T03:08:36.765668+00:00",
+      "status": "complete",
+      "returncode": 0,
+      "finished_utc": "2026-09-14T03:09:10.432297+00:00"
+    },
+    {
+      "phase": "score",
+      "argv": [
+        "/dataset1/zailong/envs/peft-sft-lab/bin/python",
+        "/dataset1/zailong/workspace/peft-sft-lab/scripts/score_forgetting_matrix.py",
+        "--matrix_dir",
+        "/dataset1/zailong/workspace/peft-sft-lab/reports/functional_hns_three_seed_20260914/eval/Llama-3.1-8B-Instruct",
+        "--workers",
+        "32"
+      ],
+      "log": "/dataset1/zailong/workspace/peft-sft-lab/reports/functional_hns_three_seed_20260914/eval/Llama-3.1-8B-Instruct/score24.log",
+      "started_utc": "2026-09-14T03:19:48.092813+00:00",
+      "status": "complete",
+      "returncode": 0,
+      "finished_utc": "2026-09-14T03:20:21.516564+00:00"
+    },
+    {
+      "phase": "score",
+      "argv": [
+        "/dataset1/zailong/envs/peft-sft-lab/bin/python",
+        "/dataset1/zailong/workspace/peft-sft-lab/scripts/score_forgetting_matrix.py",
+        "--matrix_dir",
+        "/dataset1/zailong/workspace/peft-sft-lab/reports/functional_hns_three_seed_20260914/eval/Llama-3.1-8B-Instruct",
+        "--workers",
+        "32"
+      ],
+      "log": "/dataset1/zailong/workspace/peft-sft-lab/reports/functional_hns_three_seed_20260914/eval/Llama-3.1-8B-Instruct/score25.log",
+      "started_utc": "2026-09-14T03:30:03.552791+00:00",
+      "status": "complete",
+      "returncode": 0,
+      "finished_utc": "2026-09-14T03:30:37.242822+00:00"
+    },
+    {
+      "phase": "score",
+      "argv": [
+        "/dataset1/zailong/envs/peft-sft-lab/bin/python",
+        "/dataset1/zailong/workspace/peft-sft-lab/scripts/score_forgetting_matrix.py",
+        "--matrix_dir",
+        "/dataset1/zailong/workspace/peft-sft-lab/reports/functional_hns_three_seed_20260914/eval/Llama-3.1-8B-Instruct",
+        "--workers",
+        "32"
+      ],
+      "log": "/dataset1/zailong/workspace/peft-sft-lab/reports/functional_hns_three_seed_20260914/eval/Llama-3.1-8B-Instruct/score26.log",
+      "started_utc": "2026-09-14T03:41:00.732314+00:00",
+      "status": "complete",
+      "returncode": 0,
+      "finished_utc": "2026-09-14T03:41:34.051922+00:00"
+    },
+    {
+      "phase": "score",
+      "argv": [
+        "/dataset1/zailong/envs/peft-sft-lab/bin/python",
+        "/dataset1/zailong/workspace/peft-sft-lab/scripts/score_forgetting_matrix.py",
+        "--matrix_dir",
+        "/dataset1/zailong/workspace/peft-sft-lab/reports/functional_hns_three_seed_20260914/eval/Llama-3.1-8B-Instruct",
+        "--workers",
+        "32"
+      ],
+      "log": "/dataset1/zailong/workspace/peft-sft-lab/reports/functional_hns_three_seed_20260914/eval/Llama-3.1-8B-Instruct/score27.log",
+      "started_utc": "2026-09-14T03:51:59.429669+00:00",
+      "status": "complete",
+      "returncode": 0,
+      "finished_utc": "2026-09-14T03:52:32.873909+00:00"
+    },
+    {
+      "phase": "score",
+      "argv": [
+        "/dataset1/zailong/envs/peft-sft-lab/bin/python",
+        "/dataset1/zailong/workspace/peft-sft-lab/scripts/score_forgetting_matrix.py",
+        "--matrix_dir",
+        "/dataset1/zailong/workspace/peft-sft-lab/reports/functional_hns_three_seed_20260914/eval/Llama-3.1-8B-Instruct",
+        "--workers",
+        "32"
+      ],
+      "log": "/dataset1/zailong/workspace/peft-sft-lab/reports/functional_hns_three_seed_20260914/eval/Llama-3.1-8B-Instruct/score28.log",
+      "started_utc": "2026-09-14T04:02:24.806801+00:00",
+      "status": "complete",
+      "returncode": 0,
+      "finished_utc": "2026-09-14T04:02:57.917490+00:00"
+    },
+    {
+      "phase": "score",
+      "argv": [
+        "/dataset1/zailong/envs/peft-sft-lab/bin/python",
+        "/dataset1/zailong/workspace/peft-sft-lab/scripts/score_forgetting_matrix.py",
+        "--matrix_dir",
+        "/dataset1/zailong/workspace/peft-sft-lab/reports/functional_hns_three_seed_20260914/eval/Llama-3.1-8B-Instruct",
+        "--workers",
+        "32"
+      ],
+      "log": "/dataset1/zailong/workspace/peft-sft-lab/reports/functional_hns_three_seed_20260914/eval/Llama-3.1-8B-Instruct/score29.log",
+      "started_utc": "2026-09-14T04:12:59.090808+00:00",
+      "status": "complete",
+      "returncode": 0,
+      "finished_utc": "2026-09-14T04:13:32.350116+00:00"
+    },
+    {
+      "phase": "score",
+      "argv": [
+        "/dataset1/zailong/envs/peft-sft-lab/bin/python",
+        "/dataset1/zailong/workspace/peft-sft-lab/scripts/score_forgetting_matrix.py",
+        "--matrix_dir",
+        "/dataset1/zailong/workspace/peft-sft-lab/reports/functional_hns_three_seed_20260914/eval/Llama-3.1-8B-Instruct",
+        "--workers",
+        "32"
+      ],
+      "log": "/dataset1/zailong/workspace/peft-sft-lab/reports/functional_hns_three_seed_20260914/eval/Llama-3.1-8B-Instruct/score30.log",
+      "started_utc": "2026-09-14T04:24:07.618208+00:00",
+      "status": "complete",
+      "returncode": 0,
+      "finished_utc": "2026-09-14T04:24:40.723020+00:00"
+    },
+    {
+      "phase": "score",
+      "argv": [
+        "/dataset1/zailong/envs/peft-sft-lab/bin/python",
+        "/dataset1/zailong/workspace/peft-sft-lab/scripts/score_forgetting_matrix.py",
+        "--matrix_dir",
+        "/dataset1/zailong/workspace/peft-sft-lab/reports/functional_hns_three_seed_20260914/eval/Llama-3.1-8B-Instruct",
+        "--workers",
+        "32"
+      ],
+      "log": "/dataset1/zailong/workspace/peft-sft-lab/reports/functional_hns_three_seed_20260914/eval/Llama-3.1-8B-Instruct/score31.log",
+      "started_utc": "2026-09-14T04:34:33.950538+00:00",
+      "status": "complete",
+      "returncode": 0,
+      "finished_utc": "2026-09-14T04:35:07.533753+00:00"
+    }
+  ]
+}

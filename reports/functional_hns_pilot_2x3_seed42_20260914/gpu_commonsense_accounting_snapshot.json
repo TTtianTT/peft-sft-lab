@@ -1,0 +1,12 @@
+{
+  "recorded_utc": "2026-09-13 19:40:08 UTC",
+  "command": "sstat -j 1019.batch,1018.batch --format=JobID,TRESUsageInAve --parsable2",
+  "phase": "full commonsense generation",
+  "allocation": {
+    "array_job": 1018,
+    "workers": 2,
+    "gpus_per_worker": 1,
+    "max_gpus": 2
+  },
+  "output": "JobID|TRESUsageInAve\n1019.batch|cpu=00:06:00,energy=0,fs/disk=59377043208,gres/gpumem=266404M,gres/gpuutil=95,mem=7226916K,pages=6,vmem=323549764K\n1018.batch|cpu=00:03:58,energy=0,fs/disk=58070989774,gres/gpumem=265692M,gres/gpuutil=95,mem=6711484K,pages=2,vmem=322824432K\n"
+}

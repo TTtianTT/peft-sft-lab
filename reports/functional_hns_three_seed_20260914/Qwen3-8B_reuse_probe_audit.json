@@ -1,0 +1,321 @@
+{
+  "status": "pass",
+  "checks": [
+    {
+      "task": "magicoder",
+      "label": "base",
+      "samples": 32,
+      "token_mismatches": 0
+    },
+    {
+      "task": "magicoder",
+      "label": "magicoder__seed43__original_lora",
+      "samples": 32,
+      "token_mismatches": 0
+    },
+    {
+      "task": "magicoder",
+      "label": "magicoder__seed43__hns_f4_s1",
+      "samples": 32,
+      "token_mismatches": 0
+    },
+    {
+      "task": "magicoder",
+      "label": "metamath__seed43__original_lora",
+      "samples": 32,
+      "token_mismatches": 0
+    },
+    {
+      "task": "magicoder",
+      "label": "metamath__seed43__hns_f4_s1",
+      "samples": 32,
+      "token_mismatches": 0
+    },
+    {
+      "task": "magicoder",
+      "label": "tulu__seed43__original_lora",
+      "samples": 32,
+      "token_mismatches": 0
+    },
+    {
+      "task": "magicoder",
+      "label": "tulu__seed43__hns_f4_s1",
+      "samples": 32,
+      "token_mismatches": 0
+    },
+    {
+      "task": "magicoder",
+      "label": "magicoder__seed44__original_lora",
+      "samples": 32,
+      "token_mismatches": 0
+    },
+    {
+      "task": "magicoder",
+      "label": "magicoder__seed44__hns_f4_s1",
+      "samples": 32,
+      "token_mismatches": 0
+    },
+    {
+      "task": "magicoder",
+      "label": "metamath__seed44__original_lora",
+      "samples": 32,
+      "token_mismatches": 0
+    },
+    {
+      "task": "magicoder",
+      "label": "metamath__seed44__hns_f4_s1",
+      "samples": 32,
+      "token_mismatches": 0
+    },
+    {
+      "task": "magicoder",
+      "label": "tulu__seed44__original_lora",
+      "samples": 32,
+      "token_mismatches": 0
+    },
+    {
+      "task": "magicoder",
+      "label": "tulu__seed44__hns_f4_s1",
+      "samples": 32,
+      "token_mismatches": 0
+    },
+    {
+      "task": "metamath",
+      "label": "base",
+      "samples": 32,
+      "token_mismatches": 0
+    },
+    {
+      "task": "metamath",
+      "label": "magicoder__seed43__original_lora",
+      "samples": 32,
+      "token_mismatches": 0
+    },
+    {
+      "task": "metamath",
+      "label": "magicoder__seed43__hns_f4_s1",
+      "samples": 32,
+      "token_mismatches": 0
+    },
+    {
+      "task": "metamath",
+      "label": "metamath__seed43__original_lora",
+      "samples": 32,
+      "token_mismatches": 0
+    },
+    {
+      "task": "metamath",
+      "label": "metamath__seed43__hns_f4_s1",
+      "samples": 32,
+      "token_mismatches": 0
+    },
+    {
+      "task": "metamath",
+      "label": "tulu__seed43__original_lora",
+      "samples": 32,
+      "token_mismatches": 0
+    },
+    {
+      "task": "metamath",
+      "label": "tulu__seed43__hns_f4_s1",
+      "samples": 32,
+      "token_mismatches": 0
+    },
+    {
+      "task": "metamath",
+      "label": "magicoder__seed44__original_lora",
+      "samples": 32,
+      "token_mismatches": 0
+    },
+    {
+      "task": "metamath",
+      "label": "magicoder__seed44__hns_f4_s1",
+      "samples": 32,
+      "token_mismatches": 0
+    },
+    {
+      "task": "metamath",
+      "label": "metamath__seed44__original_lora",
+      "samples": 32,
+      "token_mismatches": 0
+    },
+    {
+      "task": "metamath",
+      "label": "metamath__seed44__hns_f4_s1",
+      "samples": 32,
+      "token_mismatches": 0
+    },
+    {
+      "task": "metamath",
+      "label": "tulu__seed44__original_lora",
+      "samples": 32,
+      "token_mismatches": 0
+    },
+    {
+      "task": "metamath",
+      "label": "tulu__seed44__hns_f4_s1",
+      "samples": 32,
+      "token_mismatches": 0
+    },
+    {
+      "task": "tulu",
+      "label": "base",
+      "samples": 32,
+      "token_mismatches": 0
+    },
+    {
+      "task": "tulu",
+      "label": "magicoder__seed43__original_lora",
+      "samples": 32,
+      "token_mismatches": 0
+    },
+    {
+      "task": "tulu",
+      "label": "magicoder__seed43__hns_f4_s1",
+      "samples": 32,
+      "token_mismatches": 0
+    },
+    {
+      "task": "tulu",
+      "label": "metamath__seed43__original_lora",
+      "samples": 32,
+      "token_mismatches": 0
+    },
+    {
+      "task": "tulu",
+      "label": "metamath__seed43__hns_f4_s1",
+      "samples": 32,
+      "token_mismatches": 0
+    },
+    {
+      "task": "tulu",
+      "label": "tulu__seed43__original_lora",
+      "samples": 32,
+      "token_mismatches": 0
+    },
+    {
+      "task": "tulu",
+      "label": "tulu__seed43__hns_f4_s1",
+      "samples": 32,
+      "token_mismatches": 0
+    },
+    {
+      "task": "tulu",
+      "label": "magicoder__seed44__original_lora",
+      "samples": 32,
+      "token_mismatches": 0
+    },
+    {
+      "task": "tulu",
+      "label": "magicoder__seed44__hns_f4_s1",
+      "samples": 32,
+      "token_mismatches": 0
+    },
+    {
+      "task": "tulu",
+      "label": "metamath__seed44__original_lora",
+      "samples": 32,
+      "token_mismatches": 0
+    },
+    {
+      "task": "tulu",
+      "label": "metamath__seed44__hns_f4_s1",
+      "samples": 32,
+      "token_mismatches": 0
+    },
+    {
+      "task": "tulu",
+      "label": "tulu__seed44__original_lora",
+      "samples": 32,
+      "token_mismatches": 0
+    },
+    {
+      "task": "tulu",
+      "label": "tulu__seed44__hns_f4_s1",
+      "samples": 32,
+      "token_mismatches": 0
+    },
+    {
+      "task": "commonsense",
+      "label": "base",
+      "samples": 256,
+      "token_mismatches": 0
+    },
+    {
+      "task": "commonsense",
+      "label": "magicoder__seed43__original_lora",
+      "samples": 256,
+      "token_mismatches": 0
+    },
+    {
+      "task": "commonsense",
+      "label": "magicoder__seed43__hns_f4_s1",
+      "samples": 256,
+      "token_mismatches": 0
+    },
+    {
+      "task": "commonsense",
+      "label": "metamath__seed43__original_lora",
+      "samples": 256,
+      "token_mismatches": 0
+    },
+    {
+      "task": "commonsense",
+      "label": "metamath__seed43__hns_f4_s1",
+      "samples": 256,
+      "token_mismatches": 0
+    },
+    {
+      "task": "commonsense",
+      "label": "tulu__seed43__original_lora",
+      "samples": 256,
+      "token_mismatches": 0
+    },
+    {
+      "task": "commonsense",
+      "label": "tulu__seed43__hns_f4_s1",
+      "samples": 256,
+      "token_mismatches": 0
+    },
+    {
+      "task": "commonsense",
+      "label": "magicoder__seed44__original_lora",
+      "samples": 256,
+      "token_mismatches": 0
+    },
+    {
+      "task": "commonsense",
+      "label": "magicoder__seed44__hns_f4_s1",
+      "samples": 256,
+      "token_mismatches": 0
+    },
+    {
+      "task": "commonsense",
+      "label": "metamath__seed44__original_lora",
+      "samples": 256,
+      "token_mismatches": 0
+    },
+    {
+      "task": "commonsense",
+      "label": "metamath__seed44__hns_f4_s1",
+      "samples": 256,
+      "token_mismatches": 0
+    },
+    {
+      "task": "commonsense",
+      "label": "tulu__seed44__original_lora",
+      "samples": 256,
+      "token_mismatches": 0
+    },
+    {
+      "task": "commonsense",
+      "label": "tulu__seed44__hns_f4_s1",
+      "samples": 256,
+      "token_mismatches": 0
+    }
+  ],
+  "token_mismatches": 0,
+  "selected_probe_max_num_seqs": 4096,
+  "reuse_baselines": true,
+  "fallback": null
+}

@@ -1,0 +1,249 @@
+{
+  "status": "complete",
+  "base": "Qwen3-8B",
+  "base_model": "/dataset1/zailong/models/Qwen3-8B",
+  "task_config": "/dataset1/zailong/workspace/peft-sft-lab/reports/functional_hns_three_seed_20260914/Qwen3-8B_task_config.json",
+  "variants": [
+    {
+      "label": "magicoder__seed43__original_lora",
+      "path": "/dataset1/zailong/runs/peft-sft-lab/hns-training-seeds-3task-20260912/Qwen3-8B/seed43/lora/magicoder",
+      "train_task": "magicoder",
+      "seed": 43,
+      "method": "original_lora",
+      "name": "LoRA"
+    },
+    {
+      "label": "magicoder__seed43__hns_f4_s1",
+      "path": "/dataset1/zailong/runs/peft-sft-lab/hns-training-seeds-3task-20260912/Qwen3-8B/seed43/hns_step_grid/adapters/Qwen3-8B/magicoder/hns_f4_s1",
+      "train_task": "magicoder",
+      "seed": 43,
+      "method": "hns_f4_s1",
+      "name": "HNS \u03b1=0 (4+1)"
+    },
+    {
+      "label": "magicoder__seed43__functional_hns_a05",
+      "path": "/dataset1/zailong/workspace/peft-sft-lab/reports/functional_hns_three_seed_20260914/adapters/Qwen3-8B/magicoder/seed43/functional_hns_a05",
+      "train_task": "magicoder",
+      "seed": 43,
+      "method": "functional_hns_a05",
+      "name": "Functional-HNS \u03b1=0.5"
+    },
+    {
+      "label": "magicoder__seed43__functional_hns_a10",
+      "path": "/dataset1/zailong/workspace/peft-sft-lab/reports/functional_hns_three_seed_20260914/adapters/Qwen3-8B/magicoder/seed43/functional_hns_a10",
+      "train_task": "magicoder",
+      "seed": 43,
+      "method": "functional_hns_a10",
+      "name": "Functional-HNS \u03b1=1"
+    },
+    {
+      "label": "magicoder__seed43__functional_flat",
+      "path": "/dataset1/zailong/workspace/peft-sft-lab/reports/functional_hns_three_seed_20260914/adapters/Qwen3-8B/magicoder/seed43/functional_flat",
+      "train_task": "magicoder",
+      "seed": 43,
+      "method": "functional_flat",
+      "name": "Protected Exact Functional Flat"
+    },
+    {
+      "label": "metamath__seed43__original_lora",
+      "path": "/dataset1/zailong/runs/peft-sft-lab/hns-training-seeds-3task-20260912/Qwen3-8B/seed43/lora/metamath",
+      "train_task": "metamath",
+      "seed": 43,
+      "method": "original_lora",
+      "name": "LoRA"
+    },
+    {
+      "label": "metamath__seed43__hns_f4_s1",
+      "path": "/dataset1/zailong/runs/peft-sft-lab/hns-training-seeds-3task-20260912/Qwen3-8B/seed43/hns_step_grid/adapters/Qwen3-8B/metamath/hns_f4_s1",
+      "train_task": "metamath",
+      "seed": 43,
+      "method": "hns_f4_s1",
+      "name": "HNS \u03b1=0 (4+1)"
+    },
+    {
+      "label": "metamath__seed43__functional_hns_a05",
+      "path": "/dataset1/zailong/workspace/peft-sft-lab/reports/functional_hns_three_seed_20260914/adapters/Qwen3-8B/metamath/seed43/functional_hns_a05",
+      "train_task": "metamath",
+      "seed": 43,
+      "method": "functional_hns_a05",
+      "name": "Functional-HNS \u03b1=0.5"
+    },
+    {
+      "label": "metamath__seed43__functional_hns_a10",
+      "path": "/dataset1/zailong/workspace/peft-sft-lab/reports/functional_hns_three_seed_20260914/adapters/Qwen3-8B/metamath/seed43/functional_hns_a10",
+      "train_task": "metamath",
+      "seed": 43,
+      "method": "functional_hns_a10",
+      "name": "Functional-HNS \u03b1=1"
+    },
+    {
+      "label": "metamath__seed43__functional_flat",
+      "path": "/dataset1/zailong/workspace/peft-sft-lab/reports/functional_hns_three_seed_20260914/adapters/Qwen3-8B/metamath/seed43/functional_flat",
+      "train_task": "metamath",
+      "seed": 43,
+      "method": "functional_flat",
+      "name": "Protected Exact Functional Flat"
+    },
+    {
+      "label": "tulu__seed43__original_lora",
+      "path": "/dataset1/zailong/runs/peft-sft-lab/hns-training-seeds-3task-20260912/Qwen3-8B/seed43/lora/tulu",
+      "train_task": "tulu",
+      "seed": 43,
+      "method": "original_lora",
+      "name": "LoRA"
+    },
+    {
+      "label": "tulu__seed43__hns_f4_s1",
+      "path": "/dataset1/zailong/runs/peft-sft-lab/hns-training-seeds-3task-20260912/Qwen3-8B/seed43/hns_step_grid/adapters/Qwen3-8B/tulu/hns_f4_s1",
+      "train_task": "tulu",
+      "seed": 43,
+      "method": "hns_f4_s1",
+      "name": "HNS \u03b1=0 (4+1)"
+    },
+    {
+      "label": "tulu__seed43__functional_hns_a05",
+      "path": "/dataset1/zailong/workspace/peft-sft-lab/reports/functional_hns_three_seed_20260914/adapters/Qwen3-8B/tulu/seed43/functional_hns_a05",
+      "train_task": "tulu",
+      "seed": 43,
+      "method": "functional_hns_a05",
+      "name": "Functional-HNS \u03b1=0.5"
+    },
+    {
+      "label": "tulu__seed43__functional_hns_a10",
+      "path": "/dataset1/zailong/workspace/peft-sft-lab/reports/functional_hns_three_seed_20260914/adapters/Qwen3-8B/tulu/seed43/functional_hns_a10",
+      "train_task": "tulu",
+      "seed": 43,
+      "method": "functional_hns_a10",
+      "name": "Functional-HNS \u03b1=1"
+    },
+    {
+      "label": "tulu__seed43__functional_flat",
+      "path": "/dataset1/zailong/workspace/peft-sft-lab/reports/functional_hns_three_seed_20260914/adapters/Qwen3-8B/tulu/seed43/functional_flat",
+      "train_task": "tulu",
+      "seed": 43,
+      "method": "functional_flat",
+      "name": "Protected Exact Functional Flat"
+    },
+    {
+      "label": "magicoder__seed44__original_lora",
+      "path": "/dataset1/zailong/runs/peft-sft-lab/hns-training-seeds-3task-20260912/Qwen3-8B/seed44/lora/magicoder",
+      "train_task": "magicoder",
+      "seed": 44,
+      "method": "original_lora",
+      "name": "LoRA"
+    },
+    {
+      "label": "magicoder__seed44__hns_f4_s1",
+      "path": "/dataset1/zailong/runs/peft-sft-lab/hns-training-seeds-3task-20260912/Qwen3-8B/seed44/hns_step_grid/adapters/Qwen3-8B/magicoder/hns_f4_s1",
+      "train_task": "magicoder",
+      "seed": 44,
+      "method": "hns_f4_s1",
+      "name": "HNS \u03b1=0 (4+1)"
+    },
+    {
+      "label": "magicoder__seed44__functional_hns_a05",
+      "path": "/dataset1/zailong/workspace/peft-sft-lab/reports/functional_hns_three_seed_20260914/adapters/Qwen3-8B/magicoder/seed44/functional_hns_a05",
+      "train_task": "magicoder",
+      "seed": 44,
+      "method": "functional_hns_a05",
+      "name": "Functional-HNS \u03b1=0.5"
+    },
+    {
+      "label": "magicoder__seed44__functional_hns_a10",
+      "path": "/dataset1/zailong/workspace/peft-sft-lab/reports/functional_hns_three_seed_20260914/adapters/Qwen3-8B/magicoder/seed44/functional_hns_a10",
+      "train_task": "magicoder",
+      "seed": 44,
+      "method": "functional_hns_a10",
+      "name": "Functional-HNS \u03b1=1"
+    },
+    {
+      "label": "magicoder__seed44__functional_flat",
+      "path": "/dataset1/zailong/workspace/peft-sft-lab/reports/functional_hns_three_seed_20260914/adapters/Qwen3-8B/magicoder/seed44/functional_flat",
+      "train_task": "magicoder",
+      "seed": 44,
+      "method": "functional_flat",
+      "name": "Protected Exact Functional Flat"
+    },
+    {
+      "label": "metamath__seed44__original_lora",
+      "path": "/dataset1/zailong/runs/peft-sft-lab/hns-training-seeds-3task-20260912/Qwen3-8B/seed44/lora/metamath",
+      "train_task": "metamath",
+      "seed": 44,
+      "method": "original_lora",
+      "name": "LoRA"
+    },
+    {
+      "label": "metamath__seed44__hns_f4_s1",
+      "path": "/dataset1/zailong/runs/peft-sft-lab/hns-training-seeds-3task-20260912/Qwen3-8B/seed44/hns_step_grid/adapters/Qwen3-8B/metamath/hns_f4_s1",
+      "train_task": "metamath",
+      "seed": 44,
+      "method": "hns_f4_s1",
+      "name": "HNS \u03b1=0 (4+1)"
+    },
+    {
+      "label": "metamath__seed44__functional_hns_a05",
+      "path": "/dataset1/zailong/workspace/peft-sft-lab/reports/functional_hns_three_seed_20260914/adapters/Qwen3-8B/metamath/seed44/functional_hns_a05",
+      "train_task": "metamath",
+      "seed": 44,
+      "method": "functional_hns_a05",
+      "name": "Functional-HNS \u03b1=0.5"
+    },
+    {
+      "label": "metamath__seed44__functional_hns_a10",
+      "path": "/dataset1/zailong/workspace/peft-sft-lab/reports/functional_hns_three_seed_20260914/adapters/Qwen3-8B/metamath/seed44/functional_hns_a10",
+      "train_task": "metamath",
+      "seed": 44,
+      "method": "functional_hns_a10",
+      "name": "Functional-HNS \u03b1=1"
+    },
+    {
+      "label": "metamath__seed44__functional_flat",
+      "path": "/dataset1/zailong/workspace/peft-sft-lab/reports/functional_hns_three_seed_20260914/adapters/Qwen3-8B/metamath/seed44/functional_flat",
+      "train_task": "metamath",
+      "seed": 44,
+      "method": "functional_flat",
+      "name": "Protected Exact Functional Flat"
+    },
+    {
+      "label": "tulu__seed44__original_lora",
+      "path": "/dataset1/zailong/runs/peft-sft-lab/hns-training-seeds-3task-20260912/Qwen3-8B/seed44/lora/tulu",
+      "train_task": "tulu",
+      "seed": 44,
+      "method": "original_lora",
+      "name": "LoRA"
+    },
+    {
+      "label": "tulu__seed44__hns_f4_s1",
+      "path": "/dataset1/zailong/runs/peft-sft-lab/hns-training-seeds-3task-20260912/Qwen3-8B/seed44/hns_step_grid/adapters/Qwen3-8B/tulu/hns_f4_s1",
+      "train_task": "tulu",
+      "seed": 44,
+      "method": "hns_f4_s1",
+      "name": "HNS \u03b1=0 (4+1)"
+    },
+    {
+      "label": "tulu__seed44__functional_hns_a05",
+      "path": "/dataset1/zailong/workspace/peft-sft-lab/reports/functional_hns_three_seed_20260914/adapters/Qwen3-8B/tulu/seed44/functional_hns_a05",
+      "train_task": "tulu",
+      "seed": 44,
+      "method": "functional_hns_a05",
+      "name": "Functional-HNS \u03b1=0.5"
+    },
+    {
+      "label": "tulu__seed44__functional_hns_a10",
+      "path": "/dataset1/zailong/workspace/peft-sft-lab/reports/functional_hns_three_seed_20260914/adapters/Qwen3-8B/tulu/seed44/functional_hns_a10",
+      "train_task": "tulu",
+      "seed": 44,
+      "method": "functional_hns_a10",
+      "name": "Functional-HNS \u03b1=1"
+    },
+    {
+      "label": "tulu__seed44__functional_flat",
+      "path": "/dataset1/zailong/workspace/peft-sft-lab/reports/functional_hns_three_seed_20260914/adapters/Qwen3-8B/tulu/seed44/functional_flat",
+      "train_task": "tulu",
+      "seed": 44,
+      "method": "functional_flat",
+      "name": "Protected Exact Functional Flat"
+    }
+  ],
+  "source_variant_manifest": "/dataset1/zailong/workspace/peft-sft-lab/reports/posthoc_flat_dghard_forgetting_three_seed_20260913/Qwen3-8B_variant_manifest.json"
+}

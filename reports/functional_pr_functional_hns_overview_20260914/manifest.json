@@ -1,0 +1,32 @@
+{
+  "status": "complete",
+  "created_utc": "2026-09-14T06:09:27.100811+00:00",
+  "report": "reports/functional_pr_functional_hns_overview_20260914.md",
+  "report_sha256": "0975bd46761bd23b3960c2c933e549d269000a08c8cc6029334b9b30706ebd1e",
+  "generator": "scripts/write_functional_pr_hns_overview.py",
+  "generator_sha256": "51908c307ceda39569765537a2796f4529c2115511911c9dec6144e1bc55c65c",
+  "input_hashes": {
+    "reports/functional_hns_three_seed_20260914/summary.json": "c710296e325f38f3de794004597dfa5a1a8b4873e64c35790b4c9be41a138eb8",
+    "reports/functional_hns_three_seed_20260914/manifest.json": "7e0ec2cb66a99958f88843bdd5633c4db510c706dc2fe021b0eef90e974a4eb5",
+    "reports/functional_hns_three_seed_20260914/artifact_integrity_audit.json": "95198f5de08522bb2eb1adaf951b62b5793d2e3ad89cf05a6ede58424a409d14",
+    "reports/functional_hns_three_seed_20260914/result_export_audit.json": "7d07c6389100e8bf7976db6645ee998f07da9f5558644ac6f3ad042af7956eae",
+    "reports/functional_hns_three_seed_20260914/functional_pr_module_results.tsv.gz": "3002f694300d371373bf24033d7d909bb176ace3803599098852f48716671325",
+    "reports/functional_hns_three_seed_20260914/evaluation_metrics_snapshot.json.gz": "778fcc6bab0740bc39cd7153f863c6cfc398c7f87d353eefa3215e722c473506",
+    "reports/functional_hns_three_seed_20260914/evaluation_commands.json": "a094ee465256c8372a25c1713d54c43b2a0bc6680a863a4d9274a11f34c74431",
+    "reports/functional_hns_three_seed_20260914/paired_three_seed_changes.png": "63d53ca63373cee5a1ba672991c9a50e1c8b2c521efd387a09f177d583dd7112",
+    "src/finetune/spectral_edit/functional_hns.py": "84529e4248de9ad90cd3ba1f3573cf44d3d816c24fe5e9f09a487e7b95875403",
+    "src/finetune/spectral_edit/posthoc_hns.py": "a9351267929f16efd5b511801c3b2128b3b213414053050636a6eb492cd62206",
+    "src/finetune/spectral_edit/svd.py": "606213fb325cd09d012f02e05adb269b0d8f1f92c6ccfef21fa7a409c82f9ce2",
+    "src/finetune/spectral_edit/io.py": "296712529479318a67588f22052ea8587ed57d55371b6cd76918244d5749c5ea",
+    "scripts/collect_functional_activation_three_seed.py": "14e4e2218dcde749f637432a1692714cbc04970bc61608c7319d5b07ee8f8b4f",
+    "scripts/prepare_functional_hns_seed_extension.py": "a0a5836a6f6057172e583a742233f89ea4c04b33bbb22e815c576356757adb13",
+    "reports/functional_hns_three_seed_20260914.md": "e501dcb614c0988ab9e436c023da0fae347e46676293aa727444837d11afd8ff"
+  },
+  "checkpoints": 18,
+  "methods": 5,
+  "evaluation_cells": 368,
+  "module_records": 21420,
+  "source_report_matches_frozen_manifest": true,
+  "source_report_frozen_sha256": "e501dcb614c0988ab9e436c023da0fae347e46676293aa727444837d11afd8ff",
+  "note": "Overview only; no new evaluation/training, original experiment manifest unchanged."
+}

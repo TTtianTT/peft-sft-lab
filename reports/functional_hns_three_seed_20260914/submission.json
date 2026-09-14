@@ -1,0 +1,42 @@
+{
+  "job_id": 1023,
+  "command": "sbatch slurm/functional_hns_seed_extension_1gpu.slurm",
+  "status": "complete",
+  "gpus_requested": 1,
+  "max_gpus": 1,
+  "array": false,
+  "base_order": [
+    "Qwen3-8B",
+    "Llama-3.1-8B-Instruct"
+  ],
+  "training_seeds": [
+    43,
+    44
+  ],
+  "generation_seed": 42,
+  "calibration_sampling_seed": 42,
+  "new_adapters": 36,
+  "new_evaluation_cells": 144,
+  "new_full_evaluation_examples": 879948,
+  "attempts": [
+    {
+      "job_id": 1020,
+      "state": "FAILED",
+      "exit_code": "1:0",
+      "elapsed": "01:35:10",
+      "reason": "fresh Base metrics duplicate hash assertion"
+    }
+  ],
+  "fresh_generation_cells": 256,
+  "resume_reason": "Llama all-three-seed fresh comparison; summary duplicate assertion fixed",
+  "fresh_generation_examples": 1564352,
+  "expected_extension_cells": 308,
+  "extra_seed42_reevaluation_base": "Llama-3.1-8B-Instruct",
+  "scheduler_state": "COMPLETED",
+  "exit_code": "0:0",
+  "elapsed": "02:31:17",
+  "gpu_released": true,
+  "completed_utc": "2026-09-14T04:35:10.809726+00:00",
+  "scored_merged_cells": 368,
+  "complete_checkpoints": 18
+}

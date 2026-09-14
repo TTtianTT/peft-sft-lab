@@ -2,7 +2,7 @@
 
 状态：complete；368cells中已评分 368，完整同范围cohort 18/18；extension 308/308cells。更新时间UTC：2026-09-14T05:40:41.155491+00:00。
 
-新增seed43/44共12个源checkpoint、36个新adapter。Qwen短测对照完全匹配，复用原LoRA/HNS及seed42；Llama短测111个样本的token不匹配，因此三seed的全部五方法与Base统一重新评测，seed42原pilot保留，不混用旧Llama成绩。GPU工作全部只使用一张B300，不重新训练。统一HNS4+1，functional α=0/.5/1，floor=.1 median(q)，原LoRA rank/alpha/scaling/target modules/base均不变。
+新增seed43/44共12个源checkpoint、36个新adapter。Qwen短测对照完全匹配，复用原LoRA/HNS及seed42；Llama短测111个样本的token不匹配，因此三seed的全部五方法与Base统一重新评测，seed42原pilot保留，不混用旧Llama成绩。新增seed43/44阶段只使用一张B300；此前seed42 pilot使用两张B300并行评测两种Base。不重新训练。统一HNS4+1，functional α=0/.5/1，floor=.1 median(q)，原LoRA rank/alpha/scaling/target modules/base均不变。
 
 ![三种子配对成绩变化 mean ± sample SD](functional_hns_three_seed_20260914/paired_three_seed_changes.png)
 
@@ -638,7 +638,7 @@ absolute_functional_energy = float(energy.sum() * scaling**2)
 
 绝对 functional energy 跨模块求和；`functional_rms_ratio` 为 $\sqrt{\sum_m E'_m/\sum_m E_m}$，`functional_squared_energy_ratio` 为其平方。固定 nuclear budget 不固定 Frobenius norm 或 functional energy；因此 PR 变化与剂量变化共存，不能仅凭这些结果断言 PR 是收益的独立原因。
 
-`functional_pr_module_results.tsv.gz` 保存全部 90 个 adapter/对照的逐模块 $s,q,\bar q$、方向能量、三类 PR、entropy 和源缓存 SHA；`evaluation_metrics_snapshot.json.gz` 保存最终全部 368 项指标原文；`evaluation_commands.json` 保存两 Base 的实际评测/评分命令。它们由 `scripts/export_functional_hns_results.py`（本地保留） 从已经完成的结果生成，并核对逐模块重新计算后的 median 与 `summary.json` 一致。完整模型权重、原始逐样本预测和 activation NPZ 保留在报告所列路径，这些明细、指标快照、审计、哈希及相关脚本均保留在本地；本次 Git 提交仅包含实验报告、报告引用的配图和 seed42 重评对照表。
+`functional_pr_module_results.tsv.gz` 保存全部 90 个 adapter/对照的逐模块 $s,q,\bar q$、方向能量、三类 PR、entropy 和源缓存 SHA；`evaluation_metrics_snapshot.json.gz` 保存最终全部 368 项指标原文；`evaluation_commands.json` 保存两 Base 的实际评测/评分命令。它们由 `scripts/export_functional_hns_results.py`（本地保留）从已经完成的结果生成，并核对逐模块重新计算后的 median 与 `summary.json` 一致。本次 Git 提交包含报告、配图、完整结果表、逐模块压缩明细、指标快照、审计及 manifest；完整模型权重、原始逐样本预测、activation NPZ 与本次新增的实现脚本保留在所列本地路径。
 
 
 ## 判断与重评记录
