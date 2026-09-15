@@ -65,6 +65,11 @@ def parse_args() -> argparse.Namespace:
         action="store_true",
         help="For each task, evaluate only variants whose train_task matches that task.",
     )
+    parser.add_argument(
+        "--off_diagonal_only",
+        action="store_true",
+        help="For each task, evaluate only variants whose train_task differs from that task.",
+    )
     parser.add_argument("--seed", type=int, default=42)
     return parser.parse_args()
 
@@ -298,6 +303,8 @@ def generate_blocks(
 
 def main() -> None:
     args = parse_args()
+    if args.diagonal_only and args.off_diagonal_only:
+        raise ValueError("--diagonal_only and --off_diagonal_only are mutually exclusive")
     cfg = read_json(Path(args.config))
     output = Path(args.output_dir).resolve()
     output.mkdir(parents=True, exist_ok=True)
@@ -356,11 +363,12 @@ def main() -> None:
             task=task,
             chunk_size=chunk_size,
         )
-        task_variants = (
-            [row for row in variants if row.get("train_task") == task]
-            if args.diagonal_only
-            else variants
-        )
+        if args.diagonal_only:
+            task_variants = [row for row in variants if row.get("train_task") == task]
+        elif args.off_diagonal_only:
+            task_variants = [row for row in variants if row.get("train_task") != task]
+        else:
+            task_variants = variants
         if not task_variants:
             raise RuntimeError(f"No variants selected for task {task}")
         generate_blocks(
@@ -388,6 +396,8 @@ def main() -> None:
             "max_num_batched_tokens": args.max_num_batched_tokens,
             "adapter_block_size": args.adapter_block_size,
             "seed": args.seed,
+            "diagonal_only": args.diagonal_only,
+            "off_diagonal_only": args.off_diagonal_only,
         },
     }
     (output / "generation_manifest.json").write_text(json.dumps(result, indent=2) + "\n")

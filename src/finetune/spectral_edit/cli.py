@@ -9,6 +9,7 @@ import math
 import os
 import random
 import shutil
+import time
 from typing import Dict, List, Optional
 
 import torch
@@ -113,6 +114,7 @@ def _collect_lora_pairs(
 
 def run_edit(args) -> None:
     """Main editing function."""
+    edit_started = time.perf_counter()
     set_seed(args.seed)
 
     from peft import PeftModel
@@ -227,6 +229,7 @@ def run_edit(args) -> None:
     n_steps = 0
 
     HOOK_CTX.reset()
+    gradient_started = time.perf_counter()
 
     for i in range(0, ncal, bs):
         batch_ex = calib_examples[i : i + bs]
@@ -262,6 +265,7 @@ def run_edit(args) -> None:
 
     if not HOOK_CTX.gsum:
         raise RuntimeError("No gradients accumulated. Hooks may not have fired.")
+    gradient_seconds = time.perf_counter() - gradient_started
 
     edit_config = EditConfig(
         mode=args.mode,
@@ -294,6 +298,7 @@ def run_edit(args) -> None:
     )
 
     sigma_stats = {}
+    reconstruction_started = time.perf_counter()
 
     for prefix, spec in specs.items():
         sigma0 = spec.sigma0.clone()
@@ -319,6 +324,7 @@ def run_edit(args) -> None:
         sigma_stats[prefix] = stats
 
     save_lora_state_dict(args.out_dir, sd, fmt)
+    reconstruction_seconds = time.perf_counter() - reconstruction_started
 
     meta = {
         "base_model": args.base_model,
@@ -346,7 +352,19 @@ def run_edit(args) -> None:
         "mid_factor": args.mid_factor,
         "grad_norm": args.grad_norm,
         "preserve_energy": args.preserve_energy,
+        "update_mode": args.update_mode,
+        "asymmetric_update": args.asymmetric_update,
+        "eta": args.eta,
+        "eta_suppress": args.eta_suppress,
+        "eta_enhance": args.eta_enhance,
+        "pos_power": args.pos_power,
+        "sigma_clip_min": args.sigma_clip_min,
         "seed": args.seed,
+        "total_active_tokens": HOOK_CTX.total_active_tokens,
+        "average_calibration_loss": total_loss / max(1, n_steps),
+        "gradient_seconds": gradient_seconds,
+        "reconstruction_and_save_seconds": reconstruction_seconds,
+        "total_edit_seconds": time.perf_counter() - edit_started,
     }
 
     with open(os.path.join(args.out_dir, "spectral_edit_meta.json"), "w", encoding="utf-8") as f:

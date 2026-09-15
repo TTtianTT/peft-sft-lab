@@ -1,0 +1,204 @@
+{
+  "status": "pass",
+  "created_utc": "2026-09-15T06:46:10.778621+00:00",
+  "scope": "2 bases x 3 training tasks x seeds 42/43/44",
+  "checkpoints": [
+    {
+      "base": "Qwen3-8B",
+      "task": "magicoder",
+      "seed": 42,
+      "source": "/dataset1/zailong/models/spectral-surgery/Qwen3-8B-Magicoder-50K-LoRA-E1",
+      "source_sha256": "1f40c25e60ac1c115e409a8e30edf6f8696c671a7ef6b251583c7698dce079c3",
+      "config_sha256": "d47ac43d9f3b727032b2752be65333cc117bdf0036c45b6ff90948453da97961",
+      "hns_path": "/dataset1/zailong/runs/peft-sft-lab/hns-step-grid-2x4-20260912/adapters/Qwen3-8B/magicoder/hns_f4_s1",
+      "module_count": 252
+    },
+    {
+      "base": "Qwen3-8B",
+      "task": "metamath",
+      "seed": 42,
+      "source": "/dataset1/zailong/models/spectral-surgery/Qwen3-8B-MetaMathQA-50K-LoRA",
+      "source_sha256": "6cc0464e0797ec6c73cdd6d6ba9ff6ec9fffbd699b4580707bf087fabcc942d0",
+      "config_sha256": "511a7a57399324e3af545c893982bf76d3c77de31e099ea1aa62e74a71ecc630",
+      "hns_path": "/dataset1/zailong/runs/peft-sft-lab/hns-step-grid-2x4-20260912/adapters/Qwen3-8B/metamath/hns_f4_s1",
+      "module_count": 252
+    },
+    {
+      "base": "Qwen3-8B",
+      "task": "tulu",
+      "seed": 42,
+      "source": "/dataset1/zailong/models/spectral-surgery/Qwen3-8B-InstructionFollowing-LoRA",
+      "source_sha256": "861b3193a98d36c12da904f7611d71c3b0d416503155e440674493f433816db3",
+      "config_sha256": "4895afcdea39bdcb075d80cf0c95d27171d1695b210b34f2ef7558b0b8a1bfa3",
+      "hns_path": "/dataset1/zailong/runs/peft-sft-lab/hns-step-grid-2x4-20260912/adapters/Qwen3-8B/tulu/hns_f4_s1",
+      "module_count": 252
+    },
+    {
+      "base": "Qwen3-8B",
+      "task": "magicoder",
+      "seed": 43,
+      "source": "/dataset1/zailong/runs/peft-sft-lab/hns-training-seeds-3task-20260912/Qwen3-8B/seed43/lora/magicoder",
+      "source_sha256": "161dd620f9c8f2ffd64faf09bde8cf1806fc2ba3259d531fb543278c3b7e42bc",
+      "config_sha256": "1ef01a098f276d7ce134f5bb6f82a3d421f94c9b2d6579b6003512e4e901228a",
+      "hns_path": "/dataset1/zailong/runs/peft-sft-lab/hns-training-seeds-3task-20260912/Qwen3-8B/seed43/hns_step_grid/adapters/Qwen3-8B/magicoder/hns_f4_s1",
+      "module_count": 252
+    },
+    {
+      "base": "Qwen3-8B",
+      "task": "metamath",
+      "seed": 43,
+      "source": "/dataset1/zailong/runs/peft-sft-lab/hns-training-seeds-3task-20260912/Qwen3-8B/seed43/lora/metamath",
+      "source_sha256": "2357aede2caec8a7861b935294eb7f32b35a07bc30694154d8d7a20bc85df10b",
+      "config_sha256": "1ef01a098f276d7ce134f5bb6f82a3d421f94c9b2d6579b6003512e4e901228a",
+      "hns_path": "/dataset1/zailong/runs/peft-sft-lab/hns-training-seeds-3task-20260912/Qwen3-8B/seed43/hns_step_grid/adapters/Qwen3-8B/metamath/hns_f4_s1",
+      "module_count": 252
+    },
+    {
+      "base": "Qwen3-8B",
+      "task": "tulu",
+      "seed": 43,
+      "source": "/dataset1/zailong/runs/peft-sft-lab/hns-training-seeds-3task-20260912/Qwen3-8B/seed43/lora/tulu",
+      "source_sha256": "f6a02ea38d27963f96eaa6cd11a4daa8a8a709513febc321fefc358a07d002fb",
+      "config_sha256": "1ef01a098f276d7ce134f5bb6f82a3d421f94c9b2d6579b6003512e4e901228a",
+      "hns_path": "/dataset1/zailong/runs/peft-sft-lab/hns-training-seeds-3task-20260912/Qwen3-8B/seed43/hns_step_grid/adapters/Qwen3-8B/tulu/hns_f4_s1",
+      "module_count": 252
+    },
+    {
+      "base": "Qwen3-8B",
+      "task": "magicoder",
+      "seed": 44,
+      "source": "/dataset1/zailong/runs/peft-sft-lab/hns-training-seeds-3task-20260912/Qwen3-8B/seed44/lora/magicoder",
+      "source_sha256": "eb3899888d043eb204ac10f9557344a1fabc0bb4d4e82965ae6a615047243932",
+      "config_sha256": "09f5203f6929787edb04234aecdaa82044cf66c24cb5a39b7eed4598d87eebe5",
+      "hns_path": "/dataset1/zailong/runs/peft-sft-lab/hns-training-seeds-3task-20260912/Qwen3-8B/seed44/hns_step_grid/adapters/Qwen3-8B/magicoder/hns_f4_s1",
+      "module_count": 252
+    },
+    {
+      "base": "Qwen3-8B",
+      "task": "metamath",
+      "seed": 44,
+      "source": "/dataset1/zailong/runs/peft-sft-lab/hns-training-seeds-3task-20260912/Qwen3-8B/seed44/lora/metamath",
+      "source_sha256": "f6ac86577814d21d2245e9eb2e0c7b02e45194455ff8245726e1cc43789e29c2",
+      "config_sha256": "09f5203f6929787edb04234aecdaa82044cf66c24cb5a39b7eed4598d87eebe5",
+      "hns_path": "/dataset1/zailong/runs/peft-sft-lab/hns-training-seeds-3task-20260912/Qwen3-8B/seed44/hns_step_grid/adapters/Qwen3-8B/metamath/hns_f4_s1",
+      "module_count": 252
+    },
+    {
+      "base": "Qwen3-8B",
+      "task": "tulu",
+      "seed": 44,
+      "source": "/dataset1/zailong/runs/peft-sft-lab/hns-training-seeds-3task-20260912/Qwen3-8B/seed44/lora/tulu",
+      "source_sha256": "8c26a920aada7d7a17dfc24e86f07350e3bb3d561f4eaf9c60292d55e127d99d",
+      "config_sha256": "09f5203f6929787edb04234aecdaa82044cf66c24cb5a39b7eed4598d87eebe5",
+      "hns_path": "/dataset1/zailong/runs/peft-sft-lab/hns-training-seeds-3task-20260912/Qwen3-8B/seed44/hns_step_grid/adapters/Qwen3-8B/tulu/hns_f4_s1",
+      "module_count": 252
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "task": "magicoder",
+      "seed": 42,
+      "source": "/dataset1/zailong/models/spectral-surgery/Llama-3.1-8B-Instruct-Magicoder-50K-LoRA-E1",
+      "source_sha256": "e74360cc6515aecb214ba48688187f0c013dbca75c72d0ce53d7b55dc62d80df",
+      "config_sha256": "65a0e068e2d34f057e261b856c7dd213ccf815167aac7a46234c989af8029555",
+      "hns_path": "/dataset1/zailong/runs/peft-sft-lab/hns-step-grid-2x4-20260912/adapters/Llama-3.1-8B-Instruct/magicoder/hns_f4_s1",
+      "module_count": 224
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "task": "metamath",
+      "seed": 42,
+      "source": "/dataset1/zailong/models/spectral-surgery/Llama-3.1-8B-Instruct-MetaMathQA-50K-LoRA",
+      "source_sha256": "dc1da52d2ead239677080e32106815d9d3353eed71af73cd1784758bf7ecea91",
+      "config_sha256": "57297b7ac44ab6185c8b8fc8e75e38c154813306aee998b6037894d09e80b6db",
+      "hns_path": "/dataset1/zailong/runs/peft-sft-lab/hns-step-grid-2x4-20260912/adapters/Llama-3.1-8B-Instruct/metamath/hns_f4_s1",
+      "module_count": 224
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "task": "tulu",
+      "seed": 42,
+      "source": "/dataset1/zailong/models/spectral-surgery/Llama-3.1-8B-Instruct-InstructionFollowing-LoRA",
+      "source_sha256": "c4ba09406089d4c98b3d78ea8675f208d6418b85821ccf1a34cfdab854722bb4",
+      "config_sha256": "8992107e543a36312fa793d7573f84e2917228cd7238774967761b575e3b99e9",
+      "hns_path": "/dataset1/zailong/runs/peft-sft-lab/hns-step-grid-2x4-20260912/adapters/Llama-3.1-8B-Instruct/tulu/hns_f4_s1",
+      "module_count": 224
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "task": "magicoder",
+      "seed": 43,
+      "source": "/dataset1/zailong/runs/peft-sft-lab/hns-training-seeds-3task-20260912/Llama-3.1-8B-Instruct/seed43/lora/magicoder",
+      "source_sha256": "739e01ba05383334eff861657fe978ca6cf4bcc45c7f90cc53582b3e88487e97",
+      "config_sha256": "1652914087d906dce7d823de1e56138352bc5f988e9f82e1ec4d9630bac8ffd6",
+      "hns_path": "/dataset1/zailong/runs/peft-sft-lab/hns-training-seeds-3task-20260912/Llama-3.1-8B-Instruct/seed43/hns_step_grid/adapters/Llama-3.1-8B-Instruct/magicoder/hns_f4_s1",
+      "module_count": 224
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "task": "metamath",
+      "seed": 43,
+      "source": "/dataset1/zailong/runs/peft-sft-lab/hns-training-seeds-3task-20260912/Llama-3.1-8B-Instruct/seed43/lora/metamath",
+      "source_sha256": "f84efbad0022df7c9eee9097e76ec1fe9519dff8da704721ddf4ef5121a72e0a",
+      "config_sha256": "1652914087d906dce7d823de1e56138352bc5f988e9f82e1ec4d9630bac8ffd6",
+      "hns_path": "/dataset1/zailong/runs/peft-sft-lab/hns-training-seeds-3task-20260912/Llama-3.1-8B-Instruct/seed43/hns_step_grid/adapters/Llama-3.1-8B-Instruct/metamath/hns_f4_s1",
+      "module_count": 224
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "task": "tulu",
+      "seed": 43,
+      "source": "/dataset1/zailong/runs/peft-sft-lab/hns-training-seeds-3task-20260912/Llama-3.1-8B-Instruct/seed43/lora/tulu",
+      "source_sha256": "83c8564eda300782288efb89db26a804958a9cc75ff4be347e8fdd679f49a16d",
+      "config_sha256": "1652914087d906dce7d823de1e56138352bc5f988e9f82e1ec4d9630bac8ffd6",
+      "hns_path": "/dataset1/zailong/runs/peft-sft-lab/hns-training-seeds-3task-20260912/Llama-3.1-8B-Instruct/seed43/hns_step_grid/adapters/Llama-3.1-8B-Instruct/tulu/hns_f4_s1",
+      "module_count": 224
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "task": "magicoder",
+      "seed": 44,
+      "source": "/dataset1/zailong/runs/peft-sft-lab/hns-training-seeds-3task-20260912/Llama-3.1-8B-Instruct/seed44/lora/magicoder",
+      "source_sha256": "a096e70ff026f9230db07c4b7be5417dd0e3daadac8a7d12a31f1d7b47c36fe1",
+      "config_sha256": "1baccfbb5c4990e7df11090de2b010bff7bd6632c9cebd4a30c8d006495b69bf",
+      "hns_path": "/dataset1/zailong/runs/peft-sft-lab/hns-training-seeds-3task-20260912/Llama-3.1-8B-Instruct/seed44/hns_step_grid/adapters/Llama-3.1-8B-Instruct/magicoder/hns_f4_s1",
+      "module_count": 224
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "task": "metamath",
+      "seed": 44,
+      "source": "/dataset1/zailong/runs/peft-sft-lab/hns-training-seeds-3task-20260912/Llama-3.1-8B-Instruct/seed44/lora/metamath",
+      "source_sha256": "f3bbf3507901a381831d578b9406d9b8b85526af2ebcc41f333af78639a7fd7b",
+      "config_sha256": "1baccfbb5c4990e7df11090de2b010bff7bd6632c9cebd4a30c8d006495b69bf",
+      "hns_path": "/dataset1/zailong/runs/peft-sft-lab/hns-training-seeds-3task-20260912/Llama-3.1-8B-Instruct/seed44/hns_step_grid/adapters/Llama-3.1-8B-Instruct/metamath/hns_f4_s1",
+      "module_count": 224
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "task": "tulu",
+      "seed": 44,
+      "source": "/dataset1/zailong/runs/peft-sft-lab/hns-training-seeds-3task-20260912/Llama-3.1-8B-Instruct/seed44/lora/tulu",
+      "source_sha256": "69f30b80d8536fa24645fabef3c747334f45d576c8ab1cfb5807d06b3421c5f6",
+      "config_sha256": "1baccfbb5c4990e7df11090de2b010bff7bd6632c9cebd4a30c8d006495b69bf",
+      "hns_path": "/dataset1/zailong/runs/peft-sft-lab/hns-training-seeds-3task-20260912/Llama-3.1-8B-Instruct/seed44/hns_step_grid/adapters/Llama-3.1-8B-Instruct/tulu/hns_f4_s1",
+      "module_count": 224
+    }
+  ],
+  "source_manifest": "/dataset1/zailong/workspace/peft-sft-lab/reports/analysis_section5/source_checkpoints.json",
+  "source_manifest_sha256": "85fa609eb87e5435fd6f778f87f973bd26ae0877f79899530f703f2fcf75d315",
+  "reference_protocol": "/dataset1/zailong/workspace/peft-sft-lab/reports/functional_hns_three_seed_20260914",
+  "section5_report": "/dataset1/zailong/workspace/peft-sft-lab/reports/analysis_section5/report.md",
+  "evaluation_code_reference": {
+    "scripts/eval_forgetting_matrix_vllm.py": "46d57d067d0cdb68f3fda87269cfb9cf0895a1fa82051c5021fdad0da3a7c061",
+    "scripts/score_forgetting_matrix.py": "a172270a8d115d2f06863a0d181a784756412747a45e9dc02dd71d0f95de5bf5",
+    "scripts/eval_commonsense_8tasks.py": "0eb3dfbbccabdc97e4cdcc7c575756f5eb5db963ea0cf9427a1ff3e25c15334e",
+    "src/finetune/eval/eval_humaneval.py": "babd571e6eb7af395281506db836e478ac1a32d6fc738a22051222009eea520e",
+    "src/finetune/eval/eval_gsm8k.py": "ed95442c30536ac4ba90b5a2806d764cea8f8eb38c6879af2c0dd7b2c54dd335",
+    "src/finetune/eval/eval_ifeval.py": "1af1ef7f6c8b38d91dd94bbbc4a0b373ed76a3186899197d1f3c046afd987ef0",
+    "src/finetune/eval/generation.py": "bba4a24e4e5808f2abe74749a6f571a5aa1c7f27a03b9df2132ec835afbca075"
+  },
+  "evaluation_selector_extension": "off_diagonal_only changes only adapter/task scheduling; prompts, decoding and scoring are unchanged",
+  "scaling": "all 4284 LoRA modules use alpha/r=32/16=2; effective-update and raw-BA rankings therefore coincide",
+  "retraining": false,
+  "max_gpus": 2
+}

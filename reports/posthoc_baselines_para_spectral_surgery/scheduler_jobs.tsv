@@ -1,0 +1,5 @@
+stage	job_id	state	dependency	stdout	stderr	note
+para_preflight	1075	FAILED		logs/posthoc-para-1075.out	logs/posthoc-para-1075.err	Stopped before evaluation: fp32 unpruned reconstruction error 1.202e-5 exceeded the initial 1e-5 numerical gate; verified as roundoff and retained in final audit.
+spectral_dependency_preflight	1076	CANCELLED	afterok:1075			Never started because PARA preflight 1075 failed.
+para	1077	COMPLETED		logs/posthoc-para-1077.out	logs/posthoc-para-1077.err	
+spectral_surgery	1078	COMPLETED	afterok:1077	logs/posthoc-spectral-1078.out	logs/posthoc-spectral-1078.err	

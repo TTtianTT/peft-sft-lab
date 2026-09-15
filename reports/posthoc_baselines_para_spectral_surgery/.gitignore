@@ -1,0 +1,5 @@
+para/adapters/
+para/eval/
+spectral_surgery/adapters/
+spectral_surgery/eval/
+**/logs/

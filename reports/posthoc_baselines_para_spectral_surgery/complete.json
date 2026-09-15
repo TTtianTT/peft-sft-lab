@@ -1,0 +1,9 @@
+{
+  "status": "complete",
+  "order": [
+    "para",
+    "spectral_surgery"
+  ],
+  "finished_utc": "2026-09-15T12:26:49.776457+00:00",
+  "report_sha256": "2db3c285df7b12bcdb83b29be2a5edd25d62522059d0f71d0ee6a3dd152b7d8e"
+}

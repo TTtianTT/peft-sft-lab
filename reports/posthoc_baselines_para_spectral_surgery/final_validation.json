@@ -1,0 +1,45 @@
+{
+  "status": "pass",
+  "validated_utc": "2026-09-15T12:27:00.933216+00:00",
+  "ordering": {
+    "para_job": "1077",
+    "para_finished_utc": "2026-09-15T08:29:33+00:00",
+    "spectral_job": "1078",
+    "spectral_finished_utc": "2026-09-15T09:24:26.277158+00:00"
+  },
+  "source_checkpoints": 18,
+  "source_weights_and_configs_rehashed": true,
+  "complete_cells": {
+    "para": 224,
+    "spectral_surgery": 80
+  },
+  "metric_files": {
+    "para": 224,
+    "spectral_surgery": 80
+  },
+  "checkpoint_result_rows": {
+    "para": 108,
+    "spectral_surgery": 72
+  },
+  "para_checkpoint_compression_rows": 54,
+  "para_module_rank_rows": 12852,
+  "spectral_checkpoint_edit_rows": 18,
+  "calibration_files": {
+    "/dataset1/zailong/data/peft-sft-lab/magicoder-train.parquet": "ff1dda789a725a9b8840f63aa9956bcff397b8dc4311cfc98aaa2c11ba0ed0ca",
+    "/dataset1/zailong/data/peft-sft-lab/metamathqa-train.parquet": "5bcc40288ba3927eb859a10e07e118c09543789c1e7373a645174345f526b76e",
+    "/dataset1/zailong/data/peft-sft-lab/cross-task-mechanism/tulu-3-sft-personas-instruction-following-train.parquet": "d7a7d6c1e1ac7cc878afeae95394b759c678510a4a345a1799b7506bbe17ebd8"
+  },
+  "artifact_sha256": {
+    "report.md": "2db3c285df7b12bcdb83b29be2a5edd25d62522059d0f71d0ee6a3dd152b7d8e",
+    "audit.json": "bcb72e02efd5e5993dcfeee5a8914e0e67da67b9447b9680ed5f57748c24a94a",
+    "lora_scaling_audit.tsv": "7b13b83f05f698b40ca147b5a7f359d1e0381a3b120ca602008cf1acec71bcda",
+    "para/stage_report.md": "caf261c52ac06e2eddde957e0f826cbea67eef0b19ee7fdef16d4b0b8ab851e3",
+    "para/checkpoint_results.tsv": "80a176f4853721ab07678d306ec28eedb9a216cee432b3e7b8801d12af0b5895",
+    "para/grouped_results.tsv": "9f211bcf15d3b7ccaa2ec6a763d9391c824c477626ed2d59c63848f482bf1f6c",
+    "para/module_ranks.tsv": "d77becdbf4856be1c27d03fa952c7c7017b7b3c486e43caf792f4cde502a03b1",
+    "spectral_surgery/stage_report.md": "edc558799707b71f4a455ff0ffd6d4467ac8ed9cda97e1dfe2727d95ca935061",
+    "spectral_surgery/checkpoint_results.tsv": "541299dcd42329dff1b9a77767e335b02d8c5f12066fa5d1618e12cbc2d8682f",
+    "spectral_surgery/grouped_results.tsv": "a07207cca96530847e74d58206db53ff77aaf99e51de5f8e2ef095cc083fc740",
+    "spectral_surgery/checkpoint_edits.tsv": "dbab5643f8c5a46a2f52d6f3e26fb5c4d388c586ce94f44e8ba850b1e9954835"
+  }
+}
