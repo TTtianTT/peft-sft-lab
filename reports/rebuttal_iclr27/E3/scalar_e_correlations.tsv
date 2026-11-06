@@ -1,0 +1,20 @@
+group	modules	spearman	pearson	uncertainty
+pooled	4284	0.8740829118865527	0.8557813369796217	descriptive; modules are correlated; no IID module inference
+Qwen3-8B/magicoder/seed42	252	0.9431672894343949	0.8928157867861832	descriptive; modules are correlated; no IID module inference
+Qwen3-8B/metamath/seed42	252	0.8767114864464597	0.8488591666244514	descriptive; modules are correlated; no IID module inference
+Qwen3-8B/tulu/seed42	252	0.6818515510703282	0.710528681384138	descriptive; modules are correlated; no IID module inference
+Qwen3-8B/magicoder/seed43	252	0.9167545890220411	0.8558770232458368	descriptive; modules are correlated; no IID module inference
+Qwen3-8B/metamath/seed43	252	0.868942824598463	0.868052001282539	descriptive; modules are correlated; no IID module inference
+Qwen3-8B/tulu/seed43	252	0.7114969446512839	0.7272632692903355	descriptive; modules are correlated; no IID module inference
+Qwen3-8B/magicoder/seed44	252	0.9184013053751493	0.859583231211978	descriptive; modules are correlated; no IID module inference
+Qwen3-8B/metamath/seed44	252	0.8467983889774987	0.8125221433583255	descriptive; modules are correlated; no IID module inference
+Qwen3-8B/tulu/seed44	252	0.733102223142064	0.7359047799771257	descriptive; modules are correlated; no IID module inference
+Llama-3.1-8B-Instruct/magicoder/seed42	224	0.9259972240017085	0.8915988780180156	descriptive; modules are correlated; no IID module inference
+Llama-3.1-8B-Instruct/metamath/seed42	224	0.8347117232543243	0.8330983747789976	descriptive; modules are correlated; no IID module inference
+Llama-3.1-8B-Instruct/tulu/seed42	224	0.8473969677557123	0.8588008052435296	descriptive; modules are correlated; no IID module inference
+Llama-3.1-8B-Instruct/magicoder/seed43	224	0.934776852445014	0.899018310395896	descriptive; modules are correlated; no IID module inference
+Llama-3.1-8B-Instruct/metamath/seed43	224	0.7452583813794578	0.747120187143803	descriptive; modules are correlated; no IID module inference
+Llama-3.1-8B-Instruct/tulu/seed43	224	0.8447640401452062	0.8688909047740223	descriptive; modules are correlated; no IID module inference
+Llama-3.1-8B-Instruct/magicoder/seed44	224	0.9407399103139016	0.900941202318215	descriptive; modules are correlated; no IID module inference
+Llama-3.1-8B-Instruct/metamath/seed44	224	0.7410602178090969	0.7431920499395385	descriptive; modules are correlated; no IID module inference
+Llama-3.1-8B-Instruct/tulu/seed44	224	0.846555626734999	0.8742925947313285	descriptive; modules are correlated; no IID module inference
