@@ -70,8 +70,17 @@ def refresh_p0():
         validate(exp)
     flats = [r.read(r.OUT / 'E0' / f'{b}_flat_integrity_audit.json') for b in r.BASES]
     assert all(x['status'] == 'pass' for x in flats)
+    flat_expected = {(x['base'], x['train_task'], int(x['seed']), x['method']): x
+                     for x in r.check_lock('E0')['flat_adapters']}
+    recon_expected = {(x['base'], x['task'], int(x['seed']), x['method']): x
+                      for base in r.BASES for x in r.read(r.OUT / 'E1' / f'{base}_build_summary.json')}
     for exp in ('E0', 'E1'):
         integrity = r.read(r.OUT / exp / 'artifact_integrity_audit.json')
+        for artifact in integrity['artifacts']:
+            key = artifact['base'], artifact['train_task'], int(artifact['seed']), artifact['method']
+            expected = flat_expected[key] if artifact['experiment'] == 'E0' else recon_expected[key]
+            assert artifact['weights_sha256'] == expected.get('weights_sha256', expected.get('weight_sha256'))
+            assert artifact['config_sha256'] == expected['config_sha256']
         integrity['flat_adapters_reused_unchanged'] = True
         integrity['flat_module_rows'] = sum(x['modules'] for x in flats)
         integrity['max_flat_reconstruction_relative_error'] = max(x['max_reconstruction_relative_error'] for x in flats)
@@ -201,7 +210,7 @@ selected module suffixes and layer bounds; $K_f=4,K_s=1$, $\lambda=1$, $\epsilon
 
 The actual implementation performs fp32 compact QR/SVD of BA, fp64 polynomial/norm arithmetic, casts the new spectrum to fp32, forms balanced factors, then casts each factor to its source storage dtype. Scaling alpha/r stays outside the factorization and is unchanged. This is equivalent to nuclear-preserving editing of sBA for the positive scaling2 used in the cohort. It does not write the unbalanced A=V^T, B=U Sigma representation described in the initial proposal.
 
-Rank truncation is optional in the spectral function; the reported experiments retain the source rank (16, or native64 in E4b). The source adapter configuration is copied unchanged. Normalization/restoration eps is1e-7; nonnegative clamps, an empty-spectrum branch and the uniform fallback for near-zero edited mass are explicit. Entropy/effective-rank diagnostics separately use eps1e-12 and are not part of the transform. Strength must lie in[0,1].
+Rank truncation is optional in the spectral function; the reported experiments retain the source rank (16, or native64 in E4b). The source adapter configuration is copied unchanged. A different output rank would additionally require consistent PEFT rank/alpha configuration; copying the source configuration alone does not implement that adjustment. Normalization/restoration eps is1e-7; nonnegative clamps, an empty-spectrum branch and the uniform fallback for near-zero edited mass are explicit. Entropy/effective-rank diagnostics separately use eps1e-12 and are not part of the transform. Strength must lie in[0,1].
 
 The complete publication-ready block is in algorithm.tex (algorithmicx/algpseudocode syntax). It includes module/layer selection, effective update/scaling, compact SVD, both coefficient triples, rank handling, norm restoration, interpolation, dtype/cast timing, writeback and metadata.
 

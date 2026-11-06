@@ -1,0 +1,21 @@
+{
+  "status": "pass",
+  "tests_passed": 53,
+  "tests_skipped": 1,
+  "scope": "current working tree; pre-existing registry/test changes preserved and not committed",
+  "test_files_sha256": {
+    "tests/test_sft_preprocessing.py": "925ee9eea7bfe585bb71aba51467c69930d07b083b65bf9e0e57d3274dac7bed",
+    "tests/test_rebuttal_iclr27.py": "bd5c344fad2d92d30eb6d26518f13046eb963bd20897d7e5fb97e35442038963",
+    "tests/test_rebuttal_iclr27_e4.py": "a6a1a2f95a5cf3f4603563606fd7ff8039ad31572b843ddbfbaf7a3a374b4ce7",
+    "tests/test_rebuttal_finish.py": "e9f7507c442581ec40534458202b488e7637c4d8f7c4a566120a6e67ac9977e6",
+    "tests/test_warmup_steps.py": "9031e9cfe5dc96e5669fa552812e66e8512c66c76fe5e74cc044d757db070637"
+  },
+  "gpu_workload_on_login": false,
+  "writing_templates": "E5/E6 generated and validated only under /tmp; official stages gated after E4",
+  "compiled_scripts": [
+    "rebuttal_iclr27.py",
+    "rebuttal_iclr27_e2_e3.py",
+    "rebuttal_iclr27_e4.py",
+    "rebuttal_iclr27_finish.py"
+  ]
+}

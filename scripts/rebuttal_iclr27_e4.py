@@ -386,8 +386,13 @@ def finalize():
         variants = r.read(OUT / f'{condition}_variant_manifest.json')['variants']
         for v in variants:
             path = Path(v['path'])
-            artifacts.append({**v, 'condition': condition, 'weights_sha256': r.sha(path / 'adapter_model.safetensors'),
-                              'config_sha256': r.sha(path / 'adapter_config.json')})
+            artifact = {**v, 'condition': condition, 'weights_sha256': r.sha(path / 'adapter_model.safetensors'),
+                        'config_sha256': r.sha(path / 'adapter_config.json')}
+            expected = (r.read(OUT / 'rank64_training_audit.json') if condition.endswith('r64') else
+                        r.read(OUT / f'{task}_selection.json')['selected']) if v['method'] == 'original_lora' else r.read(path / 'rebuttal_integrity.json')
+            assert artifact['weights_sha256'] == expected['weights_sha256']
+            assert artifact['config_sha256'] == expected['config_sha256']
+            artifacts.append(artifact)
             for family in r.TASKS:
                 cells.append(r.audit_cell(dict(base=BASE, train_task=task, seed=42, method=v['method'], condition=condition,
                     eval_task=family, metrics_path=str(OUT / 'runtime/eval' / condition / family / v['label'] / 'metrics.json')), bases))
@@ -410,6 +415,7 @@ def finalize():
         below_005=sum(int(m['below_005']) for m in tail),
         min_sigma_over_fro_quantiles=np.quantile([float(m['min_sigma_over_fro']) for m in tail], [0,.25,.5,.75,1]).tolist())
     tail_summary['fraction_below_005'] = tail_summary['below_005']/tail_summary['directions']
+    os.environ['MPLCONFIGDIR'] = str(OUT / 'runtime/matplotlib')
     import matplotlib
     matplotlib.use('Agg')
     import matplotlib.pyplot as plt
@@ -438,7 +444,7 @@ def finalize():
     lines += ['', '| Condition | Comparison | Metric | Difference [95% CI] pp | Repairs/damage |',
               '| --- | --- | --- | ---: | ---: |']
     for row in stats:
-        if row['left'] in ('hns_f4_s1', 'recon_0', 'flat_nuclear') and row['right'] in ('original_lora', 'recon_0') and row['benchmark'] in ('Target', 'Off', 'FG'):
+        if row['left'] in ('hns_f4_s1', 'recon_0', 'flat_nuclear') and row['right'] in ('original_lora', 'recon_0', 'hns_f4_s1') and row['benchmark'] in ('Target', 'Off', 'FG'):
             lines.append(f'| {row["condition"]} | {row["left"]} − {row["right"]} | {row["benchmark"]} | '
                 f'{row["difference_pp"]:+.4f} [{row["ci_low_pp"]:+.4f}, {row["ci_high_pp"]:+.4f}] | '
                 f'{row.get("repaired", "NA")}/{row.get("damaged", "NA")} |')

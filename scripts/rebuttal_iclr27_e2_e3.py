@@ -130,6 +130,7 @@ def spectral_edit_in_builder(argv, log, history):
 
 def build(base, experiment):
     r.require_slurm()
+    os.environ['HF_DATASETS_CACHE'] = str(r.OUT / experiment / 'runtime/datasets_cache')
     torch, collect, error, load, svd, rebuild, hns, Config = operations()
     folder = r.OUT / experiment
     variants, summaries, all_modules = [], [], []
@@ -301,6 +302,12 @@ def finalize(experiment):
             forward_batches=0, backward_batches=0, timing='one GPU synchronized SVD/HNS/rebuild; excludes IO/audits')
             for x in build_rows if x['method'] == 'hns_od'])
     integrity = r.read(folder / 'artifact_integrity_audit.json')
+    actual = {(x['base'], x['train_task'], int(x['seed']), x['method']): x
+              for x in integrity['artifacts'] if x['experiment'] == experiment}
+    for expected in build_rows:
+        saved = actual[expected['base'], expected['task'], int(expected['seed']), expected['method']]
+        assert saved['weights_sha256'] == expected['weights_sha256']
+        assert saved['config_sha256'] == expected['config_sha256']
     integrity.update(edited_adapters=len(build_rows), selected_module_rows=len(module_rows),
                      max_reconstruction_relative_error=max(float(m['reconstruction_relative_error']) for m in module_rows),
                      max_direction_relative_error=max(float(m['direction_relative_error']) for m in module_rows))
@@ -370,6 +377,7 @@ def isolated_build(base, experiment):
 
 
 def plot_relationship(module_rows):
+    os.environ['MPLCONFIGDIR'] = str(r.OUT / 'E3/runtime/matplotlib')
     import matplotlib
     matplotlib.use('Agg')
     import matplotlib.pyplot as plt
