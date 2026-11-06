@@ -1,0 +1,19 @@
+base	task	seed	all_module_seconds	od_module_seconds	calibration_samples	forward_batches	backward_batches	timing
+Qwen3-8B	magicoder	42	6.798265038058162	0.1555985575541854	0	0	0	one GPU synchronized SVD/HNS/rebuild; excludes IO/audits
+Qwen3-8B	metamath	42	0.7188092097640038	0.13777853827923536	0	0	0	one GPU synchronized SVD/HNS/rebuild; excludes IO/audits
+Qwen3-8B	tulu	42	0.6361431404948235	0.10934110544621944	0	0	0	one GPU synchronized SVD/HNS/rebuild; excludes IO/audits
+Qwen3-8B	magicoder	43	0.718090096488595	0.13750480581074953	0	0	0	one GPU synchronized SVD/HNS/rebuild; excludes IO/audits
+Qwen3-8B	metamath	43	0.6843740297481418	0.139273501932621	0	0	0	one GPU synchronized SVD/HNS/rebuild; excludes IO/audits
+Qwen3-8B	tulu	43	0.6981515912339091	0.13886601943522692	0	0	0	one GPU synchronized SVD/HNS/rebuild; excludes IO/audits
+Qwen3-8B	magicoder	44	0.720247745513916	0.13701702933758497	0	0	0	one GPU synchronized SVD/HNS/rebuild; excludes IO/audits
+Qwen3-8B	metamath	44	0.7165662990882993	0.13641556911170483	0	0	0	one GPU synchronized SVD/HNS/rebuild; excludes IO/audits
+Qwen3-8B	tulu	44	0.713309551589191	0.1354941502213478	0	0	0	one GPU synchronized SVD/HNS/rebuild; excludes IO/audits
+Llama-3.1-8B-Instruct	magicoder	42	6.778287901543081	0.1506741512566805	0	0	0	one GPU synchronized SVD/HNS/rebuild; excludes IO/audits
+Llama-3.1-8B-Instruct	metamath	42	0.6958427550271153	0.1219257339835167	0	0	0	one GPU synchronized SVD/HNS/rebuild; excludes IO/audits
+Llama-3.1-8B-Instruct	tulu	42	0.5553931090980768	0.09374495316296816	0	0	0	one GPU synchronized SVD/HNS/rebuild; excludes IO/audits
+Llama-3.1-8B-Instruct	magicoder	43	0.6845077928155661	0.12317045032978058	0	0	0	one GPU synchronized SVD/HNS/rebuild; excludes IO/audits
+Llama-3.1-8B-Instruct	metamath	43	0.6791850030422211	0.1219135308638215	0	0	0	one GPU synchronized SVD/HNS/rebuild; excludes IO/audits
+Llama-3.1-8B-Instruct	tulu	43	0.88382472936064	0.1509343245998025	0	0	0	one GPU synchronized SVD/HNS/rebuild; excludes IO/audits
+Llama-3.1-8B-Instruct	magicoder	44	0.6092566568404436	0.12113693356513977	0	0	0	one GPU synchronized SVD/HNS/rebuild; excludes IO/audits
+Llama-3.1-8B-Instruct	metamath	44	0.6806500069797039	0.12229377683252096	0	0	0	one GPU synchronized SVD/HNS/rebuild; excludes IO/audits
+Llama-3.1-8B-Instruct	tulu	44	0.6690871007740498	0.12078375462442636	0	0	0	one GPU synchronized SVD/HNS/rebuild; excludes IO/audits

@@ -1,0 +1,102 @@
+{
+  "status": "complete",
+  "completed_utc": "2026-11-06T17:25:09.773777+00:00",
+  "expected_new_cells": 216,
+  "n_checkpoints": 18,
+  "methods": {
+    "flat_e": {
+      "target": 72.2732538646908,
+      "off_score": 72.56613164254914,
+      "forgetting_gap": 0.3957100220359184
+    },
+    "flat_fro": {
+      "target": 71.73106164057145,
+      "off_score": 72.21024731210358,
+      "forgetting_gap": 0.5772228289262489
+    },
+    "flat_nuclear": {
+      "target": 72.0139230144549,
+      "off_score": 72.66401856194418,
+      "forgetting_gap": 0.3825156859960994
+    },
+    "hns_f4_s1": {
+      "target": 72.08343957191464,
+      "off_score": 72.79151252738859,
+      "forgetting_gap": 0.3440958896830035
+    },
+    "hns_od": {
+      "target": 69.9092484678867,
+      "off_score": 70.9471512031074,
+      "forgetting_gap": 1.5097972067531549
+    },
+    "original_lora": {
+      "target": 67.99797931455494,
+      "off_score": 69.55120898067872,
+      "forgetting_gap": 2.708166011271413
+    },
+    "para_e90": {
+      "target": 68.7777624783587,
+      "off_score": 70.01262099321121,
+      "forgetting_gap": 2.370642144558633
+    },
+    "para_e95": {
+      "target": 68.58232991684031,
+      "off_score": 69.63571959392185,
+      "forgetting_gap": 2.695438294927482
+    },
+    "para_e99": {
+      "target": 68.44207376935921,
+      "off_score": 69.77756338772215,
+      "forgetting_gap": 2.5637229451963894
+    },
+    "recon_0": {
+      "target": 68.47691308355012,
+      "off_score": 69.76575849417752,
+      "forgetting_gap": 2.575669668210069
+    },
+    "scalar_e": {
+      "target": 72.69964774421527,
+      "off_score": 72.46961955573461,
+      "forgetting_gap": 0.5246852422111885
+    },
+    "spectral_surgery_grad_direction": {
+      "target": 68.7637168065032,
+      "off_score": 68.28199865928046,
+      "forgetting_gap": 3.722545804990652
+    },
+    "ss_smooth_abs": {
+      "target": 68.4773306986355,
+      "off_score": 69.4657244308447,
+      "forgetting_gap": 2.795196670840797
+    },
+    "ss_smooth_abs_all": {
+      "target": 68.27916828172665,
+      "off_score": 68.802843505432,
+      "forgetting_gap": 3.31661248522148
+    }
+  },
+  "bootstrap_resamples": 20000,
+  "bootstrap_unit": "source checkpoint",
+  "uncertainty": "descriptive intervals on a fixed shared test set; not IID training-run CIs",
+  "protocol_sha256": "1e0a108cd8f1e95a0bd0bbf9655adfee8ed9aaa5603a1c11d6098fa7b6444fa9",
+  "sample_input_mismatches": 0,
+  "job_ids": [
+    "14889",
+    "14892"
+  ],
+  "gpu_count": 2,
+  "pending": [],
+  "outputs_sha256": {
+    "report.md": "306f3a9bd3b3265599a65c1337ed4ccc67360977d7fbfbc244d144a0ae92d353",
+    "checkpoint_results.tsv": "cb930d4f3d1c112e659af77e4902c5e31f23f4c39d79c681276593e2d402faf5",
+    "paired_ci.tsv": "986d1b996be35b182072e06390a0eb6cdb83116b385c75d269981e9854e06c9a",
+    "artifact_integrity_audit.json": "54c557b6058c3b1f0b64002fc1a21cfd5c2918d79d0c5a82298e2a04ba61a79f",
+    "coverage_audit.json": "c3c646b52b14727b6f4f967e3fc66a5a92ea0f26be5042ce3f871def3835ff5d"
+  },
+  "resource_usage": {
+    "allocated_gpus": 2,
+    "stage_wall_seconds": 7142.093160139397,
+    "allocated_gpu_seconds": 14284.186320278794,
+    "boundary": "entire stage including construction/evaluation/CPU audits; not kernel-active time"
+  }
+}
