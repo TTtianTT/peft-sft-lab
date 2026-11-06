@@ -393,6 +393,11 @@ def finalize():
     rows, stats = [], []
     for condition in CONDITIONS:
         a, b = item_statistics(condition); rows.extend(a); stats.extend(b)
+    scores = {(x['condition'], x['method'], x['eval_task']): x['score'] for x in cells}
+    for row in rows:
+        if row['method'] != 'base':
+            for family in r.TASKS:
+                assert abs(row[family] - scores[row['condition'], row['method'], family]) < 1e-8
     r.tsv(OUT / 'evaluation_cells.tsv', cells)
     r.tsv(OUT / 'checkpoint_results.tsv', rows)
     r.tsv(OUT / 'paired_ci.tsv', stats)

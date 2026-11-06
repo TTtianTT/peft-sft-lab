@@ -6,6 +6,7 @@ import argparse
 import ast
 import csv
 import json
+import os
 from pathlib import Path
 import subprocess
 
@@ -46,9 +47,19 @@ def publish(experiments):
         subprocess.run(['git', 'commit', '-m', 'Report ICLR27 rebuttal ' + ', '.join(experiments)], cwd=r.ROOT, check=True)
     commit = subprocess.check_output(['git', 'rev-parse', 'HEAD'], cwd=r.ROOT, text=True).strip()
     pushed = subprocess.run(['git', 'push', 'origin', branch], cwd=r.ROOT, capture_output=True, text=True)
+    transport = 'origin'
+    if pushed.returncode:
+        # HTTPS has no helper on this host; the existing SSH key was verified
+        # by an actual successful push of the initial experiment commit.
+        env = os.environ.copy()
+        env['GIT_SSH_COMMAND'] = 'ssh -o BatchMode=yes -o ConnectTimeout=15 -o StrictHostKeyChecking=yes'
+        pushed = subprocess.run(['git', 'push', 'git@github.com:TTtianTT/peft-sft-lab.git', branch],
+                                cwd=r.ROOT, env=env, capture_output=True, text=True)
+        transport = 'existing SSH key'
     # Save status without echoing credential/helper diagnostics.
     r.write(r.OUT / 'publication.json', dict(commit=commit, experiments=experiments,
-        push_returncode=pushed.returncode, status='pushed' if not pushed.returncode else 'local_commit_push_pending',
+        push_returncode=pushed.returncode, transport=transport,
+        status='pushed' if not pushed.returncode else 'local_commit_push_pending',
         updated_utc=r.now()))
     print('[Publication]', commit, 'push status', pushed.returncode, flush=True)
 
@@ -78,6 +89,13 @@ def refresh_p0():
                 f'max budget error {integrity["max_flat_budget_relative_error"]:.9g}. '
                 'Exact historical weight/config hashes preserved; original CPU SVD/writeback recomputed only for audit.\n')
         summary = r.read(r.OUT / exp / 'summary.json')
+        summary['failed_job_ids'] = ['14888']
+        summary['failure_before_generation'] = 'Builder held an exclusive CUDA context; fixed by isolated builder subprocess. Existing adapters reused.'
+        if 'Initial Slurm14888' not in report_path.read_text():
+            with report_path.open('a') as handle:
+                handle.write('\nInitial Slurm14888 failed before generation because the in-process builder retained '
+                    'an exclusive CUDA context. Slurm14889 isolates the builder, reuses the audited weights and '
+                    'keeps the evaluation protocol unchanged. See submission.json and retained logs.\n')
         summary['outputs_sha256'] = {n: r.sha(r.OUT / exp / n) for n in
             ('report.md', 'checkpoint_results.tsv', 'paired_ci.tsv', 'artifact_integrity_audit.json', 'coverage_audit.json')}
         r.write(r.OUT / exp / 'summary.json', summary)
@@ -86,6 +104,13 @@ def refresh_p0():
 def writing_package(experiment, report, summary, extra_files=None):
     folder = r.OUT / experiment
     folder.mkdir(exist_ok=True)
+    protocol = folder / 'protocol.md'
+    protocol.write_text(f'# {experiment}: locked writing-only scope\n\nNo training, calibration, inference or new test scores. '
+        'E5 checks the pinned official implementation and uses the requested setting-mismatch exception. '
+        'E6 extracts the existing implementation without changing numerical settings. '
+        'Metrics/CI TSVs contain headers only; numerical update audits are not applicable.\n')
+    r.write(folder / 'protocol.lock.json', dict(created_utc=r.now(), protocol_sha256=r.sha(protocol),
+        writer_sha256=r.sha(Path(__file__)), source_hashes=summary.get('source_hashes', {})))
     (folder / 'report.md').write_text(report)
     (folder / 'checkpoint_results.tsv').write_text('checkpoint\tmethod\ttarget\toff_score\tforgetting_gap\n')
     (folder / 'paired_ci.tsv').write_text('comparison\tmetric\tdifference_pp\tci_low_pp\tci_high_pp\n')

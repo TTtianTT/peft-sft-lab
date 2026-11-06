@@ -1,0 +1,7 @@
+{
+  "status": "pass",
+  "modules": 4032,
+  "max_reconstruction_relative_error": 0.0,
+  "max_budget_relative_error": 5.960464477539062e-07,
+  "builder": "same CPU compact SVD/reconstruction as original Flat construction; saved weights unchanged"
+}

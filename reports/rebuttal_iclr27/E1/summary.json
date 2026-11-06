@@ -1,0 +1,65 @@
+{
+  "status": "awaiting_E0",
+  "completed_utc": "2026-11-06T14:15:58.352953+00:00",
+  "expected_new_cells": 72,
+  "n_checkpoints": 18,
+  "methods": {
+    "flat_e": {
+      "target": 72.2732538646908,
+      "off_score": 72.56613164254914,
+      "forgetting_gap": 0.3957100220359184
+    },
+    "hns_f4_s1": {
+      "target": 72.08343957191464,
+      "off_score": 72.79151252738859,
+      "forgetting_gap": 0.3440958896830035
+    },
+    "original_lora": {
+      "target": 67.99797931455494,
+      "off_score": 69.55120898067872,
+      "forgetting_gap": 2.708166011271413
+    },
+    "para_e90": {
+      "target": 68.7777624783587,
+      "off_score": 70.01262099321121,
+      "forgetting_gap": 2.370642144558633
+    },
+    "para_e95": {
+      "target": 68.58232991684031,
+      "off_score": 69.63571959392185,
+      "forgetting_gap": 2.695438294927482
+    },
+    "para_e99": {
+      "target": 68.44207376935921,
+      "off_score": 69.77756338772215,
+      "forgetting_gap": 2.5637229451963894
+    },
+    "recon_0": {
+      "target": 68.47691308355012,
+      "off_score": 69.76575849417752,
+      "forgetting_gap": 2.575669668210069
+    },
+    "scalar_e": {
+      "target": 72.69964774421527,
+      "off_score": 72.46961955573461,
+      "forgetting_gap": 0.5246852422111885
+    },
+    "spectral_surgery_grad_direction": {
+      "target": 68.7637168065032,
+      "off_score": 68.28199865928046,
+      "forgetting_gap": 3.722545804990652
+    }
+  },
+  "bootstrap_resamples": 20000,
+  "bootstrap_unit": "source checkpoint",
+  "uncertainty": "descriptive intervals on a fixed shared test set; not IID training-run CIs",
+  "protocol_sha256": "e714f67c70d91a13e29be401b8b3d806602667db09adeef9de47ebeb560c72e9",
+  "sample_input_mismatches": 0,
+  "job_ids": [
+    "14889"
+  ],
+  "gpu_count": 2,
+  "pending": [
+    "main-wave Flat-Nuclear comparison from E0"
+  ]
+}

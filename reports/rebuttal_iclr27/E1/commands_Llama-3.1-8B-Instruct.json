@@ -149,6 +149,25 @@
     ],
     "log": "/dataset1/zailong/workspace/peft-sft-lab/reports/rebuttal_iclr27/E1/runtime/logs/Llama-3.1-8B-Instruct_commonsense_generate.log",
     "started_utc": "2026-11-06T13:52:42.123187+00:00",
-    "job_id": "14889"
+    "job_id": "14889",
+    "returncode": 0,
+    "finished_utc": "2026-11-06T14:13:42.588045+00:00",
+    "elapsed_seconds": 1260.4568279460073
+  },
+  {
+    "argv": [
+      "/dataset1/zailong/envs/peft-sft-lab/bin/python",
+      "/dataset1/zailong/workspace/peft-sft-lab/scripts/score_forgetting_matrix.py",
+      "--matrix_dir",
+      "/dataset1/zailong/workspace/peft-sft-lab/reports/rebuttal_iclr27/E1/runtime/eval/Llama-3.1-8B-Instruct",
+      "--workers",
+      "32"
+    ],
+    "log": "/dataset1/zailong/workspace/peft-sft-lab/reports/rebuttal_iclr27/E1/runtime/logs/Llama-3.1-8B-Instruct_commonsense_score.log",
+    "started_utc": "2026-11-06T14:13:42.602370+00:00",
+    "job_id": "14889",
+    "returncode": 0,
+    "finished_utc": "2026-11-06T14:14:30.460540+00:00",
+    "elapsed_seconds": 47.85083880997263
   }
 ]

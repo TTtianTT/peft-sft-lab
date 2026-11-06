@@ -1,0 +1,56 @@
+[
+  {
+    "argv": [
+      "/dataset1/zailong/envs/peft-sft-lab/bin/python",
+      "/dataset1/zailong/workspace/peft-sft-lab/scripts/rebuttal_iclr27.py",
+      "--audit-flat",
+      "--base",
+      "Llama-3.1-8B-Instruct"
+    ],
+    "log": "/dataset1/zailong/workspace/peft-sft-lab/reports/rebuttal_iclr27/E0/runtime/logs/Llama-3.1-8B-Instruct_flat_audit.log",
+    "started_utc": "2026-11-06T14:16:02.163879+00:00",
+    "job_id": "14889",
+    "returncode": 0,
+    "finished_utc": "2026-11-06T14:16:27.432255+00:00",
+    "elapsed_seconds": 25.258247879100963
+  },
+  {
+    "argv": [
+      "/dataset1/zailong/envs/peft-sft-lab/bin/python",
+      "/dataset1/zailong/workspace/peft-sft-lab/scripts/eval_forgetting_matrix_vllm.py",
+      "--base_model",
+      "/dataset1/zailong/models/Llama-3.1-8B-Instruct",
+      "--variant_manifest",
+      "/dataset1/zailong/workspace/peft-sft-lab/reports/rebuttal_iclr27/E0/Llama-3.1-8B-Instruct_variant_manifest.json",
+      "--config",
+      "/dataset1/zailong/workspace/peft-sft-lab/reports/functional_hns_three_seed_20260914/Llama-3.1-8B-Instruct_task_config.json",
+      "--output_dir",
+      "/dataset1/zailong/workspace/peft-sft-lab/reports/rebuttal_iclr27/E0/runtime/eval/Llama-3.1-8B-Instruct",
+      "--tasks",
+      "magicoder",
+      "metamath",
+      "tulu",
+      "--max_model_len",
+      "4096",
+      "--gpu_memory_utilization",
+      "0.94",
+      "--max_num_seqs",
+      "2048",
+      "--max_num_batched_tokens",
+      "65536",
+      "--adapter_block_size",
+      "5",
+      "--max_lora_rank",
+      "16",
+      "--prompt_chunk_short",
+      "4096",
+      "--prompt_chunk_long",
+      "1024",
+      "--seed",
+      "42"
+    ],
+    "log": "/dataset1/zailong/workspace/peft-sft-lab/reports/rebuttal_iclr27/E0/runtime/logs/Llama-3.1-8B-Instruct_magicoder_generate.log",
+    "started_utc": "2026-11-06T14:16:30.794149+00:00",
+    "job_id": "14889"
+  }
+]

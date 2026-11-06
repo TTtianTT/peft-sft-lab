@@ -1,0 +1,19 @@
+{
+  "status": "pass",
+  "checkpoints": 18,
+  "expected_methods": [
+    "flat_e",
+    "hns_f4_s1",
+    "original_lora",
+    "para_e90",
+    "para_e95",
+    "para_e99",
+    "recon_0",
+    "scalar_e",
+    "spectral_surgery_grad_direction"
+  ],
+  "actual_rows": 162,
+  "expected_rows": 162,
+  "new_cells": 72,
+  "sample_input_mismatches": 0
+}
