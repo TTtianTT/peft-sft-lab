@@ -116,7 +116,10 @@ Target/Off/FG definitions unchanged: FG clips each off-family before averaging. 
     files = dict(r.check_lock('E1')['files'])
     for name in ('scripts/rebuttal_iclr27.py', 'scripts/rebuttal_iclr27_e2_e3.py', 'scripts/rebuttal_iclr27_e4.py',
                  'src/finetune/train_sft_peft.py', 'src/finetune/eval/eval_mbpp.py',
-                 'src/finetune/data/registry.py', 'src/finetune/data/chat_sft.py', 'src/finetune/spectral_edit/flat.py'):
+                 'src/finetune/data/registry.py', 'src/finetune/data/chat_sft.py', 'src/finetune/data/plain_sft.py',
+                 'src/finetune/data/base.py', 'src/finetune/data/code_magicoder.py', 'src/finetune/data/math_metamathqa.py',
+                 'src/finetune/peft_builders.py', 'src/finetune/train_profiles.py', 'src/finetune/utils.py',
+                 'src/finetune/spectral_edit/flat.py'):
         files[name] = r.sha(r.ROOT / name)
     lock = dict(created_utc=r.now(), files=files, protocol_sha256=r.sha(protocol), datasets=manifests,
                 expected_trainings=7, expected_new_cells=48, optional_runs=False)

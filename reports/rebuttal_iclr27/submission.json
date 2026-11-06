@@ -1,5 +1,5 @@
 {
-  "status": "submitted",
+  "status": "running_serial_dependency_chain",
   "jobs": [
     {
       "experiment": "E1_then_E0",
@@ -22,8 +22,31 @@
       "command": "/dataset1/zailong/envs/peft-sft-lab/bin/python scripts/rebuttal_iclr27.py --pipeline",
       "stdout": "logs/rebuttal27-e1-e0-14889.out",
       "stderr": "logs/rebuttal27-e1-e0-14889.err",
-      "status": "submitted",
+      "status": "running_E0_after_all_72_E1_cells_verified",
       "change": "Isolate builder CUDA context in exited subprocess; no evaluation protocol change."
+    },
+    {
+      "experiment": "E2_then_E3",
+      "job_id": "14892",
+      "gpu_count": 2,
+      "partition": "B300q",
+      "dependency": "afterok:14889",
+      "script": "slurm/rebuttal_iclr27_e2_e3.slurm",
+      "stdout": "logs/rebuttal27-e2-e3-14892.out",
+      "stderr": "logs/rebuttal27-e2-e3-14892.err",
+      "status": "pending_dependency"
+    },
+    {
+      "experiment": "E4_then_E5_E6_writing",
+      "job_id": "14893",
+      "gpu_count": 2,
+      "partition": "B300q",
+      "dependency": "afterok:14892",
+      "script": "slurm/rebuttal_iclr27_e4.slurm",
+      "stdout": "logs/rebuttal27-e4-14893.out",
+      "stderr": "logs/rebuttal27-e4-14893.err",
+      "status": "pending_dependency"
     }
-  ]
+  ],
+  "code_commit": "3e663e4"
 }

@@ -61,9 +61,17 @@ Plot per-module alpha vs PR1=(||sigma||1/||sigma||2)^2 and exact-flat sqrt(PR1/r
     files = dict(inherited['files'])
     for name in ('scripts/rebuttal_iclr27.py', 'scripts/rebuttal_iclr27_e2_e3.py',
                  'src/finetune/spectral_edit/cli.py', 'src/finetune/spectral_edit/edit_strategies.py',
-                 'src/finetune/spectral_edit/hooks.py', 'src/finetune/spectral_edit/data.py'):
+                 'src/finetune/spectral_edit/hooks.py', 'src/finetune/spectral_edit/calib.py',
+                 'src/finetune/spectral_edit/runtime.py', 'src/finetune/spectral_edit/module_selection.py'):
         if (r.ROOT / name).exists():
             files[name] = r.sha(r.ROOT / name)
+    for cp in inherited['source_checkpoints']:
+        metadata = Path(cp['hns_path']) / 'spectral_edit_meta.json'
+        assert r.sha(metadata) == cp['hns_metadata_sha256']
+        files[str(metadata)] = cp['hns_metadata_sha256']
+    if experiment == 'E3':
+        name = 'reports/hns_energy_matched_20260914/old_scalar_energy_audit.tsv'
+        files[name] = r.sha(r.ROOT / name)
     lock = dict(created_utc=r.now(), protocol_sha256=r.sha(protocol), files=files,
                 source_checkpoints=inherited['source_checkpoints'], methods=r.METHODS[experiment],
                 expected_new_cells=216, prior_experiments_complete=True)
@@ -151,6 +159,19 @@ def build(base, experiment):
                 rebuild(u, vh, hs)
         torch.cuda.synchronize()
         hns_all_seconds = time.monotonic() - svd_start
+        hns_od_seconds = None
+        if experiment == 'E2':
+            torch.cuda.synchronize()
+            od_start = time.monotonic()
+            with torch.inference_mode():
+                for name, p in sorted(pairs.items()):
+                    if name.split('.')[-1] not in ('o_proj', 'down_proj'):
+                        continue
+                    u_od, s_od, vh_od, _ = svd(p['B'][1].cuda(), p['A'][1].cuda())
+                    _, _, h_od, _ = hns(u_od, vh_od, s_od, Config(fast_steps=4, stable_steps=1))
+                    rebuild(u_od, vh_od, h_od)
+            torch.cuda.synchronize()
+            hns_od_seconds = time.monotonic() - od_start
         gamma = float(np.mean([d[4] for d in decompositions.values()]))
         for method in r.METHODS[experiment]:
             path = folder / 'runtime/adapters' / base / cp['task'] / f'seed{cp["seed"]}' / method
@@ -243,13 +264,19 @@ def build(base, experiment):
                     max_reconstruction_relative_error=max(m['reconstruction_relative_error'] for m in modules),
                     max_direction_relative_error=max(m['direction_relative_error'] for m in modules),
                     hns_all_svd_edit_rebuild_seconds=hns_all_seconds,
+                    hns_od_svd_edit_rebuild_seconds=hns_od_seconds,
                     build_audit_save_seconds=time.monotonic() - method_start, source_load_seconds=svd_start-start,
                     calibration_samples=128 if method.startswith('ss_') else 0,
                     forward_batches=64 if method.startswith('ss_') else 0,
                     backward_batches=64 if method.startswith('ss_') else 0, job_id=os.getenv('SLURM_JOB_ID'))
                 if method.startswith('ss_'):
                     summary.update(gradient_seconds=metadata['meta']['gradient_seconds'],
-                                   edit_seconds=metadata['meta']['total_edit_seconds'])
+                                   edit_seconds=metadata['meta']['total_edit_seconds'],
+                                   editor_one_gpu_wall_seconds=metadata['meta']['total_edit_seconds'],
+                                   editor_timing_boundary='original CLI total_edit_seconds; includes model load/calibration/SVD/save')
+                elif method == 'hns_od':
+                    summary.update(editor_one_gpu_wall_seconds=hns_od_seconds,
+                                   editor_timing_boundary='synchronized selected-module SVD/HNS/rebuild; excludes disk IO and audits')
                 r.write(marker, dict(summary=summary, modules=modules))
                 summaries.append(summary)
                 all_modules.extend(modules)
@@ -267,6 +294,12 @@ def finalize(experiment):
     build_rows = list(itertools.chain.from_iterable(r.read(folder / f'{b}_build_summary.json') for b in r.BASES))
     module_rows = list(itertools.chain.from_iterable(r.load_tsv(folder / f'{b}_module_audit.tsv') for b in r.BASES))
     r.tsv(folder / 'budget.tsv', build_rows)
+    if experiment == 'E2':
+        r.tsv(folder / 'hns_runtime.tsv', [dict(base=x['base'], task=x['task'], seed=x['seed'],
+            all_module_seconds=x['hns_all_svd_edit_rebuild_seconds'],
+            od_module_seconds=x['hns_od_svd_edit_rebuild_seconds'], calibration_samples=0,
+            forward_batches=0, backward_batches=0, timing='one GPU synchronized SVD/HNS/rebuild; excludes IO/audits')
+            for x in build_rows if x['method'] == 'hns_od'])
     integrity = r.read(folder / 'artifact_integrity_audit.json')
     integrity.update(edited_adapters=len(build_rows), selected_module_rows=len(module_rows),
                      max_reconstruction_relative_error=max(float(m['reconstruction_relative_error']) for m in module_rows),
@@ -286,6 +319,16 @@ def finalize(experiment):
                 'HNS uses0 data and0 forward/backward passes. Timings in budget.tsv distinguish synchronized '
                 'all-module SVD/edit/rebuild time, SS gradient/edit time, and build/save/audit overhead. '
                 'Scope and measurement boundaries differ; no claim of equal compute budgets.\n')
+            hns_rows = [x for x in build_rows if x['method'] == 'hns_od']
+            handle.write('\n| Editor timing | Mean seconds |\n| --- | ---: |\n')
+            for label, values in [
+                ('HNS all7: SVD/edit/rebuild', [x['hns_all_svd_edit_rebuild_seconds'] for x in hns_rows]),
+                ('HNS o/down: SVD/edit/rebuild', [x['hns_od_svd_edit_rebuild_seconds'] for x in hns_rows]),
+                *[(m + ': original total_edit_seconds including load/calibration/save',
+                   [x['edit_seconds'] for x in build_rows if x['method'] == m])
+                  for m in ('ss_smooth_abs', 'ss_smooth_abs_all')]]:
+                handle.write(f'| {label} | {np.mean(values):.4f} |\n')
+            handle.write('\nDeduplicated per-checkpoint HNS timings are in hns_runtime.tsv; all individual SS timings and overheads are in budget.tsv.\n')
         else:
             effects, contrasts = [], {
                 'shape_main': dict(hns_f4_s1=.5, mag_only=-.5, shape_only=.5, recon_0=-.5),
@@ -394,6 +437,7 @@ def pipeline():
     refresh_p0()
     publish(['E1', 'E0'])
     for experiment in ('E2', 'E3'):
+        stage_started = time.monotonic()
         prepare(experiment)
         states = []
         for base, device in zip(r.BASES, devices):
@@ -412,6 +456,11 @@ def pipeline():
                 failures.append((base, code))
         assert not failures, (experiment, failures)
         finalize(experiment)
+        summary = r.read(r.OUT / experiment / 'summary.json')
+        elapsed = time.monotonic() - stage_started
+        summary['resource_usage'] = dict(allocated_gpus=2, stage_wall_seconds=elapsed,
+            allocated_gpu_seconds=2*elapsed, boundary='entire stage including construction/evaluation/CPU audits; not kernel-active time')
+        r.write(r.OUT / experiment / 'summary.json', summary)
         publish([experiment])
     r.write(r.OUT / 'e2_e3_complete.json', dict(status='complete', completed_utc=r.now(), job_id=os.getenv('SLURM_JOB_ID')))
 
