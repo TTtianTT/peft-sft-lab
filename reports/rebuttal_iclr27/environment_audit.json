@@ -1,0 +1,19 @@
+{
+  "status": "pass",
+  "reference_versions": {
+    "torch": "2.11.0+cu128",
+    "vllm": "0.25.1+cu129",
+    "transformers": "5.16.1",
+    "peft": "0.20.0",
+    "safetensors": "0.8.0",
+    "human-eval": "1.0.3"
+  },
+  "actual_versions": {
+    "torch": "2.11.0+cu128",
+    "vllm": "0.25.1+cu129",
+    "transformers": "5.16.1",
+    "peft": "0.20.0",
+    "safetensors": "0.8.0",
+    "human-eval": "1.0.3"
+  }
+}

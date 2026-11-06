@@ -1,0 +1,8 @@
+{
+  "status": "pass",
+  "completed_utc": "2026-11-06T13:03:20.375510+00:00",
+  "cells": 584,
+  "sample_input_mismatches": 0,
+  "cells_tsv_sha256": "de56065f0208d660c72351be95817cfa074521ddf0613d4639e375e756d2cb79",
+  "sample_hashes_sha256": "28b92454fe8d52f722114fc73ea42c82556b85f20514be05d80081302b0ec74b"
+}

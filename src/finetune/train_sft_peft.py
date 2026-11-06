@@ -54,6 +54,10 @@ def build_arg_parser() -> argparse.ArgumentParser:
     parser.add_argument("--max_steps", type=int, default=None)
     parser.add_argument("--num_train_epochs", type=float, default=None)
     parser.add_argument(
+        "--preprocess_only", action="store_true",
+        help="Tokenize/filter the training data and write its step-count audit, without loading model weights.",
+    )
+    parser.add_argument(
         "--stop_at_step",
         type=int,
         default=None,
@@ -89,6 +93,10 @@ def build_arg_parser() -> argparse.ArgumentParser:
     # Optim
     parser.add_argument("--lr", type=float, default=2e-4)
     parser.add_argument("--warmup_ratio", type=float, default=0.03)
+    parser.add_argument(
+        "--warmup_steps", type=int, default=None,
+        help="Explicit warmup optimizer steps; overrides warmup_ratio and survives Transformers versions without warmup_ratio.",
+    )
     parser.add_argument("--weight_decay", type=float, default=0.0)
     parser.add_argument("--min_lr_ratio", type=float, default=None)
     parser.add_argument("--lr_scheduler_type", type=str, default="linear")
@@ -288,6 +296,16 @@ def _estimate_steps_per_epoch(
         per_device_train_batch_size, gradient_accumulation_steps, world_size
     )
     return max(1, math.ceil(dataset_size / effective_gbs))
+
+
+def _resolve_warmup_steps(explicit_steps: int | None, ratio: float, total_steps: int) -> int:
+    if explicit_steps is not None:
+        if explicit_steps < 0:
+            raise ValueError("warmup_steps must be nonnegative")
+        return explicit_steps
+    if not 0 <= ratio <= 1:
+        raise ValueError("warmup_ratio must lie in [0, 1]")
+    return math.ceil(ratio * total_steps)
 
 
 def _resolve_adalora_schedule(total_steps: int) -> dict[str, int]:
@@ -567,6 +585,7 @@ def main() -> None:
             "total_steps": resolved_total_steps,
             "lr": args.lr,
             "warmup_ratio": args.warmup_ratio,
+            "warmup_steps_requested": args.warmup_steps,
             "weight_decay": args.weight_decay,
             "lr_scheduler_type": args.lr_scheduler_type,
             "min_lr_ratio": args.min_lr_ratio,
@@ -665,6 +684,20 @@ def main() -> None:
     ]
     if debug_columns:
         train_ds = train_ds.remove_columns(debug_columns)
+
+    if args.preprocess_only:
+        final_steps_per_epoch = _estimate_steps_per_epoch(
+            len(train_ds), args.per_device_train_batch_size,
+            args.gradient_accumulation_steps, world_size,
+        )
+        save_json(Path(output_dir) / "preprocessing_audit.json", {
+            "tokenized_training_examples": len(train_ds),
+            "steps_per_epoch": final_steps_per_epoch,
+            "total_optimizer_steps": (math.ceil(final_steps_per_epoch * args.num_train_epochs)
+                                      if args.num_train_epochs is not None else args.max_steps),
+            "model_weights_loaded": False,
+        })
+        return
 
     import torch
 
@@ -775,6 +808,12 @@ def main() -> None:
 
     from transformers import TrainingArguments, get_scheduler
 
+    # Tokenization can discard examples. Use the final dataset size when
+    # resolving the optimizer schedule rather than the pre-tokenization size.
+    steps_per_epoch = _estimate_steps_per_epoch(
+        len(train_ds), args.per_device_train_batch_size,
+        args.gradient_accumulation_steps, world_size,
+    )
     use_max_steps = args.num_train_epochs is None or args.force_max_steps
     if use_max_steps:
         if args.max_steps is None:
@@ -790,7 +829,7 @@ def main() -> None:
         per_device_train_batch_size=args.per_device_train_batch_size,
         gradient_accumulation_steps=args.gradient_accumulation_steps,
         learning_rate=args.lr,
-        warmup_ratio=args.warmup_ratio,
+        warmup_steps=_resolve_warmup_steps(args.warmup_steps, args.warmup_ratio, total_steps_for_logging),
         weight_decay=args.weight_decay,
         adam_beta1=args.adam_beta1,
         adam_beta2=args.adam_beta2,
@@ -851,6 +890,23 @@ def main() -> None:
     from transformers import Trainer, TrainerCallback
 
     callbacks = []
+    class WarmupAuditCallback(TrainerCallback):
+        def on_train_begin(self, args, state, control, **kwargs):
+            if is_rank0():
+                actual_warmup = args.get_warmup_steps(state.max_steps)
+                save_json(Path(output_dir) / "warmup_schedule_audit.json", {
+                    "total_optimizer_steps": state.max_steps,
+                    "estimated_total_optimizer_steps": total_steps_for_logging,
+                    "warmup_steps": actual_warmup,
+                    "warmup_fraction": actual_warmup / state.max_steps,
+                    "explicit_steps_requested": training_kwargs["warmup_steps"],
+                    "tokenized_training_examples": len(train_ds),
+                })
+                if state.max_steps != total_steps_for_logging:
+                    raise RuntimeError("Trainer schedule disagrees with the audited step count")
+                if actual_warmup != training_kwargs["warmup_steps"]:
+                    raise RuntimeError("Explicit warmup_steps did not take effect")
+    callbacks.append(WarmupAuditCallback())
     if args.stop_at_step is not None:
         class StopAtStepCallback(TrainerCallback):
             """Persist a checkpoint before ending a staged training invocation."""
@@ -902,7 +958,7 @@ def main() -> None:
             grouping.param_groups,
             betas=(args.adam_beta1, args.adam_beta2),
         )
-        warmup_steps = max(0, int(args.warmup_ratio * total_steps_for_logging))
+        warmup_steps = training_args.get_warmup_steps(total_steps_for_logging)
         scheduler_specific_kwargs = dict(min_lr_kwargs) if min_lr_kwargs else None
         lr_scheduler = get_scheduler(
             args.lr_scheduler_type,

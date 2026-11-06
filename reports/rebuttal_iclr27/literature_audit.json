@@ -1,0 +1,44 @@
+{
+  "retrieved_utc": "2026-11-06",
+  "spectral_surgery": {
+    "paper": "https://arxiv.org/html/2603.03995v1",
+    "repository": "https://github.com/TTtianTT/peft-sft-lab",
+    "reference_commit": "139bfd7",
+    "source": "src/finetune/spectral_edit/edit_strategies.py",
+    "source_sha256": "bffb4aaa044f27a9e38718a832c30b93e29247ec71f267561c98ceb5c3acf2b9",
+    "independently_fetched_with_github_connector": true,
+    "local_sha256_matches": true,
+    "smooth_abs_defaults": {
+      "core_frac": 0.2,
+      "noise_frac": 0.2,
+      "amp_factor": 1.25,
+      "sup_factor": 0.8,
+      "mid_factor": 1,
+      "smooth_temperature": 0.35,
+      "smooth_center_q": 0.5,
+      "smooth_align_mid": true,
+      "grad_norm": "mean_abs",
+      "preserve_energy": "l1",
+      "calibration_examples": 128
+    }
+  },
+  "loda": {
+    "paper": "https://proceedings.mlr.press/v306/he26f.html",
+    "repository": "https://github.com/HHHLF/LoDA_ICML2026",
+    "commit": "e34d169189933a63600f37aa78b21864c08a7b59",
+    "public_code": true,
+    "inspected_sources": [
+      "README.md",
+      "models/network.py",
+      "repository tree"
+    ],
+    "implemented_backbone": "vit_base_patch16_224_in21k",
+    "published_datasets": [
+      "CIFAR100",
+      "ImageNet-R",
+      "ImageNet-A",
+      "CUB200"
+    ],
+    "scope_decision": "Official vision continual-learning implementation does not provide a direct causal-language-model/PEFT recipe; use requested setting-mismatch exception, with no empirical compatibility claim."
+  }
+}

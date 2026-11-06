@@ -1,0 +1,1374 @@
+{
+  "status": "pass",
+  "completed_utc": "2026-11-06T13:36:49.780189+00:00",
+  "artifacts": [
+    {
+      "base": "Qwen3-8B",
+      "task": "magicoder",
+      "seed": 42,
+      "method": "original_lora",
+      "path": "/dataset1/zailong/models/spectral-surgery/Qwen3-8B-Magicoder-50K-LoRA-E1",
+      "weights_sha256": "1f40c25e60ac1c115e409a8e30edf6f8696c671a7ef6b251583c7698dce079c3",
+      "config_sha256": "d47ac43d9f3b727032b2752be65333cc117bdf0036c45b6ff90948453da97961"
+    },
+    {
+      "base": "Qwen3-8B",
+      "task": "magicoder",
+      "seed": 42,
+      "method": "hns_f4_s1",
+      "path": "/dataset1/zailong/runs/peft-sft-lab/hns-step-grid-2x4-20260912/adapters/Qwen3-8B/magicoder/hns_f4_s1",
+      "weights_sha256": "28fdee923b2fa2f4628bf7bf29d01f5f9585cead6be20f9d7acd408c923ba4fb",
+      "config_sha256": "d47ac43d9f3b727032b2752be65333cc117bdf0036c45b6ff90948453da97961"
+    },
+    {
+      "base": "Qwen3-8B",
+      "task": "magicoder",
+      "seed": 42,
+      "method": "scalar_e",
+      "path": "/dataset1/zailong/workspace/peft-sft-lab/reports/hns_energy_matched_20260914/adapters/Qwen3-8B/magicoder/seed42/scalar_e",
+      "weights_sha256": "a5aec0bdeb684e8c4839df9672a61a9d26911ed6e385613701b959a4e2c49e59",
+      "config_sha256": "d47ac43d9f3b727032b2752be65333cc117bdf0036c45b6ff90948453da97961"
+    },
+    {
+      "base": "Qwen3-8B",
+      "task": "magicoder",
+      "seed": 42,
+      "method": "flat_e",
+      "path": "/dataset1/zailong/workspace/peft-sft-lab/reports/hns_energy_matched_20260914/adapters/Qwen3-8B/magicoder/seed42/flat_e",
+      "weights_sha256": "b38845763d1447d7c076effe5034928c28d024fd9ea2dc07ba076df83bc8eca6",
+      "config_sha256": "d47ac43d9f3b727032b2752be65333cc117bdf0036c45b6ff90948453da97961"
+    },
+    {
+      "base": "Qwen3-8B",
+      "task": "metamath",
+      "seed": 42,
+      "method": "original_lora",
+      "path": "/dataset1/zailong/models/spectral-surgery/Qwen3-8B-MetaMathQA-50K-LoRA",
+      "weights_sha256": "6cc0464e0797ec6c73cdd6d6ba9ff6ec9fffbd699b4580707bf087fabcc942d0",
+      "config_sha256": "511a7a57399324e3af545c893982bf76d3c77de31e099ea1aa62e74a71ecc630"
+    },
+    {
+      "base": "Qwen3-8B",
+      "task": "metamath",
+      "seed": 42,
+      "method": "hns_f4_s1",
+      "path": "/dataset1/zailong/runs/peft-sft-lab/hns-step-grid-2x4-20260912/adapters/Qwen3-8B/metamath/hns_f4_s1",
+      "weights_sha256": "46da082626e8e8399cf40ab438dbd3c5941b81a4e04a524e004fe15d7b199056",
+      "config_sha256": "511a7a57399324e3af545c893982bf76d3c77de31e099ea1aa62e74a71ecc630"
+    },
+    {
+      "base": "Qwen3-8B",
+      "task": "metamath",
+      "seed": 42,
+      "method": "scalar_e",
+      "path": "/dataset1/zailong/workspace/peft-sft-lab/reports/hns_energy_matched_20260914/adapters/Qwen3-8B/metamath/seed42/scalar_e",
+      "weights_sha256": "0557ecea48adfbaf65f4c2ab89a346789b2499a4e2f418e4771a956bdf6f2b7e",
+      "config_sha256": "511a7a57399324e3af545c893982bf76d3c77de31e099ea1aa62e74a71ecc630"
+    },
+    {
+      "base": "Qwen3-8B",
+      "task": "metamath",
+      "seed": 42,
+      "method": "flat_e",
+      "path": "/dataset1/zailong/workspace/peft-sft-lab/reports/hns_energy_matched_20260914/adapters/Qwen3-8B/metamath/seed42/flat_e",
+      "weights_sha256": "a4be7aa7272468a7f39c34c40378bfd9e7743f59a306c2875a549409083c7345",
+      "config_sha256": "511a7a57399324e3af545c893982bf76d3c77de31e099ea1aa62e74a71ecc630"
+    },
+    {
+      "base": "Qwen3-8B",
+      "task": "tulu",
+      "seed": 42,
+      "method": "original_lora",
+      "path": "/dataset1/zailong/models/spectral-surgery/Qwen3-8B-InstructionFollowing-LoRA",
+      "weights_sha256": "861b3193a98d36c12da904f7611d71c3b0d416503155e440674493f433816db3",
+      "config_sha256": "4895afcdea39bdcb075d80cf0c95d27171d1695b210b34f2ef7558b0b8a1bfa3"
+    },
+    {
+      "base": "Qwen3-8B",
+      "task": "tulu",
+      "seed": 42,
+      "method": "hns_f4_s1",
+      "path": "/dataset1/zailong/runs/peft-sft-lab/hns-step-grid-2x4-20260912/adapters/Qwen3-8B/tulu/hns_f4_s1",
+      "weights_sha256": "fb5844ff5045ab9949df24e25a5decfba39da6f9bdd3200c4861e6fecca6eaad",
+      "config_sha256": "4895afcdea39bdcb075d80cf0c95d27171d1695b210b34f2ef7558b0b8a1bfa3"
+    },
+    {
+      "base": "Qwen3-8B",
+      "task": "tulu",
+      "seed": 42,
+      "method": "scalar_e",
+      "path": "/dataset1/zailong/workspace/peft-sft-lab/reports/hns_energy_matched_20260914/adapters/Qwen3-8B/tulu/seed42/scalar_e",
+      "weights_sha256": "237dc6765f29d39cc72caeb0344f324df896ce2068f228784da6bb70f60f7046",
+      "config_sha256": "4895afcdea39bdcb075d80cf0c95d27171d1695b210b34f2ef7558b0b8a1bfa3"
+    },
+    {
+      "base": "Qwen3-8B",
+      "task": "tulu",
+      "seed": 42,
+      "method": "flat_e",
+      "path": "/dataset1/zailong/workspace/peft-sft-lab/reports/hns_energy_matched_20260914/adapters/Qwen3-8B/tulu/seed42/flat_e",
+      "weights_sha256": "27c5a78926fc7f75c5bc32027a9849142482501d56caff360621b58cbb4409d7",
+      "config_sha256": "4895afcdea39bdcb075d80cf0c95d27171d1695b210b34f2ef7558b0b8a1bfa3"
+    },
+    {
+      "base": "Qwen3-8B",
+      "task": "magicoder",
+      "seed": 43,
+      "method": "original_lora",
+      "path": "/dataset1/zailong/runs/peft-sft-lab/hns-training-seeds-3task-20260912/Qwen3-8B/seed43/lora/magicoder",
+      "weights_sha256": "161dd620f9c8f2ffd64faf09bde8cf1806fc2ba3259d531fb543278c3b7e42bc",
+      "config_sha256": "1ef01a098f276d7ce134f5bb6f82a3d421f94c9b2d6579b6003512e4e901228a"
+    },
+    {
+      "base": "Qwen3-8B",
+      "task": "magicoder",
+      "seed": 43,
+      "method": "hns_f4_s1",
+      "path": "/dataset1/zailong/runs/peft-sft-lab/hns-training-seeds-3task-20260912/Qwen3-8B/seed43/hns_step_grid/adapters/Qwen3-8B/magicoder/hns_f4_s1",
+      "weights_sha256": "e2e912790be9ac733706e7f5a1e53b80986940a02d4b6b405b23b84b2a5637f4",
+      "config_sha256": "1ef01a098f276d7ce134f5bb6f82a3d421f94c9b2d6579b6003512e4e901228a"
+    },
+    {
+      "base": "Qwen3-8B",
+      "task": "magicoder",
+      "seed": 43,
+      "method": "scalar_e",
+      "path": "/dataset1/zailong/workspace/peft-sft-lab/reports/hns_energy_matched_20260914/adapters/Qwen3-8B/magicoder/seed43/scalar_e",
+      "weights_sha256": "5bd943963d953a71faa657825a13cf3e0c47102cfec493e87f188fcc086ad74b",
+      "config_sha256": "1ef01a098f276d7ce134f5bb6f82a3d421f94c9b2d6579b6003512e4e901228a"
+    },
+    {
+      "base": "Qwen3-8B",
+      "task": "magicoder",
+      "seed": 43,
+      "method": "flat_e",
+      "path": "/dataset1/zailong/workspace/peft-sft-lab/reports/hns_energy_matched_20260914/adapters/Qwen3-8B/magicoder/seed43/flat_e",
+      "weights_sha256": "6197854382cb696bb04a11d6249a056ba3d6ce38f0065f2489181b6154e8d6c3",
+      "config_sha256": "1ef01a098f276d7ce134f5bb6f82a3d421f94c9b2d6579b6003512e4e901228a"
+    },
+    {
+      "base": "Qwen3-8B",
+      "task": "metamath",
+      "seed": 43,
+      "method": "original_lora",
+      "path": "/dataset1/zailong/runs/peft-sft-lab/hns-training-seeds-3task-20260912/Qwen3-8B/seed43/lora/metamath",
+      "weights_sha256": "2357aede2caec8a7861b935294eb7f32b35a07bc30694154d8d7a20bc85df10b",
+      "config_sha256": "1ef01a098f276d7ce134f5bb6f82a3d421f94c9b2d6579b6003512e4e901228a"
+    },
+    {
+      "base": "Qwen3-8B",
+      "task": "metamath",
+      "seed": 43,
+      "method": "hns_f4_s1",
+      "path": "/dataset1/zailong/runs/peft-sft-lab/hns-training-seeds-3task-20260912/Qwen3-8B/seed43/hns_step_grid/adapters/Qwen3-8B/metamath/hns_f4_s1",
+      "weights_sha256": "5819c066da26e37b16821cdc38d9b8d1450552fbbb6c7000edcd6fdea31fbe90",
+      "config_sha256": "1ef01a098f276d7ce134f5bb6f82a3d421f94c9b2d6579b6003512e4e901228a"
+    },
+    {
+      "base": "Qwen3-8B",
+      "task": "metamath",
+      "seed": 43,
+      "method": "scalar_e",
+      "path": "/dataset1/zailong/workspace/peft-sft-lab/reports/hns_energy_matched_20260914/adapters/Qwen3-8B/metamath/seed43/scalar_e",
+      "weights_sha256": "82da9d5b41782c8150984c92ad6ed4677bc26e57d23a120f5f8bdc59cdaa2e9d",
+      "config_sha256": "1ef01a098f276d7ce134f5bb6f82a3d421f94c9b2d6579b6003512e4e901228a"
+    },
+    {
+      "base": "Qwen3-8B",
+      "task": "metamath",
+      "seed": 43,
+      "method": "flat_e",
+      "path": "/dataset1/zailong/workspace/peft-sft-lab/reports/hns_energy_matched_20260914/adapters/Qwen3-8B/metamath/seed43/flat_e",
+      "weights_sha256": "e604bf3c0205879ea9d2558493c1ff5b78711c8ed331f22ab69f1e0db28f02b4",
+      "config_sha256": "1ef01a098f276d7ce134f5bb6f82a3d421f94c9b2d6579b6003512e4e901228a"
+    },
+    {
+      "base": "Qwen3-8B",
+      "task": "tulu",
+      "seed": 43,
+      "method": "original_lora",
+      "path": "/dataset1/zailong/runs/peft-sft-lab/hns-training-seeds-3task-20260912/Qwen3-8B/seed43/lora/tulu",
+      "weights_sha256": "f6a02ea38d27963f96eaa6cd11a4daa8a8a709513febc321fefc358a07d002fb",
+      "config_sha256": "1ef01a098f276d7ce134f5bb6f82a3d421f94c9b2d6579b6003512e4e901228a"
+    },
+    {
+      "base": "Qwen3-8B",
+      "task": "tulu",
+      "seed": 43,
+      "method": "hns_f4_s1",
+      "path": "/dataset1/zailong/runs/peft-sft-lab/hns-training-seeds-3task-20260912/Qwen3-8B/seed43/hns_step_grid/adapters/Qwen3-8B/tulu/hns_f4_s1",
+      "weights_sha256": "258ca97ce924f09dfd51e473ff57f01d9d59e87831c180f05927d4d7079f4fb2",
+      "config_sha256": "1ef01a098f276d7ce134f5bb6f82a3d421f94c9b2d6579b6003512e4e901228a"
+    },
+    {
+      "base": "Qwen3-8B",
+      "task": "tulu",
+      "seed": 43,
+      "method": "scalar_e",
+      "path": "/dataset1/zailong/workspace/peft-sft-lab/reports/hns_energy_matched_20260914/adapters/Qwen3-8B/tulu/seed43/scalar_e",
+      "weights_sha256": "6ed7a27f5f27b8d25218c24f9f572375d2671350adbcc4bb11c95085a963675b",
+      "config_sha256": "1ef01a098f276d7ce134f5bb6f82a3d421f94c9b2d6579b6003512e4e901228a"
+    },
+    {
+      "base": "Qwen3-8B",
+      "task": "tulu",
+      "seed": 43,
+      "method": "flat_e",
+      "path": "/dataset1/zailong/workspace/peft-sft-lab/reports/hns_energy_matched_20260914/adapters/Qwen3-8B/tulu/seed43/flat_e",
+      "weights_sha256": "95bf55d3c29a8853e069ce1fbbd1873ed5612fdda815d0542940d5e711580119",
+      "config_sha256": "1ef01a098f276d7ce134f5bb6f82a3d421f94c9b2d6579b6003512e4e901228a"
+    },
+    {
+      "base": "Qwen3-8B",
+      "task": "magicoder",
+      "seed": 44,
+      "method": "original_lora",
+      "path": "/dataset1/zailong/runs/peft-sft-lab/hns-training-seeds-3task-20260912/Qwen3-8B/seed44/lora/magicoder",
+      "weights_sha256": "eb3899888d043eb204ac10f9557344a1fabc0bb4d4e82965ae6a615047243932",
+      "config_sha256": "09f5203f6929787edb04234aecdaa82044cf66c24cb5a39b7eed4598d87eebe5"
+    },
+    {
+      "base": "Qwen3-8B",
+      "task": "magicoder",
+      "seed": 44,
+      "method": "hns_f4_s1",
+      "path": "/dataset1/zailong/runs/peft-sft-lab/hns-training-seeds-3task-20260912/Qwen3-8B/seed44/hns_step_grid/adapters/Qwen3-8B/magicoder/hns_f4_s1",
+      "weights_sha256": "e2ffc7c0cb400217a7da225dba5405e067820aa3ae5a9a8f9a7c075c947910da",
+      "config_sha256": "09f5203f6929787edb04234aecdaa82044cf66c24cb5a39b7eed4598d87eebe5"
+    },
+    {
+      "base": "Qwen3-8B",
+      "task": "magicoder",
+      "seed": 44,
+      "method": "scalar_e",
+      "path": "/dataset1/zailong/workspace/peft-sft-lab/reports/hns_energy_matched_20260914/adapters/Qwen3-8B/magicoder/seed44/scalar_e",
+      "weights_sha256": "b44e013aa188189151464b1f7dcc6c330094e798d4a7f2f6baffbdab7b00e9f9",
+      "config_sha256": "09f5203f6929787edb04234aecdaa82044cf66c24cb5a39b7eed4598d87eebe5"
+    },
+    {
+      "base": "Qwen3-8B",
+      "task": "magicoder",
+      "seed": 44,
+      "method": "flat_e",
+      "path": "/dataset1/zailong/workspace/peft-sft-lab/reports/hns_energy_matched_20260914/adapters/Qwen3-8B/magicoder/seed44/flat_e",
+      "weights_sha256": "f8e0d4ee36c8712c317940ecd1d7ad96ab243932eb5f1febb62a82de6c274951",
+      "config_sha256": "09f5203f6929787edb04234aecdaa82044cf66c24cb5a39b7eed4598d87eebe5"
+    },
+    {
+      "base": "Qwen3-8B",
+      "task": "metamath",
+      "seed": 44,
+      "method": "original_lora",
+      "path": "/dataset1/zailong/runs/peft-sft-lab/hns-training-seeds-3task-20260912/Qwen3-8B/seed44/lora/metamath",
+      "weights_sha256": "f6ac86577814d21d2245e9eb2e0c7b02e45194455ff8245726e1cc43789e29c2",
+      "config_sha256": "09f5203f6929787edb04234aecdaa82044cf66c24cb5a39b7eed4598d87eebe5"
+    },
+    {
+      "base": "Qwen3-8B",
+      "task": "metamath",
+      "seed": 44,
+      "method": "hns_f4_s1",
+      "path": "/dataset1/zailong/runs/peft-sft-lab/hns-training-seeds-3task-20260912/Qwen3-8B/seed44/hns_step_grid/adapters/Qwen3-8B/metamath/hns_f4_s1",
+      "weights_sha256": "2933239805265ad6b488e0d48589d8b89b214c0f648d7e2f015b0600cdd44f57",
+      "config_sha256": "09f5203f6929787edb04234aecdaa82044cf66c24cb5a39b7eed4598d87eebe5"
+    },
+    {
+      "base": "Qwen3-8B",
+      "task": "metamath",
+      "seed": 44,
+      "method": "scalar_e",
+      "path": "/dataset1/zailong/workspace/peft-sft-lab/reports/hns_energy_matched_20260914/adapters/Qwen3-8B/metamath/seed44/scalar_e",
+      "weights_sha256": "8d58c6a0a8182e71cc75c29b12a33c9a855e40ec668010f78524ac6f2aa89557",
+      "config_sha256": "09f5203f6929787edb04234aecdaa82044cf66c24cb5a39b7eed4598d87eebe5"
+    },
+    {
+      "base": "Qwen3-8B",
+      "task": "metamath",
+      "seed": 44,
+      "method": "flat_e",
+      "path": "/dataset1/zailong/workspace/peft-sft-lab/reports/hns_energy_matched_20260914/adapters/Qwen3-8B/metamath/seed44/flat_e",
+      "weights_sha256": "29a3bd58204e41dd758b9ea781dab8d7f34459f2b306fb6630a41273f83ca029",
+      "config_sha256": "09f5203f6929787edb04234aecdaa82044cf66c24cb5a39b7eed4598d87eebe5"
+    },
+    {
+      "base": "Qwen3-8B",
+      "task": "tulu",
+      "seed": 44,
+      "method": "original_lora",
+      "path": "/dataset1/zailong/runs/peft-sft-lab/hns-training-seeds-3task-20260912/Qwen3-8B/seed44/lora/tulu",
+      "weights_sha256": "8c26a920aada7d7a17dfc24e86f07350e3bb3d561f4eaf9c60292d55e127d99d",
+      "config_sha256": "09f5203f6929787edb04234aecdaa82044cf66c24cb5a39b7eed4598d87eebe5"
+    },
+    {
+      "base": "Qwen3-8B",
+      "task": "tulu",
+      "seed": 44,
+      "method": "hns_f4_s1",
+      "path": "/dataset1/zailong/runs/peft-sft-lab/hns-training-seeds-3task-20260912/Qwen3-8B/seed44/hns_step_grid/adapters/Qwen3-8B/tulu/hns_f4_s1",
+      "weights_sha256": "aab78d18450a5e7bc63ea29723c4efc10335fd0ffc704c78c1ec0382ac8cbc0d",
+      "config_sha256": "09f5203f6929787edb04234aecdaa82044cf66c24cb5a39b7eed4598d87eebe5"
+    },
+    {
+      "base": "Qwen3-8B",
+      "task": "tulu",
+      "seed": 44,
+      "method": "scalar_e",
+      "path": "/dataset1/zailong/workspace/peft-sft-lab/reports/hns_energy_matched_20260914/adapters/Qwen3-8B/tulu/seed44/scalar_e",
+      "weights_sha256": "a0f0d508e00cd2a631a44026cf9a0fba90deaea128b0ef86383bdc0ffc2c0e6a",
+      "config_sha256": "09f5203f6929787edb04234aecdaa82044cf66c24cb5a39b7eed4598d87eebe5"
+    },
+    {
+      "base": "Qwen3-8B",
+      "task": "tulu",
+      "seed": 44,
+      "method": "flat_e",
+      "path": "/dataset1/zailong/workspace/peft-sft-lab/reports/hns_energy_matched_20260914/adapters/Qwen3-8B/tulu/seed44/flat_e",
+      "weights_sha256": "3b20a408ca00a9fda10de230978fa9664df116133c2e9a2824db2667a85e6859",
+      "config_sha256": "09f5203f6929787edb04234aecdaa82044cf66c24cb5a39b7eed4598d87eebe5"
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "task": "magicoder",
+      "seed": 42,
+      "method": "original_lora",
+      "path": "/dataset1/zailong/models/spectral-surgery/Llama-3.1-8B-Instruct-Magicoder-50K-LoRA-E1",
+      "weights_sha256": "e74360cc6515aecb214ba48688187f0c013dbca75c72d0ce53d7b55dc62d80df",
+      "config_sha256": "65a0e068e2d34f057e261b856c7dd213ccf815167aac7a46234c989af8029555"
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "task": "magicoder",
+      "seed": 42,
+      "method": "hns_f4_s1",
+      "path": "/dataset1/zailong/runs/peft-sft-lab/hns-step-grid-2x4-20260912/adapters/Llama-3.1-8B-Instruct/magicoder/hns_f4_s1",
+      "weights_sha256": "56a74f9168d5a1414ad819a13a5dd4db1154df44e23570c9995be0d4531f52e4",
+      "config_sha256": "65a0e068e2d34f057e261b856c7dd213ccf815167aac7a46234c989af8029555"
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "task": "magicoder",
+      "seed": 42,
+      "method": "scalar_e",
+      "path": "/dataset1/zailong/workspace/peft-sft-lab/reports/hns_energy_matched_20260914/adapters/Llama-3.1-8B-Instruct/magicoder/seed42/scalar_e",
+      "weights_sha256": "b86afb826220c30829526c4ee3e9f9fb5117af977ebe85a616e29d171258892c",
+      "config_sha256": "65a0e068e2d34f057e261b856c7dd213ccf815167aac7a46234c989af8029555"
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "task": "magicoder",
+      "seed": 42,
+      "method": "flat_e",
+      "path": "/dataset1/zailong/workspace/peft-sft-lab/reports/hns_energy_matched_20260914/adapters/Llama-3.1-8B-Instruct/magicoder/seed42/flat_e",
+      "weights_sha256": "5f3d2a4b6bb9faa114cdf302191bed5ae65521585ba74b7df0c984154397cfac",
+      "config_sha256": "65a0e068e2d34f057e261b856c7dd213ccf815167aac7a46234c989af8029555"
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "task": "metamath",
+      "seed": 42,
+      "method": "original_lora",
+      "path": "/dataset1/zailong/models/spectral-surgery/Llama-3.1-8B-Instruct-MetaMathQA-50K-LoRA",
+      "weights_sha256": "dc1da52d2ead239677080e32106815d9d3353eed71af73cd1784758bf7ecea91",
+      "config_sha256": "57297b7ac44ab6185c8b8fc8e75e38c154813306aee998b6037894d09e80b6db"
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "task": "metamath",
+      "seed": 42,
+      "method": "hns_f4_s1",
+      "path": "/dataset1/zailong/runs/peft-sft-lab/hns-step-grid-2x4-20260912/adapters/Llama-3.1-8B-Instruct/metamath/hns_f4_s1",
+      "weights_sha256": "86fa4d6a9227a333c85aec9db270b7d266c584a1cc5f594bb493d845135a9686",
+      "config_sha256": "57297b7ac44ab6185c8b8fc8e75e38c154813306aee998b6037894d09e80b6db"
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "task": "metamath",
+      "seed": 42,
+      "method": "scalar_e",
+      "path": "/dataset1/zailong/workspace/peft-sft-lab/reports/hns_energy_matched_20260914/adapters/Llama-3.1-8B-Instruct/metamath/seed42/scalar_e",
+      "weights_sha256": "2cf9694660e4d311753b13792638aac7aee9d95541326f3057f5e6710ad46f1e",
+      "config_sha256": "57297b7ac44ab6185c8b8fc8e75e38c154813306aee998b6037894d09e80b6db"
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "task": "metamath",
+      "seed": 42,
+      "method": "flat_e",
+      "path": "/dataset1/zailong/workspace/peft-sft-lab/reports/hns_energy_matched_20260914/adapters/Llama-3.1-8B-Instruct/metamath/seed42/flat_e",
+      "weights_sha256": "0bd4ae45fbfc0fe069b804dcd71d7d35b31c91483346e81bad5373457ea9d1b0",
+      "config_sha256": "57297b7ac44ab6185c8b8fc8e75e38c154813306aee998b6037894d09e80b6db"
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "task": "tulu",
+      "seed": 42,
+      "method": "original_lora",
+      "path": "/dataset1/zailong/models/spectral-surgery/Llama-3.1-8B-Instruct-InstructionFollowing-LoRA",
+      "weights_sha256": "c4ba09406089d4c98b3d78ea8675f208d6418b85821ccf1a34cfdab854722bb4",
+      "config_sha256": "8992107e543a36312fa793d7573f84e2917228cd7238774967761b575e3b99e9"
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "task": "tulu",
+      "seed": 42,
+      "method": "hns_f4_s1",
+      "path": "/dataset1/zailong/runs/peft-sft-lab/hns-step-grid-2x4-20260912/adapters/Llama-3.1-8B-Instruct/tulu/hns_f4_s1",
+      "weights_sha256": "868c4b2aa81bc9d494ba6b89b2d250673af0b196f31ea51bf65eab90b6542bbf",
+      "config_sha256": "8992107e543a36312fa793d7573f84e2917228cd7238774967761b575e3b99e9"
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "task": "tulu",
+      "seed": 42,
+      "method": "scalar_e",
+      "path": "/dataset1/zailong/workspace/peft-sft-lab/reports/hns_energy_matched_20260914/adapters/Llama-3.1-8B-Instruct/tulu/seed42/scalar_e",
+      "weights_sha256": "56f1323f6d7aa8a063c38dcb517fc95fd65ccf965d72fca257f3aa4882539ecc",
+      "config_sha256": "8992107e543a36312fa793d7573f84e2917228cd7238774967761b575e3b99e9"
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "task": "tulu",
+      "seed": 42,
+      "method": "flat_e",
+      "path": "/dataset1/zailong/workspace/peft-sft-lab/reports/hns_energy_matched_20260914/adapters/Llama-3.1-8B-Instruct/tulu/seed42/flat_e",
+      "weights_sha256": "ae3428d6290e4953a5e348b9c4c420064f5c976bb1060d438e58db3c6cc25c19",
+      "config_sha256": "8992107e543a36312fa793d7573f84e2917228cd7238774967761b575e3b99e9"
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "task": "magicoder",
+      "seed": 43,
+      "method": "original_lora",
+      "path": "/dataset1/zailong/runs/peft-sft-lab/hns-training-seeds-3task-20260912/Llama-3.1-8B-Instruct/seed43/lora/magicoder",
+      "weights_sha256": "739e01ba05383334eff861657fe978ca6cf4bcc45c7f90cc53582b3e88487e97",
+      "config_sha256": "1652914087d906dce7d823de1e56138352bc5f988e9f82e1ec4d9630bac8ffd6"
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "task": "magicoder",
+      "seed": 43,
+      "method": "hns_f4_s1",
+      "path": "/dataset1/zailong/runs/peft-sft-lab/hns-training-seeds-3task-20260912/Llama-3.1-8B-Instruct/seed43/hns_step_grid/adapters/Llama-3.1-8B-Instruct/magicoder/hns_f4_s1",
+      "weights_sha256": "447137e68417465eead5de80df9f9864c6593278fd01c98d21fc865fa3eef49b",
+      "config_sha256": "1652914087d906dce7d823de1e56138352bc5f988e9f82e1ec4d9630bac8ffd6"
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "task": "magicoder",
+      "seed": 43,
+      "method": "scalar_e",
+      "path": "/dataset1/zailong/workspace/peft-sft-lab/reports/hns_energy_matched_20260914/adapters/Llama-3.1-8B-Instruct/magicoder/seed43/scalar_e",
+      "weights_sha256": "e560c6b0c53d86dab5e6345ca05bacfe6048ed523aecc3ac7229ed2411f21ce4",
+      "config_sha256": "1652914087d906dce7d823de1e56138352bc5f988e9f82e1ec4d9630bac8ffd6"
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "task": "magicoder",
+      "seed": 43,
+      "method": "flat_e",
+      "path": "/dataset1/zailong/workspace/peft-sft-lab/reports/hns_energy_matched_20260914/adapters/Llama-3.1-8B-Instruct/magicoder/seed43/flat_e",
+      "weights_sha256": "fbe0142c4076a38652f1b755ef166b084b0ab1ecd742138d2a392fddfcc4e7f3",
+      "config_sha256": "1652914087d906dce7d823de1e56138352bc5f988e9f82e1ec4d9630bac8ffd6"
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "task": "metamath",
+      "seed": 43,
+      "method": "original_lora",
+      "path": "/dataset1/zailong/runs/peft-sft-lab/hns-training-seeds-3task-20260912/Llama-3.1-8B-Instruct/seed43/lora/metamath",
+      "weights_sha256": "f84efbad0022df7c9eee9097e76ec1fe9519dff8da704721ddf4ef5121a72e0a",
+      "config_sha256": "1652914087d906dce7d823de1e56138352bc5f988e9f82e1ec4d9630bac8ffd6"
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "task": "metamath",
+      "seed": 43,
+      "method": "hns_f4_s1",
+      "path": "/dataset1/zailong/runs/peft-sft-lab/hns-training-seeds-3task-20260912/Llama-3.1-8B-Instruct/seed43/hns_step_grid/adapters/Llama-3.1-8B-Instruct/metamath/hns_f4_s1",
+      "weights_sha256": "f7634e2c5528cbc852ffb00fa28c439bbdc5a1227a6eb4bdcec6a6915c0e1c61",
+      "config_sha256": "1652914087d906dce7d823de1e56138352bc5f988e9f82e1ec4d9630bac8ffd6"
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "task": "metamath",
+      "seed": 43,
+      "method": "scalar_e",
+      "path": "/dataset1/zailong/workspace/peft-sft-lab/reports/hns_energy_matched_20260914/adapters/Llama-3.1-8B-Instruct/metamath/seed43/scalar_e",
+      "weights_sha256": "3956bbaf54e84efc4b78f4e9be773c3f20d348e7ffdc9c4b49e08cfe66648700",
+      "config_sha256": "1652914087d906dce7d823de1e56138352bc5f988e9f82e1ec4d9630bac8ffd6"
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "task": "metamath",
+      "seed": 43,
+      "method": "flat_e",
+      "path": "/dataset1/zailong/workspace/peft-sft-lab/reports/hns_energy_matched_20260914/adapters/Llama-3.1-8B-Instruct/metamath/seed43/flat_e",
+      "weights_sha256": "ec2e35c6199be4a793ae73dad1d8ce940234542537fd7a9d2b0f0612cb0848b8",
+      "config_sha256": "1652914087d906dce7d823de1e56138352bc5f988e9f82e1ec4d9630bac8ffd6"
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "task": "tulu",
+      "seed": 43,
+      "method": "original_lora",
+      "path": "/dataset1/zailong/runs/peft-sft-lab/hns-training-seeds-3task-20260912/Llama-3.1-8B-Instruct/seed43/lora/tulu",
+      "weights_sha256": "83c8564eda300782288efb89db26a804958a9cc75ff4be347e8fdd679f49a16d",
+      "config_sha256": "1652914087d906dce7d823de1e56138352bc5f988e9f82e1ec4d9630bac8ffd6"
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "task": "tulu",
+      "seed": 43,
+      "method": "hns_f4_s1",
+      "path": "/dataset1/zailong/runs/peft-sft-lab/hns-training-seeds-3task-20260912/Llama-3.1-8B-Instruct/seed43/hns_step_grid/adapters/Llama-3.1-8B-Instruct/tulu/hns_f4_s1",
+      "weights_sha256": "7a0546ae44e54b188ce813eb040aad66ea2446d5d6b57e0d7db1a759d81b38fe",
+      "config_sha256": "1652914087d906dce7d823de1e56138352bc5f988e9f82e1ec4d9630bac8ffd6"
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "task": "tulu",
+      "seed": 43,
+      "method": "scalar_e",
+      "path": "/dataset1/zailong/workspace/peft-sft-lab/reports/hns_energy_matched_20260914/adapters/Llama-3.1-8B-Instruct/tulu/seed43/scalar_e",
+      "weights_sha256": "b592b54b335353b10c4cf4fd2a42d0d895ff9bc26010aba1ab4fde8b81cd6533",
+      "config_sha256": "1652914087d906dce7d823de1e56138352bc5f988e9f82e1ec4d9630bac8ffd6"
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "task": "tulu",
+      "seed": 43,
+      "method": "flat_e",
+      "path": "/dataset1/zailong/workspace/peft-sft-lab/reports/hns_energy_matched_20260914/adapters/Llama-3.1-8B-Instruct/tulu/seed43/flat_e",
+      "weights_sha256": "a14f84c15d963e271bf924def22617f945392dfbc49154b5e2548f50f34dc6e2",
+      "config_sha256": "1652914087d906dce7d823de1e56138352bc5f988e9f82e1ec4d9630bac8ffd6"
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "task": "magicoder",
+      "seed": 44,
+      "method": "original_lora",
+      "path": "/dataset1/zailong/runs/peft-sft-lab/hns-training-seeds-3task-20260912/Llama-3.1-8B-Instruct/seed44/lora/magicoder",
+      "weights_sha256": "a096e70ff026f9230db07c4b7be5417dd0e3daadac8a7d12a31f1d7b47c36fe1",
+      "config_sha256": "1baccfbb5c4990e7df11090de2b010bff7bd6632c9cebd4a30c8d006495b69bf"
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "task": "magicoder",
+      "seed": 44,
+      "method": "hns_f4_s1",
+      "path": "/dataset1/zailong/runs/peft-sft-lab/hns-training-seeds-3task-20260912/Llama-3.1-8B-Instruct/seed44/hns_step_grid/adapters/Llama-3.1-8B-Instruct/magicoder/hns_f4_s1",
+      "weights_sha256": "88c9d16c87f09973ddc280571edfe7e4a92fdd749358a496a61d599117dae3e7",
+      "config_sha256": "1baccfbb5c4990e7df11090de2b010bff7bd6632c9cebd4a30c8d006495b69bf"
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "task": "magicoder",
+      "seed": 44,
+      "method": "scalar_e",
+      "path": "/dataset1/zailong/workspace/peft-sft-lab/reports/hns_energy_matched_20260914/adapters/Llama-3.1-8B-Instruct/magicoder/seed44/scalar_e",
+      "weights_sha256": "cd109888d7af8164d68f7e12e8344c3cd3288ed1aecc7ea75c6b66b0a4bfcd91",
+      "config_sha256": "1baccfbb5c4990e7df11090de2b010bff7bd6632c9cebd4a30c8d006495b69bf"
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "task": "magicoder",
+      "seed": 44,
+      "method": "flat_e",
+      "path": "/dataset1/zailong/workspace/peft-sft-lab/reports/hns_energy_matched_20260914/adapters/Llama-3.1-8B-Instruct/magicoder/seed44/flat_e",
+      "weights_sha256": "60cd746c2b95d2a3ca11aa32ca028988ed76afdb791630d28a6bc9ca1e08be4e",
+      "config_sha256": "1baccfbb5c4990e7df11090de2b010bff7bd6632c9cebd4a30c8d006495b69bf"
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "task": "metamath",
+      "seed": 44,
+      "method": "original_lora",
+      "path": "/dataset1/zailong/runs/peft-sft-lab/hns-training-seeds-3task-20260912/Llama-3.1-8B-Instruct/seed44/lora/metamath",
+      "weights_sha256": "f3bbf3507901a381831d578b9406d9b8b85526af2ebcc41f333af78639a7fd7b",
+      "config_sha256": "1baccfbb5c4990e7df11090de2b010bff7bd6632c9cebd4a30c8d006495b69bf"
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "task": "metamath",
+      "seed": 44,
+      "method": "hns_f4_s1",
+      "path": "/dataset1/zailong/runs/peft-sft-lab/hns-training-seeds-3task-20260912/Llama-3.1-8B-Instruct/seed44/hns_step_grid/adapters/Llama-3.1-8B-Instruct/metamath/hns_f4_s1",
+      "weights_sha256": "d6d495184f8617e58be80453f0b01b20e2fbb13dae7fdc8dc4847eaed724e7df",
+      "config_sha256": "1baccfbb5c4990e7df11090de2b010bff7bd6632c9cebd4a30c8d006495b69bf"
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "task": "metamath",
+      "seed": 44,
+      "method": "scalar_e",
+      "path": "/dataset1/zailong/workspace/peft-sft-lab/reports/hns_energy_matched_20260914/adapters/Llama-3.1-8B-Instruct/metamath/seed44/scalar_e",
+      "weights_sha256": "d2159adec102f8faaa6e9b07ceef74577a58d0a3740a783e48c536be4db71020",
+      "config_sha256": "1baccfbb5c4990e7df11090de2b010bff7bd6632c9cebd4a30c8d006495b69bf"
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "task": "metamath",
+      "seed": 44,
+      "method": "flat_e",
+      "path": "/dataset1/zailong/workspace/peft-sft-lab/reports/hns_energy_matched_20260914/adapters/Llama-3.1-8B-Instruct/metamath/seed44/flat_e",
+      "weights_sha256": "c8de6543fd8d4ac6ab517577a2a31c3a87a0f49a6e8a49d5386b090d39071f67",
+      "config_sha256": "1baccfbb5c4990e7df11090de2b010bff7bd6632c9cebd4a30c8d006495b69bf"
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "task": "tulu",
+      "seed": 44,
+      "method": "original_lora",
+      "path": "/dataset1/zailong/runs/peft-sft-lab/hns-training-seeds-3task-20260912/Llama-3.1-8B-Instruct/seed44/lora/tulu",
+      "weights_sha256": "69f30b80d8536fa24645fabef3c747334f45d576c8ab1cfb5807d06b3421c5f6",
+      "config_sha256": "1baccfbb5c4990e7df11090de2b010bff7bd6632c9cebd4a30c8d006495b69bf"
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "task": "tulu",
+      "seed": 44,
+      "method": "hns_f4_s1",
+      "path": "/dataset1/zailong/runs/peft-sft-lab/hns-training-seeds-3task-20260912/Llama-3.1-8B-Instruct/seed44/hns_step_grid/adapters/Llama-3.1-8B-Instruct/tulu/hns_f4_s1",
+      "weights_sha256": "04d61ac0d1bafc604442a9aed3e8d37e6c3e2d777c301349a7f1585e1ba09fc8",
+      "config_sha256": "1baccfbb5c4990e7df11090de2b010bff7bd6632c9cebd4a30c8d006495b69bf"
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "task": "tulu",
+      "seed": 44,
+      "method": "scalar_e",
+      "path": "/dataset1/zailong/workspace/peft-sft-lab/reports/hns_energy_matched_20260914/adapters/Llama-3.1-8B-Instruct/tulu/seed44/scalar_e",
+      "weights_sha256": "025257e20e0783072f71614ebeac26b6113472bb0dc98f760051a317b07d6671",
+      "config_sha256": "1baccfbb5c4990e7df11090de2b010bff7bd6632c9cebd4a30c8d006495b69bf"
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "task": "tulu",
+      "seed": 44,
+      "method": "flat_e",
+      "path": "/dataset1/zailong/workspace/peft-sft-lab/reports/hns_energy_matched_20260914/adapters/Llama-3.1-8B-Instruct/tulu/seed44/flat_e",
+      "weights_sha256": "88cb53dead1bda2fa898cd6bb7187fbfd157a0d07490b4b8cff36c8d771526e8",
+      "config_sha256": "1baccfbb5c4990e7df11090de2b010bff7bd6632c9cebd4a30c8d006495b69bf"
+    },
+    {
+      "base": "Qwen3-8B",
+      "label": "magicoder__seed42__para_e90",
+      "path": "/dataset1/zailong/workspace/peft-sft-lab/reports/posthoc_baselines_para_spectral_surgery/para/adapters/Qwen3-8B/magicoder/seed42/para_e90",
+      "train_task": "magicoder",
+      "seed": 42,
+      "method": "para_e90",
+      "weights_sha256": "8d531e27f9a5e70c275be6dcc42ae18864f02a286cf0789082f600096a75d72e",
+      "config_sha256": "897aa0d3d078b0b666921c950fb87502614d48f8e71df168756543ce5aa31da6"
+    },
+    {
+      "base": "Qwen3-8B",
+      "label": "magicoder__seed42__para_e95",
+      "path": "/dataset1/zailong/workspace/peft-sft-lab/reports/posthoc_baselines_para_spectral_surgery/para/adapters/Qwen3-8B/magicoder/seed42/para_e95",
+      "train_task": "magicoder",
+      "seed": 42,
+      "method": "para_e95",
+      "weights_sha256": "6e98ebce98486b4ce8e30b90dd725ed96690aff2b66a22b4e1ba940d6b5f0be3",
+      "config_sha256": "e0901832946ee857504380943f2793d8f94eb0e846a34557bbf118c174260fe1"
+    },
+    {
+      "base": "Qwen3-8B",
+      "label": "magicoder__seed42__para_e99",
+      "path": "/dataset1/zailong/workspace/peft-sft-lab/reports/posthoc_baselines_para_spectral_surgery/para/adapters/Qwen3-8B/magicoder/seed42/para_e99",
+      "train_task": "magicoder",
+      "seed": 42,
+      "method": "para_e99",
+      "weights_sha256": "9e64668fb55e4ba81beef9d9ef4dd938595a52ebbab6045a69c553f80c85d908",
+      "config_sha256": "9d482c32b403ec7c92d1119a1b54ec95dead525749edc85293d94f90ea71632f"
+    },
+    {
+      "base": "Qwen3-8B",
+      "label": "metamath__seed42__para_e90",
+      "path": "/dataset1/zailong/workspace/peft-sft-lab/reports/posthoc_baselines_para_spectral_surgery/para/adapters/Qwen3-8B/metamath/seed42/para_e90",
+      "train_task": "metamath",
+      "seed": 42,
+      "method": "para_e90",
+      "weights_sha256": "bfeedd80065a9b63d1f3dd872431285cb51ba5bb1adb8673eb5d07ce07277acf",
+      "config_sha256": "5c6a35a6ad7c5c4ce08f435c41a5e62d428ffdfbf1d1bd071641007d8a6990da"
+    },
+    {
+      "base": "Qwen3-8B",
+      "label": "metamath__seed42__para_e95",
+      "path": "/dataset1/zailong/workspace/peft-sft-lab/reports/posthoc_baselines_para_spectral_surgery/para/adapters/Qwen3-8B/metamath/seed42/para_e95",
+      "train_task": "metamath",
+      "seed": 42,
+      "method": "para_e95",
+      "weights_sha256": "b803219d7935f6db666e52c5dfcd2d50c384e75593ffed1bb022e7f2cd5267b6",
+      "config_sha256": "b882a954ce96516a97ba3fd1b41849e19e8c691305604c5fa3a382c94d5da5b4"
+    },
+    {
+      "base": "Qwen3-8B",
+      "label": "metamath__seed42__para_e99",
+      "path": "/dataset1/zailong/workspace/peft-sft-lab/reports/posthoc_baselines_para_spectral_surgery/para/adapters/Qwen3-8B/metamath/seed42/para_e99",
+      "train_task": "metamath",
+      "seed": 42,
+      "method": "para_e99",
+      "weights_sha256": "0b2f2a8eb57a26d13e0ef92b4cec1aa16a72e01792cb02506c16d1b3d0a21dac",
+      "config_sha256": "45052941de2adec8dbee3ad8b184c8e6ee9136bc9525c42219e46c16349c81bb"
+    },
+    {
+      "base": "Qwen3-8B",
+      "label": "tulu__seed42__para_e90",
+      "path": "/dataset1/zailong/workspace/peft-sft-lab/reports/posthoc_baselines_para_spectral_surgery/para/adapters/Qwen3-8B/tulu/seed42/para_e90",
+      "train_task": "tulu",
+      "seed": 42,
+      "method": "para_e90",
+      "weights_sha256": "eae5d1666bb16887dfd5e83ac3e0fdb45cf489b5df9880b9d79489efe05a5204",
+      "config_sha256": "b0a355b0d6b795130ac7bb100445eeb8f706bb376dc9ab5d3570c0f6d9323f4c"
+    },
+    {
+      "base": "Qwen3-8B",
+      "label": "tulu__seed42__para_e95",
+      "path": "/dataset1/zailong/workspace/peft-sft-lab/reports/posthoc_baselines_para_spectral_surgery/para/adapters/Qwen3-8B/tulu/seed42/para_e95",
+      "train_task": "tulu",
+      "seed": 42,
+      "method": "para_e95",
+      "weights_sha256": "2cc315bf070fb4f55d6f250b83720429fa3e4bc980cee090941b32aedc5b8033",
+      "config_sha256": "56e46eb92a888f654a0b4bd8355c9675e0f664f7fb17b13debc1aff2dc74cd86"
+    },
+    {
+      "base": "Qwen3-8B",
+      "label": "tulu__seed42__para_e99",
+      "path": "/dataset1/zailong/workspace/peft-sft-lab/reports/posthoc_baselines_para_spectral_surgery/para/adapters/Qwen3-8B/tulu/seed42/para_e99",
+      "train_task": "tulu",
+      "seed": 42,
+      "method": "para_e99",
+      "weights_sha256": "ee0b783182d4eafc2e9a8d1af042a87ee412379060a607b7b6b4495b76423be3",
+      "config_sha256": "2ab3d43505d1ff0ff6f2e8a6d75c9e8ac16b85719c1bbb1a2d249c5d6fbaa527"
+    },
+    {
+      "base": "Qwen3-8B",
+      "label": "magicoder__seed43__para_e90",
+      "path": "/dataset1/zailong/workspace/peft-sft-lab/reports/posthoc_baselines_para_spectral_surgery/para/adapters/Qwen3-8B/magicoder/seed43/para_e90",
+      "train_task": "magicoder",
+      "seed": 43,
+      "method": "para_e90",
+      "weights_sha256": "7929db932f676037754e32c1beb52d58b889addc547ce9876069ebe42c30f7a1",
+      "config_sha256": "b675109fb9a5fea2c4f313d984b4e9f3106a1cf5c0ebd1d80bdd37561dd7e257"
+    },
+    {
+      "base": "Qwen3-8B",
+      "label": "magicoder__seed43__para_e95",
+      "path": "/dataset1/zailong/workspace/peft-sft-lab/reports/posthoc_baselines_para_spectral_surgery/para/adapters/Qwen3-8B/magicoder/seed43/para_e95",
+      "train_task": "magicoder",
+      "seed": 43,
+      "method": "para_e95",
+      "weights_sha256": "ff02d765e4873054570db518d096c9158156bccd1195f9901cdf2e8935ad33ba",
+      "config_sha256": "0f805eed99609488287792a58a1a5cb3d81fc0cc852126d37f171c7fb84800fb"
+    },
+    {
+      "base": "Qwen3-8B",
+      "label": "magicoder__seed43__para_e99",
+      "path": "/dataset1/zailong/workspace/peft-sft-lab/reports/posthoc_baselines_para_spectral_surgery/para/adapters/Qwen3-8B/magicoder/seed43/para_e99",
+      "train_task": "magicoder",
+      "seed": 43,
+      "method": "para_e99",
+      "weights_sha256": "128a38c9830b8dba6d861f6bc98a01843c62d8a0cc98fc5b0a9997d6f16d5507",
+      "config_sha256": "cd0db49c1715d441b5b6978de1abe1fd1baff6270029ab45fe072be6ff7ecc2c"
+    },
+    {
+      "base": "Qwen3-8B",
+      "label": "metamath__seed43__para_e90",
+      "path": "/dataset1/zailong/workspace/peft-sft-lab/reports/posthoc_baselines_para_spectral_surgery/para/adapters/Qwen3-8B/metamath/seed43/para_e90",
+      "train_task": "metamath",
+      "seed": 43,
+      "method": "para_e90",
+      "weights_sha256": "956a2faad973b8fd5431dbcca34e4437521a545bb4c0c270a78dea2db71b2d71",
+      "config_sha256": "7eab3b0e61d62e9fcad9dd4e5e313e2d199fa88990692a9754b7c333532406bd"
+    },
+    {
+      "base": "Qwen3-8B",
+      "label": "metamath__seed43__para_e95",
+      "path": "/dataset1/zailong/workspace/peft-sft-lab/reports/posthoc_baselines_para_spectral_surgery/para/adapters/Qwen3-8B/metamath/seed43/para_e95",
+      "train_task": "metamath",
+      "seed": 43,
+      "method": "para_e95",
+      "weights_sha256": "efa6dd15f32251ffaf0d822e48f376da55f8b3f2909a6a31d8bd2b855e3b7c14",
+      "config_sha256": "775793fa5a2bb7e558efaf3051f4b93b531c75d5aed41cffce9d795bc7ff4ee7"
+    },
+    {
+      "base": "Qwen3-8B",
+      "label": "metamath__seed43__para_e99",
+      "path": "/dataset1/zailong/workspace/peft-sft-lab/reports/posthoc_baselines_para_spectral_surgery/para/adapters/Qwen3-8B/metamath/seed43/para_e99",
+      "train_task": "metamath",
+      "seed": 43,
+      "method": "para_e99",
+      "weights_sha256": "52bfb4e50f7b9181b7ad571baf59da3c0933d70ee66fbf268a8bc08b58203c89",
+      "config_sha256": "ba20b83d923477092d8115edfcc2a3c687f4a1248d267f9b93a6ce6d8447fa99"
+    },
+    {
+      "base": "Qwen3-8B",
+      "label": "tulu__seed43__para_e90",
+      "path": "/dataset1/zailong/workspace/peft-sft-lab/reports/posthoc_baselines_para_spectral_surgery/para/adapters/Qwen3-8B/tulu/seed43/para_e90",
+      "train_task": "tulu",
+      "seed": 43,
+      "method": "para_e90",
+      "weights_sha256": "49dcfc2ba3830ccfa79a85798d5782c83be737264e535adb4e0df926d20c834e",
+      "config_sha256": "be03ed57fda6ad7bb307aa59b65cfce5fe62d222e05c175c428e1e2f433d4690"
+    },
+    {
+      "base": "Qwen3-8B",
+      "label": "tulu__seed43__para_e95",
+      "path": "/dataset1/zailong/workspace/peft-sft-lab/reports/posthoc_baselines_para_spectral_surgery/para/adapters/Qwen3-8B/tulu/seed43/para_e95",
+      "train_task": "tulu",
+      "seed": 43,
+      "method": "para_e95",
+      "weights_sha256": "0fdce7fb6537b1c166044fb164f3fafd021320cfe7b768bb0b184e1b8e1bae43",
+      "config_sha256": "b5db345331721b8a9dac85d54741a37b056d65c495732e3c4e1eaf3b7fb2379b"
+    },
+    {
+      "base": "Qwen3-8B",
+      "label": "tulu__seed43__para_e99",
+      "path": "/dataset1/zailong/workspace/peft-sft-lab/reports/posthoc_baselines_para_spectral_surgery/para/adapters/Qwen3-8B/tulu/seed43/para_e99",
+      "train_task": "tulu",
+      "seed": 43,
+      "method": "para_e99",
+      "weights_sha256": "9392ee0a19ede2b3117a9900ca531cd69ce6f002f1f36a82e5f60a766ca2e7b6",
+      "config_sha256": "3ce7cb8231f1dfc2cf2ef43018fff2c7f133b9f14c974fda147ad9f402df478b"
+    },
+    {
+      "base": "Qwen3-8B",
+      "label": "magicoder__seed44__para_e90",
+      "path": "/dataset1/zailong/workspace/peft-sft-lab/reports/posthoc_baselines_para_spectral_surgery/para/adapters/Qwen3-8B/magicoder/seed44/para_e90",
+      "train_task": "magicoder",
+      "seed": 44,
+      "method": "para_e90",
+      "weights_sha256": "ae87b6bb648b332ded52360b2e2c06c3f394ccdc85ac6d615951e6a8a4615564",
+      "config_sha256": "af14301ecfc179b07df0143909b721dc6ca482d693494410b685dbcac5a24af5"
+    },
+    {
+      "base": "Qwen3-8B",
+      "label": "magicoder__seed44__para_e95",
+      "path": "/dataset1/zailong/workspace/peft-sft-lab/reports/posthoc_baselines_para_spectral_surgery/para/adapters/Qwen3-8B/magicoder/seed44/para_e95",
+      "train_task": "magicoder",
+      "seed": 44,
+      "method": "para_e95",
+      "weights_sha256": "a6d5807bbdc8234c66e3a528815117e3f12d433518273393b3bb3554e3a398d0",
+      "config_sha256": "9a5e3569484404be05107769d32ae4bda677e1e96cf416c227185691fe3288cd"
+    },
+    {
+      "base": "Qwen3-8B",
+      "label": "magicoder__seed44__para_e99",
+      "path": "/dataset1/zailong/workspace/peft-sft-lab/reports/posthoc_baselines_para_spectral_surgery/para/adapters/Qwen3-8B/magicoder/seed44/para_e99",
+      "train_task": "magicoder",
+      "seed": 44,
+      "method": "para_e99",
+      "weights_sha256": "a95ef94b93faef8a6983cf61f0e62b92d94ba167a0ec702f1fad01de0c896622",
+      "config_sha256": "1599f67a1fdc4230de144404ba4f7712d7958c26bfab53fc4f4f0398c9d22bfe"
+    },
+    {
+      "base": "Qwen3-8B",
+      "label": "metamath__seed44__para_e90",
+      "path": "/dataset1/zailong/workspace/peft-sft-lab/reports/posthoc_baselines_para_spectral_surgery/para/adapters/Qwen3-8B/metamath/seed44/para_e90",
+      "train_task": "metamath",
+      "seed": 44,
+      "method": "para_e90",
+      "weights_sha256": "8f50809fc5f0beb72b6a92cf7737947c5788631f6233249c22c4c1a792ecf117",
+      "config_sha256": "95344e04ffea509a2ba76a48029fde43cbc0626161da4d484aaa4c6b340fc277"
+    },
+    {
+      "base": "Qwen3-8B",
+      "label": "metamath__seed44__para_e95",
+      "path": "/dataset1/zailong/workspace/peft-sft-lab/reports/posthoc_baselines_para_spectral_surgery/para/adapters/Qwen3-8B/metamath/seed44/para_e95",
+      "train_task": "metamath",
+      "seed": 44,
+      "method": "para_e95",
+      "weights_sha256": "1bd094b9ba284fc76f81c9df58179ddb2f67f6e8fbea772cff05b2ea143fc248",
+      "config_sha256": "4989e50867feb8f4581c3629bb5620a56868e70ddaa66180541c9a93bdd4c0b8"
+    },
+    {
+      "base": "Qwen3-8B",
+      "label": "metamath__seed44__para_e99",
+      "path": "/dataset1/zailong/workspace/peft-sft-lab/reports/posthoc_baselines_para_spectral_surgery/para/adapters/Qwen3-8B/metamath/seed44/para_e99",
+      "train_task": "metamath",
+      "seed": 44,
+      "method": "para_e99",
+      "weights_sha256": "5f569d529a53512076eab9ae235948bf3d90f7deeaacfb9669e91223cb82b616",
+      "config_sha256": "b810eb7b460335d09080b95bf12de77a8c68eff0af2f82627149ece134eaeefc"
+    },
+    {
+      "base": "Qwen3-8B",
+      "label": "tulu__seed44__para_e90",
+      "path": "/dataset1/zailong/workspace/peft-sft-lab/reports/posthoc_baselines_para_spectral_surgery/para/adapters/Qwen3-8B/tulu/seed44/para_e90",
+      "train_task": "tulu",
+      "seed": 44,
+      "method": "para_e90",
+      "weights_sha256": "28a61ac8b033a7cfc3f73e5a4a2d44788991dcc48b0bb77b72e9c1a200749f2d",
+      "config_sha256": "3116e2119d2f871b16784b7e6ebb804487d40c7d71d996a2a36b18ce9af6132e"
+    },
+    {
+      "base": "Qwen3-8B",
+      "label": "tulu__seed44__para_e95",
+      "path": "/dataset1/zailong/workspace/peft-sft-lab/reports/posthoc_baselines_para_spectral_surgery/para/adapters/Qwen3-8B/tulu/seed44/para_e95",
+      "train_task": "tulu",
+      "seed": 44,
+      "method": "para_e95",
+      "weights_sha256": "f87d72365a59fd55a06dcf611880c1209cbc9c69c262d75a09271af713cf5ab3",
+      "config_sha256": "528837b2ae150663e9cbc72cb026adc9dc47fe3f8b7325c0548e5d3c190024a8"
+    },
+    {
+      "base": "Qwen3-8B",
+      "label": "tulu__seed44__para_e99",
+      "path": "/dataset1/zailong/workspace/peft-sft-lab/reports/posthoc_baselines_para_spectral_surgery/para/adapters/Qwen3-8B/tulu/seed44/para_e99",
+      "train_task": "tulu",
+      "seed": 44,
+      "method": "para_e99",
+      "weights_sha256": "3e0fca0801c9a7d4bea6aea8094ae24c45c310dcfaa8fe4cb544a4f0296d44eb",
+      "config_sha256": "619d00965943b74b8d1975d38b0fbef1ec721716d7f6d36b0d94a89c83d1a805"
+    },
+    {
+      "base": "Qwen3-8B",
+      "label": "magicoder__seed42__spectral_surgery_grad_direction",
+      "path": "/dataset1/zailong/workspace/peft-sft-lab/reports/posthoc_baselines_para_spectral_surgery/spectral_surgery/adapters/Qwen3-8B/magicoder/seed42/grad_direction",
+      "train_task": "magicoder",
+      "seed": 42,
+      "method": "spectral_surgery_grad_direction",
+      "weights_sha256": "39f60853235c1a7888e88b881abc9eece69acd851fe2a62acd373037819dcdda",
+      "config_sha256": "d47ac43d9f3b727032b2752be65333cc117bdf0036c45b6ff90948453da97961"
+    },
+    {
+      "base": "Qwen3-8B",
+      "label": "metamath__seed42__spectral_surgery_grad_direction",
+      "path": "/dataset1/zailong/workspace/peft-sft-lab/reports/posthoc_baselines_para_spectral_surgery/spectral_surgery/adapters/Qwen3-8B/metamath/seed42/grad_direction",
+      "train_task": "metamath",
+      "seed": 42,
+      "method": "spectral_surgery_grad_direction",
+      "weights_sha256": "df7a7fab6dfeb5b67d1df6db24636dec4b654c518b212aad46441247adff0766",
+      "config_sha256": "511a7a57399324e3af545c893982bf76d3c77de31e099ea1aa62e74a71ecc630"
+    },
+    {
+      "base": "Qwen3-8B",
+      "label": "tulu__seed42__spectral_surgery_grad_direction",
+      "path": "/dataset1/zailong/workspace/peft-sft-lab/reports/posthoc_baselines_para_spectral_surgery/spectral_surgery/adapters/Qwen3-8B/tulu/seed42/grad_direction",
+      "train_task": "tulu",
+      "seed": 42,
+      "method": "spectral_surgery_grad_direction",
+      "weights_sha256": "b2600f7d5757ea0358551a566df0b9e6bf4d262e01bf7519fad405434617c476",
+      "config_sha256": "4895afcdea39bdcb075d80cf0c95d27171d1695b210b34f2ef7558b0b8a1bfa3"
+    },
+    {
+      "base": "Qwen3-8B",
+      "label": "magicoder__seed43__spectral_surgery_grad_direction",
+      "path": "/dataset1/zailong/workspace/peft-sft-lab/reports/posthoc_baselines_para_spectral_surgery/spectral_surgery/adapters/Qwen3-8B/magicoder/seed43/grad_direction",
+      "train_task": "magicoder",
+      "seed": 43,
+      "method": "spectral_surgery_grad_direction",
+      "weights_sha256": "73b99cf78bc630b420e0440b1675f06bbaf2a290bcf75f920384e1c162c25b47",
+      "config_sha256": "1ef01a098f276d7ce134f5bb6f82a3d421f94c9b2d6579b6003512e4e901228a"
+    },
+    {
+      "base": "Qwen3-8B",
+      "label": "metamath__seed43__spectral_surgery_grad_direction",
+      "path": "/dataset1/zailong/workspace/peft-sft-lab/reports/posthoc_baselines_para_spectral_surgery/spectral_surgery/adapters/Qwen3-8B/metamath/seed43/grad_direction",
+      "train_task": "metamath",
+      "seed": 43,
+      "method": "spectral_surgery_grad_direction",
+      "weights_sha256": "75adfc31292f7ef1a436e114cf05f6929fb7ef33ccfa7c73c89484588ebd6772",
+      "config_sha256": "1ef01a098f276d7ce134f5bb6f82a3d421f94c9b2d6579b6003512e4e901228a"
+    },
+    {
+      "base": "Qwen3-8B",
+      "label": "tulu__seed43__spectral_surgery_grad_direction",
+      "path": "/dataset1/zailong/workspace/peft-sft-lab/reports/posthoc_baselines_para_spectral_surgery/spectral_surgery/adapters/Qwen3-8B/tulu/seed43/grad_direction",
+      "train_task": "tulu",
+      "seed": 43,
+      "method": "spectral_surgery_grad_direction",
+      "weights_sha256": "c1cd5a92653ee2f74ea6d849b08670fe65a11772300f70065bce6eea89efbdda",
+      "config_sha256": "1ef01a098f276d7ce134f5bb6f82a3d421f94c9b2d6579b6003512e4e901228a"
+    },
+    {
+      "base": "Qwen3-8B",
+      "label": "magicoder__seed44__spectral_surgery_grad_direction",
+      "path": "/dataset1/zailong/workspace/peft-sft-lab/reports/posthoc_baselines_para_spectral_surgery/spectral_surgery/adapters/Qwen3-8B/magicoder/seed44/grad_direction",
+      "train_task": "magicoder",
+      "seed": 44,
+      "method": "spectral_surgery_grad_direction",
+      "weights_sha256": "f9f5c6cbb55fadf15f77d09e7a06385a16d5f58cb046cb90b3c0762c31df4512",
+      "config_sha256": "09f5203f6929787edb04234aecdaa82044cf66c24cb5a39b7eed4598d87eebe5"
+    },
+    {
+      "base": "Qwen3-8B",
+      "label": "metamath__seed44__spectral_surgery_grad_direction",
+      "path": "/dataset1/zailong/workspace/peft-sft-lab/reports/posthoc_baselines_para_spectral_surgery/spectral_surgery/adapters/Qwen3-8B/metamath/seed44/grad_direction",
+      "train_task": "metamath",
+      "seed": 44,
+      "method": "spectral_surgery_grad_direction",
+      "weights_sha256": "78870cf6b679ad904b97b741386ed232b55508b833d31a5026980dccb8fb736d",
+      "config_sha256": "09f5203f6929787edb04234aecdaa82044cf66c24cb5a39b7eed4598d87eebe5"
+    },
+    {
+      "base": "Qwen3-8B",
+      "label": "tulu__seed44__spectral_surgery_grad_direction",
+      "path": "/dataset1/zailong/workspace/peft-sft-lab/reports/posthoc_baselines_para_spectral_surgery/spectral_surgery/adapters/Qwen3-8B/tulu/seed44/grad_direction",
+      "train_task": "tulu",
+      "seed": 44,
+      "method": "spectral_surgery_grad_direction",
+      "weights_sha256": "d4a2cf8bc9cdb8f66da67c1b5fe65d11876cbcf66f1029ff02889f71a73e2bf5",
+      "config_sha256": "09f5203f6929787edb04234aecdaa82044cf66c24cb5a39b7eed4598d87eebe5"
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "label": "magicoder__seed42__para_e90",
+      "path": "/dataset1/zailong/workspace/peft-sft-lab/reports/posthoc_baselines_para_spectral_surgery/para/adapters/Llama-3.1-8B-Instruct/magicoder/seed42/para_e90",
+      "train_task": "magicoder",
+      "seed": 42,
+      "method": "para_e90",
+      "weights_sha256": "96fa588aba4276be45d8bc0c6ecf145a9151e19b5eae1cb614c7b2b1045d783f",
+      "config_sha256": "5c746bd98aa3317e255c135908003e644ed28457972db555393250e54d1fe83c"
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "label": "magicoder__seed42__para_e95",
+      "path": "/dataset1/zailong/workspace/peft-sft-lab/reports/posthoc_baselines_para_spectral_surgery/para/adapters/Llama-3.1-8B-Instruct/magicoder/seed42/para_e95",
+      "train_task": "magicoder",
+      "seed": 42,
+      "method": "para_e95",
+      "weights_sha256": "70456517bfad4234e513f71469b9f2cb7af61bc24e5ef0abaea2167fce670923",
+      "config_sha256": "2679d9a497149325bfd435d3cb0f904954b7e86f84aace530d4123eae0e0e2dc"
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "label": "magicoder__seed42__para_e99",
+      "path": "/dataset1/zailong/workspace/peft-sft-lab/reports/posthoc_baselines_para_spectral_surgery/para/adapters/Llama-3.1-8B-Instruct/magicoder/seed42/para_e99",
+      "train_task": "magicoder",
+      "seed": 42,
+      "method": "para_e99",
+      "weights_sha256": "339bba14ffb75d642b627b3ada476455b6a3402c3a6d27dce17c3da504df45f9",
+      "config_sha256": "f3fa8788dd2e6280fafc642b0ef3073b4003da5fa8c8f694fc1c2a257d9e6360"
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "label": "metamath__seed42__para_e90",
+      "path": "/dataset1/zailong/workspace/peft-sft-lab/reports/posthoc_baselines_para_spectral_surgery/para/adapters/Llama-3.1-8B-Instruct/metamath/seed42/para_e90",
+      "train_task": "metamath",
+      "seed": 42,
+      "method": "para_e90",
+      "weights_sha256": "56b0cbda54235e02e37602982dde46900623d63502677f298a669d4e2e5f3155",
+      "config_sha256": "54a97eee0798829b33a9c9cc01da82c7fb114a17e9b0efa519d490eb209dd5da"
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "label": "metamath__seed42__para_e95",
+      "path": "/dataset1/zailong/workspace/peft-sft-lab/reports/posthoc_baselines_para_spectral_surgery/para/adapters/Llama-3.1-8B-Instruct/metamath/seed42/para_e95",
+      "train_task": "metamath",
+      "seed": 42,
+      "method": "para_e95",
+      "weights_sha256": "70bcc3695abdbffbf8b97c5be9885bd9500145e7fb49658db1106cff9a9bc739",
+      "config_sha256": "bc76d5eada80efa0630a7e774d6d7f588dcdf7017fa0c2f33b04bb395845d1ad"
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "label": "metamath__seed42__para_e99",
+      "path": "/dataset1/zailong/workspace/peft-sft-lab/reports/posthoc_baselines_para_spectral_surgery/para/adapters/Llama-3.1-8B-Instruct/metamath/seed42/para_e99",
+      "train_task": "metamath",
+      "seed": 42,
+      "method": "para_e99",
+      "weights_sha256": "1034f9b7d97b442f2551abc3d3d05afd5c44204ca76322936a6b4dc32f5925e6",
+      "config_sha256": "12c9410c4a6324f00b540f35588db0f3d594ebdbf8244299e7d48ab2b0b3406a"
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "label": "tulu__seed42__para_e90",
+      "path": "/dataset1/zailong/workspace/peft-sft-lab/reports/posthoc_baselines_para_spectral_surgery/para/adapters/Llama-3.1-8B-Instruct/tulu/seed42/para_e90",
+      "train_task": "tulu",
+      "seed": 42,
+      "method": "para_e90",
+      "weights_sha256": "77698fb43a34e57465dcf5e0d8c55d448747df6744d8458a8d868c026c99ace6",
+      "config_sha256": "b1c053c25955d2248a0b6b58eccd61161615f8f5c49bf0d8dafc5e7cc176e1fb"
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "label": "tulu__seed42__para_e95",
+      "path": "/dataset1/zailong/workspace/peft-sft-lab/reports/posthoc_baselines_para_spectral_surgery/para/adapters/Llama-3.1-8B-Instruct/tulu/seed42/para_e95",
+      "train_task": "tulu",
+      "seed": 42,
+      "method": "para_e95",
+      "weights_sha256": "23c4951b1d90899062097b7e92412c2644670ab66d7f4a2aadb23da36682db85",
+      "config_sha256": "2ba7197bcbdb68d7b850f5c5456af617b5a50f6109c9e140d1be824f927c9f88"
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "label": "tulu__seed42__para_e99",
+      "path": "/dataset1/zailong/workspace/peft-sft-lab/reports/posthoc_baselines_para_spectral_surgery/para/adapters/Llama-3.1-8B-Instruct/tulu/seed42/para_e99",
+      "train_task": "tulu",
+      "seed": 42,
+      "method": "para_e99",
+      "weights_sha256": "a6dacc95fd6f5817439e65853220973533a982f7645737a7c7aab36cdc9c6f41",
+      "config_sha256": "316b0f81e908e20f84b2cb55a22dcb5b609442b8725717bf656f69d7271c051b"
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "label": "magicoder__seed43__para_e90",
+      "path": "/dataset1/zailong/workspace/peft-sft-lab/reports/posthoc_baselines_para_spectral_surgery/para/adapters/Llama-3.1-8B-Instruct/magicoder/seed43/para_e90",
+      "train_task": "magicoder",
+      "seed": 43,
+      "method": "para_e90",
+      "weights_sha256": "bd091c4728cdd01aa4ad0994d6d28add1000a8f0c003644c1a5286a9a10b2456",
+      "config_sha256": "14f822ad5ba3cc21455636bb137faa812314cbd0cefd947974d85da902bb06ff"
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "label": "magicoder__seed43__para_e95",
+      "path": "/dataset1/zailong/workspace/peft-sft-lab/reports/posthoc_baselines_para_spectral_surgery/para/adapters/Llama-3.1-8B-Instruct/magicoder/seed43/para_e95",
+      "train_task": "magicoder",
+      "seed": 43,
+      "method": "para_e95",
+      "weights_sha256": "a9b806e997c40b19d529e844a6bfbfd0d6ca39a53b6bca133f5e02971afd795b",
+      "config_sha256": "ddc24593a07f8f0b48a82eab3ca84b962fb17da0b4c2f517ad2d44d062ac5ebd"
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "label": "magicoder__seed43__para_e99",
+      "path": "/dataset1/zailong/workspace/peft-sft-lab/reports/posthoc_baselines_para_spectral_surgery/para/adapters/Llama-3.1-8B-Instruct/magicoder/seed43/para_e99",
+      "train_task": "magicoder",
+      "seed": 43,
+      "method": "para_e99",
+      "weights_sha256": "22b73c20eb909b5a7d29a651b957b2f60c3837dae12d8a62d6e792b3cbe2556a",
+      "config_sha256": "151b60d894a93077a79061f7c69bcd574c71eed620cc129ae4c13fe6d6ed84f0"
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "label": "metamath__seed43__para_e90",
+      "path": "/dataset1/zailong/workspace/peft-sft-lab/reports/posthoc_baselines_para_spectral_surgery/para/adapters/Llama-3.1-8B-Instruct/metamath/seed43/para_e90",
+      "train_task": "metamath",
+      "seed": 43,
+      "method": "para_e90",
+      "weights_sha256": "0a36a95231efe081ab37fa7ee76f99233b955bb2a862ee4860f7bd2dec943220",
+      "config_sha256": "2e5b34791016e739a91cb572ce0166576a8dd9844e7c0a2f644d470cc6e3729f"
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "label": "metamath__seed43__para_e95",
+      "path": "/dataset1/zailong/workspace/peft-sft-lab/reports/posthoc_baselines_para_spectral_surgery/para/adapters/Llama-3.1-8B-Instruct/metamath/seed43/para_e95",
+      "train_task": "metamath",
+      "seed": 43,
+      "method": "para_e95",
+      "weights_sha256": "a03cc5f4225a036aa5d56797250af3b9c399f2756f95b45b98b430cfb76a6ea1",
+      "config_sha256": "98be2262f21c79d85d3c09eb2c3958b8c869cbc7046790ae410d4b94ec539201"
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "label": "metamath__seed43__para_e99",
+      "path": "/dataset1/zailong/workspace/peft-sft-lab/reports/posthoc_baselines_para_spectral_surgery/para/adapters/Llama-3.1-8B-Instruct/metamath/seed43/para_e99",
+      "train_task": "metamath",
+      "seed": 43,
+      "method": "para_e99",
+      "weights_sha256": "412fbfbc1227d24195bdd38b083569a98f65280ca633fe0d35bb71fb34ca2ca9",
+      "config_sha256": "7146323cb621b14770f9023778d173f566c13f3d5d51094e4c59dc91db3a1862"
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "label": "tulu__seed43__para_e90",
+      "path": "/dataset1/zailong/workspace/peft-sft-lab/reports/posthoc_baselines_para_spectral_surgery/para/adapters/Llama-3.1-8B-Instruct/tulu/seed43/para_e90",
+      "train_task": "tulu",
+      "seed": 43,
+      "method": "para_e90",
+      "weights_sha256": "d0de9940c9cc6ee375f63c51359030daedac157d4b5307e51178a3ec06be5f9a",
+      "config_sha256": "d46b2859c087998aea4b476434e4808a43eecd004bb15d1c1e9798fcf06ae29a"
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "label": "tulu__seed43__para_e95",
+      "path": "/dataset1/zailong/workspace/peft-sft-lab/reports/posthoc_baselines_para_spectral_surgery/para/adapters/Llama-3.1-8B-Instruct/tulu/seed43/para_e95",
+      "train_task": "tulu",
+      "seed": 43,
+      "method": "para_e95",
+      "weights_sha256": "72bddcc1b8c21e988585a594b80f611b3faf599c1f9c3e580be3fdf0c4bdec43",
+      "config_sha256": "3c89134615522913de20c978c162bb1ac98f5fcb89f1e7d32f20fb1651326912"
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "label": "tulu__seed43__para_e99",
+      "path": "/dataset1/zailong/workspace/peft-sft-lab/reports/posthoc_baselines_para_spectral_surgery/para/adapters/Llama-3.1-8B-Instruct/tulu/seed43/para_e99",
+      "train_task": "tulu",
+      "seed": 43,
+      "method": "para_e99",
+      "weights_sha256": "def75a1cf725d1ecb08ae146782561ff59c760703d34aae2df0083726bb01b46",
+      "config_sha256": "3508fb0b97347841c59b580c4b853a2ebbc9bf709ec5d981b16ce181b9fb3412"
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "label": "magicoder__seed44__para_e90",
+      "path": "/dataset1/zailong/workspace/peft-sft-lab/reports/posthoc_baselines_para_spectral_surgery/para/adapters/Llama-3.1-8B-Instruct/magicoder/seed44/para_e90",
+      "train_task": "magicoder",
+      "seed": 44,
+      "method": "para_e90",
+      "weights_sha256": "e89adc141298a9e639433444e679f4b15758dff06908eeb4d42f48a820a551bf",
+      "config_sha256": "e13825c956ce48d82f2e3348ed044726590f4c3c17f0c24beaeea3a6df327d23"
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "label": "magicoder__seed44__para_e95",
+      "path": "/dataset1/zailong/workspace/peft-sft-lab/reports/posthoc_baselines_para_spectral_surgery/para/adapters/Llama-3.1-8B-Instruct/magicoder/seed44/para_e95",
+      "train_task": "magicoder",
+      "seed": 44,
+      "method": "para_e95",
+      "weights_sha256": "fbe9027797324146e9b7a39edc833a5f350006b3931b1cb1e2795675ba5e5fef",
+      "config_sha256": "5e9692c21289f31afe9bedf8a4f9ffa8dc2969b0c608f4d7dfb0000f247b4050"
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "label": "magicoder__seed44__para_e99",
+      "path": "/dataset1/zailong/workspace/peft-sft-lab/reports/posthoc_baselines_para_spectral_surgery/para/adapters/Llama-3.1-8B-Instruct/magicoder/seed44/para_e99",
+      "train_task": "magicoder",
+      "seed": 44,
+      "method": "para_e99",
+      "weights_sha256": "f5760a2844f0a9fbb5eadd078f484aea133a963d717fa6a2274e325d9dd740f3",
+      "config_sha256": "73f3759069455292f1cf5783c074b667a58b1d7b2bb764998cf0166622ec166d"
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "label": "metamath__seed44__para_e90",
+      "path": "/dataset1/zailong/workspace/peft-sft-lab/reports/posthoc_baselines_para_spectral_surgery/para/adapters/Llama-3.1-8B-Instruct/metamath/seed44/para_e90",
+      "train_task": "metamath",
+      "seed": 44,
+      "method": "para_e90",
+      "weights_sha256": "22a064092d937e3b1531773347ef465d671d518a57b18676c79fd592b8360325",
+      "config_sha256": "8d954ecc03106e2a65dd59e4af908a80099d3fbf46ad440a8792a93baad396a1"
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "label": "metamath__seed44__para_e95",
+      "path": "/dataset1/zailong/workspace/peft-sft-lab/reports/posthoc_baselines_para_spectral_surgery/para/adapters/Llama-3.1-8B-Instruct/metamath/seed44/para_e95",
+      "train_task": "metamath",
+      "seed": 44,
+      "method": "para_e95",
+      "weights_sha256": "4e0a8a3e5fc537afa86e5327a557b103f7341f51392dd73ba77b45a5e59e5f1d",
+      "config_sha256": "7b7e23a591bf89e23ffc79821e9b67dbf4931fe531600cc5558650fd08718756"
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "label": "metamath__seed44__para_e99",
+      "path": "/dataset1/zailong/workspace/peft-sft-lab/reports/posthoc_baselines_para_spectral_surgery/para/adapters/Llama-3.1-8B-Instruct/metamath/seed44/para_e99",
+      "train_task": "metamath",
+      "seed": 44,
+      "method": "para_e99",
+      "weights_sha256": "1b03ac684d12d0dec163028dca8f802f74ee98376addd0f1d61bc99b86fc7895",
+      "config_sha256": "e590ad80d6ffb9f6fc38d4ff79c3d545c811846924d2b6d009696bf27dfd54ad"
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "label": "tulu__seed44__para_e90",
+      "path": "/dataset1/zailong/workspace/peft-sft-lab/reports/posthoc_baselines_para_spectral_surgery/para/adapters/Llama-3.1-8B-Instruct/tulu/seed44/para_e90",
+      "train_task": "tulu",
+      "seed": 44,
+      "method": "para_e90",
+      "weights_sha256": "58ec50fe2b96049d3ef566b7639cf835df1ab1d681f287d03934c97d0606a42d",
+      "config_sha256": "13adbc81625519090bf16d040ee8397fb64adf9ddb83b2a9b9bf88602c236086"
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "label": "tulu__seed44__para_e95",
+      "path": "/dataset1/zailong/workspace/peft-sft-lab/reports/posthoc_baselines_para_spectral_surgery/para/adapters/Llama-3.1-8B-Instruct/tulu/seed44/para_e95",
+      "train_task": "tulu",
+      "seed": 44,
+      "method": "para_e95",
+      "weights_sha256": "512859f686c96ad7a460d0b8fcb1385e9475987b060891159c301e9644de2d1b",
+      "config_sha256": "1db0a22eb388bb02b0b4ce90685cc2bf3cbae1a52f0ee223661b3fae195a2c5c"
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "label": "tulu__seed44__para_e99",
+      "path": "/dataset1/zailong/workspace/peft-sft-lab/reports/posthoc_baselines_para_spectral_surgery/para/adapters/Llama-3.1-8B-Instruct/tulu/seed44/para_e99",
+      "train_task": "tulu",
+      "seed": 44,
+      "method": "para_e99",
+      "weights_sha256": "8049e402594aff9d60111e3d51e999f7f0558828cf35d001aaacb2622204f70c",
+      "config_sha256": "78b2f4e5eb115cebfee42018cfc7a7b0ab27b4a05a63609135a4eba23018de31"
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "label": "magicoder__seed42__spectral_surgery_grad_direction",
+      "path": "/dataset1/zailong/workspace/peft-sft-lab/reports/posthoc_baselines_para_spectral_surgery/spectral_surgery/adapters/Llama-3.1-8B-Instruct/magicoder/seed42/grad_direction",
+      "train_task": "magicoder",
+      "seed": 42,
+      "method": "spectral_surgery_grad_direction",
+      "weights_sha256": "571199ee504edc8e4e5df5220d8fe77be280279cddf089fa93cc87db1a9ba14d",
+      "config_sha256": "65a0e068e2d34f057e261b856c7dd213ccf815167aac7a46234c989af8029555"
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "label": "metamath__seed42__spectral_surgery_grad_direction",
+      "path": "/dataset1/zailong/workspace/peft-sft-lab/reports/posthoc_baselines_para_spectral_surgery/spectral_surgery/adapters/Llama-3.1-8B-Instruct/metamath/seed42/grad_direction",
+      "train_task": "metamath",
+      "seed": 42,
+      "method": "spectral_surgery_grad_direction",
+      "weights_sha256": "4dcc2758a69b8b483e796fcbc0969c5c00824b24abf1d5f1da0bed8280b58aca",
+      "config_sha256": "57297b7ac44ab6185c8b8fc8e75e38c154813306aee998b6037894d09e80b6db"
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "label": "tulu__seed42__spectral_surgery_grad_direction",
+      "path": "/dataset1/zailong/workspace/peft-sft-lab/reports/posthoc_baselines_para_spectral_surgery/spectral_surgery/adapters/Llama-3.1-8B-Instruct/tulu/seed42/grad_direction",
+      "train_task": "tulu",
+      "seed": 42,
+      "method": "spectral_surgery_grad_direction",
+      "weights_sha256": "d00a8ecdad68551cccaa3ce43bb32281b4ed14994d4bd07c5b4ddfcd0ebe9a69",
+      "config_sha256": "8992107e543a36312fa793d7573f84e2917228cd7238774967761b575e3b99e9"
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "label": "magicoder__seed43__spectral_surgery_grad_direction",
+      "path": "/dataset1/zailong/workspace/peft-sft-lab/reports/posthoc_baselines_para_spectral_surgery/spectral_surgery/adapters/Llama-3.1-8B-Instruct/magicoder/seed43/grad_direction",
+      "train_task": "magicoder",
+      "seed": 43,
+      "method": "spectral_surgery_grad_direction",
+      "weights_sha256": "bd2fe3e7247f11e856b4df067f30f11e4030b7a3a65e1e2ab43dfe7e7a9997e1",
+      "config_sha256": "1652914087d906dce7d823de1e56138352bc5f988e9f82e1ec4d9630bac8ffd6"
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "label": "metamath__seed43__spectral_surgery_grad_direction",
+      "path": "/dataset1/zailong/workspace/peft-sft-lab/reports/posthoc_baselines_para_spectral_surgery/spectral_surgery/adapters/Llama-3.1-8B-Instruct/metamath/seed43/grad_direction",
+      "train_task": "metamath",
+      "seed": 43,
+      "method": "spectral_surgery_grad_direction",
+      "weights_sha256": "028a784bb3086f3361616c64c8578c60129efc499ea755f8ff488d45afb062df",
+      "config_sha256": "1652914087d906dce7d823de1e56138352bc5f988e9f82e1ec4d9630bac8ffd6"
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "label": "tulu__seed43__spectral_surgery_grad_direction",
+      "path": "/dataset1/zailong/workspace/peft-sft-lab/reports/posthoc_baselines_para_spectral_surgery/spectral_surgery/adapters/Llama-3.1-8B-Instruct/tulu/seed43/grad_direction",
+      "train_task": "tulu",
+      "seed": 43,
+      "method": "spectral_surgery_grad_direction",
+      "weights_sha256": "94d206cd0cea51ac00e530258c94846dff32a16091fbd1fe72fcad3653f0a1b4",
+      "config_sha256": "1652914087d906dce7d823de1e56138352bc5f988e9f82e1ec4d9630bac8ffd6"
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "label": "magicoder__seed44__spectral_surgery_grad_direction",
+      "path": "/dataset1/zailong/workspace/peft-sft-lab/reports/posthoc_baselines_para_spectral_surgery/spectral_surgery/adapters/Llama-3.1-8B-Instruct/magicoder/seed44/grad_direction",
+      "train_task": "magicoder",
+      "seed": 44,
+      "method": "spectral_surgery_grad_direction",
+      "weights_sha256": "17bc83384f098bc3cfff21870df14a4b972e69fc64e997488f56373dd5b40156",
+      "config_sha256": "1baccfbb5c4990e7df11090de2b010bff7bd6632c9cebd4a30c8d006495b69bf"
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "label": "metamath__seed44__spectral_surgery_grad_direction",
+      "path": "/dataset1/zailong/workspace/peft-sft-lab/reports/posthoc_baselines_para_spectral_surgery/spectral_surgery/adapters/Llama-3.1-8B-Instruct/metamath/seed44/grad_direction",
+      "train_task": "metamath",
+      "seed": 44,
+      "method": "spectral_surgery_grad_direction",
+      "weights_sha256": "9f9c28b60b1b3f3125d84d718f4d634a9e5f935f7f43f1c2be15a7c7937dfebd",
+      "config_sha256": "1baccfbb5c4990e7df11090de2b010bff7bd6632c9cebd4a30c8d006495b69bf"
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "label": "tulu__seed44__spectral_surgery_grad_direction",
+      "path": "/dataset1/zailong/workspace/peft-sft-lab/reports/posthoc_baselines_para_spectral_surgery/spectral_surgery/adapters/Llama-3.1-8B-Instruct/tulu/seed44/grad_direction",
+      "train_task": "tulu",
+      "seed": 44,
+      "method": "spectral_surgery_grad_direction",
+      "weights_sha256": "0cb071cfe3fbc8a4e90b0172150ecc43813eabfd212c7a5b450e8c10c001de8a",
+      "config_sha256": "1baccfbb5c4990e7df11090de2b010bff7bd6632c9cebd4a30c8d006495b69bf"
+    }
+  ]
+}

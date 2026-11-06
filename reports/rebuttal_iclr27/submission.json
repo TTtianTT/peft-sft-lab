@@ -1,0 +1,29 @@
+{
+  "status": "submitted",
+  "jobs": [
+    {
+      "experiment": "E1_then_E0",
+      "job_id": "14888",
+      "gpu_count": 2,
+      "partition": "B300q",
+      "script": "slurm/rebuttal_iclr27_e1_e0.slurm",
+      "command": "/dataset1/zailong/envs/peft-sft-lab/bin/python scripts/rebuttal_iclr27.py --pipeline",
+      "stdout": "logs/rebuttal27-e1-e0-14888.out",
+      "stderr": "logs/rebuttal27-e1-e0-14888.err",
+      "status": "failed_before_generation",
+      "failure": "Exclusive-process CUDA context retained by in-process adapter builder; 18 audited Recon-0 adapters preserved, no official cells generated."
+    },
+    {
+      "experiment": "E1_then_E0",
+      "job_id": "14889",
+      "gpu_count": 2,
+      "partition": "B300q",
+      "script": "slurm/rebuttal_iclr27_e1_e0.slurm",
+      "command": "/dataset1/zailong/envs/peft-sft-lab/bin/python scripts/rebuttal_iclr27.py --pipeline",
+      "stdout": "logs/rebuttal27-e1-e0-14889.out",
+      "stderr": "logs/rebuttal27-e1-e0-14889.err",
+      "status": "submitted",
+      "change": "Isolate builder CUDA context in exited subprocess; no evaluation protocol change."
+    }
+  ]
+}
