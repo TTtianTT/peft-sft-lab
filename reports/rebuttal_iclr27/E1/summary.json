@@ -1,6 +1,6 @@
 {
-  "status": "awaiting_E0",
-  "completed_utc": "2026-11-06T14:15:58.352953+00:00",
+  "status": "complete",
+  "completed_utc": "2026-11-06T15:26:21.853042+00:00",
   "expected_new_cells": 72,
   "n_checkpoints": 18,
   "methods": {
@@ -8,6 +8,16 @@
       "target": 72.2732538646908,
       "off_score": 72.56613164254914,
       "forgetting_gap": 0.3957100220359184
+    },
+    "flat_fro": {
+      "target": 71.73106164057145,
+      "off_score": 72.21024731210358,
+      "forgetting_gap": 0.5772228289262489
+    },
+    "flat_nuclear": {
+      "target": 72.0139230144549,
+      "off_score": 72.66401856194418,
+      "forgetting_gap": 0.3825156859960994
     },
     "hns_f4_s1": {
       "target": 72.08343957191464,
@@ -59,7 +69,16 @@
     "14889"
   ],
   "gpu_count": 2,
-  "pending": [
-    "main-wave Flat-Nuclear comparison from E0"
-  ]
+  "pending": [],
+  "failed_job_ids": [
+    "14888"
+  ],
+  "failure_before_generation": "Builder held an exclusive CUDA context; fixed by isolated builder subprocess. Existing adapters reused.",
+  "outputs_sha256": {
+    "report.md": "9f5a195ffd7806c19d573c6a7b486396f6fe20c7a5e72e6bc106dbe85c547a36",
+    "checkpoint_results.tsv": "352fda898f5663b3651b278ec8f2ceeb124e768367336606a4b6805591080b3f",
+    "paired_ci.tsv": "ca8f5fb055342132db944d2279e798d26acd6ad86945a9b2b07201538ddd3956",
+    "artifact_integrity_audit.json": "6c980d2733a242bc2cd34f13d3dcd8e74009fce6c85f240eaad8670fa71ef09e",
+    "coverage_audit.json": "4168aad5aba0a72deb4292e83a625e4cbbfdf707e4fab71ffeb5138231a0dba3"
+  }
 }

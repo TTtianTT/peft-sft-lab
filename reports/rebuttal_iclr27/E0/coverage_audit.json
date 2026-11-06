@@ -1,0 +1,18 @@
+{
+  "status": "pass",
+  "checkpoints": 18,
+  "expected_methods": [
+    "flat_e",
+    "flat_fro",
+    "flat_nuclear",
+    "hns_f4_s1",
+    "original_lora",
+    "recon_0",
+    "scalar_e"
+  ],
+  "actual_rows": 126,
+  "expected_rows": 126,
+  "new_cells": 144,
+  "sample_input_mismatches": 0,
+  "audited_new_and_dependency_cells": 216
+}

@@ -1,0 +1,70 @@
+{
+  "status": "complete",
+  "completed_utc": "2026-11-06T15:24:28.372825+00:00",
+  "expected_new_cells": 144,
+  "n_checkpoints": 18,
+  "methods": {
+    "flat_e": {
+      "target": 72.2732538646908,
+      "off_score": 72.56613164254914,
+      "forgetting_gap": 0.3957100220359184
+    },
+    "flat_fro": {
+      "target": 71.73106164057145,
+      "off_score": 72.21024731210358,
+      "forgetting_gap": 0.5772228289262489
+    },
+    "flat_nuclear": {
+      "target": 72.0139230144549,
+      "off_score": 72.66401856194418,
+      "forgetting_gap": 0.3825156859960994
+    },
+    "hns_f4_s1": {
+      "target": 72.08343957191464,
+      "off_score": 72.79151252738859,
+      "forgetting_gap": 0.3440958896830035
+    },
+    "original_lora": {
+      "target": 67.99797931455494,
+      "off_score": 69.55120898067872,
+      "forgetting_gap": 2.708166011271413
+    },
+    "recon_0": {
+      "target": 68.47691308355012,
+      "off_score": 69.76575849417752,
+      "forgetting_gap": 2.575669668210069
+    },
+    "scalar_e": {
+      "target": 72.69964774421527,
+      "off_score": 72.46961955573461,
+      "forgetting_gap": 0.5246852422111885
+    }
+  },
+  "bootstrap_resamples": 20000,
+  "bootstrap_unit": "source checkpoint",
+  "uncertainty": "descriptive intervals on a fixed shared test set; not IID training-run CIs",
+  "protocol_sha256": "6f657e6bdfcecfbf31331a6a129be99fc12334ea3f89dc7934a5fde6cd7e64b2",
+  "sample_input_mismatches": 0,
+  "job_ids": [
+    "14889"
+  ],
+  "gpu_count": 2,
+  "pending": [],
+  "wave_consistency": {
+    "samples": 879948,
+    "token_changes": 0,
+    "text_changes": 0,
+    "correctness_changes": 0
+  },
+  "failed_job_ids": [
+    "14888"
+  ],
+  "failure_before_generation": "Builder held an exclusive CUDA context; fixed by isolated builder subprocess. Existing adapters reused.",
+  "outputs_sha256": {
+    "report.md": "8a274e74869a83b7f12dd9ded38810f0fced818c7dc35a32471ec079e692039f",
+    "checkpoint_results.tsv": "d160c9c2bb858bbf614dfa75736f995280dbb8f956cfbf176481fff564d92d31",
+    "paired_ci.tsv": "206eb6361a5781e71b35b31b932eae0ab3a0724fb70ed9a5e068324a39478b8d",
+    "artifact_integrity_audit.json": "6c980d2733a242bc2cd34f13d3dcd8e74009fce6c85f240eaad8670fa71ef09e",
+    "coverage_audit.json": "2894c4df6024098d79c53a276f08b7c5710960bc3d1bad6329dc785b5ccfbaca"
+  }
+}

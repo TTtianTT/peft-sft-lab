@@ -1,12 +1,14 @@
 # E1: unified main-protocol results
 
-Status: awaiting_E0.
+Status: complete.
 
 18 fixed source checkpoints, no retraining. Scores are %; differences and FG are percentage points. Off averages the three non-target benchmark families equally; FG clips each family before averaging. Commonsense-8 uses equal subtask weights.
 
 | Method | Target | Off | FG |
 | --- | ---: | ---: | ---: |
 | flat_e | 72.2733 | 72.5661 | 0.3957 |
+| flat_fro | 71.7311 | 72.2102 | 0.5772 |
+| flat_nuclear | 72.0139 | 72.6640 | 0.3825 |
 | hns_f4_s1 | 72.0834 | 72.7915 | 0.3441 |
 | original_lora | 67.9980 | 69.5512 | 2.7082 |
 | para_e90 | 68.7778 | 70.0126 | 2.3706 |
@@ -24,6 +26,18 @@ Status: awaiting_E0.
 | flat_e − recon_0 | target | +3.7963 [+2.1976, +5.6517] | 15/1/2 |
 | flat_e − recon_0 | off_score | +2.8004 [+1.5276, +4.1735] | 14/0/4 |
 | flat_e − recon_0 | forgetting_gap | -2.1800 [-3.2090, -1.3402] | 14/4/0 |
+| flat_fro − original_lora | target | +3.7331 [+2.1549, +5.5589] | 16/0/2 |
+| flat_fro − original_lora | off_score | +2.6590 [+1.5072, +3.9672] | 16/0/2 |
+| flat_fro − original_lora | forgetting_gap | -2.1309 [-3.2124, -1.2886] | 14/4/0 |
+| flat_fro − recon_0 | target | +3.2541 [+1.5974, +5.2091] | 15/1/2 |
+| flat_fro − recon_0 | off_score | +2.4445 [+1.2774, +3.6998] | 14/0/4 |
+| flat_fro − recon_0 | forgetting_gap | -1.9984 [-2.9992, -1.2026] | 14/4/0 |
+| flat_nuclear − original_lora | target | +4.0159 [+2.5734, +5.5513] | 16/1/1 |
+| flat_nuclear − original_lora | off_score | +3.1128 [+1.8373, +4.5585] | 14/0/4 |
+| flat_nuclear − original_lora | forgetting_gap | -2.3257 [-3.4420, -1.4230] | 14/4/0 |
+| flat_nuclear − recon_0 | target | +3.5370 [+1.9899, +5.2439] | 16/0/2 |
+| flat_nuclear − recon_0 | off_score | +2.8983 [+1.6496, +4.2805] | 14/0/4 |
+| flat_nuclear − recon_0 | forgetting_gap | -2.1932 [-3.2164, -1.3552] | 14/4/0 |
 | hns_f4_s1 − original_lora | target | +4.0855 [+2.6830, +5.6421] | 16/1/1 |
 | hns_f4_s1 − original_lora | off_score | +3.2403 [+1.9751, +4.6365] | 15/0/3 |
 | hns_f4_s1 − original_lora | forgetting_gap | -2.3641 [-3.4756, -1.4568] | 14/4/0 |
@@ -81,4 +95,6 @@ HNS versus Recon-0, off_score: higher; +3.0258 [+1.7605, +4.3633] pp.
 
 HNS versus Recon-0, forgetting_gap: lower; -2.2316 [-3.2588, -1.3755] pp.
 
-E1 evaluation and audit are done; Flat-Nuclear comparison awaits E0. This is an interim report, not completed E1.
+Flat adapter audit: 8568 module/method rows; max reconstruction error 0; max budget error 5.96046448e-07. Exact historical weight/config hashes preserved; original CPU SVD/writeback recomputed only for audit.
+
+Initial Slurm14888 failed before generation because the in-process builder retained an exclusive CUDA context. Slurm14889 isolates the builder, reuses the audited weights and keeps the evaluation protocol unchanged. See submission.json and retained logs.
