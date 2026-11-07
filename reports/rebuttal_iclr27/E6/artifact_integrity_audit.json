@@ -1,0 +1,12 @@
+{
+  "status": "pass",
+  "weights": [],
+  "reconstruction_error": null,
+  "applicability": "No adapter construction/evaluation in this writing-only stage",
+  "source_hashes": {
+    "src/finetune/spectral_edit/posthoc_hns.py": "a9351267929f16efd5b511801c3b2128b3b213414053050636a6eb492cd62206",
+    "src/finetune/spectral_edit/svd.py": "606213fb325cd09d012f02e05adb269b0d8f1f92c6ccfef21fa7a409c82f9ce2",
+    "src/finetune/spectral_edit/cli.py": "5903f1e340fdf5acc3dfc2d61bb8e8dac391332225fb2622d84153d190393c4e",
+    "src/finetune/spectral_edit/io.py": "296712529479318a67588f22052ea8587ed57d55371b6cd76918244d5749c5ea"
+  }
+}

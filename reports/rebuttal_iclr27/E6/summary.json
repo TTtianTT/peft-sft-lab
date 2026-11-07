@@ -1,0 +1,164 @@
+{
+  "status": "complete",
+  "completed_utc": "2026-11-07T07:56:13.270023+00:00",
+  "new_cells": 0,
+  "mode": "algorithm extraction; no GPU work",
+  "source_hashes": {
+    "src/finetune/spectral_edit/posthoc_hns.py": "a9351267929f16efd5b511801c3b2128b3b213414053050636a6eb492cd62206",
+    "src/finetune/spectral_edit/svd.py": "606213fb325cd09d012f02e05adb269b0d8f1f92c6ccfef21fa7a409c82f9ce2",
+    "src/finetune/spectral_edit/cli.py": "5903f1e340fdf5acc3dfc2d61bb8e8dac391332225fb2622d84153d190393c4e",
+    "src/finetune/spectral_edit/io.py": "296712529479318a67588f22052ea8587ed57d55371b6cd76918244d5749c5ea"
+  },
+  "symbols": {
+    "HNSEditConfig": {
+      "file": "src/finetune/spectral_edit/posthoc_hns.py",
+      "line": 16,
+      "end_line": 30
+    },
+    "effective_rank_from_sigma": {
+      "file": "src/finetune/spectral_edit/posthoc_hns.py",
+      "line": 33,
+      "end_line": 44
+    },
+    "_ns_polynomial_step": {
+      "file": "src/finetune/spectral_edit/posthoc_hns.py",
+      "line": 47,
+      "end_line": 54
+    },
+    "hybrid_newton_schulz_singular_values": {
+      "file": "src/finetune/spectral_edit/posthoc_hns.py",
+      "line": 57,
+      "end_line": 144
+    },
+    "apply_hns_to_svd": {
+      "file": "src/finetune/spectral_edit/posthoc_hns.py",
+      "line": 147,
+      "end_line": 161
+    },
+    "__post_init__": {
+      "file": "src/finetune/spectral_edit/posthoc_hns.py",
+      "line": 28,
+      "end_line": 30
+    },
+    "lowrank_svd_from_ba": {
+      "file": "src/finetune/spectral_edit/svd.py",
+      "line": 10,
+      "end_line": 44
+    },
+    "rebuild_ba_from_uv_sigma": {
+      "file": "src/finetune/spectral_edit/svd.py",
+      "line": 47,
+      "end_line": 70
+    },
+    "set_seed": {
+      "file": "src/finetune/spectral_edit/cli.py",
+      "line": 49,
+      "end_line": 53
+    },
+    "_copy_lora_tree": {
+      "file": "src/finetune/spectral_edit/cli.py",
+      "line": 56,
+      "end_line": 62
+    },
+    "_collect_lora_pairs": {
+      "file": "src/finetune/spectral_edit/cli.py",
+      "line": 65,
+      "end_line": 112
+    },
+    "run_edit": {
+      "file": "src/finetune/spectral_edit/cli.py",
+      "line": 115,
+      "end_line": 382
+    },
+    "run_hns": {
+      "file": "src/finetune/spectral_edit/cli.py",
+      "line": 385,
+      "end_line": 472
+    },
+    "_auto_importance_module_budget": {
+      "file": "src/finetune/spectral_edit/cli.py",
+      "line": 475,
+      "end_line": 484
+    },
+    "run_sensitivity_hns": {
+      "file": "src/finetune/spectral_edit/cli.py",
+      "line": 487,
+      "end_line": 804
+    },
+    "build_arg_parser": {
+      "file": "src/finetune/spectral_edit/cli.py",
+      "line": 807,
+      "end_line": 1149
+    },
+    "main": {
+      "file": "src/finetune/spectral_edit/cli.py",
+      "line": 1152,
+      "end_line": 1163
+    },
+    "ensure_local_lora_dir": {
+      "file": "src/finetune/spectral_edit/io.py",
+      "line": 22,
+      "end_line": 29
+    },
+    "load_adapter_config": {
+      "file": "src/finetune/spectral_edit/io.py",
+      "line": 32,
+      "end_line": 38
+    },
+    "find_adapter_weight_file": {
+      "file": "src/finetune/spectral_edit/io.py",
+      "line": 41,
+      "end_line": 56
+    },
+    "load_lora_state_dict": {
+      "file": "src/finetune/spectral_edit/io.py",
+      "line": 59,
+      "end_line": 71
+    },
+    "save_lora_state_dict": {
+      "file": "src/finetune/spectral_edit/io.py",
+      "line": 74,
+      "end_line": 92
+    },
+    "parse_lora_ab_key": {
+      "file": "src/finetune/spectral_edit/io.py",
+      "line": 95,
+      "end_line": 120
+    },
+    "layer_idx_from_module_prefix": {
+      "file": "src/finetune/spectral_edit/io.py",
+      "line": 123,
+      "end_line": 126
+    },
+    "get_scaling_for_module": {
+      "file": "src/finetune/spectral_edit/io.py",
+      "line": 129,
+      "end_line": 155
+    }
+  },
+  "fast_coefficients": [
+    3.4445,
+    -4.775,
+    2.0315
+  ],
+  "stable_coefficients": [
+    2.0,
+    -1.5,
+    0.5
+  ],
+  "paper_steps": [
+    4,
+    1
+  ],
+  "cli_default_steps": [
+    8,
+    2
+  ],
+  "eps": 1e-07,
+  "source_rank_retained": true,
+  "outputs_sha256": {
+    "report.md": "95979dbeb09aa0ce7751936ec8fc86cdac45b43f96169789445e9535a987347c",
+    "checkpoint_results.tsv": "14135992f0d85a1e333afa4ba5db7df4550c7459d66ac81aede6d993255a988b",
+    "paired_ci.tsv": "42e34a0f38b4f696ba55bd219ea6bacec5465b316e6c7a7d2cfde7e7c1213fc7"
+  }
+}

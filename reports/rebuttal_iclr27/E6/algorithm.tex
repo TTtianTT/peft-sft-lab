@@ -1,0 +1,36 @@
+\begin{algorithm}[t]
+\caption{LoRA-Norm: data-free nuclear-preserving HNS (paper setting $4+1$)}
+\label{alg:lora_norm_complete}
+\begin{algorithmic}[1]
+\Require Adapter factors $(A_m,B_m)$, unchanged scaling $s_m=\alpha_m/r_m$;
+selected module suffixes and layer bounds; $K_f=4,K_s=1$, $\lambda=1$, $\epsilon=10^{-7}$
+\Ensure Edited adapter; unselected factors and source configuration unchanged
+\For{each selected complete LoRA factor pair $m$}
+  \State Remember original storage dtypes; cast $A_m,B_m$ to fp32
+  \State $B_m=Q_bR_b$, $A_m^\top=Q_aR_a$ \Comment{reduced QR}
+  \State $R_bR_a^\top=U_c\operatorname{diag}(\sigma)V_c^\top$ \Comment{compact fp32 SVD}
+  \State $U=Q_bU_c$, $V=Q_aV_c$ \Comment{$\Delta W_m=s_mU\operatorname{diag}(\sigma)V^\top$}
+  \State If rank is empty, return unchanged empty spectrum
+  \State Convert $\sigma$ to fp64 and clamp to nonnegative values
+  \State $r_o=r$; if output rank $q$ supplied, $r_o=\min(\max(1,q),r)$
+  \State $\sigma_{\rm ref}=\sigma_{1:r_o}$, $x=\sigma/\max(\|\sigma\|_2,\epsilon)$
+  \For{$k=1,\ldots,K_f$}
+    \State $x\gets x(3.4445-4.7750x^2+2.0315x^4)$ \Comment{elementwise}
+  \EndFor
+  \For{$k=1,\ldots,K_s$}
+    \State $x\gets x(2.0-1.5x^2+0.5x^4)$
+  \EndFor
+  \State $x\gets\max(x_{1:r_o},0)$, $\tau=\sum_i\sigma_{{\rm ref},i}$
+  \If{$\sum_i x_i\leq\epsilon$}
+    \State $x_i\gets\tau/r_o$ for every retained direction
+  \Else
+    \State $x\gets x\,\tau/(\sum_i x_i)$ \Comment{restore nuclear norm}
+  \EndIf
+  \State $\sigma'\gets\sigma_{\rm ref}+\lambda(x-\sigma_{\rm ref})$; cast back to fp32
+  \State $B'_m=U_{:,1:r_o}\operatorname{diag}(\sqrt{\max(\sigma',0)})$
+  \State $A'_m=\operatorname{diag}(\sqrt{\max(\sigma',0)})V_{:,1:r_o}^\top$
+  \State Cast each factor once to its original storage dtype; detach, move to CPU, save
+\EndFor
+\State Save adapter tensors and per-module spectral/configuration metadata
+\end{algorithmic}
+\end{algorithm}
