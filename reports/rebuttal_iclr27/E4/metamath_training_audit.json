@@ -1,0 +1,44 @@
+[
+  {
+    "task": "metamath",
+    "multiplier": 0.5,
+    "lr": 5e-05,
+    "rank": 16,
+    "total_steps": 4413,
+    "warmup_steps": 442,
+    "final": "/dataset1/zailong/workspace/peft-sft-lab/reports/rebuttal_iclr27/E4/runtime/training/metamath_r16_lr0.5",
+    "half": "/dataset1/zailong/workspace/peft-sft-lab/reports/rebuttal_iclr27/E4/runtime/training/metamath_r16_lr0.5/checkpoint-2207",
+    "weights_sha256": "7d56f1dbbd8c350f6970fe106e43ae5723e34c0ab089e3c29ca5215037a34ec6",
+    "config_sha256": "61b64f183fd5192bac4104e4fc1dae9634721fa55adb819a4a2623a4d61346dd",
+    "warmup_audit_sha256": "65d420954eab6ef42a199387fde998bda968e8fa2a9c8e7c8b9bb91ebdecc5c8",
+    "job_id": "14893"
+  },
+  {
+    "task": "metamath",
+    "multiplier": 1.0,
+    "lr": 0.0001,
+    "rank": 16,
+    "total_steps": 4413,
+    "warmup_steps": 442,
+    "final": "/dataset1/zailong/workspace/peft-sft-lab/reports/rebuttal_iclr27/E4/runtime/training/metamath_r16_lr1",
+    "half": "/dataset1/zailong/workspace/peft-sft-lab/reports/rebuttal_iclr27/E4/runtime/training/metamath_r16_lr1/checkpoint-2207",
+    "weights_sha256": "d92a04f70dc6fcdde9fc92c6085c85029f7ad67eaf0e5de3c0cdd3ee3e841348",
+    "config_sha256": "61b64f183fd5192bac4104e4fc1dae9634721fa55adb819a4a2623a4d61346dd",
+    "warmup_audit_sha256": "65d420954eab6ef42a199387fde998bda968e8fa2a9c8e7c8b9bb91ebdecc5c8",
+    "job_id": "14893"
+  },
+  {
+    "task": "metamath",
+    "multiplier": 2.0,
+    "lr": 0.0002,
+    "rank": 16,
+    "total_steps": 4413,
+    "warmup_steps": 442,
+    "final": "/dataset1/zailong/workspace/peft-sft-lab/reports/rebuttal_iclr27/E4/runtime/training/metamath_r16_lr2",
+    "half": "/dataset1/zailong/workspace/peft-sft-lab/reports/rebuttal_iclr27/E4/runtime/training/metamath_r16_lr2/checkpoint-2207",
+    "weights_sha256": "98d3abd6c7cabba49c28d4fd80ad2494280f3526ddee4de032953c9bc96fa7e2",
+    "config_sha256": "61b64f183fd5192bac4104e4fc1dae9634721fa55adb819a4a2623a4d61346dd",
+    "warmup_audit_sha256": "65d420954eab6ef42a199387fde998bda968e8fa2a9c8e7c8b9bb91ebdecc5c8",
+    "job_id": "14893"
+  }
+]

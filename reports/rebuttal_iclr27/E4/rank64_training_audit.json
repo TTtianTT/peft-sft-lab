@@ -1,0 +1,14 @@
+{
+  "task": "metamath",
+  "multiplier": 2.0,
+  "lr": 0.0002,
+  "rank": 64,
+  "total_steps": 4413,
+  "warmup_steps": 442,
+  "final": "/dataset1/zailong/workspace/peft-sft-lab/reports/rebuttal_iclr27/E4/runtime/training/metamath_r64_lr2",
+  "half": "/dataset1/zailong/workspace/peft-sft-lab/reports/rebuttal_iclr27/E4/runtime/training/metamath_r64_lr2/checkpoint-2207",
+  "weights_sha256": "35dacb5a10ad85eeff1e162cad218e5fca3d60c23834c0de338adf9daf96cbf6",
+  "config_sha256": "7de57d690cd47942420334fe61babfcde0fb9b7e5d1831b4034bb0847930fc59",
+  "warmup_audit_sha256": "65d420954eab6ef42a199387fde998bda968e8fa2a9c8e7c8b9bb91ebdecc5c8",
+  "job_id": "14893"
+}

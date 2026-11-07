@@ -1,0 +1,82 @@
+{
+  "selected": {
+    "task": "metamath",
+    "multiplier": 2.0,
+    "lr": 0.0002,
+    "fraction": 1.0,
+    "path": "/dataset1/zailong/workspace/peft-sft-lab/reports/rebuttal_iclr27/E4/runtime/training/metamath_r16_lr2",
+    "validation_score": 0.864,
+    "metric_sha256": "f468714dfce2a658ce1a9f9a0d08147ec6b240d99945040e432ef2bc31faa7c9",
+    "weights_sha256": "98d3abd6c7cabba49c28d4fd80ad2494280f3526ddee4de032953c9bc96fa7e2",
+    "config_sha256": "61b64f183fd5192bac4104e4fc1dae9634721fa55adb819a4a2623a4d61346dd"
+  },
+  "candidates": [
+    {
+      "task": "metamath",
+      "multiplier": 0.5,
+      "lr": 5e-05,
+      "fraction": 0.5,
+      "path": "/dataset1/zailong/workspace/peft-sft-lab/reports/rebuttal_iclr27/E4/runtime/training/metamath_r16_lr0.5/checkpoint-2207",
+      "validation_score": 0.858,
+      "metric_sha256": "1fcdbe2b72e74b0520245be294bd054a8062ac65cfcd69a4186eb2b5f2ccc16b",
+      "weights_sha256": "b5ff1d6beae9a835e060b1b7982d4bf5b7d21ffc35e4784958b04b61a58bd229",
+      "config_sha256": "61b64f183fd5192bac4104e4fc1dae9634721fa55adb819a4a2623a4d61346dd"
+    },
+    {
+      "task": "metamath",
+      "multiplier": 0.5,
+      "lr": 5e-05,
+      "fraction": 1.0,
+      "path": "/dataset1/zailong/workspace/peft-sft-lab/reports/rebuttal_iclr27/E4/runtime/training/metamath_r16_lr0.5",
+      "validation_score": 0.84,
+      "metric_sha256": "aa297f40e57f35f1fc308132fe4745868f31ebd50a3d299f97dbef7042eec767",
+      "weights_sha256": "7d56f1dbbd8c350f6970fe106e43ae5723e34c0ab089e3c29ca5215037a34ec6",
+      "config_sha256": "61b64f183fd5192bac4104e4fc1dae9634721fa55adb819a4a2623a4d61346dd"
+    },
+    {
+      "task": "metamath",
+      "multiplier": 1.0,
+      "lr": 0.0001,
+      "fraction": 0.5,
+      "path": "/dataset1/zailong/workspace/peft-sft-lab/reports/rebuttal_iclr27/E4/runtime/training/metamath_r16_lr1/checkpoint-2207",
+      "validation_score": 0.85,
+      "metric_sha256": "2c7701dffe6dff606949d5a17b08fae947fe52a447195e2e08309fa7f1d65848",
+      "weights_sha256": "bfbe3748ed35426569eeb6fca9190862ea23625c29532758705492a533c9a723",
+      "config_sha256": "61b64f183fd5192bac4104e4fc1dae9634721fa55adb819a4a2623a4d61346dd"
+    },
+    {
+      "task": "metamath",
+      "multiplier": 1.0,
+      "lr": 0.0001,
+      "fraction": 1.0,
+      "path": "/dataset1/zailong/workspace/peft-sft-lab/reports/rebuttal_iclr27/E4/runtime/training/metamath_r16_lr1",
+      "validation_score": 0.862,
+      "metric_sha256": "2c8122265a09f23fd0ea91c4321d889bcbad5b6b302c18367ec2a166b950e693",
+      "weights_sha256": "d92a04f70dc6fcdde9fc92c6085c85029f7ad67eaf0e5de3c0cdd3ee3e841348",
+      "config_sha256": "61b64f183fd5192bac4104e4fc1dae9634721fa55adb819a4a2623a4d61346dd"
+    },
+    {
+      "task": "metamath",
+      "multiplier": 2.0,
+      "lr": 0.0002,
+      "fraction": 0.5,
+      "path": "/dataset1/zailong/workspace/peft-sft-lab/reports/rebuttal_iclr27/E4/runtime/training/metamath_r16_lr2/checkpoint-2207",
+      "validation_score": 0.85,
+      "metric_sha256": "2c7701dffe6dff606949d5a17b08fae947fe52a447195e2e08309fa7f1d65848",
+      "weights_sha256": "e932500bf70e630d345fb99ce24d79538a77cb3066905c54ac888077eaf01f43",
+      "config_sha256": "61b64f183fd5192bac4104e4fc1dae9634721fa55adb819a4a2623a4d61346dd"
+    },
+    {
+      "task": "metamath",
+      "multiplier": 2.0,
+      "lr": 0.0002,
+      "fraction": 1.0,
+      "path": "/dataset1/zailong/workspace/peft-sft-lab/reports/rebuttal_iclr27/E4/runtime/training/metamath_r16_lr2",
+      "validation_score": 0.864,
+      "metric_sha256": "f468714dfce2a658ce1a9f9a0d08147ec6b240d99945040e432ef2bc31faa7c9",
+      "weights_sha256": "98d3abd6c7cabba49c28d4fd80ad2494280f3526ddee4de032953c9bc96fa7e2",
+      "config_sha256": "61b64f183fd5192bac4104e4fc1dae9634721fa55adb819a4a2623a4d61346dd"
+    }
+  ],
+  "selection": "validation only; predeclared tie rules"
+}

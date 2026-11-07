@@ -1,0 +1,127 @@
+{
+  "status": "pass",
+  "adapters": [
+    {
+      "label": "magicoder__magicoder_val_best_r16__original_lora",
+      "train_task": "magicoder",
+      "method": "original_lora",
+      "seed": 42,
+      "path": "/dataset1/zailong/workspace/peft-sft-lab/reports/rebuttal_iclr27/E4/runtime/training/magicoder_r16_lr0.5",
+      "condition": "magicoder_val_best_r16",
+      "weights_sha256": "222f5c92753c384280f91e443dbb53e744ec6d851c7581c95803e90d9a72212e",
+      "config_sha256": "61b64f183fd5192bac4104e4fc1dae9634721fa55adb819a4a2623a4d61346dd"
+    },
+    {
+      "label": "magicoder__magicoder_val_best_r16__recon_0",
+      "train_task": "magicoder",
+      "method": "recon_0",
+      "seed": 42,
+      "path": "/dataset1/zailong/workspace/peft-sft-lab/reports/rebuttal_iclr27/E4/runtime/adapters/magicoder_val_best_r16/recon_0",
+      "condition": "magicoder_val_best_r16",
+      "weights_sha256": "d7cdbbe9aee285d33248618bd10d58ebc8d54d355fb24bfc72685cbe1678328d",
+      "config_sha256": "61b64f183fd5192bac4104e4fc1dae9634721fa55adb819a4a2623a4d61346dd"
+    },
+    {
+      "label": "magicoder__magicoder_val_best_r16__hns_f4_s1",
+      "train_task": "magicoder",
+      "method": "hns_f4_s1",
+      "seed": 42,
+      "path": "/dataset1/zailong/workspace/peft-sft-lab/reports/rebuttal_iclr27/E4/runtime/adapters/magicoder_val_best_r16/hns_f4_s1",
+      "condition": "magicoder_val_best_r16",
+      "weights_sha256": "68e9f5680456d9cafde37261afa4941ccebee84c2863e04137996811ba3471c7",
+      "config_sha256": "61b64f183fd5192bac4104e4fc1dae9634721fa55adb819a4a2623a4d61346dd"
+    },
+    {
+      "label": "magicoder__magicoder_val_best_r16__flat_nuclear",
+      "train_task": "magicoder",
+      "method": "flat_nuclear",
+      "seed": 42,
+      "path": "/dataset1/zailong/workspace/peft-sft-lab/reports/rebuttal_iclr27/E4/runtime/adapters/magicoder_val_best_r16/flat_nuclear",
+      "condition": "magicoder_val_best_r16",
+      "weights_sha256": "1ddc433e34509370e60b1ff345d95768d4993dc3b3fb2c6f13b612bbd612afeb",
+      "config_sha256": "61b64f183fd5192bac4104e4fc1dae9634721fa55adb819a4a2623a4d61346dd"
+    },
+    {
+      "label": "metamath__metamath_val_best_r16__original_lora",
+      "train_task": "metamath",
+      "method": "original_lora",
+      "seed": 42,
+      "path": "/dataset1/zailong/workspace/peft-sft-lab/reports/rebuttal_iclr27/E4/runtime/training/metamath_r16_lr2",
+      "condition": "metamath_val_best_r16",
+      "weights_sha256": "98d3abd6c7cabba49c28d4fd80ad2494280f3526ddee4de032953c9bc96fa7e2",
+      "config_sha256": "61b64f183fd5192bac4104e4fc1dae9634721fa55adb819a4a2623a4d61346dd"
+    },
+    {
+      "label": "metamath__metamath_val_best_r16__recon_0",
+      "train_task": "metamath",
+      "method": "recon_0",
+      "seed": 42,
+      "path": "/dataset1/zailong/workspace/peft-sft-lab/reports/rebuttal_iclr27/E4/runtime/adapters/metamath_val_best_r16/recon_0",
+      "condition": "metamath_val_best_r16",
+      "weights_sha256": "d259f83be1312a2befb1f770ea6356993b2267b7657ffbbe3b20f2aeac4e2cda",
+      "config_sha256": "61b64f183fd5192bac4104e4fc1dae9634721fa55adb819a4a2623a4d61346dd"
+    },
+    {
+      "label": "metamath__metamath_val_best_r16__hns_f4_s1",
+      "train_task": "metamath",
+      "method": "hns_f4_s1",
+      "seed": 42,
+      "path": "/dataset1/zailong/workspace/peft-sft-lab/reports/rebuttal_iclr27/E4/runtime/adapters/metamath_val_best_r16/hns_f4_s1",
+      "condition": "metamath_val_best_r16",
+      "weights_sha256": "dfbe2a39390b903a5e667bc7feabfeea70ef615e5244866a4a433d4485e52d0e",
+      "config_sha256": "61b64f183fd5192bac4104e4fc1dae9634721fa55adb819a4a2623a4d61346dd"
+    },
+    {
+      "label": "metamath__metamath_val_best_r16__flat_nuclear",
+      "train_task": "metamath",
+      "method": "flat_nuclear",
+      "seed": 42,
+      "path": "/dataset1/zailong/workspace/peft-sft-lab/reports/rebuttal_iclr27/E4/runtime/adapters/metamath_val_best_r16/flat_nuclear",
+      "condition": "metamath_val_best_r16",
+      "weights_sha256": "cf5c716fd3b1a544c183718a2b0374921b7ffc2bfc31ddbc5bbc8c5d1df30e07",
+      "config_sha256": "61b64f183fd5192bac4104e4fc1dae9634721fa55adb819a4a2623a4d61346dd"
+    },
+    {
+      "label": "metamath__metamath_r64__original_lora",
+      "train_task": "metamath",
+      "method": "original_lora",
+      "seed": 42,
+      "path": "/dataset1/zailong/workspace/peft-sft-lab/reports/rebuttal_iclr27/E4/runtime/training/metamath_r64_lr2",
+      "condition": "metamath_r64",
+      "weights_sha256": "35dacb5a10ad85eeff1e162cad218e5fca3d60c23834c0de338adf9daf96cbf6",
+      "config_sha256": "7de57d690cd47942420334fe61babfcde0fb9b7e5d1831b4034bb0847930fc59"
+    },
+    {
+      "label": "metamath__metamath_r64__recon_0",
+      "train_task": "metamath",
+      "method": "recon_0",
+      "seed": 42,
+      "path": "/dataset1/zailong/workspace/peft-sft-lab/reports/rebuttal_iclr27/E4/runtime/adapters/metamath_r64/recon_0",
+      "condition": "metamath_r64",
+      "weights_sha256": "0b734207ed78e41bfd6660cf949c496d640a43c222362c3cca8653ec917fb6cb",
+      "config_sha256": "7de57d690cd47942420334fe61babfcde0fb9b7e5d1831b4034bb0847930fc59"
+    },
+    {
+      "label": "metamath__metamath_r64__hns_f4_s1",
+      "train_task": "metamath",
+      "method": "hns_f4_s1",
+      "seed": 42,
+      "path": "/dataset1/zailong/workspace/peft-sft-lab/reports/rebuttal_iclr27/E4/runtime/adapters/metamath_r64/hns_f4_s1",
+      "condition": "metamath_r64",
+      "weights_sha256": "03c64d56f7ae1720861945726837f9cd7ba5259bae4f23a16959d83e5c86cfef",
+      "config_sha256": "7de57d690cd47942420334fe61babfcde0fb9b7e5d1831b4034bb0847930fc59"
+    },
+    {
+      "label": "metamath__metamath_r64__flat_nuclear",
+      "train_task": "metamath",
+      "method": "flat_nuclear",
+      "seed": 42,
+      "path": "/dataset1/zailong/workspace/peft-sft-lab/reports/rebuttal_iclr27/E4/runtime/adapters/metamath_r64/flat_nuclear",
+      "condition": "metamath_r64",
+      "weights_sha256": "bae5ce9a701dfdf03ce851a10fa73e58d21bcedc4aac00eb42eb509eea5f15b6",
+      "config_sha256": "7de57d690cd47942420334fe61babfcde0fb9b7e5d1831b4034bb0847930fc59"
+    }
+  ],
+  "max_reconstruction_relative_error": 0.0,
+  "max_nuclear_relative_error": 1.6831108163861686e-05
+}

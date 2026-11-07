@@ -1,0 +1,12 @@
+{
+  "status": "pass",
+  "expected_new_cells": 48,
+  "actual_new_cells": 48,
+  "conditions": [
+    "magicoder_val_best_r16",
+    "metamath_val_best_r16",
+    "metamath_r64"
+  ],
+  "expected_training_runs": 7,
+  "sample_input_mismatches": 0
+}

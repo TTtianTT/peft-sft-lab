@@ -1,0 +1,57 @@
+{
+  "status": "complete",
+  "completed_utc": "2026-11-07T07:56:02.196782+00:00",
+  "job_id": "14893",
+  "allocated_gpus": 2,
+  "trainings": 7,
+  "new_cells": 48,
+  "seed": 42,
+  "interval_unit": "paired questions; single seed",
+  "conditions": [
+    "magicoder_val_best_r16",
+    "metamath_val_best_r16",
+    "metamath_r64"
+  ],
+  "rank64_tail": {
+    "modules": 252,
+    "directions": 16128,
+    "below_005": 45,
+    "min_sigma_over_fro_quantiles": [
+      0.001603955402970314,
+      0.01699257967993617,
+      0.022858883254230022,
+      0.0330764465034008,
+      0.04981665685772896
+    ],
+    "fraction_below_005": 0.0027901785714285715
+  },
+  "selection": {
+    "magicoder": {
+      "task": "magicoder",
+      "multiplier": 0.5,
+      "lr": 1e-05,
+      "fraction": 1.0,
+      "path": "/dataset1/zailong/workspace/peft-sft-lab/reports/rebuttal_iclr27/E4/runtime/training/magicoder_r16_lr0.5",
+      "validation_score": 0.755,
+      "metric_sha256": "6caca8e086e69869c7ba4913427dec09af383ed0a804a826503bfd3f8dd1d339",
+      "weights_sha256": "222f5c92753c384280f91e443dbb53e744ec6d851c7581c95803e90d9a72212e",
+      "config_sha256": "61b64f183fd5192bac4104e4fc1dae9634721fa55adb819a4a2623a4d61346dd"
+    },
+    "metamath": {
+      "task": "metamath",
+      "multiplier": 2.0,
+      "lr": 0.0002,
+      "fraction": 1.0,
+      "path": "/dataset1/zailong/workspace/peft-sft-lab/reports/rebuttal_iclr27/E4/runtime/training/metamath_r16_lr2",
+      "validation_score": 0.864,
+      "metric_sha256": "f468714dfce2a658ce1a9f9a0d08147ec6b240d99945040e432ef2bc31faa7c9",
+      "weights_sha256": "98d3abd6c7cabba49c28d4fd80ad2494280f3526ddee4de032953c9bc96fa7e2",
+      "config_sha256": "61b64f183fd5192bac4104e4fc1dae9634721fa55adb819a4a2623a4d61346dd"
+    }
+  },
+  "outputs_sha256": {
+    "report.md": "37962ef0f44af53432062fa75f7653e41e8c9feb29ea2f404c4b4e10191d8ae6",
+    "checkpoint_results.tsv": "e35ac88457cae60bf9305128f6e7994ac27d348920f3e6ce28f5ce8b676d27ba",
+    "paired_ci.tsv": "926d63049d99e06c19e7a208583722bed4b10a13dd9226add1acf751c1bd8b4b"
+  }
+}
