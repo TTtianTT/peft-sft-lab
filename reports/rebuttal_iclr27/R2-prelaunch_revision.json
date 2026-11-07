@@ -1,0 +1,26 @@
+{
+  "reason": "Correct original Spectral Surgery repository citation before any new inference; settings unchanged",
+  "created_utc": "2026-11-07T10:44:20.101174+00:00",
+  "changes": [
+    {
+      "experiment": "R2-O1",
+      "old_sha256": "aa2194e01e183d1e9885514fe381bfb2f1fc4a3d9a6af1f62f53dfc6c0b58d55",
+      "new_sha256": "46fcc85a57678562f10281672440cb0d6437e3012627ec0f9442e82623956298"
+    },
+    {
+      "experiment": "R2-O2",
+      "old_sha256": "46fcc85a57678562f10281672440cb0d6437e3012627ec0f9442e82623956298",
+      "new_sha256": "46fcc85a57678562f10281672440cb0d6437e3012627ec0f9442e82623956298"
+    },
+    {
+      "experiment": "R2-O3",
+      "old_sha256": "46fcc85a57678562f10281672440cb0d6437e3012627ec0f9442e82623956298",
+      "new_sha256": "46fcc85a57678562f10281672440cb0d6437e3012627ec0f9442e82623956298"
+    },
+    {
+      "experiment": "R2-O4",
+      "old_sha256": "46fcc85a57678562f10281672440cb0d6437e3012627ec0f9442e82623956298",
+      "new_sha256": "46fcc85a57678562f10281672440cb0d6437e3012627ec0f9442e82623956298"
+    }
+  ]
+}

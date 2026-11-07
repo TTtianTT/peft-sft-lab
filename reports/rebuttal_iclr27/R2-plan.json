@@ -1,0 +1,23 @@
+{
+  "status": "running",
+  "base_commit": "9f23dfc",
+  "started_utc": "2026-11-07T10:42:37.283039+00:00",
+  "deadline_utc": "2026-11-09T10:42:37.283039+00:00",
+  "max_gpus": 2,
+  "stages": [
+    "R2-O1",
+    "R2-O2",
+    "R2-O3",
+    "R2-O4",
+    "R2-O5",
+    "R2-O6",
+    "R2-O7",
+    "R2-O8",
+    "R2-O9",
+    "R2-O10",
+    "R2-O11",
+    "R2-O12"
+  ],
+  "o11_author_approval": null,
+  "budget_rule": "A then B; C starts only if its prespecified estimate plus reserve fits remaining wall budget; no test-score-dependent omissions"
+}
