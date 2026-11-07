@@ -35,7 +35,24 @@
         "coverage_audit.json": "8e6740e2e00cd171305042c254bc944e342e8e719c9e2462d9a2af753c30d776",
         "artifact_integrity_audit.json": "bb8c9ace221f89fdf090a4707294221cd9c337bd97773327c6194e464e17ef9c"
       }
+    },
+    "R2-O3": {
+      "status": "complete",
+      "completed_utc": "2026-11-07T14:54:55.560234+00:00",
+      "new_cells": 72,
+      "conditions": 18,
+      "statistics": "checkpoint",
+      "bootstrap_resamples": 20000,
+      "job_id": "15389",
+      "gpu_count": 2,
+      "outputs_sha256": {
+        "report.md": "a81dcecdf70b9c65fc00d94d06ef3b71b1063be084af7448f1f2711452100046",
+        "checkpoint_results.tsv": "2de29c39dbf46963695168bb356b51ef169123d5490f45166ba09c127929d61e",
+        "paired_ci.tsv": "19282efda0b4539193ee726e1467b6b73a80373ff8b652855a6b1b696181f1de",
+        "coverage_audit.json": "fba3def4926192527630be17058da8029c482960df34faeaad671d8fb3260ef3",
+        "artifact_integrity_audit.json": "da212c23f516a392f2da369e1307e3d748b266b42f0f49bfd13fe50e67eb551c"
+      }
     }
   },
-  "updated_utc": "2026-11-07T14:00:38.025623+00:00"
+  "updated_utc": "2026-11-07T14:54:55.579873+00:00"
 }

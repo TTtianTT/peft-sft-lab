@@ -1,0 +1,61 @@
+{
+  "base": "Qwen3-8B",
+  "variants": [
+    {
+      "label": "Qwen3-8B_magicoder_seed44__original_lora",
+      "method": "original_lora",
+      "path": "/dataset1/zailong/runs/peft-sft-lab/hns-training-seeds-3task-20260912/Qwen3-8B/seed44/lora/magicoder",
+      "train_task": "magicoder",
+      "seed": 44
+    },
+    {
+      "label": "Qwen3-8B_magicoder_seed44__recon_0",
+      "method": "recon_0",
+      "path": "/dataset1/zailong/runs/peft-sft-lab/hns-training-seeds-3task-20260912/Qwen3-8B/seed44/lora/magicoder",
+      "train_task": "magicoder",
+      "seed": 44
+    },
+    {
+      "label": "Qwen3-8B_magicoder_seed44__hns_f4_s1",
+      "method": "hns_f4_s1",
+      "path": "/dataset1/zailong/runs/peft-sft-lab/hns-training-seeds-3task-20260912/Qwen3-8B/seed44/lora/magicoder",
+      "train_task": "magicoder",
+      "seed": 44
+    },
+    {
+      "label": "Qwen3-8B_magicoder_seed44__hns_od",
+      "method": "hns_od",
+      "path": "/dataset1/zailong/runs/peft-sft-lab/hns-training-seeds-3task-20260912/Qwen3-8B/seed44/lora/magicoder",
+      "train_task": "magicoder",
+      "seed": 44
+    },
+    {
+      "label": "Qwen3-8B_magicoder_seed44__ss_smooth_abs",
+      "method": "ss_smooth_abs",
+      "path": "/dataset1/zailong/runs/peft-sft-lab/hns-training-seeds-3task-20260912/Qwen3-8B/seed44/lora/magicoder",
+      "train_task": "magicoder",
+      "seed": 44
+    },
+    {
+      "label": "Qwen3-8B_magicoder_seed44__ss_smooth_abs_all",
+      "method": "ss_smooth_abs_all",
+      "path": "/dataset1/zailong/runs/peft-sft-lab/hns-training-seeds-3task-20260912/Qwen3-8B/seed44/lora/magicoder",
+      "train_task": "magicoder",
+      "seed": 44
+    },
+    {
+      "label": "Qwen3-8B_magicoder_seed44__spectral_surgery_grad_direction",
+      "method": "spectral_surgery_grad_direction",
+      "path": "/dataset1/zailong/runs/peft-sft-lab/hns-training-seeds-3task-20260912/Qwen3-8B/seed44/lora/magicoder",
+      "train_task": "magicoder",
+      "seed": 44
+    },
+    {
+      "label": "Qwen3-8B_magicoder_seed44__ss_grad_direction_all",
+      "method": "ss_grad_direction_all",
+      "path": "/dataset1/zailong/runs/peft-sft-lab/hns-training-seeds-3task-20260912/Qwen3-8B/seed44/lora/magicoder",
+      "train_task": "magicoder",
+      "seed": 44
+    }
+  ]
+}

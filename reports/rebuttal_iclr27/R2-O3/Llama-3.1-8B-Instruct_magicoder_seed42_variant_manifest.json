@@ -1,0 +1,61 @@
+{
+  "base": "Llama-3.1-8B-Instruct",
+  "variants": [
+    {
+      "label": "Llama-3.1-8B-Instruct_magicoder_seed42__original_lora",
+      "method": "original_lora",
+      "path": "/dataset1/zailong/models/spectral-surgery/Llama-3.1-8B-Instruct-Magicoder-50K-LoRA-E1",
+      "train_task": "magicoder",
+      "seed": 42
+    },
+    {
+      "label": "Llama-3.1-8B-Instruct_magicoder_seed42__recon_0",
+      "method": "recon_0",
+      "path": "/dataset1/zailong/models/spectral-surgery/Llama-3.1-8B-Instruct-Magicoder-50K-LoRA-E1",
+      "train_task": "magicoder",
+      "seed": 42
+    },
+    {
+      "label": "Llama-3.1-8B-Instruct_magicoder_seed42__hns_f4_s1",
+      "method": "hns_f4_s1",
+      "path": "/dataset1/zailong/models/spectral-surgery/Llama-3.1-8B-Instruct-Magicoder-50K-LoRA-E1",
+      "train_task": "magicoder",
+      "seed": 42
+    },
+    {
+      "label": "Llama-3.1-8B-Instruct_magicoder_seed42__hns_od",
+      "method": "hns_od",
+      "path": "/dataset1/zailong/models/spectral-surgery/Llama-3.1-8B-Instruct-Magicoder-50K-LoRA-E1",
+      "train_task": "magicoder",
+      "seed": 42
+    },
+    {
+      "label": "Llama-3.1-8B-Instruct_magicoder_seed42__ss_smooth_abs",
+      "method": "ss_smooth_abs",
+      "path": "/dataset1/zailong/models/spectral-surgery/Llama-3.1-8B-Instruct-Magicoder-50K-LoRA-E1",
+      "train_task": "magicoder",
+      "seed": 42
+    },
+    {
+      "label": "Llama-3.1-8B-Instruct_magicoder_seed42__ss_smooth_abs_all",
+      "method": "ss_smooth_abs_all",
+      "path": "/dataset1/zailong/models/spectral-surgery/Llama-3.1-8B-Instruct-Magicoder-50K-LoRA-E1",
+      "train_task": "magicoder",
+      "seed": 42
+    },
+    {
+      "label": "Llama-3.1-8B-Instruct_magicoder_seed42__spectral_surgery_grad_direction",
+      "method": "spectral_surgery_grad_direction",
+      "path": "/dataset1/zailong/models/spectral-surgery/Llama-3.1-8B-Instruct-Magicoder-50K-LoRA-E1",
+      "train_task": "magicoder",
+      "seed": 42
+    },
+    {
+      "label": "Llama-3.1-8B-Instruct_magicoder_seed42__ss_grad_direction_all",
+      "method": "ss_grad_direction_all",
+      "path": "/dataset1/zailong/models/spectral-surgery/Llama-3.1-8B-Instruct-Magicoder-50K-LoRA-E1",
+      "train_task": "magicoder",
+      "seed": 42
+    }
+  ]
+}
