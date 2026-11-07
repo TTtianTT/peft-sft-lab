@@ -1,0 +1,21 @@
+# R2-O7: locked protocol
+
+Frozen UTC: 2026-11-07T10:42:45.994452+00:00. Source round-one commit9f23dfc. All configurations and conditions are fixed before new test inference. All outcomes will be reported.
+Use the existing functional_hns_three_seed_20260914 evaluator, native tokenizer/chat template, prompts/parsers/scorers and test items unchanged. HumanEval164 pass@1; GSM8K1319 strict; IFEval541 prompt strict; Commonsense22419 items and8 equally weighted subtasks. Greedy seed42, batch invariant, max_model_len4096, adapter block5, long max_num_seqs2048/CS4096, batched tokens65536, prompt chunks4096/1024, FLASH_ATTN, async off, prefix cache off, GPU memory0.94. max_lora_rank16 for ranks<=16,32 for rank32,64 for rank64. Same inference exception as E4b.
+Target is the source task family. Off equally averages the other3 families. FG clips max(Base-family minus edited-family,0) within each off family before averaging. Scores/differences in percent/percentage points.
+Inference and CUDA construction only inside Slurm. Global maximum2 GPUs; at most two1-GPU workers in a2-GPU allocation. Builders exit before exclusive-process vLLM starts. No retraining in tierA.
+Source weights/config SHA256, serialized adapter SHA256, finite spectra, all-module coverage, nuclear budget and relative reconstruction error are audited. fp32 compact SVD, stock float64 HNS map, spectrum cast to fp32 before factorization, source dtype cast at exactly the stock writeback point. Numeric audit tolerance5e-5 is fixed; preserve native rank/alpha/scaling2. No threshold changes or test-based selection.
+Reused cells must pass metrics/prediction/scored hashes where recorded and independent ordered per-sample input-hash agreement with Base. Cached cells are linked, never overwritten. New Base cells are required for new model sizes.
+Statistics: item. Paired resamples20000, seed20261106, percentile95%; all metrics reported. Checkpoint intervals are descriptive on shared test sets, not IID training runs. Single-seed conditions use paired item intervals and exact McNemar repairs/damage, resampling Commonsense within each of8 subtasks. An interval including0 is not an equivalence proof. No setting is selected by test performance.
+
+
+Qwen3-1.7B and Qwen3-4B MetaMath rank16 alpha32 seed42. LR2e-4 directly transferred from8B without model-specific tuning. New Base four-family cells for each model. Official pinned model revisions and SHA256 in ../R2-assets/.
+
+No learning-rate search. Fixed rates: Magicoder1e-5, MetaMath2e-4; selected by E4 training-only validation. Final100% checkpoint is predeclared for every new training (both E4 winners were100%). All new adapters receive Original LoRA, Recon-0, HNS4+1 strength1 nuclear all7, Flat-Nuclear. All results reported.
+Use exactly E4 held-out/excluded datasets and hashes, no validation/test leakage. Model/Trainer seed is the requested43/44 or42; dataset_seed remains42 to isolate initialization/order seed while preserving the fixed source subset. Epochs Magicoder1 / MetaMath3. Chat non_thinking; sequence4096; all7 LoRA modules; dropout0.05; bf16; gradient checkpointing; microbatch16; global batch32; padding8; cosine; fused AdamW betas0.9/0.999; weight decay0; clip1. Preserve native rank and alpha2r/scaling2.
+First preprocess with the model tokenizer to determine actual filtered examples/optimizer steps. Explicit warmup_steps=ceil(10% actual total), never warmup_ratio. Verify training_args.json and on_train_begin warmup_schedule_audit.json total/actual/requested steps. Save half and final, but select final without validation or tests. Verify run_args.json seed/rank/alpha/LR/LoRA+ratio and dataset hashes. No new hyperparameter is selected by test outcomes.
+Every source/config and edited adapter SHA, native rank/alpha/dtype, reconstruction, module coverage, cache input hashes checked. 40 new main-protocol cells. Single seed conditions use paired question-level bootstrap20000 and exact McNemar repairs/damage, as E4. O5 additionally reports3 independent training seeds/task sample SD and paired checkpoint summaries. Intervals remain descriptive on shared fixed tests.
+
+Predeclared runs:
+- Qwen3-1.7B_metamath_lora_r16_seed42: LR0.0002, epochs3, rank16, alpha32, seed42, methodlora.
+- Qwen3-4B_metamath_lora_r16_seed42: LR0.0002, epochs3, rank16, alpha32, seed42, methodlora.

@@ -1,0 +1,24 @@
+{
+  "created_utc": "2026-11-07T10:46:42.552208+00:00",
+  "base_commit": "9f23dfc",
+  "code_commit": "51142c2",
+  "jobs": [
+    {
+      "job_id": "15389",
+      "stage": "A",
+      "experiments": [
+        "R2-O1",
+        "R2-O2",
+        "R2-O3",
+        "R2-O4"
+      ],
+      "gpus": 2,
+      "command": "sbatch slurm/rebuttal_iclr27_r2_a.slurm",
+      "stdout": "logs/rebuttal27-r2-a-15389.out",
+      "stderr": "logs/rebuttal27-r2-a-15389.err",
+      "state": "PENDING"
+    }
+  ],
+  "global_gpu_limit": 2,
+  "o11_author_approval": null
+}
