@@ -1,0 +1,9 @@
+{
+  "status": "pass",
+  "tests": 10,
+  "failures": 0,
+  "errors": 0,
+  "test_source_sha256": "e7d9e227da3a1ac30915d8e5963d5d7eefed0f2c05fbe044e6a9bb0a9479f878",
+  "parser_source_sha256": "0b625e8baeeeaf781f9a3ea21d7b5304579fdbb2bca0624f3570c672ab728556",
+  "log": "test_empty_and_nonmath_fail (__main__.IndependentTargetParserTest.test_empty_and_nonmath_fail) ... ok\ntest_empty_python (__main__.IndependentTargetParserTest.test_empty_python) ... ok\ntest_fenced_python_entrypoint (__main__.IndependentTargetParserTest.test_fenced_python_entrypoint) ... ok\ntest_fraction_decimal_equivalence (__main__.IndependentTargetParserTest.test_fraction_decimal_equivalence) ... ok\ntest_last_box_has_priority (__main__.IndependentTargetParserTest.test_last_box_has_priority) ... ok\ntest_nested_box (__main__.IndependentTargetParserTest.test_nested_box) ... ok\ntest_python_dependencies_survive (__main__.IndependentTargetParserTest.test_python_dependencies_survive) ... ok\ntest_symbolic_equivalence (__main__.IndependentTargetParserTest.test_symbolic_equivalence) ... ok\ntest_working_value_is_not_final_answer (__main__.IndependentTargetParserTest.test_working_value_is_not_final_answer) ... ok\ntest_wrong_answer_fails (__main__.IndependentTargetParserTest.test_wrong_answer_fails) ... ok\n\n----------------------------------------------------------------------\nRan 10 tests in 4.150s\n\nOK\n"
+}

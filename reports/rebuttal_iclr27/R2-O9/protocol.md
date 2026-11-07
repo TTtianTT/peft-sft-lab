@@ -1,0 +1,22 @@
+# R2-O9: locked protocol
+
+Frozen UTC: 2026-11-07T10:42:45.994452+00:00. Source round-one commit9f23dfc. All configurations and conditions are fixed before new test inference. All outcomes will be reported.
+Use the existing functional_hns_three_seed_20260914 evaluator, native tokenizer/chat template, prompts/parsers/scorers and test items unchanged. HumanEval164 pass@1; GSM8K1319 strict; IFEval541 prompt strict; Commonsense22419 items and8 equally weighted subtasks. Greedy seed42, batch invariant, max_model_len4096, adapter block5, long max_num_seqs2048/CS4096, batched tokens65536, prompt chunks4096/1024, FLASH_ATTN, async off, prefix cache off, GPU memory0.94. max_lora_rank16 for ranks<=16,32 for rank32,64 for rank64. Same inference exception as E4b.
+Target is the source task family. Off equally averages the other3 families. FG clips max(Base-family minus edited-family,0) within each off family before averaging. Scores/differences in percent/percentage points.
+Inference and CUDA construction only inside Slurm. Global maximum2 GPUs; at most two1-GPU workers in a2-GPU allocation. Builders exit before exclusive-process vLLM starts. No retraining in tierA.
+Source weights/config SHA256, serialized adapter SHA256, finite spectra, all-module coverage, nuclear budget and relative reconstruction error are audited. fp32 compact SVD, stock float64 HNS map, spectrum cast to fp32 before factorization, source dtype cast at exactly the stock writeback point. Numeric audit tolerance5e-5 is fixed; preserve native rank/alpha/scaling2. No threshold changes or test-based selection.
+Reused cells must pass metrics/prediction/scored hashes where recorded and independent ordered per-sample input-hash agreement with Base. Cached cells are linked, never overwritten. New Base cells are required for new model sizes.
+Statistics: item. Paired resamples20000, seed20261106, percentile95%; all metrics reported. Checkpoint intervals are descriptive on shared test sets, not IID training runs. Single-seed conditions use paired item intervals and exact McNemar repairs/damage, resampling Commonsense within each of8 subtasks. An interval including0 is not an equivalence proof. No setting is selected by test performance.
+
+
+
+Repeat E4a on Llama-3.1-8B-Instruct with the same E4 held-out/excluded datasets and training recipe. LR grids Magicoder1e-5/2e-5/4e-5 and MetaMath5e-5/1e-4/2e-4. Six trainings; save50% and100%, validate all12 candidates. Select one/task solely by E4 validation score: highest score, then closest LR to1x in abs(log2 multiplier), then lower multiplier, then earlier fraction. This explicitly uses the E4 sequence4096/global-batch32 recipe for both tasks; it is not presented as a literal reproduction of older incomplete Llama model cards. Magicoder validation200 MBPP, MetaMath500 held-out training questions. Never select on main tests. Evaluate two selected sources x4 adapters x4 families=32 cells, cached Llama Base.
+
+Explicit warmup_steps=ceil(10% actual total) after tokenizer/filtering preprocessing. Audit both saved training_args and actual Trainer warmup_schedule. E4 recipe: all7 modules, dropout.05, scaling2, bf16, gradient checkpointing, sequence4096, microbatch16, global32, padding8, cosine, fused AdamW betas.9/.999, weight_decay0, clip1, epochs Magicoder1/MetaMath3. Model/Trainer seed42 and dataset subset seed42. Save half/final. Same main eval prompts/templates/parsers/scorers; greedy seed42, maxmodel4096, block5, maxrank16, batch-invariant. Four methods Original LoRA, Recon-0, HNS4+1 strength1 nuclear all7, Flat-Nuclear. Single-seed paired question intervals20000 and exact McNemar repairs/damage, all Target/Off/FG; no training-run uncertainty claim. Cache/sample hashes, weight/config SHA256, coverage and reconstruction audit required. All configurations reported.
+Budget rule: start only when prespecified runtime estimate plus1h reserve fits the remaining48h wall budget, independent of test performance. O11 is not authorized until the author explicitly confirms it.
+- Llama-3.1-8B-Instruct_magicoder_lr0.5: LR1e-05, epochs1, r16/alpha32.
+- Llama-3.1-8B-Instruct_magicoder_lr1: LR2e-05, epochs1, r16/alpha32.
+- Llama-3.1-8B-Instruct_magicoder_lr2: LR4e-05, epochs1, r16/alpha32.
+- Llama-3.1-8B-Instruct_metamath_lr0.5: LR5e-05, epochs3, r16/alpha32.
+- Llama-3.1-8B-Instruct_metamath_lr1: LR0.0001, epochs3, r16/alpha32.
+- Llama-3.1-8B-Instruct_metamath_lr2: LR0.0002, epochs3, r16/alpha32.
