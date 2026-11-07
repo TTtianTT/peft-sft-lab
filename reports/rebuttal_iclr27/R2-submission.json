@@ -48,6 +48,16 @@
       "stdout": "logs/rebuttal27-r2-c-15429.out",
       "stderr": "logs/rebuttal27-r2-c-15429.err",
       "state": "PENDING"
+    },
+    {
+      "job_id": "15431",
+      "stage": "final_audit",
+      "gpus": 0,
+      "dependency": "afterok:15429",
+      "command": "sbatch --dependency=afterok:15429 slurm/rebuttal_iclr27_r2_finish.slurm",
+      "stdout": "logs/rebuttal27-r2-finish-15431.out",
+      "stderr": "logs/rebuttal27-r2-finish-15431.err",
+      "state": "PENDING"
     }
   ],
   "global_gpu_limit": 2,

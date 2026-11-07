@@ -10,6 +10,7 @@ import rebuttal_iclr27_r2 as q
 
 def main():
     r.require_slurm();entries={};all_rows=[];summaries=[]
+    factor=r.read(q.folder('R2-O2')/'factorization_update_audit.json');assert factor['status']=='pass'
     for exp in q.SCOPES:
         path=q.folder(exp)
         if (path/'summary.json').exists():
@@ -37,7 +38,7 @@ def main():
     result=dict(status='authorized_completed_with_explicit_optional_omissions',updated_utc=r.now(),
         experiments=entries,total_new_cells=new_cells,total_new_trainings=trainings,
         o11_author_approval=q.initialize_round()['o11_author_approval'],global_gpu_limit=2,
-        submission_sha256=r.sha(r.OUT/'R2-submission.json'),budget_decisions_sha256=r.sha(r.OUT/'R2-C-budget.json'))
+        submission_sha256=r.sha(r.OUT/'R2-submission.json'),budget_decisions_sha256=r.sha(r.OUT/'R2-C-budget.json'),factorization_update_audit=factor)
     r.write(r.OUT/'R2-completion_index.json',result);r.tsv(r.OUT/'R2-method_summary.tsv',all_rows)
     lines=['# Second-round rebuttal completion','','All A/B experiments passed output, coverage and integrity audits. '
         'Optional stages and pending author confirmation are listed explicitly.','',
@@ -50,6 +51,7 @@ def main():
         'Main Target/Off/FG preserve the functional_hns_three_seed_20260914 protocol and caches after sample-input-hash audits. '
         'Checkpoint CIs are descriptive shared-test intervals; single-seed conditions use paired question intervals and exact McNemar repair/damage. '
         'See each report for inference/capacity exceptions (rank32/64) and any limits on interpretation.',
+        '',f'Balanced/unbalanced represented-update audit: {factor["compared_module_pairs"]} module pairs, maximum relative difference{factor["max_relative_update_difference"]:.8g}, fixed tolerance5e-5. [Audit](R2-O2/factorization_update_audit.json).',
         '','## Aggregate values','','| Experiment | Method | Target | Off | FG |','| --- | --- | ---: | ---: | ---: |']
     for row in all_rows:lines.append('| '+row['experiment']+' | '+row['method']+' | '+' | '.join(f'{row[m]:.4f}' for m in r.METRICS)+' |')
     lines+=['','These aggregates pool only the prespecified conditions within each experiment and do not imply comparable training-run uncertainty across experiments. '
@@ -62,7 +64,8 @@ def main():
             '[Audited second-round index](R2-completion_report.md). O11 remains unexecuted pending explicit author confirmation; all optional omissions are documented.\n')
     plan=q.initialize_round();plan['status']='authorized_work_complete_o11_pending';plan['finished_utc']=r.now();r.write(r.OUT/'R2-plan.json',plan)
     assert not subprocess.check_output(['git','diff','--cached','--name-only'],cwd=r.ROOT,text=True).strip()
-    names=['R2-completion_index.json','R2-completion_report.md','R2-method_summary.tsv','completion_report.md','R2-C-budget.json','R2-plan.json','R2-submission.json','R2-publication.json']
+    names=['R2-completion_index.json','R2-completion_report.md','R2-method_summary.tsv','completion_report.md','R2-C-budget.json','R2-plan.json','R2-submission.json','R2-publication.json',
+           'R2-O2/factorization_update_audit.json','R2-O2/factorization_update_audit.tsv']
     subprocess.run(['git','add','--',*[str((r.OUT/n).relative_to(r.ROOT)) for n in names if (r.OUT/n).exists()]],cwd=r.ROOT,check=True)
     if subprocess.run(['git','diff','--cached','--quiet'],cwd=r.ROOT).returncode:
         subprocess.run(['git','commit','-m','Index audited second-round rebuttal completion and optional omissions'],cwd=r.ROOT,check=True)

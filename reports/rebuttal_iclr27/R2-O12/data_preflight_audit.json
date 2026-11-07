@@ -1,0 +1,12 @@
+{
+  "status": "pass",
+  "created_utc": "2026-11-07T11:34:06.062907+00:00",
+  "math500_gold_parseable": 500,
+  "math500_gold_total": 500,
+  "mbppplus_samples": 378,
+  "mbppplus_missing_prompt_or_entrypoint": 0,
+  "mbppplus_zero_extra_input_tasks": [
+    "Mbpp/793"
+  ],
+  "interpretation": "Official v0.2.0 data retained in full, including Mbpp/793 with3 base cases and0 extra inputs; official scorer unchanged. No model predictions used."
+}
