@@ -1,0 +1,17 @@
+{
+  "status": "complete",
+  "completed_utc": "2026-11-07T14:00:38.008115+00:00",
+  "new_cells": 144,
+  "conditions": 18,
+  "statistics": "checkpoint",
+  "bootstrap_resamples": 20000,
+  "job_id": "15389",
+  "gpu_count": 2,
+  "outputs_sha256": {
+    "report.md": "f7efb5681d18bfe7ddfaeb48e0b78679e5bbbb9609f0de186ba74b6e2f1d4c5b",
+    "checkpoint_results.tsv": "4217d4a0db9fc11e89ee16e46d2899dfb0903a5aecf730df9c807fea86728337",
+    "paired_ci.tsv": "9b812acaa06e80c0542fa0755a46158c5061a2e3f47a2cb865f693609db0ee93",
+    "coverage_audit.json": "8e6740e2e00cd171305042c254bc944e342e8e719c9e2462d9a2af753c30d776",
+    "artifact_integrity_audit.json": "bb8c9ace221f89fdf090a4707294221cd9c337bd97773327c6194e464e17ef9c"
+  }
+}

@@ -88,3 +88,9 @@ Core experiment reports were already committed and pushed through result commit4
 ## Round 2: R2-O1
 
 Status: complete; new cells: 176. [Full report](R2-O1/report.md), [summary](R2-O1/summary.json). Protocol, coverage and artifact audits are in the same directory.
+
+<!-- R2-O2 -->
+
+## Round 2: R2-O2
+
+Status: complete; new cells: 144. [Full report](R2-O2/report.md), [summary](R2-O2/summary.json). Protocol, coverage and artifact audits are in the same directory.

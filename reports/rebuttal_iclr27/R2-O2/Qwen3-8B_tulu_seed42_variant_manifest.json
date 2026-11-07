@@ -1,0 +1,40 @@
+{
+  "base": "Qwen3-8B",
+  "variants": [
+    {
+      "label": "Qwen3-8B_tulu_seed42__original_lora",
+      "method": "original_lora",
+      "path": "/dataset1/zailong/models/spectral-surgery/Qwen3-8B-InstructionFollowing-LoRA",
+      "train_task": "tulu",
+      "seed": 42
+    },
+    {
+      "label": "Qwen3-8B_tulu_seed42__recon_0",
+      "method": "recon_0",
+      "path": "/dataset1/zailong/models/spectral-surgery/Qwen3-8B-InstructionFollowing-LoRA",
+      "train_task": "tulu",
+      "seed": 42
+    },
+    {
+      "label": "Qwen3-8B_tulu_seed42__hns_f4_s1",
+      "method": "hns_f4_s1",
+      "path": "/dataset1/zailong/models/spectral-surgery/Qwen3-8B-InstructionFollowing-LoRA",
+      "train_task": "tulu",
+      "seed": 42
+    },
+    {
+      "label": "Qwen3-8B_tulu_seed42__recon_0_unbal",
+      "method": "recon_0_unbal",
+      "path": "/dataset1/zailong/models/spectral-surgery/Qwen3-8B-InstructionFollowing-LoRA",
+      "train_task": "tulu",
+      "seed": 42
+    },
+    {
+      "label": "Qwen3-8B_tulu_seed42__hns_unbal",
+      "method": "hns_unbal",
+      "path": "/dataset1/zailong/models/spectral-surgery/Qwen3-8B-InstructionFollowing-LoRA",
+      "train_task": "tulu",
+      "seed": 42
+    }
+  ]
+}
