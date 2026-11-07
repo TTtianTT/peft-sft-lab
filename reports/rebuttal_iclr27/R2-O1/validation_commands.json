@@ -1,0 +1,15 @@
+[
+  {
+    "argv": [
+      "/dataset1/zailong/envs/peft-sft-lab/bin/python",
+      "/dataset1/zailong/workspace/peft-sft-lab/scripts/rebuttal_iclr27_r2_a.py",
+      "--validate-r64"
+    ],
+    "log": "/dataset1/zailong/workspace/peft-sft-lab/reports/rebuttal_iclr27/R2-O1/runtime/logs/r64_validation.log",
+    "started_utc": "2026-11-07T11:04:05.142209+00:00",
+    "job_id": "15389",
+    "returncode": 0,
+    "finished_utc": "2026-11-07T11:10:23.488574+00:00",
+    "elapsed_seconds": 378.33741451613605
+  }
+]

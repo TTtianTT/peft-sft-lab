@@ -1,0 +1,33 @@
+{
+  "base": "Qwen3-8B",
+  "variants": [
+    {
+      "label": "metamath_r64_lr2_fraction1__original_lora",
+      "method": "original_lora",
+      "path": "/dataset1/zailong/workspace/peft-sft-lab/reports/rebuttal_iclr27/E4/runtime/training/metamath_r64_lr2",
+      "train_task": "metamath",
+      "seed": 42
+    },
+    {
+      "label": "metamath_r64_lr2_fraction1__recon_0",
+      "method": "recon_0",
+      "path": "/dataset1/zailong/workspace/peft-sft-lab/reports/rebuttal_iclr27/E4/runtime/training/metamath_r64_lr2",
+      "train_task": "metamath",
+      "seed": 42
+    },
+    {
+      "label": "metamath_r64_lr2_fraction1__hns_f4_s1",
+      "method": "hns_f4_s1",
+      "path": "/dataset1/zailong/workspace/peft-sft-lab/reports/rebuttal_iclr27/E4/runtime/training/metamath_r64_lr2",
+      "train_task": "metamath",
+      "seed": 42
+    },
+    {
+      "label": "metamath_r64_lr2_fraction1__flat_nuclear",
+      "method": "flat_nuclear",
+      "path": "/dataset1/zailong/workspace/peft-sft-lab/reports/rebuttal_iclr27/E4/runtime/training/metamath_r64_lr2",
+      "train_task": "metamath",
+      "seed": 42
+    }
+  ]
+}

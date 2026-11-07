@@ -1,0 +1,9 @@
+group	n	metric	spearman	permutation_p	permutations	interpretation
+pooled_all	14	target_gain	-0.3750009177533887	0.18529073546322683	20000	descriptive, correlated checkpoints; pooled task scores are not commensurate
+pooled_all	14	fg_reduction	0.05518817584457587	0.8525073746312685	20000	descriptive, correlated checkpoints; pooled task scores are not commensurate
+rank16	12	target_gain	-0.3492068923153885	0.26373681315934205	20000	descriptive, correlated checkpoints; pooled task scores are not commensurate
+rank16	12	fg_reduction	-0.1405994937689191	0.6577671116444178	20000	descriptive, correlated checkpoints; pooled task scores are not commensurate
+magicoder_rank16	6	target_gain	0.0	1.0	20000	descriptive, correlated checkpoints; pooled task scores are not commensurate
+magicoder_rank16	6	fg_reduction	0.0	1.0	20000	descriptive, correlated checkpoints; pooled task scores are not commensurate
+metamath_rank16	6	target_gain	0.08823529411764706	0.8925053747312635	20000	descriptive, correlated checkpoints; pooled task scores are not commensurate
+metamath_rank16	6	fg_reduction	0.40583972495671394	0.4338283085845708	20000	descriptive, correlated checkpoints; pooled task scores are not commensurate

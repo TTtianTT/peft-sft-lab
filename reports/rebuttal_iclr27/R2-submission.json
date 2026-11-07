@@ -53,10 +53,20 @@
       "job_id": "15431",
       "stage": "final_audit",
       "gpus": 0,
-      "dependency": "afterok:15429",
+      "dependency": "afterok:15429:15441",
       "command": "sbatch --dependency=afterok:15429 slurm/rebuttal_iclr27_r2_finish.slurm",
       "stdout": "logs/rebuttal27-r2-finish-15431.out",
       "stderr": "logs/rebuttal27-r2-finish-15431.err",
+      "state": "PENDING"
+    },
+    {
+      "job_id": "15441",
+      "stage": "factorization_update_audit",
+      "gpus": 0,
+      "dependency": "afterok:15389",
+      "command": "sbatch --dependency=afterok:15389 slurm/rebuttal_iclr27_r2_factor_audit.slurm",
+      "stdout": "logs/rebuttal27-r2-factor-audit-15441.out",
+      "stderr": "logs/rebuttal27-r2-factor-audit-15441.err",
       "state": "PENDING"
     }
   ],

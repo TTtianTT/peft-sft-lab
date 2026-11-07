@@ -82,3 +82,9 @@ Jobs ran serially with maximum2 GPUs globally. Total allocation time including t
 Recon-0 follows the actual main HNS balanced reconstruction function, correcting the unbalanced description in the proposed plan. Evaluation prompts, templates, parsers and scorers remained fixed. Cached cells, adapter/config hashes, module coverage and reconstruction errors are audited. Raw weights/predictions stay in ignored runtime/ paths. Original user changes were preserved.
 
 Core experiment reports were already committed and pushed through result commit4b0e62f; this completion index updates the final queue/coverage records. Submission details are in submission.json; code/test verification is in validation.json.
+
+<!-- R2-O1 -->
+
+## Round 2: R2-O1
+
+Status: complete; new cells: 176. [Full report](R2-O1/report.md), [summary](R2-O1/summary.json). Protocol, coverage and artifact audits are in the same directory.
