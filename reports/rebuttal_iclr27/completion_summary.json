@@ -1,0 +1,110 @@
+{
+  "status": "complete",
+  "completed_utc": "2026-11-07T07:56:17.191779+00:00",
+  "last_verified_utc": "2026-11-07T09:38:25.161993+00:00",
+  "new_evaluation_cells": 696,
+  "training_runs": 7,
+  "active_gpu_count": 0,
+  "max_concurrent_gpu_count": 2,
+  "allocated_gpu_hours_including_failed_preflight": 36.765,
+  "successful_jobs": [
+    "14889",
+    "14892",
+    "14893"
+  ],
+  "failed_preflight_job": "14888",
+  "experiments": {
+    "E0": {
+      "status": "complete",
+      "new_evaluation_cells": 144,
+      "mode": "GPU experiment",
+      "files": {
+        "report.md": "8a274e74869a83b7f12dd9ded38810f0fced818c7dc35a32471ec079e692039f",
+        "summary.json": "c887cd4378d69e2cea552a63a01104137a46433d9b972c8054959699f73edf56",
+        "checkpoint_results.tsv": "d160c9c2bb858bbf614dfa75736f995280dbb8f956cfbf176481fff564d92d31",
+        "paired_ci.tsv": "206eb6361a5781e71b35b31b932eae0ab3a0724fb70ed9a5e068324a39478b8d",
+        "coverage_audit.json": "2894c4df6024098d79c53a276f08b7c5710960bc3d1bad6329dc785b5ccfbaca",
+        "artifact_integrity_audit.json": "6c980d2733a242bc2cd34f13d3dcd8e74009fce6c85f240eaad8670fa71ef09e"
+      }
+    },
+    "E1": {
+      "status": "complete",
+      "new_evaluation_cells": 72,
+      "mode": "GPU experiment",
+      "files": {
+        "report.md": "9f5a195ffd7806c19d573c6a7b486396f6fe20c7a5e72e6bc106dbe85c547a36",
+        "summary.json": "eef11e0c97b21aa4d5356326fa9cb1df08e7ea8896154bc9b21a0c37d603a410",
+        "checkpoint_results.tsv": "352fda898f5663b3651b278ec8f2ceeb124e768367336606a4b6805591080b3f",
+        "paired_ci.tsv": "ca8f5fb055342132db944d2279e798d26acd6ad86945a9b2b07201538ddd3956",
+        "coverage_audit.json": "4168aad5aba0a72deb4292e83a625e4cbbfdf707e4fab71ffeb5138231a0dba3",
+        "artifact_integrity_audit.json": "6c980d2733a242bc2cd34f13d3dcd8e74009fce6c85f240eaad8670fa71ef09e"
+      }
+    },
+    "E2": {
+      "status": "complete",
+      "new_evaluation_cells": 216,
+      "mode": "GPU experiment",
+      "files": {
+        "report.md": "306f3a9bd3b3265599a65c1337ed4ccc67360977d7fbfbc244d144a0ae92d353",
+        "summary.json": "5dd9408134109de99c1c2870fffa0527afb7bed0b88d313e409d0e7ab70dc201",
+        "checkpoint_results.tsv": "cb930d4f3d1c112e659af77e4902c5e31f23f4c39d79c681276593e2d402faf5",
+        "paired_ci.tsv": "986d1b996be35b182072e06390a0eb6cdb83116b385c75d269981e9854e06c9a",
+        "coverage_audit.json": "c3c646b52b14727b6f4f967e3fc66a5a92ea0f26be5042ce3f871def3835ff5d",
+        "artifact_integrity_audit.json": "54c557b6058c3b1f0b64002fc1a21cfd5c2918d79d0c5a82298e2a04ba61a79f"
+      }
+    },
+    "E3": {
+      "status": "complete",
+      "new_evaluation_cells": 216,
+      "mode": "GPU experiment",
+      "files": {
+        "report.md": "9715595d79afd44141e5c6ae9c5cf245768771341093da2de396cb9788b334dd",
+        "summary.json": "465a59c162ce001d8a598c9f93935b15f9bbcfc368a4dec3455678bf1ee065fa",
+        "checkpoint_results.tsv": "e717679e2bb5ade8550194c7405e7951ee1fc880c320b7bc4d576fcea62e6c80",
+        "paired_ci.tsv": "1b6f1af9c8e81f77b7801a2b3dac0f99b86b132d6bdea83bb0a7cd0976762bff",
+        "coverage_audit.json": "bc6a859fd82d00317885c6d902241faf2a027dfd4a153460c93e25030c45c3fb",
+        "artifact_integrity_audit.json": "95e9617d85c4fd0d281d937e8ca4b06d10e975575678c5478697d83630a1897e"
+      }
+    },
+    "E4": {
+      "status": "complete",
+      "new_evaluation_cells": 48,
+      "mode": "GPU experiment",
+      "files": {
+        "report.md": "37962ef0f44af53432062fa75f7653e41e8c9feb29ea2f404c4b4e10191d8ae6",
+        "summary.json": "70b13de0f0cf112b212f1c421bf7078aec6f46b0ff8560477303ac869dc3f21c",
+        "checkpoint_results.tsv": "e35ac88457cae60bf9305128f6e7994ac27d348920f3e6ce28f5ce8b676d27ba",
+        "paired_ci.tsv": "926d63049d99e06c19e7a208583722bed4b10a13dd9226add1acf751c1bd8b4b",
+        "coverage_audit.json": "19cd85a42ed04e58e2489141e68c8a848ad776731ea5359623a81fe77cf90953",
+        "artifact_integrity_audit.json": "31daceb08db7b6b9f62f555da816ee8d52767350ed8404a4051f6c17ac5e56b4"
+      }
+    },
+    "E5": {
+      "status": "complete",
+      "new_evaluation_cells": 0,
+      "mode": "scope comparison; no GPU experiment",
+      "files": {
+        "report.md": "a00bfc34f0d0bba0684c80c81f76f3d4c3ff6a7957f76d78df2247dc0a942944",
+        "summary.json": "65b4592134c03ca76810b8a4942e39b931a57fcf93321eb10730a7cc26da326d",
+        "checkpoint_results.tsv": "14135992f0d85a1e333afa4ba5db7df4550c7459d66ac81aede6d993255a988b",
+        "paired_ci.tsv": "42e34a0f38b4f696ba55bd219ea6bacec5465b316e6c7a7d2cfde7e7c1213fc7",
+        "coverage_audit.json": "d51a20712214c6a019564fee8625c2b8c9dfccfb9c6c99460bab1e4822eaa577",
+        "artifact_integrity_audit.json": "694869a7bccba14a689b51b4cc3232958c01e068ab8239a5318213a03cf45164"
+      }
+    },
+    "E6": {
+      "status": "complete",
+      "new_evaluation_cells": 0,
+      "mode": "algorithm extraction; no GPU work",
+      "files": {
+        "report.md": "95979dbeb09aa0ce7751936ec8fc86cdac45b43f96169789445e9535a987347c",
+        "summary.json": "4dfb1325bfde530f272726ce262cacd033ea4b5787cd6dba6e758f00508d2309",
+        "checkpoint_results.tsv": "14135992f0d85a1e333afa4ba5db7df4550c7459d66ac81aede6d993255a988b",
+        "paired_ci.tsv": "42e34a0f38b4f696ba55bd219ea6bacec5465b316e6c7a7d2cfde7e7c1213fc7",
+        "coverage_audit.json": "d51a20712214c6a019564fee8625c2b8c9dfccfb9c6c99460bab1e4822eaa577",
+        "artifact_integrity_audit.json": "cada85c7eaf32154fb577b0777bd9bb7871072ac10fe02c51b3f85256f59cba5"
+      }
+    }
+  },
+  "scope": "mandatory E0-E4; E5 setting-mismatch assessment; E6 algorithm extraction; optional GPU extensions omitted"
+}

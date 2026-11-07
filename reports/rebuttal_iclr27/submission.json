@@ -1,5 +1,5 @@
 {
-  "status": "running_serial_dependency_chain",
+  "status": "complete",
   "jobs": [
     {
       "experiment": "E1_then_E0",
@@ -11,7 +11,10 @@
       "stdout": "logs/rebuttal27-e1-e0-14888.out",
       "stderr": "logs/rebuttal27-e1-e0-14888.err",
       "status": "failed_before_generation",
-      "failure": "Exclusive-process CUDA context retained by in-process adapter builder; 18 audited Recon-0 adapters preserved, no official cells generated."
+      "failure": "Exclusive-process CUDA context retained by in-process adapter builder; 18 audited Recon-0 adapters preserved, no official cells generated.",
+      "elapsed_seconds": 183,
+      "exit_code": "1:0",
+      "allocated_gpu_hours": 0.10166666666666667
     },
     {
       "experiment": "E1_then_E0",
@@ -22,8 +25,11 @@
       "command": "/dataset1/zailong/envs/peft-sft-lab/bin/python scripts/rebuttal_iclr27.py --pipeline",
       "stdout": "logs/rebuttal27-e1-e0-14889.out",
       "stderr": "logs/rebuttal27-e1-e0-14889.err",
-      "status": "running_E0_after_all_72_E1_cells_verified",
-      "change": "Isolate builder CUDA context in exited subprocess; no evaluation protocol change."
+      "status": "complete",
+      "change": "Isolate builder CUDA context in exited subprocess; no evaluation protocol change.",
+      "elapsed_seconds": 6608,
+      "exit_code": "0:0",
+      "allocated_gpu_hours": 3.671111111111111
     },
     {
       "experiment": "E2_then_E3",
@@ -34,7 +40,10 @@
       "script": "slurm/rebuttal_iclr27_e2_e3.slurm",
       "stdout": "logs/rebuttal27-e2-e3-14892.out",
       "stderr": "logs/rebuttal27-e2-e3-14892.err",
-      "status": "pending_dependency"
+      "status": "complete",
+      "elapsed_seconds": 13416,
+      "exit_code": "0:0",
+      "allocated_gpu_hours": 7.453333333333333
     },
     {
       "experiment": "E4_then_E5_E6_writing",
@@ -45,8 +54,17 @@
       "script": "slurm/rebuttal_iclr27_e4.slurm",
       "stdout": "logs/rebuttal27-e4-14893.out",
       "stderr": "logs/rebuttal27-e4-14893.err",
-      "status": "pending_dependency"
+      "status": "complete",
+      "elapsed_seconds": 45970,
+      "exit_code": "0:0",
+      "allocated_gpu_hours": 25.538888888888888
     }
   ],
-  "code_commit": "3e663e4"
+  "code_commit": "5defa31",
+  "completed_utc": "2026-11-07T07:56:17.191779+00:00",
+  "last_verified_utc": "2026-11-07T09:38:25.161993+00:00",
+  "results_commit": "4b0e62f44122ef563d856a075405769aa45346fa",
+  "active_gpu_count": 0,
+  "total_new_evaluation_cells": 696,
+  "total_training_runs": 7
 }

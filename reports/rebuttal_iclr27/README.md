@@ -2,6 +2,8 @@
 
 Branch: `refactor/sft-chat-template`; original source commit: `139bfd7`.
 
+**Completed 2026-11-07 15:56 Singapore time:** 696 new evaluation cells,7 trainings; E0-E6 packages and audits verified. No active GPU jobs. See [completion report](completion_report.md) and [machine-readable completion audit](completion_summary.json).
+
 All main tests use the final `functional_hns_three_seed_20260914` protocol. The preflight verified 584 cached cells sample by sample, all 144 reference adapters, 36 unchanged historical Flat adapters, and exact library-version agreement. See `cache_audit.json`, `cache_input_audit.tsv`, `base_sample_input_hashes.tsv.gz`, `reference_artifact_audit.json`, and `environment_audit.json`.
 
 Execution is serial across stages, with at most two allocated GPUs:
