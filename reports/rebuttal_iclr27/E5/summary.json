@@ -1,0 +1,15 @@
+{
+  "status": "complete",
+  "completed_utc": "2026-11-07T07:56:09.124036+00:00",
+  "new_cells": 0,
+  "mode": "scope comparison; no GPU experiment",
+  "code_public": true,
+  "official_commit": "e34d169189933a63600f37aa78b21864c08a7b59",
+  "reason": "Official implementation is vision continual learning; direct Qwen port is beyond fixed single-adapter rebuttal scope.",
+  "compatibility_tested": false,
+  "outputs_sha256": {
+    "report.md": "a00bfc34f0d0bba0684c80c81f76f3d4c3ff6a7957f76d78df2247dc0a942944",
+    "checkpoint_results.tsv": "14135992f0d85a1e333afa4ba5db7df4550c7459d66ac81aede6d993255a988b",
+    "paired_ci.tsv": "42e34a0f38b4f696ba55bd219ea6bacec5465b316e6c7a7d2cfde7e7c1213fc7"
+  }
+}

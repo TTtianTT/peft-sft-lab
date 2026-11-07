@@ -1,0 +1,7 @@
+{
+  "status": "pass",
+  "weights": [],
+  "reconstruction_error": null,
+  "applicability": "No adapter construction/evaluation in this writing-only stage",
+  "source_hashes": {}
+}
