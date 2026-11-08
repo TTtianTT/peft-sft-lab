@@ -1,0 +1,24 @@
+[
+  {
+    "base": "Qwen3-8B",
+    "base_model": "/dataset1/zailong/models/Qwen3-8B",
+    "task": "metamath",
+    "seed": 42,
+    "rank": 32,
+    "alpha": 64,
+    "peft_method": "lora",
+    "lr": 0.0002,
+    "epochs": 3,
+    "condition": "Qwen3-8B_metamath_lora_r32_seed42",
+    "source": "/dataset1/zailong/workspace/peft-sft-lab/reports/rebuttal_iclr27/R2-O6/runtime/training/Qwen3-8B_metamath_lora_r32_seed42",
+    "total_steps": 4413,
+    "warmup_steps": 442,
+    "job_id": "15390",
+    "gpu_count": 1,
+    "weights_sha256": "7b13962f0e0f65217c2d00f775c28e846290c01b953b4e413173f0a13c93f75b",
+    "config_sha256": "62aef31bac88427f0d48e1e25ff22d9567203e71ae29588ca9ec25e2411dbd0c",
+    "training_args_sha256": "7619347f9a11fea7bc47a5aea9cd424bc88475cd6aa731f554b64f7c6097e667",
+    "warmup_audit_sha256": "65d420954eab6ef42a199387fde998bda968e8fa2a9c8e7c8b9bb91ebdecc5c8",
+    "run_args_sha256": "cde19bf68137bf52354936a6ca59ac4fd509ecc0a4d7b0cddeebfff407f8082e"
+  }
+]
