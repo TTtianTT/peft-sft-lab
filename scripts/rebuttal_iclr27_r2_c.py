@@ -13,6 +13,12 @@ import rebuttal_iclr27_r2_b as b
 
 EXPERIMENTS=('R2-O9','R2-O10')
 ESTIMATES={'R2-O9':10.,'R2-O10':5.,'R2-O12':2.}
+# Author-approved O10 amendment (2026-11-09), made before any 14B training or inference:
+# job15429's one-B300 fit check died with cudaErrorIllegalAddress in Inductor kernel
+# triton_poi_fused_mul_silu_slice_1 during vLLM's 65536-token profile run. Qwen3-14B gate_up output
+# 65536*2*17408=2.28e9 elements exceeds int32 indexing (2^31); Qwen3-8B/Llama-8B stay below it.
+# Only R2-O10 (Base and all four adapters alike) uses 32768 batched tokens; all other settings unchanged.
+O10_BATCHED_TOKENS=32768
 
 
 def specs(exp):
@@ -70,12 +76,43 @@ def preflight14():
     from vllm import LLM, SamplingParams
     llm=LLM(model=spec['base_model'],tensor_parallel_size=1,enable_lora=True,max_lora_rank=16,max_loras=5,max_cpu_loras=5,
         max_model_len=4096,gpu_memory_utilization=.94,attention_backend='FLASH_ATTN',async_scheduling=False,
-        enable_prefix_caching=False,disable_custom_all_reduce=True,max_num_seqs=2048,max_num_batched_tokens=65536,seed=42)
+        enable_prefix_caching=False,disable_custom_all_reduce=True,max_num_seqs=2048,max_num_batched_tokens=O10_BATCHED_TOKENS,seed=42)
     output=llm.generate(['Hello'],SamplingParams(temperature=0,max_tokens=8,seed=42),use_tqdm=False)
     assert output[0].outputs[0].token_ids
     r.write(q.folder('R2-O10')/'capacity_preflight.json',dict(status='pass',job_id=os.getenv('SLURM_JOB_ID'),
         devices=devices,tensor_parallel_size=1,max_model_len=4096,max_lora_rank=16,global_gpu_limit=2,
+        max_num_batched_tokens=O10_BATCHED_TOKENS,
+        amendment='65536 batched tokens failed in job15429 (Inductor int32 index overflow in fused SiLU*mul, not memory); author approved 32768 for O10 only',
+        failed_attempt_log=str(q.folder('R2-O10')/'runtime/logs/capacity_preflight.log'),
         tested='main engine initialization and greedy generation on one B300; training memory audited by actual fixed-recipe run'))
+
+
+def eval_worker(exp,slot):
+    # Runs the unchanged shared q.worker, swapping only the eval batched-token argument for O10.
+    assert exp=='R2-O10'
+    original=r.run_command
+    def patched(argv,log,history):
+        argv=list(argv)
+        if any(str(a).endswith('eval_forgetting_matrix_vllm.py') for a in argv):
+            i=argv.index('--max_num_batched_tokens');assert argv[i+1]=='65536';argv[i+1]=str(O10_BATCHED_TOKENS)
+        return original(argv,log,history)
+    r.run_command=patched
+    q.worker(exp,slot)
+
+
+def launch_o10_workers(exp):
+    r.require_slurm();devices=os.getenv('CUDA_VISIBLE_DEVICES','').split(',');assert len(devices)==2
+    q.prime_cache(exp);states=[]
+    for slot,device in enumerate(devices):
+        env=os.environ.copy();env['CUDA_VISIBLE_DEVICES']=device;env.pop('CUBLAS_WORKSPACE_CONFIG',None)
+        path=q.folder(exp)/f'runtime/logs/worker{slot}.log';path.parent.mkdir(parents=True,exist_ok=True)
+        handle=path.open('a');proc=subprocess.Popen([sys.executable,__file__,'--eval-worker',exp,'--slot',str(slot)],cwd=r.ROOT,env=env,stdout=handle,stderr=subprocess.STDOUT)
+        states.append((slot,proc,handle))
+    failed=[]
+    for slot,proc,handle in states:
+        code=proc.wait();handle.close()
+        if code:failed.append((slot,code))
+    if failed:raise RuntimeError((exp,'worker failures',failed))
 
 
 def train_worker(exp,slot):
@@ -143,7 +180,11 @@ def extra(exp,lock,rows,stats,modules,lines):
         lines+=['','All12 candidate validation scores are in validation_candidates.tsv; exactly one checkpoint/task was selected by the predeclared validation-only rule.']
         for x in selected:lines.append(f'- {x["task"]}: LR{x["lr"]:g}, fraction{x["fraction"]:g}, validation{x["validation_score"]:.4f}.')
     else:lines+=['','Qwen3-14B LR2e-4 was transferred from8B without model-specific tuning. A one-B300 vLLM fit check passed before the single fixed-recipe training. '
-        'Capacity details are in capacity_preflight.json; total allocated GPUs remained2.']
+        'Capacity details are in capacity_preflight.json; total allocated GPUs remained2.',
+        '','Protocol amendment (author-approved before any 14B training/inference): the first fit check with max_num_batched_tokens65536 failed with an Inductor int32 '
+        'index overflow (cudaErrorIllegalAddress in the fused SiLU*mul kernel; 65536x2x17408>2^31), not GPU memory. O10 Base and all four adapters therefore use '
+        'max_num_batched_tokens32768; every other inference setting is unchanged. This is a documented deviation from the main 65536 setting, '
+        'so O10 is compared within itself, not as a literal same-config row of the main table.']
 
 
 def pipeline():
@@ -155,7 +196,8 @@ def pipeline():
         hours=q.remaining_hours()
         if hours<ESTIMATES[exp]+1:
             decisions.append(dict(experiment=exp,status='not_started_budget',remaining_hours=hours,estimate_hours=ESTIMATES[exp]));continue
-        prepare(exp);train(exp);freeze_evaluation(exp);q.launch_workers(exp);q.finalize(exp,extra);q.publish(exp)
+        prepare(exp);train(exp);freeze_evaluation(exp)
+        (launch_o10_workers if exp=='R2-O10' else q.launch_workers)(exp);q.finalize(exp,extra);q.publish(exp)
         decisions.append(dict(experiment=exp,status='complete',remaining_hours=q.remaining_hours()))
         r.write(r.OUT/'R2-C-budget.json',decisions)
     # Approval is never inferred from silence or elapsed time.
@@ -171,10 +213,11 @@ def pipeline():
 
 
 if __name__=='__main__':
-    p=argparse.ArgumentParser();p.add_argument('--prepare',action='store_true');p.add_argument('--pipeline',action='store_true');p.add_argument('--preflight14',action='store_true');p.add_argument('--train-worker',choices=EXPERIMENTS);p.add_argument('--slot',type=int,choices=(0,1),default=0)
+    p=argparse.ArgumentParser();p.add_argument('--prepare',action='store_true');p.add_argument('--pipeline',action='store_true');p.add_argument('--preflight14',action='store_true');p.add_argument('--train-worker',choices=EXPERIMENTS);p.add_argument('--eval-worker',choices=('R2-O10',));p.add_argument('--slot',type=int,choices=(0,1),default=0)
     a=p.parse_args()
     if a.prepare:
         for exp in EXPERIMENTS:prepare(exp)
     elif a.preflight14:preflight14()
     elif a.train_worker:train_worker(a.train_worker,a.slot)
+    elif a.eval_worker:eval_worker(a.eval_worker,a.slot)
     elif a.pipeline:pipeline()

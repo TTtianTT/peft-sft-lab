@@ -15,3 +15,13 @@ Qwen3-14B MetaMath seed42, fixed E4-selected LR2e-4 transferred without retuning
 Explicit warmup_steps=ceil(10% actual total) after tokenizer/filtering preprocessing. Audit both saved training_args and actual Trainer warmup_schedule. E4 recipe: all7 modules, dropout.05, scaling2, bf16, gradient checkpointing, sequence4096, microbatch16, global32, padding8, cosine, fused AdamW betas.9/.999, weight_decay0, clip1, epochs Magicoder1/MetaMath3. Model/Trainer seed42 and dataset subset seed42. Save half/final. Same main eval prompts/templates/parsers/scorers; greedy seed42, maxmodel4096, block5, maxrank16, batch-invariant. Four methods Original LoRA, Recon-0, HNS4+1 strength1 nuclear all7, Flat-Nuclear. Single-seed paired question intervals20000 and exact McNemar repairs/damage, all Target/Off/FG; no training-run uncertainty claim. Cache/sample hashes, weight/config SHA256, coverage and reconstruction audit required. All configurations reported.
 Budget rule: start only when prespecified runtime estimate plus1h reserve fits the remaining48h wall budget, independent of test performance. O11 is not authorized until the author explicitly confirms it.
 - Qwen3-14B_metamath_lora_r16_seed42: LR0.0002, epochs3, r16/alpha32.
+
+## Amendment 1 (author-approved 2026-11-09, before any 14B training or inference)
+
+The predeclared one-B300 vLLM fit check (job15429, 2026-11-08 23:37-23:39 +08) failed during engine profiling with
+cudaErrorIllegalAddress in the Inductor kernel triton_poi_fused_mul_silu_slice_1. The profile batch of 65536 tokens gives a
+Qwen3-14B gate_up activation of 65536x2x17408=2.28e9 elements, above int32 indexing (2^31); model weights used only 28.17GiB,
+so this is a kernel indexing limit rather than GPU memory. The author approved lowering max_num_batched_tokens to 32768 for
+R2-O10 only (Base and all four adapters identically, fit check included). All other training/inference settings, prompts,
+parsers, scorers, methods and statistics are unchanged. Batch-invariant mode is kept; O10 is reported as a documented
+deviation from the main 65536 setting and compared within itself. The failed fit-check log is retained.

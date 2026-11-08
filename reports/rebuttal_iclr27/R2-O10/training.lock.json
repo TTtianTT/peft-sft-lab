@@ -1,6 +1,6 @@
 {
   "created_utc": "2026-11-07T11:21:02.315601+00:00",
-  "protocol_sha256": "0939b9b5ab25e05cd29dc83b7f3beb11eeed30603723c3077c013db5213f39fb",
+  "protocol_sha256": "0f9547a53798c1a515254b275b5aa17494b33a60d7ee6972a02e0abe29cbb708",
   "files": {
     "scripts/eval_forgetting_matrix_vllm.py": "771996287e653c316413a22184e66602766933f66f80eaf5e99405e14f4dcac0",
     "scripts/score_forgetting_matrix.py": "a172270a8d115d2f06863a0d181a784756412747a45e9dc02dd71d0f95de5bf5",
@@ -35,7 +35,7 @@
     "scripts/rebuttal_iclr27_r2.py": "427e8130976e6f0b9e5034941fb80fed353f4fd74652ac99528e65c2c1aedebf",
     "scripts/rebuttal_iclr27_r2_a.py": "46fcc85a57678562f10281672440cb0d6437e3012627ec0f9442e82623956298",
     "scripts/rebuttal_iclr27_r2_b.py": "5bf55a6b49d501380a933e32d9b7342c2bf9151d4d4a479de6db1b6a670dd226",
-    "scripts/rebuttal_iclr27_r2_c.py": "bd82502972aad62cc732406ad6e61060ad47c71e358dac819e52bb7c33839242",
+    "scripts/rebuttal_iclr27_r2_c.py": "5b20f42020deffef3d3e37f37e70a8a07ba56c79fce618bfc20b5e6996e49cbc",
     "reports/rebuttal_iclr27/R2-assets/Qwen3-14B.json": "38f513f8e4c5446430184407c28f05d89825ffebcc826d990adb8bc0b1aa6aae"
   },
   "datasets": {
@@ -92,5 +92,19 @@
     "hns_f4_s1",
     "flat_nuclear"
   ],
-  "runtime_estimate_hours": 5.0
+  "runtime_estimate_hours": 5.0,
+  "amendments": [
+    {
+      "id": 1,
+      "approved": "author, 2026-11-09 (Claude Code session)",
+      "change": "O10 max_num_batched_tokens 65536->32768",
+      "reason": "Inductor int32 index overflow in fused SiLU*mul at 65536 tokens on Qwen3-14B (job15429 fit check)",
+      "previous": {
+        "protocol_sha256": "0939b9b5ab25e05cd29dc83b7f3beb11eeed30603723c3077c013db5213f39fb",
+        "c_driver_sha256": "bd82502972aad62cc732406ad6e61060ad47c71e358dac819e52bb7c33839242"
+      },
+      "amended_utc": "2026-11-08T16:41:00.119930+00:00",
+      "failed_log": "/dataset1/zailong/workspace/peft-sft-lab/reports/rebuttal_iclr27/R2-O10/runtime/logs/capacity_preflight.log"
+    }
+  ]
 }

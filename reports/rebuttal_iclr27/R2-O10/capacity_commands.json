@@ -1,0 +1,15 @@
+[
+  {
+    "argv": [
+      "/dataset1/zailong/envs/peft-sft-lab/bin/python",
+      "/dataset1/zailong/workspace/peft-sft-lab/scripts/rebuttal_iclr27_r2_c.py",
+      "--preflight14"
+    ],
+    "log": "/dataset1/zailong/workspace/peft-sft-lab/reports/rebuttal_iclr27/R2-O10/runtime/logs/capacity_preflight.log",
+    "started_utc": "2026-11-08T15:37:12.690223+00:00",
+    "job_id": "15429",
+    "returncode": 1,
+    "finished_utc": "2026-11-08T15:39:55.685088+00:00",
+    "elapsed_seconds": 162.98828758811578
+  }
+]
