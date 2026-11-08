@@ -1,0 +1,8 @@
+{
+  "status": "pass",
+  "conditions": 1,
+  "new_cells": 20,
+  "expected_new_cells": 20,
+  "audited_cells": 20,
+  "sample_input_mismatches": 0
+}

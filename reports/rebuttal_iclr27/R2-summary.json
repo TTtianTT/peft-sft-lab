@@ -154,7 +154,24 @@
         "coverage_audit.json": "8e2d5566e5c1f052f4972bcce8d63f12e4d1816d4a7ce72c7f08039d9db7eef6",
         "artifact_integrity_audit.json": "31354e31fe280d8fd9b69151e746968268c82d58cb9dc3b7e1efefa2efeb562d"
       }
+    },
+    "R2-O10": {
+      "status": "complete",
+      "completed_utc": "2026-11-08T20:52:30.544341+00:00",
+      "new_cells": 20,
+      "conditions": 1,
+      "statistics": "item",
+      "bootstrap_resamples": 20000,
+      "job_id": "16484",
+      "gpu_count": 2,
+      "outputs_sha256": {
+        "report.md": "054971b2e693b0f0a3565e2c0c467c2884b28824c0d18d09a246e1c22d091786",
+        "checkpoint_results.tsv": "035fc7cc611521fb93519cf3ffa584048b222e2eaa02a7a765a5c1ed7727eb95",
+        "paired_ci.tsv": "3a94812497d262f26dc406082cf93d667cb0d70090ef05061038665dc9ef31f2",
+        "coverage_audit.json": "c35e67709a245be6cfa74d6102b2eb45f9c264834441948ef43dc67176b8c693",
+        "artifact_integrity_audit.json": "4cf350572beae001a4477d595dc06d586a0f1d69cb84e819ab1c1468447713fc"
+      }
     }
   },
-  "updated_utc": "2026-11-08T15:37:06.155626+00:00"
+  "updated_utc": "2026-11-08T20:52:30.560106+00:00"
 }
