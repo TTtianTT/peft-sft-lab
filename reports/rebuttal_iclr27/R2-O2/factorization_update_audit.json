@@ -1,0 +1,11 @@
+{
+  "status": "pass",
+  "conditions": 18,
+  "compared_module_pairs": 8568,
+  "max_relative_update_difference": 1.7491789907872555e-07,
+  "fixed_tolerance": 5e-05,
+  "device": "cpu; CUDA never initialized",
+  "job_id": "15441",
+  "gpus": 0,
+  "audit_sha256": "cc4a87f4e13cfe1a13e1c0da8cc3021729d59a38676c8b1913b523146f7326eb"
+}

@@ -1,5 +1,5 @@
 {
-  "status": "running",
+  "status": "authorized_work_complete_o11_pending",
   "base_commit": "9f23dfc",
   "started_utc": "2026-11-07T10:42:37.283039+00:00",
   "deadline_utc": "2026-11-09T10:42:37.283039+00:00",
@@ -19,5 +19,6 @@
     "R2-O12"
   ],
   "o11_author_approval": null,
-  "budget_rule": "A then B; C starts only if its prespecified estimate plus reserve fits remaining wall budget; no test-score-dependent omissions"
+  "budget_rule": "A then B; C starts only if its prespecified estimate plus reserve fits remaining wall budget; no test-score-dependent omissions",
+  "finished_utc": "2026-11-08T21:16:06.276442+00:00"
 }

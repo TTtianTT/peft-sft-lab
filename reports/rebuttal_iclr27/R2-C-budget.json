@@ -1,0 +1,17 @@
+[
+  {
+    "experiment": "R2-O10",
+    "status": "complete",
+    "remaining_hours": 13.833542102222221
+  },
+  {
+    "experiment": "R2-O11",
+    "status": "awaiting_author_confirmation",
+    "approval": null
+  },
+  {
+    "experiment": "R2-O12",
+    "status": "complete",
+    "remaining_hours": 13.442309114444443
+  }
+]
