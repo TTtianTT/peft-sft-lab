@@ -1,0 +1,33 @@
+{
+  "base": "Qwen3-1.7B",
+  "variants": [
+    {
+      "label": "Qwen3-1.7B_metamath_lora_r16_seed42__original_lora",
+      "method": "original_lora",
+      "path": "/dataset1/zailong/workspace/peft-sft-lab/reports/rebuttal_iclr27/R2-O7/runtime/training/Qwen3-1.7B_metamath_lora_r16_seed42",
+      "train_task": "metamath",
+      "seed": 42
+    },
+    {
+      "label": "Qwen3-1.7B_metamath_lora_r16_seed42__recon_0",
+      "method": "recon_0",
+      "path": "/dataset1/zailong/workspace/peft-sft-lab/reports/rebuttal_iclr27/R2-O7/runtime/training/Qwen3-1.7B_metamath_lora_r16_seed42",
+      "train_task": "metamath",
+      "seed": 42
+    },
+    {
+      "label": "Qwen3-1.7B_metamath_lora_r16_seed42__hns_f4_s1",
+      "method": "hns_f4_s1",
+      "path": "/dataset1/zailong/workspace/peft-sft-lab/reports/rebuttal_iclr27/R2-O7/runtime/training/Qwen3-1.7B_metamath_lora_r16_seed42",
+      "train_task": "metamath",
+      "seed": 42
+    },
+    {
+      "label": "Qwen3-1.7B_metamath_lora_r16_seed42__flat_nuclear",
+      "method": "flat_nuclear",
+      "path": "/dataset1/zailong/workspace/peft-sft-lab/reports/rebuttal_iclr27/R2-O7/runtime/training/Qwen3-1.7B_metamath_lora_r16_seed42",
+      "train_task": "metamath",
+      "seed": 42
+    }
+  ]
+}

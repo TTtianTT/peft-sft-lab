@@ -1,0 +1,3 @@
+condition	base	rank	target_gain	fg_reduction	flat_minus_hns_target
+Qwen3-1.7B_metamath_lora_r16_seed42	Qwen3-1.7B	16	-59.89385898407885	7.164283586368539	0.4548900682335111
+Qwen3-4B_metamath_lora_r16_seed42	Qwen3-4B	16	29.340409401061414	-2.4389202386690725	-0.37907505686126797
