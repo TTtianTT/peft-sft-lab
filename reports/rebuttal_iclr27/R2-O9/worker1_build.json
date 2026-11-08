@@ -1,0 +1,107 @@
+{
+  "variants": [
+    {
+      "label": "Llama-3.1-8B-Instruct_metamath_val_best__original_lora",
+      "train_task": "metamath",
+      "seed": 42,
+      "method": "original_lora",
+      "condition": "Llama-3.1-8B-Instruct_metamath_val_best",
+      "base": "Llama-3.1-8B-Instruct",
+      "rank": 16,
+      "path": "/dataset1/zailong/workspace/peft-sft-lab/reports/rebuttal_iclr27/R2-O9/runtime/training/Llama-3.1-8B-Instruct_metamath_lr0.5"
+    },
+    {
+      "label": "Llama-3.1-8B-Instruct_metamath_val_best__recon_0",
+      "train_task": "metamath",
+      "seed": 42,
+      "method": "recon_0",
+      "condition": "Llama-3.1-8B-Instruct_metamath_val_best",
+      "base": "Llama-3.1-8B-Instruct",
+      "rank": 16,
+      "path": "/dataset1/zailong/workspace/peft-sft-lab/reports/rebuttal_iclr27/R2-O9/runtime/adapters/Llama-3.1-8B-Instruct_metamath_val_best/recon_0"
+    },
+    {
+      "label": "Llama-3.1-8B-Instruct_metamath_val_best__hns_f4_s1",
+      "train_task": "metamath",
+      "seed": 42,
+      "method": "hns_f4_s1",
+      "condition": "Llama-3.1-8B-Instruct_metamath_val_best",
+      "base": "Llama-3.1-8B-Instruct",
+      "rank": 16,
+      "path": "/dataset1/zailong/workspace/peft-sft-lab/reports/rebuttal_iclr27/R2-O9/runtime/adapters/Llama-3.1-8B-Instruct_metamath_val_best/hns_f4_s1"
+    },
+    {
+      "label": "Llama-3.1-8B-Instruct_metamath_val_best__flat_nuclear",
+      "train_task": "metamath",
+      "seed": 42,
+      "method": "flat_nuclear",
+      "condition": "Llama-3.1-8B-Instruct_metamath_val_best",
+      "base": "Llama-3.1-8B-Instruct",
+      "rank": 16,
+      "path": "/dataset1/zailong/workspace/peft-sft-lab/reports/rebuttal_iclr27/R2-O9/runtime/adapters/Llama-3.1-8B-Instruct_metamath_val_best/flat_nuclear"
+    }
+  ],
+  "artifacts": [
+    {
+      "label": "Llama-3.1-8B-Instruct_metamath_val_best__original_lora",
+      "train_task": "metamath",
+      "seed": 42,
+      "method": "original_lora",
+      "condition": "Llama-3.1-8B-Instruct_metamath_val_best",
+      "base": "Llama-3.1-8B-Instruct",
+      "rank": 16,
+      "path": "/dataset1/zailong/workspace/peft-sft-lab/reports/rebuttal_iclr27/R2-O9/runtime/training/Llama-3.1-8B-Instruct_metamath_lr0.5",
+      "weights_sha256": "1a76001053ff085bde7e1ff8422a28141f0ba7d34e7db790718a8abe3efe18c1",
+      "config_sha256": "4c502ab7287639cb3d309df08de116c2cbecc90e3129ce84415230b95d6b9cab",
+      "modules": 224
+    },
+    {
+      "label": "Llama-3.1-8B-Instruct_metamath_val_best__recon_0",
+      "train_task": "metamath",
+      "seed": 42,
+      "method": "recon_0",
+      "condition": "Llama-3.1-8B-Instruct_metamath_val_best",
+      "base": "Llama-3.1-8B-Instruct",
+      "rank": 16,
+      "path": "/dataset1/zailong/workspace/peft-sft-lab/reports/rebuttal_iclr27/R2-O9/runtime/adapters/Llama-3.1-8B-Instruct_metamath_val_best/recon_0",
+      "source_sha256": "1a76001053ff085bde7e1ff8422a28141f0ba7d34e7db790718a8abe3efe18c1",
+      "weights_sha256": "d7446eef936ef4acce7a3ff4e7e38a805183e18f274061c66d5a286248ca3d37",
+      "config_sha256": "4c502ab7287639cb3d309df08de116c2cbecc90e3129ce84415230b95d6b9cab",
+      "modules": 224,
+      "seconds": 4.06543685705401,
+      "job_id": "15429"
+    },
+    {
+      "label": "Llama-3.1-8B-Instruct_metamath_val_best__hns_f4_s1",
+      "train_task": "metamath",
+      "seed": 42,
+      "method": "hns_f4_s1",
+      "condition": "Llama-3.1-8B-Instruct_metamath_val_best",
+      "base": "Llama-3.1-8B-Instruct",
+      "rank": 16,
+      "path": "/dataset1/zailong/workspace/peft-sft-lab/reports/rebuttal_iclr27/R2-O9/runtime/adapters/Llama-3.1-8B-Instruct_metamath_val_best/hns_f4_s1",
+      "source_sha256": "1a76001053ff085bde7e1ff8422a28141f0ba7d34e7db790718a8abe3efe18c1",
+      "weights_sha256": "6f6ae4e068f2a70f515ab4250e6d1998961e6431fb60999349c9e3cad3fe8e57",
+      "config_sha256": "4c502ab7287639cb3d309df08de116c2cbecc90e3129ce84415230b95d6b9cab",
+      "modules": 224,
+      "seconds": 2.2608096450567245,
+      "job_id": "15429"
+    },
+    {
+      "label": "Llama-3.1-8B-Instruct_metamath_val_best__flat_nuclear",
+      "train_task": "metamath",
+      "seed": 42,
+      "method": "flat_nuclear",
+      "condition": "Llama-3.1-8B-Instruct_metamath_val_best",
+      "base": "Llama-3.1-8B-Instruct",
+      "rank": 16,
+      "path": "/dataset1/zailong/workspace/peft-sft-lab/reports/rebuttal_iclr27/R2-O9/runtime/adapters/Llama-3.1-8B-Instruct_metamath_val_best/flat_nuclear",
+      "source_sha256": "1a76001053ff085bde7e1ff8422a28141f0ba7d34e7db790718a8abe3efe18c1",
+      "weights_sha256": "13e9fa6735a34714b8f83315fe9b399d0619f37767a9ba6092b5b04e806aa821",
+      "config_sha256": "4c502ab7287639cb3d309df08de116c2cbecc90e3129ce84415230b95d6b9cab",
+      "modules": 224,
+      "seconds": 2.2730002810712904,
+      "job_id": "15429"
+    }
+  ]
+}

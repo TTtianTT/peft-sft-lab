@@ -1,0 +1,33 @@
+{
+  "base": "Llama-3.1-8B-Instruct",
+  "variants": [
+    {
+      "label": "Llama-3.1-8B-Instruct_metamath_val_best__original_lora",
+      "method": "original_lora",
+      "path": "/dataset1/zailong/workspace/peft-sft-lab/reports/rebuttal_iclr27/R2-O9/runtime/training/Llama-3.1-8B-Instruct_metamath_lr0.5",
+      "train_task": "metamath",
+      "seed": 42
+    },
+    {
+      "label": "Llama-3.1-8B-Instruct_metamath_val_best__recon_0",
+      "method": "recon_0",
+      "path": "/dataset1/zailong/workspace/peft-sft-lab/reports/rebuttal_iclr27/R2-O9/runtime/training/Llama-3.1-8B-Instruct_metamath_lr0.5",
+      "train_task": "metamath",
+      "seed": 42
+    },
+    {
+      "label": "Llama-3.1-8B-Instruct_metamath_val_best__hns_f4_s1",
+      "method": "hns_f4_s1",
+      "path": "/dataset1/zailong/workspace/peft-sft-lab/reports/rebuttal_iclr27/R2-O9/runtime/training/Llama-3.1-8B-Instruct_metamath_lr0.5",
+      "train_task": "metamath",
+      "seed": 42
+    },
+    {
+      "label": "Llama-3.1-8B-Instruct_metamath_val_best__flat_nuclear",
+      "method": "flat_nuclear",
+      "path": "/dataset1/zailong/workspace/peft-sft-lab/reports/rebuttal_iclr27/R2-O9/runtime/training/Llama-3.1-8B-Instruct_metamath_lr0.5",
+      "train_task": "metamath",
+      "seed": 42
+    }
+  ]
+}

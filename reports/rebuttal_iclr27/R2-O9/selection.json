@@ -1,0 +1,43 @@
+{
+  "selected": [
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "base_model": "/dataset1/zailong/models/Llama-3.1-8B-Instruct",
+      "task": "magicoder",
+      "seed": 42,
+      "rank": 16,
+      "alpha": 32,
+      "peft_method": "lora",
+      "lr": 1e-05,
+      "epochs": 1,
+      "multiplier": 0.5,
+      "condition": "Llama-3.1-8B-Instruct_magicoder_lr0.5",
+      "fraction": 1.0,
+      "path": "/dataset1/zailong/workspace/peft-sft-lab/reports/rebuttal_iclr27/R2-O9/runtime/training/Llama-3.1-8B-Instruct_magicoder_lr0.5",
+      "validation_score": 0.635,
+      "metric_sha256": "40159e38da82311c7d4b31405f30bd933f2c115d9102a7e2cb568d3028850204",
+      "weights_sha256": "3155f76e219b87291d02c1aff8240c0b3372819113894f667db4213f62963b51",
+      "config_sha256": "4c502ab7287639cb3d309df08de116c2cbecc90e3129ce84415230b95d6b9cab"
+    },
+    {
+      "base": "Llama-3.1-8B-Instruct",
+      "base_model": "/dataset1/zailong/models/Llama-3.1-8B-Instruct",
+      "task": "metamath",
+      "seed": 42,
+      "rank": 16,
+      "alpha": 32,
+      "peft_method": "lora",
+      "lr": 5e-05,
+      "epochs": 3,
+      "multiplier": 0.5,
+      "condition": "Llama-3.1-8B-Instruct_metamath_lr0.5",
+      "fraction": 1.0,
+      "path": "/dataset1/zailong/workspace/peft-sft-lab/reports/rebuttal_iclr27/R2-O9/runtime/training/Llama-3.1-8B-Instruct_metamath_lr0.5",
+      "validation_score": 0.832,
+      "metric_sha256": "964bbddf21025def353356f76be633d76b297284ff16c4ef79f8cb5c642c0be2",
+      "weights_sha256": "1a76001053ff085bde7e1ff8422a28141f0ba7d34e7db790718a8abe3efe18c1",
+      "config_sha256": "4c502ab7287639cb3d309df08de116c2cbecc90e3129ce84415230b95d6b9cab"
+    }
+  ],
+  "rule": "E4 prespecified validation-only tie rule"
+}

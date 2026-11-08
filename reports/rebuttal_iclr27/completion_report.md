@@ -130,3 +130,9 @@ Status: complete; new cells: 40. [Full report](R2-O7/report.md), [summary](R2-O7
 ## Round 2: R2-O8
 
 Status: complete; new cells: 32. [Full report](R2-O8/report.md), [summary](R2-O8/summary.json). Protocol, coverage and artifact audits are in the same directory.
+
+<!-- R2-O9 -->
+
+## Round 2: R2-O9
+
+Status: complete; new cells: 32. [Full report](R2-O9/report.md), [summary](R2-O9/summary.json). Protocol, coverage and artifact audits are in the same directory.
