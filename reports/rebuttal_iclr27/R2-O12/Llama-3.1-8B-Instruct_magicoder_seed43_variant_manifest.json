@@ -1,0 +1,33 @@
+{
+  "base": "Llama-3.1-8B-Instruct",
+  "variants": [
+    {
+      "label": "Llama-3.1-8B-Instruct_magicoder_seed43__original_lora",
+      "method": "original_lora",
+      "path": "/dataset1/zailong/runs/peft-sft-lab/hns-training-seeds-3task-20260912/Llama-3.1-8B-Instruct/seed43/lora/magicoder",
+      "train_task": "magicoder",
+      "seed": 43
+    },
+    {
+      "label": "Llama-3.1-8B-Instruct_magicoder_seed43__recon_0",
+      "method": "recon_0",
+      "path": "/dataset1/zailong/runs/peft-sft-lab/hns-training-seeds-3task-20260912/Llama-3.1-8B-Instruct/seed43/lora/magicoder",
+      "train_task": "magicoder",
+      "seed": 43
+    },
+    {
+      "label": "Llama-3.1-8B-Instruct_magicoder_seed43__hns_f4_s1",
+      "method": "hns_f4_s1",
+      "path": "/dataset1/zailong/runs/peft-sft-lab/hns-training-seeds-3task-20260912/Llama-3.1-8B-Instruct/seed43/lora/magicoder",
+      "train_task": "magicoder",
+      "seed": 43
+    },
+    {
+      "label": "Llama-3.1-8B-Instruct_magicoder_seed43__flat_nuclear",
+      "method": "flat_nuclear",
+      "path": "/dataset1/zailong/runs/peft-sft-lab/hns-training-seeds-3task-20260912/Llama-3.1-8B-Instruct/seed43/lora/magicoder",
+      "train_task": "magicoder",
+      "seed": 43
+    }
+  ]
+}

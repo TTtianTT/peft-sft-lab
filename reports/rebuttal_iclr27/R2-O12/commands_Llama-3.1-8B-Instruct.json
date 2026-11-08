@@ -1,0 +1,30 @@
+[
+  {
+    "argv": [
+      "/dataset1/zailong/envs/peft-sft-lab/bin/python",
+      "/dataset1/zailong/workspace/peft-sft-lab/scripts/rebuttal_iclr27_r2_o12.py",
+      "--generate",
+      "Llama-3.1-8B-Instruct"
+    ],
+    "log": "/dataset1/zailong/workspace/peft-sft-lab/reports/rebuttal_iclr27/R2-O12/runtime/logs/Llama-3.1-8B-Instruct_generate.log",
+    "started_utc": "2026-11-08T20:53:19.025585+00:00",
+    "job_id": "16484",
+    "returncode": 0,
+    "finished_utc": "2026-11-08T21:01:53.627370+00:00",
+    "elapsed_seconds": 514.5938720949925
+  },
+  {
+    "argv": [
+      "/dataset1/zailong/envs/peft-sft-lab/bin/python",
+      "/dataset1/zailong/workspace/peft-sft-lab/scripts/rebuttal_iclr27_r2_o12.py",
+      "--score",
+      "Llama-3.1-8B-Instruct"
+    ],
+    "log": "/dataset1/zailong/workspace/peft-sft-lab/reports/rebuttal_iclr27/R2-O12/runtime/logs/Llama-3.1-8B-Instruct_score.log",
+    "started_utc": "2026-11-08T21:01:53.640085+00:00",
+    "job_id": "16484",
+    "returncode": 0,
+    "finished_utc": "2026-11-08T21:15:06.028569+00:00",
+    "elapsed_seconds": 792.3831502022222
+  }
+]

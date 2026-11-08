@@ -1,0 +1,30 @@
+[
+  {
+    "argv": [
+      "/dataset1/zailong/envs/peft-sft-lab/bin/python",
+      "/dataset1/zailong/workspace/peft-sft-lab/scripts/rebuttal_iclr27_r2_o12.py",
+      "--generate",
+      "Qwen3-8B"
+    ],
+    "log": "/dataset1/zailong/workspace/peft-sft-lab/reports/rebuttal_iclr27/R2-O12/runtime/logs/Qwen3-8B_generate.log",
+    "started_utc": "2026-11-08T20:53:19.013383+00:00",
+    "job_id": "16484",
+    "returncode": 0,
+    "finished_utc": "2026-11-08T21:02:25.675189+00:00",
+    "elapsed_seconds": 546.6569183738902
+  },
+  {
+    "argv": [
+      "/dataset1/zailong/envs/peft-sft-lab/bin/python",
+      "/dataset1/zailong/workspace/peft-sft-lab/scripts/rebuttal_iclr27_r2_o12.py",
+      "--score",
+      "Qwen3-8B"
+    ],
+    "log": "/dataset1/zailong/workspace/peft-sft-lab/reports/rebuttal_iclr27/R2-O12/runtime/logs/Qwen3-8B_score.log",
+    "started_utc": "2026-11-08T21:02:25.687419+00:00",
+    "job_id": "16484",
+    "returncode": 0,
+    "finished_utc": "2026-11-08T21:08:18.077099+00:00",
+    "elapsed_seconds": 352.3834615359083
+  }
+]

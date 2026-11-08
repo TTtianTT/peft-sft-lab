@@ -1,0 +1,15 @@
+{
+  "status": "complete",
+  "completed_utc": "2026-11-08T21:15:59.867003+00:00",
+  "new_cells": 52,
+  "conditions": 12,
+  "job_id": "16484",
+  "gpu_count": 2,
+  "outputs_sha256": {
+    "report.md": "50fff43d2bc64c50113f1a8bf81148d701ab0b1238d015bf0ed25a5738f3be36",
+    "checkpoint_results.tsv": "cbb9f31de47b6e7d213f75b0eb92cc2db270330948b30e9bcebd6b47d0f76879",
+    "paired_ci.tsv": "4d552e1d046fb51779e9e56ea72ac9ba174198e3c951b976b1c3e1359d1a1c16",
+    "coverage_audit.json": "de896b3f34d479abc904ec6683916b2d8b1c3efe2560094cd843553ae822fb12",
+    "artifact_integrity_audit.json": "04b52e38b3a9a8731a960e87c7a77fb65d354b7e8ee83379de3cd8177c67bb77"
+  }
+}

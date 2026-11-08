@@ -1,0 +1,33 @@
+{
+  "base": "Qwen3-8B",
+  "variants": [
+    {
+      "label": "Qwen3-8B_metamath_seed44__original_lora",
+      "method": "original_lora",
+      "path": "/dataset1/zailong/runs/peft-sft-lab/hns-training-seeds-3task-20260912/Qwen3-8B/seed44/lora/metamath",
+      "train_task": "metamath",
+      "seed": 44
+    },
+    {
+      "label": "Qwen3-8B_metamath_seed44__recon_0",
+      "method": "recon_0",
+      "path": "/dataset1/zailong/runs/peft-sft-lab/hns-training-seeds-3task-20260912/Qwen3-8B/seed44/lora/metamath",
+      "train_task": "metamath",
+      "seed": 44
+    },
+    {
+      "label": "Qwen3-8B_metamath_seed44__hns_f4_s1",
+      "method": "hns_f4_s1",
+      "path": "/dataset1/zailong/runs/peft-sft-lab/hns-training-seeds-3task-20260912/Qwen3-8B/seed44/lora/metamath",
+      "train_task": "metamath",
+      "seed": 44
+    },
+    {
+      "label": "Qwen3-8B_metamath_seed44__flat_nuclear",
+      "method": "flat_nuclear",
+      "path": "/dataset1/zailong/runs/peft-sft-lab/hns-training-seeds-3task-20260912/Qwen3-8B/seed44/lora/metamath",
+      "train_task": "metamath",
+      "seed": 44
+    }
+  ]
+}
