@@ -1,0 +1,107 @@
+{
+  "variants": [
+    {
+      "label": "Qwen3-8B_magicoder_loraplus_r16_seed42__original_lora",
+      "train_task": "magicoder",
+      "seed": 42,
+      "method": "original_lora",
+      "condition": "Qwen3-8B_magicoder_loraplus_r16_seed42",
+      "base": "Qwen3-8B",
+      "rank": 16,
+      "path": "/dataset1/zailong/workspace/peft-sft-lab/reports/rebuttal_iclr27/R2-O8/runtime/training/Qwen3-8B_magicoder_loraplus_r16_seed42"
+    },
+    {
+      "label": "Qwen3-8B_magicoder_loraplus_r16_seed42__recon_0",
+      "train_task": "magicoder",
+      "seed": 42,
+      "method": "recon_0",
+      "condition": "Qwen3-8B_magicoder_loraplus_r16_seed42",
+      "base": "Qwen3-8B",
+      "rank": 16,
+      "path": "/dataset1/zailong/workspace/peft-sft-lab/reports/rebuttal_iclr27/R2-O8/runtime/adapters/Qwen3-8B_magicoder_loraplus_r16_seed42/recon_0"
+    },
+    {
+      "label": "Qwen3-8B_magicoder_loraplus_r16_seed42__hns_f4_s1",
+      "train_task": "magicoder",
+      "seed": 42,
+      "method": "hns_f4_s1",
+      "condition": "Qwen3-8B_magicoder_loraplus_r16_seed42",
+      "base": "Qwen3-8B",
+      "rank": 16,
+      "path": "/dataset1/zailong/workspace/peft-sft-lab/reports/rebuttal_iclr27/R2-O8/runtime/adapters/Qwen3-8B_magicoder_loraplus_r16_seed42/hns_f4_s1"
+    },
+    {
+      "label": "Qwen3-8B_magicoder_loraplus_r16_seed42__flat_nuclear",
+      "train_task": "magicoder",
+      "seed": 42,
+      "method": "flat_nuclear",
+      "condition": "Qwen3-8B_magicoder_loraplus_r16_seed42",
+      "base": "Qwen3-8B",
+      "rank": 16,
+      "path": "/dataset1/zailong/workspace/peft-sft-lab/reports/rebuttal_iclr27/R2-O8/runtime/adapters/Qwen3-8B_magicoder_loraplus_r16_seed42/flat_nuclear"
+    }
+  ],
+  "artifacts": [
+    {
+      "label": "Qwen3-8B_magicoder_loraplus_r16_seed42__original_lora",
+      "train_task": "magicoder",
+      "seed": 42,
+      "method": "original_lora",
+      "condition": "Qwen3-8B_magicoder_loraplus_r16_seed42",
+      "base": "Qwen3-8B",
+      "rank": 16,
+      "path": "/dataset1/zailong/workspace/peft-sft-lab/reports/rebuttal_iclr27/R2-O8/runtime/training/Qwen3-8B_magicoder_loraplus_r16_seed42",
+      "weights_sha256": "f6fb8894556219b3257c214ee9db03a11853a82bc74ddd57654acaced16215a1",
+      "config_sha256": "61b64f183fd5192bac4104e4fc1dae9634721fa55adb819a4a2623a4d61346dd",
+      "modules": 252
+    },
+    {
+      "label": "Qwen3-8B_magicoder_loraplus_r16_seed42__recon_0",
+      "train_task": "magicoder",
+      "seed": 42,
+      "method": "recon_0",
+      "condition": "Qwen3-8B_magicoder_loraplus_r16_seed42",
+      "base": "Qwen3-8B",
+      "rank": 16,
+      "path": "/dataset1/zailong/workspace/peft-sft-lab/reports/rebuttal_iclr27/R2-O8/runtime/adapters/Qwen3-8B_magicoder_loraplus_r16_seed42/recon_0",
+      "source_sha256": "f6fb8894556219b3257c214ee9db03a11853a82bc74ddd57654acaced16215a1",
+      "weights_sha256": "3bbfa7b24e84a3a84cd05bc68c5d84dec226bec26799a56433ab24288487141f",
+      "config_sha256": "61b64f183fd5192bac4104e4fc1dae9634721fa55adb819a4a2623a4d61346dd",
+      "modules": 252,
+      "seconds": 4.690228682011366,
+      "job_id": "15390"
+    },
+    {
+      "label": "Qwen3-8B_magicoder_loraplus_r16_seed42__hns_f4_s1",
+      "train_task": "magicoder",
+      "seed": 42,
+      "method": "hns_f4_s1",
+      "condition": "Qwen3-8B_magicoder_loraplus_r16_seed42",
+      "base": "Qwen3-8B",
+      "rank": 16,
+      "path": "/dataset1/zailong/workspace/peft-sft-lab/reports/rebuttal_iclr27/R2-O8/runtime/adapters/Qwen3-8B_magicoder_loraplus_r16_seed42/hns_f4_s1",
+      "source_sha256": "f6fb8894556219b3257c214ee9db03a11853a82bc74ddd57654acaced16215a1",
+      "weights_sha256": "e1ab02305e3ead71a22483215cc2fdc4469a7158dcbde6a71881db8458a4006e",
+      "config_sha256": "61b64f183fd5192bac4104e4fc1dae9634721fa55adb819a4a2623a4d61346dd",
+      "modules": 252,
+      "seconds": 2.468386103399098,
+      "job_id": "15390"
+    },
+    {
+      "label": "Qwen3-8B_magicoder_loraplus_r16_seed42__flat_nuclear",
+      "train_task": "magicoder",
+      "seed": 42,
+      "method": "flat_nuclear",
+      "condition": "Qwen3-8B_magicoder_loraplus_r16_seed42",
+      "base": "Qwen3-8B",
+      "rank": 16,
+      "path": "/dataset1/zailong/workspace/peft-sft-lab/reports/rebuttal_iclr27/R2-O8/runtime/adapters/Qwen3-8B_magicoder_loraplus_r16_seed42/flat_nuclear",
+      "source_sha256": "f6fb8894556219b3257c214ee9db03a11853a82bc74ddd57654acaced16215a1",
+      "weights_sha256": "a23bffd8cbe97d81a32d07e6c0ca6aa4639985f9ad307fabe36451714d14d683",
+      "config_sha256": "61b64f183fd5192bac4104e4fc1dae9634721fa55adb819a4a2623a4d61346dd",
+      "modules": 252,
+      "seconds": 2.0230024065822363,
+      "job_id": "15390"
+    }
+  ]
+}

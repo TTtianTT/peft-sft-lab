@@ -1,0 +1,107 @@
+{
+  "status": "frozen",
+  "created_utc": "2026-11-08T07:11:44.454935+00:00",
+  "files": {
+    "scripts/eval_forgetting_matrix_vllm.py": "771996287e653c316413a22184e66602766933f66f80eaf5e99405e14f4dcac0",
+    "scripts/score_forgetting_matrix.py": "a172270a8d115d2f06863a0d181a784756412747a45e9dc02dd71d0f95de5bf5",
+    "scripts/eval_commonsense_8tasks.py": "0eb3dfbbccabdc97e4cdcc7c575756f5eb5db963ea0cf9427a1ff3e25c15334e",
+    "src/finetune/eval/eval_humaneval.py": "babd571e6eb7af395281506db836e478ac1a32d6fc738a22051222009eea520e",
+    "src/finetune/eval/eval_gsm8k.py": "ed95442c30536ac4ba90b5a2806d764cea8f8eb38c6879af2c0dd7b2c54dd335",
+    "src/finetune/eval/eval_ifeval.py": "1af1ef7f6c8b38d91dd94bbbc4a0b373ed76a3186899197d1f3c046afd987ef0",
+    "src/finetune/eval/generation.py": "bba4a24e4e5808f2abe74749a6f571a5aa1c7f27a03b9df2132ec835afbca075",
+    "scripts/build_hns_step_grid_2x4.py": "99262fb3196cdc74060def60f42ddb89167d00ddb83aec3e61c9c6c8188de5e4",
+    "src/finetune/spectral_edit/svd.py": "606213fb325cd09d012f02e05adb269b0d8f1f92c6ccfef21fa7a409c82f9ce2",
+    "src/finetune/spectral_edit/posthoc_hns.py": "a9351267929f16efd5b511801c3b2128b3b213414053050636a6eb492cd62206",
+    "src/finetune/spectral_edit/io.py": "296712529479318a67588f22052ea8587ed57d55371b6cd76918244d5749c5ea",
+    "src/finetune/spectral_edit/mechanism.py": "fb8487943478f124437cef8f3cf7cb013d6ed343fdc3e41816a1feb9e4a38854",
+    "reports/analysis_section5/source_checkpoints.json": "85fa609eb87e5435fd6f778f87f973bd26ae0877f79899530f703f2fcf75d315",
+    "reports/functional_hns_three_seed_20260914/Qwen3-8B_task_config.json": "5a1021838d11d537e26da6808dabd5277b7e224cc539f0d6aa81cbfd5731df41",
+    "reports/functional_hns_three_seed_20260914/Llama-3.1-8B-Instruct_task_config.json": "5a1021838d11d537e26da6808dabd5277b7e224cc539f0d6aa81cbfd5731df41",
+    "scripts/rebuttal_iclr27.py": "154b5bd86cdcf0056c6298c2f5e2d978b9150a78af4d4f49f98b825de35e5097",
+    "scripts/rebuttal_iclr27_e2_e3.py": "694e1d4200597221cd9b9fed25db56cc8dd6581035876433271f834b114908b9",
+    "scripts/rebuttal_iclr27_e4.py": "37a68ad8f462b560c37e21a9cd98b8f2bdb39f9bda5f729aeaa79a5f094ccfa0",
+    "src/finetune/train_sft_peft.py": "88886feab7cd5e6402dbaa528be5878de8d3b2b3ed2531e72b69dada2ac3ca81",
+    "src/finetune/eval/eval_mbpp.py": "bd597dc5b3b39a600fb8a498d30c1c1221dfb1fc48aefccd3d57d8a46ff5bb14",
+    "src/finetune/data/registry.py": "07fb25f70c2273f3e29f36bbed424937ad7470e9275dd05ce8438ee549ade671",
+    "src/finetune/data/chat_sft.py": "46fb8505c1c81d95536350a0078e6c142aa21f0e5e708b11585bdac03151c757",
+    "src/finetune/data/plain_sft.py": "60fcd7419294ed2eeb59532f6e848677ee526ab1f28b48de1e70d7a4992e5bd2",
+    "src/finetune/data/base.py": "f32a663b0454f137950b4a7587010a634fc4021967bc0e61a33fd5153e61eb3a",
+    "src/finetune/data/code_magicoder.py": "8db7196e462777b249d77959c67e1c4f09b5f2560a1b633accfa61af93c56e7f",
+    "src/finetune/data/math_metamathqa.py": "264e5882f197872cece419ebc44e2e908ab6d09bf79ff61c370d8c96c3a699d9",
+    "src/finetune/peft_builders.py": "f078f271f90016786a37e02523b0d42c8c3fef2509aeacb93e18c3f057517a59",
+    "src/finetune/train_profiles.py": "637dd9076159c5c9662faa08842312c74959250a2018acb5cb11fa01e0ea9880",
+    "src/finetune/utils.py": "f9534ac44a2b90c8651b6d84089022a18ab331bd4c6c6c425013c58f5449207b",
+    "src/finetune/spectral_edit/flat.py": "7b393049e02647e464a6575479b1f61ca212f0c80ec130b8c069304da004728f",
+    "scripts/rebuttal_iclr27_r2.py": "427e8130976e6f0b9e5034941fb80fed353f4fd74652ac99528e65c2c1aedebf",
+    "scripts/rebuttal_iclr27_r2_a.py": "46fcc85a57678562f10281672440cb0d6437e3012627ec0f9442e82623956298",
+    "scripts/rebuttal_iclr27_r2_b.py": "5bf55a6b49d501380a933e32d9b7342c2bf9151d4d4a479de6db1b6a670dd226"
+  },
+  "protocol_sha256": "e4ccdb43851dd5ef4efc2ca8ac6d45e93ab91b1073f5e9730a89400856e4b8a9",
+  "checkpoints": [
+    {
+      "source": "/dataset1/zailong/workspace/peft-sft-lab/reports/rebuttal_iclr27/R2-O8/runtime/training/Qwen3-8B_magicoder_loraplus_r16_seed42",
+      "source_sha256": "f6fb8894556219b3257c214ee9db03a11853a82bc74ddd57654acaced16215a1",
+      "config_sha256": "61b64f183fd5192bac4104e4fc1dae9634721fa55adb819a4a2623a4d61346dd",
+      "rank": 16,
+      "alpha": 32,
+      "base": "Qwen3-8B",
+      "base_model": "/dataset1/zailong/models/Qwen3-8B",
+      "task": "magicoder",
+      "seed": 42,
+      "lr": 1e-05,
+      "epochs": 1,
+      "peft_method": "loraplus",
+      "condition": "Qwen3-8B_magicoder_loraplus_r16_seed42",
+      "methods": [
+        "original_lora",
+        "recon_0",
+        "hns_f4_s1",
+        "flat_nuclear"
+      ],
+      "new_methods": [
+        "original_lora",
+        "recon_0",
+        "hns_f4_s1",
+        "flat_nuclear"
+      ]
+    },
+    {
+      "source": "/dataset1/zailong/workspace/peft-sft-lab/reports/rebuttal_iclr27/R2-O8/runtime/training/Qwen3-8B_metamath_loraplus_r16_seed42",
+      "source_sha256": "8379dc065b1ad6aeacfe6faa5b4c08d006b4bd872a0c2117afbf7d6cef91f44e",
+      "config_sha256": "61b64f183fd5192bac4104e4fc1dae9634721fa55adb819a4a2623a4d61346dd",
+      "rank": 16,
+      "alpha": 32,
+      "base": "Qwen3-8B",
+      "base_model": "/dataset1/zailong/models/Qwen3-8B",
+      "task": "metamath",
+      "seed": 42,
+      "lr": 0.0002,
+      "epochs": 3,
+      "peft_method": "loraplus",
+      "condition": "Qwen3-8B_metamath_loraplus_r16_seed42",
+      "methods": [
+        "original_lora",
+        "recon_0",
+        "hns_f4_s1",
+        "flat_nuclear"
+      ],
+      "new_methods": [
+        "original_lora",
+        "recon_0",
+        "hns_f4_s1",
+        "flat_nuclear"
+      ]
+    }
+  ],
+  "methods": [
+    "original_lora",
+    "recon_0",
+    "hns_f4_s1",
+    "flat_nuclear"
+  ],
+  "expected_new_cells": 32,
+  "statistics": "item",
+  "bootstrap_resamples": 20000,
+  "bootstrap_seed": 20261106,
+  "training_lock_sha256": "27523ce5df74afa90d4b4762b84e4b032e6150193d39fb476319cac15ca7487f"
+}

@@ -1,0 +1,24 @@
+[
+  {
+    "base": "Qwen3-8B",
+    "base_model": "/dataset1/zailong/models/Qwen3-8B",
+    "task": "magicoder",
+    "seed": 42,
+    "rank": 16,
+    "alpha": 32,
+    "peft_method": "loraplus",
+    "lr": 1e-05,
+    "epochs": 1,
+    "condition": "Qwen3-8B_magicoder_loraplus_r16_seed42",
+    "source": "/dataset1/zailong/workspace/peft-sft-lab/reports/rebuttal_iclr27/R2-O8/runtime/training/Qwen3-8B_magicoder_loraplus_r16_seed42",
+    "total_steps": 1561,
+    "warmup_steps": 157,
+    "job_id": "15390",
+    "gpu_count": 1,
+    "weights_sha256": "f6fb8894556219b3257c214ee9db03a11853a82bc74ddd57654acaced16215a1",
+    "config_sha256": "61b64f183fd5192bac4104e4fc1dae9634721fa55adb819a4a2623a4d61346dd",
+    "training_args_sha256": "02d3b1913dae7aba894b76ef96bf9ffd4355e62641e4d7ebc3f4196ff7999a3d",
+    "warmup_audit_sha256": "d81995e2236eecc385c82d947e50228094edc2ddefc721863f6af3b319f35c50",
+    "run_args_sha256": "cff6cefd1e7061edf6c05a2bafd1774ff6e0d1afef27f3ec5ac3764b3662210c"
+  }
+]

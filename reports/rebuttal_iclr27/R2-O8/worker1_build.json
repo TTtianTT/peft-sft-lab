@@ -1,0 +1,107 @@
+{
+  "variants": [
+    {
+      "label": "Qwen3-8B_metamath_loraplus_r16_seed42__original_lora",
+      "train_task": "metamath",
+      "seed": 42,
+      "method": "original_lora",
+      "condition": "Qwen3-8B_metamath_loraplus_r16_seed42",
+      "base": "Qwen3-8B",
+      "rank": 16,
+      "path": "/dataset1/zailong/workspace/peft-sft-lab/reports/rebuttal_iclr27/R2-O8/runtime/training/Qwen3-8B_metamath_loraplus_r16_seed42"
+    },
+    {
+      "label": "Qwen3-8B_metamath_loraplus_r16_seed42__recon_0",
+      "train_task": "metamath",
+      "seed": 42,
+      "method": "recon_0",
+      "condition": "Qwen3-8B_metamath_loraplus_r16_seed42",
+      "base": "Qwen3-8B",
+      "rank": 16,
+      "path": "/dataset1/zailong/workspace/peft-sft-lab/reports/rebuttal_iclr27/R2-O8/runtime/adapters/Qwen3-8B_metamath_loraplus_r16_seed42/recon_0"
+    },
+    {
+      "label": "Qwen3-8B_metamath_loraplus_r16_seed42__hns_f4_s1",
+      "train_task": "metamath",
+      "seed": 42,
+      "method": "hns_f4_s1",
+      "condition": "Qwen3-8B_metamath_loraplus_r16_seed42",
+      "base": "Qwen3-8B",
+      "rank": 16,
+      "path": "/dataset1/zailong/workspace/peft-sft-lab/reports/rebuttal_iclr27/R2-O8/runtime/adapters/Qwen3-8B_metamath_loraplus_r16_seed42/hns_f4_s1"
+    },
+    {
+      "label": "Qwen3-8B_metamath_loraplus_r16_seed42__flat_nuclear",
+      "train_task": "metamath",
+      "seed": 42,
+      "method": "flat_nuclear",
+      "condition": "Qwen3-8B_metamath_loraplus_r16_seed42",
+      "base": "Qwen3-8B",
+      "rank": 16,
+      "path": "/dataset1/zailong/workspace/peft-sft-lab/reports/rebuttal_iclr27/R2-O8/runtime/adapters/Qwen3-8B_metamath_loraplus_r16_seed42/flat_nuclear"
+    }
+  ],
+  "artifacts": [
+    {
+      "label": "Qwen3-8B_metamath_loraplus_r16_seed42__original_lora",
+      "train_task": "metamath",
+      "seed": 42,
+      "method": "original_lora",
+      "condition": "Qwen3-8B_metamath_loraplus_r16_seed42",
+      "base": "Qwen3-8B",
+      "rank": 16,
+      "path": "/dataset1/zailong/workspace/peft-sft-lab/reports/rebuttal_iclr27/R2-O8/runtime/training/Qwen3-8B_metamath_loraplus_r16_seed42",
+      "weights_sha256": "8379dc065b1ad6aeacfe6faa5b4c08d006b4bd872a0c2117afbf7d6cef91f44e",
+      "config_sha256": "61b64f183fd5192bac4104e4fc1dae9634721fa55adb819a4a2623a4d61346dd",
+      "modules": 252
+    },
+    {
+      "label": "Qwen3-8B_metamath_loraplus_r16_seed42__recon_0",
+      "train_task": "metamath",
+      "seed": 42,
+      "method": "recon_0",
+      "condition": "Qwen3-8B_metamath_loraplus_r16_seed42",
+      "base": "Qwen3-8B",
+      "rank": 16,
+      "path": "/dataset1/zailong/workspace/peft-sft-lab/reports/rebuttal_iclr27/R2-O8/runtime/adapters/Qwen3-8B_metamath_loraplus_r16_seed42/recon_0",
+      "source_sha256": "8379dc065b1ad6aeacfe6faa5b4c08d006b4bd872a0c2117afbf7d6cef91f44e",
+      "weights_sha256": "00f936d29d5cd3bfc7990293723bf1fed18d4c2cb7a9370c2347cc114a3fe506",
+      "config_sha256": "61b64f183fd5192bac4104e4fc1dae9634721fa55adb819a4a2623a4d61346dd",
+      "modules": 252,
+      "seconds": 5.059149684384465,
+      "job_id": "15390"
+    },
+    {
+      "label": "Qwen3-8B_metamath_loraplus_r16_seed42__hns_f4_s1",
+      "train_task": "metamath",
+      "seed": 42,
+      "method": "hns_f4_s1",
+      "condition": "Qwen3-8B_metamath_loraplus_r16_seed42",
+      "base": "Qwen3-8B",
+      "rank": 16,
+      "path": "/dataset1/zailong/workspace/peft-sft-lab/reports/rebuttal_iclr27/R2-O8/runtime/adapters/Qwen3-8B_metamath_loraplus_r16_seed42/hns_f4_s1",
+      "source_sha256": "8379dc065b1ad6aeacfe6faa5b4c08d006b4bd872a0c2117afbf7d6cef91f44e",
+      "weights_sha256": "378611e10c6c02fbcd4f193cfc178d8b8599b7346e7ed7889354814a3b79bc8b",
+      "config_sha256": "61b64f183fd5192bac4104e4fc1dae9634721fa55adb819a4a2623a4d61346dd",
+      "modules": 252,
+      "seconds": 2.6069795107468963,
+      "job_id": "15390"
+    },
+    {
+      "label": "Qwen3-8B_metamath_loraplus_r16_seed42__flat_nuclear",
+      "train_task": "metamath",
+      "seed": 42,
+      "method": "flat_nuclear",
+      "condition": "Qwen3-8B_metamath_loraplus_r16_seed42",
+      "base": "Qwen3-8B",
+      "rank": 16,
+      "path": "/dataset1/zailong/workspace/peft-sft-lab/reports/rebuttal_iclr27/R2-O8/runtime/adapters/Qwen3-8B_metamath_loraplus_r16_seed42/flat_nuclear",
+      "source_sha256": "8379dc065b1ad6aeacfe6faa5b4c08d006b4bd872a0c2117afbf7d6cef91f44e",
+      "weights_sha256": "e3bf748ed37d840918b5442879a658b754f39a806536aeb6e07161e2f2566418",
+      "config_sha256": "61b64f183fd5192bac4104e4fc1dae9634721fa55adb819a4a2623a4d61346dd",
+      "modules": 252,
+      "seconds": 2.1705356249585748,
+      "job_id": "15390"
+    }
+  ]
+}
