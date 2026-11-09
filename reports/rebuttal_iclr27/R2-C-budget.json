@@ -6,8 +6,16 @@
   },
   {
     "experiment": "R2-O11",
-    "status": "awaiting_author_confirmation",
-    "approval": null
+    "status": "complete",
+    "approval": {
+      "approved": true,
+      "by": "paper author, in Claude Code session",
+      "approved_local_date": "2026-11-09",
+      "recorded_utc": "2026-11-09T03:56:49.991165+00:00",
+      "note": "Explicit instruction to run O11 after O10/O12 finished."
+    },
+    "previous_status": "awaiting_author_confirmation",
+    "note": "Executed after explicit author approval recorded in R2-plan.json; validation-selected gamma protocol locked before inference."
   },
   {
     "experiment": "R2-O12",

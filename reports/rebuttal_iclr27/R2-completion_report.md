@@ -2,7 +2,7 @@
 
 All A/B experiments passed output, coverage and integrity audits. Optional stages and pending author confirmation are listed explicitly.
 
-New training runs: 17; new cells: 880; global GPU limit:2.
+New training runs: 17; new cells: 952; global GPU limit:2.
 
 | Experiment | Status | New cells | Report |
 | --- | --- | ---: | --- |
@@ -16,7 +16,7 @@ New training runs: 17; new cells: 880; global GPU limit:2.
 | R2-O8 | complete | 32 | [R2-O8](R2-O8/report.md) |
 | R2-O9 | complete | 32 | [R2-O9](R2-O9/report.md) |
 | R2-O10 | complete | 20 | [R2-O10](R2-O10/report.md) |
-| R2-O11 | awaiting_author_confirmation | 0 | See R2-C-budget.json |
+| R2-O11 | complete | 72 | [R2-O11](R2-O11/report.md) |
 | R2-O12 | complete | 52 | [R2-O12](R2-O12/report.md) |
 
 All methods/configurations are reported; none were chosen using main or auxiliary test performance. Main Target/Off/FG preserve the functional_hns_three_seed_20260914 protocol and caches after sample-input-hash audits. Checkpoint CIs are descriptive shared-test intervals; single-seed conditions use paired question intervals and exact McNemar repair/damage. See each report for inference/capacity exceptions (rank32/64) and any limits on interpretation.
@@ -84,10 +84,15 @@ Balanced/unbalanced represented-update audit: 8568 module pairs, maximum relativ
 | R2-O10 | hns_f4_s1 | 85.8226 | 76.7464 | 4.1459 |
 | R2-O10 | original_lora | 86.1259 | 71.7319 | 8.9756 |
 | R2-O10 | recon_0 | 86.2017 | 71.8419 | 8.8656 |
+| R2-O11 | base | 66.4730 | 69.9931 | 0.0000 |
+| R2-O11 | gamma_val | 71.8077 | 72.4800 | 0.4542 |
+| R2-O11 | hns_f4_s1 | 72.0834 | 72.7915 | 0.3441 |
+| R2-O11 | original_lora | 67.9980 | 69.5512 | 2.7082 |
+| R2-O11 | recon_0 | 68.4769 | 69.7658 | 2.5757 |
 | R2-O12 | base | 66.7612 | 69.8970 | 0.0000 |
 | R2-O12 | flat_nuclear | 74.0406 | 71.0490 | 0.5460 |
 | R2-O12 | hns_f4_s1 | 74.0216 | 71.2621 | 0.4888 |
 | R2-O12 | original_lora | 69.5724 | 66.4960 | 3.8190 |
 | R2-O12 | recon_0 | 69.8133 | 66.6642 | 3.6933 |
 
-These aggregates pool only the prespecified conditions within each experiment and do not imply comparable training-run uncertainty across experiments. Use paired_ci.tsv and subgroup results for the actual contrasts. O11 was not executed without explicit author authorization.
+These aggregates pool only the prespecified conditions within each experiment and do not imply comparable training-run uncertainty across experiments. Use paired_ci.tsv and subgroup results for the actual contrasts. O11 was executed after explicit author approval (see R2-plan.json and R2-O11/validation_protocol.md).

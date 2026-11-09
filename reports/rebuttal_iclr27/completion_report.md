@@ -153,7 +153,7 @@ Status: complete; new cells: 52. [Full report](R2-O12/report.md), [summary](R2-O
 
 ## Second-round completion index
 
-17 new trainings, 880 new cells. [Audited second-round index](R2-completion_report.md). O11 remains unexecuted pending explicit author confirmation; all optional omissions are documented.
+17 new trainings, 952 new cells. [Audited second-round index](R2-completion_report.md). O11 was executed after explicit author approval; all optional omissions are documented.
 
 <!-- R2-O11 -->
 

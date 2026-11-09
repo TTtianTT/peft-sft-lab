@@ -1,6 +1,6 @@
 {
   "status": "authorized_completed_with_explicit_optional_omissions",
-  "updated_utc": "2026-11-08T21:16:06.250009+00:00",
+  "updated_utc": "2026-11-09T06:17:26.031317+00:00",
   "experiments": {
     "R2-O1": {
       "status": "complete",
@@ -203,9 +203,24 @@
       }
     },
     "R2-O11": {
-      "experiment": "R2-O11",
-      "status": "awaiting_author_confirmation",
-      "approval": null
+      "status": "complete",
+      "summary": {
+        "status": "complete",
+        "completed_utc": "2026-11-09T06:16:01.352781+00:00",
+        "new_cells": 72,
+        "conditions": 18,
+        "statistics": "checkpoint",
+        "bootstrap_resamples": 20000,
+        "job_id": "16810",
+        "gpu_count": 2,
+        "outputs_sha256": {
+          "report.md": "70b15c5d7fc264e9ab65507c5556ad41a32171733b7f3f5e0b567a5f349fcec1",
+          "checkpoint_results.tsv": "8710e13f9ec1f0ef400608d60ac70f65797d9fd35224a2b2eec83398a77fd9d0",
+          "paired_ci.tsv": "2d0c31cb0d648b7c8f0c78dc6d129189799860a4f0d65d19888d41e1faa2345c",
+          "coverage_audit.json": "825524d38179872675a2315145383a1d71c93450d4ea896a7a11639b4eb7834d",
+          "artifact_integrity_audit.json": "ae30296f332f806a95b7bebebfaaed52a73ea7850a6a8a4a6924975a72e559d0"
+        }
+      }
     },
     "R2-O12": {
       "status": "complete",
@@ -226,12 +241,18 @@
       }
     }
   },
-  "total_new_cells": 880,
+  "total_new_cells": 952,
   "total_new_trainings": 17,
-  "o11_author_approval": null,
+  "o11_author_approval": {
+    "approved": true,
+    "by": "paper author, in Claude Code session",
+    "approved_local_date": "2026-11-09",
+    "recorded_utc": "2026-11-09T03:56:49.991165+00:00",
+    "note": "Explicit instruction to run O11 after O10/O12 finished."
+  },
   "global_gpu_limit": 2,
   "submission_sha256": "098652983d3938138a2e34463b5a935b7265910e72d3bfbfa51e19df8a3472a0",
-  "budget_decisions_sha256": "5ea61aa8a1e7b14cbbd760f48aff80ea5f738ff543ad388d81fcc4d9ad151cc4",
+  "budget_decisions_sha256": "5b29cdb690ae4a878c097b944285eabc9997e7b40ef671feaaa3ce2cfca375db",
   "factorization_update_audit": {
     "status": "pass",
     "conditions": 18,
