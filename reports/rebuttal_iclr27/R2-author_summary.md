@@ -107,3 +107,22 @@ O11 的验证集说明：MetaMath 没有使用 E4 的 held-out 500 题（与训�
 2. **对 8Euc（只是缩放吗）**：如实报告 O11。验证集调出的统一收缩可以达到与 HNS 相近的效果。HNS 的价值在于不需要验证数据、不需要逐 checkpoint 搜索；**不要**声称谱形状的增益已超出缩放。
 3. **对 FzQ5（规模/训练策略）**：报告 O7、O8 MetaMath、O10 Target 的负或零结果；O7 附上格式诊断，但要明确标注为事后辅助分析。
 4. **对 XJ3f（与精确展平的关系）**：HNS 与 Flat-Nuclear 没有可靠差异，两者同属一类变换。
+
+## 7. 按原计划逐项结论与结果路径
+
+所有路径都相对 `reports/rebuttal_iclr27/`。每个目录都包含 `report.md`、`paired_ci.tsv` 和 `checkpoint_results.tsv`，下表只列各项特有的文件。
+
+| 子项 | 审稿人 | 结论 | 判定 | 关键文件 |
+|---|---|---|---|---|
+| O1 训练状态曲线 | 8Euc | 14 个 checkpoint 的 HNS − Recon Target 点估计全部为正（Magicoder +4.3～+9.1，MetaMath +3.5～+5.2）。验证分数与增益没有可靠的单调关系（合并 ρ=−0.38，p=0.19；FG 的 ρ=0.06）。这些 checkpoint 彼此相关，n 也小，不能断言两者无关 | ✅ 支持 | `R2-O1/training_state_curve.png`、`.pdf`、`.tsv`；`R2-O1/validation_gain_spearman.tsv`；`R2-O1/rank64_validation.tsv` |
+| O2 因子化 | XJ3f | balanced 写回 Target +3.61 [2.08, 5.35]；unbalanced 写回 +3.73 [2.34, 5.26]；两者的差中差 +0.13 [−0.36, 0.62]，跨 0。token 一致率 94.8% / 94.5%，更新最大相对差 1.75e-7。只能说未发现差异，不能说等价 | ✅ 支持 | `R2-O2/token_consistency.tsv`；`R2-O2/factorization_update_audit.json` |
+| O3 SS 2×2 | FzQ5 | 四个格子中 HNS 都优于 SS；SS 扩展到全部 7 类模块后没有改善。HNS − SS-grad_direction-all：Target +4.81 [2.78, 6.92]，FG −5.55。两者的数据和计算预算不同，表中记录的是各自的实际预算 | ✅ 支持 | `R2-O3/calibration_budget.tsv` |
+| O4 两阶段 / 剂量 | FzQ5 | 4+0、0+5、4+1 的 Target 相差都在 ±0.2 以内；λ=0.5 明显较弱（4+1 − λ0.5 = +1.40 [0.42, 2.48]）。效果取决于谱展平程度（PR 0.91～1.00 vs 0.50），而不是用了哪些阶段 | ✅ 符合预期 | `R2-O4/spectral_statistics.tsv` |
+| O5 三个 seed | 通用 | MetaMath HNS 88.02±1.10 vs Recon 84.71±0.31；Magicoder 73.37±0.35 vs 65.04±0.93；Flat 与 HNS 接近 | ✅ 支持 | `R2-O5/three_seed_mean_sd.tsv` |
+| O6 rank 8/16/32/64 | 8Euc/FzQ5 | 四个 rank 的 Target 增益均为正（+3.4/+4.6/+3.5/+3.8），FG 都下降。HNS 与 Flat 之间的方向不固定 | ✅ 支持 | `R2-O6/rank_curve.png`、`.tsv` |
+| O7 模型规模 | FzQ5 | 主指标：1.7B Target −59.9 [−62.6, −57.2]；4B Target +29.3，但 Off −2.4，其中 HumanEval −23.2。辅助诊断显示，GSM8K 的波动主要来自模型照抄提示中的 `<answer>` 占位符，使 strict 判分失败；去掉占位符后，1.7B HNS 77.9 vs Recon 74.3，4B 88.2 vs 83.7。主表保持原样 | ❌/⚠️ 负结果，需解释 | `R2-O7/report.md`；`R2-O7/aux_gsm8k_format_diagnostic/` |
+| O8 LoRA+ | 8Euc | Magicoder Target +6.71 [1.22, 12.20]，FG −2.46。MetaMath 源 adapter 本身损伤严重（Off 38.8 vs Base 72.9），HNS Target −1.14 [−2.65, 0.38]，修复有限 | ⚠️ 好坏参半 | `R2-O8/report.md` |
+| O9 Llama E4a | FzQ5 | 选中的 LR：Magicoder 1e-5，MetaMath 5e-5。MetaMath Target +5.08 [2.88, 7.35]，FG −3.96。Magicoder Off +3.72、FG −3.21，Target −1.83 跨 0 | ✅/⚠️ | `R2-O9/selection.json`；`R2-O9/validation_candidates.tsv` |
+| O10 Qwen3-14B | FzQ5 | 按 Amendment 1 改为 32768 batched tokens。Target −0.38 [−2.27, 1.52]，Off +4.90，FG −4.72。LoRA 训练本身使 GSM8K 低于 Base | ⚠️ 只减少遗忘 | `R2-O10/capacity_preflight_failed_job15429.log`；`R2-O10/protocol.md` |
+| O11 验证集选 γ | 8Euc | HNS − γ_val：Target +0.28 [−0.71, 1.72]，Off +0.31，FG −0.11，均跨 0。只有 Qwen 的 Off 偏向 HNS（+0.67 [0.27, 1.17]）。11/18 的选择落在网格下界 0.3 | ❌ 对“超出缩放”的说法不利 | `R2-O11/selection.json`；`R2-O11/validation_candidates.tsv`；`R2-O11/validation_protocol.md` |
+| O12 独立 target 基准 | 通用 | HNS − Recon +4.95 [3.63, 6.43]，12/0/0（MBPP+ +3.00，MATH-500 +6.90）。HNS − Flat +0.20，跨 0 | ✅ 强支持 | `R2-O12/parser_unit_tests.json`；`R2-O12/assets.json` |
