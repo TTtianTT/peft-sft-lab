@@ -18,7 +18,13 @@
     "R2-O11",
     "R2-O12"
   ],
-  "o11_author_approval": null,
+  "o11_author_approval": {
+    "approved": true,
+    "by": "paper author, in Claude Code session",
+    "approved_local_date": "2026-11-09",
+    "recorded_utc": "2026-11-09T03:56:49.991165+00:00",
+    "note": "Explicit instruction to run O11 after O10/O12 finished."
+  },
   "budget_rule": "A then B; C starts only if its prespecified estimate plus reserve fits remaining wall budget; no test-score-dependent omissions",
   "finished_utc": "2026-11-08T21:16:06.276442+00:00"
 }

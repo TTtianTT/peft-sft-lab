@@ -1,0 +1,76 @@
+{
+  "metamath": {
+    "source": {
+      "repo": "ChilleD/SVAMP",
+      "revision": "5e0bf1e5e7c0e9c4bc39180d224f41f3f801b7ef",
+      "files": [
+        "svamp_train-00000-of-00001.parquet",
+        "svamp_test-00000-of-00001.parquet"
+      ]
+    },
+    "pool": 1000,
+    "exact_overlap_with_full_metamathqa_query": 0,
+    "selected": 500,
+    "raw_sha256": {
+      "svamp_train-00000-of-00001.parquet": "c910f362fb2e863642414e9957d7712c82261f266ebe8d5681f5519a4a28248a",
+      "svamp_test-00000-of-00001.parquet": "9e77ea83fd48aa4a7840fd5f15efaf1cb6eacffda414dd87d5a952012b5ac1fe"
+    }
+  },
+  "tulu": {
+    "source": {
+      "repo": "argilla/ifeval-like-data",
+      "config": "filtered",
+      "revision": "56505d1771e36fa5aa07aa9a1b39008fe60a8487",
+      "files": [
+        "ifeval_like_filtered.parquet"
+      ]
+    },
+    "pool": 56339,
+    "eligible": 51939,
+    "excluded": {
+      "unparsed": 0,
+      "unsupported_id": 75,
+      "overlap": 0,
+      "duplicate": 4325
+    },
+    "selected": 500,
+    "allowed_instruction_ids": [
+      "change_case:capital_word_frequency",
+      "change_case:english_capital",
+      "change_case:english_lowercase",
+      "combination:repeat_prompt",
+      "combination:two_responses",
+      "detectable_content:number_placeholders",
+      "detectable_content:postscript",
+      "detectable_format:json_format",
+      "detectable_format:multiple_sections",
+      "detectable_format:number_bullet_lists",
+      "detectable_format:number_highlighted_sections",
+      "detectable_format:title",
+      "keywords:existence",
+      "keywords:forbidden_words",
+      "keywords:frequency",
+      "keywords:letter_frequency",
+      "language:response_language",
+      "length_constraints:nth_paragraph_first_word",
+      "length_constraints:number_paragraphs",
+      "length_constraints:number_sentences",
+      "length_constraints:number_words",
+      "punctuation:no_comma",
+      "startend:end_checker",
+      "startend:quotation"
+    ],
+    "raw_sha256": "6787f8d3945a409adfdeccc5be868a47c88fa458d641f89f5d1b1abf202d414e",
+    "excluded_against": [
+      "/dataset1/zailong/data/peft-sft-lab/cross-task-mechanism/ifeval-train.jsonl",
+      "/dataset1/zailong/data/peft-sft-lab/cross-task-mechanism/tulu-3-sft-personas-instruction-following-train.parquet"
+    ]
+  },
+  "magicoder": {
+    "source": "/dataset1/zailong/workspace/peft-sft-lab/reports/rebuttal_iclr27/E4/runtime/data/magicoder_validation.parquet",
+    "sha256": "bd29c1c8c5a97434519cb745a5555e38a208009da7ccc7563eb52e3166283488",
+    "selected": 200,
+    "exact_overlap_with_full_magicoder_instruction": 0
+  },
+  "limitations": "Exact-text audits only use local training tables. The seed42 Qwen sources were trained elsewhere from MetaMathQA-395K json / tulu-3-sft parquet copies, so their exact rows cannot be re-derived; SVAMP and argilla ifeval-like are external sources not built from GSM8K/MATH or Tulu personas. MBPP200 comes from MBPP sanitized test."
+}
