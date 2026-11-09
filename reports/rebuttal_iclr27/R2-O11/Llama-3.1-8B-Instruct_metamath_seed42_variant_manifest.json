@@ -1,0 +1,33 @@
+{
+  "base": "Llama-3.1-8B-Instruct",
+  "variants": [
+    {
+      "label": "Llama-3.1-8B-Instruct_metamath_seed42__original_lora",
+      "method": "original_lora",
+      "path": "/dataset1/zailong/models/spectral-surgery/Llama-3.1-8B-Instruct-MetaMathQA-50K-LoRA",
+      "train_task": "metamath",
+      "seed": 42
+    },
+    {
+      "label": "Llama-3.1-8B-Instruct_metamath_seed42__recon_0",
+      "method": "recon_0",
+      "path": "/dataset1/zailong/models/spectral-surgery/Llama-3.1-8B-Instruct-MetaMathQA-50K-LoRA",
+      "train_task": "metamath",
+      "seed": 42
+    },
+    {
+      "label": "Llama-3.1-8B-Instruct_metamath_seed42__hns_f4_s1",
+      "method": "hns_f4_s1",
+      "path": "/dataset1/zailong/models/spectral-surgery/Llama-3.1-8B-Instruct-MetaMathQA-50K-LoRA",
+      "train_task": "metamath",
+      "seed": 42
+    },
+    {
+      "label": "Llama-3.1-8B-Instruct_metamath_seed42__gamma_val",
+      "method": "gamma_val",
+      "path": "/dataset1/zailong/models/spectral-surgery/Llama-3.1-8B-Instruct-MetaMathQA-50K-LoRA",
+      "train_task": "metamath",
+      "seed": 42
+    }
+  ]
+}

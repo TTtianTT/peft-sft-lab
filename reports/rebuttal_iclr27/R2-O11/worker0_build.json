@@ -1,0 +1,213 @@
+{
+  "variants": [
+    {
+      "label": "Qwen3-8B_magicoder_seed42__gamma_val",
+      "train_task": "magicoder",
+      "seed": 42,
+      "method": "gamma_val",
+      "condition": "Qwen3-8B_magicoder_seed42",
+      "base": "Qwen3-8B",
+      "rank": 16,
+      "path": "/dataset1/zailong/workspace/peft-sft-lab/reports/rebuttal_iclr27/R2-O11/runtime/adapters/Qwen3-8B_magicoder_seed42/gamma0.4"
+    },
+    {
+      "label": "Qwen3-8B_metamath_seed42__gamma_val",
+      "train_task": "metamath",
+      "seed": 42,
+      "method": "gamma_val",
+      "condition": "Qwen3-8B_metamath_seed42",
+      "base": "Qwen3-8B",
+      "rank": 16,
+      "path": "/dataset1/zailong/workspace/peft-sft-lab/reports/rebuttal_iclr27/R2-O11/runtime/adapters/Qwen3-8B_metamath_seed42/gamma0.3"
+    },
+    {
+      "label": "Qwen3-8B_tulu_seed42__gamma_val",
+      "train_task": "tulu",
+      "seed": 42,
+      "method": "gamma_val",
+      "condition": "Qwen3-8B_tulu_seed42",
+      "base": "Qwen3-8B",
+      "rank": 16,
+      "path": "/dataset1/zailong/workspace/peft-sft-lab/reports/rebuttal_iclr27/R2-O11/runtime/adapters/Qwen3-8B_tulu_seed42/gamma0.3"
+    },
+    {
+      "label": "Qwen3-8B_magicoder_seed43__gamma_val",
+      "train_task": "magicoder",
+      "seed": 43,
+      "method": "gamma_val",
+      "condition": "Qwen3-8B_magicoder_seed43",
+      "base": "Qwen3-8B",
+      "rank": 16,
+      "path": "/dataset1/zailong/workspace/peft-sft-lab/reports/rebuttal_iclr27/R2-O11/runtime/adapters/Qwen3-8B_magicoder_seed43/gamma0.85"
+    },
+    {
+      "label": "Qwen3-8B_metamath_seed43__gamma_val",
+      "train_task": "metamath",
+      "seed": 43,
+      "method": "gamma_val",
+      "condition": "Qwen3-8B_metamath_seed43",
+      "base": "Qwen3-8B",
+      "rank": 16,
+      "path": "/dataset1/zailong/workspace/peft-sft-lab/reports/rebuttal_iclr27/R2-O11/runtime/adapters/Qwen3-8B_metamath_seed43/gamma0.3"
+    },
+    {
+      "label": "Qwen3-8B_tulu_seed43__gamma_val",
+      "train_task": "tulu",
+      "seed": 43,
+      "method": "gamma_val",
+      "condition": "Qwen3-8B_tulu_seed43",
+      "base": "Qwen3-8B",
+      "rank": 16,
+      "path": "/dataset1/zailong/workspace/peft-sft-lab/reports/rebuttal_iclr27/R2-O11/runtime/adapters/Qwen3-8B_tulu_seed43/gamma0.3"
+    },
+    {
+      "label": "Qwen3-8B_magicoder_seed44__gamma_val",
+      "train_task": "magicoder",
+      "seed": 44,
+      "method": "gamma_val",
+      "condition": "Qwen3-8B_magicoder_seed44",
+      "base": "Qwen3-8B",
+      "rank": 16,
+      "path": "/dataset1/zailong/workspace/peft-sft-lab/reports/rebuttal_iclr27/R2-O11/runtime/adapters/Qwen3-8B_magicoder_seed44/gamma0.3"
+    },
+    {
+      "label": "Qwen3-8B_metamath_seed44__gamma_val",
+      "train_task": "metamath",
+      "seed": 44,
+      "method": "gamma_val",
+      "condition": "Qwen3-8B_metamath_seed44",
+      "base": "Qwen3-8B",
+      "rank": 16,
+      "path": "/dataset1/zailong/workspace/peft-sft-lab/reports/rebuttal_iclr27/R2-O11/runtime/adapters/Qwen3-8B_metamath_seed44/gamma0.3"
+    },
+    {
+      "label": "Qwen3-8B_tulu_seed44__gamma_val",
+      "train_task": "tulu",
+      "seed": 44,
+      "method": "gamma_val",
+      "condition": "Qwen3-8B_tulu_seed44",
+      "base": "Qwen3-8B",
+      "rank": 16,
+      "path": "/dataset1/zailong/workspace/peft-sft-lab/reports/rebuttal_iclr27/R2-O11/runtime/adapters/Qwen3-8B_tulu_seed44/gamma0.4"
+    }
+  ],
+  "artifacts": [
+    {
+      "label": "Qwen3-8B_magicoder_seed42__gamma_val",
+      "train_task": "magicoder",
+      "seed": 42,
+      "method": "gamma_val",
+      "condition": "Qwen3-8B_magicoder_seed42",
+      "base": "Qwen3-8B",
+      "rank": 16,
+      "path": "/dataset1/zailong/workspace/peft-sft-lab/reports/rebuttal_iclr27/R2-O11/runtime/adapters/Qwen3-8B_magicoder_seed42/gamma0.4",
+      "gamma": 0.4,
+      "weights_sha256": "9155611903c67b5e8691d5a42acc77aded36aad5889b59833562df598c0a88ce",
+      "config_sha256": "d47ac43d9f3b727032b2752be65333cc117bdf0036c45b6ff90948453da97961"
+    },
+    {
+      "label": "Qwen3-8B_metamath_seed42__gamma_val",
+      "train_task": "metamath",
+      "seed": 42,
+      "method": "gamma_val",
+      "condition": "Qwen3-8B_metamath_seed42",
+      "base": "Qwen3-8B",
+      "rank": 16,
+      "path": "/dataset1/zailong/workspace/peft-sft-lab/reports/rebuttal_iclr27/R2-O11/runtime/adapters/Qwen3-8B_metamath_seed42/gamma0.3",
+      "gamma": 0.3,
+      "weights_sha256": "87e4752f6432931ff37d4b7ab80d1c0791961f82627914d8c68d589e4870bc4d",
+      "config_sha256": "511a7a57399324e3af545c893982bf76d3c77de31e099ea1aa62e74a71ecc630"
+    },
+    {
+      "label": "Qwen3-8B_tulu_seed42__gamma_val",
+      "train_task": "tulu",
+      "seed": 42,
+      "method": "gamma_val",
+      "condition": "Qwen3-8B_tulu_seed42",
+      "base": "Qwen3-8B",
+      "rank": 16,
+      "path": "/dataset1/zailong/workspace/peft-sft-lab/reports/rebuttal_iclr27/R2-O11/runtime/adapters/Qwen3-8B_tulu_seed42/gamma0.3",
+      "gamma": 0.3,
+      "weights_sha256": "14be1690dc64cf22099fcf14f5407c68ac19401a77464ce89eb83f70a1cb8a29",
+      "config_sha256": "4895afcdea39bdcb075d80cf0c95d27171d1695b210b34f2ef7558b0b8a1bfa3"
+    },
+    {
+      "label": "Qwen3-8B_magicoder_seed43__gamma_val",
+      "train_task": "magicoder",
+      "seed": 43,
+      "method": "gamma_val",
+      "condition": "Qwen3-8B_magicoder_seed43",
+      "base": "Qwen3-8B",
+      "rank": 16,
+      "path": "/dataset1/zailong/workspace/peft-sft-lab/reports/rebuttal_iclr27/R2-O11/runtime/adapters/Qwen3-8B_magicoder_seed43/gamma0.85",
+      "gamma": 0.85,
+      "weights_sha256": "580043d10e1d531f6faea42a9c1c31dd89fe6a320b9b4bed10104e126d217a7e",
+      "config_sha256": "1ef01a098f276d7ce134f5bb6f82a3d421f94c9b2d6579b6003512e4e901228a"
+    },
+    {
+      "label": "Qwen3-8B_metamath_seed43__gamma_val",
+      "train_task": "metamath",
+      "seed": 43,
+      "method": "gamma_val",
+      "condition": "Qwen3-8B_metamath_seed43",
+      "base": "Qwen3-8B",
+      "rank": 16,
+      "path": "/dataset1/zailong/workspace/peft-sft-lab/reports/rebuttal_iclr27/R2-O11/runtime/adapters/Qwen3-8B_metamath_seed43/gamma0.3",
+      "gamma": 0.3,
+      "weights_sha256": "0d28219560f5185ff5a585b1b32fcbb656c9cf09b16dba53f066b1c59c93c19c",
+      "config_sha256": "1ef01a098f276d7ce134f5bb6f82a3d421f94c9b2d6579b6003512e4e901228a"
+    },
+    {
+      "label": "Qwen3-8B_tulu_seed43__gamma_val",
+      "train_task": "tulu",
+      "seed": 43,
+      "method": "gamma_val",
+      "condition": "Qwen3-8B_tulu_seed43",
+      "base": "Qwen3-8B",
+      "rank": 16,
+      "path": "/dataset1/zailong/workspace/peft-sft-lab/reports/rebuttal_iclr27/R2-O11/runtime/adapters/Qwen3-8B_tulu_seed43/gamma0.3",
+      "gamma": 0.3,
+      "weights_sha256": "bd91e8a2542c08a1e33a17dd0df91f66a95a7848350dda5149de79fa18fda923",
+      "config_sha256": "1ef01a098f276d7ce134f5bb6f82a3d421f94c9b2d6579b6003512e4e901228a"
+    },
+    {
+      "label": "Qwen3-8B_magicoder_seed44__gamma_val",
+      "train_task": "magicoder",
+      "seed": 44,
+      "method": "gamma_val",
+      "condition": "Qwen3-8B_magicoder_seed44",
+      "base": "Qwen3-8B",
+      "rank": 16,
+      "path": "/dataset1/zailong/workspace/peft-sft-lab/reports/rebuttal_iclr27/R2-O11/runtime/adapters/Qwen3-8B_magicoder_seed44/gamma0.3",
+      "gamma": 0.3,
+      "weights_sha256": "5426278cdd1c6b01665c994811b0e51a3bd48b278333a34eba0ab0729f1b973d",
+      "config_sha256": "09f5203f6929787edb04234aecdaa82044cf66c24cb5a39b7eed4598d87eebe5"
+    },
+    {
+      "label": "Qwen3-8B_metamath_seed44__gamma_val",
+      "train_task": "metamath",
+      "seed": 44,
+      "method": "gamma_val",
+      "condition": "Qwen3-8B_metamath_seed44",
+      "base": "Qwen3-8B",
+      "rank": 16,
+      "path": "/dataset1/zailong/workspace/peft-sft-lab/reports/rebuttal_iclr27/R2-O11/runtime/adapters/Qwen3-8B_metamath_seed44/gamma0.3",
+      "gamma": 0.3,
+      "weights_sha256": "f3fa300315572b627709b4868cfed14848ce8ceb1a235c308b959e2dd3fb9bae",
+      "config_sha256": "09f5203f6929787edb04234aecdaa82044cf66c24cb5a39b7eed4598d87eebe5"
+    },
+    {
+      "label": "Qwen3-8B_tulu_seed44__gamma_val",
+      "train_task": "tulu",
+      "seed": 44,
+      "method": "gamma_val",
+      "condition": "Qwen3-8B_tulu_seed44",
+      "base": "Qwen3-8B",
+      "rank": 16,
+      "path": "/dataset1/zailong/workspace/peft-sft-lab/reports/rebuttal_iclr27/R2-O11/runtime/adapters/Qwen3-8B_tulu_seed44/gamma0.4",
+      "gamma": 0.4,
+      "weights_sha256": "5dd88b406577bd92c9928390ce3983f8d8f5813c7a923ea6b35c763c9b09084a",
+      "config_sha256": "09f5203f6929787edb04234aecdaa82044cf66c24cb5a39b7eed4598d87eebe5"
+    }
+  ]
+}

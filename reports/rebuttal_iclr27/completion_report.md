@@ -154,3 +154,9 @@ Status: complete; new cells: 52. [Full report](R2-O12/report.md), [summary](R2-O
 ## Second-round completion index
 
 17 new trainings, 880 new cells. [Audited second-round index](R2-completion_report.md). O11 remains unexecuted pending explicit author confirmation; all optional omissions are documented.
+
+<!-- R2-O11 -->
+
+## Round 2: R2-O11
+
+Status: complete; new cells: 72. [Full report](R2-O11/report.md), [summary](R2-O11/summary.json). Protocol, coverage and artifact audits are in the same directory.
